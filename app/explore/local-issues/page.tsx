@@ -1,0 +1,1427 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { createClient } from "@/lib/supabase/client";
+import { useLanguage } from "@/components/LanguageProvider";
+import type { Language } from "@/lib/i18n";
+
+type LocalizedText = Record<Language, string>;
+
+type LocalBody = {
+  icon: string;
+  title: LocalizedText;
+  text: LocalizedText;
+};
+
+type CommonIssue = {
+  icon: string;
+  title: LocalizedText;
+  text: LocalizedText;
+};
+
+type IssueStep = {
+  number: string;
+  title: LocalizedText;
+  text: LocalizedText;
+};
+
+type QuizQuestion = {
+  question: LocalizedText;
+  options: LocalizedText[];
+  answer: number;
+};
+
+const localBodies: LocalBody[] = [
+  {
+    icon: "🏘️",
+    title: {
+      en: "Gram Panchayat",
+      hi: "ग्राम पंचायत",
+      mr: "ग्रामपंचायत",
+    },
+    text: {
+      en: "A rural local self-government institution that works at the village level.",
+      hi: "ग्राम स्तर पर कार्य करने वाली ग्रामीण स्थानीय स्वशासन संस्था।",
+      mr: "गावाच्या पातळीवर कार्य करणारी ग्रामीण स्थानिक स्वराज्य संस्था.",
+    },
+  },
+  {
+    icon: "🏙️",
+    title: {
+      en: "Municipality",
+      hi: "नगरपालिका",
+      mr: "नगरपालिका",
+    },
+    text: {
+      en: "An urban local body that governs towns and cities according to the applicable legal framework.",
+      hi: "लागू कानूनी ढाँचे के अनुसार कस्बों और शहरों का प्रशासन करने वाली शहरी स्थानीय संस्था।",
+      mr: "लागू कायदेशीर चौकटीच्या अनुसार शहरांचे आणि नगरांचे प्रशासन करणारी शहरी स्थानिक संस्था.",
+    },
+  },
+  {
+    icon: "🌆",
+    title: {
+      en: "Municipal Corporation",
+      hi: "नगर निगम / महानगरपालिका",
+      mr: "महानगरपालिका",
+    },
+    text: {
+      en: "Large cities may be governed through Municipal Corporations under the applicable constitutional and State legal framework.",
+      hi: "बड़े शहरों का प्रशासन लागू संवैधानिक और राज्य के कानूनी ढाँचे के तहत नगर निगमों के माध्यम से किया जा सकता है।",
+      mr: "मोठ्या शहरांचे प्रशासन लागू घटनात्मक आणि राज्याच्या कायदेशीर चौकटीअंतर्गत महानगरपालिकांमार्फत केले जाऊ शकते.",
+    },
+  },
+];
+
+const commonIssues: CommonIssue[] = [
+  {
+    icon: "💧",
+    title: {
+      en: "Water Supply",
+      hi: "जल आपूर्ति",
+      mr: "पाणीपुरवठा",
+    },
+    text: {
+      en: "Local authorities may be involved in water supply, distribution, infrastructure and related civic services.",
+      hi: "स्थानीय प्राधिकरण जल आपूर्ति, वितरण, बुनियादी ढाँचे और संबंधित नागरिक सेवाओं से जुड़े हो सकते हैं।",
+      mr: "स्थानिक प्राधिकरण पाणीपुरवठा, वितरण, पायाभूत सुविधा आणि संबंधित नागरी सेवांमध्ये सहभागी असू शकतात.",
+    },
+  },
+  {
+    icon: "🗑️",
+    title: {
+      en: "Waste Management",
+      hi: "कचरा प्रबंधन",
+      mr: "कचरा व्यवस्थापन",
+    },
+    text: {
+      en: "Collection, transportation and management of solid waste are important local civic functions.",
+      hi: "ठोस कचरे का संग्रह, परिवहन और प्रबंधन महत्वपूर्ण स्थानीय नागरिक कार्य हैं।",
+      mr: "घनकचऱ्याचे संकलन, वाहतूक आणि व्यवस्थापन ही महत्त्वाची स्थानिक नागरी कामे आहेत.",
+    },
+  },
+  {
+    icon: "🛣️",
+    title: {
+      en: "Roads & Streets",
+      hi: "सड़कें और गलियाँ",
+      mr: "रस्ते आणि गल्लीबोळ",
+    },
+    text: {
+      en: "Local roads, streets, drainage and related infrastructure can involve local authorities and other government agencies.",
+      hi: "स्थानीय सड़कें, गलियाँ, जल निकासी और संबंधित बुनियादी ढाँचे में स्थानीय प्राधिकरणों और अन्य सरकारी एजेंसियों की भूमिका हो सकती है।",
+      mr: "स्थानिक रस्ते, रस्त्यांवरील सुविधा, निचरा व्यवस्था आणि संबंधित पायाभूत सुविधांमध्ये स्थानिक प्राधिकरणे आणि इतर सरकारी यंत्रणांचा सहभाग असू शकतो.",
+    },
+  },
+  {
+    icon: "💡",
+    title: {
+      en: "Street Lighting",
+      hi: "सड़क प्रकाश व्यवस्था",
+      mr: "पथदिवे",
+    },
+    text: {
+      en: "Street lighting is an everyday public service that may be handled by urban local authorities.",
+      hi: "सड़क प्रकाश व्यवस्था एक दैनिक सार्वजनिक सेवा है, जिसे शहरी स्थानीय प्राधिकरण संभाल सकते हैं।",
+      mr: "पथदिवे ही दैनंदिन सार्वजनिक सेवा असून ती शहरी स्थानिक प्राधिकरणांकडून हाताळली जाऊ शकते.",
+    },
+  },
+  {
+    icon: "🌳",
+    title: {
+      en: "Public Spaces",
+      hi: "सार्वजनिक स्थान",
+      mr: "सार्वजनिक जागा",
+    },
+    text: {
+      en: "Local authorities can have responsibilities relating to parks, public spaces and parts of the local environment.",
+      hi: "स्थानीय प्राधिकरणों की पार्कों, सार्वजनिक स्थानों और स्थानीय पर्यावरण के कुछ हिस्सों से संबंधित जिम्मेदारियाँ हो सकती हैं।",
+      mr: "स्थानिक प्राधिकरणांवर उद्याने, सार्वजनिक जागा आणि स्थानिक पर्यावरणाच्या काही बाबींशी संबंधित जबाबदाऱ्या असू शकतात.",
+    },
+  },
+  {
+    icon: "🏥",
+    title: {
+      en: "Public Health",
+      hi: "सार्वजनिक स्वास्थ्य",
+      mr: "सार्वजनिक आरोग्य",
+    },
+    text: {
+      en: "Local government has an important role in sanitation, public health measures and related civic services.",
+      hi: "स्वच्छता, सार्वजनिक स्वास्थ्य उपायों और संबंधित नागरिक सेवाओं में स्थानीय सरकार की महत्वपूर्ण भूमिका होती है।",
+      mr: "स्वच्छता, सार्वजनिक आरोग्यविषयक उपाय आणि संबंधित नागरी सेवांमध्ये स्थानिक स्वराज्य संस्थांची महत्त्वाची भूमिका असते.",
+    },
+  },
+];
+
+const issueSteps: IssueStep[] = [
+  {
+    number: "01",
+    title: {
+      en: "Identify the issue",
+      hi: "समस्या की पहचान करें",
+      mr: "समस्या ओळखा",
+    },
+    text: {
+      en: "Clearly understand what the problem is, where it is happening and how it affects the community.",
+      hi: "समझें कि समस्या क्या है, कहाँ हो रही है और इसका समुदाय पर क्या प्रभाव पड़ रहा है।",
+      mr: "समस्या नेमकी काय आहे, ती कुठे घडत आहे आणि तिचा समुदायावर कसा परिणाम होतो हे स्पष्टपणे समजून घ्या.",
+    },
+  },
+  {
+    number: "02",
+    title: {
+      en: "Find the responsible authority",
+      hi: "जिम्मेदार प्राधिकरण खोजें",
+      mr: "जबाबदार प्राधिकरण शोधा",
+    },
+    text: {
+      en: "Different issues may fall under different local, State or other government agencies.",
+      hi: "अलग-अलग समस्याएँ अलग-अलग स्थानीय, राज्य या अन्य सरकारी एजेंसियों के अधिकार क्षेत्र में आ सकती हैं।",
+      mr: "वेगवेगळ्या समस्या वेगवेगळ्या स्थानिक, राज्य किंवा इतर सरकारी यंत्रणांच्या अखत्यारीत येऊ शकतात.",
+    },
+  },
+  {
+    number: "03",
+    title: {
+      en: "Submit a complaint",
+      hi: "शिकायत दर्ज करें",
+      mr: "तक्रार नोंदवा",
+    },
+    text: {
+      en: "Use the appropriate official complaint or grievance mechanism available for the issue.",
+      hi: "समस्या के लिए उपलब्ध उचित आधिकारिक शिकायत या शिकायत-निवारण व्यवस्था का उपयोग करें।",
+      mr: "समस्येसाठी उपलब्ध असलेल्या योग्य अधिकृत तक्रार किंवा गाऱ्हाणे निवारण यंत्रणेचा वापर करा.",
+    },
+  },
+  {
+    number: "04",
+    title: {
+      en: "Keep the reference",
+      hi: "संदर्भ संख्या सुरक्षित रखें",
+      mr: "संदर्भ क्रमांक जतन करा",
+    },
+    text: {
+      en: "Save the complaint number, acknowledgement or other record so that you can follow up.",
+      hi: "शिकायत संख्या, पावती या अन्य रिकॉर्ड को सुरक्षित रखें ताकि आप आगे उसकी स्थिति जान सकें।",
+      mr: "तक्रार क्रमांक, पोचपावती किंवा इतर नोंद जतन करा, जेणेकरून तुम्ही पुढील पाठपुरावा करू शकाल.",
+    },
+  },
+  {
+    number: "05",
+    title: {
+      en: "Follow up",
+      hi: "अनुवर्ती कार्रवाई करें",
+      mr: "पाठपुरावा करा",
+    },
+    text: {
+      en: "If the issue remains unresolved, use the applicable escalation or grievance mechanism.",
+      hi: "यदि समस्या का समाधान नहीं होता है, तो लागू शिकायत-निवारण या उच्च स्तर पर शिकायत करने की व्यवस्था का उपयोग करें।",
+      mr: "समस्या सुटली नाही तर लागू असलेल्या पुढील स्तरावरील तक्रार किंवा गाऱ्हाणे निवारण यंत्रणेचा वापर करा.",
+    },
+  },
+];
+
+const quizQuestions: QuizQuestion[] = [
+  {
+    question: {
+      en: "Which level of government is closest to many everyday civic issues?",
+      hi: "रोजमर्रा की कई नागरिक समस्याओं के सबसे करीब सरकार का कौन-सा स्तर होता है?",
+      mr: "दैनंदिन अनेक नागरी समस्यांशी सर्वात जवळचा संबंध सरकारच्या कोणत्या स्तराचा असतो?",
+    },
+    options: [
+      {
+        en: "Local government",
+        hi: "स्थानीय सरकार",
+        mr: "स्थानिक सरकार",
+      },
+      {
+        en: "Only the Union Government",
+        hi: "केवल केंद्र सरकार",
+        mr: "फक्त केंद्र सरकार",
+      },
+      {
+        en: "Only Parliament",
+        hi: "केवल संसद",
+        mr: "फक्त संसद",
+      },
+      {
+        en: "Only the Supreme Court",
+        hi: "केवल सर्वोच्च न्यायालय",
+        mr: "फक्त सर्वोच्च न्यायालय",
+      },
+    ],
+    answer: 0,
+  },
+  {
+    question: {
+      en: "Which constitutional amendments strengthened local self-government in India?",
+      hi: "भारत में स्थानीय स्वशासन को मजबूत करने वाले कौन-से संवैधानिक संशोधन हैं?",
+      mr: "भारतातील स्थानिक स्वराज्य व्यवस्था बळकट करणाऱ्या कोणत्या घटनादुरुस्त्या आहेत?",
+    },
+    options: [
+      {
+        en: "42nd and 44th Amendments",
+        hi: "42वाँ और 44वाँ संशोधन",
+        mr: "42वी आणि 44वी घटनादुरुस्ती",
+      },
+      {
+        en: "73rd and 74th Amendments",
+        hi: "73वाँ और 74वाँ संशोधन",
+        mr: "73वी आणि 74वी घटनादुरुस्ती",
+      },
+      {
+        en: "86th and 91st Amendments",
+        hi: "86वाँ और 91वाँ संशोधन",
+        mr: "86वी आणि 91वी घटनादुरुस्ती",
+      },
+      {
+        en: "101st and 102nd Amendments",
+        hi: "101वाँ और 102वाँ संशोधन",
+        mr: "101वी आणि 102वी घटनादुरुस्ती",
+      },
+    ],
+    answer: 1,
+  },
+  {
+    question: {
+      en: "Which is an example of an everyday local civic issue?",
+      hi: "निम्नलिखित में से रोजमर्रा की स्थानीय नागरिक समस्या का उदाहरण कौन-सा है?",
+      mr: "खालीलपैकी दैनंदिन स्थानिक नागरी समस्येचे उदाहरण कोणते?",
+    },
+    options: [
+      {
+        en: "Street lighting",
+        hi: "सड़क प्रकाश व्यवस्था",
+        mr: "पथदिवे",
+      },
+      {
+        en: "Foreign policy",
+        hi: "विदेश नीति",
+        mr: "परराष्ट्र धोरण",
+      },
+      {
+        en: "Monetary policy",
+        hi: "मौद्रिक नीति",
+        mr: "चलनविषयक धोरण",
+      },
+      {
+        en: "International treaties",
+        hi: "अंतरराष्ट्रीय संधियाँ",
+        mr: "आंतरराष्ट्रीय करार",
+      },
+    ],
+    answer: 0,
+  },
+  {
+    question: {
+      en: "What should you do before submitting a civic complaint?",
+      hi: "नागरिक शिकायत दर्ज करने से पहले आपको क्या करना चाहिए?",
+      mr: "नागरी तक्रार नोंदवण्यापूर्वी तुम्ही काय केले पाहिजे?",
+    },
+    options: [
+      {
+        en: "Identify the issue and the responsible authority",
+        hi: "समस्या और जिम्मेदार प्राधिकरण की पहचान करें",
+        mr: "समस्या आणि जबाबदार प्राधिकरण ओळखा",
+      },
+      {
+        en: "Immediately contact the President",
+        hi: "तुरंत राष्ट्रपति से संपर्क करें",
+        mr: "तात्काळ राष्ट्रपतींशी संपर्क करा",
+      },
+      {
+        en: "Wait for an election",
+        hi: "चुनाव की प्रतीक्षा करें",
+        mr: "निवडणुकीची वाट पाहा",
+      },
+      {
+        en: "Join a political party",
+        hi: "किसी राजनीतिक दल में शामिल हों",
+        mr: "राजकीय पक्षात सामील व्हा",
+      },
+    ],
+    answer: 0,
+  },
+  {
+    question: {
+      en: "Why should you keep a complaint reference number?",
+      hi: "शिकायत की संदर्भ संख्या क्यों सुरक्षित रखनी चाहिए?",
+      mr: "तक्रारीचा संदर्भ क्रमांक का जतन करून ठेवावा?",
+    },
+    options: [
+      {
+        en: "To follow up on the complaint",
+        hi: "शिकायत पर आगे कार्रवाई के लिए",
+        mr: "तक्रारीचा पाठपुरावा करण्यासाठी",
+      },
+      {
+        en: "To vote twice",
+        hi: "दो बार मतदान करने के लिए",
+        mr: "दोन वेळा मतदान करण्यासाठी",
+      },
+      {
+        en: "To avoid paying taxes",
+        hi: "कर भुगतान से बचने के लिए",
+        mr: "कर भरणे टाळण्यासाठी",
+      },
+      {
+        en: "To become an elected representative",
+        hi: "निर्वाचित प्रतिनिधि बनने के लिए",
+        mr: "निवडून आलेला प्रतिनिधी होण्यासाठी",
+      },
+    ],
+    answer: 0,
+  },
+];
+
+const content: Record<
+  Language,
+  {
+    subtitle: string;
+    back: string;
+    heroLabel: string;
+    heroTitle: string;
+    heroText: string;
+    section1Label: string;
+    section1Title: string;
+    section1Text: string;
+    section2Label: string;
+    section2Title: string;
+    section2Text: string;
+    section3Label: string;
+    section3Title: string;
+    section3Text: string;
+    simpleRuleTitle: string;
+    simpleRuleText: string;
+    section4Label: string;
+    section4Title: string;
+    section4Text: string;
+    section5Label: string;
+    section5Title: string;
+    section5Text: string;
+    locationTitle: string;
+    locationText: string;
+    evidenceTitle: string;
+    evidenceText: string;
+    descriptionTitle: string;
+    descriptionText: string;
+    section6Label: string;
+    section6Title: string;
+    section6Text: string;
+    thinkLocalTitle: string;
+    thinkLocalText: string;
+    quizLabel: string;
+    quizTitle: string;
+    quizText: string;
+    question: string;
+    saving: string;
+    finishQuiz: string;
+    nextQuestion: string;
+    quizComplete: string;
+    scored: string;
+    tryAgain: string;
+    footer: string;
+  }
+> = {
+  en: {
+    subtitle: "Local Issues",
+    back: "← Explore",
+    heroLabel: "CIVIC BASICS · 04",
+    heroTitle: "Local Issues",
+    heroText:
+      "The issues people experience every day often connect directly with local government. Learn who handles local services and how citizens can raise civic issues.",
+    section1Label: "01 · LOCAL GOVERNMENT",
+    section1Title: "What is local government?",
+    section1Text:
+      "Local self-government brings government closer to people. India's constitutional framework recognizes local government through Panchayats in rural areas and Municipalities in urban areas. The 73rd and 74th Constitutional Amendments strengthened this framework.",
+    section2Label: "02 · EVERYDAY CIVIC ISSUES",
+    section2Title: "Problems you may see around you",
+    section2Text:
+      "Local issues can involve basic services and infrastructure that people interact with every day. Responsibility can vary depending on the issue, location and applicable State laws.",
+    section3Label: "03 · WHO IS RESPONSIBLE?",
+    section3Title: "Not every problem belongs to the same authority",
+    section3Text:
+      "One of the most useful civic skills is identifying which authority is responsible for an issue. A road problem, for example, may involve a municipal body, a development authority, a State department or another agency depending on the road and the applicable law.",
+    simpleRuleTitle: "A simple rule",
+    simpleRuleText:
+      "Before filing a complaint, identify the exact problem, its location and the authority that appears responsible. This can make it easier to use the correct grievance channel.",
+    section4Label: "04 · RAISING A CIVIC ISSUE",
+    section4Title: "What can a citizen do?",
+    section4Text:
+      "When you notice a civic problem, you can document the issue, identify the relevant authority and use an official complaint or grievance mechanism where available.",
+    section5Label: "05 · DOCUMENT THE PROBLEM",
+    section5Title: "Good civic reporting starts with clear information",
+    section5Text:
+      "A clear description can help an authority understand an issue. Useful information may include the exact location, date and time, a short description of the problem and photographs or other evidence where appropriate.",
+    locationTitle: "Location",
+    locationText:
+      "Mention the street, landmark, ward or other useful location details.",
+    evidenceTitle: "Evidence",
+    evidenceText:
+      "Where appropriate, photographs or other supporting information can help explain the issue.",
+    descriptionTitle: "Description",
+    descriptionText:
+      "Describe what happened, how long it has been happening and what service is affected.",
+    section6Label: "06 · CITIZEN PARTICIPATION",
+    section6Title: "Local democracy needs participation",
+    section6Text:
+      "Local self-government is intended to support decentralization and participation in governance. Citizens can participate by understanding local institutions, using official civic services, attending appropriate local forums and staying informed about issues affecting their community.",
+    thinkLocalTitle: "Think local",
+    thinkLocalText:
+      "A civic issue does not always require a national-level solution. Understanding which level of government is responsible is an important part of being an informed citizen.",
+    quizLabel: "07 · QUICK QUIZ",
+    quizTitle: "Test what you learned",
+    quizText:
+      "Answer five questions to complete this KarmaFacie.",
+    question: "Question",
+    saving: "Saving...",
+    finishQuiz: "Finish Quiz",
+    nextQuestion: "Next Question →",
+    quizComplete: "Quiz complete!",
+    scored: "You scored",
+    tryAgain: "Try Again",
+    footer: "KarmaFacie · Learn. Understand. Participate.",
+  },
+
+  hi: {
+    subtitle: "स्थानीय मुद्दे",
+    back: "← एक्सप्लोर",
+    heroLabel: "नागरिक ज्ञान · 04",
+    heroTitle: "स्थानीय मुद्दे",
+    heroText:
+      "लोगों द्वारा रोजमर्रा में अनुभव की जाने वाली कई समस्याएँ सीधे स्थानीय सरकार से जुड़ी होती हैं। जानें कि स्थानीय सेवाओं को कौन संभालता है और नागरिक अपनी समस्याएँ कैसे उठा सकते हैं।",
+    section1Label: "01 · स्थानीय सरकार",
+    section1Title: "स्थानीय सरकार क्या है?",
+    section1Text:
+      "स्थानीय स्वशासन सरकार को लोगों के करीब लाता है। भारत का संवैधानिक ढाँचा ग्रामीण क्षेत्रों में पंचायतों और शहरी क्षेत्रों में नगरपालिकाओं के माध्यम से स्थानीय सरकार को मान्यता देता है। 73वें और 74वें संवैधानिक संशोधनों ने इस व्यवस्था को मजबूत किया।",
+    section2Label: "02 · रोजमर्रा की नागरिक समस्याएँ",
+    section2Title: "आप अपने आसपास कौन-सी समस्याएँ देख सकते हैं?",
+    section2Text:
+      "स्थानीय मुद्दों में बुनियादी सेवाएँ और बुनियादी ढाँचा शामिल हो सकते हैं जिनसे लोग रोजाना जुड़े रहते हैं। जिम्मेदारी समस्या, स्थान और लागू राज्य कानूनों के अनुसार अलग-अलग हो सकती है।",
+    section3Label: "03 · जिम्मेदार कौन है?",
+    section3Title: "हर समस्या एक ही प्राधिकरण की नहीं होती",
+    section3Text:
+      "नागरिक जीवन में एक उपयोगी कौशल यह पहचानना है कि किसी समस्या के लिए कौन-सा प्राधिकरण जिम्मेदार है। उदाहरण के लिए, सड़क की समस्या नगर निकाय, विकास प्राधिकरण, राज्य विभाग या किसी अन्य एजेंसी से संबंधित हो सकती है, जो सड़क और लागू कानून पर निर्भर करता है।",
+    simpleRuleTitle: "एक सरल नियम",
+    simpleRuleText:
+      "शिकायत दर्ज करने से पहले समस्या, उसका सही स्थान और जिम्मेदार दिखाई देने वाले प्राधिकरण की पहचान करें। इससे सही शिकायत माध्यम का उपयोग करना आसान हो सकता है।",
+    section4Label: "04 · नागरिक समस्या उठाना",
+    section4Title: "एक नागरिक क्या कर सकता है?",
+    section4Text:
+      "जब आपको किसी नागरिक समस्या का पता चले, तो आप उसका रिकॉर्ड रख सकते हैं, संबंधित प्राधिकरण की पहचान कर सकते हैं और जहाँ उपलब्ध हो वहाँ आधिकारिक शिकायत या शिकायत-निवारण व्यवस्था का उपयोग कर सकते हैं।",
+    section5Label: "05 · समस्या का दस्तावेजीकरण",
+    section5Title: "अच्छी नागरिक शिकायत स्पष्ट जानकारी से शुरू होती है",
+    section5Text:
+      "स्पष्ट विवरण किसी प्राधिकरण को समस्या समझने में मदद कर सकता है। उपयोगी जानकारी में सही स्थान, तारीख और समय, समस्या का संक्षिप्त विवरण तथा उचित होने पर फोटो या अन्य प्रमाण शामिल हो सकते हैं।",
+    locationTitle: "स्थान",
+    locationText:
+      "सड़क, प्रमुख स्थान, वार्ड या स्थान से संबंधित अन्य उपयोगी विवरण लिखें।",
+    evidenceTitle: "प्रमाण",
+    evidenceText:
+      "जहाँ उचित हो, फोटो या अन्य सहायक जानकारी समस्या को समझाने में मदद कर सकती है।",
+    descriptionTitle: "विवरण",
+    descriptionText:
+      "बताएँ कि क्या हुआ, यह कब से हो रहा है और कौन-सी सेवा प्रभावित है।",
+    section6Label: "06 · नागरिक भागीदारी",
+    section6Title: "स्थानीय लोकतंत्र को भागीदारी की आवश्यकता है",
+    section6Text:
+      "स्थानीय स्वशासन का उद्देश्य शासन में विकेंद्रीकरण और भागीदारी को बढ़ावा देना है। नागरिक स्थानीय संस्थाओं को समझकर, आधिकारिक नागरिक सेवाओं का उपयोग करके, उचित स्थानीय मंचों में भाग लेकर और अपने समुदाय को प्रभावित करने वाले मुद्दों के बारे में जानकारी रखकर भाग ले सकते हैं।",
+    thinkLocalTitle: "स्थानीय स्तर पर सोचें",
+    thinkLocalText:
+      "हर नागरिक समस्या के लिए राष्ट्रीय स्तर के समाधान की आवश्यकता नहीं होती। सरकार का कौन-सा स्तर जिम्मेदार है, यह समझना एक जागरूक नागरिक होने का महत्वपूर्ण हिस्सा है।",
+    quizLabel: "07 · त्वरित क्विज़",
+    quizTitle: "आपने क्या सीखा, जाँचें",
+    quizText:
+      "इस KarmaFacie को पूरा करने के लिए पाँच प्रश्नों के उत्तर दें।",
+    question: "प्रश्न",
+    saving: "सहेजा जा रहा है...",
+    finishQuiz: "क्विज़ समाप्त करें",
+    nextQuestion: "अगला प्रश्न →",
+    quizComplete: "क्विज़ पूरा हुआ!",
+    scored: "आपका स्कोर",
+    tryAgain: "फिर से प्रयास करें",
+    footer: "KarmaFacie · सीखें। समझें। भाग लें।",
+  },
+
+  mr: {
+    subtitle: "स्थानिक समस्या",
+    back: "← एक्सप्लोर",
+    heroLabel: "नागरिक ज्ञान · 04",
+    heroTitle: "स्थानिक समस्या",
+    heroText:
+      "लोकांना दररोज अनुभवायला येणाऱ्या अनेक समस्या थेट स्थानिक स्वराज्य संस्थांशी संबंधित असतात. स्थानिक सेवा कोण हाताळते आणि नागरिक नागरी समस्या कशा मांडू शकतात ते जाणून घ्या.",
+    section1Label: "01 · स्थानिक सरकार",
+    section1Title: "स्थानिक सरकार म्हणजे काय?",
+    section1Text:
+      "स्थानिक स्वराज्य संस्था शासन लोकांच्या जवळ आणतात. भारताची घटनात्मक चौकट ग्रामीण भागात पंचायत आणि शहरी भागात नगरपालिका यांच्या माध्यमातून स्थानिक स्वराज्याला मान्यता देते. 73वी आणि 74वी घटनादुरुस्ती या चौकटीला बळकट करतात.",
+    section2Label: "02 · दैनंदिन नागरी समस्या",
+    section2Title: "तुमच्या आजूबाजूला दिसणाऱ्या समस्या",
+    section2Text:
+      "स्थानिक समस्यांमध्ये लोक रोज वापरत असलेल्या मूलभूत सेवा आणि पायाभूत सुविधांचा समावेश होऊ शकतो. जबाबदारी ही समस्या, ठिकाण आणि लागू राज्य कायद्यांनुसार बदलू शकते.",
+    section3Label: "03 · जबाबदार कोण?",
+    section3Title: "प्रत्येक समस्या एकाच प्राधिकरणाच्या अखत्यारीत नसते",
+    section3Text:
+      "एखाद्या समस्येसाठी कोणते प्राधिकरण जबाबदार आहे हे ओळखणे हे नागरिकत्वातील एक महत्त्वाचे कौशल्य आहे. उदाहरणार्थ, रस्त्याची समस्या नगरपालिका, विकास प्राधिकरण, राज्य विभाग किंवा इतर यंत्रणेशी संबंधित असू शकते. हे संबंधित रस्ता आणि लागू कायद्यावर अवलंबून असते.",
+    simpleRuleTitle: "एक सोपा नियम",
+    simpleRuleText:
+      "तक्रार करण्यापूर्वी नेमकी समस्या, तिचे ठिकाण आणि जबाबदार दिसणारे प्राधिकरण ओळखा. यामुळे योग्य तक्रार निवारण मार्ग वापरणे सोपे होऊ शकते.",
+    section4Label: "04 · नागरी समस्या मांडणे",
+    section4Title: "नागरिक काय करू शकतो?",
+    section4Text:
+      "तुमच्या लक्षात एखादी नागरी समस्या आली तर तिची नोंद ठेवू शकता, संबंधित प्राधिकरण ओळखू शकता आणि उपलब्ध असल्यास अधिकृत तक्रार किंवा गाऱ्हाणे निवारण यंत्रणेचा वापर करू शकता.",
+    section5Label: "05 · समस्येची नोंद ठेवा",
+    section5Title: "चांगली नागरी तक्रार स्पष्ट माहितीपासून सुरू होते",
+    section5Text:
+      "स्पष्ट वर्णनामुळे प्राधिकरणाला समस्या समजून घेण्यास मदत होऊ शकते. उपयुक्त माहितीत अचूक ठिकाण, तारीख आणि वेळ, समस्येचे थोडक्यात वर्णन तसेच आवश्यकतेनुसार छायाचित्रे किंवा इतर पुरावे यांचा समावेश होऊ शकतो.",
+    locationTitle: "ठिकाण",
+    locationText:
+      "रस्ता, महत्त्वाची खूण, प्रभाग किंवा ठिकाणाशी संबंधित इतर उपयुक्त तपशील नमूद करा.",
+    evidenceTitle: "पुरावा",
+    evidenceText:
+      "आवश्यकतेनुसार छायाचित्रे किंवा इतर सहाय्यक माहितीमुळे समस्या स्पष्ट करण्यात मदत होऊ शकते.",
+    descriptionTitle: "वर्णन",
+    descriptionText:
+      "काय झाले, ही समस्या किती काळापासून आहे आणि कोणती सेवा प्रभावित झाली आहे ते स्पष्ट करा.",
+    section6Label: "06 · नागरिक सहभाग",
+    section6Title: "स्थानिक लोकशाहीला नागरिकांच्या सहभागाची गरज आहे",
+    section6Text:
+      "स्थानिक स्वराज्य व्यवस्थेचा उद्देश शासनातील विकेंद्रीकरण आणि सहभागाला प्रोत्साहन देणे हा आहे. नागरिक स्थानिक संस्थांची माहिती घेऊन, अधिकृत नागरी सेवांचा वापर करून, संबंधित स्थानिक मंचांमध्ये सहभागी होऊन आणि आपल्या समुदायावर परिणाम करणाऱ्या समस्यांबद्दल माहिती ठेवून सहभागी होऊ शकतात.",
+    thinkLocalTitle: "स्थानिक पातळीवर विचार करा",
+    thinkLocalText:
+      "प्रत्येक नागरी समस्येसाठी राष्ट्रीय पातळीवरील उपाय आवश्यक असेलच असे नाही. कोणती सरकारी पातळी जबाबदार आहे हे समजून घेणे हा माहितीपूर्ण नागरिक होण्याचा महत्त्वाचा भाग आहे.",
+    quizLabel: "07 · झटपट क्विझ",
+    quizTitle: "तुम्ही काय शिकलात ते तपासा",
+    quizText:
+      "हे KarmaFacie पूर्ण करण्यासाठी पाच प्रश्नांची उत्तरे द्या.",
+    question: "प्रश्न",
+    saving: "सेव्ह होत आहे...",
+    finishQuiz: "क्विझ पूर्ण करा",
+    nextQuestion: "पुढील प्रश्न →",
+    quizComplete: "क्विझ पूर्ण!",
+    scored: "तुमचा गुण",
+    tryAgain: "पुन्हा प्रयत्न करा",
+    footer: "KarmaFacie · शिका. समजा. सहभागी व्हा.",
+  },
+};
+
+export default function LocalIssuesPage() {
+  const router = useRouter();
+  const supabase = createClient();
+  const { language } = useLanguage();
+
+  const t = content[language];
+
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(
+    null
+  );
+  const [score, setScore] = useState(0);
+  const [quizFinished, setQuizFinished] = useState(false);
+  const [savingProgress, setSavingProgress] = useState(false);
+
+  const question = quizQuestions[currentQuestion];
+
+  const handleAnswer = (index: number) => {
+    if (selectedAnswer !== null) {
+      return;
+    }
+
+    setSelectedAnswer(index);
+
+    if (index === question.answer) {
+      setScore((previous) => previous + 1);
+    }
+  };
+
+  const saveProgress = async (finalScore: number) => {
+    setSavingProgress(true);
+
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) {
+        console.error("No authenticated user found.");
+        return;
+      }
+
+      const { error } = await supabase
+        .from("learning_progress")
+        .upsert(
+          {
+            user_id: user.id,
+            topic: "local-issues",
+            completed: true,
+            score: finalScore,
+            completed_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          },
+          {
+            onConflict: "user_id,topic",
+          }
+        );
+
+      if (error) {
+        console.error("Error saving learning progress:", error);
+      }
+    } catch (error) {
+      console.error(
+        "Unexpected error while saving learning progress:",
+        error
+      );
+    } finally {
+      setSavingProgress(false);
+    }
+  };
+
+  const nextQuestion = async () => {
+    if (currentQuestion < quizQuestions.length - 1) {
+      setCurrentQuestion((previous) => previous + 1);
+      setSelectedAnswer(null);
+    } else {
+      const finalScore =
+        score + (selectedAnswer === question.answer ? 1 : 0);
+
+      setQuizFinished(true);
+      await saveProgress(finalScore);
+    }
+  };
+
+  const restartQuiz = () => {
+    setCurrentQuestion(0);
+    setSelectedAnswer(null);
+    setScore(0);
+    setQuizFinished(false);
+  };
+
+  return (
+    <main
+      style={{
+        minHeight: "100vh",
+        background: "#020617",
+        color: "white",
+        padding: "32px 5% 70px",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+        }}
+      >
+        {/* HEADER */}
+
+        <header
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: "20px",
+            marginBottom: "60px",
+          }}
+        >
+          <div>
+            <div
+              style={{
+                fontSize: "32px",
+                fontWeight: "800",
+              }}
+            >
+              Civic<span style={{ color: "#ff7a00" }}>Quest</span>
+            </div>
+
+            <div
+              style={{
+                color: "#94a3b8",
+                marginTop: "5px",
+              }}
+            >
+              {t.subtitle}
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => router.push("/explore")}
+            style={{
+              background: "transparent",
+              color: "white",
+              border: "1px solid #334155",
+              borderRadius: "10px",
+              padding: "12px 20px",
+              fontSize: "15px",
+              cursor: "pointer",
+            }}
+          >
+            {t.back}
+          </button>
+        </header>
+
+        {/* HERO */}
+
+        <section
+          style={{
+            marginBottom: "65px",
+          }}
+        >
+          <SectionLabel text={t.heroLabel} />
+
+          <h1
+            style={{
+              fontSize: "52px",
+              lineHeight: "1.1",
+              fontWeight: "800",
+              margin: "0 0 20px",
+              maxWidth: "850px",
+            }}
+          >
+            {t.heroTitle}
+          </h1>
+
+          <p
+            style={{
+              color: "#94a3b8",
+              fontSize: "19px",
+              lineHeight: "1.7",
+              maxWidth: "800px",
+              margin: 0,
+            }}
+          >
+            {t.heroText}
+          </p>
+        </section>
+
+        {/* SECTION 1 */}
+
+        <section
+          style={{
+            marginBottom: "65px",
+          }}
+        >
+          <SectionLabel text={t.section1Label} />
+
+          <h2 style={sectionHeadingStyle}>
+            {t.section1Title}
+          </h2>
+
+          <p style={paragraphStyle}>
+            {t.section1Text}
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "18px",
+              marginTop: "30px",
+            }}
+          >
+            {localBodies.map((body, index) => (
+              <SimpleCard
+                key={`${body.icon}-${index}`}
+                icon={body.icon}
+                title={body.title[language]}
+                text={body.text[language]}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* SECTION 2 */}
+
+        <section
+          style={{
+            marginBottom: "65px",
+          }}
+        >
+          <SectionLabel text={t.section2Label} />
+
+          <h2 style={sectionHeadingStyle}>
+            {t.section2Title}
+          </h2>
+
+          <p style={paragraphStyle}>
+            {t.section2Text}
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "18px",
+              marginTop: "30px",
+            }}
+          >
+            {commonIssues.map((issue, index) => (
+              <SimpleCard
+                key={`${issue.icon}-${index}`}
+                icon={issue.icon}
+                title={issue.title[language]}
+                text={issue.text[language]}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* SECTION 3 */}
+
+        <section
+          style={{
+            marginBottom: "65px",
+          }}
+        >
+          <SectionLabel text={t.section3Label} />
+
+          <h2 style={sectionHeadingStyle}>
+            {t.section3Title}
+          </h2>
+
+          <p style={paragraphStyle}>
+            {t.section3Text}
+          </p>
+
+          <div
+            style={{
+              marginTop: "30px",
+              background: "#0f172a",
+              border: "1px solid #1e293b",
+              borderRadius: "20px",
+              padding: "28px",
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "21px",
+                margin: "0 0 15px",
+              }}
+            >
+              {t.simpleRuleTitle}
+            </h3>
+
+            <p
+              style={{
+                color: "#94a3b8",
+                lineHeight: "1.7",
+                margin: 0,
+              }}
+            >
+              {t.simpleRuleText}
+            </p>
+          </div>
+        </section>
+
+        {/* SECTION 4 */}
+
+        <section
+          style={{
+            marginBottom: "65px",
+          }}
+        >
+          <SectionLabel text={t.section4Label} />
+
+          <h2 style={sectionHeadingStyle}>
+            {t.section4Title}
+          </h2>
+
+          <p style={paragraphStyle}>
+            {t.section4Text}
+          </p>
+
+          <div
+            style={{
+              marginTop: "30px",
+              display: "grid",
+              gap: "12px",
+            }}
+          >
+            {issueSteps.map((step) => (
+              <div
+                key={step.number}
+                style={{
+                  display: "flex",
+                  gap: "18px",
+                  alignItems: "flex-start",
+                  background: "#0f172a",
+                  border: "1px solid #1e293b",
+                  borderRadius: "16px",
+                  padding: "20px",
+                }}
+              >
+                <div
+                  style={{
+                    minWidth: "42px",
+                    height: "42px",
+                    borderRadius: "10px",
+                    background:
+                      "rgba(255, 122, 0, 0.1)",
+                    color: "#ff7a00",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: "800",
+                    fontSize: "13px",
+                  }}
+                >
+                  {step.number}
+                </div>
+
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "19px",
+                      margin: "0 0 7px",
+                    }}
+                  >
+                    {step.title[language]}
+                  </h3>
+
+                  <p
+                    style={{
+                      color: "#94a3b8",
+                      lineHeight: "1.6",
+                      margin: 0,
+                    }}
+                  >
+                    {step.text[language]}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* SECTION 5 */}
+
+        <section
+          style={{
+            marginBottom: "65px",
+          }}
+        >
+          <SectionLabel text={t.section5Label} />
+
+          <h2 style={sectionHeadingStyle}>
+            {t.section5Title}
+          </h2>
+
+          <p style={paragraphStyle}>
+            {t.section5Text}
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(250px, 1fr))",
+              gap: "18px",
+              marginTop: "30px",
+            }}
+          >
+            <SimpleCard
+              icon="📍"
+              title={t.locationTitle}
+              text={t.locationText}
+            />
+
+            <SimpleCard
+              icon="📸"
+              title={t.evidenceTitle}
+              text={t.evidenceText}
+            />
+
+            <SimpleCard
+              icon="📝"
+              title={t.descriptionTitle}
+              text={t.descriptionText}
+            />
+          </div>
+        </section>
+
+        {/* SECTION 6 */}
+
+        <section
+          style={{
+            marginBottom: "65px",
+          }}
+        >
+          <SectionLabel text={t.section6Label} />
+
+          <h2 style={sectionHeadingStyle}>
+            {t.section6Title}
+          </h2>
+
+          <p style={paragraphStyle}>
+            {t.section6Text}
+          </p>
+
+          <div
+            style={{
+              marginTop: "30px",
+              background:
+                "linear-gradient(135deg, #0f172a, #111827)",
+              border: "1px solid #334155",
+              borderRadius: "20px",
+              padding: "28px",
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "21px",
+                margin: "0 0 12px",
+              }}
+            >
+              {t.thinkLocalTitle}
+            </h3>
+
+            <p
+              style={{
+                color: "#94a3b8",
+                lineHeight: "1.7",
+                margin: 0,
+              }}
+            >
+              {t.thinkLocalText}
+            </p>
+          </div>
+        </section>
+
+        {/* QUIZ */}
+
+        <section
+          style={{
+            background:
+              "linear-gradient(135deg, #0f172a, #111827)",
+            border: "1px solid #334155",
+            borderRadius: "24px",
+            padding: "35px",
+          }}
+        >
+          <SectionLabel text={t.quizLabel} />
+
+          <h2
+            style={{
+              fontSize: "30px",
+              margin: "0 0 12px",
+            }}
+          >
+            {t.quizTitle}
+          </h2>
+
+          <p
+            style={{
+              color: "#94a3b8",
+              lineHeight: "1.6",
+              marginBottom: "30px",
+            }}
+          >
+            {t.quizText}
+          </p>
+
+          {!quizFinished ? (
+            <div>
+              <div
+                style={{
+                  color: "#64748b",
+                  fontSize: "14px",
+                  marginBottom: "12px",
+                }}
+              >
+                {t.question} {currentQuestion + 1}{" "}
+                {language === "en"
+                  ? "of"
+                  : language === "hi"
+                  ? "में से"
+                  : "पैकी"}{" "}
+                {quizQuestions.length}
+              </div>
+
+              <h3
+                style={{
+                  fontSize: "22px",
+                  lineHeight: "1.5",
+                  margin: "0 0 22px",
+                }}
+              >
+                {question.question[language]}
+              </h3>
+
+              <div
+                style={{
+                  display: "grid",
+                  gap: "12px",
+                }}
+              >
+                {question.options.map((option, index) => {
+                  const isSelected =
+                    selectedAnswer === index;
+                  const isCorrect =
+                    index === question.answer;
+
+                  let border = "1px solid #334155";
+                  let background = "#020617";
+
+                  if (
+                    selectedAnswer !== null &&
+                    isCorrect
+                  ) {
+                    border = "1px solid #22c55e";
+                    background =
+                      "rgba(34, 197, 94, 0.08)";
+                  }
+
+                  if (
+                    selectedAnswer === index &&
+                    !isCorrect
+                  ) {
+                    border = "1px solid #ef4444";
+                    background =
+                      "rgba(239, 68, 68, 0.08)";
+                  }
+
+                  return (
+                    <button
+                      key={`${index}-${option.en}`}
+                      type="button"
+                      onClick={() => handleAnswer(index)}
+                      style={{
+                        width: "100%",
+                        textAlign: "left",
+                        padding: "16px 18px",
+                        background,
+                        color: "white",
+                        border,
+                        borderRadius: "12px",
+                        cursor:
+                          selectedAnswer === null
+                            ? "pointer"
+                            : "default",
+                        fontSize: "15px",
+                      }}
+                    >
+                      {option[language]}
+
+                      {selectedAnswer !== null &&
+                        isCorrect && (
+                          <span
+                            style={{
+                              float: "right",
+                              color: "#22c55e",
+                              fontWeight: "700",
+                            }}
+                          >
+                            ✓
+                          </span>
+                        )}
+
+                      {isSelected && !isCorrect && (
+                        <span
+                          style={{
+                            float: "right",
+                            color: "#ef4444",
+                            fontWeight: "700",
+                          }}
+                        >
+                          ✕
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {selectedAnswer !== null && (
+                <button
+                  type="button"
+                  onClick={nextQuestion}
+                  disabled={savingProgress}
+                  style={{
+                    marginTop: "25px",
+                    padding: "13px 22px",
+                    background: savingProgress
+                      ? "#7c3f00"
+                      : "#ff7a00",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "10px",
+                    cursor: savingProgress
+                      ? "not-allowed"
+                      : "pointer",
+                    fontWeight: "700",
+                    fontSize: "15px",
+                  }}
+                >
+                  {currentQuestion ===
+                  quizQuestions.length - 1
+                    ? savingProgress
+                      ? t.saving
+                      : t.finishQuiz
+                    : t.nextQuestion}
+                </button>
+              )}
+            </div>
+          ) : (
+            <div
+              style={{
+                textAlign: "center",
+                padding: "20px 0",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "50px",
+                  marginBottom: "15px",
+                }}
+              >
+                🎉
+              </div>
+
+              <h3
+                style={{
+                  fontSize: "28px",
+                  margin: "0 0 10px",
+                }}
+              >
+                {t.quizComplete}
+              </h3>
+
+              <p
+                style={{
+                  color: "#94a3b8",
+                  fontSize: "17px",
+                  marginBottom: "25px",
+                }}
+              >
+                {t.scored}{" "}
+                <strong
+                  style={{ color: "#ff7a00" }}
+                >
+                  {score}/{quizQuestions.length}
+                </strong>
+              </p>
+
+              <button
+                type="button"
+                onClick={restartQuiz}
+                style={{
+                  padding: "13px 22px",
+                  background: "transparent",
+                  color: "white",
+                  border: "1px solid #334155",
+                  borderRadius: "10px",
+                  cursor: "pointer",
+                  fontWeight: "600",
+                  fontSize: "15px",
+                }}
+              >
+                {t.tryAgain}
+              </button>
+            </div>
+          )}
+        </section>
+
+        {/* FOOTER */}
+
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "40px",
+            color: "#64748b",
+            fontSize: "14px",
+          }}
+        >
+          {t.footer}
+        </div>
+      </div>
+    </main>
+  );
+}
+
+/* -------------------------------------------------- */
+/* REUSABLE COMPONENTS */
+/* -------------------------------------------------- */
+
+function SectionLabel({ text }: { text: string }) {
+  return (
+    <div
+      style={{
+        color: "#ff7a00",
+        fontSize: "14px",
+        fontWeight: "700",
+        letterSpacing: "1px",
+        marginBottom: "10px",
+      }}
+    >
+      {text}
+    </div>
+  );
+}
+
+function SimpleCard({
+  icon,
+  title,
+  text,
+}: {
+  icon: string;
+  title: string;
+  text: string;
+}) {
+  return (
+    <div
+      style={{
+        background: "#0f172a",
+        border: "1px solid #1e293b",
+        borderRadius: "18px",
+        padding: "25px",
+      }}
+    >
+      <div
+        style={{
+          fontSize: "32px",
+          marginBottom: "14px",
+        }}
+      >
+        {icon}
+      </div>
+
+      <h3
+        style={{
+          fontSize: "20px",
+          margin: "0 0 10px",
+        }}
+      >
+        {title}
+      </h3>
+
+      <p
+        style={{
+          color: "#94a3b8",
+          lineHeight: "1.65",
+          margin: 0,
+        }}
+      >
+        {text}
+      </p>
+    </div>
+  );
+}
+
+/* -------------------------------------------------- */
+/* STYLES */
+/* -------------------------------------------------- */
+
+const sectionHeadingStyle = {
+  fontSize: "32px",
+  margin: "0 0 15px",
+};
+
+const paragraphStyle = {
+  color: "#94a3b8",
+  fontSize: "17px",
+  lineHeight: "1.75",
+  maxWidth: "850px",
+  margin: 0,
+};
