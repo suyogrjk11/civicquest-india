@@ -820,3 +820,172 @@ League
 
 Next logical feature:
 Community verification + anti-fraud architecture.
+# ============================================================
+# CHECKPOINT 2 — 24 September 2026
+# ============================================================
+
+## Development completed since Checkpoint 1
+
+### Civic Leagues
+- Pilot league working.
+- Team joining working through secure function.
+- User successfully joined Ward Pilot Team.
+
+### Civic Missions
+- Mission listing working.
+- Mission detail pages working.
+- Mission cards navigate to mission detail.
+- Evidence photo upload working.
+- Location capture working.
+- Secure mission submission function working.
+- Direct authenticated INSERT to mission completions removed.
+- Pilot missions limited to one completion per user.
+
+### Mission Verification
+- Secure admin verification function created.
+- Active admin verification enforced.
+- Admin Mission Review page working at:
+  /admin/mission-review
+- Private mission evidence remains in:
+  civic-mission-evidence
+- Admins can view private evidence through signed URLs.
+- First real mission successfully tested end-to-end.
+
+### Verified Test
+Mission:
+Public Space Observation
+
+Mission points:
+20
+
+Completion:
+verified
+
+Team:
+Ward Pilot Team
+
+Points ledger:
++20
+
+Ledger source:
+verification
+
+This was verified directly in the database.
+
+### Civic Passport
+- Secure get_my_civic_passport() function created.
+- Frontend route created:
+  /civic-passport
+- Passport connected to real points ledger.
+- Current verified test state:
+  20 Karma Credits
+  1 mission submitted
+  1 mission verified
+  0 rejected
+
+### Civic-Sense Scoreboard
+- Secure get_civic_league_scoreboard() function created.
+- Frontend scoreboard added to:
+  /leagues
+- Scoreboard is based on verified ledger data.
+- Current pilot ranking:
+  Ward Pilot Team = 20 credits / 1 verified mission / 1 member
+  College Pilot Team = 0 / 0 / 0
+  KarmaFacie Pilot Team = 0 / 0 / 0
+
+### Before ? After Impact
+Table created:
+public.civic_mission_impacts
+
+Secure submission function:
+submit_civic_mission_impact()
+
+Secure admin review function:
+review_civic_mission_impact()
+
+Frontend support added to:
+  /leagues/missions/[id]
+
+Admin impact review route:
+  /admin/mission-impact-review
+
+Private evidence remains in:
+  civic-mission-evidence
+
+Current state:
+Impact foundation working.
+Admin impact review page working.
+No fake impact submission created.
+
+### Community Verification
+Peer verification foundation created.
+
+Table:
+public.civic_mission_peer_verifications
+
+Secure function:
+submit_civic_mission_peer_verification()
+
+Peer queue function:
+get_civic_peer_verification_queue()
+
+Peer evidence security helper:
+can_civic_peer_view_mission_evidence()
+
+Peer storage policy:
+League peers can view mission evidence
+
+Frontend route:
+  /leagues/peer-review
+
+Security rules:
+- Users cannot verify their own mission.
+- Peer verifier must be an active member of the same league.
+- One peer verification per verifier per completion.
+- Peer verification is a trust signal only.
+- Peer verification does NOT directly award Karma Credits.
+- Final Karma Credit award remains controlled by admin verification.
+
+Current peer-review test state:
+0 available submissions because the current account only has its own submission.
+A second test account is required for a real peer-verification test.
+
+### Git Checkpoint
+Checkpoint 1 was committed earlier.
+
+Checkpoint 2 should include:
+- latest source code
+- KARMAFACIE_PROJECT_CHECKPOINT.md
+- all Civic League/Mission/Passport/Scoreboard/Impact/Peer Verification work completed so far
+
+Current branch:
+karmafacie-rename
+
+### Next Development Step
+Create a second test account and add it to the pilot league.
+
+Then test:
+Second member
+? sees another member's mission
+? peer confirmation/rejection
+? peer signal stored
+? no automatic Karma Credit award
+
+After that:
+- strengthen anti-fraud engine
+- community trust signals
+- reviewer controls
+- Civic Memory
+- school/youth module
+- partner rewards
+- final UX integration
+
+### Handoff Instructions
+When continuing in a new chat:
+1. Upload the latest KarmaFacie checkpoint ZIP.
+2. Upload/use this checkpoint markdown file if needed.
+3. Say:
+   "Continue KarmaFacie from Checkpoint 2. Use the uploaded ZIP as the current source code and read KARMAFACIE_PROJECT_CHECKPOINT.md first."
+
+The latest ZIP must always be preferred over older ZIPs.
+
