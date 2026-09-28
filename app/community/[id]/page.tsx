@@ -90,6 +90,15 @@ const copy: Record<Language, Record<string, string>> = {
     tagAuthority: "Tag Authority",
     verified: "Directory verified",
     report: "Report",
+    shareHeading: "COMMUNITY ISSUE",
+    shareReportSingular: "community report",
+    shareReportPlural: "community reports",
+    shareAuthority: "Authority",
+    shareInstagram: "Tag the authority on Instagram",
+    shareRecord: "KarmaFacie community record",
+    shareOfficial: "Verify official responses through the authority's official channel.",
+    defaultTitle: "Civic issue reported by the community",
+    locationNotSpecified: "Location not specified",
   },
   hi: {
     back: "← कम्युनिटी पर वापस जाएँ",
@@ -133,6 +142,15 @@ const copy: Record<Language, Record<string, string>> = {
     noSocial: "इस प्राधिकरण के लिए अभी कोई सत्यापित सोशल प्रोफाइल दर्ज नहीं है।",
     verified: "डायरेक्टरी सत्यापित",
     report: "रिपोर्ट",
+    shareHeading: "कम्युनिटी समस्या",
+    shareReportSingular: "कम्युनिटी रिपोर्ट",
+    shareReportPlural: "कम्युनिटी रिपोर्ट",
+    shareAuthority: "प्राधिकरण",
+    shareInstagram: "प्राधिकरण को Instagram पर टैग करें",
+    shareRecord: "KarmaFacie कम्युनिटी रिकॉर्ड",
+    shareOfficial: "आधिकारिक प्रतिक्रिया की पुष्टि प्राधिकरण के आधिकारिक चैनल से करें।",
+    defaultTitle: "कम्युनिटी द्वारा रिपोर्ट की गई नागरिक समस्या",
+    locationNotSpecified: "स्थान उपलब्ध नहीं है",
   },
   mr: {
     back: "← कम्युनिटीवर परत जा",
@@ -176,8 +194,144 @@ const copy: Record<Language, Record<string, string>> = {
     noSocial: "या प्राधिकरणासाठी सध्या कोणतेही सत्यापित सोशल प्रोफाइल नोंदवलेले नाही.",
     verified: "डायरेक्टरी सत्यापित",
     report: "अहवाल",
+    shareHeading: "कम्युनिटी समस्या",
+    shareReportSingular: "कम्युनिटी अहवाल",
+    shareReportPlural: "कम्युनिटी अहवाल",
+    shareAuthority: "प्राधिकरण",
+    shareInstagram: "प्राधिकरणाला Instagram वर टॅग करा",
+    shareRecord: "KarmaFacie कम्युनिटी रेकॉर्ड",
+    shareOfficial: "अधिकृत प्रतिसादाची पुष्टी प्राधिकरणाच्या अधिकृत माध्यमातून करा.",
+    defaultTitle: "कम्युनिटीने नोंदवलेली नागरी समस्या",
+    locationNotSpecified: "स्थान उपलब्ध नाही",
   },
 };
+
+
+const localizedValues: Record<string, Record<Language, string>> = {
+  "Vigilance": {
+    en: "Vigilance",
+    hi: "सतर्कता",
+    mr: "सतर्कता",
+  },
+  "Streetlight is broken": {
+    en: "Streetlight is broken",
+    hi: "रस्त्यावरील दिवा खराब आहे",
+    mr: "रस्त्यावरील दिवा खराब आहे",
+  },
+  "Streetlight is not working": {
+    en: "Streetlight is not working",
+    hi: "रस्त्यावरील दिवा काम करत नाही",
+    mr: "रस्त्यावरील दिवा काम करत नाही",
+  },
+  "Broken Streetlight near me": {
+    en: "Broken Streetlight near me",
+    hi: "मेरे पास की स्ट्रीटलाइट खराब है",
+    mr: "माझ्याजवळील रस्त्यावरील दिवा खराब आहे",
+  },
+  "Streetlight is broken at Devlai Road near Vinayak Park.": {
+    en: "Streetlight is broken at Devlai Road near Vinayak Park.",
+    hi: "विनायक पार्क के पास देवलई रोड की स्ट्रीटलाइट खराब है।",
+    mr: "विनायक पार्कजवळील देवळाई रोडवरील रस्त्यावरील दिवा खराब आहे.",
+  },
+  "Broken Streetlight at Devlai Road near Vinayak Park.": {
+    en: "Broken Streetlight at Devlai Road near Vinayak Park.",
+    hi: "विनायक पार्क के पास देवलई रोड की स्ट्रीटलाइट खराब है।",
+    mr: "विनायक पार्कजवळील देवळाई रोडवरील रस्त्यावरील दिवा खराब आहे.",
+  },
+  "Broken Streetlight at Devlai Road near Vinayak Park": {
+    en: "Broken Streetlight at Devlai Road near Vinayak Park",
+    hi: "विनायक पार्क के पास देवलई रोड की स्ट्रीटलाइट खराब है",
+    mr: "विनायक पार्कजवळील देवळाई रोडवरील रस्त्यावरील दिवा खराब आहे",
+  },
+  "Broken Streetlight at Devlai Road near Vinayak Park. ": {
+    en: "Broken Streetlight at Devlai Road near Vinayak Park. ",
+    hi: "विनायक पार्क के पास देवलई रोड की स्ट्रीटलाइट खराब है। ",
+    mr: "विनायक पार्कजवळील देवळाई रोडवरील रस्त्यावरील दिवा खराब आहे. ",
+  },
+  "Broken Streetlight": {
+    en: "Broken Streetlight",
+    hi: "खराब स्ट्रीटलाइट",
+    mr: "खराब रस्त्यावरील दिवा",
+  },
+  "Public Safety Issue": {
+    en: "Public Safety Issue",
+    hi: "सार्वजनिक सुरक्षा समस्या",
+    mr: "सार्वजनिक सुरक्षेची समस्या",
+  },
+  "Local Streetlight / Civic Authority": {
+    en: "Local Streetlight / Civic Authority",
+    hi: "स्थानीय स्ट्रीटलाइट / नागरिक प्राधिकरण",
+    mr: "स्थानिक रस्त्यावरील दिवे / नागरी प्राधिकरण",
+  },
+  "Chhatrapati Sambhajinagar": {
+    en: "Chhatrapati Sambhajinagar",
+    hi: "छत्रपति संभाजीनगर",
+    mr: "छत्रपती संभाजीनगर",
+  },
+  "Maharashtra": {
+    en: "Maharashtra",
+    hi: "महाराष्ट्र",
+    mr: "महाराष्ट्र",
+  },
+  "Chhatrapati Sambhajinagar, Maharashtra": {
+    en: "Chhatrapati Sambhajinagar, Maharashtra",
+    hi: "छत्रपति संभाजीनगर, महाराष्ट्र",
+    mr: "छत्रपती संभाजीनगर, महाराष्ट्र",
+  },
+  "Chhatrapati Sambhajinagar Municipal Corporation (CSMC)": {
+    en: "Chhatrapati Sambhajinagar Municipal Corporation (CSMC)",
+    hi: "छत्रपति संभाजीनगर महानगरपालिका (CSMC)",
+    mr: "छत्रपती संभाजीनगर महानगरपालिका (CSMC)",
+  },
+  "Devlai Road": {
+    en: "Devlai Road",
+    hi: "देवलई रोड",
+    mr: "देवळाई रोड",
+  },
+  "Vinayak Park": {
+    en: "Vinayak Park",
+    hi: "विनायक पार्क",
+    mr: "विनायक पार्क",
+  },
+  "Location not specified": {
+    en: "Location not specified",
+    hi: "स्थान उपलब्ध नहीं है",
+    mr: "स्थान उपलब्ध नाही",
+  },
+};
+
+function localizeValue(value: string | null | undefined, language: Language): string {
+  if (!value) return "";
+  const exact = localizedValues[value];
+  if (exact) return exact[language];
+
+  const normalized = value.trim();
+  const normalizedMatch = Object.keys(localizedValues).find(
+    (key) => key.trim().toLowerCase() === normalized.toLowerCase()
+  );
+
+  return normalizedMatch ? localizedValues[normalizedMatch][language] : value;
+}
+
+function localizeLocation(value: string | null | undefined, language: Language): string {
+  if (!value) return "";
+  const exact = localizeValue(value, language);
+  if (exact !== value) return exact;
+
+  let result = value;
+  if (language === "hi") {
+    result = result
+      .replace(/\bDevlai Road\b/gi, "देवलई रोड")
+      .replace(/\bVinayak Park\b/gi, "विनायक पार्क")
+      .replace(/\bRoad\b/gi, "रोड");
+  } else if (language === "mr") {
+    result = result
+      .replace(/\bDevlai Road\b/gi, "देवळाई रोड")
+      .replace(/\bVinayak Park\b/gi, "विनायक पार्क")
+      .replace(/\bRoad\b/gi, "रोड");
+  }
+  return result;
+}
 
 function socialLinks(authority: AuthorityDirectory) {
   return [
@@ -213,7 +367,7 @@ function statusLabel(status: string, language: Language) {
   if (status === "under_review") return language === "hi" ? "समीक्षा में" : language === "mr" ? "तपासणीत" : "Under Review";
   if (status === "in_progress") return language === "hi" ? "प्रगति में" : language === "mr" ? "प्रगतीपथावर" : "In Progress";
   if (status === "rejected") return language === "hi" ? "अस्वीकृत" : language === "mr" ? "नाकारले" : "Rejected";
-  return status.replace(/_/g, " ");
+  return localizeValue(status.replace(/_/g, " "), language);
 }
 
 function categoryLabel(category: string, language: Language) {
@@ -226,13 +380,62 @@ function categoryLabel(category: string, language: Language) {
     drainage: { en: "Drainage", hi: "जल निकासी", mr: "निचरा व्यवस्था" },
     traffic: { en: "Traffic", hi: "यातायात", mr: "वाहतूक" },
   };
-  return labels[category]?.[language] || category.replace(/_/g, " ");
+  return labels[category]?.[language] || localizeValue(category.replace(/_/g, " "), language);
+}
+
+
+function CommunityDetailBrand() {
+  return (
+    <div className="kf-community-detail-brand" aria-label="KarmaFacie Community Issues">
+      <div className="kf-community-detail-brand-mark">K</div>
+      <div className="kf-community-detail-brand-copy">
+        <div className="kf-community-detail-brand-name">
+          <span>Karma</span><span>Facie</span>
+        </div>
+        <div className="kf-community-detail-brand-subtitle">COMMUNITY ISSUES</div>
+      </div>
+    </div>
+  );
+}
+
+function LanguageSwitcher({
+  language,
+  setLanguage,
+}: {
+  language: Language;
+  setLanguage: (language: Language) => void;
+}) {
+  return (
+    <div className="kf-community-detail-language-row" style={styles.languageRow} aria-label="Language selection">
+      {(
+        [
+          ["en", "English"],
+          ["hi", "हिंदी"],
+          ["mr", "मराठी"],
+        ] as const
+      ).map(([code, label]) => (
+        <button
+          className="kf-community-detail-language-button"
+          key={code}
+          type="button"
+          onClick={() => setLanguage(code)}
+          aria-pressed={language === code}
+          style={{
+            ...styles.languageButton,
+            ...(language === code ? styles.languageButtonActive : {}),
+          }}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+  );
 }
 
 export default function CommunityIssuePage() {
   const params = useParams<{ id: string }>();
   const router = useRouter();
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const t = copy[language];
   const supabase = useMemo(() => createClient(), []);
 
@@ -391,19 +594,19 @@ export default function CommunityIssuePage() {
     const ctx = canvas.getContext("2d");
     if (!ctx) throw new Error("Canvas unavailable");
 
-    ctx.fillStyle = "#08111c";
+    ctx.fillStyle = "#f8f3ea";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.fillStyle = "#ff7a00";
     ctx.fillRect(0, 0, canvas.width, 18);
 
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = "#102033";
     ctx.font = "700 34px Arial";
     ctx.fillText("KARMAFACIE", 70, 82);
 
-    ctx.fillStyle = "#ffb36a";
+    ctx.fillStyle = "#e56800";
     ctx.font = "700 22px Arial";
-    ctx.fillText("COMMUNITY ISSUE", 70, 126);
+    ctx.fillText(t.shareHeading, 70, 126);
 
     let imageBottom = 180;
     if (photoUrl) {
@@ -434,36 +637,36 @@ export default function CommunityIssuePage() {
       }
     }
 
-    const title = issue.title || "Civic issue reported by the community";
-    ctx.fillStyle = "#ffffff";
+    const title = localizeValue(issue.title, language) || categoryLabel(issue.category, language) || t.defaultTitle;
+    ctx.fillStyle = "#102033";
     ctx.font = "700 42px Arial";
     wrapCanvasText(ctx, title, 70, imageBottom + 65, 940, 52, 3);
 
-    ctx.fillStyle = "#a9b7c7";
+    ctx.fillStyle = "#66778b";
     ctx.font = "400 24px Arial";
-    const location = issue.location_text || [issue.reported_city, issue.reported_state].filter(Boolean).join(", ") || "Location not specified";
+    const location = issue.location_text ? localizeLocation(issue.location_text, language) : [issue.reported_city, issue.reported_state].filter(Boolean).map((value) => localizeValue(value, language)).join(", ") || t.locationNotSpecified;
     wrapCanvasText(ctx, location, 70, imageBottom + 225, 940, 34, 2);
 
-    ctx.fillStyle = "#ff9a3d";
+    ctx.fillStyle = "#e56800";
     ctx.font = "700 24px Arial";
-    ctx.fillText(`${reportCount} ${reportCount === 1 ? "community report" : "community reports"}`, 70, imageBottom + 310);
+    ctx.fillText(`${reportCount} ${reportCount === 1 ? t.shareReportSingular : t.shareReportPlural}`, 70, imageBottom + 310);
 
     if (authority?.authority_name) {
-      ctx.fillStyle = "#dce6f2";
+      ctx.fillStyle = "#40546a";
       ctx.font = "600 23px Arial";
-      wrapCanvasText(ctx, `Authority: ${authority.authority_name}`, 70, imageBottom + 355, 940, 32, 2);
+      wrapCanvasText(ctx, `${t.shareAuthority}: ${localizeValue(authority.authority_name, language)}`, 70, imageBottom + 355, 940, 32, 2);
 
       if (authority.official_instagram_url) {
         ctx.fillStyle = "#ffb36a";
         ctx.font = "600 20px Arial";
-        ctx.fillText("Tag the authority on Instagram", 70, imageBottom + 430);
+        ctx.fillText(t.shareInstagram, 70, imageBottom + 430);
       }
     }
 
-    ctx.fillStyle = "#6f8195";
+    ctx.fillStyle = "#8a96a5";
     ctx.font = "400 19px Arial";
-    ctx.fillText("KarmaFacie community record", 70, 1270);
-    ctx.fillText("Verify official responses through the authority's official channel.", 70, 1304);
+    ctx.fillText(t.shareRecord, 70, 1270);
+    ctx.fillText(t.shareOfficial, 70, 1304);
 
     return new Promise<Blob>((resolve, reject) => {
       canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error("Image failed"))), "image/png");
@@ -478,8 +681,8 @@ export default function CommunityIssuePage() {
       const file = new File([blob], "civicquest-community-issue.png", { type: "image/png" });
       if (navigator.share && (!navigator.canShare || navigator.canShare({ files: [file] }))) {
         await navigator.share({
-          title: issue.title || "KarmaFacie Community Issue",
-          text: `KarmaFacie community issue: ${issue.title || issue.category}`,
+          title: localizeValue(issue.title, language) || t.communityIssue,
+          text: `${t.communityIssue}: ${localizeValue(issue.title, language) || categoryLabel(issue.category, language)}`,
           files: [file],
         });
       } else {
@@ -500,15 +703,19 @@ export default function CommunityIssuePage() {
   }
 
   if (loading) {
-    return <main style={styles.page}><div style={styles.container}><p style={styles.muted}>{t.loading}</p></div></main>;
+    return <main className="kf-community-detail-page" style={styles.page}><div className="kf-community-detail-container" style={styles.container}><p style={styles.muted}>{t.loading}</p></div></main>;
   }
 
   if (error || !issue) {
     return (
-      <main style={styles.page}>
-        <div style={styles.container}>
-          <button onClick={() => router.push("/community")} style={styles.back}>{t.back}</button>
-          <section style={styles.card}><h1 style={styles.heading}>{t.error}</h1><p style={styles.muted}>{error || t.notFound}</p></section>
+      <main className="kf-community-detail-page" style={styles.page}>
+        <div className="kf-community-detail-container" style={styles.container}>
+          <div className="kf-community-detail-topbar" style={styles.topBar}>
+            <button className="kf-community-detail-back" onClick={() => router.push("/community")} style={styles.back}>{t.back}</button>
+            <CommunityDetailBrand />
+            <LanguageSwitcher language={language} setLanguage={setLanguage} />
+          </div>
+          <section className="kf-community-detail-error-card" style={styles.card}><h1 className="kf-community-detail-error-heading" style={styles.heading}>{t.error}</h1><p style={styles.muted}>{error || t.notFound}</p></section>
         </div>
       </main>
     );
@@ -516,75 +723,80 @@ export default function CommunityIssuePage() {
 
   const meta = statusMeta[issue.status] || statusMeta.reported;
   const nextText = issue.status === "resolved" ? t.resolvedNext : issue.status === "in_progress" ? t.progressNext : issue.status === "under_review" ? t.reviewNext : t.reportedNext;
-  const cityState = [issue.reported_city, issue.reported_state].filter(Boolean).join(", ") || "—";
-  const location = issue.location_text || cityState;
+  const cityStateRaw = [issue.reported_city, issue.reported_state].filter(Boolean).join(", ");
+  const cityState = cityStateRaw ? localizeValue(cityStateRaw, language) : "—";
+  const location = issue.location_text ? localizeLocation(issue.location_text, language) : cityState;
   const countText = reportCount === 1 ? t.personReported : t.peopleReported;
 
   return (
-    <main style={styles.page}>
-      <div style={styles.container}>
-        <button onClick={() => router.push("/community")} style={styles.back}>{t.back}</button>
-
-        <section style={styles.hero}>
-          <div style={styles.heroTop}>
-            <div>
-              <div style={styles.eyebrow}>{t.communityIssue}</div>
-              <div style={styles.category}>{categoryLabel(issue.category, language)}</div>
-            </div>
-            <span className={meta.className} style={styles.statusPill}>{meta.icon} {statusLabel(issue.status, language)}</span>
+    <main className="kf-community-detail-page" style={styles.page}>
+      <div className="kf-community-detail-container" style={styles.container}>
+        <div className="kf-community-detail-topbar" style={styles.topBar}>
+            <button className="kf-community-detail-back" onClick={() => router.push("/community")} style={styles.back}>{t.back}</button>
+            <CommunityDetailBrand />
+            <LanguageSwitcher language={language} setLanguage={setLanguage} />
           </div>
 
-          <h1 style={styles.heroTitle}>{issue.title || categoryLabel(issue.category, language)}</h1>
-          <p style={styles.heroDescription}>{issue.description || "—"}</p>
+        <section className="kf-community-detail-hero" style={styles.hero}>
+          <div className="kf-community-detail-hero-top" style={styles.heroTop}>
+            <div>
+              <div className="kf-community-detail-eyebrow" style={styles.eyebrow}>{t.communityIssue}</div>
+              <div className="kf-community-detail-category" style={styles.category}>{categoryLabel(issue.category, language)}</div>
+            </div>
+            <span className={`kf-community-detail-status ${meta.className}`} data-status={issue.status} style={styles.statusPill}>{meta.icon} {statusLabel(issue.status, language)}</span>
+          </div>
 
-          {photoUrl ? <img src={photoUrl} alt={issue.title || "Community issue evidence"} style={styles.heroImage} /> : <div style={styles.noPhoto}>{t.noPhoto}</div>}
+          <h1 className="kf-community-detail-title" style={styles.heroTitle}>{localizeValue(issue.title, language) || categoryLabel(issue.category, language)}</h1>
+          <p className="kf-community-detail-description" style={styles.heroDescription}>{localizeValue(issue.description, language) || "—"}</p>
 
-          <div style={styles.heroMeta}>
+          {photoUrl ? <img className="kf-community-detail-image" src={photoUrl} alt={localizeValue(issue.title, language) || t.communityIssue} style={styles.heroImage} /> : <div className="kf-community-detail-no-photo" style={styles.noPhoto}>{t.noPhoto}</div>}
+
+          <div className="kf-community-detail-meta" style={styles.heroMeta}>
             <span>📍 {location}</span>
             <span>📅 {formatDate(issue.reported_at || issue.created_at, language)}</span>
           </div>
         </section>
 
-        <section style={styles.signalCard}>
+        <section className="kf-community-detail-signal" style={styles.signalCard}>
           <div>
             <div style={styles.eyebrow}>{t.communitySignal}</div>
-            <div style={styles.signalNumber}>{reportCount}</div>
-            <div style={styles.signalLabel}>{countText}</div>
+            <div className="kf-community-detail-signal-number" style={styles.signalNumber}>{reportCount}</div>
+            <div className="kf-community-detail-signal-label" style={styles.signalLabel}>{countText}</div>
           </div>
-          <div style={styles.signalText}>{t.communitySignalText}</div>
-          <div style={styles.actions}>
-            <button onClick={() => void shareIssue()} disabled={sharing} style={styles.primaryButton}>📤 {sharing ? t.sharing : t.share}</button>
-            <button onClick={() => void copyLink()} style={styles.secondaryButton}>🔗 {copied ? t.copied : t.copy}</button>
+          <div className="kf-community-detail-signal-text" style={styles.signalText}>{t.communitySignalText}</div>
+          <div className="kf-community-detail-actions" style={styles.actions}>
+            <button className="kf-community-detail-primary" onClick={() => void shareIssue()} disabled={sharing} style={styles.primaryButton}>📤 {sharing ? t.sharing : t.share}</button>
+            <button className="kf-community-detail-secondary" onClick={() => void copyLink()} style={styles.secondaryButton}>🔗 {copied ? t.copied : t.copy}</button>
           </div>
         </section>
 
-        <section style={styles.grid}>
-          <div style={styles.card}>
-            <div style={styles.cardEyebrow}>{t.authority}</div>
+        <section className="kf-community-detail-grid" style={styles.grid}>
+          <div className="kf-community-detail-card kf-community-detail-authority" style={styles.card}>
+            <div className="kf-community-detail-card-eyebrow" style={styles.cardEyebrow}>{t.authority}</div>
             {authority ? (
               <>
-                <h2 style={styles.cardTitle}>🏛️ {authority.authority_name}</h2>
-                {authority.department_name && <p style={styles.detailLine}>{authority.department_name}</p>}
-                {authority.sub_department_name && <p style={styles.detailLine}>{authority.sub_department_name}</p>}
-                {authority.verified_at && <p style={styles.verified}>✓ {t.verified}: {formatDate(authority.verified_at, language)}</p>}
-                <div style={styles.linkRow}>
-                  {authority.official_source_url && <a href={authority.official_source_url} target="_blank" rel="noopener noreferrer" style={styles.linkButton}>{t.officialSite}</a>}
-                  {authority.grievance_url && <a href={authority.grievance_url} target="_blank" rel="noopener noreferrer" style={styles.linkButton}>{t.complaintChannel}</a>}
+                <h2 className="kf-community-detail-card-title" style={styles.cardTitle}>🏛️ {authority.authority_name}</h2>
+                {authority.department_name && <p className="kf-community-detail-line" style={styles.detailLine}>{authority.department_name}</p>}
+                {authority.sub_department_name && <p className="kf-community-detail-line" style={styles.detailLine}>{authority.sub_department_name}</p>}
+                {authority.verified_at && <p className="kf-community-detail-verified" style={styles.verified}>✓ {t.verified}: {formatDate(authority.verified_at, language)}</p>}
+                <div className="kf-community-detail-link-row" style={styles.linkRow}>
+                  {authority.official_source_url && <a className="kf-community-detail-link" href={authority.official_source_url} target="_blank" rel="noopener noreferrer" style={styles.linkButton}>{t.officialSite}</a>}
+                  {authority.grievance_url && <a className="kf-community-detail-link" href={authority.grievance_url} target="_blank" rel="noopener noreferrer" style={styles.linkButton}>{t.complaintChannel}</a>}
                 </div>
-                <div style={styles.socialBox}>
-                  <div style={styles.socialTitle}>📣 {t.social}</div>
+                <div className="kf-community-detail-social-box" style={styles.socialBox}>
+                  <div className="kf-community-detail-social-title" style={styles.socialTitle}>📣 {t.social}</div>
                   <p style={styles.mutedSmall}>{t.socialText}</p>
 
                   {socialLinks(authority).length > 0 ? (
                     <>
-                      <div style={styles.socialLinks}>
+                      <div className="kf-community-detail-social-links" style={styles.socialLinks}>
                         {socialLinks(authority).map((item) => (
                           <a
                             key={item.key}
                             href={item.url || "#"}
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={styles.socialButton}
+                            className="kf-community-detail-social-button" style={styles.socialButton}
                           >
                             {item.label} →
                           </a>
@@ -596,7 +808,7 @@ export default function CommunityIssuePage() {
                           href={authority.official_instagram_url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={styles.tagButton}
+                          className="kf-community-detail-tag-button" style={styles.tagButton}
                         >
                           📣 {t.tagAuthority}
                         </a>
@@ -610,35 +822,35 @@ export default function CommunityIssuePage() {
             ) : <p style={styles.muted}>{t.noAuthority}</p>}
           </div>
 
-          <div style={styles.card}>
-            <div style={styles.cardEyebrow}>{t.details}</div>
-            <div style={styles.detailsGrid}>
+          <div className="kf-community-detail-card kf-community-detail-details-card" style={styles.card}>
+            <div className="kf-community-detail-card-eyebrow" style={styles.cardEyebrow}>{t.details}</div>
+            <div className="kf-community-detail-details-grid" style={styles.detailsGrid}>
               <Detail label={t.location} value={location} />
               <Detail label={t.category} value={categoryLabel(issue.category, language)} />
               <Detail label={t.cityState} value={cityState} />
               <Detail label={t.reference} value={issue.id} mono />
             </div>
-            <button onClick={() => router.push(`/my-issues/${issue.id}`)} style={styles.secondaryButton}>{t.myIssue}</button>
+            <button className="kf-community-detail-secondary kf-community-detail-open-my-issue" onClick={() => router.push(`/my-issues/${issue.id}`)} style={styles.secondaryButton}>{t.myIssue}</button>
           </div>
         </section>
 
-        <section style={styles.card}>
-          <div style={styles.cardEyebrow}>{t.journey}</div>
-          <div style={styles.timeline}>
+        <section className="kf-community-detail-journey-card" style={styles.card}>
+          <div className="kf-community-detail-card-eyebrow" style={styles.cardEyebrow}>{t.journey}</div>
+          <div className="kf-community-detail-timeline" style={styles.timeline}>
             <TimelineItem active icon="📨" title={t.reported} date={formatDate(issue.reported_at || issue.created_at, language)} />
             <TimelineItem active={issue.status !== "reported"} icon={meta.icon} title={statusLabel(issue.status, language)} date={formatDate(issue.updated_at, language)} />
             <TimelineItem active={issue.status === "resolved"} icon="✅" title={t.resolved} date={formatDate(issue.status === "resolved" ? issue.updated_at : null, language)} last />
           </div>
         </section>
 
-        <section style={styles.nextCard}>
-          <div style={styles.cardEyebrow}>{t.whatNext}</div>
-          <p style={styles.nextText}>{nextText}</p>
+        <section className="kf-community-detail-next-card" style={styles.nextCard}>
+          <div className="kf-community-detail-card-eyebrow" style={styles.cardEyebrow}>{t.whatNext}</div>
+          <p className="kf-community-detail-next-text" style={styles.nextText}>{nextText}</p>
         </section>
 
-        <section style={styles.privacyCard}>
+        <section className="kf-community-detail-privacy" style={styles.privacyCard}>
           <strong>{t.privacy}</strong>
-          <span>{t.privacyText}</span>
+          <span className="kf-community-detail-privacy-text">{t.privacyText}</span>
         </section>
       </div>
     </main>
@@ -647,7 +859,7 @@ export default function CommunityIssuePage() {
 
 function Detail({ label, value, mono = false }: { label: string; value: string; mono?: boolean }) {
   return (
-    <div style={styles.detailBox}>
+    <div className="kf-community-detail-detail-box" style={styles.detailBox}>
       <div style={styles.detailLabel}>{label}</div>
       <div style={{ ...styles.detailValue, ...(mono ? { fontFamily: "monospace", fontSize: 12 } : {}) }}>{value}</div>
     </div>
@@ -656,14 +868,14 @@ function Detail({ label, value, mono = false }: { label: string; value: string; 
 
 function TimelineItem({ active, icon, title, date, last = false }: { active: boolean; icon: string; title: string; date: string; last?: boolean }) {
   return (
-    <div style={styles.timelineItem}>
-      <div style={styles.timelineRail}>
-        <div style={{ ...styles.timelineDot, opacity: active ? 1 : 0.3 }}>{icon}</div>
-        {!last && <div style={{ ...styles.timelineLine, opacity: active ? 1 : 0.25 }} />}
+    <div className="kf-community-detail-timeline-item" style={styles.timelineItem}>
+      <div className="kf-community-detail-timeline-rail" style={styles.timelineRail}>
+        <div className={`kf-community-detail-timeline-dot ${active ? "is-active" : "is-inactive"}`} style={{ ...styles.timelineDot, opacity: active ? 1 : 0.3 }}>{icon}</div>
+        {!last && <div className="kf-community-detail-timeline-line" style={{ ...styles.timelineLine, opacity: active ? 1 : 0.25 }} />}
       </div>
-      <div style={{ paddingBottom: last ? 0 : 22 }}>
-        <div style={styles.timelineTitle}>{title}</div>
-        <div style={styles.mutedSmall}>{date}</div>
+      <div className="kf-community-detail-timeline-content" style={{ paddingBottom: last ? 0 : 22 }}>
+        <div className="kf-community-detail-timeline-title" style={styles.timelineTitle}>{title}</div>
+        <div className="kf-community-detail-timeline-date" style={styles.mutedSmall}>{date}</div>
       </div>
     </div>
   );
@@ -688,58 +900,457 @@ function wrapCanvasText(ctx: CanvasRenderingContext2D, text: string, x: number, 
 }
 
 const styles: Record<string, CSSProperties> = {
+  topBar: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 14,
+    flexWrap: "wrap" as const,
+    marginBottom: 0,
+  },
+  languageRow: {
+    display: "flex",
+    alignItems: "center",
+    gap: 4,
+    padding: 4,
+    borderRadius: 999,
+    background: "rgba(255,255,255,0.82)",
+    border: "1px solid rgba(16,32,51,0.10)",
+    boxShadow: "0 5px 18px rgba(16,32,51,0.04)",
+  },
+  languageButton: {
+    border: 0,
+    background: "transparent",
+    color: "#65748a",
+    borderRadius: 999,
+    padding: "8px 12px",
+    cursor: "pointer",
+    fontFamily: "'Quicksand', sans-serif",
+    fontSize: 12,
+    fontWeight: 700,
+  },
+  languageButtonActive: {
+    background: "#ff7a00",
+    color: "#ffffff",
+    boxShadow: "0 5px 14px rgba(255,122,0,0.18)",
+  },
   page: {
     minHeight: "100vh",
-    background: "radial-gradient(circle at top, #152333 0%, #080d13 48%, #05080c 100%)",
-    color: "#f8fafc",
-    padding: "28px 18px 70px",
+    background:
+      "radial-gradient(circle at 7% 4%, rgba(255,122,0,0.07), transparent 23%), radial-gradient(circle at 92% 18%, rgba(171,204,229,0.14), transparent 28%), #f8f3ea",
+    color: "#102033",
+    padding: "42px 20px 80px",
+    fontFamily: "'Quicksand', sans-serif",
   },
-  container: { maxWidth: 980, margin: "0 auto" },
-  back: { background: "transparent", border: 0, color: "#9fb1c5", fontSize: 14, cursor: "pointer", padding: "6px 0 20px" },
-  hero: { background: "#0d1723", border: "1px solid #223247", borderRadius: 26, padding: "28px", boxShadow: "0 18px 50px rgba(0,0,0,.18)" },
-  heroTop: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, flexWrap: "wrap" },
-  eyebrow: { color: "#ff9a3d", fontSize: 12, fontWeight: 800, letterSpacing: "1.3px", textTransform: "uppercase" as const },
-  category: { color: "#a9b7c7", fontSize: 13, marginTop: 6 },
-  statusPill: { display: "inline-flex", alignItems: "center", gap: 7, padding: "8px 12px", borderRadius: 999, background: "#162235", border: "1px solid #2c3c52", fontSize: 13, fontWeight: 700 },
-  heroTitle: { fontSize: "clamp(30px, 5vw, 48px)", lineHeight: 1.08, margin: "26px 0 12px", letterSpacing: "-1px" },
-  heroDescription: { color: "#aebdcd", fontSize: 16, lineHeight: 1.7, maxWidth: 820, margin: 0 },
-  heroImage: { width: "100%", maxHeight: 480, objectFit: "cover", borderRadius: 20, marginTop: 24, border: "1px solid #26384e" },
-  noPhoto: { marginTop: 24, padding: 26, borderRadius: 18, background: "#101c29", color: "#72859a", border: "1px dashed #2b3c50" },
-  heroMeta: { display: "flex", flexWrap: "wrap", gap: 18, color: "#8295aa", fontSize: 13, marginTop: 16 },
-  signalCard: { marginTop: 18, display: "grid", gridTemplateColumns: "180px 1fr auto", gap: 22, alignItems: "center", padding: 24, borderRadius: 22, background: "linear-gradient(135deg, rgba(255,122,0,.12), rgba(255,122,0,.035))", border: "1px solid rgba(255,154,61,.25)" },
-  signalNumber: { fontSize: 42, fontWeight: 900, marginTop: 4 },
-  signalLabel: { color: "#ffb36a", fontSize: 13, lineHeight: 1.35 },
-  signalText: { color: "#aebdcd", fontSize: 14, lineHeight: 1.65 },
-  actions: { display: "flex", gap: 10, flexWrap: "wrap" },
-  primaryButton: { border: 0, borderRadius: 12, padding: "12px 16px", background: "#ff7a00", color: "#10151c", fontWeight: 800, cursor: "pointer", whiteSpace: "nowrap" },
-  secondaryButton: { border: "1px solid #35475c", borderRadius: 12, padding: "11px 15px", background: "#162235", color: "#e5edf5", fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap" },
-  grid: { display: "grid", gridTemplateColumns: "1.15fr .85fr", gap: 18, marginTop: 18 },
-  card: { background: "#0d1723", border: "1px solid #223247", borderRadius: 22, padding: 24 },
-  cardEyebrow: { color: "#7f95aa", fontSize: 11, fontWeight: 800, letterSpacing: "1.1px", textTransform: "uppercase" as const, marginBottom: 10 },
-  cardTitle: { margin: "0 0 8px", fontSize: 22, lineHeight: 1.25 },
-  detailLine: { color: "#aebdcd", margin: "4px 0", fontSize: 14 },
-  verified: { color: "#77d59a", fontSize: 12, margin: "12px 0 0" },
-  linkRow: { display: "flex", flexWrap: "wrap", gap: 8, marginTop: 16 },
-  linkButton: { display: "inline-block", padding: "9px 11px", borderRadius: 10, background: "#152235", border: "1px solid #2d4056", color: "#bcd3ea", textDecoration: "none", fontSize: 12, fontWeight: 700 },
-  socialBox: { marginTop: 18, padding: 14, borderRadius: 14, background: "#101b28", border: "1px solid #203145" },
-  socialTitle: { fontWeight: 800, fontSize: 14 },
-  socialLinks: { display: "flex", flexWrap: "wrap" as const, gap: 8, marginTop: 10 },
-  socialButton: { display: "inline-block", padding: "8px 11px", borderRadius: 9, background: "#152235", border: "1px solid #2d4056", color: "#dbeafe", textDecoration: "none", fontSize: 12, fontWeight: 700 },
-  tagButton: { display: "inline-block", marginTop: 12, padding: "10px 13px", borderRadius: 10, background: "#ff7a00", color: "#111827", textDecoration: "none", fontSize: 12, fontWeight: 800 },
-  muted: { color: "#8ea0b4", lineHeight: 1.6 },
-  mutedSmall: { color: "#75889d", fontSize: 12, lineHeight: 1.5 },
-  detailsGrid: { display: "grid", gap: 10, marginBottom: 16 },
-  detailBox: { padding: "12px 14px", borderRadius: 13, background: "#101b28", border: "1px solid #1f3044" },
-  detailLabel: { color: "#71859b", fontSize: 11, marginBottom: 4, textTransform: "uppercase" as const, letterSpacing: ".5px" },
-  detailValue: { color: "#dbe6f0", fontSize: 13, lineHeight: 1.5, wordBreak: "break-word" as const },
-  timeline: { marginTop: 12 },
-  timelineItem: { display: "flex", gap: 14 },
-  timelineRail: { width: 34, display: "flex", flexDirection: "column" as const, alignItems: "center" },
-  timelineDot: { width: 32, height: 32, borderRadius: 999, display: "grid", placeItems: "center", background: "#18283a", border: "1px solid #31475f", fontSize: 15 },
-  timelineLine: { width: 1, flex: 1, minHeight: 22, background: "#39516b", marginTop: 5 },
-  timelineTitle: { fontWeight: 800, fontSize: 15, marginTop: 5 },
-  nextCard: { marginTop: 18, padding: 24, borderRadius: 22, background: "#0b1622", border: "1px solid #203246" },
-  nextText: { margin: 0, color: "#aebdcd", lineHeight: 1.7, fontSize: 14 },
-  privacyCard: { marginTop: 18, display: "flex", gap: 12, flexWrap: "wrap", padding: "16px 18px", borderRadius: 16, background: "rgba(148,163,184,.05)", border: "1px solid #1d2c3d", color: "#72859a", fontSize: 12, lineHeight: 1.6 },
+  container: {
+    maxWidth: 1080,
+    margin: "0 auto",
+  },
+  heading: {
+    fontFamily: "'Baloo 2', sans-serif",
+    color: "#102033",
+    fontSize: 30,
+    lineHeight: 1.1,
+    fontWeight: 700,
+    margin: "0 0 8px",
+  },
+  back: {
+    background: "rgba(255,255,255,0.78)",
+    border: "1px solid rgba(16,32,51,0.09)",
+    color: "#536579",
+    fontSize: 14,
+    cursor: "pointer",
+    padding: "9px 15px",
+    borderRadius: 999,
+    marginBottom: 0,
+    fontFamily: "'Quicksand', sans-serif",
+    fontWeight: 600,
+    boxShadow: "0 5px 18px rgba(16,32,51,0.04)",
+  },
+  hero: {
+    background: "#ffffff",
+    border: "1px solid rgba(16,32,51,0.08)",
+    borderRadius: 28,
+    padding: 28,
+    boxShadow: "0 14px 36px rgba(16,32,51,0.07)",
+  },
+  heroTop: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    gap: 16,
+    flexWrap: "wrap",
+  },
+  eyebrow: {
+    color: "#ff7a00",
+    fontSize: 12,
+    fontWeight: 800,
+    letterSpacing: "1.4px",
+    textTransform: "uppercase" as const,
+  },
+  category: {
+    color: "#718096",
+    fontSize: 13,
+    marginTop: 6,
+    fontWeight: 600,
+  },
+  statusPill: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 7,
+    padding: "8px 12px",
+    borderRadius: 999,
+    fontSize: 12,
+    fontWeight: 700,
+    border: "1px solid transparent",
+    whiteSpace: "nowrap",
+  },
+  statusReported: {
+    background: "#fff2df",
+    borderColor: "rgba(255,122,0,0.16)",
+    color: "#a86724",
+  },
+  statusReview: {
+    background: "#f2eef9",
+    borderColor: "rgba(117,91,161,0.12)",
+    color: "#67558a",
+  },
+  statusProgress: {
+    background: "#edf5fb",
+    borderColor: "rgba(79,113,142,0.12)",
+    color: "#4f718e",
+  },
+  statusResolved: {
+    background: "#edf7e9",
+    borderColor: "rgba(82,123,69,0.12)",
+    color: "#527b45",
+  },
+  statusRejected: {
+    background: "#fff0ef",
+    borderColor: "rgba(190,86,74,0.12)",
+    color: "#a24f46",
+  },
+  heroTitle: {
+    fontFamily: "'Baloo 2', sans-serif",
+    fontSize: "clamp(34px, 5vw, 52px)",
+    lineHeight: 1.05,
+    fontWeight: 700,
+    color: "#102033",
+    margin: "25px 0 10px",
+    letterSpacing: "-0.5px",
+  },
+  heroDescription: {
+    color: "#718096",
+    fontSize: 16,
+    lineHeight: 1.7,
+    maxWidth: 820,
+    margin: 0,
+    fontWeight: 500,
+  },
+  heroImage: {
+    width: "100%",
+    maxHeight: 480,
+    objectFit: "cover",
+    borderRadius: 20,
+    marginTop: 24,
+    border: "1px solid rgba(16,32,51,0.08)",
+    display: "block",
+  },
+  noPhoto: {
+    marginTop: 24,
+    padding: 28,
+    borderRadius: 20,
+    background: "#edf5fb",
+    color: "#718096",
+    border: "1px dashed rgba(79,113,142,0.18)",
+    display: "flex",
+    alignItems: "center",
+    gap: 12,
+    fontSize: 13,
+  },
+  heroMeta: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 18,
+    color: "#718096",
+    fontSize: 13,
+    marginTop: 16,
+    fontWeight: 600,
+  },
+  signalCard: {
+    marginTop: 18,
+    display: "grid",
+    gridTemplateColumns: "minmax(150px, 0.55fr) minmax(240px, 1.4fr) auto",
+    gap: 22,
+    alignItems: "center",
+    padding: 24,
+    borderRadius: 24,
+    background: "#fff4e5",
+    border: "1px solid rgba(255,122,0,0.15)",
+    boxShadow: "0 10px 28px rgba(16,32,51,0.05)",
+  },
+  signalNumber: {
+    fontFamily: "'Baloo 2', sans-serif",
+    fontSize: 46,
+    lineHeight: 1,
+    fontWeight: 700,
+    color: "#102033",
+    marginTop: 5,
+  },
+  signalLabel: {
+    color: "#a86724",
+    fontSize: 13,
+    lineHeight: 1.4,
+    marginTop: 3,
+    fontWeight: 600,
+  },
+  signalText: {
+    color: "#66778b",
+    fontSize: 14,
+    lineHeight: 1.65,
+  },
+  actions: {
+    display: "flex",
+    gap: 9,
+    flexWrap: "wrap",
+  },
+  primaryButton: {
+    border: 0,
+    borderRadius: 999,
+    padding: "11px 16px",
+    background: "#ff7a00",
+    color: "#ffffff",
+    fontWeight: 700,
+    cursor: "pointer",
+    whiteSpace: "nowrap",
+    fontFamily: "'Quicksand', sans-serif",
+    fontSize: 12.5,
+    boxShadow: "0 6px 16px rgba(255,122,0,0.18)",
+  },
+  secondaryButton: {
+    border: "1px solid rgba(16,32,51,0.10)",
+    borderRadius: 999,
+    padding: "10px 15px",
+    background: "#ffffff",
+    color: "#536579",
+    fontWeight: 700,
+    cursor: "pointer",
+    whiteSpace: "nowrap",
+    fontFamily: "'Quicksand', sans-serif",
+    fontSize: 12.5,
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "minmax(0, 1.15fr) minmax(0, 0.85fr)",
+    gap: 18,
+    marginTop: 18,
+  },
+  card: {
+    background: "#ffffff",
+    border: "1px solid rgba(16,32,51,0.08)",
+    borderRadius: 24,
+    padding: 24,
+    boxShadow: "0 10px 28px rgba(16,32,51,0.05)",
+  },
+  cardEyebrow: {
+    color: "#7a899b",
+    fontSize: 11,
+    fontWeight: 800,
+    letterSpacing: "1.2px",
+    textTransform: "uppercase" as const,
+    marginBottom: 11,
+  },
+  cardTitle: {
+    margin: "0 0 8px",
+    fontFamily: "'Baloo 2', sans-serif",
+    fontSize: 24,
+    lineHeight: 1.15,
+    fontWeight: 600,
+    color: "#102033",
+  },
+  detailLine: {
+    color: "#718096",
+    margin: "4px 0",
+    fontSize: 14,
+    lineHeight: 1.5,
+  },
+  verified: {
+    color: "#527b45",
+    fontSize: 12,
+    margin: "12px 0 0",
+    fontWeight: 600,
+  },
+  linkRow: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 8,
+    marginTop: 16,
+  },
+  linkButton: {
+    display: "inline-block",
+    padding: "9px 12px",
+    borderRadius: 999,
+    background: "#edf5fb",
+    border: "1px solid rgba(79,113,142,0.12)",
+    color: "#4f718e",
+    textDecoration: "none",
+    fontSize: 12,
+    fontWeight: 700,
+  },
+  socialBox: {
+    marginTop: 18,
+    padding: 16,
+    borderRadius: 17,
+    background: "#f7f4ee",
+    border: "1px solid rgba(16,32,51,0.07)",
+  },
+  socialTitle: {
+    fontWeight: 800,
+    fontSize: 14,
+    color: "#102033",
+  },
+  socialLinks: {
+    display: "flex",
+    flexWrap: "wrap" as const,
+    gap: 8,
+    marginTop: 10,
+  },
+  socialButton: {
+    display: "inline-block",
+    padding: "8px 11px",
+    borderRadius: 999,
+    background: "#ffffff",
+    border: "1px solid rgba(16,32,51,0.09)",
+    color: "#536579",
+    textDecoration: "none",
+    fontSize: 12,
+    fontWeight: 700,
+  },
+  tagButton: {
+    display: "inline-block",
+    marginTop: 12,
+    padding: "10px 14px",
+    borderRadius: 999,
+    background: "#ff7a00",
+    color: "#ffffff",
+    textDecoration: "none",
+    fontSize: 12,
+    fontWeight: 800,
+  },
+  muted: {
+    color: "#718096",
+    lineHeight: 1.65,
+    fontSize: 14,
+  },
+  mutedSmall: {
+    color: "#7a899b",
+    fontSize: 12,
+    lineHeight: 1.5,
+  },
+  detailsGrid: {
+    display: "grid",
+    gap: 10,
+    marginBottom: 16,
+  },
+  detailBox: {
+    padding: "13px 14px",
+    borderRadius: 15,
+    background: "#f7f4ee",
+    border: "1px solid rgba(16,32,51,0.07)",
+  },
+  detailLabel: {
+    color: "#8793a1",
+    fontSize: 10,
+    fontWeight: 700,
+    marginBottom: 4,
+    textTransform: "uppercase" as const,
+    letterSpacing: ".6px",
+  },
+  detailValue: {
+    color: "#40546a",
+    fontSize: 13,
+    lineHeight: 1.5,
+    wordBreak: "break-word" as const,
+  },
+  timeline: {
+    marginTop: 12,
+  },
+  timelineItem: {
+    display: "flex",
+    gap: 14,
+  },
+  timelineRail: {
+    width: 36,
+    display: "flex",
+    flexDirection: "column" as const,
+    alignItems: "center",
+  },
+  timelineDot: {
+    width: 34,
+    height: 34,
+    borderRadius: 999,
+    display: "grid",
+    placeItems: "center",
+    fontSize: 15,
+    flexShrink: 0,
+  },
+  timelineDotActive: {
+    background: "#fff2df",
+    border: "1px solid rgba(255,122,0,0.18)",
+  },
+  timelineDotInactive: {
+    background: "#f2f4f6",
+    border: "1px solid rgba(16,32,51,0.08)",
+    opacity: 0.45,
+  },
+  timelineLine: {
+    width: 2,
+    flex: 1,
+    minHeight: 22,
+    marginTop: 5,
+    borderRadius: 999,
+  },
+  timelineLineActive: {
+    background: "#ffd5a8",
+  },
+  timelineLineInactive: {
+    background: "#dce2e8",
+  },
+  timelineTitle: {
+    fontFamily: "'Baloo 2', sans-serif",
+    color: "#102033",
+    fontWeight: 600,
+    fontSize: 17,
+    marginTop: 5,
+  },
+  nextCard: {
+    marginTop: 18,
+    padding: 24,
+    borderRadius: 24,
+    background: "#edf5fb",
+    border: "1px solid rgba(79,113,142,0.10)",
+    boxShadow: "0 10px 28px rgba(16,32,51,0.04)",
+  },
+  nextText: {
+    margin: 0,
+    color: "#66778b",
+    lineHeight: 1.7,
+    fontSize: 14,
+    maxWidth: 850,
+  },
+  privacyCard: {
+    marginTop: 18,
+    display: "flex",
+    alignItems: "flex-start",
+    gap: 12,
+    flexWrap: "wrap",
+    padding: "16px 18px",
+    borderRadius: 18,
+    background: "#ffffff",
+    border: "1px solid rgba(16,32,51,0.07)",
+    color: "#718096",
+    fontSize: 12,
+    lineHeight: 1.6,
+    boxShadow: "0 8px 22px rgba(16,32,51,0.03)",
+  },
 };
-

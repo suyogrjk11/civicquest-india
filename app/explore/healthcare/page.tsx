@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -463,7 +463,7 @@ const content: Record<
 > = {
   en: {
     subtitle: "Healthcare",
-    back: "← Explore",
+    back: "Explore",
 
     heroLabel: "CIVIC BASICS · 08",
     heroTitle: "Healthcare",
@@ -537,7 +537,7 @@ const content: Record<
 
   hi: {
     subtitle: "स्वास्थ्य सेवा",
-    back: "← एक्सप्लोर",
+    back: "एक्सप्लोर",
 
     heroLabel: "नागरिक ज्ञान · 08",
     heroTitle: "स्वास्थ्य सेवा",
@@ -611,7 +611,7 @@ const content: Record<
 
   mr: {
     subtitle: "आरोग्यसेवा",
-    back: "← एक्सप्लोर",
+    back: "एक्सप्लोर",
 
     heroLabel: "नागरिक ज्ञान · 08",
     heroTitle: "आरोग्यसेवा",
@@ -687,7 +687,7 @@ const content: Record<
 export default function HealthcarePage() {
   const router = useRouter();
   const supabase = createClient();
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   const t = content[language];
 
@@ -776,7 +776,7 @@ export default function HealthcarePage() {
   };
 
   return (
-    <main
+    <main className="kf-explore-page kf-healthcare-page"
       style={{
         minHeight: "100vh",
         background: "#020617",
@@ -793,83 +793,202 @@ export default function HealthcarePage() {
         {/* HEADER */}
 
         <header
+          className="kf-explore-topbar"
           style={{
-            display: "flex",
-            justifyContent: "space-between",
+            display: "grid",
+            gridTemplateColumns: "1fr auto 1fr",
             alignItems: "center",
-            gap: "20px",
-            marginBottom: "60px",
+            gap: "18px",
+            marginBottom: "16px",
+            padding: "12px 14px",
+            border: "1px solid #ddd7ce",
+            borderRadius: "25px",
+            background: "rgba(255,253,249,.96)",
+            boxShadow: "0 14px 36px rgba(16,27,43,.055)",
+            backdropFilter: "blur(16px)",
           }}
         >
-          <div>
-            <div
-              style={{
-                fontSize: "32px",
-                fontWeight: "800",
-              }}
-            >
-              Civic<span style={{ color: "#ff7a00" }}>Quest</span>
-            </div>
-
-            <div
-              style={{
-                color: "#94a3b8",
-                marginTop: "5px",
-              }}
-            >
-              {t.subtitle}
-            </div>
-          </div>
-
           <button
             type="button"
             onClick={() => router.push("/explore")}
+            className="kf-explore-back"
             style={{
-              background: "transparent",
-              color: "white",
-              border: "1px solid #334155",
-              borderRadius: "10px",
-              padding: "12px 20px",
-              fontSize: "15px",
+              justifySelf: "start",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              minHeight: "42px",
+              padding: "10px 15px",
+              border: "1px solid #dad4cc",
+              borderRadius: "999px",
+              background: "#fffdf9",
+              color: "#506171",
+              fontFamily: "var(--font-body)",
+              fontSize: "11px",
+              fontWeight: "900",
               cursor: "pointer",
             }}
           >
+            <span
+              style={{
+                color: "#ff7a00",
+                fontSize: "15px",
+              }}
+            >
+              ←
+            </span>
             {t.back}
           </button>
+
+          <div
+            className="kf-explore-brand"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            <div
+              className="kf-explore-brand-box"
+              style={{
+                width: "38px",
+                height: "38px",
+                display: "grid",
+                placeItems: "center",
+                borderRadius: "13px",
+                background: "#ff7a00",
+                color: "#ffffff",
+                fontFamily: "var(--font-display)",
+                fontSize: "21px",
+                fontWeight: "800",
+              }}
+            >
+              K
+            </div>
+
+            <div>
+              <div
+                className="kf-explore-brand-name"
+                style={{
+                  color: "#102033",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "23px",
+                  lineHeight: "1",
+                  letterSpacing: "-.045em",
+                  fontWeight: "800",
+                }}
+              >
+                Karma<span style={{ color: "#ff7a00" }}>Facie</span>
+              </div>
+
+              <div
+                className="kf-explore-brand-caption"
+                style={{
+                  marginTop: "3px",
+                  color: "#8b938f",
+                  fontSize: "8px",
+                  lineHeight: "1",
+                  letterSpacing: ".16em",
+                  fontWeight: "900",
+                }}
+              >
+                EXPLORE &amp; LEARN
+              </div>
+            </div>
+          </div>
+
+          <label
+            className="kf-explore-language"
+            style={{
+              justifySelf: "end",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "9px",
+              color: "#53636f",
+              fontFamily: "var(--font-body)",
+              fontSize: "11px",
+              fontWeight: "900",
+            }}
+          >
+            <span>
+              {language === "en" ? "Language" : "भाषा"}
+            </span>
+
+            <select
+              value={language}
+              onChange={(event) =>
+                setLanguage(event.target.value as Language)
+              }
+              aria-label={
+                language === "en" ? "Language" : "भाषा"
+              }
+              className="kf-explore-language-select"
+              style={{
+                minWidth: "120px",
+                padding: "10px 13px",
+                border: "1px solid #d7d1c9",
+                borderRadius: "999px",
+                background: "#fffdf9",
+                color: "#304154",
+                fontFamily: "var(--font-body)",
+                fontSize: "11px",
+                fontWeight: "800",
+                cursor: "pointer",
+                outline: "none",
+              }}
+            >
+              <option value="en">English</option>
+              <option value="hi">हिन्दी</option>
+              <option value="mr">मराठी</option>
+            </select>
+          </label>
         </header>
 
         {/* HERO */}
 
         <section
+          className="kf-explore-hero kf-hero"
           style={{
             marginBottom: "65px",
           }}
         >
-          <SectionLabel text={t.heroLabel} />
+          <div className="kf-hero-copy">
+            <SectionLabel text={t.heroLabel} />
 
-          <h1
-            style={{
-              fontSize: "52px",
-              lineHeight: "1.1",
-              fontWeight: "800",
-              margin: "0 0 20px",
-              maxWidth: "850px",
-            }}
-          >
-            {t.heroTitle}
-          </h1>
+            <h1
+              style={{
+                fontSize: "72px",
+                lineHeight: "0.98",
+                letterSpacing: "-0.045em",
+                fontWeight: "800",
+                margin: "0 0 24px",
+                maxWidth: "920px",
+              }}
+            >
+              {t.heroTitle}
+            </h1>
 
-          <p
-            style={{
-              color: "#94a3b8",
-              fontSize: "19px",
-              lineHeight: "1.7",
-              maxWidth: "800px",
-              margin: 0,
-            }}
-          >
-            {t.heroText}
-          </p>
+            <p
+              style={{
+                color: "#596a78",
+                fontSize: "19px",
+                lineHeight: "1.72",
+                maxWidth: "900px",
+                margin: 0,
+              }}
+            >
+              {t.heroText}
+            </p>
+          </div>
+
+          <div className="kf-hero-badge">
+            <div className="kf-hero-badge-icon">🩺</div>
+            <div>
+              <div className="kf-hero-badge-title">Civic knowledge</div>
+              <div className="kf-hero-badge-subtitle">Healthcare</div>
+            </div>
+          </div>
         </section>
 
         {/* SECTION 1 */}
@@ -890,6 +1009,7 @@ export default function HealthcarePage() {
           </p>
 
           <div
+            className="kf-healthcare-callout"
             style={{
               marginTop: "30px",
               background: "#0f172a",
@@ -1096,6 +1216,7 @@ export default function HealthcarePage() {
           </p>
 
           <div
+            className="kf-healthcare-callout"
             style={{
               marginTop: "30px",
               background:
@@ -1153,6 +1274,7 @@ export default function HealthcarePage() {
             {citizenActions.map((action) => (
               <div
                 key={action.number}
+                className="kf-healthcare-action-card"
                 style={{
                   display: "flex",
                   gap: "18px",
@@ -1164,6 +1286,7 @@ export default function HealthcarePage() {
                 }}
               >
                 <div
+                  className="kf-healthcare-action-number"
                   style={{
                     minWidth: "42px",
                     height: "42px",
@@ -1209,6 +1332,7 @@ export default function HealthcarePage() {
         {/* QUIZ */}
 
         <section
+          className="kf-quiz-section"
           style={{
             background:
               "linear-gradient(135deg, #0f172a, #111827)",
@@ -1302,9 +1426,19 @@ export default function HealthcarePage() {
                   return (
                     <button
                       type="button"
+                      className="kf-quiz-answer"
                       key={`${index}-${option.en}`}
                       onClick={() => handleAnswer(index)}
                       disabled={selectedAnswer !== null}
+                      data-quiz-state={
+                        selectedAnswer === null
+                          ? "default"
+                          : isCorrect
+                          ? "correct"
+                          : isSelected
+                          ? "wrong"
+                          : "default"
+                      }
                       style={{
                         width: "100%",
                         textAlign: "left",
@@ -1354,6 +1488,7 @@ export default function HealthcarePage() {
               {selectedAnswer !== null && (
                 <button
                   type="button"
+                  className="kf-quiz-next"
                   onClick={nextQuestion}
                   disabled={savingProgress}
                   style={{
@@ -1422,6 +1557,7 @@ export default function HealthcarePage() {
 
               <button
                 type="button"
+                className="kf-quiz-restart"
                 onClick={restartQuiz}
                 style={{
                   padding: "13px 22px",
@@ -1453,6 +1589,266 @@ export default function HealthcarePage() {
           {t.footer}
         </div>
       </div>
+        <style>{`
+          .kf-explore-page {
+            --kf-ivory: #f8f3ea;
+            --kf-white: #fffdf9;
+            --kf-navy: #102033;
+            --kf-ink: #263447;
+            --kf-body: #596a78;
+            --kf-muted: #7b8790;
+            --kf-orange: #ff7a00;
+            --kf-blue: #edf5fa;
+            --kf-blue-line: #d6e5ed;
+            --kf-peach: #fff2e4;
+            --kf-peach-line: #eedbc6;
+            --kf-green: #eef6e7;
+            --kf-green-line: #d5e5ca;
+            --kf-lavender: #f4eff9;
+            --kf-lavender-line: #dfd4ea;
+            --kf-line: #ddd7ce;
+
+            min-height: 100vh !important;
+            background:
+              radial-gradient(circle at 92% 2%, rgba(215,232,242,.95) 0%, rgba(215,232,242,0) 26%),
+              radial-gradient(circle at 5% 35%, rgba(231,242,248,.78) 0%, rgba(231,242,248,0) 25%),
+              radial-gradient(circle at 92% 93%, rgba(255,229,205,.72) 0%, rgba(255,229,205,0) 28%),
+              var(--kf-ivory) !important;
+            color: var(--kf-body) !important;
+            padding: 20px 16px 72px !important;
+            font-family: var(--font-body) !important;
+          }
+
+          .kf-explore-page > div {
+            width: min(1120px, 100%) !important;
+            max-width: none !important;
+            margin: 0 auto !important;
+          }
+
+          .kf-simple-card {
+            background: #fffdf9 !important;
+            border: 1px solid rgba(16,27,43,.08) !important;
+            border-radius: 22px !important;
+            box-shadow: 0 8px 24px rgba(16,27,43,.035) !important;
+          }
+          .kf-simple-card h3 { color: var(--kf-ink) !important; }
+          .kf-simple-card p { color: var(--kf-body) !important; }
+
+          .kf-explore-page header {
+            margin-bottom: 16px !important;
+            padding: 12px 14px !important;
+            border: 1px solid var(--kf-line) !important;
+            border-radius: 25px !important;
+            background: rgba(255,253,249,.96) !important;
+            box-shadow: 0 14px 36px rgba(16,27,43,.055) !important;
+            backdrop-filter: blur(16px);
+          }
+
+          .kf-explore-page header div { color: var(--kf-navy) !important; }
+
+          /* Keep the KarmaFacie K white inside the orange logo box. */
+          .kf-explore-page header .kf-explore-brand-box {
+            color: #ffffff !important;
+          }
+
+          .kf-explore-page .kf-hero {
+            position: relative !important;
+            display: grid !important;
+            grid-template-columns: minmax(0, 1fr) auto !important;
+            align-items: center !important;
+            gap: 34px !important;
+          }
+
+          .kf-explore-page .kf-hero-copy {
+            min-width: 0;
+          }
+
+          .kf-explore-page .kf-hero-badge {
+            min-width: 285px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 20px;
+            border: 1px solid var(--kf-peach-line);
+            border-radius: 28px;
+            background: rgba(255,242,228,.92);
+            box-shadow: 0 10px 28px rgba(16,27,43,.045);
+          }
+
+          .kf-explore-page .kf-hero-badge-icon {
+            width: 56px;
+            height: 56px;
+            flex: 0 0 56px;
+            display: grid;
+            place-items: center;
+            border: 1px solid #eadfd3;
+            border-radius: 18px;
+            background: #fffdf9;
+            font-size: 25px;
+          }
+
+          .kf-explore-page .kf-hero-badge-title {
+            color: #304154 !important;
+            font-family: var(--font-display);
+            font-size: 21px;
+            line-height: 1.1;
+            font-weight: 800;
+          }
+
+          .kf-explore-page .kf-hero-badge-subtitle {
+            margin-top: 6px;
+            color: #8b725f !important;
+            font-family: var(--font-body);
+            font-size: 12px;
+            line-height: 1.2;
+            font-weight: 700;
+          }
+
+          .kf-explore-page header select {
+            background: #fffdf9 !important;
+            color: #304154 !important;
+            border: 1px solid #d7d1c9 !important;
+            border-radius: 999px !important;
+          }
+          .kf-explore-page header button {
+            color: #4d6070 !important;
+            border-color: #dad4cc !important;
+            border-radius: 999px !important;
+            background: #fffdf9 !important;
+          }
+
+          .kf-explore-page > div > section {
+            margin-bottom: 16px !important;
+            padding: 30px !important;
+            border: 1px solid var(--kf-line) !important;
+            border-radius: 31px !important;
+            box-shadow: 0 14px 38px rgba(16,27,43,.05) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(1) {
+            padding: 32px !important;
+            background:
+              radial-gradient(circle at 94% 0%, rgba(218,235,244,.98) 0%, rgba(218,235,244,0) 34%),
+              radial-gradient(circle at 0% 100%, rgba(255,232,210,.90) 0%, rgba(255,232,210,0) 35%),
+              rgba(255,253,249,.97) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(2) { background: var(--kf-blue) !important; border-color: var(--kf-blue-line) !important; }
+          .kf-explore-page > div > section:nth-of-type(3) { background: var(--kf-peach) !important; border-color: var(--kf-peach-line) !important; }
+          .kf-explore-page > div > section:nth-of-type(4) { background: var(--kf-green) !important; border-color: var(--kf-green-line) !important; }
+          .kf-explore-page > div > section:nth-of-type(5) { background: var(--kf-lavender) !important; border-color: var(--kf-lavender-line) !important; }
+          .kf-explore-page > div > section:nth-of-type(6) { background: var(--kf-blue) !important; border-color: var(--kf-blue-line) !important; }
+          .kf-explore-page > div > section:nth-of-type(7) { background: var(--kf-peach) !important; border-color: var(--kf-peach-line) !important; }
+          .kf-explore-page > div > section:nth-of-type(8) { background: var(--kf-lavender) !important; border-color: var(--kf-lavender-line) !important; }
+
+          .kf-explore-page h1,
+          .kf-explore-page h2,
+          .kf-explore-page h3 {
+            color: var(--kf-ink) !important;
+            font-family: var(--font-display) !important;
+          }
+
+          .kf-explore-page p,
+          .kf-explore-page li { color: var(--kf-body) !important; }
+
+          .kf-explore-page [style*="background"] { box-shadow: 0 9px 22px rgba(16,27,43,.035) !important; }
+
+          .kf-explore-page > div > section:nth-of-type(2) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(3) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(4) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(5) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(6) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(7) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(8) [style*="background"] {
+            background: rgba(255,253,249,.80) !important;
+            border: 1px solid rgba(16,27,43,.075) !important;
+            border-radius: 22px !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(2) > div:last-child,
+          .kf-explore-page > div > section:nth-of-type(7) > div:last-child {
+            background: rgba(255,253,249,.80) !important;
+            border: 1px solid rgba(16,27,43,.075) !important;
+            border-radius: 23px !important;
+          }
+
+          .kf-explore-page [style*="color: #ff7a00"] { color: #9c6b42 !important; }
+
+          /* Healthcare has 8 content sections after the hero, so the quiz is section 9. */
+          .kf-explore-page > div > section:nth-of-type(9) {
+            position: relative !important;
+            overflow: hidden !important;
+            padding: 30px !important;
+            background:
+              radial-gradient(circle at 94% 0%, rgba(218,235,244,.95) 0%, rgba(218,235,244,0) 34%),
+              radial-gradient(circle at 0% 100%, rgba(255,232,210,.88) 0%, rgba(255,232,210,0) 34%),
+              rgba(255,253,249,.98) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(9) button { border-radius: 19px !important; }
+          .kf-explore-page > div > section:nth-of-type(9) button:not(:last-child) {
+            color: #425565 !important;
+            background: #fffdf9 !important;
+            border-color: #ded9d1 !important;
+          }
+          .kf-explore-page > div > section:nth-of-type(9) button:last-child {
+            color: #fff !important;
+            background: var(--kf-orange) !important;
+            border-color: var(--kf-orange) !important;
+          }
+
+          .kf-explore-page > div > div:last-child { color: #89939a !important; text-align: center !important; }
+
+          @media (max-width: 900px) {
+            .kf-explore-page > div > section { padding: 22px !important; }
+          }
+          @media (max-width: 900px) {
+            .kf-explore-page > div > section { padding: 22px !important; }
+
+            .kf-explore-page .kf-hero {
+              grid-template-columns: 1fr !important;
+              gap: 24px !important;
+            }
+
+            .kf-explore-page .kf-hero-badge {
+              width: fit-content;
+              min-width: 0;
+            }
+
+            .kf-explore-page .kf-hero h1 {
+              font-size: 58px !important;
+            }
+          }
+
+          @media (max-width: 680px) {
+            .kf-explore-page { padding: 12px 10px 44px !important; }
+            .kf-explore-page > div > section { padding: 20px !important; border-radius: 24px !important; }
+            .kf-explore-page header { padding: 11px 12px !important; }
+
+            .kf-explore-page .kf-hero {
+              gap: 20px !important;
+            }
+
+            .kf-explore-page .kf-hero h1 {
+              font-size: 46px !important;
+              line-height: 1 !important;
+            }
+
+            .kf-explore-page .kf-hero-badge {
+              width: 100%;
+              box-sizing: border-box;
+              padding: 15px 16px;
+              border-radius: 22px;
+            }
+
+            .kf-explore-page .kf-hero-badge-icon {
+              width: 50px;
+              height: 50px;
+              flex-basis: 50px;
+              border-radius: 15px;
+            }
+          }
+        `}</style>
     </main>
   );
 }
@@ -1488,6 +1884,7 @@ function SimpleCard({
 }) {
   return (
     <div
+      className="kf-simple-card kf-healthcare-card"
       style={{
         background: "#0f172a",
         border: "1px solid #1e293b",

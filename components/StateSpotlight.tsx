@@ -877,34 +877,73 @@ for (const [slug, facts] of Object.entries(localizedFunFacts)) {
   };
 }
 
-function DetailCard({ icon, title, text }: { icon: string; title: string; text?: string }) {
+const CARD_PALETTES = [
+  { card: "kf-state-palette-card kf-state-palette-card-blue", icon: "kf-state-palette-icon kf-state-palette-icon-blue", title: "kf-state-palette-title", body: "kf-state-palette-body kf-state-palette-body-blue", item: "kf-state-palette-item kf-state-palette-item-blue" },
+  { card: "kf-state-palette-card kf-state-palette-card-orange", icon: "kf-state-palette-icon kf-state-palette-icon-orange", title: "kf-state-palette-title", body: "kf-state-palette-body kf-state-palette-body-orange", item: "kf-state-palette-item kf-state-palette-item-orange" },
+  { card: "kf-state-palette-card kf-state-palette-card-green", icon: "kf-state-palette-icon kf-state-palette-icon-green", title: "kf-state-palette-title", body: "kf-state-palette-body kf-state-palette-body-green", item: "kf-state-palette-item kf-state-palette-item-green" },
+  { card: "kf-state-palette-card kf-state-palette-card-lavender", icon: "kf-state-palette-icon kf-state-palette-icon-lavender", title: "kf-state-palette-title", body: "kf-state-palette-body kf-state-palette-body-lavender", item: "kf-state-palette-item kf-state-palette-item-lavender" },
+];
+
+function DetailCard({
+  icon,
+  title,
+  text,
+  variant = 0,
+}: {
+  icon: string;
+  title: string;
+  text?: string;
+  variant?: number;
+}) {
   if (!text) return null;
+  const palette = CARD_PALETTES[variant % CARD_PALETTES.length];
+
   return (
-    <section className="rounded-3xl border border-[#d6e1ec] bg-[#f7fafd] p-6 shadow-[0_8px_24px_rgba(23,32,51,0.07)] sm:p-7">
-      <div className="mb-4 flex items-center gap-3">
-        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#dceaf7] text-xl">{icon}</div>
-        <h3 className="text-xl font-black text-[#172033]">{title}</h3>
+    <section data-variant={variant % CARD_PALETTES.length}
+      className={`kf-state-list-card relative overflow-hidden rounded-[26px] border p-6 shadow-[0_10px_28px_rgba(16,32,51,0.05)] sm:p-7 ${palette.card}`}>
+      <div className="kf-state-theme-orb pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full" />
+      <div className="relative">
+        <div className="mb-4 flex items-center gap-3">
+          <div className={`flex h-11 w-11 items-center justify-center rounded-2xl text-xl ${palette.icon}`}>{icon}</div>
+          <h3 className={`text-xl font-black ${palette.title}`}>{title}</h3>
+        </div>
+        <p className={`text-[15px] leading-7 ${palette.body}`}>{text}</p>
       </div>
-      <p className="text-[15px] leading-7 text-[#52657a]">{text}</p>
     </section>
   );
 }
 
-function ListCard({ icon, title, items }: { icon: string; title: string; items?: string[] }) {
+function ListCard({
+  icon,
+  title,
+  items,
+  variant = 0,
+}: {
+  icon: string;
+  title: string;
+  items?: string[];
+  variant?: number;
+}) {
   if (!items?.length) return null;
+  const palette = CARD_PALETTES[variant % CARD_PALETTES.length];
+
   return (
-    <section className="rounded-3xl border border-[#d6e1ec] bg-[#f7fafd] p-6 shadow-[0_8px_24px_rgba(23,32,51,0.07)] sm:p-7">
-      <div className="mb-4 flex items-center gap-3">
-        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#dceaf7] text-xl">{icon}</div>
-        <h3 className="text-xl font-black text-[#172033]">{title}</h3>
-      </div>
-      <div className="grid gap-3 sm:grid-cols-2">
-        {items.map((item, index) => (
-          <div key={`${item}-${index}`} className="rounded-2xl bg-[#edf5fc] p-4 text-sm font-semibold leading-6 text-[#52657a]">
-            <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#172033] text-xs text-white">{index + 1}</span>
-            {item}
-          </div>
-        ))}
+    <section data-variant={variant % CARD_PALETTES.length}
+      className={`kf-state-detail-card relative overflow-hidden rounded-[26px] border p-6 shadow-[0_10px_28px_rgba(16,32,51,0.05)] sm:p-7 ${palette.card}`}>
+      <div className="kf-state-theme-orb pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full" />
+      <div className="relative">
+        <div className="mb-4 flex items-center gap-3">
+          <div className={`flex h-11 w-11 items-center justify-center rounded-2xl text-xl ${palette.icon}`}>{icon}</div>
+          <h3 className={`text-xl font-black ${palette.title}`}>{title}</h3>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {items.map((item, index) => (
+            <div key={`${item}-${index}`} className={`kf-state-list-item rounded-2xl border p-4 text-sm font-semibold leading-6 ${palette.item} ${palette.body}`}>
+              <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#102033] text-xs text-white">{index + 1}</span>
+              {item}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -939,10 +978,6 @@ export default function StateSpotlight({ state, language }: Props) {
             "Island Territories": "द्वीप प्रदेश",
           } as Record<string, string>)[state.region] || state.region;
 
-  // Rich State Spotlight content is currently authored in English.
-  // For Hindi/Marathi, use a fully localized civic summary instead of
-  // silently showing English paragraphs under a translated UI.
-  // English continues to use the richer state-specific content.
   const localizedContent = localizedStateContent[state.slug]?.[language];
   const localizedLanguageNames =
     localizedLanguageNamesMap[state.slug]?.[language] ||
@@ -958,68 +993,186 @@ export default function StateSpotlight({ state, language }: Props) {
   const funFacts = localizedContent?.funFacts || localizeList(state.funFacts, language);
 
   const richContent = localizedStateContent[state.slug]?.[language];
-
   const about = richContent?.shortDescription || state.shortDescription || t.genericAbout(displayName, state.type, regionLabel, displayCapital);
   const geography = richContent?.geography || state.geography || t.genericGeography(regionLabel, state.area);
   const governance = richContent?.governance || state.governance || t.genericGovernance(state.type);
   const culture = richContent?.culture || state.culture || t.genericCulture(localizedLanguageNames);
   const formation = richContent?.formationInfo || state.formationInfo || t.genericAbout(displayName, state.type, regionLabel, displayCapital);
 
+  const editorial = {
+    en: {
+      spotlight: "STATE SPOTLIGHT",
+      atAGlance: "01 · AT A GLANCE",
+      atAGlanceTitle: "The essentials, at a glance.",
+      know: "02 · KNOW THE PLACE",
+      knowTitle: "A closer look at the state.",
+      formation: "03 · FORMATION",
+      formationTitle: "How it took shape.",
+      discover: "04 · DISCOVER",
+      discoverTitle: "Places, nature & stories.",
+    },
+    hi: {
+      spotlight: "राज्य परिचय",
+      atAGlance: "01 · एक नज़र में",
+      atAGlanceTitle: "ज़रूरी बातें, एक नज़र में।",
+      know: "02 · इस स्थान को जानें",
+      knowTitle: "राज्य को थोड़ा और करीब से जानें।",
+      formation: "03 · गठन",
+      formationTitle: "इसका स्वरूप कैसे बना।",
+      discover: "04 · खोजें",
+      discoverTitle: "स्थान, प्रकृति और कहानियाँ।",
+    },
+    mr: {
+      spotlight: "राज्य परिचय",
+      atAGlance: "01 · एका नजरेत",
+      atAGlanceTitle: "महत्त्वाच्या गोष्टी, एका नजरेत।",
+      know: "02 · हे ठिकाण जाणून घ्या",
+      knowTitle: "राज्याकडे थोडे जवळून पाहूया।",
+      formation: "03 · निर्मिती",
+      formationTitle: "याचा आकार कसा घडला।",
+      discover: "04 · शोधा",
+      discoverTitle: "ठिकाणे, निसर्ग आणि कथा।",
+    },
+  }[language];
+
   return (
-    <section id="state-spotlight" className="scroll-mt-6 pt-10">
-      <div className="overflow-hidden rounded-[32px] border border-[#d6e1ec] bg-[#eaf1f8] shadow-sm">
-        <div className="relative overflow-hidden bg-slate-950 px-6 py-10 text-white sm:px-10 lg:px-12">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.25),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.14),transparent_32%)]" />
-          <div className="relative">
-            <div className="text-xs font-black uppercase tracking-[0.2em] text-orange-400">{t.eyebrow}</div>
-            <h2 className="mt-3 text-4xl font-black tracking-tight sm:text-5xl">{displayName}</h2>
-            <div className="mt-3 flex flex-wrap gap-x-3 gap-y-2 text-sm text-[#d9e4ef]">
-              <span>{typeLabel}</span><span>•</span><span>{displayCapital}</span><span>•</span><span>{regionLabel}</span>
-            </div>
-            <p className="mt-6 max-w-4xl text-base leading-8 text-[#d9e4ef]">{about}</p>
+    <section id="state-spotlight" className={`kf-state-spotlight scroll-mt-6 px-1 pb-10 pt-10 sm:pt-14`}>
+      {/* HERO — same editorial rhythm as Explore pages, but in KarmaFacie's light theme */}
+      <section className="kf-state-spotlight-hero relative mb-16 overflow-hidden rounded-[32px] border border-[#dfe6e8] bg-gradient-to-br from-[#eef7fc] via-[#fff9f1] to-[#f4eefb] px-7 py-9 shadow-[0_14px_38px_rgba(16,32,51,0.06)] sm:px-10 sm:py-11">
+        <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#dcecf8]/80" />
+        <div className="pointer-events-none absolute -bottom-24 left-1/4 h-48 w-48 rounded-full bg-[#ffe4c8]/70" />
+        <div className="pointer-events-none absolute -bottom-16 right-1/4 h-36 w-36 rounded-full bg-[#e4f0d9]/70" />
+        <div className="relative">
+          <div className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#ff7a00]">
+            {editorial.spotlight} · {typeLabel}
           </div>
+          <h2 className="max-w-5xl text-5xl font-black leading-[1.03] tracking-[-0.045em] text-[#102033] sm:text-6xl lg:text-[68px]">
+            {displayName}
+          </h2>
+          <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-[14px] font-bold text-[#52677a]">
+            <span>{typeLabel}</span>
+            <span className="text-[#ff7a00]">•</span>
+            <span>{displayCapital}</span>
+            <span className="text-[#ff7a00]">•</span>
+            <span>{regionLabel}</span>
+          </div>
+          <p className="mt-7 max-w-4xl text-[18px] leading-8 text-[#60758a] sm:text-[19px]">
+            {about}
+          </p>
         </div>
+      </section>
 
-        <div className="p-5 sm:p-8">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              ["🏛️", t.capital, displayCapital],
-              ["📍", t.type, typeLabel],
-              ["📐", t.area, state.area],
-              ["👥", t.population, state.population2011],
-            ].map(([icon, label, value]) => (
-              <div key={label} className="rounded-2xl border border-[#d6e1ec] bg-[#f7fafd] p-5 shadow-[0_4px_14px_rgba(23,32,51,0.05)]">
-                <div className="text-xl">{icon}</div>
-                <div className="mt-3 text-xs font-black uppercase tracking-wider text-[#6b7d91]">{label}</div>
-                <div className="mt-1 text-sm font-bold leading-6 text-[#172033]">{value}</div>
+      {/* 01 — AT A GLANCE */}
+      <section className="kf-state-spotlight-section mb-16">
+        <div className="mb-3 text-[11px] font-black uppercase tracking-[0.22em] text-[#ff7a00]">
+          {editorial.atAGlance}
+        </div>
+        <h3 className="max-w-3xl text-3xl font-black tracking-[-0.03em] text-[#102033] sm:text-4xl">
+          {editorial.atAGlanceTitle}
+        </h3>
+
+        <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ["🏛️", t.capital, displayCapital, 0],
+            ["📍", t.type, typeLabel, 1],
+            ["📐", t.area, state.area, 2],
+            ["👥", t.population, state.population2011, 3],
+          ].map(([icon, label, value, variant]) => {
+            const palette = CARD_PALETTES[Number(variant)];
+            return (
+              <div
+                key={String(label)}
+                className={`kf-state-glance-card relative overflow-hidden rounded-[24px] border p-5 shadow-[0_10px_28px_rgba(16,32,51,0.05)] ${palette.card}`}
+              >
+                <div className="kf-state-theme-orb pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full" />
+                <div className="relative">
+                  <div className={`flex h-11 w-11 items-center justify-center rounded-2xl text-xl ${palette.icon}`}>
+                    {icon}
+                  </div>
+                  <div className={`mt-5 text-[10px] font-black uppercase tracking-[0.16em] ${palette.body}`}>
+                    {label}
+                  </div>
+                  <div className={`mt-1 text-[15px] font-black leading-6 ${palette.title}`}>
+                    {value}
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
+        </div>
 
-          <div className="mt-4 rounded-2xl border border-[#d6e1ec] bg-[#f7fafd] p-5 shadow-[0_4px_14px_rgba(23,32,51,0.05)]">
-            <div className="text-xs font-black uppercase tracking-wider text-[#6b7d91]">🗣️ {t.languages}</div>
-            <div className="mt-2 text-sm font-bold leading-7 text-[#172033]">{localizedLanguageNames}</div>
-          </div>
-
-          <div className="mt-8 grid gap-5 lg:grid-cols-2">
-            <DetailCard icon="📖" title={t.about} text={about} />
-            <DetailCard icon="🗺️" title={t.geography} text={geography} />
-            <DetailCard icon="🏛️" title={t.governance} text={governance} />
-            <DetailCard icon="🎭" title={t.culture} text={culture} />
-            <DetailCard icon="📜" title={t.formation} text={formation} />
-          </div>
-
-          <div className="mt-5 grid gap-5 lg:grid-cols-2">
-            <ListCard icon="📍" title={t.famousPlaces} items={famousPlaces} />
-            <ListCard icon="🌊" title={t.rivers} items={majorRivers} />
-            <ListCard icon="🌳" title={t.nationalParks} items={nationalParks} />
-            <ListCard icon="💡" title={t.funFacts} items={funFacts} />
-          </div>
-
-          <div className="mt-8 rounded-3xl bg-[#172033] p-6 text-sm leading-7 text-[#d9e4ef] sm:p-7">
-            📚 {t.source}
+        <div className="kf-state-language-card relative mt-4 overflow-hidden rounded-[24px] border border-[#d9e8ef] bg-gradient-to-r from-[#eaf4fb] via-[#f8f4fc] to-[#edf6e7] p-5 shadow-[0_10px_28px_rgba(16,32,51,0.04)]">
+          <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-white/50" />
+          <div className="relative">
+            <div className="text-[10px] font-black uppercase tracking-[0.16em] text-[#718294]">
+              🗣️ {t.languages}
+            </div>
+            <div className="mt-2 text-[15px] font-bold leading-7 text-[#102033]">
+              {localizedLanguageNames}
+            </div>
           </div>
         </div>
+      </section>
+
+      {/* 02 — KNOW THE PLACE */}
+      <section className="kf-state-spotlight-section mb-16">
+        <div className="mb-3 text-[11px] font-black uppercase tracking-[0.22em] text-[#ff7a00]">
+          {editorial.know}
+        </div>
+        <h3 className="max-w-4xl text-3xl font-black tracking-[-0.03em] text-[#102033] sm:text-4xl">
+          {editorial.knowTitle}
+        </h3>
+
+        <div className="mt-7 grid gap-5 lg:grid-cols-2">
+          <DetailCard icon="📖" title={t.about} text={about} variant={0} />
+          <DetailCard icon="🗺️" title={t.geography} text={geography} variant={1} />
+          <DetailCard icon="🏛️" title={t.governance} text={governance} variant={2} />
+          <DetailCard icon="🎭" title={t.culture} text={culture} variant={3} />
+        </div>
+      </section>
+
+      {/* 03 — FORMATION */}
+      <section className="kf-state-spotlight-section kf-state-spotlight-formation mb-16">
+        <div className="mb-3 text-[11px] font-black uppercase tracking-[0.22em] text-[#ff7a00]">
+          {editorial.formation}
+        </div>
+        <div className="kf-state-formation-card relative overflow-hidden rounded-[28px] border border-[#dfe4f0] bg-gradient-to-r from-[#f3edfa] via-[#edf5fc] to-[#fff0df] p-7 shadow-[0_10px_28px_rgba(16,32,51,0.05)] sm:p-9 lg:p-10">
+          <div className="flex flex-col gap-7 sm:flex-row sm:items-start sm:justify-between">
+            <div className="max-w-4xl">
+              <h3 className="text-3xl font-black tracking-[-0.03em] text-[#102033] sm:text-4xl">
+                {editorial.formationTitle}
+              </h3>
+              <p className="mt-5 text-[17px] leading-8 text-[#607080]">
+                {formation}
+              </p>
+            </div>
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/70 text-2xl shadow-sm">
+              📜
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 04 — DISCOVER */}
+      <section className="kf-state-spotlight-discover mb-10">
+        <div className="mb-3 text-[11px] font-black uppercase tracking-[0.22em] text-[#ff7a00]">
+          {editorial.discover}
+        </div>
+        <h3 className="max-w-4xl text-3xl font-black tracking-[-0.03em] text-[#102033] sm:text-4xl">
+          {editorial.discoverTitle}
+        </h3>
+
+        <div className="mt-7 grid gap-5 lg:grid-cols-2">
+          <ListCard icon="📍" title={t.famousPlaces} items={famousPlaces} variant={0} />
+          <ListCard icon="🌊" title={t.rivers} items={majorRivers} variant={1} />
+          <ListCard icon="🌳" title={t.nationalParks} items={nationalParks} variant={2} />
+          <ListCard icon="💡" title={t.funFacts} items={funFacts} variant={3} />
+        </div>
+      </section>
+
+      {/* SOURCE */}
+      <div className="kf-state-spotlight-source rounded-[22px] border border-[#d9e8ef] bg-gradient-to-r from-[#eaf4fb] to-[#f3edfa] px-5 py-4 text-sm font-semibold leading-6 text-[#607080]">
+        📚 {t.source}
       </div>
     </section>
   );

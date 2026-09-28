@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -287,6 +287,67 @@ const content = {
   },
 };
 
+
+const labelStyle: React.CSSProperties = {
+  display: "block",
+  marginBottom: "8px",
+  fontSize: "11px",
+  fontWeight: 900,
+  color: "#24364a",
+  letterSpacing: "0.01em",
+};
+
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  boxSizing: "border-box",
+  background: "rgba(255,255,255,0.76)",
+  color: "#102033",
+  border: "1px solid rgba(206,215,224,0.92)",
+  borderRadius: "16px",
+  padding: "15px 16px",
+  fontSize: "14px",
+  outline: "none",
+  boxShadow: "0 5px 18px rgba(16,32,51,0.035)",
+};
+
+const helpStyle: React.CSSProperties = {
+  color: "#8a95a3",
+  fontSize: "10px",
+  marginTop: "7px",
+  lineHeight: "1.5",
+};
+
+function Field({
+  id,
+  label,
+  value,
+  setValue,
+  placeholder,
+  required = false,
+}: {
+  id: string;
+  label: string;
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+  placeholder: string;
+  required?: boolean;
+}) {
+  return (
+    <div>
+      <label htmlFor={id} style={labelStyle}>{label}</label>
+      <input
+        id={id}
+        type="text"
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+        placeholder={placeholder}
+        required={required}
+        style={inputStyle}
+      />
+    </div>
+  );
+}
+
 export default function GetStartedPage() {
   const router = useRouter();
   const supabase = createClient();
@@ -334,7 +395,7 @@ export default function GetStartedPage() {
     } = await supabase.auth.getUser();
 
     if (!user) {
-      router.push("/auth");
+      router.replace("/auth");
       return;
     }
 
@@ -403,7 +464,7 @@ export default function GetStartedPage() {
     } = await supabase.auth.getUser();
 
     if (!user) {
-      router.push("/auth");
+      router.replace("/auth");
       return;
     }
 
@@ -447,7 +508,7 @@ export default function GetStartedPage() {
 
     setSaving(false);
 
-    router.push("/dashboard");
+    router.replace("/dashboard");
   };
 
   // ------------------------------------------
@@ -457,10 +518,12 @@ export default function GetStartedPage() {
   if (loading) {
     return (
       <main
+        className="kf-get-started-page"
         style={{
           minHeight: "100vh",
-          background: "#020617",
-          color: "white",
+          background:
+            "radial-gradient(circle at 10% 10%, rgba(220,238,250,0.7), transparent 30%), radial-gradient(circle at 90% 10%, rgba(255,220,187,0.5), transparent 28%), #F7F1E5",
+          color: "#102033",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -474,24 +537,27 @@ export default function GetStartedPage() {
         >
           <div
             style={{
-              fontSize: "32px",
+              fontFamily: "var(--font-display), sans-serif",
+              fontSize: "34px",
+              lineHeight: "1",
               fontWeight: "800",
+              letterSpacing: "-0.045em",
               marginBottom: "10px",
             }}
           >
-            Civic
-            <span
+            Karma<span
               style={{
                 color: "#ff7a00",
               }}
             >
-              Quest
+              Facie
             </span>
           </div>
 
           <p
+            className="kf-get-started-description"
             style={{
-              color: "#94a3b8",
+              color: "#718095",
             }}
           >
             {text.loading}
@@ -503,53 +569,67 @@ export default function GetStartedPage() {
 
   return (
     <main
+      className="kf-get-started-page"
       style={{
         minHeight: "100vh",
-        background: "#020617",
-        color: "white",
-        padding: "32px 5% 70px",
+        background:
+          "radial-gradient(ellipse at 8% 4%, rgba(207,230,244,0.78) 0%, rgba(207,230,244,0) 30%), radial-gradient(ellipse at 92% 6%, rgba(255,214,177,0.72) 0%, rgba(255,214,177,0) 28%), radial-gradient(ellipse at 55% 105%, rgba(232,224,246,0.34) 0%, rgba(232,224,246,0) 34%), #F7F1E5",
+        color: "#102033",
+        padding: "22px 5% 76px",
       }}
     >
       <div
+        aria-hidden="true"
         style={{
-          maxWidth: "900px",
-          margin: "0 auto",
+          position: "fixed",
+          inset: 0,
+          overflow: "hidden",
+          pointerEvents: "none",
+          zIndex: 0,
         }}
       >
-        {/* ---------------------------------- */}
-        {/* HEADER */}
-        {/* ---------------------------------- */}
+        <div style={{ position: "absolute", left: "-120px", top: "240px", width: "420px", height: "180px", borderRadius: "999px", background: "rgba(205,229,245,0.28)", filter: "blur(42px)", transform: "rotate(12deg)" }} />
+        <div style={{ position: "absolute", right: "-130px", top: "420px", width: "440px", height: "190px", borderRadius: "999px", background: "rgba(255,211,174,0.25)", filter: "blur(46px)", transform: "rotate(-10deg)" }} />
+      </div>
 
+      <div style={{ maxWidth: "1120px", margin: "0 auto", position: "relative", zIndex: 1 }}>
         <header
+          className="kf-get-started-header"
           style={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
             gap: "20px",
-            marginBottom: "55px",
+            marginBottom: "46px",
+            padding: "12px 14px",
+            border: "1px solid rgba(255,255,255,0.72)",
+            borderRadius: "24px",
+            background: "rgba(255,253,249,0.62)",
+            boxShadow: "0 14px 38px rgba(16,32,51,0.055), inset 0 1px 0 rgba(255,255,255,0.9)",
+            backdropFilter: "blur(20px) saturate(135%)",
           }}
         >
-          <div>
+          <div style={{ textAlign: "left" }}>
             <div
               style={{
-                fontSize: "32px",
-                fontWeight: "800",
+                fontFamily: "var(--font-display), sans-serif",
+                fontSize: "23px",
+                lineHeight: 1,
+                fontWeight: 900,
+                letterSpacing: "-0.045em",
               }}
             >
-              Civic
-              <span
-                style={{
-                  color: "#ff7a00",
-                }}
-              >
-                Quest
-              </span>
+              <span className="kf-get-started-logo-karma" style={{ color: "#102033" }}>Karma</span>
+              <span className="kf-get-started-logo-facie" style={{ color: "#FF7A00" }}>Facie</span>
             </div>
-
             <div
+              className="kf-get-started-header-subtitle"
               style={{
-                color: "#94a3b8",
-                marginTop: "5px",
+                color: "#718095",
+                marginTop: "7px",
+                fontSize: "11px",
+                fontWeight: 700,
+                letterSpacing: "0.01em",
               }}
             >
               {text.profileTitle}
@@ -558,36 +638,39 @@ export default function GetStartedPage() {
 
           <button
             type="button"
-            onClick={() => router.push("/dashboard")}
+            className="kf-get-started-back"
+            onClick={() => router.replace("/dashboard")}
             style={{
-              background: "transparent",
-              color: "white",
-              border: "1px solid #334155",
-              borderRadius: "10px",
-              padding: "12px 20px",
-              fontSize: "15px",
+              background: "rgba(255,255,255,0.68)",
+              color: "#102033",
+              border: "1px solid #d8d1c7",
+              borderRadius: "999px",
+              padding: "11px 18px",
+              fontSize: "12px",
+              fontWeight: 800,
               cursor: "pointer",
+              boxShadow: "0 8px 24px rgba(16,32,51,0.06)",
+              backdropFilter: "blur(14px)",
             }}
           >
             {text.dashboard}
           </button>
         </header>
 
-        {/* ---------------------------------- */}
-        {/* HERO */}
-        {/* ---------------------------------- */}
-
         <section
           style={{
-            marginBottom: "40px",
+            position: "relative",
+            marginBottom: "30px",
+            padding: "8px 4px 4px",
           }}
         >
           <div
+            className="kf-get-started-eyebrow"
             style={{
-              color: "#ff7a00",
-              fontSize: "14px",
-              fontWeight: "700",
-              letterSpacing: "1px",
+              color: "#FF7A00",
+              fontSize: "10px",
+              fontWeight: 900,
+              letterSpacing: "0.18em",
               marginBottom: "12px",
             }}
           >
@@ -595,616 +678,241 @@ export default function GetStartedPage() {
           </div>
 
           <h1
+            className="kf-get-started-title"
             style={{
-              fontSize: "44px",
-              lineHeight: "1.15",
-              fontWeight: "800",
-              margin: "0 0 15px",
+              fontSize: "clamp(38px, 5vw, 58px)",
+              lineHeight: "1.02",
+              fontFamily: "var(--font-display), sans-serif",
+              fontWeight: 800,
+              letterSpacing: "-0.055em",
+              margin: "0 0 14px",
+              color: "#102033",
             }}
           >
-            {isEditing
-              ? text.editTitle
-              : text.newTitle}
+            {isEditing ? text.editTitle : text.newTitle}
           </h1>
 
           <p
             style={{
-              color: "#94a3b8",
-              fontSize: "17px",
+              color: "#718095",
+              fontSize: "15px",
               lineHeight: "1.7",
               maxWidth: "700px",
               margin: 0,
             }}
           >
-            {isEditing
-              ? text.editDescription
-              : text.newDescription}
+            {isEditing ? text.editDescription : text.newDescription}
           </p>
         </section>
 
-        {/* ---------------------------------- */}
-        {/* FORM */}
-        {/* ---------------------------------- */}
-
         <form onSubmit={handleSave}>
           <section
+            className="kf-get-started-form-card"
             style={{
-              background: "#0f172a",
-              border: "1px solid #1e293b",
-              borderRadius: "24px",
-              padding: "30px",
+              position: "relative",
+              overflow: "hidden",
+              background: "linear-gradient(135deg, rgba(255,255,255,0.84), rgba(255,253,249,0.70))",
+              border: "1px solid rgba(255,255,255,0.92)",
+              borderRadius: "32px",
+              padding: "clamp(22px, 4vw, 38px)",
+              boxShadow:
+                "0 28px 80px rgba(16,32,51,0.09), 0 8px 24px rgba(16,32,51,0.035), inset 0 1px 0 rgba(255,255,255,0.98)",
+              backdropFilter: "blur(24px) saturate(135%)",
             }}
           >
-            {/* -------------------------------- */}
-            {/* NAME */}
-            {/* -------------------------------- */}
-
             <div
+              aria-hidden="true"
               style={{
-                marginBottom: "25px",
+                position: "absolute",
+                right: "-90px",
+                top: "-100px",
+                width: "250px",
+                height: "250px",
+                borderRadius: "50%",
+                background: "rgba(255,207,164,0.28)",
+                filter: "blur(32px)",
+                pointerEvents: "none",
               }}
-            >
-              <label
-                htmlFor="name"
-                style={{
-                  display: "block",
-                  marginBottom: "9px",
-                  fontSize: "15px",
-                  fontWeight: "700",
-                }}
-              >
-                {text.name}
-              </label>
-
-              <input
-                id="name"
-                type="text"
-                value={name}
-                onChange={(event) =>
-                  setName(event.target.value)
-                }
-                placeholder={text.namePlaceholder}
-                required
-                style={{
-                  width: "100%",
-                  boxSizing: "border-box",
-                  background: "#020617",
-                  color: "white",
-                  border: "1px solid #334155",
-                  borderRadius: "12px",
-                  padding: "14px 15px",
-                  fontSize: "15px",
-                  outline: "none",
-                }}
-              />
-            </div>
-
-            {/* -------------------------------- */}
-            {/* MOBILE NUMBER */}
-            {/* -------------------------------- */}
-
+            />
             <div
+              aria-hidden="true"
               style={{
-                marginBottom: "25px",
+                position: "absolute",
+                left: "-100px",
+                bottom: "-120px",
+                width: "270px",
+                height: "270px",
+                borderRadius: "50%",
+                background: "rgba(205,229,245,0.34)",
+                filter: "blur(35px)",
+                pointerEvents: "none",
               }}
-            >
-              <label
-                htmlFor="mobile"
-                style={{
-                  display: "block",
-                  marginBottom: "9px",
-                  fontSize: "15px",
-                  fontWeight: "700",
-                }}
-              >
-                {text.mobile}
-              </label>
+            />
 
-              <input
-                id="mobile"
-                type="tel"
-                value={mobile}
-                onChange={(event) =>
-                  setMobile(event.target.value)
-                }
-                placeholder={text.mobilePlaceholder}
-                inputMode="numeric"
-                maxLength={15}
-                style={{
-                  width: "100%",
-                  boxSizing: "border-box",
-                  background: "#020617",
-                  color: "white",
-                  border: "1px solid #334155",
-                  borderRadius: "12px",
-                  padding: "14px 15px",
-                  fontSize: "15px",
-                  outline: "none",
-                }}
-              />
+            <div style={{ position: "relative", zIndex: 1 }}>
+              {[
+                ["name", text.name, name, setName, text.namePlaceholder],
+              ].map(([id, label, value, setter, placeholder]) => (
+                <div key={id as string} style={{ marginBottom: "24px" }}>
+                  <label
+                    htmlFor={id as string}
+                    style={{
+                      display: "block",
+                      marginBottom: "8px",
+                      fontSize: "12px",
+                      fontWeight: 800,
+                      color: "#24364a",
+                    }}
+                  >
+                    {label as string}
+                  </label>
+                  <input
+                    id={id as string}
+                    type="text"
+                    value={value as string}
+                    onChange={(event) =>
+                      (setter as React.Dispatch<React.SetStateAction<string>>)(
+                        event.target.value
+                      )
+                    }
+                    placeholder={placeholder as string}
+                    required
+                    style={{
+                      width: "100%",
+                      boxSizing: "border-box",
+                      background: "rgba(255,255,255,0.76)",
+                      color: "#102033",
+                      border: "1px solid rgba(206,215,224,0.92)",
+                      borderRadius: "16px",
+                      padding: "15px 16px",
+                      fontSize: "14px",
+                      outline: "none",
+                      boxShadow: "0 5px 18px rgba(16,32,51,0.035)",
+                    }}
+                  />
+                </div>
+              ))}
+
+              <div style={{ marginBottom: "24px" }}>
+                <label htmlFor="mobile" style={{ display: "block", marginBottom: "8px", fontSize: "12px", fontWeight: 800, color: "#24364a" }}>
+                  {text.mobile}
+                </label>
+                <input id="mobile" type="tel" value={mobile} onChange={(event) => setMobile(event.target.value)} placeholder={text.mobilePlaceholder} inputMode="numeric" maxLength={15} style={inputStyle} />
+                <div style={helpStyle}>{text.mobileHelp}</div>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "18px", marginBottom: "24px" }}>
+                <Field id="state" label={text.state} value={state} setValue={setState} placeholder={text.statePlaceholder} required />
+                <Field id="city" label={text.city} value={city} setValue={setCity} placeholder={text.cityPlaceholder} required />
+              </div>
+
+              <div style={{ marginBottom: "24px" }}>
+                <label htmlFor="address" style={labelStyle}>{text.address}</label>
+                <textarea id="address" value={address} onChange={(event) => setAddress(event.target.value)} placeholder={text.addressPlaceholder} rows={4} style={{ ...inputStyle, resize: "vertical", fontFamily: "inherit" }} />
+                <div style={helpStyle}>{text.addressHelp}</div>
+              </div>
+
+              <div style={{ marginBottom: "24px" }}>
+                <label htmlFor="houseNo" style={labelStyle}>{text.houseNo}</label>
+                <input id="houseNo" type="text" value={houseNo} onChange={(event) => setHouseNo(event.target.value)} placeholder={text.houseNoPlaceholder} style={inputStyle} />
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "18px", marginBottom: "28px" }}>
+                <Field id="zone" label={text.zone} value={zone} setValue={setZone} placeholder={text.zonePlaceholder} />
+                <Field id="ward" label={text.ward} value={ward} setValue={setWard} placeholder={text.wardPlaceholder} />
+              </div>
+
+              <div style={{ marginBottom: "30px" }}>
+                <label htmlFor="ageGroup" style={labelStyle}>{text.ageGroup}</label>
+                <select id="ageGroup" value={ageGroup} onChange={(event) => setAgeGroup(event.target.value)} required style={inputStyle}>
+                  <option value="">{text.selectAgeGroup}</option>
+                  {["Under 18", "18-25", "26-35", "36-45", "46-60", "60+"].map((value) => (
+                    <option key={value} value={value}>{ageGroupLabels[language][value]}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <div style={{ marginBottom: "7px", fontSize: "12px", fontWeight: 800, color: "#24364a" }}>
+                  {text.interestsTitle}
+                </div>
+                <p style={{ color: "#718095", fontSize: "13px", lineHeight: "1.65", margin: "0 0 16px" }}>
+                  {text.interestsDescription}
+                </p>
+
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "10px" }}>
+                  {interestOptions.map((interest) => {
+                    const selected = interests.includes(interest);
+                    return (
+                      <button
+                        key={interest}
+                        type="button"
+                        className="kf-get-started-interest"
+                        data-selected={selected ? "true" : "false"}
+                        onClick={() => toggleInterest(interest)}
+                        style={{
+                          textAlign: "left",
+                          background: selected ? "#fff3e6" : "rgba(255,255,255,0.78)",
+                          color: selected ? "#d96200" : "#526274",
+                          border: selected ? "1px solid #ffb36f" : "1px solid #dfe3e8",
+                          borderRadius: "14px",
+                          padding: "12px 13px",
+                          fontSize: "12px",
+                          fontWeight: 700,
+                          cursor: "pointer",
+                          boxShadow: selected ? "0 8px 20px rgba(255,122,0,0.08)" : "none",
+                          transition: "all 160ms ease",
+                        }}
+                      >
+                        {selected ? "✓ " : ""}{interestLabels[language][interest]}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
 
               <div
+                className="kf-get-started-privacy"
                 style={{
-                  color: "#64748b",
+                  marginTop: "28px",
+                  padding: "14px 16px",
+                  borderRadius: "15px",
+                  background: "rgba(220,238,250,0.42)",
+                  border: "1px solid rgba(176,208,230,0.5)",
+                  color: "#647589",
                   fontSize: "11px",
-                  marginTop: "7px",
+                  lineHeight: "1.65",
                 }}
               >
-                {text.mobileHelp}
+                {text.privacyNote}
               </div>
-            </div>
 
-            {/* -------------------------------- */}
-            {/* STATE + CITY */}
-            {/* -------------------------------- */}
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns:
-                  "repeat(auto-fit, minmax(240px, 1fr))",
-                gap: "20px",
-                marginBottom: "25px",
-              }}
-            >
-              <div>
-                <label
-                  htmlFor="state"
-                  style={{
-                    display: "block",
-                    marginBottom: "9px",
-                    fontSize: "15px",
-                    fontWeight: "700",
-                  }}
-                >
-                  {text.state}
-                </label>
-
-                <input
-                  id="state"
-                  type="text"
-                  value={state}
-                  onChange={(event) =>
-                    setState(event.target.value)
-                  }
-                  placeholder={text.statePlaceholder}
-                  required
+              <div style={{ marginTop: "28px", paddingTop: "24px", borderTop: "1px solid #e7e3dc" }}>
+                <button
+                  type="submit"
+                  className="kf-get-started-submit"
+                  disabled={saving}
                   style={{
                     width: "100%",
-                    boxSizing: "border-box",
-                    background: "#020617",
+                    background: saving ? "#c47a42" : "#FF7A00",
                     color: "white",
-                    border: "1px solid #334155",
-                    borderRadius: "12px",
-                    padding: "14px 15px",
-                    fontSize: "15px",
-                    outline: "none",
-                  }}
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="city"
-                  style={{
-                    display: "block",
-                    marginBottom: "9px",
-                    fontSize: "15px",
-                    fontWeight: "700",
+                    border: "none",
+                    borderRadius: "16px",
+                    padding: "16px 20px",
+                    fontSize: "13px",
+                    fontWeight: 900,
+                    cursor: saving ? "not-allowed" : "pointer",
+                    boxShadow: "0 12px 26px rgba(255,122,0,0.18)",
                   }}
                 >
-                  {text.city}
-                </label>
-
-                <input
-                  id="city"
-                  type="text"
-                  value={city}
-                  onChange={(event) =>
-                    setCity(event.target.value)
-                  }
-                  placeholder={text.cityPlaceholder}
-                  required
-                  style={{
-                    width: "100%",
-                    boxSizing: "border-box",
-                    background: "#020617",
-                    color: "white",
-                    border: "1px solid #334155",
-                    borderRadius: "12px",
-                    padding: "14px 15px",
-                    fontSize: "15px",
-                    outline: "none",
-                  }}
-                />
+                  {saving ? text.saving : isEditing ? text.update : text.save}
+                </button>
               </div>
-            </div>
-
-            {/* -------------------------------- */}
-            {/* ADDRESS */}
-            {/* -------------------------------- */}
-
-            <div
-              style={{
-                marginBottom: "25px",
-              }}
-            >
-              <label
-                htmlFor="address"
-                style={{
-                  display: "block",
-                  marginBottom: "9px",
-                  fontSize: "15px",
-                  fontWeight: "700",
-                }}
-              >
-                {text.address}
-              </label>
-
-              <textarea
-                id="address"
-                value={address}
-                onChange={(event) =>
-                  setAddress(event.target.value)
-                }
-                placeholder={text.addressPlaceholder}
-                rows={4}
-                style={{
-                  width: "100%",
-                  boxSizing: "border-box",
-                  background: "#020617",
-                  color: "white",
-                  border: "1px solid #334155",
-                  borderRadius: "12px",
-                  padding: "14px 15px",
-                  fontSize: "15px",
-                  outline: "none",
-                  resize: "vertical",
-                  fontFamily: "inherit",
-                }}
-              />
-
-              <div
-                style={{
-                  color: "#64748b",
-                  fontSize: "11px",
-                  marginTop: "7px",
-                }}
-              >
-                {text.addressHelp}
-              </div>
-            </div>
-
-            {/* -------------------------------- */}
-            {/* HOUSE NUMBER */}
-            {/* -------------------------------- */}
-
-            <div
-              style={{
-                marginBottom: "25px",
-              }}
-            >
-              <label
-                htmlFor="houseNo"
-                style={{
-                  display: "block",
-                  marginBottom: "9px",
-                  fontSize: "15px",
-                  fontWeight: "700",
-                }}
-              >
-                {text.houseNo}
-              </label>
-
-              <input
-                id="houseNo"
-                type="text"
-                value={houseNo}
-                onChange={(event) =>
-                  setHouseNo(event.target.value)
-                }
-                placeholder={text.houseNoPlaceholder}
-                style={{
-                  width: "100%",
-                  boxSizing: "border-box",
-                  background: "#020617",
-                  color: "white",
-                  border: "1px solid #334155",
-                  borderRadius: "12px",
-                  padding: "14px 15px",
-                  fontSize: "15px",
-                  outline: "none",
-                }}
-              />
-            </div>
-
-            {/* -------------------------------- */}
-            {/* ZONE + WARD */}
-            {/* -------------------------------- */}
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns:
-                  "repeat(auto-fit, minmax(240px, 1fr))",
-                gap: "20px",
-                marginBottom: "30px",
-              }}
-            >
-              <div>
-                <label
-                  htmlFor="zone"
-                  style={{
-                    display: "block",
-                    marginBottom: "9px",
-                    fontSize: "15px",
-                    fontWeight: "700",
-                  }}
-                >
-                  {text.zone}
-                </label>
-
-                <input
-                  id="zone"
-                  type="text"
-                  value={zone}
-                  onChange={(event) =>
-                    setZone(event.target.value)
-                  }
-                  placeholder={text.zonePlaceholder}
-                  style={{
-                    width: "100%",
-                    boxSizing: "border-box",
-                    background: "#020617",
-                    color: "white",
-                    border: "1px solid #334155",
-                    borderRadius: "12px",
-                    padding: "14px 15px",
-                    fontSize: "15px",
-                    outline: "none",
-                  }}
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="ward"
-                  style={{
-                    display: "block",
-                    marginBottom: "9px",
-                    fontSize: "15px",
-                    fontWeight: "700",
-                  }}
-                >
-                  {text.ward}
-                </label>
-
-                <input
-                  id="ward"
-                  type="text"
-                  value={ward}
-                  onChange={(event) =>
-                    setWard(event.target.value)
-                  }
-                  placeholder={text.wardPlaceholder}
-                  style={{
-                    width: "100%",
-                    boxSizing: "border-box",
-                    background: "#020617",
-                    color: "white",
-                    border: "1px solid #334155",
-                    borderRadius: "12px",
-                    padding: "14px 15px",
-                    fontSize: "15px",
-                    outline: "none",
-                  }}
-                />
-              </div>
-            </div>
-
-            {/* -------------------------------- */}
-            {/* AGE GROUP */}
-            {/* -------------------------------- */}
-
-            <div
-              style={{
-                marginBottom: "30px",
-              }}
-            >
-              <label
-                htmlFor="ageGroup"
-                style={{
-                  display: "block",
-                  marginBottom: "9px",
-                  fontSize: "15px",
-                  fontWeight: "700",
-                }}
-              >
-                {text.ageGroup}
-              </label>
-
-              <select
-                id="ageGroup"
-                value={ageGroup}
-                onChange={(event) =>
-                  setAgeGroup(event.target.value)
-                }
-                required
-                style={{
-                  width: "100%",
-                  boxSizing: "border-box",
-                  background: "#020617",
-                  color: "white",
-                  border: "1px solid #334155",
-                  borderRadius: "12px",
-                  padding: "14px 15px",
-                  fontSize: "15px",
-                  outline: "none",
-                }}
-              >
-                <option value="">
-                  {text.selectAgeGroup}
-                </option>
-
-                {[
-                  "Under 18",
-                  "18-25",
-                  "26-35",
-                  "36-45",
-                  "46-60",
-                  "60+",
-                ].map((value) => (
-                  <option key={value} value={value}>
-                    {ageGroupLabels[language][value]}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* -------------------------------- */}
-            {/* INTERESTS */}
-            {/* -------------------------------- */}
-
-            <div>
-              <div
-                style={{
-                  marginBottom: "8px",
-                  fontSize: "15px",
-                  fontWeight: "700",
-                }}
-              >
-                {text.interestsTitle}
-              </div>
-
-              <p
-                style={{
-                  color: "#94a3b8",
-                  fontSize: "14px",
-                  lineHeight: "1.6",
-                  margin: "0 0 18px",
-                }}
-              >
-                {text.interestsDescription}
-              </p>
-
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns:
-                    "repeat(auto-fit, minmax(180px, 1fr))",
-                  gap: "10px",
-                }}
-              >
-                {interestOptions.map((interest) => {
-                  const selected =
-                    interests.includes(interest);
-
-                  return (
-                    <button
-                      key={interest}
-                      type="button"
-                      onClick={() =>
-                        toggleInterest(interest)
-                      }
-                      style={{
-                        textAlign: "left",
-                        background: selected
-                          ? "rgba(255,122,0,0.12)"
-                          : "#020617",
-                        color: selected
-                          ? "#ff7a00"
-                          : "#cbd5e1",
-                        border: selected
-                          ? "1px solid #ff7a00"
-                          : "1px solid #334155",
-                        borderRadius: "12px",
-                        padding: "13px 14px",
-                        fontSize: "14px",
-                        fontWeight: "600",
-                        cursor: "pointer",
-                      }}
-                    >
-                      {selected ? "✓ " : ""}
-                      {interestLabels[language][interest]}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* -------------------------------- */}
-            {/* PRIVACY NOTE */}
-            {/* -------------------------------- */}
-
-            <div
-              style={{
-                marginTop: "30px",
-                padding: "14px 16px",
-                borderRadius: "12px",
-                background:
-                  "rgba(96,165,250,0.05)",
-                border:
-                  "1px solid rgba(96,165,250,0.12)",
-                color: "#94a3b8",
-                fontSize: "12px",
-                lineHeight: "1.6",
-              }}
-            >
-              {text.privacyNote}
-            </div>
-
-            {/* -------------------------------- */}
-            {/* SAVE */}
-            {/* -------------------------------- */}
-
-            <div
-              style={{
-                marginTop: "35px",
-                paddingTop: "25px",
-                borderTop: "1px solid #1e293b",
-              }}
-            >
-              <button
-                type="submit"
-                disabled={saving}
-                style={{
-                  width: "100%",
-                  background: saving
-                    ? "#7c3f00"
-                    : "#ff7a00",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "12px",
-                  padding: "15px 20px",
-                  fontSize: "16px",
-                  fontWeight: "700",
-                  cursor: saving
-                    ? "not-allowed"
-                    : "pointer",
-                }}
-              >
-                {saving
-                  ? text.saving
-                  : isEditing
-                    ? text.update
-                    : text.save}
-              </button>
             </div>
           </section>
         </form>
 
-        {/* ---------------------------------- */}
-        {/* FOOTER */}
-        {/* ---------------------------------- */}
-
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: "40px",
-            color: "#64748b",
-            fontSize: "14px",
-          }}
-        >
+        <div className="kf-get-started-footer" style={{ textAlign: "center", marginTop: "34px", color: "#8a929a", fontSize: "11px", letterSpacing: "0.02em" }}>
           {text.footer}
         </div>
       </div>

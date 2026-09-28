@@ -114,18 +114,18 @@ function InfoCard({
   value: string;
 }) {
   return (
-    <div className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
+    <div className="kf-state-page-info-card group rounded-2xl border border-[#e8e0d4] bg-white p-5 shadow-[0_8px_24px_rgba(16,32,51,0.06)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(16,32,51,0.10)]">
       <div className="mb-3 flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-xl transition group-hover:bg-slate-900 group-hover:text-white">
+        <div className="kf-state-page-info-icon flex h-10 w-10 items-center justify-center rounded-xl text-xl transition group-hover:bg-[#ff7a00] group-hover:text-white">
           {icon}
         </div>
 
-        <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+        <p className="text-xs font-bold uppercase tracking-wider text-[#6f7b86]">
           {label}
         </p>
       </div>
 
-      <p className="text-base font-bold leading-6 text-slate-900">{value}</p>
+      <p className="text-base font-bold leading-6 text-[#102033]">{value}</p>
     </div>
   );
 }
@@ -142,16 +142,16 @@ function DetailSection({
   if (!text) return null;
 
   return (
-    <section className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:shadow-md sm:p-7">
+    <section className="kf-state-page-detail-section group rounded-3xl border border-[#e8e0d4] bg-white p-6 shadow-[0_8px_28px_rgba(16,32,51,0.06)] transition duration-200 hover:shadow-[0_14px_34px_rgba(16,32,51,0.10)] sm:p-7">
       <div className="mb-5 flex items-center gap-3">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-slate-100 text-xl transition group-hover:bg-slate-900 group-hover:text-white">
+        <div className="kf-state-page-detail-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-xl transition group-hover:bg-[#ff7a00] group-hover:text-white">
           {icon}
         </div>
 
-        <h2 className="text-xl font-bold text-slate-900">{title}</h2>
+        <h2 className="text-xl font-bold text-[#102033]">{title}</h2>
       </div>
 
-      <p className="text-[15px] leading-7 text-slate-600">{text}</p>
+      <p className="text-[15px] leading-7 text-[#536170]">{text}</p>
     </section>
   );
 }
@@ -168,27 +168,27 @@ function ListSection({
   if (!items || items.length === 0) return null;
 
   return (
-    <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
+    <section className="kf-state-page-list-section rounded-3xl border border-[#e8e0d4] bg-white p-6 shadow-[0_8px_28px_rgba(16,32,51,0.06)] sm:p-7">
       <div className="mb-5 flex items-center gap-3">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-slate-100 text-xl">
+        <div className="kf-state-page-list-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-xl">
           {icon}
         </div>
 
-        <h2 className="text-xl font-bold text-slate-900">{title}</h2>
+        <h2 className="text-xl font-bold text-[#102033]">{title}</h2>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2">
         {items.map((item, index) => (
           <div
             key={`${item}-${index}`}
-            className="rounded-2xl border border-slate-100 bg-slate-50 p-4 transition hover:border-slate-200 hover:bg-white"
+            className="kf-state-page-list-item rounded-2xl border p-4 transition"
           >
             <div className="flex items-start gap-3">
-              <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-900 text-xs font-bold text-white">
+              <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#102033] text-xs font-bold text-white">
                 {index + 1}
               </span>
 
-              <p className="text-sm leading-6 text-slate-700">{item}</p>
+              <p className="text-sm leading-6 text-[#536170]">{item}</p>
             </div>
           </div>
         ))}
@@ -212,21 +212,21 @@ export default function StateSpotlightPage() {
 
   if (!state) {
     return (
-      <main className="min-h-screen bg-slate-50 px-4 py-16">
-        <div className="mx-auto max-w-2xl rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm sm:p-12">
+      <main className="kf-state-page min-h-screen bg-[#f8f3ea] px-4 py-16">
+        <div className="mx-auto max-w-2xl rounded-3xl border border-[#e8e0d4] bg-white p-8 text-center shadow-[0_12px_35px_rgba(16,32,51,0.08)] sm:p-12">
           <div className="text-6xl">🗺️</div>
 
-          <h1 className="mt-5 text-2xl font-black text-slate-900">
+          <h1 className="mt-5 text-2xl font-black text-[#102033]">
             {t.stateNotFound}
           </h1>
 
-          <p className="mt-3 leading-7 text-slate-600">
+          <p className="mt-3 leading-7 text-[#536170]">
             {t.stateNotFoundText}
           </p>
 
           <button
             onClick={() => router.push("/know-india")}
-            className="mt-7 rounded-xl bg-slate-900 px-6 py-3 text-sm font-bold text-white transition hover:bg-slate-800"
+            className="mt-7 rounded-xl bg-[#102033] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#1b334d]"
           >
             {t.back}
           </button>
@@ -256,20 +256,20 @@ export default function StateSpotlightPage() {
     Boolean(state.funFacts?.length);
 
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="kf-state-page min-h-screen bg-[#f8f3ea] font-[Quicksand,sans-serif]">
       {/* =====================================================
           HERO
       ===================================================== */}
-      <section className="relative overflow-hidden bg-slate-950 text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.25),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.16),transparent_32%)]" />
+      <section className="kf-state-page-hero relative overflow-hidden bg-[#f8f3ea] text-[#102033]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,122,0,0.12),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(104,179,207,0.14),transparent_34%)]" />
 
-        <div className="absolute -right-24 top-20 h-72 w-72 rounded-full border border-white/5 bg-white/[0.02]" />
-        <div className="absolute -left-24 bottom-0 h-64 w-64 rounded-full border border-white/5 bg-white/[0.02]" />
+        <div className="kf-state-page-hero-orb kf-state-page-hero-orb-blue absolute -right-24 top-20 h-72 w-72 rounded-full border" />
+        <div className="kf-state-page-hero-orb kf-state-page-hero-orb-green absolute -left-24 bottom-0 h-64 w-64 rounded-full border" />
 
         <div className="relative mx-auto max-w-7xl px-4 py-7 sm:px-6 sm:py-9 lg:px-8 lg:py-10">
           <button
             onClick={() => router.push("/know-india")}
-            className="mb-10 inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white/90 backdrop-blur transition hover:bg-white/10"
+            className="mb-10 inline-flex items-center gap-2 rounded-xl border border-[#ded5c8] bg-white/80 px-4 py-2.5 text-sm font-semibold text-[#102033] shadow-sm backdrop-blur transition hover:bg-white"
           >
             <span>←</span>
             <span>{t.back}</span>
@@ -277,49 +277,49 @@ export default function StateSpotlightPage() {
 
           <div className="grid items-end gap-10 lg:grid-cols-[1.25fr_0.75fr]">
             <div>
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-white/80 backdrop-blur">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#f0d5b7] bg-white/80 px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-[#a85600] shadow-sm backdrop-blur">
                 <span>{state.type === "State" ? "🇮🇳" : "🏛️"}</span>
                 {typeLabel}
               </div>
 
-              <h1 className="max-w-5xl text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl">
+              <h1 className="max-w-5xl font-[Baloo_2,sans-serif] text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl">
                 {displayName}
               </h1>
 
-              <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-slate-300">
+              <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-[#6f7b86]">
                 <span>{state.region}</span>
-                <span className="text-slate-600">•</span>
+                <span className="text-[#c5b9aa]">•</span>
                 <span>{displayCapital}</span>
               </div>
 
               {state.shortDescription && (
-                <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-300">
+                <p className="mt-7 max-w-3xl text-lg leading-8 text-[#536170]">
                   {state.shortDescription}
                 </p>
               )}
             </div>
 
             {/* Capital card */}
-            <div className="lg:justify-self-end">
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.08] p-6 shadow-2xl backdrop-blur-md lg:min-w-[310px]">
-                <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-white/[0.05]" />
+            <div className="kf-state-page-capital-wrap lg:justify-self-end">
+              <div className="kf-state-page-capital-card relative overflow-hidden kf-state-page-capital-card rounded-3xl border border-[#e8e0d4] bg-white/90 p-6 shadow-[0_16px_40px_rgba(16,32,51,0.10)] backdrop-blur-md lg:min-w-[310px]">
+                <div className="kf-state-page-capital-orb absolute -right-10 -top-10 h-28 w-28 rounded-full" />
 
                 <div className="relative">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-2xl">
+                  <div className="kf-state-page-capital-icon flex h-12 w-12 items-center justify-center rounded-2xl text-2xl">
                     🏛️
                   </div>
 
-                  <p className="mt-5 text-xs font-bold uppercase tracking-[0.18em] text-slate-400">
+                  <p className="mt-5 text-xs font-bold uppercase tracking-[0.18em] text-[#7b8792]">
                     {t.capital}
                   </p>
 
-                  <p className="mt-1 text-3xl font-black text-white">
+                  <p className="mt-1 font-[Baloo_2,sans-serif] text-3xl font-black text-[#102033]">
                     {displayCapital}
                   </p>
 
-                  <div className="mt-5 h-px bg-white/10" />
+                  <div className="mt-5 h-px bg-[#e8e0d4]" />
 
-                  <p className="mt-4 text-sm text-slate-400">
+                  <p className="mt-4 text-sm text-[#6f7b86]">
                     {typeLabel} • {state.region}
                   </p>
                 </div>
@@ -332,9 +332,9 @@ export default function StateSpotlightPage() {
       {/* =====================================================
           MAIN CONTENT
       ===================================================== */}
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+      <section className="kf-state-page-content mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         {/* Quick facts */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="kf-state-page-facts grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <InfoCard
             icon="🏛️"
             label={t.capital}
@@ -361,18 +361,18 @@ export default function StateSpotlightPage() {
         </div>
 
         {/* Languages */}
-        <div className="mt-5 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
+        <div className="kf-state-page-language-card mt-5 rounded-3xl border border-[#e8e0d4] bg-white p-6 shadow-[0_8px_28px_rgba(16,32,51,0.06)] sm:p-7">
           <div className="flex items-start gap-4">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-slate-100 text-xl">
+            <div className="kf-state-page-list-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-xl">
               🗣️
             </div>
 
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+              <p className="text-xs font-bold uppercase tracking-wider text-[#6f7b86]">
                 {t.languages}
               </p>
 
-              <p className="mt-1.5 font-semibold leading-7 text-slate-900">
+              <p className="mt-1.5 font-semibold leading-7 text-[#102033]">
                 {state.majorLanguages}
               </p>
             </div>
@@ -384,11 +384,11 @@ export default function StateSpotlightPage() {
           <>
             <div className="mt-10">
               <div className="mb-5">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#8a7d6e]">
                   {displayName}
                 </p>
 
-                <h2 className="mt-1 text-3xl font-black tracking-tight text-slate-900">
+                <h2 className="mt-1 font-[Baloo_2,sans-serif] text-3xl font-black tracking-tight text-[#102033]">
                   Discover {language === "en" ? "the place" : displayName}
                 </h2>
               </div>
@@ -455,40 +455,40 @@ export default function StateSpotlightPage() {
         )}
 
         {/* KarmaFacie */}
-        <section className="relative mt-10 overflow-hidden rounded-3xl bg-slate-900 p-8 text-white shadow-sm sm:p-10">
-          <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-white/[0.04]" />
-          <div className="absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-white/[0.03]" />
+        <section className="kf-state-page-karmacie relative mt-10 overflow-hidden rounded-3xl border border-[#e7d5c0] bg-[#fff0df] p-8 text-[#102033] shadow-[0_10px_30px_rgba(16,32,51,0.07)] sm:p-10">
+          <div className="kf-state-page-karma-orb kf-state-page-karma-orb-warm absolute -right-20 -top-20 h-56 w-56 rounded-full" />
+          <div className="kf-state-page-karma-orb kf-state-page-karma-orb-cool absolute -bottom-24 -left-16 h-56 w-56 rounded-full" />
 
           <div className="relative grid gap-8 lg:grid-cols-[0.65fr_1.35fr] lg:items-center">
             <div>
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-3xl">
+              <div className="kf-state-page-karma-icon flex h-14 w-14 items-center justify-center rounded-2xl text-3xl shadow-sm">
                 🧭
               </div>
 
-              <h2 className="mt-5 text-3xl font-black tracking-tight">
+              <h2 className="mt-5 font-[Baloo_2,sans-serif] text-3xl font-black tracking-tight text-[#102033]">
                 {t.civicQuest}
               </h2>
             </div>
 
-            <p className="max-w-3xl text-base leading-8 text-slate-300">
+            <p className="max-w-3xl text-base leading-8 text-[#536170]">
               {t.civicQuestText}
             </p>
           </div>
         </section>
 
         {/* Sources */}
-        <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
+        <section className="kf-state-page-sources mt-8 rounded-3xl border border-[#e8e0d4] bg-white p-6 shadow-[0_8px_28px_rgba(16,32,51,0.06)] sm:p-7">
           <div className="mb-5 flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-100 text-xl">
+            <div className="kf-state-page-source-icon flex h-11 w-11 items-center justify-center rounded-2xl text-xl">
               📚
             </div>
 
-            <h2 className="text-lg font-bold text-slate-900">
+            <h2 className="text-lg font-bold text-[#102033]">
               {t.source}
             </h2>
           </div>
 
-          <div className="space-y-2 text-sm leading-6 text-slate-600">
+          <div className="space-y-2 text-sm leading-6 text-[#536170]">
             <p>
               • {t.nationalPortal}
             </p>
@@ -498,7 +498,7 @@ export default function StateSpotlightPage() {
             </p>
 
             {INDIA_DATA_SOURCE?.currentStructure && (
-              <p className="text-slate-500">
+              <p className="text-[#7b8792]">
                 • {INDIA_DATA_SOURCE.currentStructure}
               </p>
             )}
@@ -509,14 +509,14 @@ export default function StateSpotlightPage() {
         <div className="mt-8 flex flex-col gap-3 pb-8 sm:flex-row sm:items-center sm:justify-between">
           <button
             onClick={() => router.push("/know-india")}
-            className="rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50"
+            className="rounded-xl border border-[#d8cec0] bg-white px-5 py-3 text-sm font-bold text-[#102033] transition hover:bg-[#fbf8f3]"
           >
             ← {t.back}
           </button>
 
           <button
             onClick={() => router.push("/explore")}
-            className="rounded-xl bg-slate-900 px-5 py-3 text-sm font-bold text-white transition hover:bg-slate-800"
+            className="rounded-xl bg-[#ff7a00] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#e96d00]"
           >
             {t.exploreLearning} →
           </button>

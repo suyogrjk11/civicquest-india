@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# Local KarmaFacie backup files
+**/*.before-karmafacie
+**/*.before-homepage-redesign.tsx
+
+# Local migration/helper PowerShell scripts
+*.ps1

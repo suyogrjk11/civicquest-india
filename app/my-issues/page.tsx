@@ -53,6 +53,7 @@ const categoryLabels: Record<
 const content = {
   en: {
     back: "← Back to Dashboard",
+    languageLabel: "Language",
 
     label: "KARMAFACIE",
     title: "My Civic Issues",
@@ -109,6 +110,7 @@ const content = {
 
   hi: {
     back: "← डैशबोर्ड पर वापस जाएँ",
+    languageLabel: "भाषा",
 
     label: "KARMAFACIE",
     title: "मेरी नागरिक समस्याएँ",
@@ -165,6 +167,7 @@ const content = {
 
   mr: {
     back: "← डॅशबोर्डवर परत जा",
+    languageLabel: "भाषा",
 
     label: "KARMAFACIE",
     title: "माझ्या नागरी समस्या",
@@ -265,7 +268,7 @@ type IssueWithPhoto = CivicIssue & {
 export default function MyIssuesPage() {
   const router = useRouter();
   const supabase = createClient();
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   const text = content[language];
 
@@ -574,173 +577,674 @@ export default function MyIssuesPage() {
     );
   }
 
+  const totalIssues = issues.length;
+  const resolvedIssues = issues.filter(
+    (issue) => issue.status === "resolved"
+  ).length;
+  const activeIssues = issues.filter(
+    (issue) =>
+      issue.status === "under_review" ||
+      issue.status === "in_progress"
+  ).length;
+
+  const ui = {
+    en: {
+      eyebrow: "CIVIC MEMORY",
+      intro: "Every report you make stays connected to your civic journey.",
+      total: "Total reports",
+      active: "In progress",
+      resolvedCount: "Resolved",
+      section: "Your reported issues",
+      sectionDescription:
+        "A clear record of what you reported, where it was observed and the authority route attached to it.",
+      details: "View Full Details →",
+      noRouteTitle: "Authority route not attached",
+      reportedRecord: "Report record",
+      locationLabel: "Observed at",
+      evidence: "Evidence",
+      verified: "Directory verified",
+      id: "Issue ID",
+    },
+    hi: {
+      eyebrow: "नागरिक रिकॉर्ड",
+      intro: "आपकी हर रिपोर्ट आपकी नागरिक यात्रा से जुड़ी रहती है।",
+      total: "कुल रिपोर्ट",
+      active: "प्रगति में",
+      resolvedCount: "समाधान",
+      section: "आपकी रिपोर्ट की गई समस्याएँ",
+      sectionDescription:
+        "आपकी रिपोर्ट, स्थान और उससे जुड़े प्राधिकरण मार्ग का स्पष्ट रिकॉर्ड।",
+      details: "पूरी जानकारी देखें →",
+      noRouteTitle: "प्राधिकरण मार्ग जुड़ा नहीं है",
+      reportedRecord: "रिपोर्ट रिकॉर्ड",
+      locationLabel: "स्थान",
+      evidence: "प्रमाण",
+      verified: "डायरेक्टरी सत्यापित",
+      id: "समस्या ID",
+    },
+    mr: {
+      eyebrow: "नागरी नोंद",
+      intro: "तुम्ही केलेली प्रत्येक नोंद तुमच्या नागरी प्रवासाशी जोडलेली राहते.",
+      total: "एकूण नोंदी",
+      active: "प्रगतीमध्ये",
+      resolvedCount: "निराकरण",
+      section: "तुम्ही नोंदवलेल्या समस्या",
+      sectionDescription:
+        "तुमच्या नोंदी, स्थान आणि संबंधित प्राधिकरण मार्गाचा स्पष्ट रेकॉर्ड.",
+      details: "संपूर्ण माहिती पाहा →",
+      noRouteTitle: "प्राधिकरण मार्ग जोडलेला नाही",
+      reportedRecord: "नोंद रेकॉर्ड",
+      locationLabel: "स्थान",
+      evidence: "पुरावा",
+      verified: "डायरेक्टरी पडताळली",
+      id: "समस्या ID",
+    },
+  }[language];
+
+  function statusTone(status: string) {
+    switch (status) {
+      case "resolved":
+        return {
+          background: "#eef6e7",
+          border: "#d4e4c5",
+          color: "#607c43",
+        };
+      case "in_progress":
+        return {
+          background: "#fff3e4",
+          border: "#efd9bc",
+          color: "#9a7047",
+        };
+      case "under_review":
+        return {
+          background: "#edf5fb",
+          border: "#d6e5ef",
+          color: "#557892",
+        };
+      case "rejected":
+        return {
+          background: "#fff0ed",
+          border: "#ecd0c8",
+          color: "#9c5f50",
+        };
+      default:
+        return {
+          background: "#f2f0eb",
+          border: "#e2ddd5",
+          color: "#6f777d",
+        };
+    }
+  }
+
   return (
     <main
+      className="kf-my-issues-page"
       style={{
         minHeight: "100vh",
         background:
-          "radial-gradient(circle at top, #18222e 0%, #0b0f14 45%, #070a0d 100%)",
-        color: "white",
-        padding:
-          "40px 20px 80px",
+          "radial-gradient(circle at 92% 2%, rgba(223,234,243,.76) 0%, rgba(223,234,243,0) 24%), radial-gradient(circle at 4% 34%, rgba(233,242,248,.74) 0%, rgba(233,242,248,0) 22%), radial-gradient(circle at 88% 92%, rgba(255,229,205,.62) 0%, rgba(255,229,205,0) 24%), #f8f3ea",
+        color: "#102033",
+        padding: "20px 16px 72px",
       }}
     >
       <div
         style={{
-          maxWidth: "1000px",
+          maxWidth: "1440px",
           margin: "0 auto",
+          padding: "0 8px",
         }}
       >
-        {/* BACK TO DASHBOARD */}
-
-        <button
-          type="button"
-          onClick={() =>
-            router.push("/dashboard")
-          }
+        {/* TOP BAR */}
+        <header
+          className="kf-my-issues-topbar"
           style={{
-            background: "transparent",
-            border: "none",
-            color: "#9ca3af",
-            cursor: "pointer",
-            fontSize: "15px",
-            marginBottom: "24px",
+            position: "sticky",
+            top: "14px",
+            zIndex: 20,
+            display: "grid",
+            gridTemplateColumns: "1fr auto 1fr",
+            alignItems: "center",
+            gap: "18px",
+            minHeight: "84px",
+            padding: "10px 14px",
+            marginBottom: "28px",
+            borderRadius: "32px",
+            background: "rgba(255,255,255,.94)",
+            border: "1px solid rgba(16,27,43,.10)",
+            boxShadow: "0 14px 36px rgba(16,27,43,.07)",
+            backdropFilter: "blur(16px)",
           }}
         >
-          {text.back}
-        </button>
-
-        {/* HEADER */}
-
-        <div
-          style={{
-            marginBottom: "30px",
-          }}
-        >
+          {/* LEFT — DASHBOARD */}
           <div
             style={{
-              fontSize: "14px",
-              color: "#60a5fa",
-              fontWeight: 700,
-              marginBottom: "8px",
-              letterSpacing:
-                "0.5px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+              minWidth: 0,
             }}
           >
-            {text.label}
+            <button
+              type="button"
+              onClick={() => router.push("/dashboard")}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "7px",
+                minHeight: "48px",
+                padding: "0 18px",
+                border: "1px solid #dfe3e7",
+                borderRadius: "999px",
+                background: "#fff",
+                color: "#52616f",
+                cursor: "pointer",
+                fontSize: "14px",
+                fontWeight: 800,
+                boxShadow: "0 5px 18px rgba(16,32,51,.035)",
+              }}
+            >
+              <span
+                style={{
+                  color: "#ff7a00",
+                  fontSize: "20px",
+                  lineHeight: 1,
+                  fontWeight: 500,
+                }}
+              >
+                ←
+              </span>
+              {text.back.replace("← ", "")}
+            </button>
           </div>
 
-          <h1
-            style={{
-              fontSize: "34px",
-              margin: "0 0 10px",
-              fontWeight: 800,
-            }}
-          >
-            {text.title}
-          </h1>
-
-          <p
-            style={{
-              color: "#9ca3af",
-              lineHeight: 1.6,
-              margin: 0,
-            }}
-          >
-            {text.description}
-          </p>
-        </div>
-
-        {/* ERROR */}
-
-        {error && (
+          {/* CENTER — KARMAFACIE / MY CIVIC ISSUES */}
           <div
             style={{
-              background:
-                "rgba(239,68,68,0.12)",
-              border:
-                "1px solid rgba(239,68,68,0.3)",
-              color: "#fca5a5",
-              padding: "14px 16px",
-              borderRadius: "12px",
-              marginBottom: "20px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "12px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            <div
+              style={{
+                width: "56px",
+                height: "56px",
+                display: "grid",
+                placeItems: "center",
+                borderRadius: "17px",
+                background: "#ff7a00",
+                color: "#102033",
+                fontFamily: "var(--font-display)",
+                fontSize: "31px",
+                lineHeight: 1,
+                fontWeight: 800,
+                boxShadow: "0 8px 18px rgba(255,122,0,.18)",
+              }}
+            >
+              K
+            </div>
+
+            <div>
+              <div
+                style={{
+                  color: "#102033",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "29px",
+                  lineHeight: ".95",
+                  letterSpacing: "-.045em",
+                  fontWeight: 800,
+                }}
+              >
+                Karma<span style={{ color: "#ff7a00" }}>Facie</span>
+              </div>
+
+              <div
+                style={{
+                  marginTop: "5px",
+                  color: "#102033",
+                  fontSize: "9px",
+                  lineHeight: 1,
+                  letterSpacing: ".24em",
+                  fontWeight: 900,
+                }}
+              >
+                MY CIVIC ISSUES
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT — LANGUAGE */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              gap: "12px",
+              minWidth: 0,
+            }}
+          >
+            <span
+              style={{
+                color: "#52616f",
+                fontSize: "14px",
+                fontWeight: 800,
+              }}
+            >
+              {text.languageLabel}
+            </span>
+
+            <select
+              value={language}
+              onChange={(e) =>
+                setLanguage(e.target.value as Language)
+              }
+              aria-label={text.languageLabel}
+              style={{
+                appearance: "none",
+                minWidth: "132px",
+                padding: "12px 16px",
+                border: "1px solid #d7d1c9",
+                borderRadius: "999px",
+                background: "#fff",
+                color: "#304154",
+                fontSize: "13px",
+                fontWeight: 800,
+                outline: "none",
+                cursor: "pointer",
+              }}
+            >
+              <option value="en">English</option>
+              <option value="hi">हिन्दी</option>
+              <option value="mr">मराठी</option>
+            </select>
+          </div>
+        </header>
+        {/* HERO */}
+        <section
+          className="kf-my-issues-intro kf-my-issues-memory-hero"
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            height: "330px",
+            minHeight: "330px",
+            maxHeight: "330px",
+            boxSizing: "border-box",
+            display: "block",
+            borderRadius: "30px",
+            padding: "24px 28px",
+            marginBottom: "14px",
+            border: "1px solid rgba(16,27,43,.10)",
+            background:
+              "radial-gradient(circle at 94% 0%, #e7f1f7 0%, rgba(231,241,247,0) 33%), radial-gradient(circle at 3% 100%, #ffecd9 0%, rgba(255,236,217,0) 33%), rgba(255,253,249,.96)",
+            boxShadow: "0 16px 44px rgba(16,27,43,.06)",
+          }}
+        >
+          <div
+            className="kf-my-issues-memory-orb"
+            style={{
+              position: "absolute",
+              width: "158px",
+              height: "158px",
+              right: "-52px",
+              top: "-58px",
+              borderRadius: "50%",
+              background: "rgba(211,229,240,.48)",
+            }}
+          />
+
+          <div
+            className="kf-my-issues-memory-content kf-my-issues-memory-layout"
+            style={{
+              position: "relative",
+              zIndex: 2,
+              width: "100%",
+              height: "auto",
+              display: "block",
+            }}
+          >
+            <div style={{ maxWidth: "710px" }}>
+              <div
+                className="kf-my-issues-memory-badge"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "8px 12px",
+                  borderRadius: "999px",
+                  background: "#fff3e7",
+                  border: "1px solid rgba(255,122,0,.14)",
+                  color: "#8c725a",
+                  fontSize: "10px",
+                  fontWeight: 900,
+                  letterSpacing: ".18em",
+                  textTransform: "uppercase",
+                }}
+              >
+                <span
+                  style={{
+                    width: "7px",
+                    height: "7px",
+                    borderRadius: "50%",
+                    background: "#ff7a00",
+                  }}
+                />
+                {ui.eyebrow}
+              </div>
+
+              <h1
+                style={{
+                  margin: "16px 0 9px",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(34px, 5vw, 52px)",
+                  lineHeight: "1",
+                  letterSpacing: "-0.05em",
+                  fontWeight: 800,
+                  color: "#102033",
+                }}
+              >
+                {text.title}
+              </h1>
+
+              <p
+                style={{
+                  margin: 0,
+                  maxWidth: "650px",
+                  color: "#6c7883",
+                  fontSize: "14px",
+                  lineHeight: "1.7",
+                }}
+              >
+                {text.description}
+              </p>
+
+              <p
+                style={{
+                  margin: "13px 0 0",
+                  color: "#8b938e",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                }}
+              >
+                {ui.intro}
+              </p>
+            </div>
+
+            <button
+              type="button"
+              className="kf-my-issues-primary-action"
+              onClick={() => router.push("/report-issue")}
+              style={{
+                position: "absolute",
+                right: "28px",
+                bottom: "28px",
+                zIndex: 3,
+                border: 0,
+                borderRadius: "999px",
+                background: "#ff7a00",
+                color: "#fff",
+                padding: "13px 17px",
+                fontSize: "11px",
+                fontWeight: 900,
+                cursor: "pointer",
+                boxShadow: "0 12px 24px rgba(255,122,0,.18)",
+              }}
+            >
+              + {text.reportIssue}
+            </button>
+          </div>
+        </section>
+
+        {/* ERROR */}
+        {error && (
+          <div
+            className="kf-my-issues-error"
+            role="alert"
+            style={{
+              marginBottom: "14px",
+              padding: "13px 15px",
+              borderRadius: "18px",
+              background: "#fff0ed",
+              border: "1px solid #ecd0c8",
+              color: "#9c5f50",
+              fontSize: "12px",
+              lineHeight: 1.5,
+              fontWeight: 700,
             }}
           >
             {error}
           </div>
         )}
 
-        {/* LOADING */}
-
-        {loading ? (
+        {/* STATS */}
+        <section
+          className="kf-my-issues-stats"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+            gap: "10px",
+            marginBottom: "24px",
+          }}
+        >
           <div
+            className="kf-my-issues-stat kf-my-issues-stat-1"
             style={{
-              background:
-                "rgba(17,24,39,0.88)",
-              border:
-                "1px solid rgba(255,255,255,0.08)",
-              borderRadius: "20px",
-              padding:
-                "50px 30px",
-              textAlign: "center",
+              padding: "17px",
+              borderRadius: "23px",
+              background: "rgba(255,255,255,.88)",
+              border: "1px solid rgba(16,27,43,.09)",
+              boxShadow: "0 10px 26px rgba(16,27,43,.04)",
             }}
           >
             <div
               style={{
-                fontSize: "36px",
-                marginBottom: "15px",
+                color: "#939a9f",
+                fontSize: "9px",
+                fontWeight: 900,
+                letterSpacing: ".15em",
+                textTransform: "uppercase",
+              }}
+            >
+              {ui.total}
+            </div>
+            <div
+              style={{
+                marginTop: "4px",
+                color: "#243346",
+                fontFamily: "var(--font-display)",
+                fontSize: "28px",
+                lineHeight: 1,
+                fontWeight: 800,
+              }}
+            >
+              {totalIssues}
+            </div>
+          </div>
+
+          <div
+            className="kf-my-issues-stat kf-my-issues-stat-2"
+            style={{
+              padding: "17px",
+              borderRadius: "23px",
+              background: "#edf5fb",
+              border: "1px solid #d9e7f0",
+              boxShadow: "0 10px 26px rgba(16,27,43,.035)",
+            }}
+          >
+            <div
+              style={{
+                color: "#7890a1",
+                fontSize: "9px",
+                fontWeight: 900,
+                letterSpacing: ".15em",
+                textTransform: "uppercase",
+              }}
+            >
+              {ui.active}
+            </div>
+            <div
+              style={{
+                marginTop: "4px",
+                color: "#35536a",
+                fontFamily: "var(--font-display)",
+                fontSize: "28px",
+                lineHeight: 1,
+                fontWeight: 800,
+              }}
+            >
+              {activeIssues}
+            </div>
+          </div>
+
+          <div
+            className="kf-my-issues-stat kf-my-issues-stat-3"
+            style={{
+              padding: "17px",
+              borderRadius: "23px",
+              background: "#eef6e8",
+              border: "1px solid #dce9cf",
+              boxShadow: "0 10px 26px rgba(16,27,43,.035)",
+            }}
+          >
+            <div
+              style={{
+                color: "#80936a",
+                fontSize: "9px",
+                fontWeight: 900,
+                letterSpacing: ".15em",
+                textTransform: "uppercase",
+              }}
+            >
+              {ui.resolvedCount}
+            </div>
+            <div
+              style={{
+                marginTop: "4px",
+                color: "#526c3a",
+                fontFamily: "var(--font-display)",
+                fontSize: "28px",
+                lineHeight: 1,
+                fontWeight: 800,
+              }}
+            >
+              {resolvedIssues}
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION HEADER */}
+        <section className="kf-my-issues-section-header" style={{ marginBottom: "12px" }}>
+          <h2
+            style={{
+              margin: 0,
+              color: "#233347",
+              fontFamily: "var(--font-display)",
+              fontSize: "30px",
+              lineHeight: 1.05,
+              fontWeight: 800,
+              letterSpacing: "-0.035em",
+            }}
+          >
+            {ui.section}
+          </h2>
+          <p
+            style={{
+              margin: "7px 0 0",
+              color: "#7b858d",
+              fontSize: "12px",
+              lineHeight: 1.6,
+            }}
+          >
+            {ui.sectionDescription}
+          </p>
+        </section>
+
+        {/* CONTENT */}
+        {loading ? (
+          <div
+            className="kf-my-issues-loading-card"
+            style={{
+              padding: "46px 24px",
+              borderRadius: "28px",
+              background: "rgba(255,255,255,.88)",
+              border: "1px solid rgba(16,27,43,.09)",
+              textAlign: "center",
+              boxShadow: "0 12px 32px rgba(16,27,43,.045)",
+            }}
+          >
+            <div
+              style={{
+                width: "52px",
+                height: "52px",
+                display: "grid",
+                placeItems: "center",
+                margin: "0 auto 13px",
+                borderRadius: "17px",
+                background: "#edf5fb",
+                fontSize: "23px",
               }}
             >
               🏙️
             </div>
-
             <div
               style={{
-                color: "#9ca3af",
-                fontSize: "16px",
+                color: "#6f7b85",
+                fontSize: "13px",
+                fontWeight: 700,
               }}
             >
               {text.loadingReports}
             </div>
           </div>
         ) : issues.length === 0 ? (
-          /* NO ISSUES */
-
           <div
+            className="kf-my-issues-empty-card"
             style={{
+              padding: "52px 28px",
+              borderRadius: "30px",
               background:
-                "rgba(17,24,39,0.88)",
-              border:
-                "1px solid rgba(255,255,255,0.08)",
-              borderRadius: "20px",
-              padding:
-                "50px 30px",
+                "radial-gradient(circle at 50% 0%, #e9f2f7 0%, rgba(233,242,247,0) 37%), rgba(255,255,255,.90)",
+              border: "1px solid rgba(16,27,43,.09)",
               textAlign: "center",
+              boxShadow: "0 14px 36px rgba(16,27,43,.05)",
             }}
           >
             <div
               style={{
-                fontSize: "48px",
-                marginBottom: "15px",
+                width: "70px",
+                height: "70px",
+                display: "grid",
+                placeItems: "center",
+                margin: "0 auto 17px",
+                borderRadius: "24px",
+                background: "#edf5fb",
+                fontSize: "31px",
               }}
             >
               🏙️
             </div>
 
-            <h2
+            <h3
               style={{
-                margin: "0 0 10px",
-                fontSize: "24px",
+                margin: "0 0 8px",
+                color: "#2b3a4c",
+                fontFamily: "var(--font-display)",
+                fontSize: "28px",
+                fontWeight: 800,
               }}
             >
               {text.noIssuesTitle}
-            </h2>
+            </h3>
 
             <p
               style={{
-                color: "#9ca3af",
-                marginBottom:
-                  "25px",
+                maxWidth: "520px",
+                margin: "0 auto 22px",
+                color: "#77828c",
+                fontSize: "12px",
+                lineHeight: 1.7,
               }}
             >
               {text.noIssuesDescription}
@@ -748,623 +1252,591 @@ export default function MyIssuesPage() {
 
             <button
               type="button"
-              onClick={() =>
-                router.push(
-                  "/report-issue"
-                )
-              }
+              className="kf-my-issues-primary-action"
+              onClick={() => router.push("/report-issue")}
               style={{
-                padding:
-                  "13px 20px",
-                borderRadius:
-                  "12px",
-                border: "none",
-                background:
-                  "#2563eb",
-                color: "white",
+                border: 0,
+                borderRadius: "999px",
+                background: "#ff7a00",
+                color: "#fff",
+                padding: "13px 19px",
+                fontSize: "11px",
+                fontWeight: 900,
                 cursor: "pointer",
-                fontWeight: 700,
-                fontSize: "15px",
+                boxShadow: "0 12px 24px rgba(255,122,0,.18)",
               }}
             >
               {text.reportIssue}
             </button>
           </div>
         ) : (
-          /* ISSUE LIST */
-
           <div
             style={{
               display: "grid",
-              gap: "20px",
+              gap: "14px",
             }}
           >
-            {issues.map((issue) => (
-              <div
-                key={issue.id}
-                style={{
-                  background:
-                    "rgba(17,24,39,0.88)",
-                  border:
-                    "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: "20px",
-                  overflow: "hidden",
-                  boxShadow:
-                    "0 15px 40px rgba(0,0,0,0.25)",
-                }}
-              >
-                <div
+            {issues.map((issue) => {
+              const tone = statusTone(issue.status);
+
+              return (
+                <article
+                  key={issue.id}
+                  className="kf-my-issues-card"
                   style={{
-                    display: "flex",
-                    flexWrap:
-                      "wrap",
+                    overflow: "hidden",
+                    borderRadius: "30px",
+                    background: "rgba(255,255,255,.91)",
+                    border: "1px solid rgba(16,27,43,.10)",
+                    boxShadow: "0 13px 36px rgba(16,27,43,.055)",
                   }}
                 >
-                  {/* PHOTO */}
-
-                  {issue.photo_url && (
-                    <div
-                      style={{
-                        width: "260px",
-                        minHeight:
-                          "220px",
-                        background:
-                          "#0b0f14",
-                        flexShrink: 0,
-                      }}
-                    >
-                      <img
-                        src={
-                          issue.photo_url
-                        }
-                        alt={
-                          issue.title ||
-                          text.civicIssueEvidence
-                        }
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          minHeight:
-                            "220px",
-                          objectFit:
-                            "cover",
-                          display: "block",
-                        }}
-                      />
-                    </div>
-                  )}
-
-                  {/* DETAILS */}
-
                   <div
                     style={{
-                      padding: "24px",
-                      flex: 1,
-                      minWidth:
-                        "280px",
+                      display: "grid",
+                      gridTemplateColumns: issue.photo_url
+                        ? "minmax(220px, 280px) minmax(0, 1fr)"
+                        : "1fr",
                     }}
                   >
-                    {/* CATEGORY + STATUS */}
-
-                    <div
-                      style={{
-                        display:
-                          "flex",
-                        alignItems:
-                          "center",
-                        justifyContent:
-                          "space-between",
-                        gap: "10px",
-                        flexWrap:
-                          "wrap",
-                        marginBottom:
-                          "12px",
-                      }}
-                    >
-                      <span
-                        style={{
-                          fontSize: "13px",
-                          color:
-                            "#60a5fa",
-                          fontWeight: 700,
-                        }}
-                      >
-                        {getCategoryLabel(
-                          issue.category
-                        )}
-                      </span>
-
-                      <span
-                        style={{
-                          background:
-                            "rgba(255,255,255,0.06)",
-                          border:
-                            "1px solid rgba(255,255,255,0.1)",
-                          borderRadius:
-                            "999px",
-                          padding:
-                            "7px 11px",
-                          fontSize:
-                            "13px",
-                          fontWeight:
-                            600,
-                        }}
-                      >
-                        {getStatusIcon(
-                          issue.status
-                        )}{" "}
-                        {getStatusLabel(
-                          issue.status
-                        )}
-                      </span>
-                    </div>
-
-                    {/* TITLE */}
-
-                    <h2
-                      style={{
-                        margin:
-                          "0 0 10px",
-                        fontSize:
-                          "22px",
-                      }}
-                    >
-                      {issue.title ||
-                        text.untitledIssue}
-                    </h2>
-
-                    {/* DESCRIPTION */}
-
-                    <p
-                      style={{
-                        color:
-                          "#d1d5db",
-                        lineHeight:
-                          1.6,
-                        margin:
-                          "0 0 16px",
-                      }}
-                    >
-                      {issue.description ||
-                        text.noDescription}
-                    </p>
-
-                    {/* LOCATION */}
-
-                    {issue.location_text && (
+                    {/* PHOTO */}
+                    {issue.photo_url && (
                       <div
+                        className="kf-my-issues-photo"
                         style={{
-                          color:
-                            "#9ca3af",
-                          fontSize:
-                            "14px",
-                          marginBottom:
-                            "8px",
+                          minHeight: "270px",
+                          background: "#eef0ee",
+                          position: "relative",
                         }}
                       >
-                        📍{" "}
-                        {issue.location_text}
+                        <img
+                          src={issue.photo_url}
+                          alt={
+                            issue.title ||
+                            text.civicIssueEvidence
+                          }
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            minHeight: "270px",
+                            display: "block",
+                            objectFit: "cover",
+                          }}
+                        />
+
+                        <div
+                          className="kf-my-issues-evidence-badge"
+                          style={{
+                            position: "absolute",
+                            left: "13px",
+                            bottom: "13px",
+                            padding: "7px 10px",
+                            borderRadius: "999px",
+                            background: "rgba(255,253,249,.90)",
+                            border: "1px solid rgba(16,27,43,.08)",
+                            color: "#5f6d78",
+                            fontSize: "9px",
+                            fontWeight: 900,
+                            backdropFilter: "blur(10px)",
+                          }}
+                        >
+                          {ui.evidence}
+                        </div>
                       </div>
                     )}
 
-                    {/* GPS */}
-
-                    {issue.latitude !==
-                      null &&
-                      issue.longitude !==
-                        null && (
-                        <div
-                          style={{
-                            color:
-                              "#6b7280",
-                            fontSize:
-                              "12px",
-                            marginBottom:
-                              "12px",
-                          }}
-                        >
-                          {text.gps}{" "}
-                          {issue.latitude.toFixed(
-                            6
-                          )}
-                          ,{" "}
-                          {issue.longitude.toFixed(
-                            6
-                          )}
-                        </div>
-                      )}
-
-                    {/* REPORTED DATE */}
-
-                    <div
-                      style={{
-                        color:
-                          "#6b7280",
-                        fontSize:
-                          "13px",
-                        marginBottom:
-                          "16px",
-                      }}
-                    >
-                      {text.reportedAt}{" "}
-                      {formatDate(
-                        issue.reported_at
-                      )}
-                    </div>
-
-                    {/* AUTHORITY ROUTING */}
-
-                    {issue.authority_details ? (
+                    {/* DETAILS */}
+                    <div style={{ padding: "23px" }}>
                       <div
                         style={{
-                          background:
-                            "rgba(34,197,94,0.06)",
-                          border:
-                            "1px solid rgba(34,197,94,0.18)",
-                          borderRadius:
-                            "14px",
-                          padding:
-                            "16px",
-                          marginBottom:
-                            "14px",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "flex-start",
+                          gap: "12px",
+                          flexWrap: "wrap",
+                          marginBottom: "11px",
                         }}
                       >
-                        <div
+                        <span
+                          className="kf-my-issues-category-pill"
                           style={{
-                            color:
-                              "#86efac",
-                            fontSize:
-                              "12px",
-                            fontWeight:
-                              700,
-                            letterSpacing:
-                              "0.5px",
-                            marginBottom:
-                              "9px",
+                            padding: "7px 10px",
+                            borderRadius: "999px",
+                            background: "#fff3e7",
+                            border: "1px solid #f0dcc7",
+                            color: "#956f4f",
+                            fontSize: "9px",
+                            fontWeight: 900,
+                            letterSpacing: ".04em",
                           }}
                         >
-                          {
-                            text.directoryRouting
-                          }
-                        </div>
+                          {getCategoryLabel(issue.category)}
+                        </span>
 
-                        <div
+                        <span
+                          className={`kf-my-issues-status-pill kf-my-issues-status-${issue.status}`}
                           style={{
-                            fontSize:
-                              "16px",
-                            fontWeight:
-                              700,
-                            marginBottom:
-                              "8px",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "6px",
+                            padding: "7px 10px",
+                            borderRadius: "999px",
+                            background: tone.background,
+                            border: `1px solid ${tone.border}`,
+                            color: tone.color,
+                            fontSize: "10px",
+                            fontWeight: 900,
                           }}
                         >
-                          🏛️{" "}
-                          {
-                            issue
-                              .authority_details
-                              .authority_name
-                          }
-                        </div>
+                          {getStatusIcon(issue.status)}{" "}
+                          {getStatusLabel(issue.status)}
+                        </span>
+                      </div>
 
-                        {issue
-                          .authority_details
-                          .department_name && (
+                      <h3
+                        style={{
+                          margin: "0 0 8px",
+                          color: "#263447",
+                          fontFamily: "var(--font-display)",
+                          fontSize: "25px",
+                          lineHeight: 1.08,
+                          letterSpacing: "-0.025em",
+                          fontWeight: 800,
+                        }}
+                      >
+                        {issue.title || text.untitledIssue}
+                      </h3>
+
+                      <p
+                        style={{
+                          margin: "0 0 15px",
+                          color: "#71808b",
+                          fontSize: "12px",
+                          lineHeight: 1.7,
+                        }}
+                      >
+                        {issue.description || text.noDescription}
+                      </p>
+
+                      <div
+                        style={{
+                          display: "grid",
+                          gap: "7px",
+                          marginBottom: "14px",
+                        }}
+                      >
+                        {issue.location_text && (
                           <div
                             style={{
-                              color:
-                                "#d1d5db",
-                              fontSize:
-                                "14px",
-                              marginBottom:
-                                "6px",
+                              display: "flex",
+                              alignItems: "flex-start",
+                              gap: "8px",
+                              color: "#5f6e7a",
+                              fontSize: "11px",
+                              lineHeight: 1.55,
                             }}
                           >
-                            <strong>
-                              {
-                                text.department
-                              }
-                            </strong>{" "}
-                            {
-                              issue
-                                .authority_details
-                                .department_name
-                            }
+                            <span>📍</span>
+                            <span>
+                              <strong
+                                style={{
+                                  color: "#36485a",
+                                }}
+                              >
+                                {ui.locationLabel}
+                              </strong>{" "}
+                              {issue.location_text}
+                            </span>
                           </div>
                         )}
 
-                        <div
-                          style={{
-                            color:
-                              "#d1d5db",
-                            fontSize:
-                              "14px",
-                            marginBottom:
-                              "6px",
-                          }}
-                        >
-                          <strong>
-                            {
-                              text.issueType
-                            }
-                          </strong>{" "}
-                          {getCategoryLabel(
-                            issue
-                              .authority_details
-                              .issue_category
+                        {issue.latitude !== null &&
+                          issue.longitude !== null && (
+                            <div
+                              style={{
+                                color: "#8a949b",
+                                fontSize: "10px",
+                              }}
+                            >
+                              {text.gps}{" "}
+                              {issue.latitude.toFixed(5)},{" "}
+                              {issue.longitude.toFixed(5)}
+                            </div>
                           )}
+
+                        <div
+                          style={{
+                            color: "#8a949b",
+                            fontSize: "10px",
+                          }}
+                        >
+                          {text.reportedAt}{" "}
+                          {formatDate(issue.reported_at)}
                         </div>
+                      </div>
 
-                        {issue
-                          .authority_details
-                          .submission_method && (
+                      {/* AUTHORITY CARD */}
+                      {issue.authority_details ? (
+                        <div
+                          className="kf-my-issues-authority"
+                          style={{
+                            marginBottom: "13px",
+                            padding: "14px",
+                            borderRadius: "20px",
+                            background:
+                              "linear-gradient(135deg, #f2f7ed 0%, #f7faf4 100%)",
+                            border: "1px solid #dce8d0",
+                          }}
+                        >
                           <div
                             style={{
-                              color:
-                                "#d1d5db",
-                              fontSize:
-                                "14px",
-                              marginBottom:
-                                "6px",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "space-between",
+                              gap: "10px",
+                              flexWrap: "wrap",
+                              marginBottom: "8px",
                             }}
                           >
-                            <strong>
-                              {
-                                text.channel
-                              }
-                            </strong>{" "}
-                            {
-                              issue
-                                .authority_details
-                                .submission_method
-                            }
-                          </div>
-                        )}
+                            <span
+                              style={{
+                                color: "#71855a",
+                                fontSize: "9px",
+                                fontWeight: 900,
+                                letterSpacing: ".16em",
+                                textTransform: "uppercase",
+                              }}
+                            >
+                              {text.directoryRouting}
+                            </span>
 
-                        {issue
-                          .authority_details
-                          .notes && (
-                          <div
-                            style={{
-                              color:
-                                "#9ca3af",
-                              fontSize:
-                                "13px",
-                              lineHeight:
-                                1.5,
-                              marginTop:
-                                "10px",
-                            }}
-                          >
-                            {
-                              issue
-                                .authority_details
-                                .notes
-                            }
-                          </div>
-                        )}
-
-                        {issue
-                          .authority_details
-                          .verified_at && (
-                          <div
-                            style={{
-                              color:
-                                "#6b7280",
-                              fontSize:
-                                "11px",
-                              marginTop:
-                                "10px",
-                            }}
-                          >
-                            {
-                              text.directoryVerified
-                            }{" "}
-                            {formatVerifiedDate(
-                              issue
-                                .authority_details
-                                .verified_at
+                            {issue.authority_details.verified_at && (
+                              <span
+                                style={{
+                                  color: "#7c8d68",
+                                  fontSize: "9px",
+                                  fontWeight: 800,
+                                }}
+                              >
+                                ✓ {ui.verified}{" "}
+                                {formatVerifiedDate(
+                                  issue.authority_details.verified_at
+                                )}
+                              </span>
                             )}
                           </div>
-                        )}
 
-                        <div
-                          style={{
-                            color:
-                              "#4b5563",
-                            fontSize:
-                              "11px",
-                            marginTop:
-                              "8px",
-                          }}
-                        >
-                          {
-                            text.authorityDirectoryId
-                          }{" "}
-                          {
-                            issue
-                              .authority_details
-                              .id
-                          }
-                        </div>
-                      </div>
-                    ) : issue.authority_name ? (
-                      /* FALLBACK FOR OLDER REPORTS */
-
-                      <div
-                        style={{
-                          background:
-                            "rgba(96,165,250,0.08)",
-                          border:
-                            "1px solid rgba(96,165,250,0.18)",
-                          borderRadius:
-                            "10px",
-                          padding:
-                            "11px 13px",
-                          marginBottom:
-                            "12px",
-                          fontSize:
-                            "14px",
-                        }}
-                      >
-                        🏛️{" "}
-                        {
-                          text.authority
-                        }{" "}
-                        <strong>
-                          {
-                            issue.authority_name
-                          }
-                        </strong>
-
-                        {issue.authority_reference_id && (
                           <div
                             style={{
-                              color:
-                                "#9ca3af",
-                              fontSize:
-                                "12px",
-                              marginTop:
-                                "4px",
+                              color: "#334455",
+                              fontSize: "14px",
+                              fontWeight: 900,
+                              lineHeight: 1.35,
                             }}
                           >
-                            {
-                              text.referenceId
-                            }{" "}
-                            {
-                              issue.authority_reference_id
-                            }
+                            🏛️{" "}
+                            {issue.authority_details.authority_name}
                           </div>
-                        )}
-                      </div>
-                    ) : (
+
+                          {issue.authority_details.department_name && (
+                            <div
+                              style={{
+                                marginTop: "6px",
+                                color: "#6d7b84",
+                                fontSize: "10px",
+                                lineHeight: 1.5,
+                              }}
+                            >
+                              {text.department}{" "}
+                              {issue.authority_details.department_name}
+                            </div>
+                          )}
+
+                          <div
+                            style={{
+                              display: "flex",
+                              gap: "8px",
+                              flexWrap: "wrap",
+                              marginTop: "10px",
+                            }}
+                          >
+                            <span
+                              className="kf-my-issues-authority-chip"
+                              style={{
+                                padding: "6px 8px",
+                                borderRadius: "999px",
+                                background: "#fffdf9",
+                                border: "1px solid #e2e9dc",
+                                color: "#71805f",
+                                fontSize: "9px",
+                                fontWeight: 800,
+                              }}
+                            >
+                              {text.issueType}{" "}
+                              {getCategoryLabel(
+                                issue.authority_details.issue_category
+                              )}
+                            </span>
+
+                            {issue.authority_details.submission_method && (
+                              <span
+                                className="kf-my-issues-authority-chip"
+                                style={{
+                                  padding: "6px 8px",
+                                  borderRadius: "999px",
+                                  background: "#fffdf9",
+                                  border: "1px solid #e2e9dc",
+                                  color: "#71805f",
+                                  fontSize: "9px",
+                                  fontWeight: 800,
+                                }}
+                              >
+                                {text.channel}{" "}
+                                {issue.authority_details.submission_method}
+                              </span>
+                            )}
+                          </div>
+
+                          {issue.authority_details.notes && (
+                            <p
+                              style={{
+                                margin: "10px 0 0",
+                                color: "#7a858d",
+                                fontSize: "10px",
+                                lineHeight: 1.55,
+                              }}
+                            >
+                              {issue.authority_details.notes}
+                            </p>
+                          )}
+
+                          <div
+                            style={{
+                              marginTop: "9px",
+                              color: "#96a18e",
+                              fontSize: "9px",
+                            }}
+                          >
+                            {text.authorityDirectoryId}{" "}
+                            {issue.authority_details.id}
+                          </div>
+                        </div>
+                      ) : issue.authority_name ? (
+                        <div
+                          className="kf-my-issues-route"
+                          style={{
+                            marginBottom: "13px",
+                            padding: "12px 13px",
+                            borderRadius: "18px",
+                            background: "#edf5fb",
+                            border: "1px solid #d7e6ef",
+                            color: "#607c90",
+                            fontSize: "10px",
+                            lineHeight: 1.5,
+                          }}
+                        >
+                          🏛️ {text.authority}{" "}
+                          <strong style={{ color: "#3f5a6e" }}>
+                            {issue.authority_name}
+                          </strong>
+
+                          {issue.authority_reference_id && (
+                            <div
+                              style={{
+                                marginTop: "4px",
+                                color: "#82909a",
+                                fontSize: "9px",
+                              }}
+                            >
+                              {text.referenceId}{" "}
+                              {issue.authority_reference_id}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <div
+                          className="kf-my-issues-no-route"
+                          style={{
+                            marginBottom: "13px",
+                            padding: "13px",
+                            borderRadius: "18px",
+                            background: "#f6f5f2",
+                            border: "1px solid #e5e1da",
+                            color: "#7c858d",
+                            fontSize: "10px",
+                            lineHeight: 1.55,
+                          }}
+                        >
+                          <strong
+                            style={{
+                              display: "block",
+                              color: "#5b6975",
+                              fontSize: "11px",
+                              marginBottom: "3px",
+                            }}
+                          >
+                            {ui.noRouteTitle}
+                          </strong>
+                          {text.noVerifiedRoute}
+                        </div>
+                      )}
+
+                      {/* FOOTER META */}
                       <div
                         style={{
-                          background:
-                            "rgba(148,163,184,0.05)",
-                          border:
-                            "1px solid rgba(148,163,184,0.12)",
-                          borderRadius:
-                            "12px",
-                          padding:
-                            "12px 14px",
-                          marginBottom:
-                            "12px",
-                          color:
-                            "#94a3b8",
-                          fontSize:
-                            "13px",
-                          lineHeight:
-                            1.5,
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          gap: "12px",
+                          flexWrap: "wrap",
+                          paddingTop: "11px",
+                          borderTop: "1px solid #ece8e1",
                         }}
                       >
-                        {
-                          text.noVerifiedRoute
-                        }
+                        <div
+                          style={{
+                            display: "grid",
+                            gap: "4px",
+                            minWidth: 0,
+                          }}
+                        >
+                          {issue.reported_city && (
+                            <div
+                              style={{
+                                color: "#7c878e",
+                                fontSize: "9px",
+                                fontWeight: 700,
+                              }}
+                            >
+                              {text.reportedFrom}{" "}
+                              {issue.reported_city}
+                              {issue.reported_state
+                                ? `, ${issue.reported_state}`
+                                : ""}
+                            </div>
+                          )}
+
+                          <div
+                            style={{
+                              color: "#9aa1a7",
+                              fontSize: "8px",
+                              wordBreak: "break-all",
+                            }}
+                          >
+                            {ui.id}: {issue.id}
+                          </div>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() =>
+                            router.push(
+                              `/my-issues/${issue.id}`
+                            )
+                          }
+                          style={{
+                            border: 0,
+                            borderRadius: "999px",
+                            background: "#23364a",
+                            color: "#fff",
+                            padding: "10px 14px",
+                            fontSize: "10px",
+                            fontWeight: 900,
+                            cursor: "pointer",
+                          }}
+                        >
+                          {ui.details}
+                        </button>
                       </div>
-                    )}
-
-                    {/* CITY */}
-
-                    {issue.reported_city && (
-                      <div
-                        style={{
-                          color:
-                            "#6b7280",
-                          fontSize:
-                            "12px",
-                          marginBottom:
-                            "10px",
-                        }}
-                      >
-                        {
-                          text.reportedFrom
-                        }{" "}
-                        {
-                          issue.reported_city
-                        }
-                        {issue.reported_state
-                          ? `, ${issue.reported_state}`
-                          : ""}
-                      </div>
-                    )}
-
-                    {/* ISSUE ID */}
-
-                    <div
-                      style={{
-                        color:
-                          "#4b5563",
-                        fontSize:
-                          "11px",
-                        wordBreak:
-                          "break-all",
-                      }}
-                    >
-                      {
-                        text.civicIssueId
-                      }{" "}
-                      {issue.id}
                     </div>
-
-                    {/* VIEW FULL DETAILS */}
-
-                    <button
-                      type="button"
-                      onClick={() =>
-                        router.push(
-                          `/my-issues/${issue.id}`
-                        )
-                      }
-                      style={{
-                        marginTop:
-                          "14px",
-                        padding:
-                          "11px 16px",
-                        borderRadius:
-                          "10px",
-                        border:
-                          "1px solid #334155",
-                        background:
-                          "#1e293b",
-                        color: "white",
-                        cursor:
-                          "pointer",
-                        fontSize:
-                          "13px",
-                        fontWeight:
-                          700,
-                      }}
-                    >
-                      {
-                        text.viewFullDetails
-                      }
-                    </button>
                   </div>
-                </div>
-              </div>
-            ))}
+                </article>
+              );
+            })}
           </div>
         )}
 
         {/* DISCLAIMER */}
-
         <div
+          className="kf-my-issues-disclaimer"
           style={{
-            marginTop: "28px",
-            padding: "18px",
-            borderRadius: "14px",
-            background:
-              "rgba(255,255,255,0.03)",
-            border:
-              "1px solid rgba(255,255,255,0.06)",
-            color: "#9ca3af",
-            fontSize: "13px",
-            lineHeight: 1.6,
+            marginTop: "18px",
+            padding: "16px 17px",
+            borderRadius: "20px",
+            background: "rgba(255,253,249,.72)",
+            border: "1px solid rgba(16,27,43,.08)",
+            color: "#858d93",
+            fontSize: "9px",
+            lineHeight: 1.65,
           }}
         >
           {text.disclaimer}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 760px) {
+          main > div > header {
+            position: relative !important;
+            top: 0 !important;
+            grid-template-columns: 1fr auto !important;
+          }
+
+          main > div > header > div:nth-child(2) {
+            justify-self: start !important;
+          }
+
+          main > div > header > div:nth-child(3) {
+            justify-content: flex-end !important;
+          }
+
+          main > div > header > div:first-child {
+            order: 2;
+          }
+
+          main > div > header > div:nth-child(2) {
+            order: 1;
+          }
+
+          main > div > header > div:nth-child(3) {
+            order: 0;
+          }
+
+          main section[style*="grid-template-columns: repeat(3"] {
+            grid-template-columns: 1fr !important;
+          }
+
+          article > div[style*="grid-template-columns"] {
+            grid-template-columns: 1fr !important;
+          }
+        }
+
+        @media (max-width: 560px) {
+          main > div > header {
+            grid-template-columns: 1fr !important;
+            justify-items: center;
+            gap: 10px !important;
+            padding: 12px !important;
+          }
+
+          main > div > header > div {
+            justify-content: center !important;
+            justify-self: center !important;
+          }
+
+          main > div > header > div:first-child {
+            order: 2;
+          }
+
+          main > div > header > div:nth-child(2) {
+            order: 0;
+          }
+
+          main > div > header > div:nth-child(3) {
+            order: 1;
+          }
+        }
+      `}</style>
     </main>
   );
 }

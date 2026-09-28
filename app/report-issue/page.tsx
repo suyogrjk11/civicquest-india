@@ -66,6 +66,7 @@ const categoryLabels: Record<
 const content = {
   en: {
     back: "← Back to Dashboard",
+    languageLabel: "Language",
 
     label: "KARMAFACIE",
     title: "Report an Issue",
@@ -146,12 +147,16 @@ const content = {
     noVerifiedRoute:
       "Issue reported successfully! No verified authority route was found for this issue yet.",
 
+    viewAndTrack: "View & Track Issue →",
+    backToDashboard: "Back to Dashboard",
+
     reportError:
       "Something went wrong while reporting the issue.",
   },
 
   hi: {
     back: "← डैशबोर्ड पर वापस जाएँ",
+    languageLabel: "भाषा",
 
     label: "KARMAFACIE",
     title: "समस्या की रिपोर्ट करें",
@@ -232,12 +237,16 @@ const content = {
     noVerifiedRoute:
       "समस्या सफलतापूर्वक रिपोर्ट हो गई! इस समस्या के लिए अभी कोई सत्यापित प्राधिकरण मार्ग नहीं मिला है।",
 
+    viewAndTrack: "समस्या देखें और ट्रैक करें →",
+    backToDashboard: "डैशबोर्ड पर वापस जाएँ",
+
     reportError:
       "समस्या रिपोर्ट करते समय कुछ गलत हो गया।",
   },
 
   mr: {
     back: "← डॅशबोर्डवर परत जा",
+    languageLabel: "भाषा",
 
     label: "KARMAFACIE",
     title: "समस्या नोंदवा",
@@ -318,6 +327,9 @@ const content = {
     noVerifiedRoute:
       "समस्या यशस्वीरित्या नोंदवली गेली! या समस्येसाठी अद्याप कोणताही सत्यापित प्राधिकरण मार्ग सापडलेला नाही.",
 
+    viewAndTrack: "समस्या पहा आणि ट्रॅक करा →",
+    backToDashboard: "डॅशबोर्डवर परत जा",
+
     reportError:
       "समस्या नोंदवताना काहीतरी चूक झाली.",
   },
@@ -340,7 +352,7 @@ type AuthorityDirectoryRecord = {
 export default function ReportIssuePage() {
   const router = useRouter();
   const supabase = createClient();
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   const text = content[language];
 
@@ -374,6 +386,7 @@ export default function ReportIssuePage() {
 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [createdIssueId, setCreatedIssueId] = useState<string | null>(null);
 
   useEffect(() => {
     checkUserAndLoadProfile();
@@ -797,6 +810,8 @@ export default function ReportIssuePage() {
         data
       );
 
+      setCreatedIssueId(data.id);
+
       // ------------------------------------------
       // 5. Success message
       // ------------------------------------------
@@ -836,12 +851,12 @@ export default function ReportIssuePage() {
       setSelectedAuthorityId(null);
 
       // ------------------------------------------
-      // 7. Go to dashboard
+      // 7. Keep the user on the success state
       // ------------------------------------------
-
-      setTimeout(() => {
-        router.push("/dashboard");
-      }, 2500);
+      // The issue detail page is the tracking and Smart Handoff
+      // destination. Let the citizen choose whether to open it
+      // or return to the dashboard.
+      // ------------------------------------------
     } catch (err) {
       console.error(err);
 
@@ -863,90 +878,310 @@ export default function ReportIssuePage() {
 
   if (loading) {
     return (
-      <main
+      <main className="kf-report-page"
         style={{
           minHeight: "100vh",
-          background: "#0b0f14",
-          color: "white",
+          background:
+            "radial-gradient(circle at 88% 8%, rgba(223,234,243,.88) 0%, rgba(223,234,243,0) 25%), radial-gradient(circle at 8% 92%, rgba(255,225,197,.70) 0%, rgba(255,225,197,0) 27%), #f8f3ea",
+          color: "#102033",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontSize: "18px",
+          padding: "24px",
         }}
       >
-        {text.loading}
-      </main>
-    );
-  }
-
-  return (
-    <main
-      style={{
-        minHeight: "100vh",
-        background:
-          "radial-gradient(circle at top, #18222e 0%, #0b0f14 45%, #070a0d 100%)",
-        color: "white",
-        padding:
-          "40px 20px 80px",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "850px",
-          margin: "0 auto",
-        }}
-      >
-        <button
-          type="button"
-          onClick={() =>
-            router.push("/dashboard")
-          }
+        <div className="kf-report-loading-card"
           style={{
-            background: "transparent",
-            border: "none",
-            color: "#9ca3af",
-            cursor: "pointer",
-            fontSize: "15px",
-            marginBottom: "24px",
-          }}
-        >
-          {text.back}
-        </button>
-
-        <div
-          style={{
-            background:
-              "rgba(17, 24, 39, 0.88)",
-            border:
-              "1px solid rgba(255,255,255,0.08)",
-            borderRadius: "24px",
-            padding: "32px",
-            boxShadow:
-              "0 20px 60px rgba(0,0,0,0.35)",
+            width: "min(420px, 100%)",
+            textAlign: "center",
+            padding: "34px 28px",
+            borderRadius: "30px",
+            background: "rgba(255,255,255,.82)",
+            border: "1px solid rgba(16,27,43,.10)",
+            boxShadow: "0 22px 60px rgba(16,27,43,.08)",
           }}
         >
           <div
             style={{
-              marginBottom: "30px",
+              fontFamily: "var(--font-display)",
+              fontSize: "34px",
+              fontWeight: 800,
+              letterSpacing: "-0.045em",
+            }}
+          >
+            Karma<span style={{ color: "#ff7a00" }}>Facie</span>
+          </div>
+          <div
+            style={{
+              width: "72px",
+              height: "5px",
+              margin: "15px auto 14px",
+              borderRadius: "999px",
+              background: "#ff7a00",
+            }}
+          />
+          <p
+            style={{
+              margin: 0,
+              color: "#78838e",
+              fontSize: "13px",
+              fontWeight: 600,
+            }}
+          >
+            {text.loading}
+          </p>
+        </div>
+      </main>
+    );
+  }
+
+  const translatedCategory = (value: string) =>
+    categoryLabels[language][value] || value;
+
+  return (
+    <main className="kf-report-page"
+      style={{
+        minHeight: "100vh",
+        background:
+          "radial-gradient(circle at 88% 4%, rgba(223,234,243,.70) 0%, rgba(223,234,243,0) 22%), radial-gradient(circle at 5% 55%, rgba(232,241,247,.78) 0%, rgba(232,241,247,0) 24%), radial-gradient(circle at 92% 86%, rgba(255,229,207,.58) 0%, rgba(255,229,207,0) 22%), #f8f3ea",
+        color: "#102033",
+        padding: "20px 16px 72px",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1280px",
+          margin: "0 auto",
+          padding: "0 8px",
+        }}
+      >
+        {/* TOP BAR */}
+        <header className="kf-report-topbar"
+          style={{
+            position: "sticky",
+            top: "14px",
+            zIndex: 30,
+            display: "grid",
+            gridTemplateColumns: "1fr auto 1fr",
+            alignItems: "center",
+            gap: "18px",
+            minHeight: "84px",
+            padding: "10px 14px",
+            marginBottom: "28px",
+            borderRadius: "32px",
+            background: "rgba(255,255,255,.94)",
+            border: "1px solid rgba(16,27,43,.10)",
+            boxShadow: "0 14px 36px rgba(16,27,43,.07)",
+            backdropFilter: "blur(16px)",
+          }}
+        >
+          {/* LEFT — DASHBOARD */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+              minWidth: 0,
+            }}
+          >
+            <button
+              type="button"
+              onClick={() => router.push("/dashboard")}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "7px",
+                minHeight: "48px",
+                padding: "0 18px",
+                border: "1px solid #dfe3e7",
+                borderRadius: "999px",
+                background: "#fff",
+                color: "#52616f",
+                cursor: "pointer",
+                fontSize: "14px",
+                fontWeight: 800,
+                boxShadow: "0 5px 18px rgba(16,32,51,.035)",
+              }}
+            >
+              <span
+                style={{
+                  color: "#ff7a00",
+                  fontSize: "20px",
+                  lineHeight: 1,
+                  fontWeight: 500,
+                }}
+              >
+                ←
+              </span>
+              {text.back.replace("← ", "")}
+            </button>
+          </div>
+
+          {/* CENTER — KARMAFACIE / REPORT AN ISSUE */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "12px",
+              whiteSpace: "nowrap",
             }}
           >
             <div
               style={{
-                fontSize: "14px",
-                color: "#60a5fa",
-                fontWeight: 700,
-                marginBottom: "8px",
-                letterSpacing:
-                  "0.5px",
+                width: "56px",
+                height: "56px",
+                display: "grid",
+                placeItems: "center",
+                borderRadius: "17px",
+                background: "#ff7a00",
+                color: "#102033",
+                fontFamily: "var(--font-display)",
+                fontSize: "31px",
+                lineHeight: 1,
+                fontWeight: 800,
+                boxShadow: "0 8px 18px rgba(255,122,0,.18)",
               }}
             >
+              K
+            </div>
+
+            <div>
+              <div
+                style={{
+                  color: "#102033",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "29px",
+                  lineHeight: ".95",
+                  letterSpacing: "-0.045em",
+                  fontWeight: 800,
+                }}
+              >
+                Karma<span style={{ color: "#ff7a00" }}>Facie</span>
+              </div>
+
+              <div
+                style={{
+                  marginTop: "5px",
+                  color: "#102033",
+                  fontSize: "9px",
+                  lineHeight: 1,
+                  letterSpacing: ".24em",
+                  fontWeight: 900,
+                }}
+              >
+                REPORT AN ISSUE
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT — LANGUAGE */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              gap: "12px",
+              minWidth: 0,
+            }}
+          >
+            <span
+              style={{
+                color: "#52616f",
+                fontSize: "14px",
+                fontWeight: 800,
+              }}
+            >
+              {text.languageLabel}
+            </span>
+
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value as Language)}
+              aria-label={text.languageLabel}
+              style={{
+                appearance: "none",
+                minWidth: "132px",
+                padding: "12px 16px",
+                border: "1px solid #d7d1c9",
+                borderRadius: "999px",
+                background: "#fff",
+                color: "#304154",
+                fontSize: "13px",
+                fontWeight: 800,
+                outline: "none",
+                cursor: "pointer",
+              }}
+            >
+              <option value="en">English</option>
+              <option value="hi">हिन्दी</option>
+              <option value="mr">मराठी</option>
+            </select>
+          </div>
+        </header>
+        {/* INTRO */}
+        <section className="kf-report-intro"
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            marginBottom: "16px",
+            padding: "28px",
+            borderRadius: "32px",
+            border: "1px solid rgba(16,27,43,.10)",
+            background:
+              "radial-gradient(circle at 92% 0%, #e7f1f7 0%, rgba(231,241,247,0) 34%), radial-gradient(circle at 4% 100%, #ffecd9 0%, rgba(255,236,217,0) 35%), rgba(255,253,249,.96)",
+            boxShadow: "0 16px 44px rgba(16,27,43,.06)",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              right: "-46px",
+              top: "-48px",
+              width: "150px",
+              height: "150px",
+              borderRadius: "50%",
+              background: "rgba(208,228,240,.56)",
+            }}
+          />
+
+          <div style={{ position: "relative" }}>
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "8px 12px",
+                borderRadius: "999px",
+                background: "#fff3e7",
+                border: "1px solid rgba(255,122,0,.14)",
+                color: "#8c725a",
+                fontSize: "10px",
+                fontWeight: 900,
+                letterSpacing: ".18em",
+                textTransform: "uppercase",
+              }}
+            >
+              <span
+                style={{
+                  width: "7px",
+                  height: "7px",
+                  borderRadius: "50%",
+                  background: "#ff7a00",
+                }}
+              />
               {text.label}
             </div>
 
             <h1
               style={{
-                fontSize: "34px",
-                margin: "0 0 10px",
+                margin: "16px 0 10px",
+                color: "#102033",
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(38px, 6vw, 58px)",
+                lineHeight: "1.00",
+                letterSpacing: "-0.05em",
                 fontWeight: 800,
               }}
             >
@@ -955,708 +1190,1369 @@ export default function ReportIssuePage() {
 
             <p
               style={{
-                color: "#9ca3af",
-                lineHeight: 1.6,
+                maxWidth: "720px",
                 margin: 0,
+                color: "#697682",
+                fontSize: "15px",
+                lineHeight: "1.7",
               }}
             >
               {text.description}
             </p>
 
             {userCity && userState && (
-              <div
+              <div className="kf-report-location-pill"
                 style={{
-                  marginTop: "16px",
-                  padding: "10px 14px",
-                  borderRadius: "10px",
-                  background:
-                    "rgba(96,165,250,0.08)",
-                  border:
-                    "1px solid rgba(96,165,250,0.18)",
-                  color: "#93c5fd",
-                  fontSize: "13px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "7px",
+                  flexWrap: "wrap",
+                  marginTop: "18px",
+                  padding: "9px 12px",
+                  borderRadius: "999px",
+                  background: "#f0f5f8",
+                  border: "1px solid #e0e8ed",
+                  color: "#71808c",
+                  fontSize: "11px",
+                  fontWeight: 700,
                 }}
               >
-                {text.reportingFrom}{" "}
-                <strong>
+                <span>{text.reportingFrom}</span>
+                <strong style={{ color: "#314154" }}>
                   {userCity}, {userState}
                 </strong>
               </div>
             )}
           </div>
+        </section>
 
-          {message && (
-            <div
-              style={{
-                background:
-                  "rgba(34,197,94,0.12)",
-                border:
-                  "1px solid rgba(34,197,94,0.3)",
-                color: "#86efac",
-                padding:
-                  "14px 16px",
-                borderRadius: "12px",
-                marginBottom: "20px",
-              }}
-            >
-              {message}
-            </div>
-          )}
-
-          {error && (
-            <div
-              style={{
-                background:
-                  "rgba(239,68,68,0.12)",
-                border:
-                  "1px solid rgba(239,68,68,0.3)",
-                color: "#fca5a5",
-                padding:
-                  "14px 16px",
-                borderRadius: "12px",
-                marginBottom: "20px",
-              }}
-            >
-              {error}
-            </div>
-          )}
-
-          <form
-            onSubmit={handleSubmit}
+        {/* FEEDBACK */}
+        {message && (
+          <div className="kf-report-feedback kf-report-success"
+            role="status"
+            style={{
+              marginBottom: "14px",
+              padding: "16px",
+              borderRadius: "22px",
+              background: "#eff6e8",
+              border: "1px solid #d7e5c9",
+              color: "#58723f",
+              fontSize: "12px",
+              lineHeight: "1.5",
+              fontWeight: 700,
+            }}
           >
-            {/* CATEGORY */}
+            <div>{message}</div>
 
+            {createdIssueId && (
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "10px",
+                  marginTop: "14px",
+                }}
+              >
+                <button className="kf-report-primary-button"
+                  type="button"
+                  onClick={() =>
+                    router.push(`/my-issues/${createdIssueId}`)
+                  }
+                  style={{
+                    minHeight: "42px",
+                    padding: "0 16px",
+                    border: "1px solid #ff7a00",
+                    borderRadius: "999px",
+                    background: "#ff7a00",
+                    color: "#fff",
+                    cursor: "pointer",
+                    fontSize: "12px",
+                    fontWeight: 800,
+                    boxShadow: "0 8px 18px rgba(255,122,0,.16)",
+                  }}
+                >
+                  {text.viewAndTrack}
+                </button>
+
+                <button className="kf-report-secondary-button"
+                  type="button"
+                  onClick={() => router.push("/dashboard")}
+                  style={{
+                    minHeight: "42px",
+                    padding: "0 16px",
+                    border: "1px solid #d8e1e7",
+                    borderRadius: "999px",
+                    background: "#fffdf9",
+                    color: "#314154",
+                    cursor: "pointer",
+                    fontSize: "12px",
+                    fontWeight: 800,
+                  }}
+                >
+                  {text.backToDashboard}
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {error && (
+          <div className="kf-report-feedback kf-report-error"
+            role="alert"
+            style={{
+              marginBottom: "14px",
+              padding: "13px 15px",
+              borderRadius: "18px",
+              background: "#fff1ed",
+              border: "1px solid #f0d0c5",
+              color: "#9c5948",
+              fontSize: "12px",
+              lineHeight: "1.5",
+              fontWeight: 700,
+            }}
+          >
+            {error}
+          </div>
+        )}
+
+        <form className="kf-report-form" onSubmit={handleSubmit}>
+          {/* STEP 1 — CATEGORY + AUTHORITY */}
+          <section className="kf-report-section kf-report-section-1"
+            style={{
+              marginBottom: "14px",
+              padding: "22px",
+              borderRadius: "28px",
+              border: "1px solid rgba(16,27,43,.10)",
+              background: "rgba(255,255,255,.90)",
+              boxShadow: "0 12px 32px rgba(16,27,43,.045)",
+            }}
+          >
             <div
               style={{
-                marginBottom: "22px",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                marginBottom: "18px",
               }}
             >
-              <label
-                htmlFor="category"
+              <div
                 style={{
-                  display: "block",
-                  marginBottom: "9px",
-                  fontWeight: 600,
-                }}
-              >
-                {text.category}
-              </label>
-
-              <select
-                id="category"
-                value={category}
-                onChange={(e) =>
-                  setCategory(
-                    e.target.value
-                  )
-                }
-                style={{
-                  width: "100%",
-                  padding: "14px",
+                  width: "34px",
+                  height: "34px",
+                  display: "grid",
+                  placeItems: "center",
                   borderRadius: "12px",
-                  border:
-                    "1px solid #374151",
-                  background:
-                    "#111827",
-                  color: "white",
-                  fontSize: "15px",
-                  outline: "none",
-                  boxSizing:
-                    "border-box",
+                  background: "#fff0df",
+                  color: "#ff7a00",
+                  fontSize: "12px",
+                  fontWeight: 900,
                 }}
               >
-                <option value="">
-                  {text.selectIssue}
+                01
+              </div>
+              <div>
+                <p
+                  style={{
+                    margin: 0,
+                    color: "#979da3",
+                    fontSize: "9px",
+                    fontWeight: 900,
+                    letterSpacing: ".18em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {text.category}
+                </p>
+                <h2
+                  style={{
+                    margin: "3px 0 0",
+                    color: "#263447",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "23px",
+                    lineHeight: "1.05",
+                    fontWeight: 800,
+                  }}
+                >
+                  Choose what you observed
+                </h2>
+              </div>
+            </div>
+
+            <select className="kf-report-control kf-report-category-select"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              aria-label={text.category}
+              style={{
+                width: "100%",
+                boxSizing: "border-box",
+                padding: "14px 15px",
+                borderRadius: "17px",
+                border: category
+                  ? "1px solid #efc29b"
+                  : "1px solid #e1ddd5",
+                background: "#fffdf9",
+                color: category ? "#263447" : "#8b949c",
+                fontSize: "13px",
+                fontWeight: 700,
+                outline: "none",
+                cursor: "pointer",
+              }}
+            >
+              <option value="">{text.selectIssue}</option>
+              {categories.map((item) => (
+                <option key={item} value={item}>
+                  {translatedCategory(item)}
                 </option>
+              ))}
+            </select>
 
-                {categories.map(
-                  (item) => (
-                    <option
-                      key={item}
-                      value={item}
-                    >
-                      {categoryLabels[
-                        language
-                      ][item]}
-                    </option>
-                  )
-                )}
-              </select>
+            {checkingAuthority && (
+              <div
+                style={{
+                  marginTop: "12px",
+                  padding: "12px 14px",
+                  borderRadius: "16px",
+                  background: "#f1f6fa",
+                  border: "1px solid #e1ebf1",
+                  color: "#6e7d89",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                }}
+              >
+                {text.checkingAuthority}
+              </div>
+            )}
 
-              {/* AUTHORITY MATCH */}
+            {!checkingAuthority &&
+              category &&
+              matchedAuthorities.length === 0 && (
+                <div
+                  style={{
+                    marginTop: "12px",
+                    padding: "13px 14px",
+                    borderRadius: "16px",
+                    background: "#fff8ef",
+                    border: "1px solid #f0dfc9",
+                    color: "#8b755d",
+                    fontSize: "11px",
+                    lineHeight: "1.5",
+                    fontWeight: 700,
+                  }}
+                >
+                  {text.noAuthority} {userCity}, {userState}.
+                </div>
+              )}
 
-              {category &&
-                checkingAuthority && (
+            {!checkingAuthority &&
+              matchedAuthorities.length > 0 && (
+                <div style={{ marginTop: "16px" }}>
                   <div
                     style={{
-                      marginTop: "10px",
-                      color: "#94a3b8",
-                      fontSize: "13px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "7px",
+                      marginBottom: "9px",
                     }}
                   >
-                    {text.checkingAuthority}
-                  </div>
-                )}
-
-              {category &&
-                !checkingAuthority &&
-                matchedAuthorities.length > 0 && (
-                  <div
-                    style={{
-                      marginTop: "12px",
-                      display: "grid",
-                      gap: "10px",
-                    }}
-                  >
-                    <div
+                    <span
                       style={{
-                        color: "#86efac",
-                        fontSize: "12px",
-                        fontWeight: 700,
-                        letterSpacing: "0.5px",
+                        width: "7px",
+                        height: "7px",
+                        borderRadius: "50%",
+                        background: "#7d9853",
+                      }}
+                    />
+                    <span
+                      style={{
+                        color: "#70805e",
+                        fontSize: "9px",
+                        fontWeight: 900,
+                        letterSpacing: ".16em",
                       }}
                     >
                       {matchedAuthorities.length > 1
                         ? text.multipleAuthorities
                         : text.verifiedMatch}
-                    </div>
+                    </span>
+                  </div>
 
-                    {matchedAuthorities.length > 1 && (
-                      <div
-                        style={{
-                          color: "#d1d5db",
-                          fontSize: "13px",
-                        }}
-                      >
-                        {text.selectAuthority}
-                      </div>
-                    )}
-
+                  <div style={{ display: "grid", gap: "9px" }}>
                     {matchedAuthorities.map((authority) => {
                       const selected =
                         selectedAuthorityId === authority.id;
 
                       return (
-                        <button
+                        <button className="kf-report-authority-button"
+                          data-authority-selected={selected ? "true" : "false"}
                           key={authority.id}
                           type="button"
                           onClick={() =>
-                            setSelectedAuthorityId(
-                              authority.id
-                            )
+                            setSelectedAuthorityId(authority.id)
                           }
                           style={{
                             width: "100%",
                             textAlign: "left",
-                            padding: "14px",
-                            borderRadius: "12px",
-                            background: selected
-                              ? "rgba(34,197,94,0.14)"
-                              : "rgba(34,197,94,0.07)",
+                            padding: "15px",
+                            borderRadius: "18px",
                             border: selected
-                              ? "1px solid #22c55e"
-                              : "1px solid rgba(34,197,94,0.2)",
-                            color: "white",
+                              ? "1px solid #b8cd98"
+                              : "1px solid #e0e5dc",
+                            background: selected
+                              ? "#f3f7ed"
+                              : "#fbfcf9",
                             cursor: "pointer",
+                            boxShadow: selected
+                              ? "0 8px 20px rgba(74,93,54,.07)"
+                              : "none",
                           }}
                         >
                           <div
                             style={{
-                              fontWeight: 700,
-                              fontSize: "15px",
+                              display: "flex",
+                              justifyContent: "space-between",
+                              alignItems: "flex-start",
+                              gap: "14px",
                             }}
                           >
-                            🏛️ {authority.authority_name}
+                            <div style={{ minWidth: 0 }}>
+                              <div
+                                style={{
+                                  color: "#263447",
+                                  fontSize: "14px",
+                                  fontWeight: 900,
+                                }}
+                              >
+                                {authority.authority_name}
+                              </div>
+
+                              {authority.department_name && (
+                                <div
+                                  style={{
+                                    marginTop: "4px",
+                                    color: "#78838d",
+                                    fontSize: "11px",
+                                  }}
+                                >
+                                  {text.department}{" "}
+                                  {authority.department_name}
+                                </div>
+                              )}
+
+                              {authority.submission_method && (
+                                <div
+                                  style={{
+                                    marginTop: "3px",
+                                    color: "#78838d",
+                                    fontSize: "11px",
+                                  }}
+                                >
+                                  {text.channel}{" "}
+                                  {authority.submission_method}
+                                </div>
+                              )}
+                            </div>
+
+                            <span
+                              style={{
+                                width: "24px",
+                                height: "24px",
+                                flexShrink: 0,
+                                display: "grid",
+                                placeItems: "center",
+                                borderRadius: "50%",
+                                background: selected
+                                  ? "#78934d"
+                                  : "#edf1e9",
+                                color: selected
+                                  ? "#ffffff"
+                                  : "#8c9a7a",
+                                fontSize: "11px",
+                                fontWeight: 900,
+                              }}
+                            >
+                              {selected ? "✓" : "○"}
+                            </span>
                           </div>
-
-                          {authority.department_name && (
-                            <div
-                              style={{
-                                color: "#d1d5db",
-                                fontSize: "13px",
-                                marginTop: "5px",
-                              }}
-                            >
-                              {text.department}{" "}
-                              {authority.department_name}
-                            </div>
-                          )}
-
-                          {authority.submission_method && (
-                            <div
-                              style={{
-                                color: "#9ca3af",
-                                fontSize: "12px",
-                                marginTop: "5px",
-                              }}
-                            >
-                              {text.channel}{" "}
-                              {authority.submission_method}
-                            </div>
-                          )}
-
-                          {authority.notes && (
-                            <div
-                              style={{
-                                color: "#94a3b8",
-                                fontSize: "12px",
-                                lineHeight: 1.5,
-                                marginTop: "7px",
-                              }}
-                            >
-                              {authority.notes}
-                            </div>
-                          )}
 
                           {selected && (
                             <div
                               style={{
-                                color: "#86efac",
-                                fontSize: "12px",
-                                fontWeight: 700,
-                                marginTop: "8px",
+                                marginTop: "10px",
+                                paddingTop: "9px",
+                                borderTop: "1px solid #dfe7d5",
+                                color: "#71815f",
+                                fontSize: "10px",
+                                fontWeight: 800,
                               }}
                             >
-                              ✓ {text.routeSelected}{" "}
-                              {authority.department_name ||
-                                authority.authority_name}
+                              {text.routeSelected}{" "}
+                              {authority.authority_name}
                             </div>
                           )}
                         </button>
                       );
                     })}
                   </div>
-                )}
+                </div>
+              )}
+          </section>
 
-              {category &&
-                !checkingAuthority &&
-                matchedAuthorities.length === 0 && (
-                  <div
-                    style={{
-                      marginTop: "10px",
-                      color: "#94a3b8",
-                      fontSize: "13px",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {text.noAuthority}{" "}
-                    {userCity}.
-                    <br />
-                    {language === "en"
-                      ? "The report can still be submitted."
-                      : language === "hi"
-                        ? "फिर भी रिपोर्ट सबमिट की जा सकती है।"
-                        : "तरीही नोंद सबमिट केली जाऊ शकते."}
-                  </div>
-                )}
-
-            </div>
-
-            {/* TITLE */}
-
+          {/* STEP 2 — DETAILS */}
+          <section className="kf-report-section kf-report-section-2"
+            style={{
+              marginBottom: "14px",
+              padding: "22px",
+              borderRadius: "28px",
+              border: "1px solid rgba(16,27,43,.10)",
+              background: "rgba(255,255,255,.90)",
+              boxShadow: "0 12px 32px rgba(16,27,43,.045)",
+            }}
+          >
             <div
               style={{
-                marginBottom: "22px",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                marginBottom: "18px",
               }}
             >
-              <label
-                htmlFor="title"
-                style={{
-                  display: "block",
-                  marginBottom: "9px",
-                  fontWeight: 600,
-                }}
-              >
-                {text.issueTitle}
-              </label>
-
-              <input
-                id="title"
-                type="text"
-                value={title}
-                onChange={(e) =>
-                  setTitle(
-                    e.target.value
-                  )
-                }
-                placeholder={
-                  text.issueTitlePlaceholder
-                }
-                style={{
-                  width: "100%",
-                  padding: "14px",
-                  borderRadius: "12px",
-                  border:
-                    "1px solid #374151",
-                  background:
-                    "#111827",
-                  color: "white",
-                  fontSize: "15px",
-                  outline: "none",
-                  boxSizing:
-                    "border-box",
-                }}
-              />
-            </div>
-
-            {/* DESCRIPTION */}
-
-            <div
-              style={{
-                marginBottom: "22px",
-              }}
-            >
-              <label
-                htmlFor="description"
-                style={{
-                  display: "block",
-                  marginBottom: "9px",
-                  fontWeight: 600,
-                }}
-              >
-                {text.describeProblem}
-              </label>
-
-              <textarea
-                id="description"
-                value={description}
-                onChange={(e) =>
-                  setDescription(
-                    e.target.value
-                  )
-                }
-                placeholder={
-                  text.describePlaceholder
-                }
-                rows={6}
-                style={{
-                  width: "100%",
-                  padding: "14px",
-                  borderRadius: "12px",
-                  border:
-                    "1px solid #374151",
-                  background:
-                    "#111827",
-                  color: "white",
-                  fontSize: "15px",
-                  outline: "none",
-                  resize: "vertical",
-                  boxSizing:
-                    "border-box",
-                }}
-              />
-            </div>
-
-            {/* LOCATION */}
-
-            <div
-              style={{
-                marginBottom: "22px",
-              }}
-            >
-              <label
-                htmlFor="location"
-                style={{
-                  display: "block",
-                  marginBottom: "9px",
-                  fontWeight: 600,
-                }}
-              >
-                {text.location}
-              </label>
-
               <div
                 style={{
-                  display: "flex",
-                  gap: "10px",
-                  flexWrap: "wrap",
+                  width: "34px",
+                  height: "34px",
+                  display: "grid",
+                  placeItems: "center",
+                  borderRadius: "12px",
+                  background: "#edf5fb",
+                  color: "#527a96",
+                  fontSize: "12px",
+                  fontWeight: 900,
+                }}
+              >
+                02
+              </div>
+              <div>
+                <p
+                  style={{
+                    margin: 0,
+                    color: "#979da3",
+                    fontSize: "9px",
+                    fontWeight: 900,
+                    letterSpacing: ".18em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Issue details
+                </p>
+                <h2
+                  style={{
+                    margin: "3px 0 0",
+                    color: "#263447",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "23px",
+                    lineHeight: "1.05",
+                    fontWeight: 800,
+                  }}
+                >
+                  Describe what happened
+                </h2>
+              </div>
+            </div>
+
+            <label
+              style={{
+                display: "block",
+                color: "#667480",
+                fontSize: "11px",
+                fontWeight: 900,
+                marginBottom: "7px",
+              }}
+            >
+              {text.issueTitle}
+            </label>
+
+            <input className="kf-report-control"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder={text.issueTitlePlaceholder}
+              style={{
+                width: "100%",
+                boxSizing: "border-box",
+                padding: "14px 15px",
+                borderRadius: "16px",
+                border: "1px solid #dfdad2",
+                background: "#fffdf9",
+                color: "#263447",
+                fontSize: "13px",
+                outline: "none",
+              }}
+            />
+
+            <label
+              style={{
+                display: "block",
+                color: "#667480",
+                fontSize: "11px",
+                fontWeight: 900,
+                margin: "16px 0 7px",
+              }}
+            >
+              {text.describeProblem}
+            </label>
+
+            <textarea className="kf-report-control kf-report-textarea"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder={text.describePlaceholder}
+              rows={7}
+              style={{
+                width: "100%",
+                boxSizing: "border-box",
+                minHeight: "170px",
+                padding: "14px 15px",
+                borderRadius: "16px",
+                border: "1px solid #dfdad2",
+                background: "#fffdf9",
+                color: "#263447",
+                fontSize: "13px",
+                lineHeight: "1.6",
+                outline: "none",
+                resize: "vertical",
+              }}
+            />
+          </section>
+
+          {/* STEP 3 — LOCATION */}
+          <section className="kf-report-section kf-report-section-3"
+            style={{
+              marginBottom: "14px",
+              padding: "22px",
+              borderRadius: "28px",
+              border: "1px solid rgba(16,27,43,.10)",
+              background: "rgba(255,255,255,.90)",
+              boxShadow: "0 12px 32px rgba(16,27,43,.045)",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                marginBottom: "18px",
+              }}
+            >
+              <div
+                style={{
+                  width: "34px",
+                  height: "34px",
+                  display: "grid",
+                  placeItems: "center",
+                  borderRadius: "12px",
+                  background: "#eef5e6",
+                  color: "#6d8746",
+                  fontSize: "12px",
+                  fontWeight: 900,
+                }}
+              >
+                03
+              </div>
+              <div>
+                <p
+                  style={{
+                    margin: 0,
+                    color: "#979da3",
+                    fontSize: "9px",
+                    fontWeight: 900,
+                    letterSpacing: ".18em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {text.location}
+                </p>
+                <h2
+                  style={{
+                    margin: "3px 0 0",
+                    color: "#263447",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "23px",
+                    lineHeight: "1.05",
+                    fontWeight: 800,
+                  }}
+                >
+                  Where is the issue?
+                </h2>
+              </div>
+            </div>
+
+            <input className="kf-report-control"
+              type="text"
+              value={locationText}
+              onChange={(e) => setLocationText(e.target.value)}
+              placeholder={text.locationPlaceholder}
+              style={{
+                width: "100%",
+                boxSizing: "border-box",
+                padding: "14px 15px",
+                borderRadius: "16px",
+                border: "1px solid #dfdad2",
+                background: "#fffdf9",
+                color: "#263447",
+                fontSize: "13px",
+                outline: "none",
+              }}
+            />
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                flexWrap: "wrap",
+                marginTop: "10px",
+              }}
+            >
+              <button className="kf-report-secondary-button"
+                type="button"
+                onClick={getLocation}
+                style={{
+                  border: "1px solid #d9e1e7",
+                  borderRadius: "999px",
+                  background: "#edf5fb",
+                  color: "#52758d",
+                  padding: "11px 15px",
+                  fontSize: "11px",
+                  fontWeight: 900,
+                  cursor: "pointer",
+                }}
+              >
+                {text.useLocation}
+              </button>
+
+              {latitude !== null && longitude !== null && (
+                <span
+                  style={{
+                    color: "#71808b",
+                    fontSize: "10px",
+                    fontWeight: 700,
+                  }}
+                >
+                  {text.gpsCaptured}{" "}
+                  {latitude.toFixed(5)}, {longitude.toFixed(5)}
+                </span>
+              )}
+            </div>
+          </section>
+
+          {/* STEP 4 — EVIDENCE */}
+          <section className="kf-report-section kf-report-section-4"
+            style={{
+              marginBottom: "14px",
+              padding: "22px",
+              borderRadius: "28px",
+              border: "1px solid rgba(16,27,43,.10)",
+              background: "rgba(255,255,255,.90)",
+              boxShadow: "0 12px 32px rgba(16,27,43,.045)",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                marginBottom: "18px",
+              }}
+            >
+              <div
+                style={{
+                  width: "34px",
+                  height: "34px",
+                  display: "grid",
+                  placeItems: "center",
+                  borderRadius: "12px",
+                  background: "#f4edf8",
+                  color: "#805e98",
+                  fontSize: "12px",
+                  fontWeight: 900,
+                }}
+              >
+                04
+              </div>
+              <div>
+                <p
+                  style={{
+                    margin: 0,
+                    color: "#979da3",
+                    fontSize: "9px",
+                    fontWeight: 900,
+                    letterSpacing: ".18em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {text.photoEvidence}
+                </p>
+                <h2
+                  style={{
+                    margin: "3px 0 0",
+                    color: "#263447",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "23px",
+                    lineHeight: "1.05",
+                    fontWeight: 800,
+                  }}
+                >
+                  Add visual proof
+                </h2>
+              </div>
+            </div>
+
+            {!selectedFile ? (
+              <label className="kf-report-upload-zone"
+                style={{
+                  display: "block",
+                  textAlign: "center",
+                  padding: "30px 18px",
+                  borderRadius: "22px",
+                  border: "1px dashed #d8d1c7",
+                  background: "#fcfaf6",
+                  cursor: "pointer",
                 }}
               >
                 <input
-                  id="location"
-                  type="text"
-                  value={locationText}
-                  onChange={(e) =>
-                    setLocationText(
-                      e.target.value
-                    )
-                  }
-                  placeholder={
-                    text.locationPlaceholder
-                  }
-                  style={{
-                    flex: 1,
-                    minWidth:
-                      "250px",
-                    padding: "14px",
-                    borderRadius: "12px",
-                    border:
-                      "1px solid #374151",
-                    background:
-                      "#111827",
-                    color: "white",
-                    fontSize: "15px",
-                    outline: "none",
-                    boxSizing:
-                      "border-box",
-                  }}
+                  type="file"
+                  accept="image/*"
+                  onChange={handlePhotoChange}
+                  style={{ display: "none" }}
                 />
 
-                <button
-                  type="button"
-                  onClick={getLocation}
+                <div
                   style={{
-                    padding:
-                      "14px 18px",
-                    borderRadius:
-                      "12px",
-                    border:
-                      "1px solid #374151",
-                    background:
-                      "#1f2937",
-                    color: "white",
-                    cursor:
-                      "pointer",
-                    fontWeight: 600,
+                    width: "54px",
+                    height: "54px",
+                    display: "grid",
+                    placeItems: "center",
+                    margin: "0 auto 12px",
+                    borderRadius: "18px",
+                    background: "#f4edf8",
+                    fontSize: "24px",
                   }}
                 >
-                  {text.useLocation}
-                </button>
-              </div>
+                  📷
+                </div>
 
-              {latitude !== null &&
-                longitude !== null && (
-                  <p
-                    style={{
-                      color: "#9ca3af",
-                      fontSize: "13px",
-                      marginTop:
-                        "9px",
-                      marginBottom: 0,
-                    }}
-                  >
-                    {text.gpsCaptured}{" "}
-                    {latitude.toFixed(6)},{" "}
-                    {longitude.toFixed(6)}
-                  </p>
-                )}
-            </div>
+                <div
+                  style={{
+                    color: "#39485a",
+                    fontSize: "13px",
+                    fontWeight: 900,
+                  }}
+                >
+                  {text.clickUpload}
+                </div>
 
-            {/* PHOTO */}
-
-            <div
-              style={{
-                border:
-                  "1px dashed #374151",
-                borderRadius:
-                  "14px",
-                padding: "20px",
-                marginBottom:
-                  "28px",
-                background:
-                  "rgba(255,255,255,0.02)",
-              }}
-            >
-              <div
+                <div
+                  style={{
+                    marginTop: "6px",
+                    color: "#929aa1",
+                    fontSize: "10px",
+                  }}
+                >
+                  {text.fileTypes}
+                </div>
+              </label>
+            ) : (
+              <div className="kf-report-upload-preview"
                 style={{
-                  fontWeight: 700,
-                  marginBottom:
-                    "10px",
+                  overflow: "hidden",
+                  borderRadius: "22px",
+                  border: "1px solid #e2ddd5",
+                  background: "#fcfaf6",
                 }}
               >
-                {text.photoEvidence}
-              </div>
-
-              {!selectedFile ? (
-                <label
-                  style={{
-                    display: "block",
-                    border:
-                      "1px solid #374151",
-                    borderRadius:
-                      "12px",
-                    padding: "24px",
-                    textAlign:
-                      "center",
-                    background:
-                      "#111827",
-                    cursor:
-                      "pointer",
-                    color:
-                      "#d1d5db",
-                  }}
-                >
-                  <input
-                    type="file"
-                    accept="image/*"
-                    capture="environment"
-                    onChange={
-                      handlePhotoChange
-                    }
-                    style={{
-                      display: "none",
-                    }}
-                  />
-
+                {previewUrl && (
                   <div
                     style={{
-                      fontSize: "36px",
-                      marginBottom:
-                        "10px",
-                    }}
-                  >
-                    📸
-                  </div>
-
-                  <div
-                    style={{
-                      fontWeight: 600,
-                      fontSize: "16px",
-                    }}
-                  >
-                    {text.clickUpload}
-                  </div>
-
-                  <div
-                    style={{
-                      color: "#6b7280",
-                      fontSize: "13px",
-                      marginTop:
-                        "6px",
-                    }}
-                  >
-                    {text.fileTypes}
-                  </div>
-                </label>
-              ) : (
-                <div>
-                  <div
-                    style={{
-                      borderRadius:
-                        "14px",
-                      overflow:
-                        "hidden",
-                      marginBottom:
-                        "14px",
-                      background:
-                        "#0b0f14",
+                      height: "260px",
+                      overflow: "hidden",
+                      background: "#f0ece6",
                     }}
                   >
                     <img
                       src={previewUrl}
                       alt={text.selectedEvidence}
                       style={{
-                        display: "block",
                         width: "100%",
-                        maxHeight:
-                          "400px",
-                        objectFit:
-                          "contain",
+                        height: "100%",
+                        objectFit: "cover",
+                        display: "block",
                       }}
                     />
                   </div>
+                )}
 
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems:
-                        "center",
-                      justifyContent:
-                        "space-between",
-                      gap: "10px",
-                      flexWrap:
-                        "wrap",
-                    }}
-                  >
-                    <div>
-                      <div
-                        style={{
-                          fontWeight: 600,
-                          fontSize:
-                            "14px",
-                        }}
-                      >
-                        {
-                          selectedFile.name
-                        }
-                      </div>
-
-                      <div
-                        style={{
-                          color:
-                            "#6b7280",
-                          fontSize:
-                            "12px",
-                          marginTop:
-                            "4px",
-                        }}
-                      >
-                        {(
-                          selectedFile.size /
-                          (1024 * 1024)
-                        ).toFixed(2)}{" "}
-                        MB
-                      </div>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={
-                        removePhoto
-                      }
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: "12px",
+                    flexWrap: "wrap",
+                    padding: "13px 15px",
+                  }}
+                >
+                  <div style={{ minWidth: 0 }}>
+                    <div
                       style={{
-                        padding:
-                          "9px 14px",
-                        borderRadius:
-                          "10px",
-                        border:
-                          "1px solid #4b5563",
-                        background:
-                          "#1f2937",
-                        color:
-                          "#fca5a5",
-                        cursor:
-                          "pointer",
-                        fontWeight:
-                          600,
+                        color: "#697581",
+                        fontSize: "9px",
+                        fontWeight: 900,
+                        letterSpacing: ".15em",
+                        textTransform: "uppercase",
                       }}
                     >
-                      {text.removePhoto}
-                    </button>
+                      {text.selectedEvidence}
+                    </div>
+                    <div
+                      style={{
+                        marginTop: "3px",
+                        color: "#2f4052",
+                        fontSize: "12px",
+                        fontWeight: 800,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                        maxWidth: "520px",
+                      }}
+                    >
+                      {selectedFile.name}
+                    </div>
                   </div>
+
+                  <button className="kf-report-remove-button"
+                    type="button"
+                    onClick={removePhoto}
+                    style={{
+                      border: "1px solid #e0cfc8",
+                      borderRadius: "999px",
+                      background: "#fff3ef",
+                      color: "#9a5b4b",
+                      padding: "9px 13px",
+                      fontSize: "10px",
+                      fontWeight: 900,
+                      cursor: "pointer",
+                    }}
+                  >
+                    {text.removePhoto}
+                  </button>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
+          </section>
 
-            {/* SUBMIT */}
-
-            <button
-              type="submit"
-              disabled={saving}
+          {/* SUBMIT */}
+          <section className="kf-report-submit-section"
+            style={{
+              marginTop: "18px",
+              overflow: "hidden",
+              borderRadius: "30px",
+              border: "1px solid #e5ddd2",
+              background:
+                "radial-gradient(circle at 92% 8%, #e6f1f7 0%, rgba(230,241,247,0) 32%), radial-gradient(circle at 8% 100%, #ffecd8 0%, rgba(255,236,216,0) 30%), #fffdf9",
+              boxShadow: "0 16px 42px rgba(16,27,43,.06)",
+            }}
+          >
+            <div
               style={{
-                width: "100%",
-                padding: "16px",
-                borderRadius:
-                  "14px",
-                border: "none",
-                background: saving
-                  ? "#374151"
-                  : "#2563eb",
-                color: "white",
-                fontSize: "16px",
-                fontWeight: 700,
-                cursor: saving
-                  ? "not-allowed"
-                  : "pointer",
+                padding: "24px",
               }}
             >
-              {saving
-                ? text.submitting
-                : text.submit}
-            </button>
-          </form>
-        </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "14px",
+                }}
+              >
+                <div
+                  style={{
+                    width: "42px",
+                    height: "42px",
+                    flexShrink: 0,
+                    display: "grid",
+                    placeItems: "center",
+                    borderRadius: "15px",
+                    background: "#fff0df",
+                    fontSize: "20px",
+                  }}
+                >
+                  ✦
+                </div>
+
+                <div>
+                  <div
+                    style={{
+                      color: "#9a8e83",
+                      fontSize: "9px",
+                      fontWeight: 900,
+                      letterSpacing: ".18em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    KarmaFacie guidance
+                  </div>
+
+                  <h2
+                    style={{
+                      margin: "4px 0 7px",
+                      color: "#263447",
+                      fontFamily: "var(--font-display)",
+                      fontSize: "24px",
+                      lineHeight: "1.05",
+                      fontWeight: 800,
+                    }}
+                  >
+                    {language === "en"
+                      ? "Ready to report the issue?"
+                      : language === "hi"
+                      ? "समस्या रिपोर्ट करने के लिए तैयार हैं?"
+                      : "समस्या नोंदवण्यासाठी तयार आहात?"}
+                  </h2>
+
+                  <p
+                    style={{
+                      margin: 0,
+                      color: "#77838e",
+                      fontSize: "12px",
+                      lineHeight: "1.6",
+                    }}
+                  >
+                    {language === "en"
+                      ? "Check your details and submit. KarmaFacie will keep the report connected to the authority information available for your location."
+                      : language === "hi"
+                      ? "अपनी जानकारी जाँचें और सबमिट करें। KarmaFacie आपकी लोकेशन के लिए उपलब्ध प्राधिकरण जानकारी से रिपोर्ट को जोड़कर रखेगा।"
+                      : "तुमची माहिती तपासा आणि सबमिट करा. तुमच्या स्थानासाठी उपलब्ध प्राधिकरणाच्या माहितीसोबत KarmaFacie तुमची नोंद जोडून ठेवेल."}
+                  </p>
+                </div>
+              </div>
+
+              <button className="kf-report-submit-button"
+                type="submit"
+                disabled={saving}
+                style={{
+                  width: "100%",
+                  marginTop: "20px",
+                  border: 0,
+                  borderRadius: "999px",
+                  background: saving ? "#d4a276" : "#ff7a00",
+                  color: "#ffffff",
+                  padding: "15px 20px",
+                  fontSize: "13px",
+                  fontWeight: 900,
+                  cursor: saving ? "not-allowed" : "pointer",
+                  boxShadow: saving
+                    ? "none"
+                    : "0 12px 24px rgba(255,122,0,.18)",
+                }}
+              >
+                {saving ? text.submitting : text.submit}
+              </button>
+            </div>
+          </section>
+        </form>
       </div>
+
+      <style>{`
+
+        /* =========================================================
+           REPORT ISSUE — DARK MODE
+           Exact visual language of the current Civic Learning page.
+           Light mode remains unchanged.
+           ========================================================= */
+
+        html[data-theme="dark"] .kf-report-page {
+          --kf-ivory: #07111f !important;
+          --kf-white: #0d1d31 !important;
+          --kf-navy: #f5f7fb !important;
+          --kf-ink: #e8edf5 !important;
+          --kf-body: #b8c4d9 !important;
+          --kf-muted: #8291aa !important;
+          --kf-line: #1f2e47 !important;
+
+          background:
+            radial-gradient(circle at 92% 2%, rgba(42,76,108,.28) 0%, rgba(42,76,108,0) 27%),
+            radial-gradient(circle at 4% 32%, rgba(36,78,106,.18) 0%, rgba(36,78,106,0) 25%),
+            radial-gradient(circle at 92% 94%, rgba(132,72,32,.16) 0%, rgba(132,72,32,0) 26%),
+            #07111f !important;
+          color: #b8c4d9 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page > div {
+          background: transparent !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-topbar {
+          border-color: #1f2e47 !important;
+          background: rgba(13,29,49,.94) !important;
+          box-shadow: 0 18px 48px rgba(0,0,0,.25) !important;
+          backdrop-filter: blur(16px) !important;
+          -webkit-backdrop-filter: blur(16px) !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-topbar button,
+        html[data-theme="dark"] .kf-report-page .kf-report-topbar select {
+          border-color: #2a3c56 !important;
+          background: #10243a !important;
+          color: #dce5f2 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-topbar button span {
+          color: #ff8a24 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-topbar > div:nth-child(2) > div:first-child {
+          background: #ff7a00 !important;
+          color: #102033 !important;
+          box-shadow: 0 8px 18px rgba(255,122,0,.20) !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-topbar > div:nth-child(2) > div:last-child > div:first-child {
+          color: #f5f7fb !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-topbar > div:nth-child(2) > div:last-child > div:first-child span {
+          color: #ff7a00 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-topbar > div:nth-child(2) > div:last-child > div:last-child {
+          color: #8ea3b8 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-intro {
+          background:
+            radial-gradient(circle at 94% 0%, rgba(48,84,114,.34) 0%, rgba(48,84,114,0) 34%),
+            radial-gradient(circle at 0% 100%, rgba(111,63,31,.22) 0%, rgba(111,63,31,0) 35%),
+            #10243a !important;
+          border-color: #1f2e47 !important;
+          box-shadow: 0 20px 55px rgba(0,0,0,.24) !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-intro h1 {
+          color: #f5f7fb !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-intro p {
+          color: #b8c4d9 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-location-pill {
+          background: rgba(16,36,58,.82) !important;
+          border-color: #2a3c56 !important;
+          color: #aebbd0 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-location-pill strong {
+          color: #d7e0ec !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-success {
+          background: #182c25 !important;
+          border-color: #315040 !important;
+          color: #a8d6af !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-error {
+          background: #2a1c20 !important;
+          border-color: #60404a !important;
+          color: #f0b7bf !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-section,
+        html[data-theme="dark"] .kf-report-page .kf-report-submit-section {
+          background: #0d1d31 !important;
+          border-color: #1f2e47 !important;
+          box-shadow: 0 18px 48px rgba(0,0,0,.20) !important;
+          color: #b8c4d9 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-section h2,
+        html[data-theme="dark"] .kf-report-page .kf-report-section h3,
+        html[data-theme="dark"] .kf-report-page .kf-report-submit-section h2 {
+          color: #f5f7fb !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-section p,
+        html[data-theme="dark"] .kf-report-page .kf-report-submit-section p {
+          color: #b8c4d9 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-section-1 > div:first-child > div:first-child {
+          background: #30251b !important;
+          color: #ffb37a !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-section-2 > div:first-child > div:first-child {
+          background: #10263a !important;
+          color: #9fc4df !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-section-3 > div:first-child > div:first-child {
+          background: #182c25 !important;
+          color: #9bd8a0 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-section-4 > div:first-child > div:first-child {
+          background: #27233a !important;
+          color: #b9a8ff !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-control {
+          background: #10243a !important;
+          border-color: #2a3c56 !important;
+          color: #edf3fa !important;
+          caret-color: #ff8a24 !important;
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.025) !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-control::placeholder {
+          color: #718198 !important;
+          opacity: 1 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-category-select option {
+          background: #10243a !important;
+          color: #edf3fa !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-control:focus {
+          border-color: #4a6e91 !important;
+          box-shadow:
+            0 0 0 3px rgba(79,181,255,.10),
+            inset 0 1px 0 rgba(255,255,255,.025) !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-section label {
+          color: #9fb0c5 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-authority-button {
+          background: #10243a !important;
+          border-color: #2a3c56 !important;
+          color: #dce5f2 !important;
+          box-shadow: none !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-authority-button[data-authority-selected="true"] {
+          background: #182c25 !important;
+          border-color: #315040 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-authority-button div[style*="color: #263447"] {
+          color: #f5f7fb !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-authority-button div[style*="color: #78838d"] {
+          color: #8291aa !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-authority-button span {
+          background: #10263a !important;
+          color: #9fc4df !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-authority-button[data-authority-selected="true"] span {
+          background: #ff7a00 !important;
+          color: #102033 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-section-1 div[style*="background: #f1f6fa"] {
+          background: #10263a !important;
+          border-color: #29445d !important;
+          color: #9fb0c5 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-section-1 div[style*="background: #fff8ef"] {
+          background: #30251b !important;
+          border-color: #5a3d27 !important;
+          color: #d7b996 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-section-1 span[style*="background: #7d9853"] {
+          background: #8fd18b !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-secondary-button {
+          background: #10263a !important;
+          border-color: #29445d !important;
+          color: #9fc4df !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-secondary-button:hover {
+          background: #132943 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-upload-zone,
+        html[data-theme="dark"] .kf-report-page .kf-report-upload-preview {
+          background: #10243a !important;
+          border-color: #2a3c56 !important;
+          color: #dce5f2 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-upload-zone > div:first-of-type {
+          background: #27233a !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-upload-zone > div:nth-of-type(2) {
+          color: #f5f7fb !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-upload-zone > div:nth-of-type(3) {
+          color: #718198 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-upload-preview > div[style*="height: 260px"] {
+          background: #1a2940 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-remove-button {
+          background: #2a1c20 !important;
+          border-color: #60404a !important;
+          color: #f0b7bf !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-submit-section {
+          background:
+            linear-gradient(135deg, #30251b 0%, #10243a 56%, #182c25 100%) !important;
+          border-color: #3b3a35 !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-submit-section > div > div:first-child > div:first-child {
+          background: rgba(255,140,26,.10) !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-submit-section > div > div:first-child > div:nth-child(2) > div:first-child {
+          color: #8291aa !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-submit-button,
+        html[data-theme="dark"] .kf-report-page .kf-report-primary-button {
+          background: #ff7a00 !important;
+          border-color: #ff7a00 !important;
+          color: #102033 !important;
+          box-shadow: 0 10px 26px rgba(255,122,0,.22) !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-submit-button:disabled {
+          background: #6d553f !important;
+          border-color: #6d553f !important;
+          color: #d0c7be !important;
+          box-shadow: none !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-loading-card {
+          background: #0d1d31 !important;
+          border-color: #1f2e47 !important;
+          box-shadow: 0 18px 48px rgba(0,0,0,.25) !important;
+          color: #f5f7fb !important;
+        }
+
+        html[data-theme="dark"] .kf-report-page .kf-report-loading-card p {
+          color: #8291aa !important;
+        }
+
+        @media (max-width: 900px) {
+          html[data-theme="dark"] .kf-report-page {
+            padding: 14px 10px 52px !important;
+          }
+
+          html[data-theme="dark"] .kf-report-page .kf-report-topbar {
+            top: 10px !important;
+            margin-bottom: 26px !important;
+            border-radius: 24px !important;
+          }
+        }
+
+        @media (max-width: 760px) {
+          main > div > header {
+            position: relative !important;
+            top: 0 !important;
+          }
+          main form section {
+            padding: 18px !important;
+          }
+        }
+
+/* =========================================================
+   REPORT ISSUE — DARK NAVBAR GLOW
+   Match the Healthcare/Civic Explore navbar glow exactly.
+   IMPORTANT: no navbar dimensions, content, spacing or layout
+   values are changed here; this only adds the visual glow.
+   ========================================================= */
+html[data-theme="dark"] .kf-report-page .kf-report-topbar {
+  border: 1px solid transparent !important;
+  background: rgba(4,10,20,.62) !important;
+  background-image: none !important;
+  box-shadow:
+    -10px 0 24px -8px rgba(0,212,255,.30),
+     10px 0 24px -8px rgba(255,140,26,.30),
+     0 10px 30px rgba(0,0,0,.34) !important;
+  backdrop-filter: blur(14px) saturate(125%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(125%) !important;
+  isolation: isolate !important;
+}
+
+html[data-theme="dark"] .kf-report-page .kf-report-topbar::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: inherit !important;
+  padding: 1.25px !important;
+  background: linear-gradient(
+    90deg,
+    #00d4ff 0%,
+    rgba(0,174,255,.52) 16%,
+    rgba(90,120,150,.28) 43%,
+    rgba(120,120,130,.22) 57%,
+    rgba(255,150,40,.52) 84%,
+    #ff8c1a 100%
+  ) !important;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0) !important;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0) !important;
+  -webkit-mask-composite: xor !important;
+  mask-composite: exclude !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+html[data-theme="dark"] .kf-report-page .kf-report-topbar::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: -5px !important;
+  border-radius: 29px !important;
+  background: linear-gradient(
+    90deg,
+    #00d4ff 0%,
+    rgba(0,150,255,.32) 18%,
+    transparent 36%,
+    transparent 64%,
+    rgba(255,140,26,.34) 82%,
+    #ff8c1a 100%
+  ) !important;
+  filter: blur(10px) !important;
+  opacity: .34 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+
+html[data-theme="dark"] .kf-report-page .kf-report-topbar > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+      `}</style>
     </main>
   );
 }

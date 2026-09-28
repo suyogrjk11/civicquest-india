@@ -1150,7 +1150,7 @@ export default function IssueDetailsPage() {
   const params = useParams();
 
   const supabase = createClient();
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
     translateIssuePageDom(language);
@@ -2439,6 +2439,7 @@ export default function IssueDetailsPage() {
   if (loading) {
     return (
       <main
+        className="kf-detail-page kf-detail-loading"
         style={{
           minHeight: "100vh",
           background: "#0b0f14",
@@ -2459,6 +2460,7 @@ export default function IssueDetailsPage() {
   if (error || !issue) {
     return (
       <main
+        className="kf-detail-page kf-detail-error"
         style={{
           minHeight: "100vh",
           background:
@@ -2477,6 +2479,7 @@ export default function IssueDetailsPage() {
           }}
         >
           <button
+            className="kf-detail-error-back-button"
             type="button"
             onClick={() =>
               router.push(
@@ -2501,6 +2504,7 @@ export default function IssueDetailsPage() {
           </button>
 
           <div
+            className="kf-detail-error-card"
             style={panelStyle}
           >
             <h1
@@ -2658,74 +2662,153 @@ export default function IssueDetailsPage() {
     },
   ];
 
-  return (
-    <main
-      style={{
-        minHeight:
-          "100vh",
-        background:
-          "radial-gradient(circle at top, #18222e 0%, #0b0f14 45%, #070a0d 100%)",
-        color:
-          "white",
-        padding:
-          "40px 20px 80px",
-      }}
-    >
-      <div
+
+  const t = (key: string) =>
+    uiTranslations[language]?.[key] ?? key;
+
+  const status = issue?.status ?? "";
+
+  const statusTone =
+    status === "resolved"
+      ? {
+          background: "#eaf5df",
+          border: "#cfe2bd",
+          text: "#55733c",
+          dot: "#77a04f",
+        }
+      : status === "in_progress"
+        ? {
+            background: "#fff0de",
+            border: "#edd0aa",
+            text: "#94683e",
+            dot: "#e49a53",
+          }
+        : status === "under_review"
+          ? {
+              background: "#eaf3f9",
+              border: "#d0e1ec",
+              text: "#52738d",
+              dot: "#6d99b7",
+            }
+          : status === "rejected"
+            ? {
+                background: "#fff0ed",
+                border: "#ecd0c8",
+                text: "#965c4d",
+                dot: "#c97865",
+              }
+            : {
+                background: "#f2f0eb",
+                border: "#ddd8cf",
+                text: "#606b74",
+                dot: "#8d969d",
+              };
+
+  const sectionStyle = {
+    borderRadius: "30px",
+    border: "1px solid #dfd9d0",
+    background: "rgba(255,253,249,.96)",
+    boxShadow: "0 16px 42px rgba(16,27,43,.055)",
+  };
+
+  const softSection = (background: string, border: string) => ({
+    ...sectionStyle,
+    background,
+    border,
+  });
+
+  if (loading) {
+    return (
+      <main
         style={{
-          maxWidth:
-            "1000px",
-          margin:
-            "0 auto",
+          minHeight: "100vh",
+          display: "grid",
+          placeItems: "center",
+          padding: "24px",
+          background:
+            "radial-gradient(circle at 88% 6%, rgba(218,234,243,.92) 0%, rgba(218,234,243,0) 28%), radial-gradient(circle at 8% 92%, rgba(255,229,205,.72) 0%, rgba(255,229,205,0) 28%), #f8f3ea",
+          color: "#102033",
+          fontFamily: "var(--font-body)",
         }}
       >
-        {/* BACK */}
-
-        <button
-          type="button"
-          onClick={() =>
-            router.push(
-              "/my-issues"
-            )
-          }
-          style={{
-            background:
-              "transparent",
-            border:
-              "none",
-            color:
-              "#9ca3af",
-            cursor:
-              "pointer",
-            fontSize:
-              "15px",
-            marginBottom:
-              "24px",
-          }}
-        >
-          ← Back to My Issues
-        </button>
-
-        {/* HEADER */}
-
         <div
           style={{
-            marginBottom:
-              "28px",
+            width: "min(430px, 100%)",
+            padding: "34px",
+            textAlign: "center",
+            borderRadius: "32px",
+            background: "rgba(255,253,249,.96)",
+            border: "1px solid #dfd9d0",
+            boxShadow: "0 20px 60px rgba(16,27,43,.08)",
           }}
         >
           <div
             style={{
-              fontSize:
-                "14px",
-              color:
-                "#60a5fa",
-              fontWeight:
-                700,
-              marginBottom:
-                "8px",
-              letterSpacing:
-                "0.5px",
+              fontFamily: "var(--font-display)",
+              fontSize: "36px",
+              fontWeight: 800,
+              letterSpacing: "-.05em",
+            }}
+          >
+            <span className="kf-detail-brand-karma">Karma</span><span className="kf-detail-brand-facie">Facie</span>
+          </div>
+
+          <div
+            style={{
+              width: "68px",
+              height: "5px",
+              margin: "14px auto 15px",
+              borderRadius: "999px",
+              background: "#ff7a00",
+            }}
+          />
+
+          <p
+            style={{
+              margin: 0,
+              color: "#647481",
+              fontSize: "14px",
+              fontWeight: 700,
+            }}
+          >
+            {t("Loading civic issue...")}
+          </p>
+        </div>
+      </main>
+    );
+  }
+
+  if (!issue) {
+    return (
+      <main
+        style={{
+          minHeight: "100vh",
+          display: "grid",
+          placeItems: "center",
+          padding: "24px",
+          background:
+            "radial-gradient(circle at 90% 5%, rgba(218,234,243,.85) 0%, rgba(218,234,243,0) 26%), #f8f3ea",
+          color: "#102033",
+          fontFamily: "var(--font-body)",
+        }}
+      >
+        <div
+          style={{
+            width: "min(560px, 100%)",
+            padding: "32px",
+            borderRadius: "30px",
+            background: "#fffdf9",
+            border: "1px solid #dfd9d0",
+            boxShadow: "0 18px 48px rgba(16,27,43,.06)",
+          }}
+        >
+          <div
+            style={{
+              color: "#ff7a00",
+              fontSize: "11px",
+              fontWeight: 900,
+              letterSpacing: ".18em",
+              textTransform: "uppercase",
             }}
           >
             KARMAFACIE
@@ -2733,3880 +2816,2896 @@ export default function IssueDetailsPage() {
 
           <h1
             style={{
-              fontSize:
-                "34px",
-              margin:
-                "0 0 10px",
-              fontWeight:
-                800,
+              margin: "10px 0 8px",
+              color: "#203449",
+              fontFamily: "var(--font-display)",
+              fontSize: "40px",
+              lineHeight: 1,
+              fontWeight: 800,
             }}
           >
-            {issue.title ||
-              "Civic Issue"}
+            {t("Unable to load this civic issue.")}
           </h1>
-
-          <div
-            style={{
-              display:
-                "flex",
-              alignItems:
-                "center",
-              gap:
-                "10px",
-              flexWrap:
-                "wrap",
-            }}
-          >
-            <span
-              style={{
-                color:
-                  "#60a5fa",
-                fontWeight:
-                  700,
-                fontSize:
-                  "14px",
-              }}
-            >
-              {
-                issue.category
-              }
-            </span>
-
-            <span
-              style={{
-                background:
-                  "rgba(255,255,255,0.06)",
-                border:
-                  "1px solid rgba(255,255,255,0.1)",
-                borderRadius:
-                  "999px",
-                padding:
-                  "7px 12px",
-                fontSize:
-                  "13px",
-                fontWeight:
-                  700,
-              }}
-            >
-              {getStatusIcon(
-                issue.status
-              )}{" "}
-              {getStatusLabel(
-                issue.status
-              )}
-            </span>
-          </div>
-        </div>
-
-        {/* PHOTO EVIDENCE */}
-
-        {photoUrl && (
-          <section
-            style={{
-              ...panelStyle,
-              padding:
-                0,
-              overflow:
-                "hidden",
-            }}
-          >
-            <div
-              style={{
-                padding:
-                  "20px 24px",
-                borderBottom:
-                  "1px solid rgba(255,255,255,0.06)",
-                fontWeight:
-                  700,
-              }}
-            >
-              📷 Photo Evidence
-            </div>
-
-            <div
-              style={{
-                background:
-                  "#05080b",
-                display:
-                  "flex",
-                justifyContent:
-                  "center",
-              }}
-            >
-              <img
-                src={
-                  photoUrl
-                }
-                alt={
-                  issue.title ||
-                  "Civic issue evidence"
-                }
-                style={{
-                  width:
-                    "100%",
-                  maxHeight:
-                    "620px",
-                  objectFit:
-                    "contain",
-                  display:
-                    "block",
-                }}
-              />
-            </div>
-          </section>
-        )}
-
-        {/* ISSUE INFORMATION */}
-
-        <section
-          style={
-            panelStyle
-          }
-        >
-          <h2
-            style={{
-              fontSize:
-                "21px",
-              margin:
-                "0 0 18px",
-            }}
-          >
-            Issue Information
-          </h2>
 
           <p
             style={{
-              color:
-                "#d1d5db",
-              lineHeight:
-                1.7,
-              margin:
-                "0 0 18px",
+              margin: 0,
+              color: "#667682",
+              fontSize: "14px",
+              lineHeight: 1.7,
             }}
           >
-            {issue.description ||
-              "No description provided."}
+            {error || t("This civic issue could not be found.")}
           </p>
 
-          {issue.reported_city && (
-            <div
-              style={{
-                color:
-                  "#9ca3af",
-                fontSize:
-                  "14px",
-                marginBottom:
-                  "8px",
-              }}
-            >
-              🏙️ Reported from:{" "}
-              <strong
-                style={{
-                  color:
-                    "#d1d5db",
-                }}
-              >
-                {
-                  issue.reported_city
-                }
-                {issue.reported_state
-                  ? `, ${issue.reported_state}`
-                  : ""}
-              </strong>
-            </div>
-          )}
-
-          {issue.location_text && (
-            <div
-              style={{
-                color:
-                  "#9ca3af",
-                fontSize:
-                  "14px",
-                marginBottom:
-                  "8px",
-              }}
-            >
-              📍 Location:{" "}
-              <strong
-                style={{
-                  color:
-                    "#d1d5db",
-                }}
-              >
-                {
-                  issue.location_text
-                }
-              </strong>
-            </div>
-          )}
-
-          {issue.latitude !==
-            null &&
-            issue.longitude !==
-              null && (
-              <div
-                style={{
-                  color:
-                    "#6b7280",
-                  fontSize:
-                    "13px",
-                }}
-              >
-                GPS:{" "}
-                {issue.latitude.toFixed(
-                  6
-                )}
-                ,{" "}
-                {issue.longitude.toFixed(
-                  6
-                )}
-              </div>
-            )}
-
-          <div
+          <button
+            className="kf-detail-primary-action"
+            type="button"
+            onClick={() => router.push("/my-issues")}
             style={{
-              color:
-                "#6b7280",
-              fontSize:
-                "13px",
-              marginTop:
-                "14px",
+              marginTop: "22px",
+              border: 0,
+              borderRadius: "999px",
+              background: "#ff7a00",
+              color: "#fff",
+              padding: "13px 18px",
+              fontSize: "12px",
+              fontWeight: 900,
+              cursor: "pointer",
+              boxShadow: "0 10px 22px rgba(255,122,0,.17)",
             }}
           >
-            Reported:{" "}
-            {formatDate(
-              issue.reported_at
-            )}
-          </div>
-        </section>
+            {t("← Back to My Issues")}
+          </button>
+        </div>
+      </main>
+    );
+  }
 
-        {/* COMPLAINT JOURNEY */}
-
-        <section
-          style={
-            panelStyle
-          }
-        >
-          <div
-            style={{
-              marginBottom:
-                "22px",
-            }}
-          >
-            <h2
-              style={{
-                fontSize:
-                  "21px",
-                margin:
-                  "0 0 8px",
-              }}
-            >
-              Complaint Journey
-            </h2>
-
-            <p
-              style={{
-                ...mutedTextStyle,
-                margin:
-                  0,
-              }}
-            >
-              A combined KarmaFacie timeline for the major steps recorded for this complaint. Government actions are not marked as confirmed unless an official authority response or reference is recorded.
-            </p>
-          </div>
-
-          <div
-            style={{
-              display:
-                "grid",
-              gap:
-                "12px",
-            }}
-          >
-            {journeySteps.map(
-              (step, index) => (
-                <div
-                  key={step.key}
-                  style={{
-                    display:
-                      "flex",
-                    gap:
-                      "12px",
-                    alignItems:
-                      "stretch",
-                  }}
-                >
-                  <div
-                    style={{
-                      width:
-                        "30px",
-                      minWidth:
-                        "30px",
-                      display:
-                        "flex",
-                      flexDirection:
-                        "column",
-                      alignItems:
-                        "center",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width:
-                          "30px",
-                        height:
-                          "30px",
-                        borderRadius:
-                          "50%",
-                        display:
-                          "flex",
-                        alignItems:
-                          "center",
-                        justifyContent:
-                          "center",
-                        background:
-                          step.completed
-                            ? "rgba(34,197,94,0.14)"
-                            : "rgba(148,163,184,0.06)",
-                        border:
-                          step.completed
-                            ? "1px solid rgba(34,197,94,0.28)"
-                            : "1px solid rgba(148,163,184,0.14)",
-                        color:
-                          step.completed
-                            ? "#86efac"
-                            : "#64748b",
-                        fontSize:
-                          "13px",
-                        fontWeight:
-                          800,
-                      }}
-                    >
-                      {step.completed ? "✓" : index + 1}
-                    </div>
-
-                    {index <
-                      journeySteps.length - 1 && (
-                      <div
-                        style={{
-                          flex:
-                            1,
-                          width:
-                            "2px",
-                          minHeight:
-                            "14px",
-                          marginTop:
-                            "6px",
-                          background:
-                            "rgba(148,163,184,0.12)",
-                        }}
-                      />
-                    )}
-                  </div>
-
-                  <div
-                    style={{
-                      flex:
-                        1,
-                      background:
-                        "rgba(255,255,255,0.025)",
-                      border:
-                        step.completed
-                          ? "1px solid rgba(34,197,94,0.14)"
-                          : "1px solid rgba(255,255,255,0.06)",
-                      borderRadius:
-                        "14px",
-                      padding:
-                        "13px 14px",
-                      marginBottom:
-                        index <
-                        journeySteps.length - 1
-                          ? "0"
-                          : undefined,
-                    }}
-                  >
-                    <div
-                      style={{
-                        display:
-                          "flex",
-                        justifyContent:
-                          "space-between",
-                        gap:
-                          "10px",
-                        alignItems:
-                          "baseline",
-                        flexWrap:
-                          "wrap",
-                      }}
-                    >
-                      <div
-                        style={{
-                          fontSize:
-                            "15px",
-                          fontWeight:
-                            700,
-                          color:
-                            step.completed
-                              ? "#f8fafc"
-                              : "#94a3b8",
-                        }}
-                      >
-                        {step.label}
-                      </div>
-
-                      {step.timestamp && (
-                        <div
-                          style={{
-                            color:
-                              "#64748b",
-                            fontSize:
-                              "11px",
-                          }}
-                        >
-                          {formatDate(
-                            step.timestamp
-                          )}
-                        </div>
-                      )}
-                    </div>
-
-                    <div
-                      style={{
-                        color:
-                          "#94a3b8",
-                        fontSize:
-                          "12px",
-                        lineHeight:
-                          1.5,
-                        marginTop:
-                          "5px",
-                      }}
-                    >
-                      {step.description}
-                    </div>
-                  </div>
-                </div>
-              )
-            )}
-          </div>
-
-          <div
-            style={{
-              marginTop:
-                "14px",
-              padding:
-                "12px 14px",
-              borderRadius:
-                "12px",
-              background:
-                "rgba(96,165,250,0.05)",
-              border:
-                "1px solid rgba(96,165,250,0.12)",
-              color:
-                "#93c5fd",
-              fontSize:
-                "12px",
-              lineHeight:
-                1.5,
-            }}
-          >
-            Current KarmaFacie status: <strong>{issue ? getStatusLabel(issue.status) : "Loading"}</strong>
-          </div>
-        </section>
-
-        {/* STATUS HISTORY */}
-
-        <section
-          style={
-            panelStyle
-          }
-        >
-          <div
-            style={{
-              marginBottom:
-                "22px",
-            }}
-          >
-            <h2
-              style={{
-                fontSize:
-                  "21px",
-                margin:
-                  "0 0 8px",
-              }}
-            >
-              Status History
-            </h2>
-
-            <p
-              style={{
-                ...mutedTextStyle,
-                margin:
-                  0,
-              }}
-            >
-              This timeline shows
-              status changes actually
-              recorded in KarmaFacie.
-            </p>
-          </div>
-
-          {history.length ===
-          0 ? (
-            <div
-              style={{
-                padding:
-                  "18px",
-                borderRadius:
-                  "14px",
-                background:
-                  "rgba(148,163,184,0.04)",
-                border:
-                  "1px solid rgba(148,163,184,0.1)",
-                color:
-                  "#94a3b8",
-                fontSize:
-                  "13px",
-                lineHeight:
-                  1.6,
-              }}
-            >
-              No status-history
-              records are currently
-              available for this issue.
-            </div>
-          ) : (
-            <div
-              style={{
-                position:
-                  "relative",
-              }}
-            >
-              <div
-                style={{
-                  position:
-                    "absolute",
-                  left:
-                    "16px",
-                  top:
-                    "18px",
-                  bottom:
-                    "18px",
-                  width:
-                    "2px",
-                  background:
-                    "rgba(96,165,250,0.18)",
-                }}
-              />
-
-              <div
-                style={{
-                  display:
-                    "grid",
-                  gap:
-                    "18px",
-                }}
-              >
-                {history.map(
-                  (
-                    item,
-                    index
-                  ) => (
-                    <div
-                      key={
-                        item.id
-                      }
-                      style={{
-                        position:
-                          "relative",
-                        display:
-                          "flex",
-                        gap:
-                          "14px",
-                      }}
-                    >
-                      <div
-                        style={{
-                          position:
-                            "relative",
-                          zIndex:
-                            2,
-                          width:
-                            "34px",
-                          height:
-                            "34px",
-                          minWidth:
-                            "34px",
-                          borderRadius:
-                            "50%",
-                          display:
-                            "flex",
-                          alignItems:
-                            "center",
-                          justifyContent:
-                            "center",
-                          background:
-                            index ===
-                            history.length -
-                              1
-                              ? "#ff7a00"
-                              : "#1e293b",
-                          border:
-                            index ===
-                            history.length -
-                              1
-                              ? "2px solid #ffb067"
-                              : "2px solid #334155",
-                          fontSize:
-                            "15px",
-                        }}
-                      >
-                        {getStatusIcon(
-                          item.new_status
-                        )}
-                      </div>
-
-                      <div
-                        style={{
-                          flex:
-                            1,
-                          background:
-                            "rgba(255,255,255,0.025)",
-                          border:
-                            index ===
-                            history.length -
-                              1
-                              ? "1px solid rgba(255,122,0,0.22)"
-                              : "1px solid rgba(255,255,255,0.06)",
-                          borderRadius:
-                            "14px",
-                          padding:
-                            "15px",
-                        }}
-                      >
-                        <div
-                          style={{
-                            color:
-                              "#6b7280",
-                            fontSize:
-                              "12px",
-                            marginBottom:
-                              "7px",
-                          }}
-                        >
-                          {formatDate(
-                            item.created_at
-                          )}
-                        </div>
-
-                        <div
-                          style={{
-                            fontSize:
-                              "16px",
-                            fontWeight:
-                              700,
-                            marginBottom:
-                              "8px",
-                          }}
-                        >
-                          {item.old_status
-                            ? `${getStatusLabel(
-                                item.old_status
-                              )} → ${getStatusLabel(
-                                item.new_status
-                              )}`
-                            : `Issue status set to ${getStatusLabel(
-                                item.new_status
-                              )}`}
-                        </div>
-
-                        <div
-                          style={{
-                            display:
-                              "inline-flex",
-                            alignItems:
-                              "center",
-                            gap:
-                              "6px",
-                            background:
-                              "rgba(96,165,250,0.08)",
-                            border:
-                              "1px solid rgba(96,165,250,0.15)",
-                            borderRadius:
-                              "999px",
-                            padding:
-                              "6px 10px",
-                            color:
-                              "#93c5fd",
-                            fontSize:
-                              "12px",
-                            fontWeight:
-                              700,
-                            marginBottom:
-                              "10px",
-                          }}
-                        >
-                          {getStatusIcon(
-                            item.new_status
-                          )}{" "}
-                          {getStatusLabel(
-                            item.new_status
-                          )}
-                        </div>
-
-                        <div
-                          style={{
-                            color:
-                              "#9ca3af",
-                            fontSize:
-                              "12px",
-                            marginBottom:
-                              item.note
-                                ? "9px"
-                                : 0,
-                          }}
-                        >
-                          {getActorIcon(
-                            item.actor_type
-                          )}{" "}
-                          Recorded by{" "}
-                          <strong
-                            style={{
-                              color:
-                                "#d1d5db",
-                            }}
-                          >
-                            {getActorLabel(
-                              item.actor_type
-                            )}
-                          </strong>
-                        </div>
-
-                        {item.note && (
-                          <div
-                            style={{
-                              color:
-                                "#94a3b8",
-                              fontSize:
-                                "13px",
-                              lineHeight:
-                                1.6,
-                              paddingTop:
-                                "9px",
-                              borderTop:
-                                "1px solid rgba(255,255,255,0.05)",
-                            }}
-                          >
-                            {item.note}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )
-                )}
-              </div>
-            </div>
-          )}
-
-          {history.length >
-            0 && (
-            <div
-              style={{
-                marginTop:
-                  "18px",
-                padding:
-                  "12px 14px",
-                borderRadius:
-                  "12px",
-                background:
-                  "rgba(255,255,255,0.025)",
-                color:
-                  "#64748b",
-                fontSize:
-                  "11px",
-                lineHeight:
-                  1.5,
-              }}
-            >
-              Status history is generated
-              from recorded KarmaFacie
-              status events. It does not
-              imply that a government
-              authority has changed the
-              status unless the event is
-              explicitly recorded as
-              coming from an authority.
-            </div>
-          )}
-        </section>
-
-        {/* AUTHORITY ROUTING */}
-
-        {authority ? (
-          <section
-            style={{
-              ...panelStyle,
-              background:
-                "rgba(34,197,94,0.05)",
-              border:
-                "1px solid rgba(34,197,94,0.18)",
-            }}
-          >
-            <div
-              style={{
-                color:
-                  "#86efac",
-                fontSize:
-                  "12px",
-                fontWeight:
-                  700,
-                letterSpacing:
-                  "0.5px",
-                marginBottom:
-                  "10px",
-              }}
-            >
-              DIRECTORY ROUTING
-            </div>
-
-            <h2
-              style={{
-                fontSize:
-                  "21px",
-                margin:
-                  "0 0 16px",
-              }}
-            >
-              🏛️{" "}
-              {
-                authority.authority_name
-              }
-            </h2>
-
-            {authority.department_name && (
-              <div
-                style={{
-                  color:
-                    "#d1d5db",
-                  fontSize:
-                    "14px",
-                  marginBottom:
-                    "8px",
-                }}
-              >
-                <strong>
-                  Department:
-                </strong>{" "}
-                {
-                  authority.department_name
-                }
-              </div>
-            )}
-
-            {authority.sub_department_name && (
-              <div
-                style={{
-                  color:
-                    "#d1d5db",
-                  fontSize:
-                    "14px",
-                  marginBottom:
-                    "8px",
-                }}
-              >
-                <strong>
-                  Sub-Department:
-                </strong>{" "}
-                {
-                  authority.sub_department_name
-                }
-              </div>
-            )}
-
-            {authority.official_complaint_type && (
-              <div
-                style={{
-                  color:
-                    "#d1d5db",
-                  fontSize:
-                    "14px",
-                  marginBottom:
-                    "8px",
-                }}
-              >
-                <strong>
-                  Official Complaint Type:
-                </strong>{" "}
-                {
-                  authority.official_complaint_type
-                }
-              </div>
-            )}
-
-            <div
-              style={{
-                color:
-                  "#d1d5db",
-                fontSize:
-                  "14px",
-                marginBottom:
-                  "8px",
-              }}
-            >
-              <strong>
-                Issue type:
-              </strong>{" "}
-              {
-                authority.issue_category
-              }
-            </div>
-
-            {authority.submission_method && (
-              <div
-                style={{
-                  color:
-                    "#d1d5db",
-                  fontSize:
-                    "14px",
-                  marginBottom:
-                    "8px",
-                }}
-              >
-                <strong>
-                  Channel:
-                </strong>{" "}
-                {
-                  authority.submission_method
-                }
-              </div>
-            )}
-
-            {authority.notes && (
-              <div
-                style={{
-                  color:
-                    "#9ca3af",
-                  fontSize:
-                    "13px",
-                  lineHeight:
-                    1.6,
-                  marginTop:
-                    "12px",
-                }}
-              >
-                {
-                  authority.notes
-                }
-              </div>
-            )}
-
-            {authority.submission_mode ===
-              "DIRECT_LINK" &&
-              authority.grievance_url && (
-                <div
-                  style={{
-                    marginTop:
-                      "16px",
-                  }}
-                >
-                  <a
-                    href={
-                      authority.grievance_url
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => {
-                      void markOfficialComplaintChannelOpened();
-                    }}
-                    style={{
-                      ...buttonStyle,
-                      background:
-                        "#2563eb",
-                      textDecoration:
-                        "none",
-                      display:
-                        "inline-block",
-                    }}
-                  >
-                    Open Official
-                    Complaint Channel →
-                  </a>
-
-                  <div
-                    style={{
-                      color:
-                        "#64748b",
-                      fontSize:
-                        "11px",
-                      lineHeight:
-                        1.5,
-                      marginTop:
-                        "8px",
-                    }}
-                  >
-                    This opens the
-                    official complaint
-                    channel for the
-                    matched authority.
-                    KarmaFacie does not
-                    submit the complaint
-                    automatically through
-                    this route.
-                  </div>
-                </div>
-              )}
-
-            {authority.verified_at && (
-              <div
-                style={{
-                  color:
-                    "#6b7280",
-                  fontSize:
-                    "11px",
-                  marginTop:
-                    "12px",
-                }}
-              >
-                Directory information
-                verified:{" "}
-                {formatDateOnly(
-                  authority.verified_at
-                )}
-              </div>
-            )}
-          </section>
-        ) : (
-          <section
-            style={
-              panelStyle
-            }
-          >
-            <div
-              style={
-                mutedTextStyle
-              }
-            >
-              ℹ️ No verified directory
-              route is currently attached
-              to this report.
-            </div>
-          </section>
-        )}
-
-        {/* OFFICIAL SUBMISSION */}
-
-        <section
+  return (
+    <main
+      className="kf-detail-page"
+      style={{
+        minHeight: "100vh",
+        background:
+          "radial-gradient(circle at 93% 2%, rgba(218,234,243,.92) 0%, rgba(218,234,243,0) 24%), radial-gradient(circle at 4% 23%, rgba(232,242,248,.78) 0%, rgba(232,242,248,0) 23%), radial-gradient(circle at 90% 92%, rgba(255,229,205,.72) 0%, rgba(255,229,205,0) 24%), #f8f3ea",
+        color: "#52616e",
+        padding: "18px 16px 80px",
+        fontFamily: "var(--font-body)",
+      }}
+    >
+      <div
+        className="kf-detail-shell"
+        style={{
+          width: "min(1120px, 100%)",
+          margin: "0 auto",
+        }}
+      >
+        {/* TOP BAR */}
+        <header
+          className="kf-topbar kf-detail-topbar"
           style={{
-            ...panelStyle,
-            background:
-              "rgba(37,99,235,0.05)",
-            border:
-              "1px solid rgba(96,165,250,0.18)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "16px",
+            flexWrap: "wrap",
+            padding: "12px 14px",
+            marginBottom: "16px",
+            borderRadius: "25px",
+            background: "rgba(255,253,249,.94)",
+            border: "1px solid #ded8cf",
+            boxShadow: "0 14px 36px rgba(16,27,43,.055)",
+            backdropFilter: "blur(18px)",
           }}
         >
           <div
             style={{
-              color:
-                "#93c5fd",
-              fontSize:
-                "12px",
-              fontWeight:
-                700,
-              letterSpacing:
-                "0.5px",
-              marginBottom:
-                "10px",
+              display: "flex",
+              alignItems: "center",
+              gap: "11px",
             }}
           >
-            OFFICIAL SUBMISSION
-          </div>
-
-          <h2
-            style={{
-              fontSize:
-                "21px",
-              margin:
-                "0 0 10px",
-            }}
-          >
-            📤 Review Your Complaint
-          </h2>
-
-          <p
-            style={{
-              ...mutedTextStyle,
-              margin:
-                "0 0 18px",
-            }}
-          >
-            KarmaFacie has already
-            collected the information
-            needed for this report.
-            Review the prepared package
-            before confirming it for the
-            selected authority.
-          </p>
-
-          {!submission ? (
-            <>
-              <div
-                style={{
-                  padding:
-                    "15px 16px",
-                  borderRadius:
-                    "14px",
-                  background:
-                    "rgba(255,255,255,0.025)",
-                  border:
-                    "1px solid rgba(255,255,255,0.06)",
-                  color:
-                    "#cbd5e1",
-                  fontSize:
-                    "13px",
-                  lineHeight:
-                    1.6,
-                }}
-              >
-                Your complaint package has
-                not been prepared yet.
-                KarmaFacie will assemble it
-                from the information already
-                stored for this issue.
-              </div>
-
-              <button
-                type="button"
-                onClick={() =>
-                  void prepareSubmission()
-                }
-                disabled={
-                  preparingSubmission ||
-                  !authority
-                }
-                style={{
-                  ...buttonStyle,
-                  marginTop:
-                    "16px",
-                  background:
-                    preparingSubmission ||
-                    !authority
-                      ? "#475569"
-                      : "#2563eb",
-                  cursor:
-                    preparingSubmission ||
-                    !authority
-                      ? "not-allowed"
-                      : "pointer",
-                }}
-              >
-                {preparingSubmission
-                  ? "Preparing Complaint..."
-                  : "Prepare Complaint →"}
-              </button>
-
-              {!authority && (
-                <div
-                  style={{
-                    ...mutedTextStyle,
-                    marginTop:
-                      "10px",
-                    fontSize:
-                      "12px",
-                  }}
-                >
-                  A verified authority
-                  route is required before
-                  the submission package can
-                  be prepared.
-                </div>
-              )}
-            </>
-          ) : (
-            <>
-              {/* SUBMISSION STATUS */}
-
-              <div
-                style={{
-                  padding:
-                    "14px 16px",
-                  borderRadius:
-                    "12px",
-                  background:
-                    submissionConfirmed
-                      ? "rgba(34,197,94,0.07)"
-                      : submission.submission_status ===
-                          "FAILED"
-                        ? "rgba(239,68,68,0.07)"
-                        : "rgba(96,165,250,0.07)",
-                  border:
-                    submissionConfirmed
-                      ? "1px solid rgba(34,197,94,0.18)"
-                      : submission.submission_status ===
-                          "FAILED"
-                        ? "1px solid rgba(239,68,68,0.18)"
-                        : "1px solid rgba(96,165,250,0.16)",
-                  marginBottom:
-                    "18px",
-                }}
-              >
-                <div
-                  style={{
-                    color:
-                      submissionConfirmed
-                        ? "#86efac"
-                        : submission.submission_status ===
-                            "FAILED"
-                          ? "#fca5a5"
-                          : "#93c5fd",
-                    fontSize:
-                      "14px",
-                    fontWeight:
-                      700,
-                  }}
-                >
-                  {submissionConfirmed
-                    ? "✓ Complaint details confirmed"
-                    : submission.submission_status ===
-                        "FAILED"
-                      ? "⚠ Submission preparation needs attention"
-                      : "✓ Complaint package prepared"}
-                </div>
-
-                <div
-                  style={{
-                    color:
-                      "#94a3b8",
-                    fontSize:
-                      "12px",
-                    marginTop:
-                      "5px",
-                  }}
-                >
-                  Submission record #
-                  {
-                    submission.id
-                  }
-                </div>
-              </div>
-
-              {/* COMPLAINT PREVIEW */}
-
-              <div
-                style={{
-                  display:
-                    "grid",
-                  gap:
-                    "10px",
-                }}
-              >
-                <InfoBox label="Authority">
-                  <strong
-                    style={{
-                      color:
-                        "#e5e7eb",
-                    }}
-                  >
-                    {
-                      authority?.authority_name ||
-                      submission.provider_name ||
-                      "Not specified"
-                    }
-                  </strong>
-                </InfoBox>
-
-                {authority?.department_name && (
-                  <InfoBox label="Department">
-                    {
-                      authority.department_name
-                    }
-                  </InfoBox>
-                )}
-
-                {authority?.sub_department_name && (
-                  <InfoBox label="Sub-Department">
-                    {
-                      authority.sub_department_name
-                    }
-                  </InfoBox>
-                )}
-
-                {authority?.official_complaint_type && (
-                  <InfoBox label="Official Complaint Type">
-                    {
-                      authority.official_complaint_type
-                    }
-                  </InfoBox>
-                )}
-
-                <InfoBox label="Issue">
-                  <strong
-                    style={{
-                      color:
-                        "#e5e7eb",
-                    }}
-                  >
-                    {issue.title ||
-                      "Civic Issue"}
-                  </strong>
-
-                  <div
-                    style={{
-                      color:
-                        "#94a3b8",
-                      marginTop:
-                        "4px",
-                    }}
-                  >
-                    {
-                      issue.category
-                    }
-                  </div>
-                </InfoBox>
-
-                <InfoBox label="Description">
-                  {issue.description ||
-                    "No description provided."}
-                </InfoBox>
-
-                <InfoBox label="Location">
-                  <div>
-                    {
-                      issue.location_text ||
-                      "Location not provided."
-                    }
-                  </div>
-
-                  {(issue.reported_city ||
-                    issue.reported_state) && (
-                    <div
-                      style={{
-                        color:
-                          "#94a3b8",
-                        marginTop:
-                          "4px",
-                      }}
-                    >
-                      {
-                        issue.reported_city
-                      }
-                      {issue.reported_state
-                        ? `, ${issue.reported_state}`
-                        : ""}
-                    </div>
-                  )}
-
-                  {issue.latitude !==
-                    null &&
-                    issue.longitude !==
-                      null && (
-                      <div
-                        style={{
-                          color:
-                            "#64748b",
-                          fontSize:
-                            "11px",
-                          marginTop:
-                            "5px",
-                        }}
-                      >
-                        GPS:{" "}
-                        {issue.latitude.toFixed(
-                          6
-                        )}
-                        ,{" "}
-                        {issue.longitude.toFixed(
-                          6
-                        )}
-                      </div>
-                    )}
-                </InfoBox>
-
-                <InfoBox label="Evidence">
-                  {photoUrl ? (
-                    <span
-                      style={{
-                        color:
-                          "#86efac",
-                      }}
-                    >
-                      ✓ Photo evidence
-                      attached
-                    </span>
-                  ) : (
-                    <span>
-                      No photo evidence
-                      attached
-                    </span>
-                  )}
-                </InfoBox>
-
-                <InfoBox label="Submission Route">
-                  {getSubmissionModeLabel(
-                    submission.submission_mode
-                  )}
-                </InfoBox>
-              </div>
-
-              {/* CITIZEN CONFIRMATION */}
-
-              {!submissionConfirmed &&
-                submission.submission_status !==
-                  "FAILED" && (
-                  <div
-                    style={{
-                      marginTop:
-                        "18px",
-                      padding:
-                        "16px",
-                      borderRadius:
-                        "14px",
-                      background:
-                        "rgba(255,255,255,0.025)",
-                      border:
-                        "1px solid rgba(255,255,255,0.07)",
-                    }}
-                  >
-                    <label
-                      style={{
-                        display:
-                          "flex",
-                        gap:
-                          "10px",
-                        alignItems:
-                          "flex-start",
-                        color:
-                          "#d1d5db",
-                        fontSize:
-                          "13px",
-                        lineHeight:
-                          1.6,
-                        cursor:
-                          "pointer",
-                      }}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={
-                          consentChecked
-                        }
-                        onChange={(
-                          event
-                        ) =>
-                          setConsentChecked(
-                            event.target
-                              .checked
-                          )
-                        }
-                        style={{
-                          marginTop:
-                            "3px",
-                          width:
-                            "16px",
-                          height:
-                            "16px",
-                          accentColor:
-                            "#2563eb",
-                        }}
-                      />
-
-                      <span>
-                        I confirm that the
-                        complaint details,
-                        location and evidence
-                        shown above are correct
-                        and may be used for the
-                        official submission
-                        process.
-                      </span>
-                    </label>
-
-                    <button
-                      type="button"
-                      disabled={
-                        confirmingSubmission ||
-                        !consentChecked
-                      }
-                      onClick={() =>
-                        void confirmSubmission()
-                      }
-                      style={{
-                        ...buttonStyle,
-                        marginTop:
-                          "14px",
-                        background:
-                          confirmingSubmission ||
-                          !consentChecked
-                            ? "#475569"
-                            : "#2563eb",
-                        cursor:
-                          confirmingSubmission ||
-                          !consentChecked
-                            ? "not-allowed"
-                            : "pointer",
-                      }}
-                    >
-                      {confirmingSubmission
-                        ? "Confirming..."
-                        : "Confirm & Continue →"}
-                    </button>
-
-                    <div
-                      style={{
-                        color:
-                          "#64748b",
-                        fontSize:
-                          "11px",
-                        lineHeight:
-                          1.5,
-                        marginTop:
-                          "9px",
-                      }}
-                    >
-                      Confirmation records
-                      your approval of this
-                      package. It does not itself
-                      mean that a government
-                      complaint has been submitted.
-                    </div>
-                  </div>
-                )}
-
-              {/* CONFIRMED STATE */}
-
-              {submission &&
-                submissionConfirmed && (
-                  <div
-                    style={{
-                      marginTop:
-                        "18px",
-                      padding:
-                        "16px",
-                      borderRadius:
-                        "14px",
-                      background:
-                        "rgba(34,197,94,0.06)",
-                      border:
-                        "1px solid rgba(34,197,94,0.18)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        color:
-                          "#86efac",
-                        fontSize:
-                          "14px",
-                        fontWeight:
-                          700,
-                      }}
-                    >
-                      ✓ Ready for official submission
-                    </div>
-
-                    {submission.citizen_confirmed_at && (
-                      <div
-                        style={{
-                          color:
-                            "#94a3b8",
-                          fontSize:
-                            "11px",
-                          marginTop:
-                            "5px",
-                        }}
-                      >
-                        Confirmed on{" "}
-                        {formatDate(
-                          submission.citizen_confirmed_at
-                        )}
-                      </div>
-                    )}
-                  </div>
-                )}
-
-              {/* SUBMISSION GATEWAY */}
-
-              {submission &&
-                submissionConfirmed &&
-                submission.submission_mode ===
-                  "DIRECT_LINK" &&
-                submission.submission_status !==
-                  "SUBMITTED" && (
-                  <div
-                    style={{
-                      marginTop:
-                        "18px",
-                      padding:
-                        "16px",
-                      borderRadius:
-                        "14px",
-                      background:
-                        "rgba(37,99,235,0.06)",
-                      border:
-                        "1px solid rgba(96,165,250,0.16)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        color:
-                          "#93c5fd",
-                        fontSize:
-                          "14px",
-                        fontWeight:
-                          700,
-                        marginBottom:
-                          "7px",
-                      }}
-                    >
-                      Next step: Submission Gateway
-                    </div>
-
-                    <div
-                      style={{
-                        ...mutedTextStyle,
-                        fontSize:
-                          "12px",
-                      }}
-                    >
-                      Your complaint package
-                      has been prepared and
-                      confirmed. KarmaFacie will
-                      now check the configured
-                      authority submission route.
-                      For the current CSMC route,
-                      the gateway will direct you
-                      to the official complaint
-                      system rather than claiming
-                      an automatic government
-                      submission.
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() =>
-                        void submitThroughGateway()
-                      }
-                      disabled={
-                        submittingSubmission
-                      }
-                      style={{
-                        ...buttonStyle,
-                        marginTop:
-                          "14px",
-                        background:
-                          submittingSubmission
-                            ? "#475569"
-                            : "#2563eb",
-                        cursor:
-                          submittingSubmission
-                            ? "not-allowed"
-                            : "pointer",
-                      }}
-                    >
-                      {submittingSubmission
-                        ? "Checking Submission Route..."
-                        : "Continue to Submission Gateway →"}
-                    </button>
-
-                    {gatewayMessage && (
-                      <div
-                        style={{
-                          marginTop:
-                            "12px",
-                          padding:
-                            "12px 14px",
-                          borderRadius:
-                            "10px",
-                          background:
-                            "rgba(96,165,250,0.07)",
-                          border:
-                            "1px solid rgba(96,165,250,0.14)",
-                          color:
-                            "#bfdbfe",
-                          fontSize:
-                            "12px",
-                          lineHeight:
-                            1.5,
-                        }}
-                      >
-                        {
-                          gatewayMessage
-                        }
-                      </div>
-                    )}
-
-                    {gatewayUrl && (
-                      <a
-                        href={gatewayUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => {
-                          void markOfficialComplaintChannelOpened();
-                        }}
-                        style={{
-                          ...buttonStyle,
-                          marginTop:
-                            "12px",
-                          background:
-                            "#2563eb",
-                          textDecoration:
-                            "none",
-                          display:
-                            "inline-block",
-                        }}
-                      >
-                        Open Official
-                        Complaint Channel →
-                      </a>
-                    )}
-
-                    {officialHandoffOpenedAt && (
-                      <div
-                        style={{
-                          marginTop:
-                            "12px",
-                          padding:
-                            "12px 14px",
-                          borderRadius:
-                            "10px",
-                          background:
-                            "rgba(34,197,94,0.07)",
-                          border:
-                            "1px solid rgba(34,197,94,0.16)",
-                        }}
-                      >
-                        <div
-                          style={{
-                            color:
-                              "#86efac",
-                            fontSize:
-                              "12px",
-                            fontWeight:
-                              700,
-                          }}
-                        >
-                          ✓ Official form opened
-                        </div>
-                        <div
-                          style={{
-                            color:
-                              "#94a3b8",
-                            fontSize:
-                              "11px",
-                            lineHeight:
-                              1.5,
-                            marginTop:
-                              "4px",
-                          }}
-                        >
-                          KarmaFacie recorded this official-form handoff in your complaint record. This does not mean the government complaint has been submitted.
-                        </div>
-                      </div>
-                    )}
-
-                    <div
-                      style={{
-                        color:
-                          "#64748b",
-                        fontSize:
-                          "11px",
-                        lineHeight:
-                          1.5,
-                        marginTop:
-                          "9px",
-                      }}
-                    >
-                      Opening the official
-                      channel does not itself
-                      mean that a government
-                      complaint has been submitted.
-                      Any official submission or
-                      reference number must come
-                      from the government system.
-                    </div>
-                  </div>
-                )}
-
-              {/* CITIZEN REPORTED OFFICIAL SUBMISSION */}
-
-              {submission &&
-                submissionConfirmed &&
-                submission.submission_mode ===
-                  "DIRECT_LINK" &&
-                officialHandoffOpenedAt &&
-                submission.submission_status !==
-                  "SUBMITTED" && (
-                  <div
-                    style={{
-                      marginTop:
-                        "18px",
-                      padding:
-                        "16px",
-                      borderRadius:
-                        "14px",
-                      background:
-                        "rgba(168,85,247,0.05)",
-                      border:
-                        "1px solid rgba(168,85,247,0.16)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        color:
-                          "#d8b4fe",
-                        fontSize:
-                          "14px",
-                        fontWeight:
-                          700,
-                        marginBottom:
-                          "7px",
-                      }}
-                    >
-                      {submission.citizen_reported_submitted_at
-                        ? "✓ Submission reported by you"
-                        : "After you submit on the official form"}
-                    </div>
-
-                    {submission.citizen_reported_submitted_at ? (
-                      <>
-                        <div
-                          style={{
-                            ...mutedTextStyle,
-                            fontSize:
-                              "12px",
-                          }}
-                        >
-                          KarmaFacie has recorded the reference number you provided. This is a citizen-reported record and has not been independently verified by the government system.
-                        </div>
-
-                        <div
-                          style={{
-                            marginTop:
-                              "12px",
-                            color:
-                              "#e5e7eb",
-                            fontSize:
-                              "13px",
-                          }}
-                        >
-                          <strong>Reference number:</strong>{" "}
-                          {submission.official_reference_number}
-                        </div>
-
-                        {submission.official_submission_notes && (
-                          <div
-                            style={{
-                              marginTop:
-                                "7px",
-                              color:
-                                "#cbd5e1",
-                              fontSize:
-                                "12px",
-                              lineHeight:
-                                1.5,
-                            }}
-                          >
-                            <strong>Notes:</strong>{" "}
-                            {submission.official_submission_notes}
-                          </div>
-                        )}
-
-                        {submission.citizen_reported_submitted_at && (
-                          <div
-                            style={{
-                              marginTop:
-                                "7px",
-                              color:
-                                "#94a3b8",
-                              fontSize:
-                                "11px",
-                            }}
-                          >
-                            Recorded on{" "}
-                            {formatDate(
-                              submission.citizen_reported_submitted_at
-                            )}
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      <>
-                        <div
-                          style={{
-                            ...mutedTextStyle,
-                            fontSize:
-                              "12px",
-                          }}
-                        >
-                          Once the government form confirms your submission, enter the reference/complaint number here. KarmaFacie will store it as a citizen-provided reference; it will not be treated as an official KarmaFacie submission confirmation.
-                        </div>
-
-                        <div
-                          style={{
-                            display:
-                              "grid",
-                            gap:
-                              "10px",
-                            marginTop:
-                              "12px",
-                          }}
-                        >
-                          <div>
-                            <label
-                              htmlFor="official-reference-number"
-                              style={{
-                                display:
-                                  "block",
-                                color:
-                                  "#cbd5e1",
-                                fontSize:
-                                  "11px",
-                                fontWeight:
-                                  700,
-                                marginBottom:
-                                  "6px",
-                              }}
-                            >
-                              Government Complaint / Reference Number
-                            </label>
-                            <input
-                              id="official-reference-number"
-                              value={
-                                referenceNumber
-                              }
-                              onChange={(event) =>
-                                setReferenceNumber(
-                                  event.target.value
-                                )
-                              }
-                              placeholder="Enter the number shown after successful submission"
-                              style={{
-                                width:
-                                  "100%",
-                                boxSizing:
-                                  "border-box",
-                                padding:
-                                  "11px 12px",
-                                borderRadius:
-                                  "9px",
-                                border:
-                                  "1px solid rgba(148,163,184,0.2)",
-                                background:
-                                  "rgba(15,23,42,0.72)",
-                                color:
-                                  "#e5e7eb",
-                                fontSize:
-                                  "12px",
-                                outline:
-                                  "none",
-                              }}
-                            />
-                          </div>
-
-                          <div>
-                            <label
-                              htmlFor="official-submission-notes"
-                              style={{
-                                display:
-                                  "block",
-                                color:
-                                  "#cbd5e1",
-                                fontSize:
-                                  "11px",
-                                fontWeight:
-                                  700,
-                                marginBottom:
-                                  "6px",
-                              }}
-                            >
-                              Notes (optional)
-                            </label>
-                            <textarea
-                              id="official-submission-notes"
-                              value={
-                                submissionNotes
-                              }
-                              onChange={(event) =>
-                                setSubmissionNotes(
-                                  event.target.value
-                                )
-                              }
-                              rows={3}
-                              placeholder="Example: submitted on the CSMC website and received confirmation screen"
-                              style={{
-                                width:
-                                  "100%",
-                                boxSizing:
-                                  "border-box",
-                                padding:
-                                  "11px 12px",
-                                borderRadius:
-                                  "9px",
-                                border:
-                                  "1px solid rgba(148,163,184,0.2)",
-                                background:
-                                  "rgba(15,23,42,0.72)",
-                                color:
-                                  "#e5e7eb",
-                                fontSize:
-                                  "12px",
-                                lineHeight:
-                                  1.5,
-                                resize:
-                                  "vertical",
-                                outline:
-                                  "none",
-                              }}
-                            />
-                          </div>
-
-                          <button
-                            type="button"
-                            onClick={() =>
-                              void recordOfficialComplaintReference()
-                            }
-                            disabled={
-                              savingOfficialReference
-                            }
-                            style={{
-                              ...buttonStyle,
-                              background:
-                                savingOfficialReference
-                                  ? "#475569"
-                                  : "#7c3aed",
-                              cursor:
-                                savingOfficialReference
-                                  ? "not-allowed"
-                                  : "pointer",
-                              justifySelf:
-                                "start",
-                            }}
-                          >
-                            {savingOfficialReference
-                              ? "Saving Reference..."
-                              : "Save Submission Reference →"}
-                          </button>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                )}
-
-              {/* API MODE */}
-
-              {submission &&
-                submissionConfirmed &&
-                submission.submission_mode ===
-                  "API" && (
-                  <div
-                    style={{
-                      marginTop:
-                        "18px",
-                      padding:
-                        "14px 16px",
-                      borderRadius:
-                        "12px",
-                      background:
-                        "rgba(96,165,250,0.06)",
-                      border:
-                        "1px solid rgba(96,165,250,0.16)",
-                      color:
-                        "#93c5fd",
-                      fontSize:
-                        "12px",
-                      lineHeight:
-                        1.5,
-                    }}
-                  >
-                    API submission mode is
-                    configured for this authority.
-                    The actual government API call
-                    will only be enabled after an
-                    authorized integration is connected.
-                  </div>
-                )}
-
-              {/* ALREADY SUBMITTED */}
-
-              {submission.submission_status ===
-                "SUBMITTED" && (
-                <div
-                  style={{
-                    marginTop:
-                      "18px",
-                    padding:
-                      "16px",
-                    borderRadius:
-                      "14px",
-                    background:
-                      "rgba(34,197,94,0.06)",
-                    border:
-                      "1px solid rgba(34,197,94,0.18)",
-                  }}
-                >
-                  <div
-                    style={{
-                      color:
-                        "#86efac",
-                      fontSize:
-                        "14px",
-                      fontWeight:
-                        700,
-                      marginBottom:
-                        "8px",
-                    }}
-                  >
-                    ✓ Official submission recorded
-                  </div>
-
-                  {submission.official_reference_id && (
-                    <div
-                      style={{
-                        color:
-                          "#d1d5db",
-                        fontSize:
-                          "13px",
-                      }}
-                    >
-                      <strong>
-                        Official reference:
-                      </strong>{" "}
-                      {
-                        submission.official_reference_id
-                      }
-                    </div>
-                  )}
-
-                  {submission.submitted_at && (
-                    <div
-                      style={{
-                        color:
-                          "#94a3b8",
-                        fontSize:
-                          "12px",
-                        marginTop:
-                          "5px",
-                      }}
-                    >
-                      Submitted:{" "}
-                      {formatDate(
-                        submission.submitted_at
-                      )}
-                    </div>
-                  )}
-
-                  {submission.official_reference_url && (
-                    <a
-                      href={
-                        submission.official_reference_url
-                      }
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        display:
-                          "inline-block",
-                        marginTop:
-                          "12px",
-                        padding:
-                          "10px 14px",
-                        borderRadius:
-                          "9px",
-                        background:
-                          "rgba(96,165,250,0.12)",
-                        border:
-                          "1px solid rgba(96,165,250,0.18)",
-                        color:
-                          "#93c5fd",
-                        textDecoration:
-                          "none",
-                        fontSize:
-                          "12px",
-                        fontWeight:
-                          700,
-                      }}
-                    >
-                      View Official Reference →
-                    </a>
-                  )}
-                </div>
-              )}
-
-              {/* SUBMISSION ERROR */}
-
-              {submission.error_message && (
-                <div
-                  style={{
-                    marginTop:
-                      "14px",
-                    padding:
-                      "12px 14px",
-                    borderRadius:
-                      "10px",
-                    background:
-                      "rgba(239,68,68,0.08)",
-                    border:
-                      "1px solid rgba(239,68,68,0.18)",
-                    color:
-                      "#fca5a5",
-                    fontSize:
-                      "12px",
-                    lineHeight:
-                      1.5,
-                  }}
-                >
-                  {
-                    submission.error_message
-                  }
-                </div>
-              )}
-
-              {/* RETRY */}
-
-              {submission.submission_status ===
-                "FAILED" && (
-                <button
-                  type="button"
-                  onClick={() =>
-                    void prepareSubmission()
-                  }
-                  disabled={
-                    preparingSubmission
-                  }
-                  style={{
-                    ...buttonStyle,
-                    marginTop:
-                      "14px",
-                    background:
-                      preparingSubmission
-                        ? "#475569"
-                        : "#2563eb",
-                    cursor:
-                      preparingSubmission
-                        ? "not-allowed"
-                        : "pointer",
-                  }}
-                >
-                  {preparingSubmission
-                    ? "Preparing..."
-                    : "Try Again →"}
-                </button>
-              )}
-            </>
-          )}
-
-          {submissionError && (
-            <div
+            <button
+              className="kf-detail-back-button"
+              type="button"
+              onClick={() => router.push("/my-issues")}
+              aria-label={t("← Back to My Issues")}
               style={{
-                marginTop:
-                  "14px",
-                padding:
-                  "12px 14px",
-                borderRadius:
-                  "10px",
-                background:
-                  "rgba(239,68,68,0.08)",
-                border:
-                  "1px solid rgba(239,68,68,0.18)",
-                color:
-                  "#fca5a5",
-                fontSize:
-                  "12px",
-                lineHeight:
-                  1.5,
+                width: "38px",
+                height: "38px",
+                display: "grid",
+                placeItems: "center",
+                border: "1px solid #ddd7cf",
+                borderRadius: "13px",
+                background: "#fffdf9",
+                color: "#304154",
+                fontSize: "18px",
+                fontWeight: 900,
+                cursor: "pointer",
               }}
             >
-              {submissionError}
+              ←
+            </button>
+
+            <div
+              className="kf-detail-brand-lockup"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+              }}
+            >
+              <div
+                className="kf-detail-brand-box"
+                style={{
+                  width: "38px",
+                  height: "38px",
+                  display: "grid",
+                  placeItems: "center",
+                  borderRadius: "13px",
+                  background: "#ff7a00",
+                  color: "#fff",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "21px",
+                  fontWeight: 800,
+                  boxShadow: "0 8px 18px rgba(255,122,0,.18)",
+                }}
+              >
+                K
+              </div>
+
+              <div>
+                <div
+                  className="kf-detail-brand-name"
+                  style={{
+                    color: "#102033",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "23px",
+                    lineHeight: 1,
+                    letterSpacing: "-.045em",
+                    fontWeight: 800,
+                  }}
+                >
+                  <span className="kf-detail-brand-karma">Karma</span>
+                  <span className="kf-detail-brand-facie" style={{ color: "#ff7a00" }}>Facie</span>
+                </div>
+
+                <div
+                  className="kf-detail-brand-caption"
+                  style={{
+                    marginTop: "3px",
+                    color: "#89918e",
+                    fontSize: "8px",
+                    lineHeight: 1,
+                    fontWeight: 900,
+                    letterSpacing: ".16em",
+                  }}
+                >
+                  CIVIC PARTICIPATION
+                </div>
+              </div>
             </div>
-          )}
-        </section>
+          </div>
 
-        {/* FOLLOW-UP TRACKING */}
+          <label
+            className="kf-detail-language-label"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "9px",
+              color: "#50616f",
+              fontSize: "11px",
+              fontWeight: 900,
+            }}
+          >
+            <span>
+              {language === "hi"
+                ? "भाषा"
+                : language === "mr"
+                  ? "भाषा"
+                  : "Language"}
+            </span>
 
+            <select
+              className="kf-detail-language-select"
+              value={language}
+              onChange={(event) =>
+                setLanguage(event.target.value as Language)
+              }
+              aria-label="Language"
+              style={{
+                minWidth: "122px",
+                padding: "10px 13px",
+                border: "1px solid #d8d2ca",
+                borderRadius: "999px",
+                background: "#fffdf9",
+                color: "#304154",
+                fontSize: "11px",
+                fontWeight: 800,
+                cursor: "pointer",
+                outline: "none",
+              }}
+            >
+              <option value="en">English</option>
+              <option value="hi">हिन्दी</option>
+              <option value="mr">मराठी</option>
+            </select>
+          </label>
+        </header>
+
+        {/* HERO */}
         <section
-          style={
-            panelStyle
-          }
+          className="kf-detail-section kf-detail-hero"
+          style={{
+            ...softSection(
+              "linear-gradient(135deg, rgba(255,253,249,.98) 0%, rgba(255,253,249,.96) 54%, rgba(231,241,247,.95) 100%)",
+              "#ddd8cf"
+            ),
+            position: "relative",
+            overflow: "hidden",
+            padding: "32px",
+            marginBottom: "16px",
+          }}
         >
           <div
             style={{
-              marginBottom:
-                "20px",
+              position: "absolute",
+              right: "-34px",
+              top: "-48px",
+              width: "180px",
+              height: "180px",
+              borderRadius: "50%",
+              background: "rgba(217,232,241,.58)",
             }}
-          >
-            <h2
-              style={{
-                fontSize:
-                  "21px",
-                margin:
-                  "0 0 8px",
-              }}
-            >
-              Follow-up &amp; Government Updates
-            </h2>
-
-            <p
-              style={{
-                ...mutedTextStyle,
-                margin:
-                  0,
-              }}
-            >
-              Record what happened after your complaint was submitted. These updates are citizen-reported unless KarmaFacie later receives verifiable information from the authority.
-            </p>
-          </div>
+          />
 
           <div
             style={{
-              display:
-                "grid",
-              gap:
-                "12px",
-              padding:
-                "16px",
-              borderRadius:
-                "14px",
-              background:
-                "rgba(96,165,250,0.04)",
-              border:
-                "1px solid rgba(96,165,250,0.12)",
+              position: "absolute",
+              left: "-40px",
+              bottom: "-72px",
+              width: "180px",
+              height: "130px",
+              borderRadius: "55% 45% 0 0",
+              background: "rgba(255,229,205,.46)",
+              transform: "rotate(7deg)",
             }}
-          >
-            <div>
-              <label
-                htmlFor="follow-up-status"
-                style={{
-                  display:
-                    "block",
-                  color:
-                    "#cbd5e1",
-                  fontSize:
-                    "11px",
-                  fontWeight:
-                    700,
-                  marginBottom:
-                    "6px",
-                }}
-              >
-                What happened after submission?
-              </label>
+          />
 
-              <select
-                id="follow-up-status"
-                value={
-                  followUpStatus
-                }
-                onChange={(event) =>
-                  setFollowUpStatus(
-                    event.target.value as FollowUpStatus
-                  )
-                }
-                style={{
-                  width:
-                    "100%",
-                  boxSizing:
-                    "border-box",
-                  padding:
-                    "11px 12px",
-                  borderRadius:
-                    "9px",
-                  border:
-                    "1px solid rgba(148,163,184,0.2)",
-                  background:
-                    "rgba(15,23,42,0.72)",
-                  color:
-                    "#e5e7eb",
-                  fontSize:
-                    "12px",
-                  outline:
-                    "none",
-                }}
-              >
-                <option value="NO_RESPONSE">
-                  No Response / Awaiting Update
-                </option>
-                <option value="ACKNOWLEDGED">
-                  Acknowledged
-                </option>
-                <option value="IN_PROGRESS">
-                  In Progress
-                </option>
-                <option value="RESOLVED">
-                  Resolved
-                </option>
-                <option value="CLOSED">
-                  Closed
-                </option>
-                <option value="REJECTED">
-                  Rejected
-                </option>
-              </select>
-            </div>
-
-            <div>
-              <label
-                htmlFor="follow-up-note"
-                style={{
-                  display:
-                    "block",
-                  color:
-                    "#cbd5e1",
-                  fontSize:
-                    "11px",
-                  fontWeight:
-                    700,
-                  marginBottom:
-                    "6px",
-                }}
-              >
-                Update note (optional)
-              </label>
-
-              <textarea
-                id="follow-up-note"
-                value={
-                  followUpNote
-                }
-                onChange={(event) =>
-                  setFollowUpNote(
-                    event.target.value
-                  )
-                }
-                rows={3}
-                placeholder="Example: I received an SMS saying the complaint was acknowledged"
-                style={{
-                  width:
-                    "100%",
-                  boxSizing:
-                    "border-box",
-                  padding:
-                    "11px 12px",
-                  borderRadius:
-                    "9px",
-                  border:
-                    "1px solid rgba(148,163,184,0.2)",
-                  background:
-                    "rgba(15,23,42,0.72)",
-                  color:
-                    "#e5e7eb",
-                  fontSize:
-                    "12px",
-                  lineHeight:
-                    1.5,
-                  resize:
-                    "vertical",
-                  outline:
-                    "none",
-                }}
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="follow-up-evidence"
-                style={{
-                  display:
-                    "block",
-                  color:
-                    "#cbd5e1",
-                  fontSize:
-                    "11px",
-                  fontWeight:
-                    700,
-                  marginBottom:
-                    "6px",
-                }}
-              >
-                Evidence attachment (optional)
-              </label>
-
-              <input
-                id="follow-up-evidence"
-                type="file"
-                accept="image/*,application/pdf"
-                onChange={(event) => {
-                  const file =
-                    event.target.files?.[0] ??
-                    null;
-
-                  if (!file) {
-                    setFollowUpEvidence(null);
-                    return;
-                  }
-
-                  const maxSize =
-                    5 * 1024 * 1024;
-
-                  const allowedType =
-                    file.type.startsWith("image/") ||
-                    file.type === "application/pdf";
-
-                  if (!allowedType) {
-                    setFollowUpEvidence(null);
-                    setFollowUpError(
-                      "Please choose an image or PDF file."
-                    );
-                    event.target.value = "";
-                    return;
-                  }
-
-                  if (file.size > maxSize) {
-                    setFollowUpEvidence(null);
-                    setFollowUpError(
-                      "Evidence file must be 5 MB or smaller."
-                    );
-                    event.target.value = "";
-                    return;
-                  }
-
-                  setFollowUpError("");
-                  setFollowUpEvidence(file);
-                }}
-                style={{
-                  width:
-                    "100%",
-                  boxSizing:
-                    "border-box",
-                  padding:
-                    "10px 11px",
-                  borderRadius:
-                    "9px",
-                  border:
-                    "1px solid rgba(148,163,184,0.2)",
-                  background:
-                    "rgba(15,23,42,0.72)",
-                  color:
-                    "#cbd5e1",
-                  fontSize:
-                    "12px",
-                }}
-              />
-
-              <div
-                style={{
-                  marginTop:
-                    "6px",
-                  color:
-                    "#64748b",
-                  fontSize:
-                    "11px",
-                  lineHeight:
-                    1.5,
-                }}
-              >
-                Attach a photo or PDF that supports this update. Maximum 5 MB.
-              </div>
-
-              {followUpEvidence && (
-                <div
-                  style={{
-                    marginTop:
-                      "7px",
-                    color:
-                      "#93c5fd",
-                    fontSize:
-                      "11px",
-                  }}
-                >
-                  Selected: {followUpEvidence.name}
-                </div>
-              )}
-            </div>
-
-            {followUpError && (
-              <div
-                style={{
-                  padding:
-                    "10px 12px",
-                  borderRadius:
-                    "9px",
-                  background:
-                    "rgba(239,68,68,0.08)",
-                  border:
-                    "1px solid rgba(239,68,68,0.16)",
-                  color:
-                    "#fca5a5",
-                  fontSize:
-                    "12px",
-                  lineHeight:
-                    1.5,
-                }}
-              >
-                {followUpError}
-              </div>
-            )}
-
-            <button
-              type="button"
-              onClick={() =>
-                void recordFollowUp()
-              }
-              disabled={
-                savingFollowUp
-              }
+          <div style={{ position: "relative", zIndex: 1 }}>
+            <div
+              className="kf-detail-hero-badge"
               style={{
-                ...buttonStyle,
-                background:
-                  savingFollowUp
-                    ? "#475569"
-                    : "#2563eb",
-                cursor:
-                  savingFollowUp
-                    ? "not-allowed"
-                    : "pointer",
-                justifySelf:
-                  "start",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "8px 12px",
+                borderRadius: "999px",
+                background: "#fff0df",
+                border: "1px solid #efddc8",
+                color: "#966f4e",
+                fontSize: "9px",
+                fontWeight: 900,
+                letterSpacing: ".18em",
               }}
             >
-              {savingFollowUp
-                ? "Saving Update..."
-                : "Save Follow-up Update →"}
-            </button>
-          </div>
+              <span
+                style={{
+                  width: "7px",
+                  height: "7px",
+                  borderRadius: "50%",
+                  background: "#ff7a00",
+                }}
+              />
+              KARMAFACIE CIVIC ISSUE
+            </div>
 
-          <div
-            style={{
-              marginTop:
-                "20px",
-            }}
-          >
             <div
               style={{
-                color:
-                  "#64748b",
-                fontSize:
-                  "11px",
-                fontWeight:
-                  700,
-                textTransform:
-                  "uppercase",
-                letterSpacing:
-                  "0.6px",
-                marginBottom:
-                  "10px",
+                display: "flex",
+                alignItems: "flex-start",
+                justifyContent: "space-between",
+                gap: "20px",
+                flexWrap: "wrap",
+                marginTop: "17px",
               }}
             >
-              Recorded follow-ups
-            </div>
+              <div style={{ maxWidth: "780px" }}>
+                <h1
+                  style={{
+                    margin: 0,
+                    color: "#102033",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "clamp(42px, 5.8vw, 62px)",
+                    lineHeight: ".98",
+                    letterSpacing: "-.05em",
+                    fontWeight: 800,
+                  }}
+                >
+                  {issue.title || t("Civic Issue")}
+                </h1>
 
-            {followups.length === 0 ? (
-              <div
-                style={{
-                  padding:
-                    "14px",
-                  borderRadius:
-                    "12px",
-                  background:
-                    "rgba(255,255,255,0.025)",
-                  border:
-                    "1px solid rgba(255,255,255,0.06)",
-                  color:
-                    "#64748b",
-                  fontSize:
-                    "12px",
-                  lineHeight:
-                    1.5,
-                }}
-              >
-                No citizen-reported follow-up updates have been recorded yet.
-              </div>
-            ) : (
-              <div
-                style={{
-                  display:
-                    "grid",
-                  gap:
-                    "10px",
-                }}
-              >
-                {followups.map(
-                  (followUp) => (
-                    <div
-                      key={
-                        followUp.id
-                      }
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    flexWrap: "wrap",
+                    marginTop: "15px",
+                  }}
+                >
+                  <span
+                    className="kf-detail-category-pill"
+                    style={{
+                      padding: "8px 12px",
+                      borderRadius: "999px",
+                      background: "#fff3e7",
+                      border: "1px solid #f0dbc5",
+                      color: "#986e4b",
+                      fontSize: "11px",
+                      fontWeight: 900,
+                    }}
+                  >
+                    {issue.category}
+                  </span>
+
+                  <span
+                    className={`kf-detail-status-pill kf-detail-status-${issue.status}`}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "7px",
+                      padding: "8px 12px",
+                      borderRadius: "999px",
+                      background: statusTone.background,
+                      border: `1px solid ${statusTone.border}`,
+                      color: statusTone.text,
+                      fontSize: "11px",
+                      fontWeight: 900,
+                    }}
+                  >
+                    <span
                       style={{
-                        padding:
-                          "14px",
-                        borderRadius:
-                          "12px",
-                        background:
-                          "rgba(255,255,255,0.025)",
-                        border:
-                          "1px solid rgba(255,255,255,0.06)",
+                        width: "7px",
+                        height: "7px",
+                        borderRadius: "50%",
+                        background: statusTone.dot,
                       }}
-                    >
-                      <div
-                        style={{
-                          display:
-                            "flex",
-                          justifyContent:
-                            "space-between",
-                          gap:
-                            "10px",
-                          flexWrap:
-                            "wrap",
-                          alignItems:
-                            "baseline",
-                        }}
-                      >
-                        <div
-                          style={{
-                            color:
-                              "#e5e7eb",
-                            fontSize:
-                              "13px",
-                            fontWeight:
-                              700,
-                          }}
-                        >
-                          {followUpStatusLabel(
-                            followUp.status
-                          )}
-                        </div>
-
-                        <div
-                          style={{
-                            color:
-                              "#64748b",
-                            fontSize:
-                              "11px",
-                          }}
-                        >
-                          {formatDate(
-                            followUp.created_at
-                          )}
-                        </div>
-                      </div>
-
-                      <div
-                        style={{
-                          marginTop:
-                            "7px",
-                          color:
-                            "#94a3b8",
-                          fontSize:
-                            "11px",
-                        }}
-                      >
-                        Citizen-reported update
-                      </div>
-
-                      <div
-                        style={{
-                          display:
-                            "inline-flex",
-                          alignItems:
-                            "center",
-                          gap:
-                            "6px",
-                          marginTop:
-                            "9px",
-                          padding:
-                            "6px 9px",
-                          borderRadius:
-                            "999px",
-                          background:
-                            followUp.verification_status ===
-                            "VERIFIED"
-                              ? "rgba(34,197,94,0.12)"
-                              : followUp.verification_status ===
-                                "NOT_VERIFIED"
-                                ? "rgba(239,68,68,0.12)"
-                                : "rgba(245,158,11,0.12)",
-                          border:
-                            followUp.verification_status ===
-                            "VERIFIED"
-                              ? "1px solid rgba(34,197,94,0.25)"
-                              : followUp.verification_status ===
-                                "NOT_VERIFIED"
-                                ? "1px solid rgba(239,68,68,0.25)"
-                                : "1px solid rgba(245,158,11,0.25)",
-                          color:
-                            followUp.verification_status ===
-                            "VERIFIED"
-                              ? "#86efac"
-                              : followUp.verification_status ===
-                                "NOT_VERIFIED"
-                                ? "#fca5a5"
-                                : "#fcd34d",
-                          fontSize:
-                            "11px",
-                          fontWeight:
-                            700,
-                        }}
-                      >
-                        {followUp.verification_status ===
-                        "VERIFIED"
-                          ? "✓ KarmaFacie verified"
-                          : followUp.verification_status ===
-                            "NOT_VERIFIED"
-                            ? "⚠ Not verified"
-                            : "⏳ Verification pending"}
-                      </div>
-
-                      {followUp.verification_status ===
-                        "VERIFIED" && (
-                        <div
-                          style={{
-                            marginTop:
-                              "7px",
-                            color:
-                              "#94a3b8",
-                            fontSize:
-                              "11px",
-                            lineHeight:
-                              1.5,
-                          }}
-                        >
-                          This is a KarmaFacie administrative verification,
-                          not an official government confirmation.
-                        </div>
-                      )}
-
-                      {followUp.verification_note && (
-                        <div
-                          style={{
-                            marginTop:
-                              "8px",
-                            padding:
-                              "9px 10px",
-                            borderRadius:
-                              "10px",
-                            background:
-                              "rgba(255,255,255,0.02)",
-                            border:
-                              "1px solid rgba(255,255,255,0.05)",
-                            color:
-                              "#cbd5e1",
-                            fontSize:
-                              "12px",
-                            lineHeight:
-                              1.5,
-                          }}
-                        >
-                          <strong>Verification note:</strong>{" "}
-                          {followUp.verification_note}
-                        </div>
-                      )}
-
-                      {followUp.verification_source_url && (
-                        <div
-                          style={{
-                            marginTop:
-                              "8px",
-                          }}
-                        >
-                          <a
-                            href={
-                              followUp.verification_source_url
-                            }
-                            target="_blank"
-                            rel="noreferrer"
-                            style={{
-                              color:
-                                "#93c5fd",
-                              fontSize:
-                                "12px",
-                              fontWeight:
-                                700,
-                              textDecoration:
-                                "none",
-                            }}
-                          >
-                            🔗 Verification source →
-                          </a>
-                        </div>
-                      )}
-
-                      {followUp.evidence_url && (
-                        <div
-                          style={{
-                            marginTop:
-                              "9px",
-                          }}
-                        >
-                          <a
-                            href={
-                              followUp.evidence_url
-                            }
-                            target="_blank"
-                            rel="noreferrer"
-                            style={{
-                              color:
-                                "#93c5fd",
-                              fontSize:
-                                "12px",
-                              fontWeight:
-                                700,
-                              textDecoration:
-                                "none",
-                            }}
-                          >
-                            📎 View attached evidence →
-                          </a>
-                        </div>
-                      )}
-
-                      {followUp.note && (
-                        <div
-                          style={{
-                            marginTop:
-                              "8px",
-                            color:
-                              "#cbd5e1",
-                            fontSize:
-                              "12px",
-                            lineHeight:
-                              1.5,
-                            whiteSpace:
-                              "pre-wrap",
-                          }}
-                        >
-                          {followUp.note}
-                        </div>
-                      )}
-                    </div>
-                  )
-                )}
+                    />
+                    {getStatusIcon(issue.status)}{" "}
+                    {getStatusLabel(issue.status)}
+                  </span>
+                </div>
               </div>
-            )}
+
+              <div
+                className="kf-detail-hero-reported-card"
+                style={{
+                  minWidth: "180px",
+                  padding: "14px 15px",
+                  borderRadius: "20px",
+                  background: "rgba(255,255,255,.76)",
+                  border: "1px solid rgba(16,27,43,.08)",
+                }}
+              >
+                <div
+                  style={{
+                    color: "#92999f",
+                    fontSize: "9px",
+                    fontWeight: 900,
+                    letterSpacing: ".15em",
+                  }}
+                >
+                  {t("Reported:")}
+                </div>
+
+                <div
+                  style={{
+                    marginTop: "5px",
+                    color: "#34475a",
+                    fontSize: "12px",
+                    fontWeight: 800,
+                    lineHeight: 1.45,
+                  }}
+                >
+                  {formatDate(issue.reported_at || issue.created_at)}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* RESOLUTION VERIFICATION */}
+        {/* ERROR */}
+        {(error || submissionError || followUpError || resolutionCheckError) && (
+          <div
+            role="alert"
+            style={{
+              marginBottom: "14px",
+              padding: "14px 16px",
+              borderRadius: "18px",
+              background: "#fff0ed",
+              border: "1px solid #ecd0c8",
+              color: "#965c4d",
+              fontSize: "12px",
+              fontWeight: 800,
+              lineHeight: 1.6,
+            }}
+          >
+            {error ||
+              submissionError ||
+              followUpError ||
+              resolutionCheckError}
+          </div>
+        )}
 
-        {issue.status === "resolved" && (
-          <section
-            style={
-              panelStyle
-            }
+        {/* ISSUE OVERVIEW */}
+        <section
+          className="kf-detail-section kf-detail-overview-section"
+          style={{
+            ...sectionStyle,
+            padding: "26px",
+            marginBottom: "16px",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              marginBottom: "17px",
+            }}
           >
             <div
+              className="kf-detail-record-icon"
               style={{
-                marginBottom:
-                  "20px",
+                width: "38px",
+                height: "38px",
+                display: "grid",
+                placeItems: "center",
+                borderRadius: "14px",
+                background: "#fff0df",
+                fontSize: "18px",
               }}
             >
+              📋
+            </div>
+
+            <div>
               <div
                 style={{
-                  color:
-                    "#86efac",
-                  fontSize:
-                    "12px",
-                  fontWeight:
-                    700,
-                  letterSpacing:
-                    "0.5px",
-                  marginBottom:
-                    "8px",
+                  color: "#9a9188",
+                  fontSize: "9px",
+                  fontWeight: 900,
+                  letterSpacing: ".17em",
                 }}
               >
-                RESOLUTION VERIFICATION
+                CIVIC RECORD
               </div>
 
               <h2
                 style={{
-                  fontSize:
-                    "21px",
-                  margin:
-                    "0 0 8px",
+                  margin: "3px 0 0",
+                  color: "#24364a",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "30px",
+                  lineHeight: 1,
+                  fontWeight: 800,
                 }}
               >
-                Did the problem actually get fixed?
+                {t("Issue Information")}
               </h2>
+            </div>
+          </div>
 
-              <p
-                style={{
-                  ...mutedTextStyle,
-                  margin:
-                    0,
-                }}
-              >
-                KarmaFacie currently records this issue as Resolved. Check the location yourself and record what you observe. This is a citizen observation and does not automatically change the administrative status.
-              </p>
+          <div
+            className="kf-overview-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+              gap: "10px",
+            }}
+          >
+            <div
+              className="kf-detail-overview-tile kf-detail-overview-tile-blue"
+              style={{
+                padding: "15px",
+                borderRadius: "20px",
+                background: "#f3f7fa",
+                border: "1px solid #dce8ef",
+              }}
+            >
+              <div className="kf-info-label">🏙️ {t("Reported from:")}</div>
+              <div className="kf-info-value">
+                {issue.reported_city || "—"}
+                {issue.reported_state
+                  ? `, ${issue.reported_state}`
+                  : ""}
+              </div>
             </div>
 
             <div
+              className="kf-detail-overview-tile kf-detail-overview-tile-warm"
               style={{
-                display:
-                  "grid",
-                gap:
-                  "12px",
-                padding:
-                  "16px",
-                borderRadius:
-                  "14px",
-                background:
-                  "rgba(34,197,94,0.04)",
-                border:
-                  "1px solid rgba(34,197,94,0.12)",
+                padding: "15px",
+                borderRadius: "20px",
+                background: "#fff4e8",
+                border: "1px solid #efdfcd",
+              }}
+            >
+              <div className="kf-info-label">📍 {t("Location:")}</div>
+              <div className="kf-info-value">
+                {issue.location_text ||
+                  t("Location not provided.")}
+              </div>
+            </div>
+
+            <div
+              className="kf-detail-overview-tile kf-detail-overview-tile-green"
+              style={{
+                padding: "15px",
+                borderRadius: "20px",
+                background: "#f2f6ed",
+                border: "1px solid #dbe7d0",
+              }}
+            >
+              <div className="kf-info-label">{t("GPS:")}</div>
+              <div className="kf-info-value">
+                {issue.latitude !== null &&
+                issue.longitude !== null
+                  ? `${issue.latitude.toFixed(6)}, ${issue.longitude.toFixed(6)}`
+                  : t("GPS coordinates not available.")}
+              </div>
+            </div>
+
+            <div
+              className="kf-detail-overview-tile kf-detail-overview-tile-lavender"
+              style={{
+                padding: "15px",
+                borderRadius: "20px",
+                background: "#f5f0fa",
+                border: "1px solid #e3d9ec",
+              }}
+            >
+              <div className="kf-info-label">🕒 {t("Reported:")}</div>
+              <div className="kf-info-value">
+                {formatDate(issue.reported_at || issue.created_at)}
+              </div>
+            </div>
+          </div>
+
+          <div
+            className="kf-detail-description-card"
+            style={{
+              marginTop: "12px",
+              padding: "17px",
+              borderRadius: "21px",
+              background: "#fffdf9",
+              border: "1px solid #e3ded6",
+            }}
+          >
+            <div className="kf-info-label">{t("Description")}</div>
+
+            <p
+              style={{
+                margin: "7px 0 0",
+                color: "#34495b",
+                fontSize: "16px",
+                lineHeight: 1.72,
+                whiteSpace: "pre-wrap",
+              }}
+            >
+              {issue.description || t("No description provided.")}
+            </p>
+          </div>
+        </section>
+
+        {/* PHOTO */}
+        {photoUrl && (
+          <section
+            className="kf-detail-section kf-detail-photo-section"
+            style={{
+              ...softSection("#fffdf9", "#dfd9d0"),
+              overflow: "hidden",
+              marginBottom: "16px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "12px",
+                padding: "18px 22px",
+                background: "#fff4ea",
+                borderBottom: "1px solid #ecdccf",
               }}
             >
               <div>
-                <label
-                  htmlFor="resolution-result"
-                  style={{
-                    display:
-                      "block",
-                    color:
-                      "#cbd5e1",
-                    fontSize:
-                      "12px",
-                    fontWeight:
-                      700,
-                    marginBottom:
-                      "7px",
-                  }}
-                >
-                  What did you observe?
-                </label>
-
-                <select
-                  id="resolution-result"
-                  value={
-                    resolutionResult
-                  }
-                  onChange={(event) =>
-                    setResolutionResult(
-                      event.target
-                        .value as ResolutionCheckResult
-                    )
-                  }
-                  disabled={
-                    savingResolutionCheck
-                  }
-                  style={{
-                    width:
-                      "100%",
-                    boxSizing:
-                      "border-box",
-                    padding:
-                      "12px",
-                    borderRadius:
-                      "10px",
-                    border:
-                      "1px solid #374151",
-                    background:
-                      "#111827",
-                    color:
-                      "white",
-                    fontSize:
-                      "13px",
-                    outline:
-                      "none",
-                  }}
-                >
-                  <option value="FIXED">✅ Fixed</option>
-                  <option value="PARTIALLY_FIXED">🟡 Partially Fixed</option>
-                  <option value="NOT_FIXED">❌ Not Fixed</option>
-                  <option value="RETURNED">🔁 Problem Returned</option>
-                </select>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="resolution-note"
-                  style={{
-                    display:
-                      "block",
-                    color:
-                      "#cbd5e1",
-                    fontSize:
-                      "12px",
-                    fontWeight:
-                      700,
-                    marginBottom:
-                      "7px",
-                  }}
-                >
-                  Observation note (optional)
-                </label>
-
-                <textarea
-                  id="resolution-note"
-                  value={
-                    resolutionNote
-                  }
-                  onChange={(event) =>
-                    setResolutionNote(
-                      event.target.value
-                    )
-                  }
-                  disabled={
-                    savingResolutionCheck
-                  }
-                  placeholder="Describe what you observed at the location..."
-                  rows={
-                    4
-                  }
-                  style={{
-                    width:
-                      "100%",
-                    boxSizing:
-                      "border-box",
-                    padding:
-                      "12px",
-                    borderRadius:
-                      "10px",
-                    border:
-                      "1px solid #374151",
-                    background:
-                      "#111827",
-                    color:
-                      "white",
-                    fontSize:
-                      "13px",
-                    outline:
-                      "none",
-                    resize:
-                      "vertical",
-                  }}
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="resolution-evidence"
-                  style={{
-                    display:
-                      "block",
-                    color:
-                      "#cbd5e1",
-                    fontSize:
-                      "12px",
-                    fontWeight:
-                      700,
-                    marginBottom:
-                      "7px",
-                  }}
-                >
-                  After-repair evidence (optional)
-                </label>
-
-                <input
-                  id="resolution-evidence"
-                  type="file"
-                  accept="image/*,application/pdf"
-                  onChange={(event) => {
-                    const file =
-                      event.target.files?.[0] ??
-                      null;
-
-                    if (!file) {
-                      setResolutionEvidence(null);
-                      return;
-                    }
-
-                    const maxSize =
-                      5 * 1024 * 1024;
-
-                    const allowedType =
-                      file.type.startsWith("image/") ||
-                      file.type === "application/pdf";
-
-                    if (!allowedType) {
-                      setResolutionEvidence(null);
-                      setResolutionCheckError(
-                        "Please choose an image or PDF file."
-                      );
-                      event.target.value = "";
-                      return;
-                    }
-
-                    if (file.size > maxSize) {
-                      setResolutionEvidence(null);
-                      setResolutionCheckError(
-                        "Evidence file must be 5 MB or smaller."
-                      );
-                      event.target.value = "";
-                      return;
-                    }
-
-                    setResolutionCheckError("");
-                    setResolutionEvidence(file);
-                  }}
-                  disabled={
-                    savingResolutionCheck
-                  }
-                  style={{
-                    width:
-                      "100%",
-                    boxSizing:
-                      "border-box",
-                    padding:
-                      "10px 11px",
-                    borderRadius:
-                      "9px",
-                    border:
-                      "1px solid rgba(148,163,184,0.2)",
-                    background:
-                      "rgba(15,23,42,0.72)",
-                    color:
-                      "#cbd5e1",
-                    fontSize:
-                      "12px",
-                  }}
-                />
-
                 <div
                   style={{
-                    marginTop:
-                      "6px",
-                    color:
-                      "#64748b",
-                    fontSize:
-                      "11px",
-                    lineHeight:
-                      1.5,
+                    color: "#8d735e",
+                    fontSize: "9px",
+                    fontWeight: 900,
+                    letterSpacing: ".17em",
                   }}
                 >
-                  Upload a current photo or PDF that supports your observation. Maximum 5 MB.
+                  VISUAL EVIDENCE
                 </div>
 
-                {resolutionEvidence && (
-                  <div
-                    style={{
-                      marginTop:
-                        "7px",
-                      color:
-                        "#93c5fd",
-                      fontSize:
-                        "11px",
-                    }}
-                  >
-                    Selected: {resolutionEvidence.name}
-                  </div>
-                )}
-              </div>
-
-              {resolutionCheckError && (
-                <div
+                <h2
                   style={{
-                    padding:
-                      "10px 12px",
-                    borderRadius:
-                      "9px",
-                    background:
-                      "rgba(239,68,68,0.08)",
-                    border:
-                      "1px solid rgba(239,68,68,0.16)",
-                    color:
-                      "#fca5a5",
-                    fontSize:
-                      "12px",
-                    lineHeight:
-                      1.5,
+                    margin: "4px 0 0",
+                    color: "#283b4f",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "28px",
+                    lineHeight: 1,
+                    fontWeight: 800,
                   }}
                 >
-                  {resolutionCheckError}
+                  {t("📷 Photo Evidence")}
+                </h2>
+              </div>
+
+              <span
+                className="kf-detail-photo-badge"
+                style={{
+                  padding: "8px 10px",
+                  borderRadius: "999px",
+                  background: "#fffdf9",
+                  border: "1px solid #eadbcf",
+                  color: "#7d756e",
+                  fontSize: "9px",
+                  fontWeight: 900,
+                }}
+              >
+                {t("Evidence")}
+              </span>
+            </div>
+
+            <div
+              className="kf-detail-photo-body"
+              style={{
+                padding: "18px",
+                background: "#eeece7",
+              }}
+            >
+              <img
+                src={photoUrl}
+                alt={issue.title || t("📷 Photo Evidence")}
+                style={{
+                  width: "100%",
+                  maxHeight: "650px",
+                  objectFit: "contain",
+                  display: "block",
+                  borderRadius: "22px",
+                  background: "#e6e2dc",
+                }}
+              />
+            </div>
+          </section>
+        )}
+
+        {/* COMPLAINT JOURNEY */}
+        <section
+          className="kf-detail-section kf-detail-journey-section"
+          style={{
+            ...softSection(
+              "linear-gradient(135deg, #fffdf9 0%, #fbfdf9 100%)",
+              "#dfe5d8"
+            ),
+            padding: "26px",
+            marginBottom: "16px",
+          }}
+        >
+          <div style={{ marginBottom: "21px" }}>
+            <div className="kf-section-kicker" style={{ color: "#79915e" }}>
+              CIVIC JOURNEY
+            </div>
+
+            <h2 className="kf-section-title">
+              {t("Complaint Journey")}
+            </h2>
+
+            <p className="kf-section-desc">
+              {t(
+                "A combined KarmaFacie timeline for the major steps recorded for this complaint. Government actions are not marked as confirmed unless an official authority response or reference is recorded."
+              )}
+            </p>
+          </div>
+
+          <div className="kf-journey-grid">
+            {journeySteps.map((step, index) => (
+              <div
+                key={step.key}
+                className="kf-journey-step kf-journey-step-themed"
+                style={{
+                  padding: "17px",
+                  borderRadius: "22px",
+                  background: step.completed ? "#f2f7ec" : "#f7f5f1",
+                  border: `1px solid ${
+                    step.completed ? "#d8e7cd" : "#e5e0d8"
+                  }`,
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: "10px",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: "34px",
+                      height: "34px",
+                      display: "grid",
+                      placeItems: "center",
+                      borderRadius: "12px",
+                      background: step.completed
+                        ? "#dceccd"
+                        : "#e9e6e0",
+                      color: step.completed
+                        ? "#628247"
+                        : "#8b9296",
+                      fontSize: "12px",
+                      fontWeight: 900,
+                    }}
+                  >
+                    {step.completed ? "✓" : String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  {step.timestamp && (
+                    <span
+                      style={{
+                        color: "#87928b",
+                        fontSize: "9px",
+                        fontWeight: 800,
+                        textAlign: "right",
+                      }}
+                    >
+                      {formatDate(step.timestamp)}
+                    </span>
+                  )}
+                </div>
+
+                <h3
+                  style={{
+                    margin: "14px 0 5px",
+                    color: "#2c4053",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "19px",
+                    lineHeight: 1.05,
+                    fontWeight: 800,
+                  }}
+                >
+                  {step.label}
+                </h3>
+
+                <p
+                  style={{
+                    margin: 0,
+                    color: "#647482",
+                    fontSize: "11px",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div
+            className="kf-detail-journey-current"
+            style={{
+              marginTop: "14px",
+              padding: "13px 15px",
+              borderRadius: "18px",
+              background: "#edf4f8",
+              border: "1px solid #d9e6ed",
+              color: "#58758a",
+              fontSize: "11px",
+              fontWeight: 800,
+            }}
+          >
+            {t("Current KarmaFacie status:")}{" "}
+            <strong>{getStatusLabel(issue.status)}</strong>
+          </div>
+        </section>
+
+        {/* STATUS HISTORY */}
+        <section
+          className="kf-detail-section kf-detail-history-section"
+          style={{
+            ...softSection("#fffdf9", "#dfe5ea"),
+            padding: "26px",
+            marginBottom: "16px",
+          }}
+        >
+          <div style={{ marginBottom: "19px" }}>
+            <div className="kf-section-kicker" style={{ color: "#6689a3" }}>
+              ACTIVITY RECORD
+            </div>
+
+            <h2 className="kf-section-title">
+              {t("Status History")}
+            </h2>
+
+            <p className="kf-section-desc">
+              {t(
+                "This timeline shows status changes actually recorded in KarmaFacie."
+              )}
+            </p>
+          </div>
+
+          {history.length === 0 ? (
+            <div className="kf-empty">
+              {t("No status-history records are currently available for this issue.")}
+            </div>
+          ) : (
+            <div className="kf-history">
+              {history.map((item, index) => (
+                <div
+                  key={item.id}
+                  className="kf-history-row"
+                >
+                  <div className="kf-history-rail">
+                    <div className="kf-history-dot">
+                      {getActorIcon(item.actor_type)}
+                    </div>
+
+                    {index < history.length - 1 && (
+                      <div className="kf-history-line" />
+                    )}
+                  </div>
+
+                  <div
+                    className="kf-history-card"
+                    style={{
+                      flex: 1,
+                      padding: "15px 17px",
+                      marginBottom: index < history.length - 1 ? "10px" : 0,
+                      borderRadius: "21px",
+                      background:
+                        index === history.length - 1
+                          ? "#f7fbfd"
+                          : "#fbfaf7",
+                      border:
+                        index === history.length - 1
+                          ? "1px solid #d9e7ef"
+                          : "1px solid #e6e1da",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        gap: "12px",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <div
+                        style={{
+                          color: "#7d8790",
+                          fontSize: "10px",
+                          fontWeight: 800,
+                        }}
+                      >
+                        {formatDate(item.created_at)}
+                      </div>
+
+                      <span
+                        className="kf-history-status-pill"
+                        style={{
+                          padding: "6px 9px",
+                          borderRadius: "999px",
+                          background: "#edf5fa",
+                          border: "1px solid #d7e6ee",
+                          color: "#5c7d94",
+                          fontSize: "9px",
+                          fontWeight: 900,
+                        }}
+                      >
+                        {getStatusLabel(item.new_status)}
+                      </span>
+                    </div>
+
+                    <h3
+                      style={{
+                        margin: "8px 0 6px",
+                        color: "#304559",
+                        fontFamily: "var(--font-display)",
+                        fontSize: "18px",
+                        lineHeight: 1.1,
+                        fontWeight: 800,
+                      }}
+                    >
+                      {item.old_status
+                        ? `${getStatusLabel(item.old_status)} → `
+                        : ""}
+                      {getStatusLabel(item.new_status)}
+                    </h3>
+
+                    <div
+                      style={{
+                        color: "#657582",
+                        fontSize: "11px",
+                        lineHeight: 1.55,
+                      }}
+                    >
+                      {t("Recorded by")}{" "}
+                      <strong>{getActorLabel(item.actor_type)}</strong>
+                    </div>
+
+                    {item.note && (
+                      <p
+                        style={{
+                          margin: "9px 0 0",
+                          color: "#677885",
+                          fontSize: "12px",
+                          lineHeight: 1.65,
+                        }}
+                      >
+                        {item.note}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div
+            className="kf-history-footnote"
+            style={{
+              marginTop: "13px",
+              padding: "12px 14px",
+              borderRadius: "17px",
+              background: "#f4f6f6",
+              border: "1px solid #e1e6e5",
+              color: "#7b858d",
+              fontSize: "10px",
+              lineHeight: 1.6,
+            }}
+          >
+            {t(
+              "Status history is generated from recorded KarmaFacie status events. It does not imply that a government authority has changed the status unless the event is explicitly recorded as coming from an authority."
+            )}
+          </div>
+        </section>
+
+        {/* AUTHORITY ROUTING */}
+        <section
+          className="kf-detail-section kf-detail-authority-section"
+          style={{
+            ...softSection("#fffdf9", "#dbe5d1"),
+            padding: "26px",
+            marginBottom: "16px",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              justifyContent: "space-between",
+              gap: "16px",
+              flexWrap: "wrap",
+            }}
+          >
+            <div>
+              <div className="kf-section-kicker" style={{ color: "#718b57" }}>
+                {t("DIRECTORY ROUTING")}
+              </div>
+
+              <h2 className="kf-section-title">
+                {authority?.authority_name || t("Authority")}
+              </h2>
+            </div>
+
+            {authority?.verified_at && (
+              <span
+                className="kf-authority-verified"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  padding: "8px 11px",
+                  borderRadius: "999px",
+                  background: "#eef6e7",
+                  border: "1px solid #d6e6c9",
+                  color: "#65804a",
+                  fontSize: "9px",
+                  fontWeight: 900,
+                }}
+              >
+                ✓ {t("Directory information verified:")}{" "}
+                {formatDateOnly(authority.verified_at)}
+              </span>
+            )}
+          </div>
+
+          {authority ? (
+            <>
+              <div
+                className="kf-authority-grid"
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                  gap: "10px",
+                  marginTop: "18px",
+                }}
+              >
+                <div className="kf-detail-tile">
+                  <div className="kf-info-label">{t("Department:")}</div>
+                  <div className="kf-info-value">
+                    {authority.department_name || t("Not specified")}
+                  </div>
+                </div>
+
+                <div className="kf-detail-tile">
+                  <div className="kf-info-label">{t("Sub-Department:")}</div>
+                  <div className="kf-info-value">
+                    {authority.sub_department_name || t("Not specified")}
+                  </div>
+                </div>
+
+                <div className="kf-detail-tile">
+                  <div className="kf-info-label">{t("Official Complaint Type:")}</div>
+                  <div className="kf-info-value">
+                    {authority.official_complaint_type || t("Not specified")}
+                  </div>
+                </div>
+
+                <div className="kf-detail-tile">
+                  <div className="kf-info-label">{t("Issue type:")}</div>
+                  <div className="kf-info-value">{issue.category}</div>
+                </div>
+              </div>
+
+              {authority.submission_method && (
+                <div
+                  className="kf-authority-channel"
+                  style={{
+                    marginTop: "12px",
+                    padding: "14px 15px",
+                    borderRadius: "19px",
+                    background: "#eef4f8",
+                    border: "1px solid #dae6ed",
+                    color: "#557287",
+                    fontSize: "12px",
+                    lineHeight: 1.55,
+                    fontWeight: 700,
+                  }}
+                >
+                  {t("Channel:")}{" "}
+                  <strong>{authority.submission_method}</strong>
+                </div>
+              )}
+
+              {authority.notes && (
+                <p
+                  style={{
+                    margin: "13px 0 0",
+                    color: "#6b7985",
+                    fontSize: "12px",
+                    lineHeight: 1.65,
+                  }}
+                >
+                  {authority.notes}
+                </p>
+              )}
+
+              {authority.grievance_url && (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "12px",
+                    flexWrap: "wrap",
+                    marginTop: "18px",
+                  }}
+                >
+                  <a
+                    href={authority.grievance_url}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "7px",
+                      padding: "12px 16px",
+                      borderRadius: "999px",
+                      background: "#ff7a00",
+                      color: "#fff",
+                      textDecoration: "none",
+                      fontSize: "11px",
+                      fontWeight: 900,
+                      boxShadow: "0 10px 22px rgba(255,122,0,.18)",
+                    }}
+                  >
+                    {t("Open Official Complaint Channel →")}
+                  </a>
+
+                  <span
+                    style={{
+                      maxWidth: "620px",
+                      color: "#7c878f",
+                      fontSize: "10px",
+                      lineHeight: 1.55,
+                    }}
+                  >
+                    {t(
+                      "This opens the official complaint channel for the matched authority. KarmaFacie does not submit the complaint automatically through this route."
+                    )}
+                  </span>
+                </div>
+              )}
+            </>
+          ) : (
+            <div
+              className="kf-empty"
+              style={{ marginTop: "15px" }}
+            >
+              {t("ℹ️ No verified directory route is currently attached to this report.")}
+            </div>
+          )}
+        </section>
+
+        {/* OFFICIAL SUBMISSION */}
+        <section
+          className="kf-detail-section kf-detail-official-section"
+          style={{
+            ...softSection(
+              "linear-gradient(135deg, #fffdf9 0%, #f9f5ee 54%, #edf4f8 100%)",
+              "#ddd9d0"
+            ),
+            padding: "27px",
+            marginBottom: "16px",
+          }}
+        >
+          <div style={{ marginBottom: "20px" }}>
+            <div className="kf-section-kicker" style={{ color: "#b07848" }}>
+              {t("OFFICIAL SUBMISSION")}
+            </div>
+
+            <h2 className="kf-section-title">
+              {t("📤 Review Your Complaint")}
+            </h2>
+
+            <p className="kf-section-desc">
+              {submission
+                ? t(
+                    "KarmaFacie has already collected the information needed for this report. Review the prepared package before confirming it for the selected authority."
+                  )
+                : t(
+                    "Your complaint package has not been prepared yet. KarmaFacie will assemble it from the information already stored for this issue."
+                  )}
+            </p>
+          </div>
+
+          {!authority ? (
+            <div className="kf-notice kf-notice-warm">
+              {t(
+                "A verified authority route is required before the submission package can be prepared."
+              )}
+            </div>
+          ) : (
+            <>
+              {!submission && (
+                <div
+                  className="kf-official-prepare-panel"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: "16px",
+                    flexWrap: "wrap",
+                    padding: "18px",
+                    borderRadius: "21px",
+                    background: "#fff8ef",
+                    border: "1px solid #f0dec8",
+                  }}
+                >
+                  <div>
+                    <div
+                      style={{
+                        color: "#314356",
+                        fontSize: "15px",
+                        fontWeight: 900,
+                      }}
+                    >
+                      Prepare your complaint package
+                    </div>
+                    <div
+                      style={{
+                        marginTop: "4px",
+                        color: "#7b838a",
+                        fontSize: "11px",
+                      }}
+                    >
+                      KarmaFacie will assemble the data already stored for this issue.
+                    </div>
+                  </div>
+
+                  <button
+                    className="kf-detail-primary-action"
+                    type="button"
+                    onClick={() => void prepareSubmission()}
+                    disabled={preparingSubmission}
+                    style={{
+                      border: 0,
+                      borderRadius: "999px",
+                      background: preparingSubmission
+                        ? "#d8c1ab"
+                        : "#ff7a00",
+                      color: "#fff",
+                      padding: "13px 17px",
+                      fontSize: "11px",
+                      fontWeight: 900,
+                      cursor: preparingSubmission
+                        ? "not-allowed"
+                        : "pointer",
+                      boxShadow: "0 10px 22px rgba(255,122,0,.16)",
+                    }}
+                  >
+                    {preparingSubmission
+                      ? "Preparing..."
+                      : "Prepare Complaint →"}
+                  </button>
+                </div>
+              )}
+
+              {submission && (
+                <>
+                  <div
+                    className={`kf-submission-status-panel kf-submission-status-${submissionConfirmed ? "confirmed" : "ready"}`}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: "12px",
+                      flexWrap: "wrap",
+                      padding: "15px 17px",
+                      borderRadius: "21px",
+                      background: submissionConfirmed
+                        ? "#eef6e7"
+                        : "#edf4f8",
+                      border: `1px solid ${
+                        submissionConfirmed ? "#d3e4c7" : "#d5e5ed"
+                      }`,
+                    }}
+                  >
+                    <div>
+                      <div
+                        style={{
+                          color: submissionConfirmed
+                            ? "#5f7b45"
+                            : "#55748a",
+                          fontSize: "14px",
+                          fontWeight: 900,
+                        }}
+                      >
+                        {submissionConfirmed
+                          ? "✓ Complaint details confirmed"
+                          : "Complaint package ready for review"}
+                      </div>
+
+                      <div
+                        style={{
+                          marginTop: "4px",
+                          color: "#7c878f",
+                          fontSize: "10px",
+                          fontWeight: 700,
+                        }}
+                      >
+                        {t("Submission record #")}{submission.id}
+                      </div>
+                    </div>
+
+                    <span
+                      className="kf-submission-mode-pill"
+                      style={{
+                        padding: "7px 10px",
+                        borderRadius: "999px",
+                        background: "#fffdf9",
+                        border: "1px solid #ddd8d0",
+                        color: "#66737e",
+                        fontSize: "9px",
+                        fontWeight: 900,
+                      }}
+                    >
+                      {getSubmissionModeLabel(submission.submission_mode)}
+                    </span>
+                  </div>
+
+                  {/* COMPLAINT PREVIEW */}
+                  <div
+                    className="kf-preview-grid"
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                      gap: "10px",
+                      marginTop: "14px",
+                    }}
+                  >
+                    <div className="kf-detail-tile">
+                      <div className="kf-info-label">{t("Authority")}</div>
+                      <div className="kf-info-value">
+                        {authority.authority_name}
+                      </div>
+                    </div>
+
+                    <div className="kf-detail-tile">
+                      <div className="kf-info-label">{t("Department:")}</div>
+                      <div className="kf-info-value">
+                        {authority.department_name || t("Not specified")}
+                      </div>
+                    </div>
+
+                    <div className="kf-detail-tile">
+                      <div className="kf-info-label">{t("Issue")}</div>
+                      <div className="kf-info-value">
+                        {issue.title || t("Civic Issue")}
+                      </div>
+                    </div>
+
+                    <div className="kf-detail-tile">
+                      <div className="kf-info-label">{t("Issue Location")}</div>
+                      <div className="kf-info-value">
+                        {issue.location_text || t("Location not provided.")}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* CONFIRMATION */}
+                  {!submissionConfirmed &&
+                    submission.submission_status !== "FAILED" && (
+                      <div
+                        className="kf-confirmation-panel"
+                        style={{
+                          marginTop: "15px",
+                          padding: "18px",
+                          borderRadius: "22px",
+                          background: "#faf8f4",
+                          border: "1px solid #e4ded6",
+                        }}
+                      >
+                        <label
+                          style={{
+                            display: "flex",
+                            alignItems: "flex-start",
+                            gap: "11px",
+                            color: "#3c4f61",
+                            fontSize: "13px",
+                            lineHeight: 1.6,
+                            cursor: "pointer",
+                          }}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={consentChecked}
+                            onChange={(event) =>
+                              setConsentChecked(event.target.checked)
+                            }
+                            style={{
+                              width: "18px",
+                              height: "18px",
+                              marginTop: "2px",
+                              accentColor: "#ff7a00",
+                            }}
+                          />
+
+                          <span>
+                            {t(
+                              "I confirm that the complaint details, location and evidence shown above are correct and may be used for the official submission process."
+                            )}
+                          </span>
+                        </label>
+
+                        <p className="kf-small-note">
+                          {t(
+                            "Confirmation records your approval of this package. It does not itself mean that a government complaint has been submitted."
+                          )}
+                        </p>
+
+                        <button
+                          type="button"
+                          onClick={() => void confirmSubmission()}
+                          disabled={!consentChecked || confirmingSubmission}
+                          style={{
+                            marginTop: "13px",
+                            border: 0,
+                            borderRadius: "999px",
+                            background:
+                              !consentChecked || confirmingSubmission
+                                ? "#d8d3cc"
+                                : "#263b50",
+                            color: "#fff",
+                            padding: "13px 17px",
+                            fontSize: "11px",
+                            fontWeight: 900,
+                            cursor:
+                              !consentChecked || confirmingSubmission
+                                ? "not-allowed"
+                                : "pointer",
+                          }}
+                        >
+                          {confirmingSubmission
+                            ? "Confirming..."
+                            : "Confirm Complaint Details →"}
+                        </button>
+                      </div>
+                    )}
+
+                  {/* CONFIRMED */}
+                  {submissionConfirmed && (
+                    <div
+                      className="kf-submission-confirmed-panel"
+                      style={{
+                        marginTop: "15px",
+                        padding: "17px",
+                        borderRadius: "22px",
+                        background: "#eff7e9",
+                        border: "1px solid #d4e7c8",
+                      }}
+                    >
+                      <div
+                        style={{
+                          color: "#5e7b45",
+                          fontSize: "15px",
+                          fontWeight: 900,
+                        }}
+                      >
+                        ✓ Ready for official submission
+                      </div>
+
+                      {submission.citizen_confirmed_at && (
+                        <div
+                          style={{
+                            marginTop: "4px",
+                            color: "#7e8b7a",
+                            fontSize: "10px",
+                            fontWeight: 700,
+                          }}
+                        >
+                          {t("Confirmed on")}{" "}
+                          {formatDate(submission.citizen_confirmed_at)}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* GATEWAY */}
+                  {submissionConfirmed &&
+                    submission.submission_mode === "DIRECT_LINK" &&
+                    submission.submission_status !== "SUBMITTED" && (
+                      <div
+                        className="kf-submission-gateway-panel"
+                        style={{
+                          marginTop: "15px",
+                          padding: "19px",
+                          borderRadius: "24px",
+                          background:
+                            "linear-gradient(135deg, #eef5f9 0%, #f5f8fa 100%)",
+                          border: "1px solid #d8e6ee",
+                        }}
+                      >
+                        <div className="kf-section-kicker" style={{ color: "#6888a0" }}>
+                          SUBMISSION GATEWAY
+                        </div>
+
+                        <h3 className="kf-subsection-title">
+                          {t("Next step: Submission Gateway")}
+                        </h3>
+
+                        <p className="kf-section-desc">
+                          {t(
+                            "Your complaint package has been prepared and confirmed. KarmaFacie will now check the configured authority submission route. For the current CSMC route, the gateway will direct you to the official complaint system rather than claiming an automatic government submission."
+                          )}
+                        </p>
+
+                        {gatewayMessage && (
+                          <div className="kf-notice kf-notice-blue">
+                            {gatewayMessage}
+                          </div>
+                        )}
+
+                        {gatewayUrl && (
+                          <a
+                            className="kf-detail-primary-action"
+                            href={gatewayUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            onClick={() => void markOfficialComplaintChannelOpened()}
+                            style={{
+                              display: "inline-flex",
+                              marginTop: "10px",
+                              padding: "13px 17px",
+                              borderRadius: "999px",
+                              background: "#ff7a00",
+                              color: "#fff",
+                              textDecoration: "none",
+                              fontSize: "11px",
+                              fontWeight: 900,
+                              boxShadow: "0 10px 22px rgba(255,122,0,.18)",
+                            }}
+                          >
+                            {t("Open Official Complaint Channel →")}
+                          </a>
+                        )}
+
+                        {!gatewayUrl && (
+                          <button
+                            className="kf-detail-primary-action"
+                            type="button"
+                            onClick={() => void submitThroughGateway()}
+                            disabled={submittingSubmission}
+                            style={{
+                              marginTop: "10px",
+                              border: 0,
+                              borderRadius: "999px",
+                              background: submittingSubmission
+                                ? "#d8c1ab"
+                                : "#ff7a00",
+                              color: "#fff",
+                              padding: "13px 17px",
+                              fontSize: "11px",
+                              fontWeight: 900,
+                              cursor: submittingSubmission
+                                ? "not-allowed"
+                                : "pointer",
+                              boxShadow: "0 10px 22px rgba(255,122,0,.16)",
+                            }}
+                          >
+                            {submittingSubmission
+                              ? "Opening..."
+                              : "Continue to Official Channel →"}
+                          </button>
+                        )}
+                      </div>
+                    )}
+
+                  {/* CITIZEN SUBMISSION RECORD */}
+                  {submissionConfirmed &&
+                    submission.submission_mode === "DIRECT_LINK" &&
+                    officialHandoffOpenedAt &&
+                    submission.submission_status !== "SUBMITTED" && (
+                      <div
+                        className="kf-citizen-submission-panel"
+                        style={{
+                          marginTop: "15px",
+                          padding: "19px",
+                          borderRadius: "24px",
+                          background: "#f5f0fa",
+                          border: "1px solid #e3d9ec",
+                        }}
+                      >
+                        <div className="kf-section-kicker" style={{ color: "#7a6c92" }}>
+                          CITIZEN-REPORTED SUBMISSION
+                        </div>
+
+                        <h3 className="kf-subsection-title">
+                          {submission.citizen_reported_submitted_at
+                            ? "✓ Submission reported by you"
+                            : "After you submit on the official form"}
+                        </h3>
+
+                        {submission.citizen_reported_submitted_at ? (
+                          <div
+                            style={{
+                              display: "grid",
+                              gap: "8px",
+                              marginTop: "10px",
+                            }}
+                          >
+                            <div className="kf-detail-tile">
+                              <div className="kf-info-label">
+                                {t("Reference number:")}
+                              </div>
+                              <div className="kf-info-value">
+                                {submission.official_reference_number ||
+                                  referenceNumber ||
+                                  "—"}
+                              </div>
+                            </div>
+
+                            {submission.official_submission_notes && (
+                              <div className="kf-detail-tile">
+                                <div className="kf-info-label">
+                                  {t("Notes:")}
+                                </div>
+                                <div className="kf-info-value">
+                                  {submission.official_submission_notes}
+                                </div>
+                              </div>
+                            )}
+
+                            <div
+                              style={{
+                                color: "#857d8f",
+                                fontSize: "10px",
+                                lineHeight: 1.55,
+                              }}
+                            >
+                              {t(
+                                "KarmaFacie has recorded the reference number you provided. This is a citizen-reported record and has not been independently verified by the government system."
+                              )}
+                            </div>
+                          </div>
+                        ) : (
+                          <>
+                            <p className="kf-section-desc">
+                              {t(
+                                "Opening the official channel does not itself mean that a government complaint has been submitted. Any official submission or reference number must come from the government system."
+                              )}
+                            </p>
+
+                            <div
+                              className="kf-input-grid"
+                              style={{
+                                display: "grid",
+                                gap: "10px",
+                                marginTop: "10px",
+                              }}
+                            >
+                              <label className="kf-field">
+                                <span>{t("Government Complaint / Reference Number")}</span>
+                                <input
+                                  type="text"
+                                  value={referenceNumber}
+                                  onChange={(event) =>
+                                    setReferenceNumber(event.target.value)
+                                  }
+                                  placeholder={t(
+                                    "Enter the number shown after successful submission"
+                                  )}
+                                />
+                              </label>
+
+                              <label className="kf-field">
+                                <span>{t("Notes (optional)")}</span>
+                                <textarea
+                                  value={submissionNotes}
+                                  onChange={(event) =>
+                                    setSubmissionNotes(event.target.value)
+                                  }
+                                  rows={4}
+                                  placeholder={t(
+                                    "Example: submitted on the CSMC website and received confirmation screen"
+                                  )}
+                                />
+                              </label>
+                            </div>
+
+                            <p className="kf-small-note">
+                              {t(
+                                "Once the government form confirms your submission, enter the reference/complaint number here. KarmaFacie will store it as a citizen-provided reference; it will not be treated as an official KarmaFacie submission confirmation."
+                              )}
+                            </p>
+
+                            <button
+                              type="button"
+                              onClick={() =>
+                                void recordOfficialComplaintReference()
+                              }
+                              disabled={savingOfficialReference}
+                              style={{
+                                marginTop: "9px",
+                                border: 0,
+                                borderRadius: "999px",
+                                background: savingOfficialReference
+                                  ? "#d8d3cc"
+                                  : "#30455a",
+                                color: "#fff",
+                                padding: "12px 16px",
+                                fontSize: "11px",
+                                fontWeight: 900,
+                                cursor: savingOfficialReference
+                                  ? "not-allowed"
+                                  : "pointer",
+                              }}
+                            >
+                              {savingOfficialReference
+                                ? "Saving..."
+                                : "Save Official Reference →"}
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    )}
+
+                  {/* API MODE */}
+                  {submissionConfirmed &&
+                    submission.submission_mode === "API" && (
+                      <div className="kf-notice kf-notice-blue" style={{ marginTop: "15px" }}>
+                        {t(
+                          "API submission mode is configured for this authority. The actual government API call will only be enabled after an authorized integration is connected."
+                        )}
+                      </div>
+                    )}
+
+                  {/* ALREADY SUBMITTED */}
+                  {submission.submission_status === "SUBMITTED" && (
+                    <div
+                      className="kf-official-submitted-panel kf-dark-panel-green"
+                      style={{
+                        marginTop: "15px",
+                        padding: "18px",
+                        borderRadius: "22px",
+                        background: "#eef6e7",
+                        border: "1px solid #d4e6c7",
+                      }}
+                    >
+                      <div
+                        style={{
+                          color: "#5b7844",
+                          fontSize: "15px",
+                          fontWeight: 900,
+                        }}
+                      >
+                        {t("✓ Official submission recorded")}
+                      </div>
+
+                      {submission.official_reference_id && (
+                        <div
+                          style={{
+                            marginTop: "7px",
+                            color: "#536b49",
+                            fontSize: "12px",
+                            lineHeight: 1.55,
+                          }}
+                        >
+                          <strong>{t("Official reference:")}</strong>{" "}
+                          {submission.official_reference_id}
+                        </div>
+                      )}
+
+                      {submission.submitted_at && (
+                        <div
+                          style={{
+                            marginTop: "4px",
+                            color: "#73826d",
+                            fontSize: "10px",
+                          }}
+                        >
+                          {t("Submitted:")}{" "}
+                          {formatDate(submission.submitted_at)}
+                        </div>
+                      )}
+
+                      {submission.official_reference_url && (
+                        <a
+                          href={submission.official_reference_url}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            display: "inline-block",
+                            marginTop: "10px",
+                            color: "#4f728a",
+                            fontSize: "11px",
+                            fontWeight: 900,
+                            textDecoration: "none",
+                          }}
+                        >
+                          {t("View Official Reference →")}
+                        </a>
+                      )}
+                    </div>
+                  )}
+
+                  {submission.error_message && (
+                    <div className="kf-notice kf-notice-red" style={{ marginTop: "13px" }}>
+                      {submission.error_message}
+                    </div>
+                  )}
+
+                  {submission.submission_status === "FAILED" && (
+                    <button
+                      className="kf-detail-primary-action kf-detail-retry-action"
+                      type="button"
+                      onClick={() => void prepareSubmission()}
+                      disabled={preparingSubmission}
+                      style={{
+                        marginTop: "12px",
+                        border: 0,
+                        borderRadius: "999px",
+                        background: preparingSubmission
+                          ? "#d8d3cc"
+                          : "#30455a",
+                        color: "#fff",
+                        padding: "12px 16px",
+                        fontSize: "11px",
+                        fontWeight: 900,
+                        cursor: preparingSubmission
+                          ? "not-allowed"
+                          : "pointer",
+                      }}
+                    >
+                      {preparingSubmission ? "Preparing..." : t("Try Again →")}
+                    </button>
+                  )}
+                </>
+              )}
+            </>
+          )}
+        </section>
+
+        {/* FOLLOW-UP */}
+        <section
+          className="kf-detail-section kf-detail-followup-section"
+          style={{
+            ...softSection(
+              "linear-gradient(135deg, #fffdf9 0%, #fbf8f4 100%)",
+              "#e1d9e7"
+            ),
+            padding: "26px",
+            marginBottom: "16px",
+          }}
+        >
+          <div style={{ marginBottom: "19px" }}>
+            <div className="kf-section-kicker" style={{ color: "#7d6a94" }}>
+              FOLLOW-UP
+            </div>
+
+            <h2 className="kf-section-title">
+              {t("Follow-up & Government Updates")}
+            </h2>
+
+            <p className="kf-section-desc">
+              {t(
+                "Record what happened after your complaint was submitted. These updates are citizen-reported unless KarmaFacie later receives verifiable information from the authority."
+              )}
+            </p>
+          </div>
+
+          <div
+            className="kf-followup-form-panel"
+            style={{
+              padding: "19px",
+              borderRadius: "23px",
+              background: "#f5f0fa",
+              border: "1px solid #e3d9ec",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                gap: "12px",
+              }}
+            >
+              <label className="kf-field">
+                <span>{t("What happened after submission?")}</span>
+
+                <select
+                  value={followUpStatus}
+                  onChange={(event) =>
+                    setFollowUpStatus(
+                      event.target.value as FollowUpStatus
+                    )
+                  }
+                >
+                  <option value="NO_RESPONSE">
+                    {t("No Response / Awaiting Update")}
+                  </option>
+                  <option value="ACKNOWLEDGED">
+                    {t("Acknowledged")}
+                  </option>
+                  <option value="IN_PROGRESS">
+                    {t("In Progress")}
+                  </option>
+                  <option value="RESOLVED">
+                    {t("Resolved")}
+                  </option>
+                  <option value="CLOSED">{t("Closed")}</option>
+                  <option value="REJECTED">{t("Rejected")}</option>
+                </select>
+              </label>
+
+              <label className="kf-field">
+                <span>{t("Update note (optional)")}</span>
+                <textarea
+                  value={followUpNote}
+                  onChange={(event) =>
+                    setFollowUpNote(event.target.value)
+                  }
+                  rows={4}
+                  placeholder={t(
+                    "Example: I received an SMS saying the complaint was acknowledged"
+                  )}
+                />
+              </label>
+
+              <label className="kf-field">
+                <span>{t("Evidence attachment (optional)")}</span>
+                <input
+                  type="file"
+                  accept="image/*,.pdf,application/pdf"
+                  onChange={(event) =>
+                    setFollowUpEvidence(event.target.files?.[0] ?? null)
+                  }
+                />
+                <small>
+                  {t(
+                    "Attach a photo or PDF that supports this update. Maximum 5 MB."
+                  )}
+                </small>
+              </label>
+
+              {followUpEvidence && (
+                <div className="kf-file-chip">
+                  {t("Selected:")} {followUpEvidence.name}
                 </div>
               )}
 
               <button
                 type="button"
-                onClick={() =>
-                  void recordResolutionCheck()
-                }
-                disabled={
-                  savingResolutionCheck
-                }
+                onClick={() => void recordFollowUp()}
+                disabled={savingFollowUp}
                 style={{
-                  ...buttonStyle,
-                  background:
-                    savingResolutionCheck
-                      ? "#475569"
-                      : "#2563eb",
-                  cursor:
-                    savingResolutionCheck
-                      ? "not-allowed"
-                      : "pointer",
-                  justifySelf:
-                    "start",
+                  justifySelf: "start",
+                  border: 0,
+                  borderRadius: "999px",
+                  background: savingFollowUp ? "#d8c9dd" : "#806796",
+                  color: "#fff",
+                  padding: "12px 16px",
+                  fontSize: "11px",
+                  fontWeight: 900,
+                  cursor: savingFollowUp
+                    ? "not-allowed"
+                    : "pointer",
                 }}
               >
-                {savingResolutionCheck
-                  ? "Saving Resolution Check..."
-                  : "Save Resolution Check →"}
+                {savingFollowUp ? "Saving..." : "Record Follow-up →"}
               </button>
+            </div>
+          </div>
+
+          <div style={{ marginTop: "17px" }}>
+            <div className="kf-list-heading">
+              {t("Recorded follow-ups")}
+            </div>
+
+            {followups.length === 0 ? (
+              <div className="kf-empty">
+                {t(
+                  "No citizen-reported follow-up updates have been recorded yet."
+                )}
+              </div>
+            ) : (
+              <div style={{ display: "grid", gap: "10px" }}>
+                {followups.map((followUp) => (
+                  <div
+                    key={followUp.id}
+                    className="kf-record-card"
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        justifyContent: "space-between",
+                        gap: "12px",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <div
+                        style={{
+                          color: "#304457",
+                          fontFamily: "var(--font-display)",
+                          fontSize: "19px",
+                          fontWeight: 800,
+                        }}
+                      >
+                        {followUpStatusLabel(followUp.status)}
+                      </div>
+
+                      <span className="kf-time">
+                        {formatDate(followUp.created_at)}
+                      </span>
+                    </div>
+
+                    <div className="kf-record-caption">
+                      {t("Citizen-reported update")}
+                    </div>
+
+                    {followUp.note && (
+                      <p className="kf-record-note">
+                        {followUp.note}
+                      </p>
+                    )}
+
+                    {followUp.verification_status === "VERIFIED" && (
+                      <div className="kf-verified">
+                        {t("✓ KarmaFacie verified")}
+                      </div>
+                    )}
+
+                    {followUp.verification_status === "NOT_VERIFIED" && (
+                      <div className="kf-not-verified">
+                        {t("⚠ Not verified")}
+                      </div>
+                    )}
+
+                    {followUp.verification_status === "PENDING" && (
+                      <div className="kf-pending">
+                        {t("⏳ Verification pending")}
+                      </div>
+                    )}
+
+                    {followUp.verification_note && (
+                      <div className="kf-record-extra">
+                        <strong>{t("Verification note:")}</strong>{" "}
+                        {followUp.verification_note}
+                      </div>
+                    )}
+
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: "10px",
+                        flexWrap: "wrap",
+                        marginTop: "10px",
+                      }}
+                    >
+                      {followUp.verification_source_url && (
+                        <a
+                          href={followUp.verification_source_url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {t("🔗 Verification source →")}
+                        </a>
+                      )}
+
+                      {followUp.evidence_url && (
+                        <a
+                          href={followUp.evidence_url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {t("📎 View attached evidence →")}
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* RESOLUTION */}
+        {issue.status === "resolved" && (
+          <section
+            className="kf-detail-section kf-detail-resolution-section"
+            style={{
+              ...softSection(
+                "linear-gradient(135deg, #f4f9ee 0%, #fffdf9 100%)",
+                "#d9e6cc"
+              ),
+              padding: "26px",
+              marginBottom: "16px",
+            }}
+          >
+            <div style={{ marginBottom: "19px" }}>
+              <div className="kf-section-kicker" style={{ color: "#6d874b" }}>
+                {t("RESOLUTION VERIFICATION")}
+              </div>
+
+              <h2 className="kf-section-title">
+                {t("Did the problem actually get fixed?")}
+              </h2>
+
+              <p className="kf-section-desc">
+                {t(
+                  "KarmaFacie currently records this issue as Resolved. Check the location yourself and record what you observe. This is a citizen observation and does not automatically change the administrative status."
+                )}
+              </p>
             </div>
 
             <div
+              className="kf-resolution-form-panel"
               style={{
-                marginTop:
-                  "20px",
+                padding: "19px",
+                borderRadius: "23px",
+                background: "#eef6e7",
+                border: "1px solid #d8e8cc",
               }}
             >
               <div
                 style={{
-                  color:
-                    "#64748b",
-                  fontSize:
-                    "11px",
-                  fontWeight:
-                    700,
-                  textTransform:
-                    "uppercase",
-                  letterSpacing:
-                    "0.6px",
-                  marginBottom:
-                    "10px",
+                  display: "grid",
+                  gap: "12px",
                 }}
               >
-                Recorded resolution checks
+                <label className="kf-field">
+                  <span>{t("What did you observe?")}</span>
+
+                  <select
+                    value={resolutionResult}
+                    onChange={(event) =>
+                      setResolutionResult(
+                        event.target.value as ResolutionCheckResult
+                      )
+                    }
+                  >
+                    <option value="FIXED">{t("✅ Fixed")}</option>
+                    <option value="PARTIALLY_FIXED">
+                      {t("🟡 Partially Fixed")}
+                    </option>
+                    <option value="NOT_FIXED">
+                      {t("❌ Not Fixed")}
+                    </option>
+                    <option value="RETURNED">
+                      {t("🔁 Problem Returned")}
+                    </option>
+                  </select>
+                </label>
+
+                <label className="kf-field">
+                  <span>{t("Observation note (optional)")}</span>
+
+                  <textarea
+                    value={resolutionNote}
+                    onChange={(event) =>
+                      setResolutionNote(event.target.value)
+                    }
+                    rows={4}
+                    placeholder={t(
+                      "Describe what you observed at the location..."
+                    )}
+                  />
+                </label>
+
+                <label className="kf-field">
+                  <span>{t("After-repair evidence (optional)")}</span>
+
+                  <input
+                    type="file"
+                    accept="image/*,.pdf,application/pdf"
+                    onChange={(event) =>
+                      setResolutionEvidence(
+                        event.target.files?.[0] ?? null
+                      )
+                    }
+                  />
+
+                  <small>
+                    {t(
+                      "Upload a current photo or PDF that supports your observation. Maximum 5 MB."
+                    )}
+                  </small>
+                </label>
+
+                {resolutionEvidence && (
+                  <div className="kf-file-chip">
+                    {t("Selected:")} {resolutionEvidence.name}
+                  </div>
+                )}
+
+                <button
+                  type="button"
+                  onClick={() => void recordResolutionCheck()}
+                  disabled={savingResolutionCheck}
+                  style={{
+                    justifySelf: "start",
+                    border: 0,
+                    borderRadius: "999px",
+                    background: savingResolutionCheck
+                      ? "#c5d3b7"
+                      : "#66834a",
+                    color: "#fff",
+                    padding: "12px 16px",
+                    fontSize: "11px",
+                    fontWeight: 900,
+                    cursor: savingResolutionCheck
+                      ? "not-allowed"
+                      : "pointer",
+                  }}
+                >
+                  {savingResolutionCheck
+                    ? "Saving..."
+                    : "Save Resolution Check →"}
+                </button>
+              </div>
+            </div>
+
+            <div style={{ marginTop: "17px" }}>
+              <div className="kf-list-heading">
+                {t("Recorded resolution checks")}
               </div>
 
               {resolutionChecks.length === 0 ? (
-                <div
-                  style={{
-                    padding:
-                      "14px",
-                    borderRadius:
-                      "12px",
-                    background:
-                      "rgba(255,255,255,0.025)",
-                    border:
-                      "1px solid rgba(255,255,255,0.06)",
-                    color:
-                      "#64748b",
-                    fontSize:
-                      "12px",
-                    lineHeight:
-                      1.5,
-                  }}
-                >
-                  No citizen resolution checks have been recorded yet.
+                <div className="kf-empty">
+                  {t("No citizen resolution checks have been recorded yet.")}
                 </div>
               ) : (
-                <div
-                  style={{
-                    display:
-                      "grid",
-                    gap:
-                      "10px",
-                  }}
-                >
-                  {resolutionChecks.map(
-                    (check) => (
+                <div style={{ display: "grid", gap: "10px" }}>
+                  {resolutionChecks.map((check) => (
+                    <div
+                      key={check.id}
+                      className="kf-record-card"
+                    >
                       <div
-                        key={
-                          check.id
-                        }
                         style={{
-                          padding:
-                            "14px",
-                          borderRadius:
-                            "12px",
-                          background:
-                            "rgba(255,255,255,0.025)",
-                          border:
-                            "1px solid rgba(255,255,255,0.06)",
+                          display: "flex",
+                          alignItems: "flex-start",
+                          justifyContent: "space-between",
+                          gap: "12px",
+                          flexWrap: "wrap",
                         }}
                       >
                         <div
                           style={{
-                            display:
-                              "flex",
-                            justifyContent:
-                              "space-between",
-                            gap:
-                              "10px",
-                            flexWrap:
-                              "wrap",
-                            alignItems:
-                              "baseline",
+                            color: "#304457",
+                            fontFamily: "var(--font-display)",
+                            fontSize: "19px",
+                            fontWeight: 800,
                           }}
                         >
-                          <div
-                            style={{
-                              color:
-                                "#e5e7eb",
-                              fontSize:
-                                "13px",
-                              fontWeight:
-                                700,
-                            }}
-                          >
-                            {resolutionResultIcon(check.resolution_result)} {resolutionResultLabel(check.resolution_result)}
-                          </div>
-
-                          <div
-                            style={{
-                              color:
-                                "#64748b",
-                              fontSize:
-                                "11px",
-                            }}
-                          >
-                            {formatDate(
-                              check.created_at
-                            )}
-                          </div>
+                          {resolutionResultIcon(check.resolution_result)}{" "}
+                          {resolutionResultLabel(check.resolution_result)}
                         </div>
 
-                        <div
-                          style={{
-                            marginTop:
-                              "7px",
-                            color:
-                              "#94a3b8",
-                            fontSize:
-                              "11px",
-                          }}
-                        >
-                          Citizen-reported resolution check
-                        </div>
-
-                        {check.evidence_url && (
-                          <div
-                            style={{
-                              marginTop:
-                                "9px",
-                            }}
-                          >
-                            <a
-                              href={
-                                check.evidence_url
-                              }
-                              target="_blank"
-                              rel="noreferrer"
-                              style={{
-                                color:
-                                  "#93c5fd",
-                                fontSize:
-                                  "12px",
-                                fontWeight:
-                                  700,
-                                textDecoration:
-                                  "none",
-                              }}
-                            >
-                              📎 View resolution evidence →
-                            </a>
-                          </div>
-                        )}
-
-                        {check.note && (
-                          <div
-                            style={{
-                              marginTop:
-                                "8px",
-                              color:
-                                "#cbd5e1",
-                              fontSize:
-                                "12px",
-                              lineHeight:
-                                1.5,
-                              whiteSpace:
-                                "pre-wrap",
-                            }}
-                          >
-                            {check.note}
-                          </div>
-                        )}
+                        <span className="kf-time">
+                          {formatDate(check.created_at)}
+                        </span>
                       </div>
-                    )
-                  )}
+
+                      <div className="kf-record-caption">
+                        {t("Citizen-reported resolution check")}
+                      </div>
+
+                      {check.note && (
+                        <p className="kf-record-note">
+                          {check.note}
+                        </p>
+                      )}
+
+                      {check.evidence_url && (
+                        <a
+                          href={check.evidence_url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {t("📎 View resolution evidence →")}
+                        </a>
+                      )}
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
 
-            <div
-              style={{
-                marginTop:
-                  "16px",
-                color:
-                  "#64748b",
-                fontSize:
-                  "11px",
-                lineHeight:
-                  1.5,
-              }}
-            >
-              KarmaFacie stores these observations as a separate history. They do not automatically change the administrative issue status.
+            <div className="kf-small-note" style={{ marginTop: "13px" }}>
+              {t(
+                "KarmaFacie stores these observations as a separate history. They do not automatically change the administrative issue status."
+              )}
             </div>
           </section>
         )}
 
         {/* SUBMISSION ASSISTANT */}
-
         {submission &&
           submissionConfirmed &&
-          submission.submission_mode ===
-            "DIRECT_LINK" && (
-          <section
-            style={
-              panelStyle
-            }
-          >
-            <div
+          submission.submission_mode === "DIRECT_LINK" && (
+            <section
+              className="kf-detail-section kf-detail-assistant-section"
               style={{
-                color:
-                  "#93c5fd",
-                fontSize:
-                  "12px",
-                fontWeight:
-                  700,
-                letterSpacing:
-                  "0.5px",
-                marginBottom:
-                  "10px",
+                ...softSection(
+                  "linear-gradient(135deg, #fffdf9 0%, #fff7ee 100%)",
+                  "#ead9ca"
+                ),
+                padding: "26px",
+                marginBottom: "16px",
               }}
             >
-              SUBMISSION ASSISTANT
-            </div>
-
-            <h2
-              style={{
-                fontSize:
-                  "21px",
-                margin:
-                  "0 0 10px",
-              }}
-            >
-              🧾 Your Complaint Copy Pack
-            </h2>
-
-            <p
-              style={{
-                ...mutedTextStyle,
-                margin:
-                  "0 0 18px",
-              }}
-            >
-              KarmaFacie has loaded the
-              citizen details saved in your
-              profile and combined them with
-              the complaint information. Keep
-              this copy pack ready while
-              completing the official government
-              form. KarmaFacie does not bypass
-              cross-domain controls or CAPTCHA.
-            </p>
-
-            <div
-              style={{
-                padding:
-                  "14px 16px",
-                borderRadius:
-                  "12px",
-                background:
-                  "rgba(96,165,250,0.05)",
-                border:
-                  "1px solid rgba(96,165,250,0.12)",
-                color:
-                  "#93c5fd",
-                fontSize:
-                  "12px",
-                lineHeight:
-                  1.5,
-                marginBottom:
-                  "14px",
-              }}
-            >
-              <strong>
-                Prepared details:
-              </strong>{" "}
-              Citizen profile fields are loaded
-              from KarmaFacie, while the matched
-              authority directory supplies the
-              configured department, sub-department
-              and official complaint type.
-            </div>
-
-            <div
-              style={{
-                display:
-                  "grid",
-                gap:
-                  "10px",
-              }}
-            >
-              {copyFields.map(
-                (field) => (
-                  <div
-                    key={
-                      field.key
-                    }
-                    style={{
-                      padding:
-                        "14px",
-                      borderRadius:
-                        "12px",
-                      background:
-                        "rgba(255,255,255,0.025)",
-                      border:
-                        "1px solid rgba(255,255,255,0.06)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display:
-                          "flex",
-                        justifyContent:
-                          "space-between",
-                        alignItems:
-                          "center",
-                        gap:
-                          "12px",
-                        marginBottom:
-                          "8px",
-                      }}
-                    >
-                      <div
-                        style={{
-                          color:
-                            "#64748b",
-                          fontSize:
-                            "11px",
-                          fontWeight:
-                            700,
-                          textTransform:
-                            "uppercase",
-                          letterSpacing:
-                            "0.5px",
-                        }}
-                      >
-                        {
-                          field.label
-                        }
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() =>
-                          void copyField(
-                            field.key,
-                            field.value
-                          )
-                        }
-                        style={{
-                          padding:
-                            "7px 10px",
-                          borderRadius:
-                            "8px",
-                          border:
-                            "1px solid rgba(96,165,250,0.18)",
-                          background:
-                            "rgba(96,165,250,0.08)",
-                          color:
-                            "#93c5fd",
-                          cursor:
-                            "pointer",
-                          fontSize:
-                            "11px",
-                          fontWeight:
-                            700,
-                        }}
-                      >
-                        {copiedField ===
-                        field.key
-                          ? "Copied ✓"
-                          : "Copy"}
-                      </button>
-                    </div>
-
-                    <div
-                      style={{
-                        color:
-                          "#d1d5db",
-                        fontSize:
-                          "13px",
-                        lineHeight:
-                          1.6,
-                        whiteSpace:
-                          "pre-wrap",
-                        wordBreak:
-                          "break-word",
-                      }}
-                    >
-                      {
-                        field.value
-                      }
-                    </div>
-                  </div>
-                )
-              )}
-            </div>
-
-            {photoUrl && (
-              <div
-                style={{
-                  marginTop:
-                    "12px",
-                  padding:
-                    "14px",
-                  borderRadius:
-                    "12px",
-                  background:
-                    "rgba(34,197,94,0.05)",
-                  border:
-                    "1px solid rgba(34,197,94,0.14)",
-                }}
-              >
-                <div
-                  style={{
-                    color:
-                      "#86efac",
-                    fontSize:
-                      "13px",
-                    fontWeight:
-                      700,
-                  }}
-                >
-                  ✓ Photo evidence ready
+              <div style={{ marginBottom: "19px" }}>
+                <div className="kf-section-kicker" style={{ color: "#9d764f" }}>
+                  {t("SUBMISSION ASSISTANT")}
                 </div>
 
+                <h2 className="kf-section-title">
+                  {t("🧾 Your Complaint Copy Pack")}
+                </h2>
+
+                <p className="kf-section-desc">
+                  {t(
+                    "KarmaFacie has loaded the citizen details saved in your profile and combined them with the complaint information. Keep this copy pack ready while completing the official government form. KarmaFacie does not bypass cross-domain controls or CAPTCHA."
+                  )}
+                </p>
+              </div>
+
+              <div className="kf-copy-grid">
+                {[
+                  [t("Person Name"), citizenProfile?.name || t("Not provided in KarmaFacie profile."), "name"],
+                  [t("Mobile Number"), citizenProfile?.mobile || t("Not provided in KarmaFacie profile."), "mobile"],
+                  [t("Email"), citizenEmail || t("No email available from the authenticated account."), "email"],
+                  [t("Residential Address"), [citizenProfile?.house_no, citizenProfile?.address].filter(Boolean).join(", ") || t("Not provided in KarmaFacie profile."), "address"],
+                  [t("City / State"), [citizenProfile?.city, citizenProfile?.state].filter(Boolean).join(", ") || t("City / State not available."), "cityState"],
+                  [t("Zone"), citizenProfile?.zone || t("Not configured in authority directory."), "zone"],
+                  [t("Ward"), citizenProfile?.ward || t("Not configured in authority directory."), "ward"],
+                  [t("Authority"), authority?.authority_name || t("Not specified"), "authority"],
+                  [t("Sub-Department"), authority?.sub_department_name || t("Not configured in authority directory."), "subDepartment"],
+                  [t("Subject"), issue.title || t("Civic Issue"), "subject"],
+                  [t("Complaint Description"), issue.description || t("No complaint description provided."), "description"],
+                  [t("Issue Location"), issue.location_text || t("Location not provided."), "location"],
+                  [t("GPS Coordinates"), issue.latitude !== null && issue.longitude !== null ? `${issue.latitude}, ${issue.longitude}` : t("GPS coordinates not available."), "gps"],
+                  [t("Submission Route"), authority?.submission_method || t("Not specified"), "route"],
+                ].map(([label, value, key]) => (
+                  <div
+                    key={String(key)}
+                    className="kf-copy-item"
+                  >
+                    <div className="kf-copy-label">{label}</div>
+                    <div className="kf-copy-value">{value}</div>
+
+                    <button
+                      type="button"
+                      onClick={() => void copyField(String(key), String(value))}
+                      className="kf-copy-button"
+                    >
+                      {copiedField === key
+                        ? t("Copied ✓")
+                        : t("Copy")}
+                    </button>
+                  </div>
+                ))}
+
                 <div
+                  className="kf-copy-item kf-copy-evidence"
                   style={{
-                    color:
-                      "#94a3b8",
-                    fontSize:
-                      "11px",
-                    lineHeight:
-                      1.5,
-                    marginTop:
-                      "5px",
+                    gridColumn: "1 / -1",
+                    background: "#f3f7fa",
+                    borderColor: "#d9e7ef",
                   }}
                 >
-                  Use the evidence
-                  image shown above
-                  when the official
-                  form asks for a
-                  photo.
+                  <div className="kf-copy-label">{t("Evidence")}</div>
+                  <div className="kf-copy-value">
+                    {photoUrl
+                      ? t("✓ Photo evidence ready")
+                      : t("No photo evidence attached")}
+                  </div>
+
+                  {photoUrl && (
+                    <a
+                      href={photoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="kf-copy-link"
+                    >
+                      {t("Use the evidence image shown above when the official form asks for a photo.")}
+                    </a>
+                  )}
                 </div>
               </div>
-            )}
 
-            <div
-              style={{
-                marginTop:
-                  "16px",
-                padding:
-                  "14px 16px",
-                borderRadius:
-                  "12px",
-                background:
-                  "rgba(250,204,21,0.05)",
-                border:
-                  "1px solid rgba(250,204,21,0.14)",
-                color:
-                  "#fde68a",
-                fontSize:
-                  "12px",
-                lineHeight:
-                  1.6,
-              }}
-            >
-              <strong>
-                Still required on the
-                official form:
-              </strong>{" "}
-              verify the copied citizen details
-              and the authority-specific mapping,
-              complete any zone/ward or other
-              selections that KarmaFacie does not
-              have, enter CAPTCHA, and perform the
-              final Submit action yourself.
-            </div>
-          </section>
-        )}
+              <div className="kf-notice kf-notice-warm" style={{ marginTop: "14px" }}>
+                <strong>{t("Still required on the official form:")}</strong>{" "}
+                {t(
+                  "verify the copied citizen details and the authority-specific mapping, complete any zone/ward or other selections that KarmaFacie does not have, enter CAPTCHA, and perform the final Submit action yourself."
+                )}
+              </div>
+
+              <div
+                className="kf-assistant-footnote"
+                style={{
+                  marginTop: "12px",
+                  padding: "13px 14px",
+                  borderRadius: "18px",
+                  background: "#fffdf9",
+                  border: "1px solid #e4ded5",
+                  color: "#78848d",
+                  fontSize: "10px",
+                  lineHeight: 1.65,
+                }}
+              >
+                {t(
+                  "Citizen profile fields are loaded from KarmaFacie, while the matched authority directory supplies the configured department, sub-department and official complaint type."
+                )}
+              </div>
+            </section>
+          )}
 
         {/* REPORT REFERENCE */}
-
         <section
-          style={
-            panelStyle
-          }
+          className="kf-detail-section kf-detail-reference-section"
+          style={{
+            ...softSection("#f1f6f9", "#d7e5ec"),
+            padding: "25px",
+            marginBottom: "16px",
+          }}
         >
-          <h2
+          <div
             style={{
-              fontSize:
-                "19px",
-              margin:
-                "0 0 16px",
+              color: "#66849a",
+              fontSize: "9px",
+              fontWeight: 900,
+              letterSpacing: ".17em",
+              marginBottom: "5px",
             }}
           >
-            Report Reference
+            REPORT REFERENCE
+          </div>
+
+          <h2 className="kf-section-title">
+            {t("Report Reference")}
           </h2>
 
           <div
+            className="kf-reference-grid"
             style={{
-              color:
-                "#6b7280",
-              fontSize:
-                "12px",
-              lineHeight:
-                1.8,
-              wordBreak:
-                "break-all",
+              display: "grid",
+              gridTemplateColumns: "repeat(2, minmax(0,1fr))",
+              gap: "9px",
+              marginTop: "14px",
             }}
           >
-            <div>
-              Civic Issue ID:{" "}
-              {issue.id}
+            <div className="kf-detail-tile">
+              <div className="kf-info-label">{t("Civic Issue ID:")}</div>
+              <div className="kf-info-value kf-break">{issue.id}</div>
             </div>
 
             {issue.authority_directory_id && (
-              <div>
-                Authority Directory ID:{" "}
-                {
-                  issue.authority_directory_id
-                }
+              <div className="kf-detail-tile">
+                <div className="kf-info-label">
+                  {t("Authority Directory ID:")}
+                </div>
+                <div className="kf-info-value">
+                  {issue.authority_directory_id}
+                </div>
               </div>
             )}
 
             {issue.authority_reference_id && (
-              <div>
-                Authority Reference ID:{" "}
-                {
-                  issue.authority_reference_id
-                }
+              <div className="kf-detail-tile">
+                <div className="kf-info-label">
+                  {t("Authority Reference ID:")}
+                </div>
+                <div className="kf-info-value kf-break">
+                  {issue.authority_reference_id}
+                </div>
               </div>
             )}
 
             {submission && (
-              <div>
-                Submission Record ID:{" "}
-                {
-                  submission.id
-                }
+              <div className="kf-detail-tile">
+                <div className="kf-info-label">
+                  {t("Submission Record ID:")}
+                </div>
+                <div className="kf-info-value">
+                  {submission.id}
+                </div>
               </div>
             )}
           </div>
         </section>
 
         {/* FOOTER */}
-
         <div
+          className="kf-detail-footer"
           style={{
-            marginTop:
-              "24px",
-            padding:
-              "18px",
-            borderRadius:
-              "14px",
-            background:
-              "rgba(255,255,255,0.03)",
-            border:
-              "1px solid rgba(255,255,255,0.06)",
-            color:
-              "#9ca3af",
-            fontSize:
-              "13px",
-            lineHeight:
-              1.6,
+            padding: "18px 19px",
+            borderRadius: "21px",
+            background: "rgba(255,253,249,.78)",
+            border: "1px solid #e1dbd2",
+            color: "#77828a",
+            fontSize: "10px",
+            lineHeight: 1.7,
           }}
         >
-          KarmaFacie currently records the
-          evidence, location, report status,
-          status history, submission package
-          and directory-based routing
-          information. This page does not
-          represent an official government
-          status unless an official authority
-          reference or verified government
-          response has been recorded.
+          {t(
+            "KarmaFacie currently records the evidence, location, report status, status history, submission package and directory-based routing information. This page does not represent an official government status unless an official authority reference or verified government response has been recorded."
+          )}
         </div>
       </div>
+
+      <style>{`
+        .kf-detail-page * {
+          box-sizing: border-box;
+        }
+
+        .kf-detail-page button,
+        .kf-detail-page input,
+        .kf-detail-page textarea,
+        .kf-detail-page select,
+        .kf-detail-page a {
+          font-family: var(--font-body);
+        }
+
+        .kf-detail-page h1,
+        .kf-detail-page h2,
+        .kf-detail-page h3 {
+          text-shadow: none !important;
+        }
+
+        .kf-section-kicker {
+          margin-bottom: 5px;
+          font-size: 9px;
+          font-weight: 900;
+          letter-spacing: .17em;
+          line-height: 1.2;
+          text-transform: uppercase;
+        }
+
+        .kf-section-title {
+          margin: 0;
+          color: #24364a;
+          font-family: var(--font-display);
+          font-size: 30px;
+          line-height: 1.05;
+          letter-spacing: -.03em;
+          font-weight: 800;
+        }
+
+        .kf-section-desc {
+          margin: 8px 0 0;
+          max-width: 850px;
+          color: #637482 !important;
+          font-size: 13px !important;
+          line-height: 1.7 !important;
+        }
+
+        .kf-subsection-title {
+          margin: 7px 0 0;
+          color: #294054;
+          font-family: var(--font-display);
+          font-size: 22px;
+          line-height: 1.05;
+          font-weight: 800;
+        }
+
+        .kf-info-label {
+          color: #6f7f8a !important;
+          font-size: 10px;
+          line-height: 1.35;
+          font-weight: 900;
+          letter-spacing: .045em;
+        }
+
+        .kf-info-value {
+          margin-top: 5px;
+          color: #2d4255 !important;
+          font-size: 14px;
+          line-height: 1.55;
+          font-weight: 800;
+        }
+
+        .kf-detail-tile {
+          padding: 15px;
+          border-radius: 19px;
+          background: #fbfaf7;
+          border: 1px solid #e4dfd7;
+        }
+
+        .kf-empty {
+          padding: 17px;
+          border-radius: 20px;
+          background: #f7f5f1;
+          border: 1px solid #e4dfd9;
+          color: #667580;
+          font-size: 12px;
+          line-height: 1.65;
+        }
+
+        .kf-journey-grid {
+          display: grid;
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .kf-journey-step {
+          min-width: 0;
+        }
+
+        .kf-history {
+          display: grid;
+          gap: 0;
+        }
+
+        .kf-history-row {
+          display: grid;
+          grid-template-columns: 50px minmax(0, 1fr);
+          gap: 8px;
+        }
+
+        .kf-history-rail {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .kf-history-dot {
+          width: 38px;
+          height: 38px;
+          display: grid;
+          place-items: center;
+          border-radius: 14px;
+          background: #edf5fa;
+          border: 1px solid #d4e4ed;
+          color: #587991;
+          font-size: 15px;
+          z-index: 1;
+        }
+
+        .kf-history-line {
+          flex: 1;
+          width: 2px;
+          margin: -2px 0 -2px;
+          background: #dce8ee;
+        }
+
+        .kf-notice {
+          padding: 14px 15px;
+          border-radius: 19px;
+          font-size: 11px;
+          line-height: 1.6;
+          font-weight: 700;
+        }
+
+        .kf-notice-warm {
+          background: #fff7ec;
+          border: 1px solid #efdcc6;
+          color: #8a6c4f;
+        }
+
+        .kf-notice-blue {
+          background: #edf5f9;
+          border: 1px solid #d6e5ed;
+          color: #55738a;
+        }
+
+        .kf-notice-red {
+          background: #fff0ed;
+          border: 1px solid #ebd0c8;
+          color: #925b4d;
+        }
+
+        .kf-field {
+          display: grid;
+          gap: 7px;
+        }
+
+        .kf-field > span {
+          color: #425669;
+          font-size: 11px;
+          font-weight: 900;
+        }
+
+        .kf-field > small {
+          color: #7b878f;
+          font-size: 10px;
+          line-height: 1.5;
+        }
+
+        .kf-field input,
+        .kf-field textarea,
+        .kf-field select {
+          width: 100%;
+          padding: 13px 14px;
+          border: 1px solid #d6d0c8;
+          border-radius: 16px;
+          background: #fffdf9;
+          color: #304154;
+          font-size: 14px;
+          line-height: 1.5;
+          outline: none;
+        }
+
+        .kf-field textarea {
+          resize: vertical;
+          min-height: 105px;
+        }
+
+        .kf-field input:focus,
+        .kf-field textarea:focus,
+        .kf-field select:focus {
+          border-color: #e4ad76;
+          box-shadow: 0 0 0 4px rgba(255,122,0,.08);
+        }
+
+        .kf-file-chip {
+          padding: 10px 12px;
+          border-radius: 14px;
+          background: #fffdf9;
+          border: 1px solid #ded8d0;
+          color: #63727e;
+          font-size: 10px;
+          font-weight: 800;
+          word-break: break-word;
+        }
+
+        .kf-small-note {
+          margin-top: 10px;
+          color: #7a858d !important;
+          font-size: 10px !important;
+          line-height: 1.65 !important;
+        }
+
+        .kf-list-heading {
+          margin-bottom: 9px;
+          color: #77838c;
+          font-size: 9px;
+          font-weight: 900;
+          letter-spacing: .15em;
+          text-transform: uppercase;
+        }
+
+        .kf-record-card {
+          padding: 16px;
+          border-radius: 21px;
+          background: #fffdf9;
+          border: 1px solid #e4ded6;
+        }
+
+        .kf-time {
+          color: #8a959c;
+          font-size: 9px;
+          font-weight: 800;
+        }
+
+        .kf-record-caption {
+          margin-top: 5px;
+          color: #7c8790;
+          font-size: 10px;
+          font-weight: 700;
+        }
+
+        .kf-record-note {
+          margin: 9px 0 0 !important;
+          color: #5f6f7c !important;
+          font-size: 12px !important;
+          line-height: 1.65 !important;
+        }
+
+        .kf-record-extra {
+          margin-top: 8px;
+          color: #687680;
+          font-size: 10px;
+          line-height: 1.6;
+        }
+
+        .kf-verified,
+        .kf-not-verified,
+        .kf-pending {
+          display: inline-flex;
+          margin-top: 9px;
+          padding: 6px 9px;
+          border-radius: 999px;
+          font-size: 9px;
+          font-weight: 900;
+        }
+
+        .kf-verified {
+          background: #eef6e7;
+          border: 1px solid #d7e7cb;
+          color: #628047;
+        }
+
+        .kf-not-verified {
+          background: #fff0ed;
+          border: 1px solid #ecd0c8;
+          color: #925b4d;
+        }
+
+        .kf-pending {
+          background: #fff7e7;
+          border: 1px solid #eee0c6;
+          color: #8d704e;
+        }
+
+        .kf-copy-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .kf-copy-item {
+          position: relative;
+          min-width: 0;
+          padding: 14px 46px 14px 15px;
+          border-radius: 19px;
+          background: #fffdf9;
+          border: 1px solid #e4ded6;
+        }
+
+        .kf-copy-label {
+          color: #78848d;
+          font-size: 9px;
+          font-weight: 900;
+          letter-spacing: .11em;
+          text-transform: uppercase;
+        }
+
+        .kf-copy-value {
+          margin-top: 6px;
+          color: #304457;
+          font-size: 12px;
+          line-height: 1.6;
+          font-weight: 800;
+          word-break: break-word;
+        }
+
+        .kf-copy-button {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          border: 1px solid #ddd6cd !important;
+          border-radius: 999px !important;
+          background: #f6f4ef !important;
+          color: #60707c !important;
+          padding: 6px 8px !important;
+          font-size: 8px !important;
+          font-weight: 900 !important;
+          cursor: pointer;
+        }
+
+        .kf-copy-link {
+          display: inline-block;
+          margin-top: 8px;
+          color: #527891;
+          font-size: 10px;
+          font-weight: 900;
+          text-decoration: none;
+        }
+
+        .kf-break {
+          word-break: break-all;
+        }
+
+        @media (max-width: 900px) {
+          .kf-journey-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+
+        @media (max-width: 680px) {
+          .kf-detail-page {
+            padding: 14px 11px 56px !important;
+          }
+
+          .kf-topbar {
+            position: relative;
+            top: 0;
+          }
+
+          .kf-topbar label > span {
+            display: none;
+          }
+
+          .kf-section-title {
+            font-size: 27px;
+          }
+
+          .kf-issue-page h1 {
+            font-size: 42px !important;
+          }
+
+          .kf-overview-grid,
+          .kf-authority-grid,
+          .kf-preview-grid,
+          .kf-reference-grid,
+          .kf-copy-grid,
+          .kf-journey-grid {
+            grid-template-columns: 1fr !important;
+          }
+
+          .kf-history-row {
+            grid-template-columns: 42px minmax(0, 1fr);
+          }
+
+          .kf-detail-page section {
+            padding: 20px !important;
+            border-radius: 25px !important;
+          }
+
+          .kf-copy-item {
+            padding-right: 42px;
+          }
+        }
+      `}</style>
     </main>
   );
 }

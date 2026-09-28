@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -427,7 +427,7 @@ const content: Record<
 > = {
   en: {
     subtitle: "Local Issues",
-    back: "← Explore",
+    back: "Explore",
     heroLabel: "CIVIC BASICS · 04",
     heroTitle: "Local Issues",
     heroText:
@@ -487,7 +487,7 @@ const content: Record<
 
   hi: {
     subtitle: "स्थानीय मुद्दे",
-    back: "← एक्सप्लोर",
+    back: "एक्सप्लोर",
     heroLabel: "नागरिक ज्ञान · 04",
     heroTitle: "स्थानीय मुद्दे",
     heroText:
@@ -547,7 +547,7 @@ const content: Record<
 
   mr: {
     subtitle: "स्थानिक समस्या",
-    back: "← एक्सप्लोर",
+    back: "एक्सप्लोर",
     heroLabel: "नागरिक ज्ञान · 04",
     heroTitle: "स्थानिक समस्या",
     heroText:
@@ -609,7 +609,7 @@ const content: Record<
 export default function LocalIssuesPage() {
   const router = useRouter();
   const supabase = createClient();
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   const t = content[language];
 
@@ -698,7 +698,7 @@ export default function LocalIssuesPage() {
   };
 
   return (
-    <main
+    <main className="kf-explore-page kf-local-issues-page"
       style={{
         minHeight: "100vh",
         background: "#020617",
@@ -715,83 +715,278 @@ export default function LocalIssuesPage() {
         {/* HEADER */}
 
         <header
+          className="kf-explore-topbar"
           style={{
-            display: "flex",
-            justifyContent: "space-between",
+            display: "grid",
+            gridTemplateColumns: "1fr auto 1fr",
             alignItems: "center",
-            gap: "20px",
-            marginBottom: "60px",
+            gap: "18px",
+            marginBottom: "16px",
+            padding: "12px 14px",
+            border: "1px solid #ddd7ce",
+            borderRadius: "25px",
+            background: "rgba(255,253,249,.96)",
+            boxShadow: "0 14px 36px rgba(16,27,43,.055)",
+            backdropFilter: "blur(16px)",
           }}
         >
-          <div>
-            <div
-              style={{
-                fontSize: "32px",
-                fontWeight: "800",
-              }}
-            >
-              Civic<span style={{ color: "#ff7a00" }}>Quest</span>
-            </div>
-
-            <div
-              style={{
-                color: "#94a3b8",
-                marginTop: "5px",
-              }}
-            >
-              {t.subtitle}
-            </div>
-          </div>
-
           <button
             type="button"
             onClick={() => router.push("/explore")}
+            className="kf-explore-back"
             style={{
-              background: "transparent",
-              color: "white",
-              border: "1px solid #334155",
-              borderRadius: "10px",
-              padding: "12px 20px",
-              fontSize: "15px",
+              justifySelf: "start",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              minHeight: "42px",
+              padding: "10px 15px",
+              border: "1px solid #dad4cc",
+              borderRadius: "999px",
+              background: "#fffdf9",
+              color: "#506171",
+              fontFamily: "var(--font-body)",
+              fontSize: "11px",
+              fontWeight: "900",
               cursor: "pointer",
             }}
           >
+            <span
+              style={{
+                color: "#ff7a00",
+                fontSize: "15px",
+              }}
+            >
+              ←
+            </span>
             {t.back}
           </button>
+
+          <div
+            className="kf-explore-brand"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            <div
+              className="kf-logo-box"
+              style={{
+                width: "38px",
+                height: "38px",
+                display: "grid",
+                placeItems: "center",
+                borderRadius: "13px",
+                background: "#ff7a00",
+                color: "#fff",
+                fontFamily: "var(--font-display)",
+                fontSize: "21px",
+                fontWeight: "800",
+              }}
+            >
+              K
+            </div>
+
+            <div>
+              <div
+                className="kf-explore-brand-name"
+                style={{
+                  color: "#102033",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "23px",
+                  lineHeight: "1",
+                  letterSpacing: "-.045em",
+                  fontWeight: "800",
+                }}
+              >
+                Karma<span style={{ color: "#ff7a00" }}>Facie</span>
+              </div>
+
+              <div
+                className="kf-explore-brand-caption"
+                style={{
+                  marginTop: "3px",
+                  color: "#8b938f",
+                  fontSize: "8px",
+                  lineHeight: "1",
+                  letterSpacing: ".16em",
+                  fontWeight: "900",
+                }}
+              >
+                EXPLORE & LEARN
+              </div>
+            </div>
+          </div>
+
+          <label
+            className="kf-explore-language"
+            style={{
+              justifySelf: "end",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "9px",
+              color: "#53636f",
+              fontFamily: "var(--font-body)",
+              fontSize: "11px",
+              fontWeight: "900",
+            }}
+          >
+            <span>
+              {language === "en" ? "Language" : "भाषा"}
+            </span>
+
+            <select
+              value={language}
+              onChange={(event) =>
+                setLanguage(event.target.value as Language)
+              }
+              aria-label={
+                language === "en" ? "Language" : "भाषा"
+              }
+              className="kf-explore-language-select"
+              style={{
+                minWidth: "120px",
+                padding: "10px 13px",
+                border: "1px solid #d7d1c9",
+                borderRadius: "999px",
+                background: "#fffdf9",
+                color: "#304154",
+                fontFamily: "var(--font-body)",
+                fontSize: "11px",
+                fontWeight: "800",
+                cursor: "pointer",
+                outline: "none",
+              }}
+            >
+              <option value="en">English</option>
+              <option value="hi">हिन्दी</option>
+              <option value="mr">मराठी</option>
+            </select>
+          </label>
         </header>
 
         {/* HERO */}
 
         <section
+          className="kf-explore-hero"
           style={{
-            marginBottom: "65px",
+            marginBottom: "16px",
+            padding: "32px",
+            border: "1px solid var(--kf-line)",
+            borderRadius: "31px",
+            boxShadow: "0 14px 38px rgba(16,27,43,.05)",
+            background:
+              "radial-gradient(circle at 94% 0%, rgba(218,235,244,.98) 0%, rgba(218,235,244,0) 34%), radial-gradient(circle at 0% 100%, rgba(255,232,210,.90) 0%, rgba(255,232,210,0) 35%), rgba(255,253,249,.97)",
           }}
         >
           <SectionLabel text={t.heroLabel} />
 
-          <h1
+          <div
+            className="kf-explore-hero-row"
             style={{
-              fontSize: "52px",
-              lineHeight: "1.1",
-              fontWeight: "800",
-              margin: "0 0 20px",
-              maxWidth: "850px",
+              display: "grid",
+              gridTemplateColumns: "minmax(0, 1fr) auto",
+              alignItems: "center",
+              gap: "30px",
             }}
           >
-            {t.heroTitle}
-          </h1>
+            <div className="kf-explore-hero-copy">
+              <h1
+                style={{
+                  fontSize: "68px",
+                  lineHeight: "1.02",
+                  fontWeight: "800",
+                  letterSpacing: "-.045em",
+                  margin: "0 0 20px",
+                  maxWidth: "950px",
+                  fontFamily: "var(--font-display)",
+                  color: "var(--kf-ink)",
+                }}
+              >
+                {t.heroTitle}
+              </h1>
 
-          <p
-            style={{
-              color: "#94a3b8",
-              fontSize: "19px",
-              lineHeight: "1.7",
-              maxWidth: "800px",
-              margin: 0,
-            }}
-          >
-            {t.heroText}
-          </p>
+              <p
+                style={{
+                  color: "#667780",
+                  fontSize: "19px",
+                  lineHeight: "1.7",
+                  maxWidth: "900px",
+                  margin: 0,
+                }}
+              >
+                {t.heroText}
+              </p>
+            </div>
+
+            <div
+              className="kf-explore-topic-badge"
+              style={{
+                minWidth: "250px",
+                padding: "18px 22px",
+                border: "1px solid #eedbc6",
+                borderRadius: "28px",
+                background: "#fff2e4",
+                display: "flex",
+                alignItems: "center",
+                gap: "14px",
+                boxShadow: "0 8px 24px rgba(16,27,43,.035)",
+              }}
+            >
+              <div
+                className="kf-explore-topic-badge-icon"
+                style={{
+                  width: "56px",
+                  height: "56px",
+                  flex: "0 0 56px",
+                  display: "grid",
+                  placeItems: "center",
+                  borderRadius: "18px",
+                  background: "#fffdf9",
+                  border: "1px solid #eadfd2",
+                  fontSize: "28px",
+                }}
+              >
+                📄
+              </div>
+
+              <div>
+                <div
+                  style={{
+                    color: "#34485b",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "21px",
+                    lineHeight: "1.15",
+                    fontWeight: "800",
+                  }}
+                >
+                  {language === "en"
+                    ? "Civic knowledge"
+                    : language === "hi"
+                    ? "नागरिक ज्ञान"
+                    : "नागरी ज्ञान"}
+                </div>
+
+                <div
+                  style={{
+                    marginTop: "7px",
+                    color: "#8b7969",
+                    fontSize: "12px",
+                    lineHeight: "1.2",
+                    fontWeight: "700",
+                  }}
+                >
+                  {language === "en"
+                    ? "Local Issues"
+                    : language === "hi"
+                    ? "स्थानीय मुद्दे"
+                    : "स्थानिक समस्या"}
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* SECTION 1 */}
@@ -886,6 +1081,7 @@ export default function LocalIssuesPage() {
           </p>
 
           <div
+            className="kf-local-callout"
             style={{
               marginTop: "30px",
               background: "#0f172a",
@@ -942,6 +1138,7 @@ export default function LocalIssuesPage() {
             {issueSteps.map((step) => (
               <div
                 key={step.number}
+                className="kf-local-step-card"
                 style={{
                   display: "flex",
                   gap: "18px",
@@ -953,6 +1150,7 @@ export default function LocalIssuesPage() {
                 }}
               >
                 <div
+                  className="kf-local-step-number"
                   style={{
                     minWidth: "42px",
                     height: "42px",
@@ -1059,6 +1257,7 @@ export default function LocalIssuesPage() {
           </p>
 
           <div
+            className="kf-local-callout"
             style={{
               marginTop: "30px",
               background:
@@ -1092,6 +1291,7 @@ export default function LocalIssuesPage() {
         {/* QUIZ */}
 
         <section
+          className="kf-quiz-section"
           style={{
             background:
               "linear-gradient(135deg, #0f172a, #111827)",
@@ -1187,6 +1387,16 @@ export default function LocalIssuesPage() {
                       key={`${index}-${option.en}`}
                       type="button"
                       onClick={() => handleAnswer(index)}
+                      className="kf-quiz-answer"
+                      data-quiz-state={
+                        selectedAnswer === null
+                          ? "idle"
+                          : isCorrect
+                          ? "correct"
+                          : isSelected
+                          ? "wrong"
+                          : "idle"
+                      }
                       style={{
                         width: "100%",
                         textAlign: "left",
@@ -1238,6 +1448,7 @@ export default function LocalIssuesPage() {
                   type="button"
                   onClick={nextQuestion}
                   disabled={savingProgress}
+                  className="kf-quiz-next"
                   style={{
                     marginTop: "25px",
                     padding: "13px 22px",
@@ -1306,6 +1517,7 @@ export default function LocalIssuesPage() {
               <button
                 type="button"
                 onClick={restartQuiz}
+                className="kf-quiz-restart"
                 style={{
                   padding: "13px 22px",
                   background: "transparent",
@@ -1326,6 +1538,7 @@ export default function LocalIssuesPage() {
         {/* FOOTER */}
 
         <div
+          className="kf-explore-footer"
           style={{
             textAlign: "center",
             marginTop: "40px",
@@ -1336,6 +1549,1307 @@ export default function LocalIssuesPage() {
           {t.footer}
         </div>
       </div>
+
+      <style>{`
+        .kf-local-issues-page {
+          --kf-ivory: #f8f3ea;
+          --kf-white: #fffdf9;
+          --kf-navy: #102033;
+          --kf-ink: #263447;
+          --kf-body: #596a78;
+          --kf-muted: #7b8790;
+          --kf-orange: #ff7a00;
+          --kf-blue: #edf5fa;
+          --kf-blue-line: #d6e5ed;
+          --kf-peach: #fff2e4;
+          --kf-peach-line: #eedbc6;
+          --kf-green: #eef6e7;
+          --kf-green-line: #d5e5ca;
+          --kf-lavender: #f4eff9;
+          --kf-lavender-line: #dfd4ea;
+          --kf-line: #ddd7ce;
+
+          min-height: 100vh !important;
+          background:
+            radial-gradient(circle at 92% 2%, rgba(215,232,242,.95) 0%, rgba(215,232,242,0) 26%),
+            radial-gradient(circle at 5% 35%, rgba(231,242,248,.78) 0%, rgba(231,242,248,0) 25%),
+            radial-gradient(circle at 92% 93%, rgba(255,229,205,.72) 0%, rgba(255,229,205,0) 28%),
+            var(--kf-ivory) !important;
+          color: var(--kf-body) !important;
+          padding: 20px 16px 72px !important;
+          font-family: var(--font-body) !important;
+        }
+
+        .kf-local-issues-page > div {
+          width: min(1120px, 100%) !important;
+          max-width: none !important;
+          margin: 0 auto !important;
+        }
+
+        .kf-simple-card {
+          background: #fffdf9 !important;
+          border: 1px solid rgba(16,27,43,.08) !important;
+          border-radius: 22px !important;
+          box-shadow: 0 8px 24px rgba(16,27,43,.035) !important;
+        }
+
+        .kf-simple-card h3 {
+          color: var(--kf-ink) !important;
+        }
+
+        .kf-simple-card p {
+          color: var(--kf-body) !important;
+        }
+
+        .kf-local-issues-page header {
+          margin-bottom: 16px !important;
+          padding: 12px 14px !important;
+          border: 1px solid var(--kf-line) !important;
+          border-radius: 25px !important;
+          background: rgba(255,253,249,.96) !important;
+          box-shadow: 0 14px 36px rgba(16,27,43,.055) !important;
+          backdrop-filter: blur(16px);
+        }
+
+        .kf-local-issues-page header div {
+          color: var(--kf-navy) !important;
+        }
+
+        .kf-local-issues-page header .kf-logo-box {
+          color: #ffffff !important;
+          -webkit-text-fill-color: #ffffff !important;
+        }
+
+        .kf-local-issues-page header select {
+          background: #fffdf9 !important;
+          color: #304154 !important;
+          border: 1px solid #d7d1c9 !important;
+          border-radius: 999px !important;
+        }
+
+        .kf-local-issues-page header button {
+          color: #4d6070 !important;
+          border-color: #dad4cc !important;
+          border-radius: 999px !important;
+          background: #fffdf9 !important;
+        }
+
+        .kf-local-issues-page > div > section {
+          margin-bottom: 16px !important;
+          padding: 30px !important;
+          border: 1px solid var(--kf-line) !important;
+          border-radius: 31px !important;
+          box-shadow: 0 14px 38px rgba(16,27,43,.05) !important;
+        }
+
+        /* Local Issues has 6 content sections + 1 quiz:
+           section 1 = hero, sections 2-7 = content, section 8 = quiz. */
+        .kf-local-issues-page > div > section:nth-of-type(1) {
+          padding: 32px !important;
+          background:
+            radial-gradient(circle at 94% 0%, rgba(218,235,244,.98) 0%, rgba(218,235,244,0) 34%),
+            radial-gradient(circle at 0% 100%, rgba(255,232,210,.90) 0%, rgba(255,232,210,0) 35%),
+            rgba(255,253,249,.97) !important;
+        }
+
+        /* Constitution-style editorial color rhythm. */
+        .kf-local-issues-page > div > section:nth-of-type(2) {
+          background: rgba(255,253,249,.98) !important;
+          border-color: var(--kf-line) !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(3) {
+          background: var(--kf-blue) !important;
+          border-color: var(--kf-blue-line) !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(4) {
+          background: var(--kf-peach) !important;
+          border-color: var(--kf-peach-line) !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(5) {
+          background: var(--kf-green) !important;
+          border-color: var(--kf-green-line) !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(6) {
+          background: var(--kf-lavender) !important;
+          border-color: var(--kf-lavender-line) !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(7) {
+          background: var(--kf-blue) !important;
+          border-color: var(--kf-blue-line) !important;
+        }
+
+        .kf-local-issues-page h1,
+        .kf-local-issues-page h2,
+        .kf-local-issues-page h3 {
+          color: var(--kf-ink) !important;
+          font-family: var(--font-display) !important;
+        }
+
+        .kf-local-issues-page h2 {
+          font-size: 40px !important;
+          line-height: 1.08 !important;
+          letter-spacing: "-.035em" !important;
+          font-weight: 800 !important;
+        }
+
+        .kf-local-issues-page p,
+        .kf-local-issues-page li {
+          color: var(--kf-body) !important;
+        }
+
+        .kf-local-issues-page [style*="background"] {
+          box-shadow: 0 9px 22px rgba(16,27,43,.035) !important;
+        }
+
+
+        .kf-local-issues-page > div > section:nth-of-type(2) .kf-simple-card:nth-child(1),
+        .kf-local-issues-page > div > section:nth-of-type(3) .kf-simple-card:nth-child(1) {
+          background: #edf5fa !important;
+          border-color: #d6e5ed !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(2) .kf-simple-card:nth-child(2),
+        .kf-local-issues-page > div > section:nth-of-type(3) .kf-simple-card:nth-child(2) {
+          background: #fff2e4 !important;
+          border-color: #eedbc6 !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(2) .kf-simple-card:nth-child(3),
+        .kf-local-issues-page > div > section:nth-of-type(3) .kf-simple-card:nth-child(3) {
+          background: #eef6e7 !important;
+          border-color: #d5e5ca !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(2) .kf-simple-card:nth-child(4),
+        .kf-local-issues-page > div > section:nth-of-type(3) .kf-simple-card:nth-child(4) {
+          background: #f4eff9 !important;
+          border-color: #dfd4ea !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(2) .kf-simple-card,
+        .kf-local-issues-page > div > section:nth-of-type(3) .kf-simple-card {
+          box-shadow: 0 8px 24px rgba(16,27,43,.035) !important;
+        }
+
+        /* White editorial cards inside the pastel sections. */
+        html:not([data-theme="dark"]) .kf-local-issues-page > div > section:nth-of-type(2) [style*="background"],
+        html:not([data-theme="dark"]) .kf-local-issues-page > div > section:nth-of-type(4) [style*="background"],
+        html:not([data-theme="dark"]) .kf-local-issues-page > div > section:nth-of-type(5) [style*="background"],
+        html:not([data-theme="dark"]) .kf-local-issues-page > div > section:nth-of-type(6) [style*="background"],
+        html:not([data-theme="dark"]) .kf-local-issues-page > div > section:nth-of-type(7) [style*="background"] {
+          background: rgba(255,253,249,.80) !important;
+          border: 1px solid rgba(16,27,43,.075) !important;
+          border-radius: 22px !important;
+        }
+
+        /* Warm editorial callouts, matching the Constitution page. */
+        html:not([data-theme="dark"]) .kf-local-issues-page > div > section:nth-of-type(4) > div:last-child,
+        html:not([data-theme="dark"]) .kf-local-issues-page > div > section:nth-of-type(7) > div:last-child {
+          background: rgba(255,253,249,.82) !important;
+          border: 1px solid rgba(16,27,43,.075) !important;
+          border-radius: 23px !important;
+        }
+
+        html:not([data-theme="dark"]) .kf-local-issues-page > div > section:nth-of-type(3) > div:last-child {
+          background: rgba(255,253,249,.82) !important;
+          border: 1px solid rgba(16,27,43,.075) !important;
+          border-radius: 23px !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(1) [style*="color: #ff7a00"],
+        .kf-local-issues-page [style*="color: #ff7a00"] {
+          color: #9c6b42 !important;
+        }
+
+        /* Quiz is section 8 on Local Issues. */
+        .kf-local-issues-page > div > section:nth-of-type(8) {
+          position: relative !important;
+          overflow: hidden !important;
+          padding: 30px !important;
+          background:
+            radial-gradient(circle at 94% 0%, rgba(218,235,244,.95) 0%, rgba(218,235,244,0) 34%),
+            radial-gradient(circle at 0% 100%, rgba(255,232,210,.88) 0%, rgba(255,232,210,0) 34%),
+            rgba(255,253,249,.98) !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(8) button {
+          border-radius: 19px !important;
+        }
+
+        html:not([data-theme="dark"]) .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-answer {
+          color: #425565 !important;
+          background: #fffdf9 !important;
+          border-color: #ded9d1 !important;
+        }
+
+        html:not([data-theme="dark"]) .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-next {
+          color: #fff !important;
+          background: var(--kf-orange) !important;
+          border-color: var(--kf-orange) !important;
+        }
+
+        .kf-local-issues-page > div > div:last-child {
+          color: #89939a !important;
+          text-align: center !important;
+        }
+
+        @media (max-width: 900px) {
+          .kf-local-issues-page > div > section {
+            padding: 22px !important;
+          }
+
+          .kf-local-issues-page > div > section:first-of-type > div {
+            grid-template-columns: 1fr !important;
+          }
+
+          .kf-local-issues-page > div > section:first-of-type h1 {
+            font-size: 58px !important;
+          }
+
+          .kf-local-issues-page h2 {
+            font-size: 36px !important;
+          }
+
+          .kf-local-issues-page > div > section:first-of-type > div > div:last-child {
+            width: fit-content;
+            min-width: 0;
+          }
+        }
+
+        @media (max-width: 680px) {
+          .kf-local-issues-page {
+            padding: 12px 10px 44px !important;
+          }
+
+          .kf-local-issues-page > div > section {
+            padding: 20px !important;
+            border-radius: 24px !important;
+          }
+
+          .kf-local-issues-page header {
+            padding: 11px 12px !important;
+          }
+        }
+
+        /* =========================================================
+           LOCAL ISSUES — ELECTIONS THEME
+           Shared visual language for bright + dark modes.
+           Does not change content or layout structure.
+           ========================================================= */
+
+        /* ---- Common page shell ---- */
+        .kf-local-issues-page {
+          --local-ivory: #f8f3ea;
+          --local-white: #fffdf9;
+          --local-ink: #263447;
+          --local-body: #596a78;
+          --local-muted: #7b8790;
+          --local-orange: #ff7a00;
+          --local-blue: #edf5fa;
+          --local-blue-line: #d6e5ed;
+          --local-peach: #fff2e4;
+          --local-peach-line: #eedbc6;
+          --local-green: #eef6e7;
+          --local-green-line: #d5e5ca;
+          --local-lavender: #f4eff9;
+          --local-lavender-line: #dfd4ea;
+          --local-line: #ddd7ce;
+          min-height: 100vh !important;
+          background:
+            radial-gradient(circle at 92% 2%, rgba(215,232,242,.95) 0%, rgba(215,232,242,0) 26%),
+            radial-gradient(circle at 5% 35%, rgba(231,242,248,.78) 0%, rgba(231,242,248,0) 25%),
+            radial-gradient(circle at 92% 93%, rgba(255,229,205,.72) 0%, rgba(255,229,205,0) 28%),
+            var(--local-ivory) !important;
+          color: var(--local-body) !important;
+          font-family: var(--font-body) !important;
+          overflow-x: hidden !important;
+        }
+
+        .kf-local-issues-page > div {
+          width: min(1120px, 100%) !important;
+          max-width: none !important;
+          margin: 0 auto !important;
+          background: transparent !important;
+        }
+
+        /* ---- Navbar ---- */
+        .kf-local-issues-page .kf-explore-topbar {
+          margin-bottom: 16px !important;
+          padding: 12px 14px !important;
+          border: 1px solid var(--local-line) !important;
+          border-radius: 25px !important;
+          background: rgba(255,253,249,.96) !important;
+          box-shadow: 0 14px 36px rgba(16,27,43,.055) !important;
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+        }
+
+        .kf-local-issues-page .kf-explore-brand-name {
+          color: #102033 !important;
+        }
+
+        .kf-local-issues-page .kf-explore-brand-name span {
+          color: #ff7a00 !important;
+        }
+
+        .kf-local-issues-page .kf-explore-brand-caption {
+          color: #8b938f !important;
+        }
+
+        .kf-local-issues-page .kf-explore-brand-box {
+          color: #ffffff !important;
+          -webkit-text-fill-color: #ffffff !important;
+        }
+
+        .kf-local-issues-page .kf-explore-back {
+          color: #4d6070 !important;
+          border-color: #dad4cc !important;
+          background: #fffdf9 !important;
+        }
+
+        .kf-local-issues-page .kf-explore-back span {
+          color: #ff7a00 !important;
+        }
+
+        .kf-local-issues-page .kf-explore-language {
+          color: #53636f !important;
+        }
+
+        .kf-local-issues-page .kf-explore-language-select,
+        .kf-local-issues-page .kf-explore-language select {
+          background: #fffdf9 !important;
+          color: #304154 !important;
+          border-color: #d7d1c9 !important;
+        }
+
+        /* ---- Hero ---- */
+        .kf-local-issues-page .kf-explore-hero {
+          margin-bottom: 16px !important;
+          padding: 32px !important;
+          border: 1px solid var(--local-line) !important;
+          border-radius: 31px !important;
+          background:
+            radial-gradient(circle at 94% 0%, rgba(218,235,244,.98) 0%, rgba(218,235,244,0) 34%),
+            radial-gradient(circle at 0% 100%, rgba(255,232,210,.90) 0%, rgba(255,232,210,0) 35%),
+            rgba(255,253,249,.97) !important;
+          box-shadow: 0 14px 38px rgba(16,27,43,.05) !important;
+        }
+
+        .kf-local-issues-page .kf-explore-hero h1 {
+          color: var(--local-ink) !important;
+          font-family: var(--font-display) !important;
+          letter-spacing: -.045em !important;
+        }
+
+        .kf-local-issues-page .kf-explore-hero p {
+          color: var(--local-body) !important;
+        }
+
+        .kf-local-issues-page .kf-explore-topic-badge {
+          min-width: 250px !important;
+          background: #fff2e4 !important;
+          border-color: #eedbc6 !important;
+          color: var(--local-ink) !important;
+          border-radius: 28px !important;
+        }
+
+        .kf-local-issues-page .kf-explore-topic-badge-icon {
+          background: #fffdf9 !important;
+          border-color: #eadfd2 !important;
+        }
+
+        /* ---- Content sections ---- */
+        .kf-local-issues-page > div > section {
+          margin-bottom: 16px !important;
+          padding: 30px !important;
+          border: 1px solid var(--local-line) !important;
+          border-radius: 31px !important;
+          box-shadow: 0 14px 38px rgba(16,27,43,.05) !important;
+        }
+
+        .kf-local-issues-page > div > section h2,
+        .kf-local-issues-page > div > section h3 {
+          color: var(--local-ink) !important;
+          font-family: var(--font-display) !important;
+        }
+
+        .kf-local-issues-page > div > section > div:first-child {
+          color: #9c6b42 !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(2) {
+          background: var(--local-blue) !important;
+          border-color: var(--local-blue-line) !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(3) {
+          background: var(--local-peach) !important;
+          border-color: var(--local-peach-line) !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(4) {
+          background: var(--local-green) !important;
+          border-color: var(--local-green-line) !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(5) {
+          background: var(--local-lavender) !important;
+          border-color: var(--local-lavender-line) !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(6) {
+          background: var(--local-blue) !important;
+          border-color: var(--local-blue-line) !important;
+        }
+
+        .kf-local-issues-page > div > section:nth-of-type(7) {
+          background: var(--local-peach) !important;
+          border-color: var(--local-peach-line) !important;
+        }
+
+        .kf-local-issues-page .kf-explore-eyebrow {
+          color: #9c6b42 !important;
+        }
+
+        /* ---- Cards ---- */
+        .kf-local-issues-page .kf-local-issue-card {
+          position: relative !important;
+          overflow: hidden !important;
+          background: rgba(255,253,249,.80) !important;
+          border: 1px solid rgba(16,27,43,.075) !important;
+          border-radius: 22px !important;
+          box-shadow: 0 9px 22px rgba(16,27,43,.035) !important;
+        }
+
+        /* pastel rhythm for local-body cards */
+        .kf-local-issues-page > div > section:nth-of-type(2) .kf-local-issue-card:nth-child(1),
+        .kf-local-issues-page > div > section:nth-of-type(6) .kf-local-issue-card:nth-child(1) {
+          background: #edf5fa !important;
+          border-color: #d6e5ed !important;
+        }
+        .kf-local-issues-page > div > section:nth-of-type(2) .kf-local-issue-card:nth-child(2),
+        .kf-local-issues-page > div > section:nth-of-type(6) .kf-local-issue-card:nth-child(2) {
+          background: #fff2e4 !important;
+          border-color: #eedbc6 !important;
+        }
+        .kf-local-issues-page > div > section:nth-of-type(2) .kf-local-issue-card:nth-child(3),
+        .kf-local-issues-page > div > section:nth-of-type(6) .kf-local-issue-card:nth-child(3) {
+          background: #eef6e7 !important;
+          border-color: #d5e5ca !important;
+        }
+
+        /* six everyday-issue cards */
+        .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(1),
+        .kf-local-issues-page > div > section:nth-of-type(5) .kf-local-step-card:nth-child(1) {
+          background: #edf5fa !important; border-color: #d6e5ed !important;
+        }
+        .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(2),
+        .kf-local-issues-page > div > section:nth-of-type(5) .kf-local-step-card:nth-child(2) {
+          background: #fff2e4 !important; border-color: #eedbc6 !important;
+        }
+        .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(3),
+        .kf-local-issues-page > div > section:nth-of-type(5) .kf-local-step-card:nth-child(3) {
+          background: #eef6e7 !important; border-color: #d5e5ca !important;
+        }
+        .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(4),
+        .kf-local-issues-page > div > section:nth-of-type(5) .kf-local-step-card:nth-child(4) {
+          background: #f4eff9 !important; border-color: #dfd4ea !important;
+        }
+        .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(5),
+        .kf-local-issues-page > div > section:nth-of-type(5) .kf-local-step-card:nth-child(5) {
+          background: #edf5fa !important; border-color: #d6e5ed !important;
+        }
+        .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(6) {
+          background: #fff2e4 !important; border-color: #eedbc6 !important;
+        }
+
+        .kf-local-issues-page .kf-local-issue-card h3,
+        .kf-local-issues-page .kf-local-step-card h3 {
+          color: var(--local-ink) !important;
+        }
+
+        .kf-local-issues-page .kf-local-issue-card p,
+        .kf-local-issues-page .kf-local-step-card p {
+          color: var(--local-body) !important;
+        }
+
+        .kf-local-issues-page .kf-local-step-card {
+          border-radius: 20px !important;
+          border: 1px solid rgba(16,27,43,.075) !important;
+          box-shadow: 0 9px 22px rgba(16,27,43,.035) !important;
+          background: rgba(255,253,249,.82) !important;
+        }
+
+        .kf-local-issues-page .kf-local-step-number {
+          border-radius: 14px !important;
+        }
+
+        /* ---- Callouts ---- */
+        .kf-local-issues-page .kf-local-callout {
+          border-radius: 23px !important;
+          box-shadow: 0 12px 28px rgba(16,27,43,.045) !important;
+        }
+
+        /* ---- Quiz ---- */
+        .kf-local-issues-page .kf-quiz-section {
+          position: relative !important;
+          overflow: hidden !important;
+          padding: 30px !important;
+          background:
+            radial-gradient(circle at 94% 0%, rgba(218,235,244,.95) 0%, rgba(218,235,244,0) 34%),
+            radial-gradient(circle at 0% 100%, rgba(255,232,210,.88) 0%, rgba(255,232,210,0) 34%),
+            rgba(255,253,249,.98) !important;
+          border: 1px solid var(--local-line) !important;
+          border-radius: 24px !important;
+          box-shadow: 0 14px 38px rgba(16,27,43,.05) !important;
+          color: var(--local-ink) !important;
+        }
+
+        .kf-local-issues-page .kf-quiz-answer {
+          background: #fffdf9 !important;
+          color: #425565 !important;
+          border-color: #ded9d1 !important;
+          border-radius: 19px !important;
+        }
+
+        .kf-local-issues-page .kf-quiz-answer:hover {
+          background: #ffffff !important;
+          color: #304b5f !important;
+          border-color: #cfc8bf !important;
+        }
+
+        .kf-local-issues-page .kf-quiz-answer[data-quiz-state="correct"] {
+          background: rgba(34,197,94,.08) !important;
+          color: #425565 !important;
+          border-color: #22c55e !important;
+        }
+
+        .kf-local-issues-page .kf-quiz-answer[data-quiz-state="wrong"] {
+          background: rgba(239,68,68,.08) !important;
+          color: #425565 !important;
+          border-color: #ef4444 !important;
+        }
+
+        .kf-local-issues-page .kf-quiz-next {
+          background: #ff7a00 !important;
+          color: #fff !important;
+          border-color: #ff7a00 !important;
+        }
+
+        .kf-local-issues-page .kf-quiz-restart {
+          color: #4d6070 !important;
+          background: transparent !important;
+          border-color: #cfc8bf !important;
+        }
+
+        .kf-local-issues-page .kf-explore-footer {
+          color: #89939a !important;
+          text-align: center !important;
+        }
+
+        /* ---- Dark mode: exact Elections visual language ---- */
+        html[data-theme="dark"] .kf-local-issues-page {
+          min-height: 100vh !important;
+          padding: 32px 5% 70px !important;
+          background:
+            radial-gradient(circle at 90% 0%, rgba(57,118,177,.16), transparent 28%),
+            radial-gradient(circle at 6% 78%, rgba(255,122,26,.055), transparent 23%),
+            linear-gradient(180deg, #07111f 0%, #091625 52%, #07111f 100%) !important;
+          color: #f5f7fb !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div {
+          position: relative !important;
+          background: transparent !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-topbar {
+          position: sticky !important;
+          top: 12px !important;
+          z-index: 999 !important;
+          min-height: 0 !important;
+          height: auto !important;
+          margin-bottom: 28px !important;
+          padding: 10px 14px !important;
+          border: 1px solid transparent !important;
+          border-radius: 24px !important;
+          background: rgba(4,10,20,.62) !important;
+          background-image: none !important;
+          box-shadow:
+            -10px 0 24px -8px rgba(0,212,255,.46),
+             10px 0 24px -8px rgba(255,140,26,.46),
+             0 10px 30px rgba(0,0,0,.34) !important;
+          backdrop-filter: blur(14px) saturate(125%) !important;
+          -webkit-backdrop-filter: blur(14px) saturate(125%) !important;
+          isolation: isolate !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-topbar::before {
+          content: "" !important;
+          position: absolute !important;
+          inset: 0 !important;
+          border-radius: inherit !important;
+          padding: 1.25px !important;
+          background: linear-gradient(
+            90deg,
+            #00d4ff 0%,
+            rgba(0,174,255,.72) 16%,
+            rgba(90,120,150,.28) 43%,
+            rgba(120,120,130,.22) 57%,
+            rgba(255,150,40,.72) 84%,
+            #ff8c1a 100%
+          ) !important;
+          -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0) !important;
+          mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0) !important;
+          -webkit-mask-composite: xor !important;
+          mask-composite: exclude !important;
+          pointer-events: none !important;
+          z-index: 0 !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-topbar::after {
+          content: "" !important;
+          position: absolute !important;
+          inset: -5px !important;
+          border-radius: 29px !important;
+          background: linear-gradient(
+            90deg,
+            #00d4ff 0%,
+            rgba(0,150,255,.48) 18%,
+            transparent 36%,
+            transparent 64%,
+            rgba(255,140,26,.52) 82%,
+            #ff8c1a 100%
+          ) !important;
+          filter: blur(12px) !important;
+          opacity: .52 !important;
+          pointer-events: none !important;
+          z-index: -1 !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-topbar > * {
+          position: relative !important;
+          z-index: 2 !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-back {
+          min-height: 40px !important;
+          background: rgba(7,16,28,.58) !important;
+          color: #e8f0f7 !important;
+          border-color: rgba(137,169,202,.18) !important;
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.035) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-back span {
+          color: #ff8b32 !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-brand-box {
+          width: 42px !important;
+          height: 42px !important;
+          border-radius: 14px !important;
+          background: #ff7a00 !important;
+          color: #ffffff !important;
+          box-shadow: 0 8px 22px rgba(255,122,0,.24) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-brand-name {
+          color: #f7f9fc !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-brand-name span {
+          color: #ff7a00 !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-brand-caption {
+          color: #7f97ad !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-language {
+          color: #9fb1c3 !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-language-select,
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-language select {
+          min-width: 112px !important;
+          padding: 9px 13px !important;
+          background: rgba(7,16,28,.58) !important;
+          color: #e8f0f7 !important;
+          border-color: rgba(137,169,202,.18) !important;
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.035) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-language select option {
+          background: #10243a !important;
+          color: #f5f7fb !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-hero {
+          margin-bottom: 16px !important;
+          background:
+            radial-gradient(circle at 94% 0%, rgba(58,116,167,.25) 0%, rgba(58,116,167,0) 34%),
+            radial-gradient(circle at 0% 100%, rgba(181,119,57,.16) 0%, rgba(181,119,57,0) 34%),
+            linear-gradient(145deg, #10263c 0%, #0d2034 54%, #091827 100%) !important;
+          border-color: rgba(102,156,202,.22) !important;
+          box-shadow:
+            0 20px 50px rgba(0,0,0,.24),
+            inset 0 1px 0 rgba(255,255,255,.035) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-hero h1 {
+          color: #f7f9fc !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-hero p {
+          color: #aebed0 !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-eyebrow {
+          color: #ff8b32 !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-topic-badge {
+          min-width: 255px !important;
+          background: linear-gradient(145deg, rgba(7,18,31,.78), rgba(16,37,58,.72)) !important;
+          border-color: rgba(104,159,208,.21) !important;
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.035) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-topic-badge-icon {
+          background: rgba(255,255,255,.06) !important;
+          border-color: rgba(135,169,198,.16) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-hero > div {
+          color: #f5f7fb !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section {
+          color: #f5f7fb !important;
+          background: transparent !important;
+          border-color: transparent !important;
+          box-shadow: none !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section h2,
+        html[data-theme="dark"] .kf-local-issues-page > div > section h3 {
+          color: #f5f7fb !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section > div:first-child,
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-eyebrow {
+          color: #ff8b32 !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page p {
+          color: #aebed0 !important;
+        }
+
+        /* Election-style premium cards. */
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-issue-card,
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-step-card {
+          position: relative !important;
+          overflow: hidden !important;
+          color: #f5f8fb !important;
+          background:
+            linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.008) 28%, transparent 62%),
+            rgba(7,16,28,.90) !important;
+          border: 1px solid rgba(143,178,207,.18) !important;
+          border-radius: 20px !important;
+          box-shadow:
+            0 18px 38px rgba(0,0,0,.28),
+            inset 0 1px 0 rgba(255,255,255,.045) !important;
+          backdrop-filter: blur(12px) saturate(125%) !important;
+          -webkit-backdrop-filter: blur(12px) saturate(125%) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-issue-card::before,
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-step-card::before {
+          content: "" !important;
+          position: absolute !important;
+          width: 180px !important;
+          height: 180px !important;
+          right: -85px !important;
+          top: -105px !important;
+          border-radius: 50% !important;
+          background: rgba(255,255,255,.035) !important;
+          pointer-events: none !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-issue-card > *,
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-step-card > * {
+          position: relative !important;
+          z-index: 1 !important;
+        }
+
+        /* Local government cards: blue / amber / green. */
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(2) .kf-local-issue-card:nth-child(1),
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(6) .kf-local-issue-card:nth-child(1) {
+          background: radial-gradient(circle at 88% 8%, rgba(35,142,255,.16), transparent 32%), linear-gradient(145deg, #102d47, #0a1c2e) !important;
+          border-color: rgba(55,166,255,.30) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(2) .kf-local-issue-card:nth-child(2),
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(6) .kf-local-issue-card:nth-child(2) {
+          background: radial-gradient(circle at 88% 8%, rgba(255,173,47,.15), transparent 32%), linear-gradient(145deg, #3d2711, #1b110a) !important;
+          border-color: rgba(255,173,47,.34) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(2) .kf-local-issue-card:nth-child(3),
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(6) .kf-local-issue-card:nth-child(3) {
+          background: radial-gradient(circle at 88% 8%, rgba(0,223,192,.15), transparent 32%), linear-gradient(145deg, #0d3d37, #071e20) !important;
+          border-color: rgba(0,223,192,.32) !important;
+        }
+
+        /* Everyday issue cards use Elections palette rhythm. */
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(1),
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(5) {
+          background: radial-gradient(circle at 88% 8%, rgba(35,142,255,.13), transparent 30%), linear-gradient(145deg, #102d47, #0a1c2e) !important;
+          border-color: rgba(55,166,255,.28) !important;
+        }
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(2),
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(6) {
+          background: radial-gradient(circle at 88% 8%, rgba(255,173,47,.13), transparent 30%), linear-gradient(145deg, #3d2711, #1b110a) !important;
+          border-color: rgba(255,173,47,.30) !important;
+        }
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(3) {
+          background: radial-gradient(circle at 88% 8%, rgba(0,223,192,.13), transparent 30%), linear-gradient(145deg, #103a36, #071f20) !important;
+          border-color: rgba(0,223,192,.30) !important;
+        }
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(4) {
+          background: radial-gradient(circle at 88% 8%, rgba(123,109,255,.14), transparent 30%), linear-gradient(145deg, #171d58, #0b1030) !important;
+          border-color: rgba(123,109,255,.30) !important;
+        }
+
+        /* Document / evidence cards can reuse blue / amber / teal. */
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(6) .kf-local-issue-card:nth-child(1) {
+          background: radial-gradient(circle at 88% 8%, rgba(24,191,255,.14), transparent 30%), linear-gradient(145deg, #12365d, #081a31) !important;
+          border-color: rgba(24,191,255,.32) !important;
+        }
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(6) .kf-local-issue-card:nth-child(2) {
+          background: radial-gradient(circle at 88% 8%, rgba(255,173,47,.13), transparent 30%), linear-gradient(145deg, #3d2711, #1b110a) !important;
+          border-color: rgba(255,173,47,.30) !important;
+        }
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(6) .kf-local-issue-card:nth-child(3) {
+          background: radial-gradient(circle at 88% 8%, rgba(0,223,192,.13), transparent 30%), linear-gradient(145deg, #103a36, #071f20) !important;
+          border-color: rgba(0,223,192,.30) !important;
+        }
+
+        /* Reapply readable card text over inline styles. */
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-issue-card h3,
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-step-card h3 {
+          color: #f7f9fc !important;
+        }
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-issue-card p,
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-step-card p {
+          color: #aebfd0 !important;
+        }
+
+        /* Steps and number pills. */
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-step-card {
+          background: linear-gradient(145deg, #10263c, #091827) !important;
+          border-color: rgba(102,156,202,.22) !important;
+        }
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-step-number {
+          background: rgba(255,140,26,.10) !important;
+          color: #ff983f !important;
+          border: 1px solid rgba(255,140,26,.28) !important;
+        }
+
+        /* Callouts / info panels. */
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-callout {
+          background:
+            linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.006)),
+            #0b1929 !important;
+          border-color: rgba(129,168,199,.18) !important;
+          color: #f5f8fb !important;
+          box-shadow:
+            0 14px 30px rgba(0,0,0,.22),
+            inset 0 1px 0 rgba(255,255,255,.04) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-callout h3 {
+          color: #f5f8fb !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-callout p {
+          color: #aebfd0 !important;
+        }
+
+        /* Quiz — exact Elections answer / action separation. */
+        html[data-theme="dark"] .kf-local-issues-page .kf-quiz-section {
+          background:
+            radial-gradient(circle at 94% 0%, rgba(58,116,167,.25), transparent 34%),
+            radial-gradient(circle at 0% 100%, rgba(181,119,57,.16), transparent 34%),
+            linear-gradient(145deg, #10263c 0%, #0d2034 54%, #091827 100%) !important;
+          border: 1px solid rgba(102,156,202,.22) !important;
+          border-radius: 24px !important;
+          box-shadow:
+            0 20px 44px rgba(0,0,0,.30),
+            inset 0 1px 0 rgba(255,255,255,.04) !important;
+          color: #f5f7fb !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-quiz-answer {
+          background: linear-gradient(135deg, #07111f 0%, #0b1726 100%) !important;
+          color: #f7f9fc !important;
+          border: 1px solid rgba(146,176,204,.24) !important;
+          box-shadow:
+            inset 0 1px 0 rgba(255,255,255,.045),
+            0 8px 20px rgba(0,0,0,.18) !important;
+          text-shadow: 0 1px 2px rgba(0,0,0,.55) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-quiz-answer:hover {
+          background: linear-gradient(135deg, #0b1a2b 0%, #10223a 100%) !important;
+          color: #ffffff !important;
+          border-color: rgba(255,255,255,.28) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-quiz-answer[data-quiz-state="correct"] {
+          background: linear-gradient(135deg, #ff983f 0%, #ff7a00 100%) !important;
+          color: #08111b !important;
+          border-color: #ffad63 !important;
+          box-shadow:
+            0 8px 24px rgba(255,122,26,.24),
+            inset 0 1px 0 rgba(255,255,255,.18) !important;
+          text-shadow: none !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-quiz-answer[data-quiz-state="wrong"] {
+          background: linear-gradient(135deg, #1a1216 0%, #120d12 100%) !important;
+          color: #fff4f4 !important;
+          border-color: rgba(239,68,68,.72) !important;
+          box-shadow:
+            0 8px 20px rgba(239,68,68,.10),
+            inset 0 1px 0 rgba(255,255,255,.035) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-quiz-next {
+          background: linear-gradient(135deg, #ff9a3d, #ff7a00) !important;
+          color: #111923 !important;
+          border: 1px solid rgba(255,176,112,.55) !important;
+          box-shadow:
+            0 8px 18px rgba(255,122,0,.22),
+            0 0 20px rgba(255,122,0,.16) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-quiz-restart {
+          color: #d6e1ec !important;
+          background: transparent !important;
+          border-color: rgba(137,169,202,.22) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-explore-footer {
+          color: #7f97ad !important;
+        }
+
+        /* =========================================================
+           LOCAL ISSUES — FINAL DARK SURFACE ISOLATION
+           Prevent light-mode wrapper/card surfaces from leaking into
+           dark mode. Grid wrappers stay transparent; only the actual
+           cards/callouts receive painted surfaces.
+           ========================================================= */
+        html[data-theme="dark"] .kf-local-issues-page > div > section > div[style*="display: grid"] {
+          background: transparent !important;
+          border: 0 !important;
+          box-shadow: none !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-issue-card,
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-step-card {
+          background:
+            linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.008) 28%, transparent 62%),
+            #0b1929 !important;
+          color: #f5f8fb !important;
+          border-color: rgba(143,178,207,.20) !important;
+          box-shadow:
+            0 18px 38px rgba(0,0,0,.28),
+            inset 0 1px 0 rgba(255,255,255,.045) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-issue-card h3,
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-step-card h3 {
+          color: #f7f9fc !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-issue-card p,
+        html[data-theme="dark"] .kf-local-issues-page .kf-local-step-card p {
+          color: #aebfd0 !important;
+        }
+
+        /* Preserve the Elections-style color rhythm, but keep every
+           card definitively dark. */
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(2) .kf-local-issue-card:nth-child(1),
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(1),
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(5) {
+          background:
+            radial-gradient(circle at 88% 8%, rgba(24,191,255,.13), transparent 30%),
+            linear-gradient(145deg, #12365d, #081a31) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(2) .kf-local-issue-card:nth-child(2),
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(2),
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(6) {
+          background:
+            radial-gradient(circle at 88% 8%, rgba(255,173,47,.13), transparent 30%),
+            linear-gradient(145deg, #3d2711, #1b110a) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(2) .kf-local-issue-card:nth-child(3),
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(3) {
+          background:
+            radial-gradient(circle at 88% 8%, rgba(0,223,192,.13), transparent 30%),
+            linear-gradient(145deg, #103a36, #071f20) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(3) .kf-local-issue-card:nth-child(4) {
+          background:
+            radial-gradient(circle at 88% 8%, rgba(123,109,255,.14), transparent 30%),
+            linear-gradient(145deg, #171d58, #0b1030) !important;
+        }
+
+        /* Final quiz safety: only the actual correct answer gets the
+           orange feedback state; no positional selector is used. */
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-answer {
+          background: linear-gradient(135deg, #07111f 0%, #0b1726 100%) !important;
+          color: #f7f9fc !important;
+          border-color: rgba(146,176,204,.24) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-answer[data-quiz-state="correct"] {
+          background: linear-gradient(135deg, #ff983f 0%, #ff7a00 100%) !important;
+          color: #08111b !important;
+          border-color: #ffad63 !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-answer[data-quiz-state="wrong"] {
+          background: linear-gradient(135deg, #1a1216 0%, #120d12 100%) !important;
+          color: #fff4f4 !important;
+          border-color: rgba(239,68,68,.72) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-next {
+          background: linear-gradient(135deg, #ff9a3d, #ff7a00) !important;
+          color: #111923 !important;
+          border-color: rgba(255,176,112,.55) !important;
+        }
+
+        /* ---- Mobile ---- */
+        @media (max-width: 900px) {
+          .kf-local-issues-page > div > section {
+            padding: 22px !important;
+          }
+        }
+
+        @media (max-width: 680px) {
+          .kf-local-issues-page {
+            padding: 12px 10px 44px !important;
+          }
+
+          .kf-local-issues-page .kf-explore-topbar {
+            grid-template-columns: 1fr 1fr !important;
+          }
+
+          .kf-local-issues-page .kf-explore-brand {
+            grid-column: 1 / -1 !important;
+            justify-self: center !important;
+            grid-row: 1 !important;
+          }
+
+          .kf-local-issues-page .kf-explore-back {
+            grid-column: 1 !important;
+            grid-row: 2 !important;
+          }
+
+          .kf-local-issues-page .kf-explore-language {
+            grid-column: 2 !important;
+            grid-row: 2 !important;
+          }
+
+          .kf-local-issues-page .kf-explore-language > span {
+            display: none !important;
+          }
+
+          .kf-local-issues-page .kf-explore-hero {
+            padding: 24px !important;
+          }
+
+          .kf-local-issues-page .kf-explore-hero-row {
+            grid-template-columns: 1fr !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+          }
+
+          .kf-local-issues-page .kf-explore-topic-badge {
+            min-width: 0 !important;
+            width: 100% !important;
+          }
+
+          html[data-theme="dark"] .kf-local-issues-page .kf-explore-topbar {
+            top: 10px !important;
+            margin-bottom: 26px !important;
+            padding: 9px 11px !important;
+            border-radius: 20px !important;
+          }
+
+          html[data-theme="dark"] .kf-local-issues-page .kf-explore-brand-box {
+            width: 38px !important;
+            height: 38px !important;
+            border-radius: 12px !important;
+            font-size: 21px !important;
+          }
+
+          html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(8) {
+            border-radius: 20px !important;
+          }
+        }
+
+        @media (min-width: 681px) {
+          .kf-local-issues-page .kf-explore-brand-box {
+            width: 48px !important;
+            height: 48px !important;
+            border-radius: 14px !important;
+            font-size: 25px !important;
+          }
+
+          .kf-local-issues-page .kf-explore-brand-name {
+            font-size: 29px !important;
+          }
+        }
+
+
+        /* =========================================================
+           LOCAL ISSUES — FINAL FIX FOR SECTION 04 + QUIZ
+           Section 04 is the 5th <section> on the page because the
+           hero is the first <section>. The earlier light-mode
+           nth-child card rules have higher specificity, so these
+           dark selectors intentionally match that specificity.
+           ========================================================= */
+
+        /* Section 04 step cards: definitively dark in dark mode. */
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(5) > div[style*="display: grid"] {
+          background: transparent !important;
+          border: 0 !important;
+          box-shadow: none !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(5) .kf-local-step-card:nth-child(1),
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(5) .kf-local-step-card:nth-child(5) {
+          background:
+            radial-gradient(circle at 88% 8%, rgba(24,191,255,.13), transparent 30%),
+            linear-gradient(145deg, #12365d, #081a31) !important;
+          border-color: rgba(24,191,255,.30) !important;
+          color: #f5f8fb !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(5) .kf-local-step-card:nth-child(2) {
+          background:
+            radial-gradient(circle at 88% 8%, rgba(255,173,47,.13), transparent 30%),
+            linear-gradient(145deg, #3d2711, #1b110a) !important;
+          border-color: rgba(255,173,47,.30) !important;
+          color: #f5f8fb !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(5) .kf-local-step-card:nth-child(3) {
+          background:
+            radial-gradient(circle at 88% 8%, rgba(0,223,192,.13), transparent 30%),
+            linear-gradient(145deg, #103a36, #071f20) !important;
+          border-color: rgba(0,223,192,.30) !important;
+          color: #f5f8fb !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(5) .kf-local-step-card:nth-child(4) {
+          background:
+            radial-gradient(circle at 88% 8%, rgba(123,109,255,.14), transparent 30%),
+            linear-gradient(145deg, #171d58, #0b1030) !important;
+          border-color: rgba(123,109,255,.30) !important;
+          color: #f5f8fb !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(5) .kf-local-step-card h3 {
+          color: #f7f9fc !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(5) .kf-local-step-card p {
+          color: #aebfd0 !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(5) .kf-local-step-number {
+          background: rgba(255,140,26,.10) !important;
+          color: #ff983f !important;
+          border-color: rgba(255,140,26,.28) !important;
+        }
+
+        /* Quiz: answer options and action button are class-only.
+           No positional :last-child styling can affect answers. */
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-answer {
+          background: linear-gradient(135deg, #07111f 0%, #0b1726 100%) !important;
+          color: #f7f9fc !important;
+          border-color: rgba(146,176,204,.24) !important;
+          box-shadow:
+            inset 0 1px 0 rgba(255,255,255,.045),
+            0 8px 20px rgba(0,0,0,.18) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-answer:hover {
+          background: linear-gradient(135deg, #0b1a2b 0%, #10223a 100%) !important;
+          color: #ffffff !important;
+          border-color: rgba(255,255,255,.28) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-answer[data-quiz-state="correct"] {
+          background: linear-gradient(135deg, #ff983f 0%, #ff7a00 100%) !important;
+          color: #08111b !important;
+          border-color: #ffad63 !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-answer[data-quiz-state="wrong"] {
+          background: linear-gradient(135deg, #1a1216 0%, #120d12 100%) !important;
+          color: #fff4f4 !important;
+          border-color: rgba(239,68,68,.72) !important;
+        }
+
+        html[data-theme="dark"] .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-next {
+          background: linear-gradient(135deg, #ff9a3d, #ff7a00) !important;
+          color: #111923 !important;
+          border-color: rgba(255,176,112,.55) !important;
+        }
+
+        html:not([data-theme="dark"]) .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-answer {
+          background: #fffdf9 !important;
+          color: #425565 !important;
+          border-color: #ded9d1 !important;
+        }
+
+        html:not([data-theme="dark"]) .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-answer[data-quiz-state="correct"] {
+          background: rgba(34,197,94,.08) !important;
+          color: #425565 !important;
+          border-color: #22c55e !important;
+        }
+
+        html:not([data-theme="dark"]) .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-answer[data-quiz-state="wrong"] {
+          background: rgba(239,68,68,.08) !important;
+          color: #425565 !important;
+          border-color: #ef4444 !important;
+        }
+
+        html:not([data-theme="dark"]) .kf-local-issues-page > div > section:nth-of-type(8) .kf-quiz-next {
+          background: var(--kf-orange) !important;
+          color: #fff !important;
+          border-color: var(--kf-orange) !important;
+        }
+
+      `}</style>
     </main>
   );
 }
@@ -1347,6 +2861,7 @@ export default function LocalIssuesPage() {
 function SectionLabel({ text }: { text: string }) {
   return (
     <div
+      className="kf-explore-eyebrow"
       style={{
         color: "#ff7a00",
         fontSize: "14px",
@@ -1371,11 +2886,13 @@ function SimpleCard({
 }) {
   return (
     <div
+      className="kf-local-issue-card"
       style={{
-        background: "#0f172a",
-        border: "1px solid #1e293b",
-        borderRadius: "18px",
-        padding: "25px",
+        background: "#fffdf9",
+        border: "1px solid rgba(16,27,43,.08)",
+        borderRadius: "22px",
+        padding: "18px",
+        boxShadow: "0 8px 24px rgba(16,27,43,.035)",
       }}
     >
       <div
@@ -1398,7 +2915,7 @@ function SimpleCard({
 
       <p
         style={{
-          color: "#94a3b8",
+          color: "#667780",
           lineHeight: "1.65",
           margin: 0,
         }}

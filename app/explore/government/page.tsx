@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -494,7 +494,7 @@ export default function GovernmentPage() {
   const router = useRouter();
   const supabase = createClient();
 
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   const t = content[language];
 
@@ -600,7 +600,7 @@ export default function GovernmentPage() {
   };
 
   return (
-    <main
+    <main className="kf-explore-page"
       style={{
         minHeight: "100vh",
         background: "#020617",
@@ -616,103 +616,80 @@ export default function GovernmentPage() {
       >
         {/* HEADER */}
 
-        <header
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: "20px",
-            marginBottom: "60px",
-          }}
-        >
-          <div>
-            <div
-              style={{
-                fontSize: "32px",
-                fontWeight: "800",
-              }}
-            >
-              Civic
-              <span
-                style={{
-                  color: "#ff7a00",
-                }}
-              >
-                Quest
-              </span>
-            </div>
+        <header className="kf-explore-topbar">
+          <button
+            type="button"
+            onClick={() => router.push("/explore")}
+            className="kf-explore-back"
+          >
+            <span>←</span>
+            {t.back.replace("← ", "")}
+          </button>
 
-            <div
-              style={{
-                color: "#94a3b8",
-                marginTop: "5px",
-              }}
-            >
-              {t.headerTitle}
+          <div className="kf-explore-brand">
+            <div className="kf-explore-brand-box">K</div>
+            <div>
+              <div className="kf-explore-brand-name">
+                Karma<span>Facie</span>
+              </div>
+              <div className="kf-explore-brand-caption">
+                EXPLORE &amp; LEARN
+              </div>
             </div>
           </div>
 
-          <button
-            onClick={() =>
-              router.push("/explore")
-            }
-            type="button"
-            style={{
-              background: "transparent",
-              color: "white",
-              border: "1px solid #334155",
-              borderRadius: "10px",
-              padding: "12px 20px",
-              fontSize: "15px",
-              cursor: "pointer",
-            }}
-          >
-            {t.back}
-          </button>
+          <label className="kf-explore-language">
+            <span>
+              {language === "en" ? "Language" : "भाषा"}
+            </span>
+            <select
+              value={language}
+              onChange={(event) =>
+                setLanguage(event.target.value as Language)
+              }
+              aria-label="Language"
+            >
+              <option value="en">English</option>
+              <option value="hi">हिन्दी</option>
+              <option value="mr">मराठी</option>
+            </select>
+          </label>
         </header>
 
         {/* HERO */}
 
-        <section
-          style={{
-            marginBottom: "65px",
-          }}
-        >
-          <div
-            style={{
-              color: "#ff7a00",
-              fontSize: "14px",
-              fontWeight: "700",
-              letterSpacing: "1px",
-              marginBottom: "12px",
-            }}
-          >
-            {t.topicLabel}
+        <section className="kf-explore-hero">
+          <div className="kf-explore-hero-orb kf-explore-orb-blue" />
+          <div className="kf-explore-hero-orb kf-explore-orb-peach" />
+
+          <div className="kf-explore-hero-content">
+            <div className="kf-explore-eyebrow">
+              {t.topicLabel}
+            </div>
+
+            <div className="kf-explore-hero-row">
+              <div className="kf-explore-hero-copy">
+                <h1>{t.headerTitle}</h1>
+                <p>{t.heroDescription}</p>
+              </div>
+
+              <div className="kf-explore-topic-badge">
+                <div className="kf-explore-topic-badge-icon">
+                  🏛️
+                </div>
+                <div>
+                  <strong>
+                    {language === "en"
+                      ? "Civic knowledge"
+                      : language === "hi"
+                        ? "नागरिक ज्ञान"
+                        : "नागरी ज्ञान"}
+                  </strong>
+                  <span>{t.headerTitle}</span>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <h1
-            style={{
-              fontSize: "52px",
-              lineHeight: "1.1",
-              fontWeight: "800",
-              margin: "0 0 20px",
-              maxWidth: "850px",
-            }}
-          >
-            {t.heroTitle}
-          </h1>
-
-          <p
-            style={{
-              color: "#94a3b8",
-              fontSize: "19px",
-              lineHeight: "1.7",
-              maxWidth: "800px",
-              margin: 0,
-            }}
-          >
-            {t.heroDescription}
-          </p>
         </section>
 
         {/* SECTION 1 */}
@@ -1106,6 +1083,7 @@ export default function GovernmentPage() {
                           handleAnswer(index)
                         }
                         type="button"
+                        className="kf-quiz-answer"
                         style={{
                           width: "100%",
                           textAlign: "left",
@@ -1166,6 +1144,7 @@ export default function GovernmentPage() {
                   onClick={nextQuestion}
                   disabled={savingProgress}
                   type="button"
+                  className="kf-quiz-next"
                   style={{
                     marginTop: "25px",
                     padding: "13px 22px",
@@ -1270,6 +1249,927 @@ export default function GovernmentPage() {
           {t.footer}
         </div>
       </div>
+
+      <style>{`
+
+          .kf-explore-page {
+            --kf-ivory: #f8f3ea;
+            --kf-white: #fffdf9;
+            --kf-navy: #102033;
+            --kf-ink: #263447;
+            --kf-body: #596a78;
+            --kf-muted: #7b8790;
+            --kf-orange: #ff7a00;
+            --kf-blue: #edf5fa;
+            --kf-blue-line: #d6e5ed;
+            --kf-peach: #fff2e4;
+            --kf-peach-line: #eedbc6;
+            --kf-green: #eef6e7;
+            --kf-green-line: #d5e5ca;
+            --kf-lavender: #f4eff9;
+            --kf-lavender-line: #dfd4ea;
+            --kf-line: #ddd7ce;
+
+            min-height: 100vh !important;
+            background:
+              radial-gradient(circle at 92% 2%, rgba(215,232,242,.95) 0%, rgba(215,232,242,0) 26%),
+              radial-gradient(circle at 5% 35%, rgba(231,242,248,.78) 0%, rgba(231,242,248,0) 25%),
+              radial-gradient(circle at 92% 93%, rgba(255,229,205,.72) 0%, rgba(255,229,205,0) 28%),
+              var(--kf-ivory) !important;
+            color: var(--kf-body) !important;
+            padding: 20px 16px 72px !important;
+            font-family: var(--font-body) !important;
+          }
+
+          .kf-explore-page > div {
+            width: min(1120px, 100%) !important;
+            max-width: none !important;
+            margin: 0 auto !important;
+          }
+
+          .kf-explore-topbar {
+            display: grid !important;
+            grid-template-columns: 1fr auto 1fr !important;
+            align-items: center !important;
+            gap: 18px !important;
+            margin-bottom: 16px !important;
+            padding: 12px 14px !important;
+            border: 1px solid var(--kf-line) !important;
+            border-radius: 25px !important;
+            background: rgba(255,253,249,.95) !important;
+            box-shadow: 0 14px 36px rgba(16,27,43,.055) !important;
+            backdrop-filter: blur(16px);
+          }
+
+          .kf-explore-back {
+            justify-self: start !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 7px !important;
+            min-height: 42px !important;
+            padding: 10px 14px !important;
+            border: 1px solid #dad4cc !important;
+            border-radius: 999px !important;
+            background: #fffdf9 !important;
+            color: #506171 !important;
+            font-size: 11px !important;
+            font-weight: 900 !important;
+            cursor: pointer;
+          }
+
+          .kf-explore-back span {
+            color: var(--kf-orange) !important;
+            font-size: 15px !important;
+          }
+
+          .kf-explore-brand {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+          }
+
+          .kf-explore-brand-box {
+            width: 48px !important;
+            height: 48px !important;
+            display: grid !important;
+            place-items: center !important;
+            border-radius: 14px !important;
+            background: var(--kf-orange) !important;
+            color: #102033 !important;
+            font-family: var(--font-display) !important;
+            font-size: 25px !important;
+            font-weight: 800 !important;
+            box-shadow: 0 8px 18px rgba(255,122,0,.17) !important;
+          }
+
+          .kf-explore-brand-name {
+            color: var(--kf-navy) !important;
+            font-family: var(--font-display) !important;
+            font-size: 29px !important;
+            line-height: 1 !important;
+            letter-spacing: -.045em !important;
+            font-weight: 800 !important;
+          }
+
+          .kf-explore-brand-name span {
+            color: var(--kf-orange) !important;
+          }
+
+          .kf-explore-brand-caption {
+            margin-top: 4px !important;
+            color: #8b938f !important;
+            font-size: 8px !important;
+            line-height: 1 !important;
+            letter-spacing: .19em !important;
+            font-weight: 900 !important;
+          }
+
+          .kf-explore-language {
+            justify-self: end !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 9px !important;
+            color: #53636f !important;
+            font-size: 11px !important;
+            font-weight: 900 !important;
+          }
+
+          .kf-explore-language select {
+            min-width: 120px !important;
+            padding: 10px 13px !important;
+            border: 1px solid #d7d1c9 !important;
+            border-radius: 999px !important;
+            background: #fffdf9 !important;
+            color: #304154 !important;
+            font-size: 11px !important;
+            font-weight: 800 !important;
+            cursor: pointer;
+            outline: none;
+          }
+
+          .kf-explore-hero {
+            position: relative !important;
+            overflow: hidden !important;
+            margin-bottom: 16px !important;
+            padding: 32px !important;
+            border: 1px solid var(--kf-line) !important;
+            border-radius: 33px !important;
+            background:
+              radial-gradient(circle at 94% 0%, rgba(218,235,244,.98) 0%, rgba(218,235,244,0) 34%),
+              radial-gradient(circle at 0% 100%, rgba(255,232,210,.90) 0%, rgba(255,232,210,0) 35%),
+              rgba(255,253,249,.97) !important;
+            box-shadow: 0 18px 48px rgba(16,27,43,.06) !important;
+          }
+
+          .kf-explore-hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+          }
+
+          .kf-explore-orb-blue {
+            width: 190px;
+            height: 190px;
+            right: -76px;
+            top: -84px;
+            background: rgba(208,227,239,.58);
+          }
+
+          .kf-explore-orb-peach {
+            width: 170px;
+            height: 105px;
+            left: -46px;
+            bottom: -54px;
+            border-radius: 55% 45% 0 0;
+            background: rgba(255,229,206,.46);
+            transform: rotate(8deg);
+          }
+
+          .kf-explore-hero-content {
+            position: relative;
+            z-index: 1;
+          }
+
+          .kf-explore-eyebrow {
+            color: #8d755e !important;
+            font-size: 9px !important;
+            font-weight: 900 !important;
+            letter-spacing: .18em !important;
+            text-transform: uppercase;
+          }
+
+          .kf-explore-hero-row {
+            display: flex !important;
+            align-items: flex-end !important;
+            justify-content: space-between !important;
+            gap: 24px !important;
+            margin-top: 8px !important;
+          }
+
+          .kf-explore-hero-copy {
+            max-width: 800px !important;
+          }
+
+          .kf-explore-hero-copy h1 {
+            margin: 0 !important;
+            color: var(--kf-navy) !important;
+            font-family: var(--font-display) !important;
+            font-size: clamp(46px, 6vw, 66px) !important;
+            line-height: .97 !important;
+            letter-spacing: -.05em !important;
+            font-weight: 800 !important;
+          }
+
+          .kf-explore-hero-copy p {
+            margin: 22px 0 0 !important;
+            color: var(--kf-body) !important;
+            font-size: 17px !important;
+            line-height: 1.8 !important;
+            max-width: 850px !important;
+          }
+
+          .kf-explore-topic-badge {
+            flex: 0 0 auto !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            min-width: 260px !important;
+            padding: 15px 18px !important;
+            border: 1px solid #efddc7 !important;
+            border-radius: 25px !important;
+            background: rgba(255,242,228,.88) !important;
+          }
+
+          .kf-explore-topic-badge-icon {
+            width: 52px !important;
+            height: 52px !important;
+            display: grid !important;
+            place-items: center !important;
+            border: 1px solid #eadfd2 !important;
+            border-radius: 17px !important;
+            background: #fffdf9 !important;
+            font-size: 25px !important;
+          }
+
+          .kf-explore-topic-badge strong {
+            display: block !important;
+            color: #304154 !important;
+            font-family: var(--font-display) !important;
+            font-size: 17px !important;
+            line-height: 1.15 !important;
+          }
+
+          .kf-explore-topic-badge span {
+            display: block !important;
+            margin-top: 5px !important;
+            color: #8d755e !important;
+            font-size: 10px !important;
+            font-weight: 800 !important;
+          }
+
+          .kf-e-topbar {
+            display: grid !important;
+            grid-template-columns: 1fr auto 1fr !important;
+            align-items: center !important;
+            gap: 18px !important;
+            margin-bottom: 16px !important;
+            padding: 12px 14px !important;
+            border: 1px solid #ddd7ce !important;
+            border-radius: 25px !important;
+            background: rgba(255,253,249,.96) !important;
+            box-shadow: 0 14px 36px rgba(16,27,43,.055) !important;
+            backdrop-filter: blur(16px);
+          }
+
+          .kf-e-back {
+            justify-self: start !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            min-height: 42px !important;
+            padding: 10px 15px !important;
+            border: 1px solid #dad4cc !important;
+            border-radius: 999px !important;
+            background: #fffdf9 !important;
+            color: #506171 !important;
+            font-family: var(--font-body) !important;
+            font-size: 11px !important;
+            font-weight: 900 !important;
+          }
+
+          .kf-e-back span {
+            color: #ff7a00 !important;
+            font-size: 15px !important;
+          }
+
+          .kf-e-brand {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+          }
+
+          .kf-e-brand-box {
+            width: 38px !important;
+            height: 38px !important;
+            display: grid !important;
+            place-items: center !important;
+            border-radius: 13px !important;
+            background: #ff7a00 !important;
+            color: #fff !important;
+            font-family: var(--font-display) !important;
+            font-size: 21px !important;
+            font-weight: 800 !important;
+          }
+
+          .kf-e-brand-name {
+            color: #102033 !important;
+            font-family: var(--font-display) !important;
+            font-size: 23px !important;
+            line-height: 1 !important;
+            letter-spacing: -.045em !important;
+            font-weight: 800 !important;
+          }
+
+          .kf-e-brand-name span {
+            color: #ff7a00 !important;
+          }
+
+          .kf-e-brand-caption {
+            margin-top: 3px !important;
+            color: #8b938f !important;
+            font-size: 8px !important;
+            line-height: 1 !important;
+            letter-spacing: .16em !important;
+            font-weight: 900 !important;
+          }
+
+          .kf-e-lang {
+            justify-self: end !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 9px !important;
+            color: #53636f !important;
+            font-size: 11px !important;
+            font-weight: 900 !important;
+          }
+
+          .kf-e-lang select {
+            min-width: 120px !important;
+            padding: 10px 13px !important;
+            border: 1px solid #d7d1c9 !important;
+            border-radius: 999px !important;
+            background: #fffdf9 !important;
+            color: #304154 !important;
+            font-family: var(--font-body) !important;
+            font-size: 11px !important;
+            font-weight: 800 !important;
+          }
+
+          .kf-explore-page header {
+            margin-bottom: 16px !important;
+            padding: 12px 14px !important;
+            border: 1px solid var(--kf-line) !important;
+            border-radius: 25px !important;
+            background: rgba(255,253,249,.96) !important;
+            box-shadow: 0 14px 36px rgba(16,27,43,.055) !important;
+            backdrop-filter: blur(16px);
+          }
+
+          .kf-explore-page header div {
+            color: var(--kf-navy) !important;
+          }
+
+          /* Keep the KarmaFacie logo K white inside the orange logo box */
+          .kf-explore-page header .kf-explore-brand-box {
+            color: #ffffff !important;
+          }
+
+          .kf-explore-page header select {
+            background: #fffdf9 !important;
+            color: #304154 !important;
+            border: 1px solid #d7d1c9 !important;
+            border-radius: 999px !important;
+          }
+
+          .kf-explore-page header button {
+            color: #4d6070 !important;
+            border-color: #dad4cc !important;
+            border-radius: 999px !important;
+            background: #fffdf9 !important;
+          }
+
+          .kf-explore-page > div > section {
+            margin-bottom: 16px !important;
+            padding: 30px !important;
+            border: 1px solid var(--kf-line) !important;
+            border-radius: 31px !important;
+            box-shadow: 0 14px 38px rgba(16,27,43,.05) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(1) {
+            padding: 32px !important;
+            background:
+              radial-gradient(circle at 94% 0%, rgba(218,235,244,.98) 0%, rgba(218,235,244,0) 34%),
+              radial-gradient(circle at 0% 100%, rgba(255,232,210,.90) 0%, rgba(255,232,210,0) 35%),
+              rgba(255,253,249,.97) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(2) {
+            background: var(--kf-blue) !important;
+            border-color: var(--kf-blue-line) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(3) {
+            background: var(--kf-peach) !important;
+            border-color: var(--kf-peach-line) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(4) {
+            background: var(--kf-green) !important;
+            border-color: var(--kf-green-line) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(5) {
+            background: var(--kf-lavender) !important;
+            border-color: var(--kf-lavender-line) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(6) {
+            background: var(--kf-blue) !important;
+            border-color: var(--kf-blue-line) !important;
+          }
+
+          .kf-explore-page h1,
+          .kf-explore-page h2,
+          .kf-explore-page h3 {
+            color: var(--kf-ink) !important;
+            font-family: var(--font-display) !important;
+          }
+
+          .kf-explore-page p,
+          .kf-explore-page li {
+            color: var(--kf-body) !important;
+          }
+
+          .kf-explore-page [style*="background"] {
+            box-shadow: 0 9px 22px rgba(16,27,43,.035) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(2) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(3) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(4) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(5) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(6) [style*="background"] {
+            background: rgba(255,253,249,.80) !important;
+            border: 1px solid rgba(16,27,43,.075) !important;
+            border-radius: 22px !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(3) > div:last-child {
+            background: rgba(255,253,249,.80) !important;
+            border: 1px solid rgba(16,27,43,.075) !important;
+            border-radius: 23px !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(1) [style*="color: #ff7a00"],
+          .kf-explore-page [style*="color: #ff7a00"] {
+            color: #9c6b42 !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(7) {
+            position: relative !important;
+            overflow: hidden !important;
+            padding: 30px !important;
+            background:
+              radial-gradient(circle at 94% 0%, rgba(218,235,244,.95) 0%, rgba(218,235,244,0) 34%),
+              radial-gradient(circle at 0% 100%, rgba(255,232,210,.88) 0%, rgba(255,232,210,0) 34%),
+              rgba(255,253,249,.98) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(7) button {
+            border-radius: 19px !important;
+          }
+
+          /* Quiz answer options stay visually neutral in bright mode.
+             The action button has its own class so the final answer option
+             is never accidentally treated as the orange action button. */
+          .kf-explore-page .kf-quiz-answer {
+            color: #425565 !important;
+            background: #fffdf9 !important;
+            border-color: #ded9d1 !important;
+          }
+
+          .kf-explore-page .kf-quiz-answer:hover {
+            background: #ffffff !important;
+            border-color: #cfc8bf !important;
+          }
+
+          .kf-explore-page .kf-quiz-next {
+            color: #fff !important;
+            background: var(--kf-orange) !important;
+            border-color: var(--kf-orange) !important;
+          }
+
+          .kf-explore-page > div > div:last-child {
+            color: #89939a !important;
+            text-align: center !important;
+          }
+
+
+          @media (max-width: 680px) {
+            .kf-explore-topbar {
+              grid-template-columns: 1fr 1fr !important;
+            }
+
+            .kf-explore-brand {
+              grid-column: 1 / -1 !important;
+              justify-self: center !important;
+              grid-row: 1 !important;
+            }
+
+            .kf-explore-back {
+              grid-column: 1 !important;
+              grid-row: 2 !important;
+            }
+
+            .kf-explore-language {
+              grid-column: 2 !important;
+              grid-row: 2 !important;
+            }
+
+            .kf-explore-language > span {
+              display: none !important;
+            }
+
+            .kf-explore-hero {
+              padding: 24px !important;
+            }
+
+            .kf-explore-hero-row {
+              flex-direction: column !important;
+              align-items: stretch !important;
+            }
+
+            .kf-explore-topic-badge {
+              min-width: 0 !important;
+              width: 100% !important;
+            }
+
+          @media (max-width: 680px) {
+            .kf-e-topbar {
+              grid-template-columns: 1fr 1fr !important;
+            }
+            .kf-e-brand {
+              grid-column: 1 / -1 !important;
+              justify-self: center !important;
+              grid-row: 1 !important;
+            }
+            .kf-e-back {
+              grid-column: 1 !important;
+              grid-row: 2 !important;
+            }
+            .kf-e-lang {
+              grid-column: 2 !important;
+              grid-row: 2 !important;
+            }
+            .kf-e-lang span {
+              display: none !important;
+            }
+          }
+
+          @media (max-width: 900px) {
+            .kf-explore-page > div > section {
+              padding: 22px !important;
+            }
+          }
+
+          @media (max-width: 680px) {
+            .kf-explore-page {
+              padding: 12px 10px 44px !important;
+            }
+
+            .kf-explore-page > div > section {
+              padding: 20px !important;
+              border-radius: 24px !important;
+            }
+
+            .kf-explore-page header {
+              padding: 11px 12px !important;
+            }
+          }
+
+
+          /* =========================================================
+             GOVERNMENT PAGE — DARK MODE
+             Dashboard-matched visual language.
+             Light mode remains unchanged.
+             ========================================================= */
+
+          /* Page canvas: remove every light surface around dark cards. */
+          html[data-theme="dark"] .kf-explore-page,
+          html[data-theme="dark"] .kf-explore-page > div {
+            background:
+              radial-gradient(circle at 92% 2%, rgba(42,116,177,.12) 0%, transparent 26%),
+              radial-gradient(circle at 6% 82%, rgba(255,122,26,.055) 0%, transparent 23%),
+              linear-gradient(180deg, #07111f 0%, #081525 52%, #07111f 100%) !important;
+            color: #f7f8fb !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page > div > section:nth-of-type(2),
+          html[data-theme="dark"] .kf-explore-page > div > section:nth-of-type(3),
+          html[data-theme="dark"] .kf-explore-page > div > section:nth-of-type(4),
+          html[data-theme="dark"] .kf-explore-page > div > section:nth-of-type(5),
+          html[data-theme="dark"] .kf-explore-page > div > section:nth-of-type(6) {
+            background: transparent !important;
+            border-color: transparent !important;
+            box-shadow: none !important;
+          }
+
+          /* =========================================================
+             NAVBAR — MATCH DASHBOARD
+             ========================================================= */
+          html[data-theme="dark"] .kf-explore-page .kf-explore-topbar {
+            position: sticky !important;
+            top: 12px !important;
+            z-index: 50 !important;
+            min-height: 0 !important;
+            height: auto !important;
+            /* Match the light-mode nav → hero spacing exactly. */
+            margin-bottom: 16px !important;
+            padding: 10px 14px !important;
+            border: 1px solid rgba(82,205,255,.78) !important;
+            border-right-color: rgba(255,141,29,.82) !important;
+            border-radius: 24px !important;
+            background: linear-gradient(90deg, rgba(4,14,25,.78) 0%, rgba(5,12,22,.72) 48%, rgba(14,12,20,.76) 100%) !important;
+            box-shadow:
+              -10px 0 28px -9px rgba(0,212,255,.56),
+               10px 0 28px -9px rgba(255,140,26,.56),
+               0 12px 30px rgba(0,0,0,.34),
+               inset 0 1px 0 rgba(255,255,255,.055) !important;
+            backdrop-filter: blur(18px) saturate(135%) !important;
+            -webkit-backdrop-filter: blur(18px) saturate(135%) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-topbar::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            border-radius: inherit;
+            background: linear-gradient(90deg, rgba(0,212,255,.07), transparent 28%, transparent 72%, rgba(255,140,26,.07));
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-topbar > * {
+            position: relative;
+            z-index: 1;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-brand-name {
+            color: #ffffff !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-brand-name span {
+            color: #ff7a00 !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-brand-caption {
+            color: #7f97ad !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-brand-box {
+            width: 42px !important;
+            height: 42px !important;
+            border-radius: 14px !important;
+            background: #ff7a00 !important;
+            color: #ffffff !important;
+            box-shadow: 0 8px 22px rgba(255,122,0,.24) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-back {
+            min-height: 40px !important;
+            padding: 9px 14px !important;
+            background: rgba(6,18,31,.62) !important;
+            color: #e6eef6 !important;
+            border-color: rgba(136,169,198,.20) !important;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.035) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-back span {
+            color: #ff8b32 !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-language {
+            color: #9db1c4 !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-language select {
+            min-width: 112px !important;
+            padding: 9px 13px !important;
+            background: rgba(6,18,31,.62) !important;
+            color: #edf4f9 !important;
+            border-color: rgba(136,169,198,.20) !important;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.035) !important;
+          }
+
+          /* =========================================================
+             HERO
+             ========================================================= */
+          html[data-theme="dark"] .kf-explore-page .kf-explore-hero {
+            background:
+              radial-gradient(circle at 94% 0%, rgba(46,111,159,.34) 0%, transparent 35%),
+              radial-gradient(circle at 0% 100%, rgba(196,128,61,.18) 0%, transparent 32%),
+              linear-gradient(145deg, #132a40 0%, #0f2236 54%, #0a1a2b 100%) !important;
+            border-color: rgba(91,145,188,.25) !important;
+            box-shadow:
+              0 22px 54px rgba(0,0,0,.25),
+              inset 0 1px 0 rgba(255,255,255,.035) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-hero-copy h1 {
+            color: #f7f8fb !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-hero-copy p {
+            color: #aebfd0 !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-eyebrow {
+            color: #ff8b32 !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-topic-badge {
+            min-width: 255px !important;
+            background: rgba(5,16,29,.70) !important;
+            border-color: rgba(119,164,196,.22) !important;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.04) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-topic-badge-icon {
+            background: rgba(255,255,255,.065) !important;
+            border-color: rgba(255,255,255,.075) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-topic-badge strong {
+            color: #f5f8fb !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-topic-badge span {
+            color: #8ea6ba !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-orb-blue {
+            background: rgba(100,155,195,.14) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-explore-orb-peach {
+            background: rgba(190,124,69,.18) !important;
+          }
+
+          /* =========================================================
+             PREMIUM GOVERNMENT CARDS
+             Only dark mode. No dimensions/layout changes.
+             ========================================================= */
+          html[data-theme="dark"] .kf-explore-page .kf-gov-simple-card {
+            position: relative !important;
+            overflow: hidden !important;
+            background:
+              linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.008) 28%, transparent 62%),
+              rgba(7,16,28,.90) !important;
+            border: 1px solid rgba(143,178,207,.18) !important;
+            border-radius: 20px !important;
+            box-shadow:
+              0 18px 38px rgba(0,0,0,.28),
+              inset 0 1px 0 rgba(255,255,255,.045) !important;
+            backdrop-filter: blur(12px) saturate(125%) !important;
+            -webkit-backdrop-filter: blur(12px) saturate(125%) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-gov-simple-card::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            right: -85px;
+            top: -105px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.035);
+            box-shadow: 0 0 60px rgba(255,255,255,.02);
+            pointer-events: none;
+          }
+
+          html[data-theme="dark"] .kf-explore-page > div > section:nth-of-type(2) .kf-gov-simple-card:nth-child(1) {
+            --gov-accent: #ffad2f;
+            background:
+              radial-gradient(circle at 88% 8%, rgba(255,173,47,.16), transparent 30%),
+              linear-gradient(145deg, #3d2711, #1b110a) !important;
+            border-color: rgba(255,173,47,.38) !important;
+            box-shadow: 0 18px 40px rgba(0,0,0,.30), 0 0 24px rgba(255,173,47,.08), inset 0 1px 0 rgba(255,255,255,.055) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page > div > section:nth-of-type(2) .kf-gov-simple-card:nth-child(2) {
+            --gov-accent: #7b6dff;
+            background:
+              radial-gradient(circle at 88% 8%, rgba(123,109,255,.17), transparent 30%),
+              linear-gradient(145deg, #171d58, #0b1030) !important;
+            border-color: rgba(123,109,255,.38) !important;
+            box-shadow: 0 18px 40px rgba(0,0,0,.30), 0 0 24px rgba(123,109,255,.09), inset 0 1px 0 rgba(255,255,255,.055) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page > div > section:nth-of-type(2) .kf-gov-simple-card:nth-child(3) {
+            --gov-accent: #00dfc0;
+            background:
+              radial-gradient(circle at 88% 8%, rgba(0,223,192,.15), transparent 30%),
+              linear-gradient(145deg, #0d3d37, #071e20) !important;
+            border-color: rgba(0,223,192,.36) !important;
+            box-shadow: 0 18px 40px rgba(0,0,0,.30), 0 0 24px rgba(0,223,192,.08), inset 0 1px 0 rgba(255,255,255,.055) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-gov-simple-card > * {
+            position: relative;
+            z-index: 1;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-gov-simple-card h3 {
+            color: #f7f9fc !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-gov-simple-card p {
+            color: #aebfd0 !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page > div > section:nth-of-type(2) .kf-gov-simple-card:nth-child(1) h3,
+          html[data-theme="dark"] .kf-explore-page > div > section:nth-of-type(2) .kf-gov-simple-card:nth-child(1) div:first-child {
+            text-shadow: 0 0 16px rgba(255,173,47,.10);
+          }
+
+          /* Local-government cards use blue / teal families. */
+          html[data-theme="dark"] .kf-explore-page > div > section:nth-of-type(4) .kf-gov-simple-card:nth-child(1) {
+            background:
+              radial-gradient(circle at 88% 8%, rgba(24,191,255,.14), transparent 30%),
+              linear-gradient(145deg, #12365d, #081a31) !important;
+            border-color: rgba(24,191,255,.34) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page > div > section:nth-of-type(4) .kf-gov-simple-card:nth-child(2) {
+            background:
+              radial-gradient(circle at 88% 8%, rgba(0,223,192,.14), transparent 30%),
+              linear-gradient(145deg, #103a36, #071f20) !important;
+            border-color: rgba(0,223,192,.32) !important;
+          }
+
+          /* Reason cards. */
+          html[data-theme="dark"] .kf-explore-page .kf-gov-reason-card {
+            background:
+              linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.006)),
+              #0b1929 !important;
+            border-color: rgba(129,168,199,.18) !important;
+            box-shadow: 0 14px 30px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.04) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-gov-reason-card h3 {
+            color: #f5f8fb !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-gov-reason-card p {
+            color: #aebfd0 !important;
+          }
+
+          /* =========================================================
+             QUIZ PANEL
+             ========================================================= */
+          html[data-theme="dark"] .kf-explore-page > div > section:nth-of-type(6) {
+            background:
+              radial-gradient(circle at 94% 0%, rgba(65,118,166,.17), transparent 34%),
+              linear-gradient(145deg, #0d1e32, #091728) !important;
+            border: 1px solid rgba(105,151,190,.20) !important;
+            border-radius: 24px !important;
+            box-shadow: 0 20px 46px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.035) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-quiz-answer {
+            background: rgba(4,12,22,.62) !important;
+            color: #f4f7fb !important;
+            border-color: rgba(139,174,204,.20) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-quiz-answer:hover {
+            background: rgba(14,31,50,.88) !important;
+            border-color: rgba(255,255,255,.28) !important;
+          }
+
+          html[data-theme="dark"] .kf-explore-page .kf-quiz-next {
+            background: linear-gradient(135deg, #ff9a3d, #ff7a00) !important;
+            border-color: rgba(255,176,112,.55) !important;
+            color: #111923 !important;
+            box-shadow: 0 8px 18px rgba(255,122,0,.22), 0 0 20px rgba(255,122,0,.16) !important;
+          }
+
+          /* Remove the old pale section framing only in dark mode. */
+          html[data-theme="dark"] .kf-explore-page > div > section:not(:nth-of-type(1)):not(:nth-of-type(6)) {
+            box-shadow: none !important;
+          }
+
+          @media (max-width: 680px) {
+            html[data-theme="dark"] .kf-explore-page .kf-explore-topbar {
+              top: 10px !important;
+              padding: 9px 11px !important;
+              border-radius: 20px !important;
+            }
+
+            html[data-theme="dark"] .kf-explore-page .kf-explore-brand-box {
+              width: 38px !important;
+              height: 38px !important;
+              border-radius: 12px !important;
+              font-size: 21px !important;
+            }
+
+            html[data-theme="dark"] .kf-explore-page > div > section:nth-of-type(6) {
+              border-radius: 20px !important;
+            }
+          }
+
+        `}</style>
     </main>
   );
 }
@@ -1310,6 +2210,7 @@ function SimpleCard({
 }) {
   return (
     <div
+      className="kf-gov-simple-card"
       style={{
         background: "#0f172a",
         border: "1px solid #1e293b",
@@ -1359,6 +2260,7 @@ function ReasonCard({
 }) {
   return (
     <div
+      className="kf-gov-reason-card"
       style={{
         display: "flex",
         gap: "18px",

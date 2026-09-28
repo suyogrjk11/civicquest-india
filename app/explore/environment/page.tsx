@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -440,7 +440,7 @@ const content: Record<
 > = {
   en: {
     subtitle: "Environment",
-    back: "← Explore",
+    back: "Explore",
     heroLabel: "CIVIC BASICS · 05",
     heroTitle: "Environment",
     heroText:
@@ -534,7 +534,7 @@ const content: Record<
 
   hi: {
     subtitle: "पर्यावरण",
-    back: "← एक्सप्लोर",
+    back: "एक्सप्लोर",
     heroLabel: "नागरिक ज्ञान · 05",
     heroTitle: "पर्यावरण",
     heroText:
@@ -628,7 +628,7 @@ const content: Record<
 
   mr: {
     subtitle: "पर्यावरण",
-    back: "← एक्सप्लोर",
+    back: "एक्सप्लोर",
     heroLabel: "नागरिक ज्ञान · 05",
     heroTitle: "पर्यावरण",
     heroText:
@@ -724,7 +724,7 @@ const content: Record<
 export default function EnvironmentPage() {
   const router = useRouter();
   const supabase = createClient();
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   const t = content[language];
 
@@ -811,7 +811,7 @@ export default function EnvironmentPage() {
   };
 
   return (
-    <main
+    <main className="kf-explore-page kf-environment-page"
       style={{
         minHeight: "100vh",
         background: "#020617",
@@ -828,83 +828,267 @@ export default function EnvironmentPage() {
         {/* HEADER */}
 
         <header
+          className="kf-explore-topbar"
           style={{
-            display: "flex",
-            justifyContent: "space-between",
+            display: "grid",
+            gridTemplateColumns: "1fr auto 1fr",
             alignItems: "center",
-            gap: "20px",
-            marginBottom: "60px",
+            gap: "18px",
+            marginBottom: "16px",
+            padding: "12px 14px",
+            border: "1px solid #ddd7ce",
+            borderRadius: "25px",
+            background: "rgba(255,253,249,.96)",
+            boxShadow: "0 14px 36px rgba(16,27,43,.055)",
+            backdropFilter: "blur(16px)",
           }}
         >
-          <div>
-            <div
-              style={{
-                fontSize: "32px",
-                fontWeight: "800",
-              }}
-            >
-              Civic<span style={{ color: "#ff7a00" }}>Quest</span>
-            </div>
-
-            <div
-              style={{
-                color: "#94a3b8",
-                marginTop: "5px",
-              }}
-            >
-              {t.subtitle}
-            </div>
-          </div>
-
           <button
             type="button"
             onClick={() => router.push("/explore")}
+            className="kf-explore-back"
             style={{
-              background: "transparent",
-              color: "white",
-              border: "1px solid #334155",
-              borderRadius: "10px",
-              padding: "12px 20px",
-              fontSize: "15px",
+              justifySelf: "start",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              minHeight: "42px",
+              padding: "10px 15px",
+              border: "1px solid #dad4cc",
+              borderRadius: "999px",
+              background: "#fffdf9",
+              color: "#506171",
+              fontFamily: "var(--font-body)",
+              fontSize: "11px",
+              fontWeight: "900",
               cursor: "pointer",
             }}
           >
+            <span
+              style={{
+                color: "#ff7a00",
+                fontSize: "15px",
+              }}
+            >
+              ←
+            </span>
             {t.back}
           </button>
+
+          <div
+            className="kf-explore-brand"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            <div
+              className="kf-explore-brand-box"
+              style={{
+                width: "38px",
+                height: "38px",
+                display: "grid",
+                placeItems: "center",
+                borderRadius: "13px",
+                background: "#ff7a00",
+                color: "#fff",
+                fontFamily: "var(--font-display)",
+                fontSize: "21px",
+                fontWeight: "800",
+              }}
+            >
+              K
+            </div>
+
+            <div>
+              <div
+                className="kf-explore-brand-name"
+                style={{
+                  color: "#102033",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "23px",
+                  lineHeight: "1",
+                  letterSpacing: "-.045em",
+                  fontWeight: "800",
+                }}
+              >
+                Karma<span style={{ color: "#ff7a00" }}>Facie</span>
+              </div>
+
+              <div
+                className="kf-explore-brand-caption"
+                style={{
+                  marginTop: "3px",
+                  color: "#8b938f",
+                  fontSize: "8px",
+                  lineHeight: "1",
+                  letterSpacing: ".16em",
+                  fontWeight: "900",
+                }}
+              >
+                EXPLORE & LEARN
+              </div>
+            </div>
+          </div>
+
+          <label
+            className="kf-explore-language"
+            style={{
+              justifySelf: "end",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "9px",
+              color: "#53636f",
+              fontFamily: "var(--font-body)",
+              fontSize: "11px",
+              fontWeight: "900",
+            }}
+          >
+            <span>
+              {language === "en" ? "Language" : "भाषा"}
+            </span>
+
+            <select
+              className="kf-explore-language-select"
+              value={language}
+              onChange={(event) =>
+                setLanguage(event.target.value as Language)
+              }
+              aria-label={
+                language === "en" ? "Language" : "भाषा"
+              }
+              style={{
+                minWidth: "120px",
+                padding: "10px 13px",
+                border: "1px solid #d7d1c9",
+                borderRadius: "999px",
+                background: "#fffdf9",
+                color: "#304154",
+                fontFamily: "var(--font-body)",
+                fontSize: "11px",
+                fontWeight: "800",
+                cursor: "pointer",
+                outline: "none",
+              }}
+            >
+              <option value="en">English</option>
+              <option value="hi">हिन्दी</option>
+              <option value="mr">मराठी</option>
+            </select>
+          </label>
         </header>
 
         {/* HERO */}
 
         <section
+          className="kf-explore-hero"
           style={{
-            marginBottom: "65px",
+            marginBottom: "16px",
           }}
         >
           <SectionLabel text={t.heroLabel} />
 
-          <h1
+          <div
+            className="kf-environment-hero-row"
             style={{
-              fontSize: "52px",
-              lineHeight: "1.1",
-              fontWeight: "800",
-              margin: "0 0 20px",
-              maxWidth: "850px",
+              display: "grid",
+              gridTemplateColumns: "minmax(0, 1fr) auto",
+              alignItems: "center",
+              gap: "30px",
             }}
           >
-            {t.heroTitle}
-          </h1>
+            <div className="kf-explore-hero-copy">
+              <h1
+                style={{
+                  fontSize: "68px",
+                  lineHeight: "1.02",
+                  fontWeight: "800",
+                  letterSpacing: "-.045em",
+                  margin: "0 0 20px",
+                  maxWidth: "950px",
+                  fontFamily: "var(--font-display)",
+                }}
+              >
+                {t.heroTitle}
+              </h1>
 
-          <p
-            style={{
-              color: "#94a3b8",
-              fontSize: "19px",
-              lineHeight: "1.7",
-              maxWidth: "800px",
-              margin: 0,
-            }}
-          >
-            {t.heroText}
-          </p>
+              <p
+                style={{
+                  color: "#667780",
+                  fontSize: "19px",
+                  lineHeight: "1.7",
+                  maxWidth: "900px",
+                  margin: 0,
+                }}
+              >
+                {t.heroText}
+              </p>
+            </div>
+
+            <div
+              className="kf-environment-topic-badge"
+              style={{
+                minWidth: "250px",
+                padding: "18px 22px",
+                border: "1px solid #eedbc6",
+                borderRadius: "28px",
+                background: "#fff2e4",
+                display: "flex",
+                alignItems: "center",
+                gap: "14px",
+                boxShadow: "0 8px 24px rgba(16,27,43,.035)",
+              }}
+            >
+              <div
+                className="kf-explore-topic-badge-icon"
+                style={{
+                  width: "56px",
+                  height: "56px",
+                  flex: "0 0 56px",
+                  display: "grid",
+                  placeItems: "center",
+                  borderRadius: "18px",
+                  background: "#fffdf9",
+                  border: "1px solid #eadfd2",
+                  fontSize: "27px",
+                }}
+              >
+                📄
+              </div>
+
+              <div>
+                <div
+                  style={{
+                    color: "#34485b",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "21px",
+                    lineHeight: "1.15",
+                    fontWeight: "800",
+                  }}
+                >
+                  {language === "en"
+                    ? "Civic knowledge"
+                    : language === "hi"
+                      ? "नागरिक ज्ञान"
+                      : "नागरी ज्ञान"}
+                </div>
+
+                <div
+                  style={{
+                    marginTop: "7px",
+                    color: "#8b7969",
+                    fontSize: "12px",
+                    lineHeight: "1.2",
+                    fontWeight: "700",
+                  }}
+                >
+                  {t.heroTitle}
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* SECTION 1 */}
@@ -925,6 +1109,7 @@ export default function EnvironmentPage() {
           </p>
 
           <div
+            className="kf-environment-callout"
             style={{
               marginTop: "30px",
               background: "#0f172a",
@@ -1009,6 +1194,8 @@ export default function EnvironmentPage() {
           </p>
 
           <div
+            className="kf-environment-waste-card-grid"
+            data-environment-grid="waste"
             style={{
               marginTop: "30px",
               display: "grid",
@@ -1043,6 +1230,7 @@ export default function EnvironmentPage() {
           </div>
 
           <div
+            className="kf-environment-callout"
             style={{
               marginTop: "30px",
               background:
@@ -1229,6 +1417,7 @@ export default function EnvironmentPage() {
             {citizenActions.map((action) => (
               <div
                 key={action.number}
+                className="kf-environment-action-card"
                 style={{
                   display: "flex",
                   gap: "18px",
@@ -1240,6 +1429,7 @@ export default function EnvironmentPage() {
                 }}
               >
                 <div
+                  className="kf-environment-action-number"
                   style={{
                     minWidth: "42px",
                     height: "42px",
@@ -1285,6 +1475,7 @@ export default function EnvironmentPage() {
         {/* QUIZ */}
 
         <section
+          className="kf-quiz-section"
           style={{
             background:
               "linear-gradient(135deg, #0f172a, #111827)",
@@ -1380,6 +1571,16 @@ export default function EnvironmentPage() {
                       key={`${index}-${option.en}`}
                       onClick={() => handleAnswer(index)}
                       disabled={selectedAnswer !== null}
+                      className="kf-quiz-answer"
+                      data-quiz-state={
+                        selectedAnswer === null
+                          ? "default"
+                          : isSelected && !isCorrect
+                          ? "wrong"
+                          : isCorrect
+                          ? "correct"
+                          : "default"
+                      }
                       style={{
                         width: "100%",
                         textAlign: "left",
@@ -1431,6 +1632,7 @@ export default function EnvironmentPage() {
                   type="button"
                   onClick={nextQuestion}
                   disabled={savingProgress}
+                  className="kf-quiz-next"
                   style={{
                     marginTop: "25px",
                     padding: "13px 22px",
@@ -1498,6 +1700,7 @@ export default function EnvironmentPage() {
               <button
                 type="button"
                 onClick={restartQuiz}
+                className="kf-quiz-restart"
                 style={{
                   padding: "13px 22px",
                   background: "transparent",
@@ -1528,6 +1731,961 @@ export default function EnvironmentPage() {
           {t.footer}
         </div>
       </div>
+
+        <style>{`
+          .kf-explore-page {
+            --kf-ivory: #f8f3ea;
+            --kf-white: #fffdf9;
+            --kf-navy: #102033;
+            --kf-ink: #263447;
+            --kf-body: #596a78;
+            --kf-muted: #7b8790;
+            --kf-orange: #ff7a00;
+            --kf-blue: #edf5fa;
+            --kf-blue-line: #d6e5ed;
+            --kf-peach: #fff2e4;
+            --kf-peach-line: #eedbc6;
+            --kf-green: #eef6e7;
+            --kf-green-line: #d5e5ca;
+            --kf-lavender: #f4eff9;
+            --kf-lavender-line: #dfd4ea;
+            --kf-line: #ddd7ce;
+
+            min-height: 100vh !important;
+            background:
+              radial-gradient(circle at 92% 2%, rgba(215,232,242,.95) 0%, rgba(215,232,242,0) 26%),
+              radial-gradient(circle at 5% 35%, rgba(231,242,248,.78) 0%, rgba(231,242,248,0) 25%),
+              radial-gradient(circle at 92% 93%, rgba(255,229,205,.72) 0%, rgba(255,229,205,0) 28%),
+              var(--kf-ivory) !important;
+            color: var(--kf-body) !important;
+            padding: 20px 16px 72px !important;
+            font-family: var(--font-body) !important;
+          }
+
+          .kf-explore-page > div {
+            width: min(1120px, 100%) !important;
+            max-width: none !important;
+            margin: 0 auto !important;
+          }
+
+          .kf-simple-card { background:#fffdf9 !important; border:1px solid rgba(16,27,43,.08) !important; border-radius:22px !important; box-shadow:0 8px 24px rgba(16,27,43,.035) !important; }
+          .kf-simple-card h3 { color:var(--kf-ink) !important; }
+          .kf-simple-card p { color:var(--kf-body) !important; }
+
+          .kf-explore-page header {
+            margin-bottom: 16px !important;
+            padding: 12px 14px !important;
+            border: 1px solid var(--kf-line) !important;
+            border-radius: 25px !important;
+            background: rgba(255,253,249,.96) !important;
+            box-shadow: 0 14px 36px rgba(16,27,43,.055) !important;
+            backdrop-filter: blur(16px);
+          }
+
+          .kf-explore-page header div {
+            color: var(--kf-navy) !important;
+          }
+
+          .kf-explore-page header select {
+            background: #fffdf9 !important;
+            color: #304154 !important;
+            border: 1px solid #d7d1c9 !important;
+            border-radius: 999px !important;
+          }
+
+          .kf-explore-page header button {
+            color: #4d6070 !important;
+            border-color: #dad4cc !important;
+            border-radius: 999px !important;
+            background: #fffdf9 !important;
+          }
+
+          .kf-explore-page > div > section {
+            margin-bottom: 16px !important;
+            padding: 30px !important;
+            border: 1px solid var(--kf-line) !important;
+            border-radius: 31px !important;
+            box-shadow: 0 14px 38px rgba(16,27,43,.05) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(1) {
+            padding: 32px !important;
+            background:
+              radial-gradient(circle at 94% 0%, rgba(218,235,244,.98) 0%, rgba(218,235,244,0) 34%),
+              radial-gradient(circle at 0% 100%, rgba(255,232,210,.90) 0%, rgba(255,232,210,0) 35%),
+              rgba(255,253,249,.97) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(2) { background: var(--kf-blue) !important; border-color: var(--kf-blue-line) !important; }
+          .kf-explore-page > div > section:nth-of-type(3) { background: var(--kf-peach) !important; border-color: var(--kf-peach-line) !important; }
+          .kf-explore-page > div > section:nth-of-type(4) { background: var(--kf-green) !important; border-color: var(--kf-green-line) !important; }
+          .kf-explore-page > div > section:nth-of-type(5) { background: var(--kf-lavender) !important; border-color: var(--kf-lavender-line) !important; }
+          .kf-explore-page > div > section:nth-of-type(6) { background: var(--kf-blue) !important; border-color: var(--kf-blue-line) !important; }
+          .kf-explore-page > div > section:nth-of-type(7) { background: var(--kf-peach) !important; border-color: var(--kf-peach-line) !important; }
+          .kf-explore-page > div > section:nth-of-type(8) { background: var(--kf-lavender) !important; border-color: var(--kf-lavender-line) !important; }
+          .kf-explore-page > div > section:nth-of-type(9) { background: var(--kf-green) !important; border-color: var(--kf-green-line) !important; }
+
+          .kf-explore-page h1,
+          .kf-explore-page h2,
+          .kf-explore-page h3 {
+            color: var(--kf-ink) !important;
+            font-family: var(--font-display) !important;
+          }
+
+          .kf-explore-page p,
+          .kf-explore-page li {
+            color: var(--kf-body) !important;
+          }
+
+          .kf-explore-page [style*="background"] {
+            box-shadow: 0 9px 22px rgba(16,27,43,.035) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(2) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(4) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(5) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(6) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(8) [style*="background"],
+          .kf-explore-page > div > section:nth-of-type(9) [style*="background"] {
+            background: rgba(255,253,249,.80) !important;
+            border: 1px solid rgba(16,27,43,.075) !important;
+            border-radius: 22px !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(3) > div:last-child,
+          .kf-explore-page > div > section:nth-of-type(7) > div:last-child {
+            background: rgba(255,253,249,.80) !important;
+            border: 1px solid rgba(16,27,43,.075) !important;
+            border-radius: 23px !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(1) [style*="color: #ff7a00"],
+          .kf-explore-page [style*="color: #ff7a00"] {
+            color: #9c6b42 !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(9) {
+            position: relative !important;
+            overflow: hidden !important;
+            padding: 30px !important;
+            background:
+              radial-gradient(circle at 94% 0%, rgba(218,235,244,.95) 0%, rgba(218,235,244,0) 34%),
+              radial-gradient(circle at 0% 100%, rgba(255,232,210,.88) 0%, rgba(255,232,210,0) 34%),
+              rgba(255,253,249,.98) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(9) button {
+            border-radius: 19px !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(9) button:not(:last-child) {
+            color: #425565 !important;
+            background: #fffdf9 !important;
+            border-color: #ded9d1 !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(9) button:last-child {
+            color: #fff !important;
+            background: var(--kf-orange) !important;
+            border-color: var(--kf-orange) !important;
+          }
+
+          .kf-explore-page > div > div:last-child {
+            color: #89939a !important;
+            text-align: center !important;
+          }
+
+          @media (max-width: 900px) {
+            .kf-explore-page > div > section { padding: 22px !important; }
+          }
+
+          @media (max-width: 680px) {
+            .kf-explore-page { padding: 12px 10px 44px !important; }
+            .kf-explore-page > div > section { padding: 20px !important; border-radius: 24px !important; }
+            .kf-explore-page header { padding: 11px 12px !important; }
+          }
+
+          .kf-explore-page > div > section:nth-of-type(8) { background: var(--kf-lavender) !important; border-color: var(--kf-lavender-line) !important; }
+
+          .kf-explore-page > div > section:nth-of-type(9) {
+            position: relative !important;
+            overflow: hidden !important;
+            padding: 30px !important;
+            background:
+              radial-gradient(circle at 94% 0%, rgba(218,235,244,.95) 0%, rgba(218,235,244,0) 34%),
+              radial-gradient(circle at 0% 100%, rgba(255,232,210,.88) 0%, rgba(255,232,210,0) 34%),
+              rgba(255,253,249,.98) !important;
+            border: 1px solid var(--kf-line) !important;
+            border-radius: 31px !important;
+            box-shadow: 0 14px 38px rgba(16,27,43,.05) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(9) button:not(:last-child) {
+            color: #425565 !important;
+            background: #fffdf9 !important;
+            border-color: #ded9d1 !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(9) button:last-child {
+            color: #fff !important;
+            background: var(--kf-orange) !important;
+            border-color: var(--kf-orange) !important;
+          }
+
+          /* Constitution-style branding and hero */
+          .kf-explore-page .kf-environment-hero-row h1 {
+            color: var(--kf-ink) !important;
+            font-family: var(--font-display) !important;
+          }
+
+          .kf-explore-page header .kf-explore-brand-box {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+          }
+
+          .kf-explore-page .kf-environment-topic-badge {
+            align-self: center;
+          }
+
+          /* Soften the older dark editorial blocks into the Constitution-style
+             ivory/pastel card system. */
+          .kf-explore-page > div > section:nth-of-type(2) [style*="background: #0f172a"],
+          .kf-explore-page > div > section:nth-of-type(4) [style*="background: #0f172a"],
+          .kf-explore-page > div > section:nth-of-type(8) [style*="background: #0f172a"],
+          .kf-explore-page > div > section:nth-of-type(4) [style*="linear-gradient(135deg, #0f172a"],
+          .kf-explore-page > div > section:nth-of-type(9) [style*="background: #020617"] {
+            background: rgba(255,253,249,.84) !important;
+            border-color: rgba(16,27,43,.075) !important;
+            color: var(--kf-ink) !important;
+            box-shadow: 0 9px 22px rgba(16,27,43,.035) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(2) [style*="background: #0f172a"] p,
+          .kf-explore-page > div > section:nth-of-type(4) [style*="background: #0f172a"] p,
+          .kf-explore-page > div > section:nth-of-type(8) [style*="background: #0f172a"] p {
+            color: var(--kf-body) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(9) [style*="background: #020617"] {
+            color: var(--kf-ink) !important;
+          }
+
+          .kf-explore-page > div > section:nth-of-type(9) [style*="background: #020617"]:hover {
+            background: #fffdf9 !important;
+          }
+
+          @media (max-width: 900px) {
+            .kf-explore-page .kf-environment-hero-row {
+              grid-template-columns: 1fr !important;
+            }
+
+            .kf-explore-page .kf-environment-topic-badge {
+              width: fit-content;
+              min-width: 0 !important;
+            }
+
+            .kf-explore-page .kf-environment-hero-row h1 {
+              font-size: 58px !important;
+            }
+          }
+
+          @media (max-width: 680px) {
+            .kf-explore-page .kf-environment-hero-row h1 {
+              font-size: 46px !important;
+            }
+
+            .kf-explore-page .kf-environment-topic-badge {
+              width: 100%;
+            }
+          }
+
+
+          /* =========================================================
+             ENVIRONMENT — FINAL DARK THEME
+             Mirrors the Local Issues visual system.
+             Scoped so it cannot affect other Explore pages.
+             ========================================================= */
+
+          html[data-theme="dark"] .kf-environment-page {
+            background:
+              radial-gradient(circle at 90% 0%, rgba(57,118,177,.16), transparent 28%),
+              radial-gradient(circle at 6% 78%, rgba(255,122,26,.055), transparent 23%),
+              linear-gradient(180deg, #07111f 0%, #091625 52%, #07111f 100%) !important;
+            color: #f5f7fb !important;
+            padding: 32px 5% 70px !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page > div {
+            background: transparent !important;
+          }
+
+          /* ---------- NAVBAR ---------- */
+          html[data-theme="dark"] .kf-environment-page .kf-explore-topbar {
+            position: sticky !important;
+            top: 12px !important;
+            z-index: 999 !important;
+            margin-bottom: 28px !important;
+            padding: 10px 14px !important;
+            border: 1px solid transparent !important;
+            border-radius: 24px !important;
+            background: rgba(4,10,20,.62) !important;
+            background-image: none !important;
+            box-shadow:
+              -10px 0 24px -8px rgba(0,212,255,.46),
+               10px 0 24px -8px rgba(255,140,26,.46),
+               0 10px 30px rgba(0,0,0,.34) !important;
+            backdrop-filter: blur(14px) saturate(125%) !important;
+            -webkit-backdrop-filter: blur(14px) saturate(125%) !important;
+            isolation: isolate !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-topbar::before {
+            content: "" !important;
+            position: absolute !important;
+            inset: 0 !important;
+            border-radius: inherit !important;
+            padding: 1.25px !important;
+            background: linear-gradient(
+              90deg,
+              #00d4ff 0%,
+              rgba(0,174,255,.72) 16%,
+              rgba(90,120,150,.28) 43%,
+              rgba(120,120,130,.22) 57%,
+              rgba(255,150,40,.72) 84%,
+              #ff8c1a 100%
+            ) !important;
+            -webkit-mask:
+              linear-gradient(#fff 0 0) content-box,
+              linear-gradient(#fff 0 0) !important;
+            mask:
+              linear-gradient(#fff 0 0) content-box,
+              linear-gradient(#fff 0 0) !important;
+            -webkit-mask-composite: xor !important;
+            mask-composite: exclude !important;
+            pointer-events: none !important;
+            z-index: 0 !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-topbar::after {
+            content: "" !important;
+            position: absolute !important;
+            inset: -5px !important;
+            border-radius: 29px !important;
+            background: linear-gradient(
+              90deg,
+              #00d4ff 0%,
+              rgba(0,150,255,.48) 18%,
+              transparent 36%,
+              transparent 64%,
+              rgba(255,140,26,.52) 82%,
+              #ff8c1a 100%
+            ) !important;
+            filter: blur(12px) !important;
+            opacity: .52 !important;
+            pointer-events: none !important;
+            z-index: -1 !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-topbar > * {
+            position: relative !important;
+            z-index: 2 !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-back {
+            min-height: 40px !important;
+            background: rgba(7,16,28,.58) !important;
+            color: #e8f0f7 !important;
+            border-color: rgba(137,169,202,.18) !important;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.035) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-back span {
+            color: #ff8b32 !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-brand-name {
+            color: #f7f9fc !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-brand-name span {
+            color: #ff7a00 !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-brand-caption {
+            color: #7f97ad !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-brand-box {
+            background: #ff7a00 !important;
+            color: #ffffff !important;
+            box-shadow: 0 8px 22px rgba(255,122,0,.24) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-language {
+            color: #9fb1c3 !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-language-select,
+          html[data-theme="dark"] .kf-environment-page .kf-explore-language select {
+            min-width: 112px !important;
+            padding: 9px 13px !important;
+            background: rgba(7,16,28,.58) !important;
+            color: #e8f0f7 !important;
+            border-color: rgba(137,169,202,.18) !important;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.035) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-language select option {
+            background: #10243a !important;
+            color: #f5f7fb !important;
+          }
+
+          /* ---------- HERO ---------- */
+          html[data-theme="dark"] .kf-environment-page .kf-explore-hero {
+            margin-bottom: 16px !important;
+            background:
+              radial-gradient(circle at 94% 0%, rgba(58,116,167,.25) 0%, rgba(58,116,167,0) 34%),
+              radial-gradient(circle at 0% 100%, rgba(181,119,57,.16) 0%, rgba(181,119,57,0) 34%),
+              linear-gradient(145deg, #10263c 0%, #0d2034 54%, #091827 100%) !important;
+            border: 1px solid rgba(102,156,202,.22) !important;
+            border-radius: 31px !important;
+            box-shadow:
+              0 20px 50px rgba(0,0,0,.24),
+              inset 0 1px 0 rgba(255,255,255,.035) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-environment-hero-row h1,
+          html[data-theme="dark"] .kf-environment-page .kf-explore-hero-copy h1 {
+            color: #f7f9fc !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-hero p,
+          html[data-theme="dark"] .kf-environment-page .kf-explore-hero-copy p {
+            color: #aebed0 !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-eyebrow {
+            color: #ff8b32 !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-topic-badge {
+            min-width: 255px !important;
+            background: linear-gradient(145deg, rgba(7,18,31,.78), rgba(16,37,58,.72)) !important;
+            border-color: rgba(104,159,208,.21) !important;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.035) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-topic-badge-icon {
+            background: rgba(255,255,255,.06) !important;
+            border-color: rgba(135,169,198,.16) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-topic-badge div {
+            color: #f5f7fb !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-explore-topic-badge div:last-child > div:last-child {
+            color: #8ea6ba !important;
+          }
+
+          /* ---------- DARK SECTIONS / WRAPPERS ---------- */
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(n+2) {
+            background: transparent !important;
+            border-color: transparent !important;
+            box-shadow: none !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page > div > section > div[style*="display: grid"] {
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page h2,
+          html[data-theme="dark"] .kf-environment-page h3 {
+            color: #f5f7fb !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page p {
+            color: #aebfd0 !important;
+          }
+
+          /* ---------- CARDS: POLLUTION ---------- */
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(3) .kf-environment-card:nth-child(1),
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(3) .kf-environment-card:nth-child(5) {
+            background: radial-gradient(circle at 88% 8%, rgba(24,191,255,.13), transparent 30%), linear-gradient(145deg, #12365d, #081a31) !important;
+            border-color: rgba(24,191,255,.30) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(3) .kf-environment-card:nth-child(2),
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(3) .kf-environment-card:nth-child(6) {
+            background: radial-gradient(circle at 88% 8%, rgba(255,173,47,.13), transparent 30%), linear-gradient(145deg, #3d2711, #1b110a) !important;
+            border-color: rgba(255,173,47,.30) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(3) .kf-environment-card:nth-child(3) {
+            background: radial-gradient(circle at 88% 8%, rgba(0,223,192,.13), transparent 30%), linear-gradient(145deg, #103a36, #071f20) !important;
+            border-color: rgba(0,223,192,.30) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(3) .kf-environment-card:nth-child(4) {
+            background: radial-gradient(circle at 88% 8%, rgba(123,109,255,.14), transparent 30%), linear-gradient(145deg, #171d58, #0b1030) !important;
+            border-color: rgba(123,109,255,.30) !important;
+          }
+
+          /* ---------- CARDS: WASTE ---------- */
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(4) .kf-environment-card:nth-child(1) {
+            background: radial-gradient(circle at 88% 8%, rgba(24,191,255,.13), transparent 30%), linear-gradient(145deg, #12365d, #081a31) !important;
+            border-color: rgba(24,191,255,.30) !important;
+          }
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(4) .kf-environment-card:nth-child(2) {
+            background: radial-gradient(circle at 88% 8%, rgba(255,173,47,.13), transparent 30%), linear-gradient(145deg, #3d2711, #1b110a) !important;
+            border-color: rgba(255,173,47,.30) !important;
+          }
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(4) .kf-environment-card:nth-child(3) {
+            background: radial-gradient(circle at 88% 8%, rgba(0,223,192,.13), transparent 30%), linear-gradient(145deg, #103a36, #071f20) !important;
+            border-color: rgba(0,223,192,.30) !important;
+          }
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(4) .kf-environment-card:nth-child(4) {
+            background: radial-gradient(circle at 88% 8%, rgba(123,109,255,.14), transparent 30%), linear-gradient(145deg, #171d58, #0b1030) !important;
+            border-color: rgba(123,109,255,.30) !important;
+          }
+
+          /* ---------- CARDS: FORESTS / BIODIVERSITY ---------- */
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(5) .kf-environment-card:nth-child(1),
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(5) .kf-environment-card:nth-child(5) {
+            background: radial-gradient(circle at 88% 8%, rgba(24,191,255,.13), transparent 30%), linear-gradient(145deg, #12365d, #081a31) !important;
+            border-color: rgba(24,191,255,.30) !important;
+          }
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(5) .kf-environment-card:nth-child(2) {
+            background: radial-gradient(circle at 88% 8%, rgba(255,173,47,.13), transparent 30%), linear-gradient(145deg, #3d2711, #1b110a) !important;
+            border-color: rgba(255,173,47,.30) !important;
+          }
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(5) .kf-environment-card:nth-child(3) {
+            background: radial-gradient(circle at 88% 8%, rgba(0,223,192,.13), transparent 30%), linear-gradient(145deg, #103a36, #071f20) !important;
+            border-color: rgba(0,223,192,.30) !important;
+          }
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(5) .kf-environment-card:nth-child(4) {
+            background: radial-gradient(circle at 88% 8%, rgba(123,109,255,.14), transparent 30%), linear-gradient(145deg, #171d58, #0b1030) !important;
+            border-color: rgba(123,109,255,.30) !important;
+          }
+
+          /* ---------- CARDS: CLIMATE ---------- */
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(6) .kf-environment-card:nth-child(1) {
+            background: radial-gradient(circle at 88% 8%, rgba(24,191,255,.13), transparent 30%), linear-gradient(145deg, #12365d, #081a31) !important;
+            border-color: rgba(24,191,255,.30) !important;
+          }
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(6) .kf-environment-card:nth-child(2) {
+            background: radial-gradient(circle at 88% 8%, rgba(255,173,47,.13), transparent 30%), linear-gradient(145deg, #3d2711, #1b110a) !important;
+            border-color: rgba(255,173,47,.30) !important;
+          }
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(6) .kf-environment-card:nth-child(3) {
+            background: radial-gradient(circle at 88% 8%, rgba(0,223,192,.13), transparent 30%), linear-gradient(145deg, #103a36, #071f20) !important;
+            border-color: rgba(0,223,192,.30) !important;
+          }
+
+          /* ---------- CARDS: ENVIRONMENTAL GOVERNANCE ---------- */
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(7) .kf-environment-card:nth-child(1) {
+            background: radial-gradient(circle at 88% 8%, rgba(24,191,255,.13), transparent 30%), linear-gradient(145deg, #12365d, #081a31) !important;
+            border-color: rgba(24,191,255,.30) !important;
+          }
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(7) .kf-environment-card:nth-child(2) {
+            background: radial-gradient(circle at 88% 8%, rgba(0,223,192,.13), transparent 30%), linear-gradient(145deg, #103a36, #071f20) !important;
+            border-color: rgba(0,223,192,.30) !important;
+          }
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(7) .kf-environment-card:nth-child(3) {
+            background: radial-gradient(circle at 88% 8%, rgba(123,109,255,.14), transparent 30%), linear-gradient(145deg, #171d58, #0b1030) !important;
+            border-color: rgba(123,109,255,.30) !important;
+          }
+
+          /* ---------- CITIZEN ACTION CARDS ---------- */
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(8) .kf-environment-action-card:nth-child(1),
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(8) .kf-environment-action-card:nth-child(5) {
+            background: radial-gradient(circle at 88% 8%, rgba(24,191,255,.13), transparent 30%), linear-gradient(145deg, #12365d, #081a31) !important;
+            border-color: rgba(24,191,255,.30) !important;
+          }
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(8) .kf-environment-action-card:nth-child(2) {
+            background: radial-gradient(circle at 88% 8%, rgba(255,173,47,.13), transparent 30%), linear-gradient(145deg, #3d2711, #1b110a) !important;
+            border-color: rgba(255,173,47,.30) !important;
+          }
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(8) .kf-environment-action-card:nth-child(3) {
+            background: radial-gradient(circle at 88% 8%, rgba(0,223,192,.13), transparent 30%), linear-gradient(145deg, #103a36, #071f20) !important;
+            border-color: rgba(0,223,192,.30) !important;
+          }
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(8) .kf-environment-action-card:nth-child(4) {
+            background: radial-gradient(circle at 88% 8%, rgba(123,109,255,.14), transparent 30%), linear-gradient(145deg, #171d58, #0b1030) !important;
+            border-color: rgba(123,109,255,.30) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-environment-card,
+          html[data-theme="dark"] .kf-environment-page .kf-environment-action-card {
+            position: relative !important;
+            overflow: hidden !important;
+            color: #f5f8fb !important;
+            border-radius: 20px !important;
+            box-shadow:
+              0 18px 38px rgba(0,0,0,.28),
+              inset 0 1px 0 rgba(255,255,255,.045) !important;
+            backdrop-filter: blur(12px) saturate(125%) !important;
+            -webkit-backdrop-filter: blur(12px) saturate(125%) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-environment-card::before,
+          html[data-theme="dark"] .kf-environment-page .kf-environment-action-card::before {
+            content: "" !important;
+            position: absolute !important;
+            width: 180px !important;
+            height: 180px !important;
+            right: -85px !important;
+            top: -105px !important;
+            border-radius: 50% !important;
+            background: rgba(255,255,255,.035) !important;
+            pointer-events: none !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-environment-card > *,
+          html[data-theme="dark"] .kf-environment-page .kf-environment-action-card > * {
+            position: relative !important;
+            z-index: 1 !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-environment-card h3,
+          html[data-theme="dark"] .kf-environment-page .kf-environment-action-card h3 {
+            color: #f7f9fc !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-environment-card p,
+          html[data-theme="dark"] .kf-environment-page .kf-environment-action-card p {
+            color: #aebfd0 !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-environment-action-number {
+            background: rgba(255,140,26,.10) !important;
+            color: #ff983f !important;
+            border: 1px solid rgba(255,140,26,.28) !important;
+          }
+
+          /* ---------- CALLOUTS ---------- */
+          html[data-theme="dark"] .kf-environment-page .kf-environment-callout {
+            background:
+              linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.006)),
+              #0b1929 !important;
+            border-color: rgba(129,168,199,.18) !important;
+            color: #f5f8fb !important;
+            box-shadow:
+              0 14px 30px rgba(0,0,0,.22),
+              inset 0 1px 0 rgba(255,255,255,.04) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-environment-callout h3 {
+            color: #f5f8fb !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-environment-callout p {
+            color: #aebfd0 !important;
+          }
+
+          /* ---------- QUIZ ---------- */
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(9),
+          html[data-theme="dark"] .kf-environment-page .kf-quiz-section {
+            background:
+              radial-gradient(circle at 94% 0%, rgba(58,116,167,.25), transparent 34%),
+              radial-gradient(circle at 0% 100%, rgba(181,119,57,.16), transparent 34%),
+              linear-gradient(145deg, #10263c 0%, #0d2034 54%, #091827 100%) !important;
+            border: 1px solid rgba(102,156,202,.22) !important;
+            border-radius: 24px !important;
+            box-shadow:
+              0 20px 44px rgba(0,0,0,.30),
+              inset 0 1px 0 rgba(255,255,255,.04) !important;
+            color: #f5f7fb !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-quiz-answer {
+            background: linear-gradient(135deg, #07111f 0%, #0b1726 100%) !important;
+            color: #f7f9fc !important;
+            border: 1px solid rgba(146,176,204,.24) !important;
+            box-shadow:
+              inset 0 1px 0 rgba(255,255,255,.045),
+              0 8px 20px rgba(0,0,0,.18) !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,.55) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-quiz-answer:hover {
+            background: linear-gradient(135deg, #0b1a2b 0%, #10223a 100%) !important;
+            color: #ffffff !important;
+            border-color: rgba(255,255,255,.28) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-quiz-answer[data-quiz-state="correct"] {
+            background: linear-gradient(135deg, #ff983f 0%, #ff7a00 100%) !important;
+            color: #08111b !important;
+            border-color: #ffad63 !important;
+            text-shadow: none !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-quiz-answer[data-quiz-state="wrong"] {
+            background: linear-gradient(135deg, #1a1216 0%, #120d12 100%) !important;
+            color: #fff4f4 !important;
+            border-color: rgba(239,68,68,.72) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-quiz-next {
+            background: linear-gradient(135deg, #ff9a3d, #ff7a00) !important;
+            color: #111923 !important;
+            border: 1px solid rgba(255,176,112,.55) !important;
+            box-shadow:
+              0 8px 18px rgba(255,122,0,.22),
+              0 0 20px rgba(255,122,0,.16) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page .kf-quiz-restart {
+            color: #d6e1ec !important;
+            background: transparent !important;
+            border-color: rgba(137,169,202,.22) !important;
+          }
+
+          /* Light-mode quiz: neutral options, orange action only. */
+          html:not([data-theme="dark"]) .kf-environment-page .kf-quiz-answer {
+            background: #fffdf9 !important;
+            color: #425565 !important;
+            border-color: #ded9d1 !important;
+          }
+
+          html:not([data-theme="dark"]) .kf-environment-page .kf-quiz-answer[data-quiz-state="correct"] {
+            background: rgba(34,197,94,.08) !important;
+            color: #425565 !important;
+            border-color: #22c55e !important;
+          }
+
+          html:not([data-theme="dark"]) .kf-environment-page .kf-quiz-answer[data-quiz-state="wrong"] {
+            background: rgba(239,68,68,.08) !important;
+            color: #425565 !important;
+            border-color: #ef4444 !important;
+          }
+
+          html:not([data-theme="dark"]) .kf-environment-page .kf-quiz-next {
+            background: var(--kf-orange) !important;
+            color: #fff !important;
+            border-color: var(--kf-orange) !important;
+          }
+
+          @media (max-width: 680px) {
+            html[data-theme="dark"] .kf-environment-page {
+              padding: 12px 10px 44px !important;
+            }
+
+            html[data-theme="dark"] .kf-environment-page .kf-explore-topbar {
+              top: 10px !important;
+              margin-bottom: 26px !important;
+              padding: 9px 11px !important;
+              border-radius: 20px !important;
+            }
+
+            html[data-theme="dark"] .kf-environment-page .kf-explore-brand-box {
+              width: 38px !important;
+              height: 38px !important;
+              border-radius: 12px !important;
+              font-size: 21px !important;
+            }
+
+            html[data-theme="dark"] .kf-environment-page .kf-quiz-section {
+              border-radius: 20px !important;
+            }
+          }
+
+
+          /* FINAL QUIZ SAFETY: answer options are never identified by position. */
+          html:not([data-theme="dark"]) .kf-environment-page > div > section:nth-of-type(9) .kf-quiz-answer {
+            background: #fffdf9 !important;
+            color: #425565 !important;
+            border-color: #ded9d1 !important;
+          }
+
+          html:not([data-theme="dark"]) .kf-environment-page > div > section:nth-of-type(9) .kf-quiz-answer[data-quiz-state="correct"] {
+            background: rgba(34,197,94,.08) !important;
+            color: #425565 !important;
+            border-color: #22c55e !important;
+          }
+
+          html:not([data-theme="dark"]) .kf-environment-page > div > section:nth-of-type(9) .kf-quiz-answer[data-quiz-state="wrong"] {
+            background: rgba(239,68,68,.08) !important;
+            color: #425565 !important;
+            border-color: #ef4444 !important;
+          }
+
+          html:not([data-theme="dark"]) .kf-environment-page > div > section:nth-of-type(9) .kf-quiz-next {
+            background: var(--kf-orange) !important;
+            color: #fff !important;
+            border-color: var(--kf-orange) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(9) .kf-quiz-answer {
+            background: linear-gradient(135deg, #07111f 0%, #0b1726 100%) !important;
+            color: #f7f9fc !important;
+            border-color: rgba(146,176,204,.24) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(9) .kf-quiz-answer[data-quiz-state="correct"] {
+            background: linear-gradient(135deg, #ff983f 0%, #ff7a00 100%) !important;
+            color: #08111b !important;
+            border-color: #ffad63 !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(9) .kf-quiz-answer[data-quiz-state="wrong"] {
+            background: linear-gradient(135deg, #1a1216 0%, #120d12 100%) !important;
+            color: #fff4f4 !important;
+            border-color: rgba(239,68,68,.72) !important;
+          }
+
+          html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(9) .kf-quiz-next {
+            background: linear-gradient(135deg, #ff9a3d, #ff7a00) !important;
+            color: #111923 !important;
+            border-color: rgba(255,176,112,.55) !important;
+          }
+  
+
+        /* =========================================================
+           ENVIRONMENT — FINAL DARK SURFACE CLEANUP
+           1) Remove the stray painted wrapper behind the four waste cards.
+           2) Force the Remember/callout panel to use the dark glass surface.
+           These selectors intentionally outrank legacy Explore attribute
+           selectors such as [style*="background"].
+           ========================================================= */
+
+        html[data-theme="dark"] .kf-environment-page .kf-environment-waste-card-grid {
+          background: transparent !important;
+          background-color: transparent !important;
+          border: 0 !important;
+          outline: 0 !important;
+          box-shadow: none !important;
+        }
+
+        html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(4) .kf-environment-callout {
+          background:
+            linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.006)),
+            #0b1929 !important;
+          background-color: #0b1929 !important;
+          border: 1px solid rgba(129,168,199,.18) !important;
+          color: #f5f8fb !important;
+          box-shadow:
+            0 14px 30px rgba(0,0,0,.22),
+            inset 0 1px 0 rgba(255,255,255,.04) !important;
+          opacity: 1 !important;
+          filter: none !important;
+        }
+
+        html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(4) .kf-environment-callout h3 {
+          color: #f5f8fb !important;
+        }
+
+        html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(4) .kf-environment-callout p {
+          color: #aebfd0 !important;
+        }
+
+        /* Guard against any generic dark Explore rule painting this section's
+           descendants because their inline styles contain "background". */
+        html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(4) .kf-environment-waste-card-grid,
+        html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(4) .kf-environment-waste-card-grid::before,
+        html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(4) .kf-environment-waste-card-grid::after {
+          background: transparent !important;
+          background-color: transparent !important;
+          border: 0 !important;
+          outline: 0 !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+        }
+
+        /* FINAL: the four waste cards are the only painted surfaces inside
+           this grid. Remove any inherited rectangle/panel from the wrapper. */
+        html[data-theme="dark"] .kf-environment-page > div > section:nth-of-type(4) > .kf-environment-waste-card-grid {
+          display: grid !important;
+          gap: 18px !important;
+          background: none !important;
+          background-image: none !important;
+          background-color: transparent !important;
+          border: none !important;
+          border-width: 0 !important;
+          outline: none !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+          margin-top: 30px !important;
+        }
+
+        /* =========================================================
+           ENVIRONMENT — ABSOLUTE WASTE GRID WRAPPER RESET
+           The wrapper itself must never render a visible rectangle.
+           Only the four cards are painted.
+           ========================================================= */
+        html[data-theme="dark"] main.kf-explore-page.kf-environment-page > div > section:nth-of-type(4) > div.kf-environment-waste-card-grid,
+        html[data-theme="dark"] main.kf-explore-page.kf-environment-page > div > section:nth-of-type(4) > div.kf-environment-waste-card-grid::before,
+        html[data-theme="dark"] main.kf-explore-page.kf-environment-page > div > section:nth-of-type(4) > div.kf-environment-waste-card-grid::after {
+          background: transparent !important;
+          background-image: none !important;
+          background-color: transparent !important;
+          border: 0 !important;
+          border-width: 0 !important;
+          border-style: none !important;
+          outline: 0 !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+          opacity: 1 !important;
+          filter: none !important;
+        }
+
+
+        /* FINAL: Civic knowledge badge matches the Local Issues/Elections
+           dark-glass treatment instead of the light peach surface. */
+        html[data-theme="dark"] .kf-environment-page .kf-environment-topic-badge {
+          background: linear-gradient(145deg, rgba(16,38,60,.96), rgba(9,24,39,.96)) !important;
+          background-image: linear-gradient(145deg, rgba(16,38,60,.96), rgba(9,24,39,.96)) !important;
+          border: 1px solid rgba(102,156,202,.28) !important;
+          box-shadow:
+            0 18px 38px rgba(0,0,0,.24),
+            inset 0 1px 0 rgba(255,255,255,.045) !important;
+          color: #f5f7fb !important;
+        }
+
+        html[data-theme="dark"] .kf-environment-page .kf-environment-topic-badge .kf-explore-topic-badge-icon {
+          background: rgba(255,255,255,.055) !important;
+          border-color: rgba(135,169,198,.18) !important;
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.035) !important;
+        }
+
+        html[data-theme="dark"] .kf-environment-page .kf-environment-topic-badge > div:not(.kf-explore-topic-badge-icon) > div:first-child {
+          color: #f7f9fc !important;
+        }
+
+        html[data-theme="dark"] .kf-environment-page .kf-environment-topic-badge > div:not(.kf-explore-topic-badge-icon) > div:last-child {
+          color: #9fb1c3 !important;
+        }
+
+        /* =========================================================
+           ENVIRONMENT — WASTE GRID GAP RESET
+           The grid wrapper must contribute no painted surface.
+           The inline background/border/box-shadow declarations were
+           intentionally removed so legacy [style*="background"] rules
+           cannot match this wrapper. Only the four cards are visible.
+           ========================================================= */
+        html[data-theme="dark"] main.kf-explore-page.kf-environment-page > div > section:nth-of-type(4) > div.kf-environment-waste-card-grid {
+          background: transparent !important;
+          background-image: none !important;
+          background-color: transparent !important;
+          border: 0 !important;
+          outline: 0 !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+          margin-top: 30px !important;
+        }
+
+        html[data-theme="dark"] main.kf-explore-page.kf-environment-page > div > section:nth-of-type(4) > div.kf-environment-waste-card-grid::before,
+        html[data-theme="dark"] main.kf-explore-page.kf-environment-page > div > section:nth-of-type(4) > div.kf-environment-waste-card-grid::after {
+          content: none !important;
+          display: none !important;
+          background: none !important;
+          box-shadow: none !important;
+        }
+
+      `}</style>
     </main>
   );
 }
@@ -1539,6 +2697,7 @@ export default function EnvironmentPage() {
 function SectionLabel({ text }: { text: string }) {
   return (
     <div
+      className="kf-explore-eyebrow"
       style={{
         color: "#ff7a00",
         fontSize: "14px",
@@ -1563,11 +2722,13 @@ function SimpleCard({
 }) {
   return (
     <div
+      className="kf-simple-card kf-environment-card"
       style={{
-        background: "#0f172a",
-        border: "1px solid #1e293b",
-        borderRadius: "18px",
-        padding: "25px",
+        background: "#fffdf9",
+        border: "1px solid rgba(16,27,43,.08)",
+        borderRadius: "22px",
+        padding: "18px",
+        boxShadow: "0 8px 24px rgba(16,27,43,.035)",
       }}
     >
       <div
@@ -1590,7 +2751,7 @@ function SimpleCard({
 
       <p
         style={{
-          color: "#94a3b8",
+          color: "#667780",
           lineHeight: "1.65",
           margin: 0,
         }}
