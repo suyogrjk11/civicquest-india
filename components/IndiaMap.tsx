@@ -6,7 +6,7 @@ import {
   Geography,
   Marker,
 } from "react-simple-maps";
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 import StateSpotlight from "./StateSpotlight";
 
@@ -699,6 +699,9 @@ export default function IndiaMap({
   const [selectedState, setSelectedState] =
     useState<string | null>(null);
 
+  const selectedElementRef =
+    useRef<Element | null>(null);
+
   const [
     selectedPanelSide,
     setSelectedPanelSide,
@@ -765,6 +768,7 @@ export default function IndiaMap({
   }
 
   function clearSelection() {
+    selectedElementRef.current = null;
     setSelectedState(null);
     setHoveredState(null);
   }
@@ -838,8 +842,42 @@ export default function IndiaMap({
       return;
     }
 
+    /*
+     * Store the clicked geography first.
+     * Selecting a state changes the parent layout from one
+     * column into the final left / map / right three-column grid.
+     * The map resizes during that layout change, so its final
+     * geometry must be measured after React commits the change.
+     */
+    selectedElementRef.current = element;
+
     setSelectedState(stateName);
     setHoveredState(null);
+  }
+
+  /*
+   * IMPORTANT:
+   *
+   * When a state is selected, the parent grid changes from one
+   * column to three columns. That resize changes the map's actual
+   * bounding box. Measuring the clicked state before that layout
+   * change is what caused the first-click card to appear too low.
+   *
+   * useLayoutEffect runs after the new grid layout is committed but
+   * before the browser paints, so the card is positioned from the
+   * final map geometry on the very first click.
+   */
+  useLayoutEffect(() => {
+    if (
+      !selectedState ||
+      !mapElement ||
+      !selectedElementRef.current
+    ) {
+      return;
+    }
+
+    const element =
+      selectedElementRef.current;
 
     setSelectedPanelSide(
       getPanelSide(
@@ -854,7 +892,7 @@ export default function IndiaMap({
         mapElement
       )
     );
-  }
+  }, [selectedState, mapElement]);
 
   /* ======================================================= */
   /* SELECTED STATE PANEL                                    */

@@ -9477,3 +9477,228 @@ html[data-theme="dark"] main.kf-loading-page strong {
   color: #f5f7fb !important;
 }
 
+
+/* =====================================================================
+   KARMAFACIE — GLOBAL HINDI / MARATHI TYPOGRAPHY FIX
+   ---------------------------------------------------------------------
+   Applies only while Hindi or Marathi is selected.
+   English typography/layout remains unchanged.
+
+   Handles both language-control patterns currently used in KarmaFacie:
+   1) <select> with option values: en / hi / mr
+   2) Language buttons in [aria-label="Language selection"], ordered
+      English / Hindi / Marathi with aria-pressed on the active button.
+   ===================================================================== */
+
+/* Load the Devanagari glyph set for the existing Baloo 2 display family. */
+@font-face {
+  font-family: "Baloo 2";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 800;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/baloo-2:v5.3.0/devanagari-wght-normal.woff2) format("woff2-variations");
+  unicode-range: U+0900-097F;
+}
+
+/* ---------- LANGUAGE DETECTION ---------- */
+
+html:has(select option[value="hi"]:checked),
+html:has(
+  [aria-label="Language selection"]
+    button:nth-child(2)[aria-pressed="true"]
+) {
+  --kf-active-script: devanagari;
+}
+
+html:has(select option[value="mr"]:checked),
+html:has(
+  [aria-label="Language selection"]
+    button:nth-child(3)[aria-pressed="true"]
+) {
+  --kf-active-script: devanagari;
+}
+
+/* ---------- DEVA-NAGARI DISPLAY FONT + METRICS ---------- */
+
+html:has(select option[value="hi"]:checked) h1,
+html:has(select option[value="hi"]:checked) h2,
+html:has(select option[value="hi"]:checked) h3,
+html:has(select option[value="hi"]:checked) h4,
+html:has(select option[value="hi"]:checked) h5,
+html:has(select option[value="hi"]:checked) h6,
+html:has(select option[value="mr"]:checked) h1,
+html:has(select option[value="mr"]:checked) h2,
+html:has(select option[value="mr"]:checked) h3,
+html:has(select option[value="mr"]:checked) h4,
+html:has(select option[value="mr"]:checked) h5,
+html:has(select option[value="mr"]:checked) h6,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) h1,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) h2,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) h3,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) h4,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) h5,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) h6,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) h1,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) h2,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) h3,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) h4,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) h5,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) h6 {
+  font-family:
+    var(--font-display),
+    "Baloo 2",
+    "Noto Sans Devanagari",
+    "Nirmala UI",
+    "Mangal",
+    sans-serif !important;
+  line-height: 1.10 !important;
+  letter-spacing: -0.012em !important;
+  font-synthesis: none !important;
+  text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* ---------- EYEBROWS / KICKERS / SECTION LABELS ---------- */
+
+html:has(select option[value="hi"]:checked) .kf-eyebrow,
+html:has(select option[value="hi"]:checked) .kf-section-kicker,
+html:has(select option[value="hi"]:checked) .kf-card-kicker,
+html:has(select option[value="hi"]:checked) [class*="eyebrow"],
+html:has(select option[value="hi"]:checked) [class*="Eyebrow"],
+html:has(select option[value="hi"]:checked) [class*="kicker"],
+html:has(select option[value="hi"]:checked) [class*="Kicker"],
+html:has(select option[value="hi"]:checked) [class*="section-label"],
+html:has(select option[value="hi"]:checked) [class*="sectionLabel"],
+html:has(select option[value="mr"]:checked) .kf-eyebrow,
+html:has(select option[value="mr"]:checked) .kf-section-kicker,
+html:has(select option[value="mr"]:checked) .kf-card-kicker,
+html:has(select option[value="mr"]:checked) [class*="eyebrow"],
+html:has(select option[value="mr"]:checked) [class*="Eyebrow"],
+html:has(select option[value="mr"]:checked) [class*="kicker"],
+html:has(select option[value="mr"]:checked) [class*="Kicker"],
+html:has(select option[value="mr"]:checked) [class*="section-label"],
+html:has(select option[value="mr"]:checked) [class*="sectionLabel"],
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) .kf-eyebrow,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) .kf-section-kicker,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) .kf-card-kicker,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) [class*="eyebrow"],
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) [class*="Eyebrow"],
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) [class*="kicker"],
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) [class*="Kicker"],
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) [class*="section-label"],
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) [class*="sectionLabel"],
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) .kf-eyebrow,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) .kf-section-kicker,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) .kf-card-kicker,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) [class*="eyebrow"],
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) [class*="Eyebrow"],
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) [class*="kicker"],
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) [class*="Kicker"],
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) [class*="section-label"],
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) [class*="sectionLabel"] {
+  display: block !important;
+  line-height: 1.35 !important;
+  margin-bottom: 14px !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  letter-spacing: 0.08em !important;
+}
+
+/* ---------- COMMON KARMAFACIE TITLES ---------- */
+
+html:has(select option[value="hi"]:checked) .kf-hero-title,
+html:has(select option[value="mr"]:checked) .kf-hero-title,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) .kf-hero-title,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) .kf-hero-title {
+  line-height: 1.08 !important;
+  letter-spacing: -0.012em !important;
+}
+
+html:has(select option[value="hi"]:checked) .kf-section-title,
+html:has(select option[value="mr"]:checked) .kf-section-title,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) .kf-section-title,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) .kf-section-title {
+  line-height: 1.10 !important;
+  letter-spacing: -0.012em !important;
+}
+
+html:has(select option[value="hi"]:checked) .kf-feature-content h3,
+html:has(select option[value="mr"]:checked) .kf-feature-content h3,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) .kf-feature-content h3,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) .kf-feature-content h3,
+html:has(select option[value="hi"]:checked) .kf-topic-title,
+html:has(select option[value="mr"]:checked) .kf-topic-title,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) .kf-topic-title,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) .kf-topic-title {
+  line-height: 1.20 !important;
+}
+
+html:has(select option[value="hi"]:checked) .kf-cta-title,
+html:has(select option[value="mr"]:checked) .kf-cta-title,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) .kf-cta-title,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) .kf-cta-title {
+  line-height: 1.08 !important;
+  letter-spacing: -0.012em !important;
+}
+
+/* When an eyebrow is immediately followed by a heading, establish a
+   small explicit gap. This defeats page-level inline heading margins
+   without affecting the English state. */
+html:has(select option[value="hi"]:checked) main h1,
+html:has(select option[value="hi"]:checked) main h2,
+html:has(select option[value="hi"]:checked) main h3,
+html:has(select option[value="mr"]:checked) main h1,
+html:has(select option[value="mr"]:checked) main h2,
+html:has(select option[value="mr"]:checked) main h3,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) main h1,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) main h2,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) main h3,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) main h1,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) main h2,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) main h3 {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* ---------- BODY/UI FALLBACKS ---------- */
+
+html:has(select option[value="hi"]:checked) body,
+html:has(select option[value="mr"]:checked) body,
+html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) body,
+html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) body {
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 640px) {
+  html:has(select option[value="hi"]:checked) h1,
+  html:has(select option[value="hi"]:checked) h2,
+  html:has(select option[value="hi"]:checked) h3,
+  html:has(select option[value="hi"]:checked) h4,
+  html:has(select option[value="hi"]:checked) h5,
+  html:has(select option[value="hi"]:checked) h6,
+  html:has(select option[value="mr"]:checked) h1,
+  html:has(select option[value="mr"]:checked) h2,
+  html:has(select option[value="mr"]:checked) h3,
+  html:has(select option[value="mr"]:checked) h4,
+  html:has(select option[value="mr"]:checked) h5,
+  html:has(select option[value="mr"]:checked) h6,
+  html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) h1,
+  html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) h2,
+  html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) h3,
+  html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) h4,
+  html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) h5,
+  html:has([aria-label="Language selection"] button:nth-child(2)[aria-pressed="true"]) h6,
+  html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) h1,
+  html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) h2,
+  html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) h3,
+  html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) h4,
+  html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) h5,
+  html:has([aria-label="Language selection"] button:nth-child(3)[aria-pressed="true"]) h6 {
+    line-height: 1.14 !important;
+    letter-spacing: -0.008em !important;
+  }
+}

@@ -945,7 +945,9 @@ export default function DashboardPage() {
                   fontFamily: "var(--font-display)",
                 }}
               >
-                {text.hello}, {profile.name}{" "}
+                <span className="kf-welcome-hello">
+                  {text.hello}
+                </span>, {profile.name}{" "}
                 <span
                   style={{
                     display: "inline-block",
@@ -3243,6 +3245,44 @@ export default function DashboardPage() {
           color: #ffb15f !important;
           background: none !important;
         }
+
+        /* --------------------------------------------------
+           DASHBOARD — HINDI/MARATHI GREETING MATRA FIX
+           Keep the dark-mode gradient on the overall title, but
+           opt the translated greeting word out of that gradient.
+           This prevents Devanagari vowel marks such as "े" from
+           being clipped by the transparent text-fill treatment.
+           -------------------------------------------------- */
+        html[data-theme="dark"] main.kf-dashboard-page > div > section.kf-welcome-section .kf-welcome-title .kf-welcome-hello {
+          display: inline-block !important;
+          font-family:
+            "Baloo 2",
+            "Noto Sans Devanagari",
+            "Nirmala UI",
+            "Mangal",
+            sans-serif !important;
+          line-height: 1.10 !important;
+          letter-spacing: -0.012em !important;
+          background: none !important;
+          background-clip: initial !important;
+          -webkit-background-clip: initial !important;
+          color: #f7f8fb !important;
+          -webkit-text-fill-color: #f7f8fb !important;
+          text-shadow: none !important;
+        }
+
+        html[data-theme="light"] main.kf-dashboard-page > div > section.kf-welcome-section .kf-welcome-title .kf-welcome-hello {
+          display: inline-block !important;
+          font-family:
+            "Baloo 2",
+            "Noto Sans Devanagari",
+            "Nirmala UI",
+            "Mangal",
+            sans-serif !important;
+          line-height: 1.10 !important;
+          letter-spacing: -0.012em !important;
+        }
+
 
         html[data-theme="dark"] main.kf-dashboard-page > div > section.kf-welcome-section .kf-welcome-description {
           color: #a9bfd3 !important;
