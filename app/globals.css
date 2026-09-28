@@ -286,9 +286,8 @@ main [style*="#2563eb"] {
   color: #18222f !important;
 }
 
-main [style*="#ff7a00"] {
-  background: var(--kf-orange) !important;
-}
+/* Removed: this selector incorrectly turned any inline #ff7a00 text color
+   into an orange background rectangle. Keep #ff7a00 as text color only. */
 
 main [style*="#22c55e"] {
   color: #5f7d37 !important;
