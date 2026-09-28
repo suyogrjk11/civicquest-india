@@ -1848,7 +1848,7 @@ html[data-theme="dark"] #about > div > div > div:last-child span:not(.h-2) {
 }
 
 /* =========================================================
-   WHAT WE DO — SECOND MASTER REFERENCE
+   WHAT WE DO — PREMIUM JOURNEY CARDS
    ========================================================= */
 html[data-theme="dark"] #what-we-do {
   background: transparent !important;
@@ -1863,36 +1863,130 @@ html[data-theme="dark"] #what-we-do > div > div:first-child > h2 {
   color: #f7f8fb !important;
 }
 
-html[data-theme="dark"] #what-we-do button {
-  border-color: rgba(145,174,204,.22) !important;
-  background: #10243a !important;
-  box-shadow: 0 18px 42px rgba(0,0,0,.22) !important;
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+  border-width: 1px !important;
+  color: #f7f8fb !important;
+  box-shadow:
+    0 24px 54px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.075),
+    inset 0 -18px 32px rgba(0,0,0,.08) !important;
+  transform: translateZ(0);
 }
 
-html[data-theme="dark"] #what-we-do button:nth-child(1) > div:last-child {
-  background: #30251b !important;
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card--learn {
+  --journey-accent: #b6f33a;
+  --journey-accent-2: #00dfc0;
+  --journey-glow: rgba(182,243,58,.23);
+  --journey-glow-2: rgba(0,223,192,.16);
+  background:
+    radial-gradient(circle at 92% 8%, var(--journey-glow), transparent 32%),
+    radial-gradient(circle at 8% 100%, var(--journey-glow-2), transparent 30%),
+    linear-gradient(145deg, #103f36 0%, #071f20 58%, #06191b 100%) !important;
+  border-color: rgba(182,243,58,.62) !important;
 }
 
-html[data-theme="dark"] #what-we-do button:nth-child(2) > div:last-child {
-  background: #10263a !important;
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card--understand {
+  --journey-accent: #ff4fc6;
+  --journey-accent-2: #ff91d5;
+  --journey-glow: rgba(255,79,198,.23);
+  --journey-glow-2: rgba(255,145,213,.14);
+  background:
+    radial-gradient(circle at 92% 8%, var(--journey-glow), transparent 32%),
+    radial-gradient(circle at 8% 100%, var(--journey-glow-2), transparent 30%),
+    linear-gradient(145deg, #56123f 0%, #280b2a 58%, #1d0820 100%) !important;
+  border-color: rgba(255,79,198,.62) !important;
 }
 
-html[data-theme="dark"] #what-we-do button:nth-child(3) > div:last-child {
-  background: #182c25 !important;
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card--participate {
+  --journey-accent: #18bfff;
+  --journey-accent-2: #72e4ff;
+  --journey-glow: rgba(24,191,255,.24);
+  --journey-glow-2: rgba(114,228,255,.14);
+  background:
+    radial-gradient(circle at 92% 8%, var(--journey-glow), transparent 32%),
+    radial-gradient(circle at 8% 100%, var(--journey-glow-2), transparent 30%),
+    linear-gradient(145deg, #123f70 0%, #091f3a 58%, #07182c 100%) !important;
+  border-color: rgba(24,191,255,.64) !important;
 }
 
-html[data-theme="dark"] #what-we-do button h3 {
+/* Soft ambient light only — no moving shine/sweep. */
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,0) 24%),
+    radial-gradient(circle at 12% 15%, rgba(255,255,255,.035), transparent 24%) !important;
+}
+
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card > * {
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card > div.kf-home-journey-content {
+  background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(0,0,0,.08)) !important;
+  border-top: 1px solid rgba(255,255,255,.025) !important;
+}
+
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card .kf-home-journey-title {
   color: #f7f8fb !important;
 }
 
-html[data-theme="dark"] #what-we-do button p {
-  color: #aebed0 !important;
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card .kf-home-journey-description {
+  color: #b7c6d5 !important;
 }
 
-html[data-theme="dark"] #what-we-do button .bg-white\/70 {
-  background: rgba(7,17,31,.48) !important;
-  color: #d0dce8 !important;
-  border: 1px solid rgba(145,174,204,.12) !important;
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card .kf-home-journey-icon,
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card .kf-home-journey-arrow {
+  color: #f7f9fc !important;
+  border-color: color-mix(in srgb, var(--journey-accent) 68%, white 20%) !important;
+  background:
+    linear-gradient(145deg,
+      color-mix(in srgb, var(--journey-accent) 28%, #ffffff 8%),
+      color-mix(in srgb, var(--journey-accent-2) 14%, #08131f 72%)) !important;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.24),
+    inset 0 1px 0 rgba(255,255,255,.16),
+    0 0 22px color-mix(in srgb, var(--journey-accent) 18%, transparent) !important;
+}
+
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card .kf-home-journey-arrow {
+  color: var(--journey-accent) !important;
+}
+
+
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card .kf-home-journey-reveal {
+  color: #dce6ef !important;
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--journey-accent) 18%, #07111f 82%),
+      color-mix(in srgb, var(--journey-accent-2) 10%, #0a1726 90%)) !important;
+  border: 1px solid color-mix(in srgb, var(--journey-accent) 30%, rgba(145,174,204,.12)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.075),
+    0 10px 22px rgba(0,0,0,.15) !important;
+}
+
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card:hover,
+html[data-theme="dark"] #what-we-do button.kf-home-journey-card.is-active {
+  box-shadow:
+    0 30px 62px rgba(0,0,0,.34),
+    0 0 0 1px color-mix(in srgb, var(--journey-accent) 26%, transparent),
+    0 0 34px color-mix(in srgb, var(--journey-accent) 12%, transparent),
+    inset 0 1px 0 rgba(255,255,255,.085) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme="dark"] #what-we-do button.kf-home-journey-card,
+  html[data-theme="dark"] #what-we-do button.kf-home-journey-card::after {
+    transition: none !important;
+  }
 }
 
 /* =========================================================
@@ -2826,7 +2920,6 @@ html:not([data-theme="dark"]) .kf-glass-header {
                 title: text.learnTitle,
                 description: text.learnDescription,
                 reveal: text.learnReveal,
-                bg: "#fff0dc",
               },
               {
                 key: "understand" as JourneyKey,
@@ -2835,7 +2928,6 @@ html:not([data-theme="dark"]) .kf-glass-header {
                 title: text.understandTitle,
                 description: text.understandDescription,
                 reveal: text.understandReveal,
-                bg: "#e8f3fa",
               },
               {
                 key: "participate" as JourneyKey,
@@ -2844,7 +2936,6 @@ html:not([data-theme="dark"]) .kf-glass-header {
                 title: text.participateTitle,
                 description: text.participateDescription,
                 reveal: text.participateReveal,
-                bg: "#edf5dd",
               },
             ].map((card) => {
               const active = activeJourney === card.key;
@@ -2856,7 +2947,9 @@ html:not([data-theme="dark"]) .kf-glass-header {
                   onClick={() =>
                     setActiveJourney(active ? null : card.key)
                   }
-                  className="group overflow-hidden rounded-[24px] border border-[#e4dfd5] bg-white text-left shadow-[0_12px_28px_rgba(35,47,58,0.08)] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_38px_rgba(35,47,58,0.12)]"
+                  className={`kf-home-journey-card kf-home-journey-card--${card.key} group overflow-hidden rounded-[24px] border text-left shadow-[0_12px_28px_rgba(35,47,58,0.08)] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_38px_rgba(35,47,58,0.12)] ${
+                    active ? "is-active" : ""
+                  }`}
                 >
                   <div className="relative h-[168px] overflow-hidden">
                     <img
@@ -2866,40 +2959,35 @@ html:not([data-theme="dark"]) .kf-glass-header {
                     />
 
                     <div
-                      className="absolute left-4 top-4 grid h-12 w-12 place-items-center rounded-full border border-white/70 text-[21px] shadow-[0_8px_18px_rgba(16,27,43,0.10)]"
-                      style={{ background: card.bg }}
+                      className="kf-home-journey-icon absolute left-4 top-4 grid h-12 w-12 place-items-center rounded-full border text-[21px] shadow-[0_8px_18px_rgba(16,27,43,0.10)]"
                     >
                       {card.icon}
                     </div>
 
                     <div
-                      className="absolute bottom-[-18px] right-4 grid h-11 w-11 place-items-center rounded-full border border-white/70 text-[19px] text-[#102033] shadow-[0_8px_18px_rgba(16,27,43,0.10)]"
-                      style={{ background: card.bg }}
+                      className="kf-home-journey-arrow absolute bottom-[-18px] right-4 grid h-11 w-11 place-items-center rounded-full border text-[19px] shadow-[0_8px_18px_rgba(16,27,43,0.10)]"
                     >
                       {active ? "↑" : "→"}
                     </div>
                   </div>
 
-                  <div
-                    className="min-h-[132px] p-5 pt-6"
-                    style={{ background: card.bg }}
-                  >
-                    <h3 className="text-[20px] font-extrabold leading-tight tracking-[-0.02em] text-[#102033]">
+                  <div className="kf-home-journey-content min-h-[132px] p-5 pt-6">
+                    <h3 className="kf-home-journey-title text-[20px] font-extrabold leading-tight tracking-[-0.02em]">
                       {card.title}
                     </h3>
 
-                    <p className="mt-2 max-w-[250px] text-[13px] leading-5 text-[#5f6b78]">
+                    <p className="kf-home-journey-description mt-2 max-w-[250px] text-[13px] leading-5">
                       {card.description}
                     </p>
 
                     <div
-                      className={`overflow-hidden transition-all duration-300 ${
+                      className={`kf-home-journey-reveal-wrap overflow-hidden transition-all duration-300 ${
                         active
                           ? "mt-3 max-h-28 opacity-100"
                           : "max-h-0 opacity-0"
                       }`}
                     >
-                      <div className="rounded-2xl bg-white/70 p-3 text-[12px] leading-5 text-[#566270]">
+                      <div className="kf-home-journey-reveal rounded-2xl p-3 text-[12px] leading-5">
                         {card.reveal}
                       </div>
                     </div>
@@ -2933,7 +3021,10 @@ html:not([data-theme="dark"]) .kf-glass-header {
           <div className="mt-10 rounded-[30px] border border-[#e7e0d7] bg-white/90 p-5 shadow-[0_18px_55px_rgba(16,27,43,0.045)] md:p-7">
             <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
               {text.journeyFlow.map((step, index) => (
-                <div key={step.title} className="group relative rounded-[22px] border border-[#ebe4da] bg-[#fffdfa] px-4 py-4 transition-transform duration-200 hover:-translate-y-0.5">
+                <div
+                  key={step.title}
+                  className={`kf-home-journey-step group relative rounded-[22px] border border-[#ebe4da] bg-[#fffdfa] px-4 py-4 transition-transform duration-200 hover:-translate-y-0.5 kf-home-journey-step-${index + 1}`}
+                >
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#f6ede1] text-lg">
                       {step.icon}
@@ -3118,9 +3209,10 @@ html:not([data-theme="dark"]) .kf-glass-header {
             ].map(([title, description, icon, tint], index) => (
               <div
                 key={title}
-                className={`relative overflow-hidden rounded-[26px] border border-[#e5e0d8] bg-white p-6 shadow-[0_14px_34px_rgba(35,47,58,0.05)] ${
+                className={`kf-trust-card relative overflow-hidden rounded-[26px] border p-6 shadow-[0_14px_34px_rgba(35,47,58,0.05)] ${
                   index === 0 ? "lg:p-7" : ""
                 }`}
+                data-trust-index={index}
               >
                 <div
                   className="absolute -right-8 -top-8 h-24 w-24 rounded-full opacity-70"
@@ -3427,40 +3519,7 @@ html[data-theme="dark"] #about > div > div > div:last-child span:not(.h-2) {
   color: #8296ad !important;
 }
 
-/* ---------- WHAT WE DO — keep its successful dark category language ---------- */
-html[data-theme="dark"] #what-we-do h2 {
-  color: #f5f7fb !important;
-}
-
-html[data-theme="dark"] #what-we-do button {
-  border-color: rgba(143,181,220,.17) !important;
-  box-shadow: 0 18px 42px rgba(0,0,0,.18) !important;
-}
-
-html[data-theme="dark"] #what-we-do button:nth-child(1) > div:last-child {
-  background: #30251b !important;
-}
-
-html[data-theme="dark"] #what-we-do button:nth-child(2) > div:last-child {
-  background: #10263a !important;
-}
-
-html[data-theme="dark"] #what-we-do button:nth-child(3) > div:last-child {
-  background: #182c25 !important;
-}
-
-html[data-theme="dark"] #what-we-do button h3 {
-  color: #f5f7fb !important;
-}
-
-html[data-theme="dark"] #what-we-do button p {
-  color: #aebdd0 !important;
-}
-
-html[data-theme="dark"] #what-we-do button .bg-white\/70 {
-  background: rgba(255,255,255,.055) !important;
-  color: #c2cedc !important;
-}
+/* ---------- WHAT WE DO — card colors are defined by the themed journey-card block above. ---------- */
 
 /* ---------- JOURNEY ---------- */
 html[data-theme="dark"] #how-it-works {
