@@ -68,12 +68,13 @@ const content = {
     back: "← Back to Dashboard",
     languageLabel: "Language",
 
-    label: "KARMAFACIE",
+    label: "KRUTBHARAT",
     title: "Report an Issue",
     description:
       "Report a civic problem with clear and factual information. Add evidence and location details to make the report more useful.",
 
     reportingFrom: "📍 Reporting from",
+    nationalCoverageNote: "National routing coverage is active for your location. Verified authority details are shown when an official route is available.",
 
     category: "Issue Category",
     selectIssue: "Select an issue type",
@@ -90,6 +91,8 @@ const content = {
       "Select the department that best matches your issue:",
     routeSelected:
       "Selected route:",
+    routePending:
+      "National routing coverage is available for this area, but the official authority route for this issue is still being verified. You can still submit the report.",
 
     issueTitle: "Issue Title",
     issueTitlePlaceholder:
@@ -114,7 +117,7 @@ const content = {
     submit: "Submit Civic Issue",
     submitting: "Uploading & Submitting...",
 
-    loading: "Loading KarmaFacie...",
+    loading: "Loading KrutBharat...",
 
     profileError:
       "Unable to load your civic profile.",
@@ -158,12 +161,13 @@ const content = {
     back: "← डैशबोर्ड पर वापस जाएँ",
     languageLabel: "भाषा",
 
-    label: "KARMAFACIE",
+    label: "KRUTBHARAT",
     title: "समस्या की रिपोर्ट करें",
     description:
       "किसी नागरिक समस्या की स्पष्ट और तथ्यात्मक जानकारी के साथ रिपोर्ट करें। रिपोर्ट को अधिक उपयोगी बनाने के लिए प्रमाण और स्थान की जानकारी जोड़ें।",
 
     reportingFrom: "📍 यहाँ से रिपोर्ट की जा रही है",
+    nationalCoverageNote: "आपके स्थान के लिए राष्ट्रीय रूटिंग कवरेज सक्रिय है। आधिकारिक मार्ग उपलब्ध होने पर सत्यापित प्राधिकरण की जानकारी दिखाई जाएगी।",
 
     category: "समस्या की श्रेणी",
     selectIssue: "समस्या का प्रकार चुनें",
@@ -180,6 +184,8 @@ const content = {
       "अपनी समस्या से सबसे अधिक संबंधित विभाग चुनें:",
     routeSelected:
       "चयनित मार्ग:",
+    routePending:
+      "इस क्षेत्र के लिए राष्ट्रीय रूटिंग उपलब्ध है, लेकिन इस समस्या के लिए आधिकारिक प्राधिकरण मार्ग का अभी सत्यापन किया जा रहा है। आप फिर भी रिपोर्ट सबमिट कर सकते हैं।",
 
     issueTitle: "समस्या का शीर्षक",
     issueTitlePlaceholder:
@@ -204,7 +210,7 @@ const content = {
     submit: "नागरिक समस्या सबमिट करें",
     submitting: "अपलोड और सबमिट किया जा रहा है...",
 
-    loading: "KarmaFacie लोड हो रहा है...",
+    loading: "KrutBharat लोड हो रहा है...",
 
     profileError:
       "आपकी नागरिक प्रोफ़ाइल लोड नहीं हो सकी।",
@@ -248,12 +254,13 @@ const content = {
     back: "← डॅशबोर्डवर परत जा",
     languageLabel: "भाषा",
 
-    label: "KARMAFACIE",
+    label: "KRUTBHARAT",
     title: "समस्या नोंदवा",
     description:
       "नागरी समस्येची स्पष्ट आणि तथ्यात्मक माहितीसह नोंद करा. नोंद अधिक उपयुक्त होण्यासाठी पुरावे आणि स्थानाची माहिती जोडा.",
 
     reportingFrom: "📍 येथून नोंद केली जात आहे",
+    nationalCoverageNote: "तुमच्या स्थानासाठी राष्ट्रीय रूटिंग कव्हरेज सक्रिय आहे. अधिकृत मार्ग उपलब्ध असल्यास सत्यापित प्राधिकरणाची माहिती दाखवली जाईल.",
 
     category: "समस्येची श्रेणी",
     selectIssue: "समस्येचा प्रकार निवडा",
@@ -270,6 +277,8 @@ const content = {
       "तुमच्या समस्येशी सर्वाधिक संबंधित विभाग निवडा:",
     routeSelected:
       "निवडलेला मार्ग:",
+    routePending:
+      "या क्षेत्रासाठी राष्ट्रीय रूटिंग उपलब्ध आहे, परंतु या समस्येसाठी अधिकृत प्राधिकरण मार्गाचे अद्याप सत्यापन सुरू आहे. तरीही तुम्ही नोंद सबमिट करू शकता.",
 
     issueTitle: "समस्येचे शीर्षक",
     issueTitlePlaceholder:
@@ -294,7 +303,7 @@ const content = {
     submit: "नागरी समस्या सबमिट करा",
     submitting: "अपलोड आणि सबमिट केले जात आहे...",
 
-    loading: "KarmaFacie लोड होत आहे...",
+    loading: "KrutBharat लोड होत आहे...",
 
     profileError:
       "तुमची नागरिक प्रोफाइल लोड करता आली नाही.",
@@ -333,6 +342,18 @@ const content = {
     reportError:
       "समस्या नोंदवताना काहीतरी चूक झाली.",
   },
+};
+
+type CivicAuthorityRouteRule = {
+  id: number;
+  route_status:
+    | "VERIFIED"
+    | "GENERAL"
+    | "PENDING"
+    | "UNAVAILABLE";
+  route_priority: number;
+  authority_directory_id: number | null;
+  notes: string | null;
 };
 
 type AuthorityDirectoryRecord = {
@@ -375,6 +396,8 @@ export default function ReportIssuePage() {
 
   const [userCity, setUserCity] = useState("");
   const [userState, setUserState] = useState("");
+  const [localBodyId, setLocalBodyId] = useState<string | null>(null);
+
 
   const [matchedAuthorities, setMatchedAuthorities] =
     useState<AuthorityDirectoryRecord[]>([]);
@@ -383,6 +406,11 @@ export default function ReportIssuePage() {
 
   const [checkingAuthority, setCheckingAuthority] =
     useState(false);
+  const [routeCoverageFound, setRouteCoverageFound] =
+    useState(false);
+  const [routeStatus, setRouteStatus] =
+    useState<CivicAuthorityRouteRule["route_status"] | null>(null);
+
 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -401,14 +429,16 @@ export default function ReportIssuePage() {
   }, [previewUrl]);
 
   useEffect(() => {
-    if (!category || !userCity || !userState) {
+    if (!category || !userState || (!userCity && !localBodyId)) {
       setMatchedAuthorities([]);
       setSelectedAuthorityId(null);
+      setRouteCoverageFound(false);
+      setRouteStatus(null);
       return;
     }
 
-    findAuthority(category);
-  }, [category, userCity, userState]);
+    void findAuthority(category);
+  }, [category, userCity, userState, localBodyId]);
 
   async function checkUserAndLoadProfile() {
     const {
@@ -426,8 +456,7 @@ export default function ReportIssuePage() {
       error: profileError,
     } = await supabase
       .from("profiles")
-      .select("city, state")
-      .eq("id", userData.user.id)
+      .select("city, state, local_body_id")      .eq("id", userData.user.id)
       .maybeSingle();
 
     if (profileError) {
@@ -449,6 +478,7 @@ export default function ReportIssuePage() {
 
     setUserCity(profileData.city || "");
     setUserState(profileData.state || "");
+    setLocalBodyId(profileData.local_body_id || null);
 
     setLoading(false);
   }
@@ -459,18 +489,96 @@ export default function ReportIssuePage() {
     setCheckingAuthority(true);
     setMatchedAuthorities([]);
     setSelectedAuthorityId(null);
+    setRouteCoverageFound(false);
+    setRouteStatus(null);
 
     try {
+      // ----------------------------------------------------
+      // 1. Resolve the canonical LGD ULB.
+      // ----------------------------------------------------
+
+      let resolvedLocalBodyId = localBodyId;
+
+      if (!resolvedLocalBodyId && userState && userCity) {
+        const {
+          data: localBodies,
+          error: localBodyError,
+        } = await supabase
+          .from("civic_local_bodies")
+          .select("id, local_body_name")
+          .eq("state", userState)
+          .eq("is_active", true)
+          .ilike("local_body_name", userCity)
+          .limit(2);
+
+        if (localBodyError) {
+          console.error(
+            "Local body resolution error:",
+            localBodyError
+          );
+        } else if ((localBodies || []).length === 1) {
+          resolvedLocalBodyId = localBodies[0].id;
+          setLocalBodyId(resolvedLocalBodyId);
+        }
+      }
+
+      if (!resolvedLocalBodyId) {
+        console.warn(
+          "No canonical local_body_id available for report routing."
+        );
+        return;
+      }
+
+      // ----------------------------------------------------
+      // 2. Read the national ULB × issue routing rule.
+      // This establishes coverage/status independently of
+      // whether a verified authority record exists yet.
+      // ----------------------------------------------------
+
       const {
-        data,
+        data: routeRuleData,
+        error: routeRuleError,
+      } = await supabase
+        .from("civic_authority_route_rules")
+        .select(
+          "id, route_status, route_priority, authority_directory_id, notes"
+        )
+        .eq("local_body_id", resolvedLocalBodyId)
+        .eq("issue_category", selectedCategory)
+        .order("route_priority", { ascending: true })
+        .order("id", { ascending: true })
+        .limit(1);
+
+      if (routeRuleError) {
+        console.error(
+          "National route-rule lookup error:",
+          routeRuleError
+        );
+      }
+
+      const rule =
+        ((routeRuleData || [])[0] as CivicAuthorityRouteRule | undefined) ||
+        null;
+
+      if (rule) {
+        setRouteCoverageFound(true);
+        setRouteStatus(rule.route_status);
+      }
+
+      // ----------------------------------------------------
+      // 3. Read verified/general authority details attached
+      // to this canonical ULB + issue category.
+      // ----------------------------------------------------
+
+      const {
+        data: authorityData,
         error: authorityError,
       } = await supabase
         .from("authority_directory")
         .select(
           "id, city, state, authority_name, department_name, issue_category, grievance_url, official_source_url, submission_method, notes, is_active"
         )
-        .eq("city", userCity)
-        .eq("state", userState)
+        .eq("local_body_id", resolvedLocalBodyId)
         .eq("issue_category", selectedCategory)
         .eq("is_active", true)
         .order("id", { ascending: true });
@@ -483,7 +591,8 @@ export default function ReportIssuePage() {
         return;
       }
 
-      const routes = data || [];
+      const routes =
+        (authorityData || []) as AuthorityDirectoryRecord[];
       setMatchedAuthorities(routes);
 
       if (routes.length === 1) {
@@ -639,32 +748,56 @@ export default function ReportIssuePage() {
       const user = userData.user;
 
       // ------------------------------------------
-      // 2. Find verified authority
+      // 2. Resolve the national route using the
+      // canonical ULB ID.
       // ------------------------------------------
 
-      const {
-        data: authorityData,
-        error: authorityError,
-      } = await supabase
-        .from("authority_directory")
-        .select(
-          "id, city, state, authority_name, department_name, issue_category, grievance_url, official_source_url, submission_method, notes, is_active"
-        )
-        .eq("city", userCity)
-        .eq("state", userState)
-        .eq("issue_category", category)
-        .eq("is_active", true)
-        .order("id", { ascending: true });
+      let resolvedLocalBodyId = localBodyId;
 
-      if (authorityError) {
-        console.error(
-          "Authority lookup during submission:",
-          authorityError
-        );
+      if (!resolvedLocalBodyId && userState && userCity) {
+        const {
+          data: localBodyData,
+          error: localBodyError,
+        } = await supabase
+          .from("civic_local_bodies")
+          .select("id")
+          .eq("state", userState)
+          .eq("is_active", true)
+          .ilike("local_body_name", userCity)
+          .limit(2);
+
+        if (!localBodyError && (localBodyData || []).length === 1) {
+          resolvedLocalBodyId = localBodyData[0].id;
+          setLocalBodyId(resolvedLocalBodyId);
+        }
       }
 
-      const submissionRoutes =
-        authorityData || [];
+      let submissionRoutes: AuthorityDirectoryRecord[] = [];
+
+      if (resolvedLocalBodyId) {
+        const {
+          data: authorityData,
+          error: authorityError,
+        } = await supabase
+          .from("authority_directory")
+          .select(
+            "id, city, state, authority_name, department_name, issue_category, grievance_url, official_source_url, submission_method, notes, is_active"
+          )
+          .eq("local_body_id", resolvedLocalBodyId)
+          .eq("issue_category", category)
+          .eq("is_active", true)
+          .order("id", { ascending: true });
+
+        if (authorityError) {
+          console.error(
+            "Authority lookup during submission:",
+            authorityError
+          );
+        } else {
+          submissionRoutes =
+            (authorityData || []) as AuthorityDirectoryRecord[];
+        }
+      }
 
       const authority =
         submissionRoutes.find(
@@ -765,6 +898,9 @@ export default function ReportIssuePage() {
           photo_path:
             uploadedPhotoPath,
 
+          local_body_id:
+            resolvedLocalBodyId ?? null,
+
           status: "reported",
 
           reported_city:
@@ -822,7 +958,9 @@ export default function ReportIssuePage() {
         );
       } else {
         setMessage(
-          text.noVerifiedRoute
+          routeStatus === "PENDING"
+            ? `${text.issueSuccess} ${text.routePending}`
+            : text.noVerifiedRoute
         );
       }
 
@@ -909,7 +1047,7 @@ export default function ReportIssuePage() {
               letterSpacing: "-0.045em",
             }}
           >
-            Karma<span style={{ color: "#ff7a00" }}>Facie</span>
+            Krut<span style={{ color: "#ff7a00" }}>Bharat</span>
           </div>
           <div
             style={{
@@ -1018,7 +1156,7 @@ export default function ReportIssuePage() {
             </button>
           </div>
 
-          {/* CENTER — KARMAFACIE / REPORT AN ISSUE */}
+          {/* CENTER — KRUTBHARAT / REPORT AN ISSUE */}
           <div
             style={{
               display: "flex",
@@ -1058,7 +1196,7 @@ export default function ReportIssuePage() {
                   fontWeight: 800,
                 }}
               >
-                Karma<span style={{ color: "#ff7a00" }}>Facie</span>
+                Krut<span style={{ color: "#ff7a00" }}>Bharat</span>
               </div>
 
               <div
@@ -1223,6 +1361,17 @@ export default function ReportIssuePage() {
                 </strong>
               </div>
             )}
+            <div
+              style={{
+                marginTop: "8px",
+                maxWidth: "720px",
+                color: "#71808d",
+                fontSize: "10px",
+                lineHeight: "1.5",
+              }}
+            >
+              {text.nationalCoverageNote}
+            </div>
           </div>
         </section>
 
@@ -1425,21 +1574,43 @@ export default function ReportIssuePage() {
 
             {!checkingAuthority &&
               category &&
+              routeCoverageFound &&
               matchedAuthorities.length === 0 && (
                 <div
                   style={{
                     marginTop: "12px",
-                    padding: "13px 14px",
-                    borderRadius: "16px",
-                    background: "#fff8ef",
-                    border: "1px solid #f0dfc9",
-                    color: "#8b755d",
-                    fontSize: "11px",
-                    lineHeight: "1.5",
+                    padding: "10px 14px",
+                    borderRadius: "14px",
+                    background: "rgba(121, 154, 86, 0.08)",
+                    border: "1px solid rgba(121, 154, 86, 0.18)",
+                    color: "#70805e",
+                    fontSize: "10px",
+                    lineHeight: "1.45",
                     fontWeight: 700,
                   }}
                 >
-                  {text.noAuthority} {userCity}, {userState}.
+                  {text.nationalCoverageNote}
+                </div>
+              )}
+
+            {!checkingAuthority &&
+              category &&
+              !routeCoverageFound &&
+              matchedAuthorities.length === 0 && (
+                <div
+                  style={{
+                    marginTop: "12px",
+                    padding: "10px 14px",
+                    borderRadius: "14px",
+                    background: "#f1f6fa",
+                    border: "1px solid #e1ebf1",
+                    color: "#6e7d89",
+                    fontSize: "10px",
+                    lineHeight: "1.45",
+                    fontWeight: 700,
+                  }}
+                >
+                  {`${text.noAuthority} ${userCity}, ${userState}.`}
                 </div>
               )}
 
@@ -2098,7 +2269,7 @@ export default function ReportIssuePage() {
                       textTransform: "uppercase",
                     }}
                   >
-                    KarmaFacie guidance
+                    KrutBharat guidance
                   </div>
 
                   <h2
@@ -2127,10 +2298,10 @@ export default function ReportIssuePage() {
                     }}
                   >
                     {language === "en"
-                      ? "Check your details and submit. KarmaFacie will keep the report connected to the authority information available for your location."
+                      ? "Check your details and submit. KrutBharat will keep the report connected to the authority information available for your location."
                       : language === "hi"
-                      ? "अपनी जानकारी जाँचें और सबमिट करें। KarmaFacie आपकी लोकेशन के लिए उपलब्ध प्राधिकरण जानकारी से रिपोर्ट को जोड़कर रखेगा।"
-                      : "तुमची माहिती तपासा आणि सबमिट करा. तुमच्या स्थानासाठी उपलब्ध प्राधिकरणाच्या माहितीसोबत KarmaFacie तुमची नोंद जोडून ठेवेल."}
+                      ? "अपनी जानकारी जाँचें और सबमिट करें। KrutBharat आपकी लोकेशन के लिए उपलब्ध प्राधिकरण जानकारी से रिपोर्ट को जोड़कर रखेगा।"
+                      : "तुमची माहिती तपासा आणि सबमिट करा. तुमच्या स्थानासाठी उपलब्ध प्राधिकरणाच्या माहितीसोबत KrutBharat तुमची नोंद जोडून ठेवेल."}
                   </p>
                 </div>
               </div>

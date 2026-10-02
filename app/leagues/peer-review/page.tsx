@@ -84,7 +84,7 @@ const peerUi: Record<
     confirmations: "Confirmations",
     rejections: "Rejections",
     reviewNote:
-      "Review the evidence fairly. Community verification contributes to trust signals; final Karma Credit decisions remain under the KarmaFacie verification process.",
+      "Review the evidence fairly. Community verification contributes to trust signals; final Karma Credit decisions remain under the KrutBharat verification process.",
     processing: "Processing...",
     confirm: "Confirm evidence",
     reject: "Reject evidence",
@@ -118,7 +118,7 @@ const peerUi: Record<
     confirmations: "पुष्टिकरण",
     rejections: "अस्वीकृतियाँ",
     reviewNote:
-      "प्रमाण की निष्पक्ष समीक्षा करें। सामुदायिक सत्यापन भरोसे के संकेतों में योगदान देता है; अंतिम Karma Credit निर्णय KarmaFacie की सत्यापन प्रक्रिया के अंतर्गत रहते हैं।",
+      "प्रमाण की निष्पक्ष समीक्षा करें। सामुदायिक सत्यापन भरोसे के संकेतों में योगदान देता है; अंतिम Karma Credit निर्णय KrutBharat की सत्यापन प्रक्रिया के अंतर्गत रहते हैं।",
     processing: "प्रक्रिया जारी है...",
     confirm: "प्रमाण की पुष्टि करें",
     reject: "प्रमाण अस्वीकार करें",
@@ -152,7 +152,7 @@ const peerUi: Record<
     confirmations: "पुष्टीकरणे",
     rejections: "नकार",
     reviewNote:
-      "पुराव्याचे निष्पक्ष परीक्षण करा. समुदाय पडताळणी विश्वासाच्या संकेतांना मदत करते; अंतिम Karma Credit निर्णय KarmaFacie पडताळणी प्रक्रियेत घेतले जातात.",
+      "पुराव्याचे निष्पक्ष परीक्षण करा. समुदाय पडताळणी विश्वासाच्या संकेतांना मदत करते; अंतिम Karma Credit निर्णय KrutBharat पडताळणी प्रक्रियेत घेतले जातात.",
     processing: "प्रक्रिया सुरू आहे...",
     confirm: "पुराव्याची पुष्टी करा",
     reject: "पुरावा नाकारा",
@@ -218,10 +218,10 @@ function localizeTeamName(
       hi: "कॉलेज पायलट टीम",
       mr: "महाविद्यालय पायलट टीम",
     },
-    "KarmaFacie Pilot Team": {
-      en: "KarmaFacie Pilot Team",
-      hi: "KarmaFacie पायलट टीम",
-      mr: "KarmaFacie पायलट टीम",
+    "KrutBharat Pilot Team": {
+      en: "KrutBharat Pilot Team",
+      hi: "KrutBharat पायलट टीम",
+      mr: "KrutBharat पायलट टीम",
     },
     "Ward Pilot Team": {
       en: "Ward Pilot Team",
@@ -499,7 +499,7 @@ export default function PeerReviewPage() {
       <main className="kf-peer-page kf-loading-page">
         <div className="kf-loading-card">
           <div className="kf-wordmark">
-            Karma<span>Facie</span>
+            Krut<span>Bharat</span>
           </div>
 
           <div className="kf-loading-bar" />
@@ -521,7 +521,7 @@ export default function PeerReviewPage() {
 
             <div>
               <div className="kf-brand-name">
-                Karma<span>Facie</span>
+                Krut<span>Bharat</span>
               </div>
 
               <div className="kf-brand-caption">
@@ -882,7 +882,7 @@ export default function PeerReviewPage() {
         )}
 
         <footer className="kf-peer-footer">
-          Karma<span>Facie</span> ·{" "}
+          Krut<span>Bharat</span> ·{" "}
           {t.title}
         </footer>
       </div>
@@ -1715,7 +1715,7 @@ export default function PeerReviewPage() {
 
 
 /* =========================================================
-   KARMAFACIE — COMMUNITY VERIFICATION DARK MODE
+   KRUTBHARAT — COMMUNITY VERIFICATION DARK MODE
    ========================================================= */
 
 html[data-theme="dark"] .kf-peer-page {

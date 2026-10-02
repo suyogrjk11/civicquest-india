@@ -28,7 +28,7 @@ const translations = {
     nationalParks: "National Parks",
     funFacts: "Fun Facts",
     formation: "Formation",
-    civicQuest: "The KarmaFacie way",
+    civicQuest: "The KrutBharat way",
     civicQuestText:
       "Explore the place, understand its identity, and learn how citizens interact with their local government and public institutions.",
     source: "Data sources",
@@ -59,7 +59,7 @@ const translations = {
     nationalParks: "राष्ट्रीय उद्यान",
     funFacts: "रोचक तथ्य",
     formation: "गठन",
-    civicQuest: "KarmaFacie का तरीका",
+    civicQuest: "KrutBharat का तरीका",
     civicQuestText:
       "स्थान को जानें, उसकी पहचान को समझें और सीखें कि नागरिक स्थानीय सरकार तथा सार्वजनिक संस्थाओं के साथ कैसे जुड़ते हैं।",
     source: "डेटा स्रोत",
@@ -90,7 +90,7 @@ const translations = {
     nationalParks: "राष्ट्रीय उद्याने",
     funFacts: "रोचक तथ्ये",
     formation: "निर्मिती",
-    civicQuest: "KarmaFacie ची पद्धत",
+    civicQuest: "KrutBharat ची पद्धत",
     civicQuestText:
       "ठिकाण जाणून घ्या, त्याची ओळख समजून घ्या आणि नागरिक स्थानिक सरकार व सार्वजनिक संस्थांशी कसे जोडले जातात हे शिका.",
     source: "माहितीचे स्रोत",
@@ -454,14 +454,14 @@ export default function StateSpotlightPage() {
           </>
         )}
 
-        {/* KarmaFacie */}
-        <section className="kf-state-page-karmacie relative mt-10 overflow-hidden rounded-3xl border border-[#e7d5c0] bg-[#fff0df] p-8 text-[#102033] shadow-[0_10px_30px_rgba(16,32,51,0.07)] sm:p-10">
-          <div className="kf-state-page-karma-orb kf-state-page-karma-orb-warm absolute -right-20 -top-20 h-56 w-56 rounded-full" />
-          <div className="kf-state-page-karma-orb kf-state-page-karma-orb-cool absolute -bottom-24 -left-16 h-56 w-56 rounded-full" />
+        {/* KrutBharat */}
+        <section className="kf-state-page-krutBharat relative mt-10 overflow-hidden rounded-3xl border border-[#e7d5c0] bg-[#fff0df] p-8 text-[#102033] shadow-[0_10px_30px_rgba(16,32,51,0.07)] sm:p-10">
+          <div className="kf-state-page-krut-orb kf-state-page-krut-orb-warm absolute -right-20 -top-20 h-56 w-56 rounded-full" />
+          <div className="kf-state-page-krut-orb kf-state-page-krut-orb-cool absolute -bottom-24 -left-16 h-56 w-56 rounded-full" />
 
           <div className="relative grid gap-8 lg:grid-cols-[0.65fr_1.35fr] lg:items-center">
             <div>
-              <div className="kf-state-page-karma-icon flex h-14 w-14 items-center justify-center rounded-2xl text-3xl shadow-sm">
+              <div className="kf-state-page-krut-icon flex h-14 w-14 items-center justify-center rounded-2xl text-3xl shadow-sm">
                 🧭
               </div>
 

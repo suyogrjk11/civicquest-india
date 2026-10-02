@@ -63,13 +63,13 @@ type CommunityTranslation = {
 const communityTranslations: Record<Language, CommunityTranslation> = {
   en: {
     backDashboard: "← Dashboard",
-    eyebrow: "KARMAFACIE COMMUNITY",
+    eyebrow: "KRUTBHARAT COMMUNITY",
     title: "Community Issues",
     subtitle:
       "Discover civic problems reported by citizens and see what is happening in your community.",
     publicFeed: "Public civic feed",
     publicFeedDescription:
-      "Citizen identities are not displayed. Information shown here comes from KarmaFacie civic issue records.",
+      "Citizen identities are not displayed. Information shown here comes from KrutBharat civic issue records.",
     totalReports: "Total Reports",
     communityIssues: "Community Issues",
     activeReports: "Active Reports",
@@ -548,13 +548,13 @@ export default function CommunityPage() {
             </button>
           </div>
 
-          <div className="kf-community-brand" style={brandStyle} aria-label="KarmaFacie Community Issues">
+          <div className="kf-community-brand" style={brandStyle} aria-label="KrutBharat Community Issues">
             <div className="kf-community-brand-mark" style={brandMarkStyle}>K</div>
 
             <div className="kf-community-brand-text" style={brandTextWrapStyle}>
               <div className="kf-community-brand-name" style={brandNameStyle}>
-                <span>Karma</span>
-                <span className="kf-community-brand-accent" style={brandAccentStyle}>Facie</span>
+                <span>Krut</span>
+                <span className="kf-community-brand-accent" style={brandAccentStyle}>Bharat</span>
               </div>
               <div className="kf-community-brand-subtitle" style={brandSubtitleStyle}>COMMUNITY ISSUES</div>
             </div>

@@ -301,7 +301,7 @@ export default function CivicLearningPage() {
 
             <div>
               <div className="kf-brand-name">
-                Karma<span>Facie</span>
+                Krut<span>Bharat</span>
               </div>
 
               <div className="kf-brand-caption">
@@ -493,7 +493,7 @@ export default function CivicLearningPage() {
         </section>
 
         <footer className="kf-learning-footer">
-          Karma<span>Facie</span> · {text.title}
+          Krut<span>Bharat</span> · {text.title}
         </footer>
       </div>
 

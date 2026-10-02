@@ -169,7 +169,7 @@ const content: Record<
     navAbout: "About",
     navWhatWeDo: "What We Do",
     navExplore: "Explore",
-    navWhy: "Why KarmaFacie?",
+    navWhy: "Why KrutBharat?",
     navLeagues: "Civic Leagues",
     signIn: "Sign in / Sign up",
     signUp: "Sign up",
@@ -180,21 +180,21 @@ const content: Record<
     heroTitle1: "Know. Understand.",
     heroTitle2: "Participate.",
     heroDescription:
-      "KarmaFacie helps citizens learn how India works, understand the issues around them and take meaningful civic action.",
-    exploreNow: "Explore KarmaFacie →",
+      "KrutBharat helps citizens learn how India works, understand the issues around them and take meaningful civic action.",
+    exploreNow: "Explore KrutBharat →",
     signInUp: "Sign in / Sign up",
 
-    aboutLabel: "What is KarmaFacie?",
-    aboutTagline: "A Face for Every Good Civic Action.",
+    aboutLabel: "What is KrutBharat?",
+    aboutTagline: "Know India. Think Civic. Shape Its Future.",
     aboutTitle:
       "Democracy works better when citizens understand it.",
     aboutDescription:
-      "KarmaFacie brings civic learning and civic participation together in one simple experience. Learn about government, understand how systems affect everyday life, and discover practical ways to participate in your community.",
+      "KrutBharat brings civic learning and civic participation together in one simple experience. Learn about government, understand how systems affect everyday life, and discover practical ways to participate in your community.",
 
-    whatWeDoLabel: "What can you do with KarmaFacie?",
+    whatWeDoLabel: "What can you do with KrutBharat?",
     whatWeDoTitle: "From learning to action.",
     whatWeDoDescription:
-      "KarmaFacie is designed around the complete journey of an informed citizen.",
+      "KrutBharat is designed around the complete journey of an informed citizen.",
 
     learnTitle: "Learn",
     learnDescription:
@@ -214,10 +214,10 @@ const content: Record<
     participateReveal:
       "Report civic issues, follow progress, complete civic challenges and discover ways to contribute.",
 
-    howLabel: "How KarmaFacie Works",
+    howLabel: "How KrutBharat Works",
     howTitle: "From learning to lasting civic impact.",
     howDescription:
-      "KarmaFacie connects civic knowledge with real participation, verified contribution and a growing civic record.",
+      "KrutBharat connects civic knowledge with real participation, verified contribution and a growing civic record.",
 
     step1Title: "Learn",
     step1Description:
@@ -230,15 +230,15 @@ const content: Record<
       "Understand which authority or civic process is relevant.",
     step4Title: "Take action",
     step4Description:
-      "Use KarmaFacie tools to participate, report issues and complete civic missions.",
+      "Use KrutBharat tools to participate, report issues and complete civic missions.",
     step5Title: "Track & verify",
     step5Description:
       "Follow updates, submit evidence and verify outcomes where possible.",
 
-    journeyFlowLabel: "THE KARMAFACIE JOURNEY",
+    journeyFlowLabel: "THE KRUTBHARAT JOURNEY",
     journeyFlowTitle: "Discover → Learn → Understand → Act → Show Proof → Verify → Earn → Build & Belong → Repeat",
     journeyFlowDescription:
-      "A citizen can move through KarmaFacie at their own pace — from learning about India to taking real civic action and building a record of verified participation.",
+      "A citizen can move through KrutBharat at their own pace — from learning about India to taking real civic action and building a record of verified participation.",
     journeyFlow: [
       {
         title: "Discover",
@@ -282,10 +282,10 @@ const content: Record<
       },
     ],
 
-    featureUniverseLabel: "THE KARMAFACIE PLATFORM",
+    featureUniverseLabel: "THE KRUTBHARAT PLATFORM",
     featureUniverseTitle: "Everything connects to the same civic journey.",
     featureUniverseDescription:
-      "KarmaFacie brings learning, civic services, real-world action, verification, impact and community participation into one connected experience.",
+      "KrutBharat brings learning, civic services, real-world action, verification, impact and community participation into one connected experience.",
     featureGroups: [
       {
         title: "Learn & Discover",
@@ -355,10 +355,10 @@ const content: Record<
       },
     ],
 
-    futureLabel: "GROWING WITH KARMAFACIE",
+    futureLabel: "GROWING WITH KRUTBHARAT",
     futureTitle: "The civic journey keeps expanding.",
     futureDescription:
-      "Planned layers can deepen progression and personalization as KarmaFacie grows.",
+      "Planned layers can deepen progression and personalization as KrutBharat grows.",
     futureFeatures: [
       "XP and levels",
       "Badges, streaks and richer progression",
@@ -371,7 +371,7 @@ const content: Record<
     exploreLabel: "Explore Civic Life",
     exploreTitle: "Start anywhere. Learn at your pace.",
     exploreDescription:
-      "Explore all eight KarmaFacie learning areas without creating an account.",
+      "Explore all eight KrutBharat learning areas without creating an account.",
     exploreAll: "Explore all topics →",
 
     government: "Government & Governance",
@@ -410,7 +410,7 @@ const content: Record<
     issueJourneyTitle:
       "See a civic problem? Know what to do next.",
     issueJourneyDescription:
-      "KarmaFacie helps you document the issue, identify the relevant authority, prepare your report and hand it off to the appropriate official channel.",
+      "KrutBharat helps you document the issue, identify the relevant authority, prepare your report and hand it off to the appropriate official channel.",
 
     issueStep1: "See a problem",
     issueStep2: "Document it",
@@ -422,7 +422,7 @@ const content: Record<
 
     reportIssueNow: "Report a Civic Issue →",
 
-    whyLabel: "Why KarmaFacie?",
+    whyLabel: "Why KrutBharat?",
     whyTitle:
       "Making civic life easier to understand and navigate.",
 
@@ -436,7 +436,7 @@ const content: Record<
     problem4:
       "Citizens may not know where a local problem should be reported.",
 
-    solutionTitle: "What KarmaFacie changes",
+    solutionTitle: "What KrutBharat changes",
     solution1:
       "Simple, structured civic learning.",
     solution2:
@@ -449,7 +449,7 @@ const content: Record<
     trustLabel: "Trust & Transparency",
     trustTitle: "Built for citizens, with clarity at the core.",
     trustDescription:
-      "KarmaFacie helps citizens learn and navigate civic processes while clearly distinguishing its own tools from official government systems.",
+      "KrutBharat helps citizens learn and navigate civic processes while clearly distinguishing its own tools from official government systems.",
 
     trust1Title: "Official information",
     trust1Description:
@@ -457,14 +457,14 @@ const content: Record<
 
     trust2Title: "Citizen-controlled reports",
     trust2Description:
-      "Citizens remain in control of the civic reports and information they provide through KarmaFacie.",
+      "Citizens remain in control of the civic reports and information they provide through KrutBharat.",
 
     trust3Title: "Clear boundaries",
     trust3Description:
-      "KarmaFacie does not present itself as a government authority or automatically treat a report as an official government submission.",
+      "KrutBharat does not present itself as a government authority or automatically treat a report as an official government submission.",
 
     ctaTitle1: "Ready to start your",
-    ctaTitle2: " KarmaFacie journey?",
+    ctaTitle2: " KrutBharat journey?",
     ctaDescription:
       "Explore civic knowledge first. Create an account when you're ready to save your progress and use personalized features.",
 
@@ -484,14 +484,14 @@ const content: Record<
     leagueAction: "Explore Civic Leagues →",
 
     footerTagline:
-      "Learn. Understand. Participate.",
+      "Know India. Think Civic. Shape Its Future.",
   },
 
   hi: {
     navAbout: "परिचय",
     navWhatWeDo: "हम क्या करते हैं",
     navExplore: "एक्सप्लोर करें",
-    navWhy: "KarmaFacie क्यों?",
+    navWhy: "KrutBharat क्यों?",
     navLeagues: "सिविक लीग्स",
     signIn: "साइन इन / साइन अप",
     signUp: "साइन अप",
@@ -502,21 +502,21 @@ const content: Record<
     heroTitle1: "जानें। समझें।",
     heroTitle2: "भाग लें।",
     heroDescription:
-      "KarmaFacie नागरिकों को यह समझने में मदद करता है कि भारत कैसे काम करता है, उनके आसपास के मुद्दों को समझने में मदद करता है और सार्थक नागरिक भागीदारी के तरीके दिखाता है।",
-    exploreNow: "KarmaFacie एक्सप्लोर करें →",
+      "KrutBharat नागरिकों को यह समझने में मदद करता है कि भारत कैसे काम करता है, उनके आसपास के मुद्दों को समझने में मदद करता है और सार्थक नागरिक भागीदारी के तरीके दिखाता है।",
+    exploreNow: "KrutBharat एक्सप्लोर करें →",
     signInUp: "साइन इन / साइन अप",
 
-    aboutLabel: "KarmaFacie क्या है?",
-    aboutTagline: "सत्कर्मों का चेहरा।",
+    aboutLabel: "KrutBharat क्या है?",
+    aboutTagline: "Know India. Think Civic. Shape Its Future.",
     aboutTitle:
       "जब नागरिक लोकतंत्र को समझते हैं, तो लोकतंत्र बेहतर काम करता है।",
     aboutDescription:
-      "KarmaFacie नागरिक शिक्षा और नागरिक भागीदारी को एक सरल अनुभव में जोड़ता है। सरकार के बारे में जानें, समझें कि व्यवस्थाएँ हमारे दैनिक जीवन को कैसे प्रभावित करती हैं और अपने समुदाय में भाग लेने के व्यावहारिक तरीके खोजें।",
+      "KrutBharat नागरिक शिक्षा और नागरिक भागीदारी को एक सरल अनुभव में जोड़ता है। सरकार के बारे में जानें, समझें कि व्यवस्थाएँ हमारे दैनिक जीवन को कैसे प्रभावित करती हैं और अपने समुदाय में भाग लेने के व्यावहारिक तरीके खोजें।",
 
-    whatWeDoLabel: "KarmaFacie में आप क्या कर सकते हैं?",
+    whatWeDoLabel: "KrutBharat में आप क्या कर सकते हैं?",
     whatWeDoTitle: "सीखने से कार्रवाई तक।",
     whatWeDoDescription:
-      "KarmaFacie एक जागरूक नागरिक की पूरी यात्रा को ध्यान में रखकर बनाया गया है।",
+      "KrutBharat एक जागरूक नागरिक की पूरी यात्रा को ध्यान में रखकर बनाया गया है।",
 
     learnTitle: "सीखें",
     learnDescription:
@@ -536,10 +536,10 @@ const content: Record<
     participateReveal:
       "नागरिक समस्याएँ रिपोर्ट करें, उनकी प्रगति देखें, Civic Quests में भाग लें और योगदान के नए तरीके खोजें।",
 
-    howLabel: "KarmaFacie कैसे काम करता है",
+    howLabel: "KrutBharat कैसे काम करता है",
     howTitle: "सीखने से स्थायी नागरिक प्रभाव तक।",
     howDescription:
-      "KarmaFacie नागरिक ज्ञान को वास्तविक भागीदारी, सत्यापित योगदान और एक बढ़ते नागरिक रिकॉर्ड से जोड़ता है।",
+      "KrutBharat नागरिक ज्ञान को वास्तविक भागीदारी, सत्यापित योगदान और एक बढ़ते नागरिक रिकॉर्ड से जोड़ता है।",
 
     step1Title: "सीखें",
     step1Description:
@@ -552,15 +552,15 @@ const content: Record<
       "समझें कि कौन सा प्राधिकरण या नागरिक प्रक्रिया प्रासंगिक है।",
     step4Title: "कार्रवाई करें",
     step4Description:
-      "भाग लेने, समस्याएँ रिपोर्ट करने और नागरिक मिशन पूरे करने के लिए KarmaFacie के उपकरणों का उपयोग करें।",
+      "भाग लेने, समस्याएँ रिपोर्ट करने और नागरिक मिशन पूरे करने के लिए KrutBharat के उपकरणों का उपयोग करें।",
     step5Title: "ट्रैक और सत्यापित करें",
     step5Description:
       "अपडेट देखें, प्रमाण जमा करें और जहाँ संभव हो परिणामों की पुष्टि करें।",
 
-    journeyFlowLabel: "KARMAFACIE की यात्रा",
+    journeyFlowLabel: "KRUTBHARAT की यात्रा",
     journeyFlowTitle: "खोजें → सीखें → समझें → कार्रवाई करें → प्रमाण दिखाएँ → सत्यापित करें → अर्जित करें → अपना रिकॉर्ड बनाएँ → दोहराएँ",
     journeyFlowDescription:
-      "KarmaFacie में नागरिक अपनी गति से आगे बढ़ सकता है — भारत को जानने से लेकर वास्तविक नागरिक कार्रवाई करने और सत्यापित भागीदारी का रिकॉर्ड बनाने तक।",
+      "KrutBharat में नागरिक अपनी गति से आगे बढ़ सकता है — भारत को जानने से लेकर वास्तविक नागरिक कार्रवाई करने और सत्यापित भागीदारी का रिकॉर्ड बनाने तक।",
     journeyFlow: [
       {
         title: "खोजें",
@@ -604,10 +604,10 @@ const content: Record<
       },
     ],
 
-    featureUniverseLabel: "KARMAFACIE प्लेटफ़ॉर्म",
+    featureUniverseLabel: "KRUTBHARAT प्लेटफ़ॉर्म",
     featureUniverseTitle: "हर सुविधा एक ही नागरिक यात्रा से जुड़ी है।",
     featureUniverseDescription:
-      "KarmaFacie सीखने, नागरिक सेवाओं, वास्तविक कार्रवाई, सत्यापन, प्रभाव और समुदाय की भागीदारी को एक जुड़े हुए अनुभव में लाता है।",
+      "KrutBharat सीखने, नागरिक सेवाओं, वास्तविक कार्रवाई, सत्यापन, प्रभाव और समुदाय की भागीदारी को एक जुड़े हुए अनुभव में लाता है।",
     featureGroups: [
       {
         title: "सीखें और खोजें",
@@ -677,10 +677,10 @@ const content: Record<
       },
     ],
 
-    futureLabel: "KARMAFACIE के साथ आगे",
+    futureLabel: "KRUTBHARAT के साथ आगे",
     futureTitle: "नागरिक यात्रा लगातार बढ़ती रहेगी।",
     futureDescription:
-      "जैसे-जैसे KarmaFacie विकसित होगा, progression और personalization की नई परतें जुड़ सकती हैं।",
+      "जैसे-जैसे KrutBharat विकसित होगा, progression और personalization की नई परतें जुड़ सकती हैं।",
     futureFeatures: [
       "XP और levels",
       "Badges, streaks और richer progression",
@@ -693,7 +693,7 @@ const content: Record<
     exploreLabel: "नागरिक जीवन को एक्सप्लोर करें",
     exploreTitle: "कहीं से भी शुरुआत करें। अपनी गति से सीखें।",
     exploreDescription:
-      "बिना अकाउंट बनाए KarmaFacie के सभी आठ सीखने वाले क्षेत्रों को एक्सप्लोर करें।",
+      "बिना अकाउंट बनाए KrutBharat के सभी आठ सीखने वाले क्षेत्रों को एक्सप्लोर करें।",
     exploreAll: "सभी विषय देखें →",
 
     government: "सरकार और शासन व्यवस्था",
@@ -732,7 +732,7 @@ const content: Record<
     issueJourneyTitle:
       "नागरिक समस्या दिखी? आगे क्या करना है, जानें।",
     issueJourneyDescription:
-      "KarmaFacie समस्या को दर्ज करने, सही प्राधिकरण पहचानने, रिपोर्ट तैयार करने और उसे उचित आधिकारिक माध्यम तक पहुँचाने में मदद करता है।",
+      "KrutBharat समस्या को दर्ज करने, सही प्राधिकरण पहचानने, रिपोर्ट तैयार करने और उसे उचित आधिकारिक माध्यम तक पहुँचाने में मदद करता है।",
 
     issueStep1: "समस्या देखें",
     issueStep2: "समस्या दर्ज करें",
@@ -744,7 +744,7 @@ const content: Record<
 
     reportIssueNow: "नागरिक समस्या रिपोर्ट करें →",
 
-    whyLabel: "KarmaFacie क्यों?",
+    whyLabel: "KrutBharat क्यों?",
     whyTitle:
       "नागरिक जीवन को समझना और उसमें आगे बढ़ना आसान बनाना।",
 
@@ -758,7 +758,7 @@ const content: Record<
     problem4:
       "नागरिकों को यह पता नहीं हो सकता कि स्थानीय समस्या कहाँ रिपोर्ट करनी है।",
 
-    solutionTitle: "KarmaFacie क्या बदलता है",
+    solutionTitle: "KrutBharat क्या बदलता है",
     solution1:
       "सरल और व्यवस्थित नागरिक शिक्षा।",
     solution2:
@@ -772,7 +772,7 @@ const content: Record<
     trustTitle:
       "नागरिकों के लिए बनाया गया, स्पष्टता को केंद्र में रखकर।",
     trustDescription:
-      "KarmaFacie नागरिकों को सीखने और नागरिक प्रक्रियाओं को समझने में मदद करता है तथा अपने उपकरणों और आधिकारिक सरकारी प्रणालियों के बीच स्पष्ट अंतर रखता है।",
+      "KrutBharat नागरिकों को सीखने और नागरिक प्रक्रियाओं को समझने में मदद करता है तथा अपने उपकरणों और आधिकारिक सरकारी प्रणालियों के बीच स्पष्ट अंतर रखता है।",
 
     trust1Title: "आधिकारिक जानकारी",
     trust1Description:
@@ -780,14 +780,14 @@ const content: Record<
 
     trust2Title: "नागरिकों के नियंत्रण में रिपोर्ट",
     trust2Description:
-      "KarmaFacie के माध्यम से दी गई नागरिक रिपोर्ट और जानकारी पर नागरिकों का नियंत्रण रहता है।",
+      "KrutBharat के माध्यम से दी गई नागरिक रिपोर्ट और जानकारी पर नागरिकों का नियंत्रण रहता है।",
 
     trust3Title: "स्पष्ट सीमाएँ",
     trust3Description:
-      "KarmaFacie स्वयं को सरकारी प्राधिकरण के रूप में प्रस्तुत नहीं करता और किसी रिपोर्ट को स्वतः आधिकारिक सरकारी सबमिशन नहीं मानता।",
+      "KrutBharat स्वयं को सरकारी प्राधिकरण के रूप में प्रस्तुत नहीं करता और किसी रिपोर्ट को स्वतः आधिकारिक सरकारी सबमिशन नहीं मानता।",
 
     ctaTitle1: "क्या आप अपनी",
-    ctaTitle2: " KarmaFacie यात्रा शुरू करने के लिए तैयार हैं?",
+    ctaTitle2: " KrutBharat यात्रा शुरू करने के लिए तैयार हैं?",
     ctaDescription:
       "पहले नागरिक ज्ञान को एक्सप्लोर करें। प्रगति सेव करने और व्यक्तिगत सुविधाओं का उपयोग करने के लिए तैयार होने पर अकाउंट बनाएँ।",
 
@@ -807,14 +807,14 @@ const content: Record<
     leagueAction: "सिविक लीग्स देखें →",
 
     footerTagline:
-      "सीखें। समझें। भाग लें।",
+      "Know India. Think Civic. Shape Its Future.",
   },
 
   mr: {
     navAbout: "परिचय",
     navWhatWeDo: "आम्ही काय करतो",
     navExplore: "एक्सप्लोर करा",
-    navWhy: "KarmaFacie का?",
+    navWhy: "KrutBharat का?",
     navLeagues: "सिविक लीग्स",
     signIn: "साइन इन / साइन अप",
     signUp: "साइन अप",
@@ -825,21 +825,21 @@ const content: Record<
     heroTitle1: "जाणा. समजून घ्या.",
     heroTitle2: "सहभागी व्हा.",
     heroDescription:
-      "KarmaFacie नागरिकांना भारत कसा कार्य करतो हे जाणून घेण्यास, आजूबाजूच्या समस्या समजून घेण्यास आणि अर्थपूर्ण नागरिक सहभागाचे मार्ग शोधण्यास मदत करते.",
-    exploreNow: "KarmaFacie एक्सप्लोर करा →",
+      "KrutBharat नागरिकांना भारत कसा कार्य करतो हे जाणून घेण्यास, आजूबाजूच्या समस्या समजून घेण्यास आणि अर्थपूर्ण नागरिक सहभागाचे मार्ग शोधण्यास मदत करते.",
+    exploreNow: "KrutBharat एक्सप्लोर करा →",
     signInUp: "साइन इन / साइन अप",
 
-    aboutLabel: "KarmaFacie म्हणजे काय?",
+    aboutLabel: "KrutBharat म्हणजे काय?",
     aboutTagline: "सत्कर्मांचा चेहरा।",
     aboutTitle:
       "नागरिकांना लोकशाही समजली तर लोकशाही अधिक प्रभावीपणे कार्य करते.",
     aboutDescription:
-      "KarmaFacie नागरिक शिक्षण आणि नागरिक सहभाग एका सोप्या अनुभवामध्ये एकत्र आणते. सरकारबद्दल शिका, विविध व्यवस्था आपल्या दैनंदिन जीवनावर कसा परिणाम करतात हे समजून घ्या आणि आपल्या समुदायात सहभागी होण्याचे व्यावहारिक मार्ग शोधा.",
+      "KrutBharat नागरिक शिक्षण आणि नागरिक सहभाग एका सोप्या अनुभवामध्ये एकत्र आणते. सरकारबद्दल शिका, विविध व्यवस्था आपल्या दैनंदिन जीवनावर कसा परिणाम करतात हे समजून घ्या आणि आपल्या समुदायात सहभागी होण्याचे व्यावहारिक मार्ग शोधा.",
 
-    whatWeDoLabel: "KarmaFacie मध्ये तुम्ही काय करू शकता?",
+    whatWeDoLabel: "KrutBharat मध्ये तुम्ही काय करू शकता?",
     whatWeDoTitle: "शिकण्यापासून कृतीपर्यंत.",
     whatWeDoDescription:
-      "KarmaFacie एका जागरूक नागरिकाच्या संपूर्ण वाटचालीचा विचार करून तयार केले आहे.",
+      "KrutBharat एका जागरूक नागरिकाच्या संपूर्ण वाटचालीचा विचार करून तयार केले आहे.",
 
     learnTitle: "शिका",
     learnDescription:
@@ -859,10 +859,10 @@ const content: Record<
     participateReveal:
       "नागरी समस्या नोंदवा, त्यांची प्रगती पाहा, Civic Quests मध्ये सहभागी व्हा आणि योगदान देण्याचे नवे मार्ग शोधा.",
 
-    howLabel: "KarmaFacie कसे कार्य करते",
+    howLabel: "KrutBharat कसे कार्य करते",
     howTitle: "शिकण्यापासून दीर्घकालीन नागरिक प्रभावापर्यंत.",
     howDescription:
-      "KarmaFacie नागरिक ज्ञानाला प्रत्यक्ष सहभाग, सत्यापित योगदान आणि वाढत्या नागरिक नोंदीशी जोडते.",
+      "KrutBharat नागरिक ज्ञानाला प्रत्यक्ष सहभाग, सत्यापित योगदान आणि वाढत्या नागरिक नोंदीशी जोडते.",
 
     step1Title: "शिका",
     step1Description:
@@ -875,15 +875,15 @@ const content: Record<
       "कोणते प्राधिकरण किंवा नागरी प्रक्रिया संबंधित आहे हे समजून घ्या.",
     step4Title: "कृती करा",
     step4Description:
-      "सहभाग घ्या, समस्या नोंदवा आणि Civic Missions पूर्ण करण्यासाठी KarmaFacie ची साधने वापरा.",
+      "सहभाग घ्या, समस्या नोंदवा आणि Civic Missions पूर्ण करण्यासाठी KrutBharat ची साधने वापरा.",
     step5Title: "ट्रॅक आणि पडताळा",
     step5Description:
       "अपडेट्स पाहा, पुरावे सादर करा आणि शक्य असेल तिथे परिणामांची पडताळणी करा.",
 
-    journeyFlowLabel: "KARMAFACIE ची वाटचाल",
+    journeyFlowLabel: "KRUTBHARAT ची वाटचाल",
     journeyFlowTitle: "शोधा → शिका → समजून घ्या → कृती करा → पुरावा द्या → पडताळा → मिळवा → तुमची नोंद घडवा → पुन्हा सहभागी व्हा",
     journeyFlowDescription:
-      "भारत जाणून घेण्यापासून प्रत्यक्ष नागरिक कृतीपर्यंत आणि सत्यापित सहभागाची नोंद तयार करण्यापर्यंत नागरिक KarmaFacie मध्ये आपल्या गतीने पुढे जाऊ शकतात.",
+      "भारत जाणून घेण्यापासून प्रत्यक्ष नागरिक कृतीपर्यंत आणि सत्यापित सहभागाची नोंद तयार करण्यापर्यंत नागरिक KrutBharat मध्ये आपल्या गतीने पुढे जाऊ शकतात.",
     journeyFlow: [
       {
         title: "शोधा",
@@ -927,10 +927,10 @@ const content: Record<
       },
     ],
 
-    featureUniverseLabel: "KARMAFACIE प्लॅटफॉर्म",
+    featureUniverseLabel: "KRUTBHARAT प्लॅटफॉर्म",
     featureUniverseTitle: "प्रत्येक सुविधा एकाच नागरिक वाटचालीशी जोडलेली आहे.",
     featureUniverseDescription:
-      "KarmaFacie शिक्षण, नागरी सेवा, प्रत्यक्ष कृती, पडताळणी, प्रभाव आणि समुदाय सहभाग यांना एका जोडलेल्या अनुभवात आणते.",
+      "KrutBharat शिक्षण, नागरी सेवा, प्रत्यक्ष कृती, पडताळणी, प्रभाव आणि समुदाय सहभाग यांना एका जोडलेल्या अनुभवात आणते.",
     featureGroups: [
       {
         title: "शिका आणि शोधा",
@@ -1000,10 +1000,10 @@ const content: Record<
       },
     ],
 
-    futureLabel: "KARMAFACIE सोबत पुढे",
+    futureLabel: "KRUTBHARAT सोबत पुढे",
     futureTitle: "नागरिक वाटचाल सतत विस्तारत राहील.",
     futureDescription:
-      "KarmaFacie विकसित होत असताना progression आणि personalization च्या नवीन स्तरांचा विस्तार करता येईल.",
+      "KrutBharat विकसित होत असताना progression आणि personalization च्या नवीन स्तरांचा विस्तार करता येईल.",
     futureFeatures: [
       "XP आणि levels",
       "Badges, streaks आणि richer progression",
@@ -1016,7 +1016,7 @@ const content: Record<
     exploreLabel: "नागरी जीवन एक्सप्लोर करा",
     exploreTitle: "कुठूनही सुरुवात करा. तुमच्या गतीने शिका.",
     exploreDescription:
-      "अकाउंट न बनवता KarmaFacie चे सर्व आठ शिकण्याचे विषय एक्सप्लोर करा.",
+      "अकाउंट न बनवता KrutBharat चे सर्व आठ शिकण्याचे विषय एक्सप्लोर करा.",
     exploreAll: "सर्व विषय एक्सप्लोर करा →",
 
     government: "सरकार आणि शासनव्यवस्था",
@@ -1055,7 +1055,7 @@ const content: Record<
     issueJourneyTitle:
       "नागरी समस्या दिसली? पुढे काय करायचे ते जाणून घ्या.",
     issueJourneyDescription:
-      "KarmaFacie समस्या नोंदवणे, योग्य प्राधिकरण ओळखणे, अहवाल तयार करणे आणि तो योग्य अधिकृत माध्यमापर्यंत पोहोचवण्यात मदत करते.",
+      "KrutBharat समस्या नोंदवणे, योग्य प्राधिकरण ओळखणे, अहवाल तयार करणे आणि तो योग्य अधिकृत माध्यमापर्यंत पोहोचवण्यात मदत करते.",
 
     issueStep1: "समस्या दिसली",
     issueStep2: "समस्या नोंदवा",
@@ -1067,7 +1067,7 @@ const content: Record<
 
     reportIssueNow: "नागरी समस्या नोंदवा →",
 
-    whyLabel: "KarmaFacie का?",
+    whyLabel: "KrutBharat का?",
     whyTitle:
       "नागरी जीवन समजून घेणे आणि त्यात मार्गक्रमण करणे सोपे करणे.",
 
@@ -1081,7 +1081,7 @@ const content: Record<
     problem4:
       "स्थानिक समस्या कुठे नोंदवायची हे नागरिकांना माहीत नसू शकते.",
 
-    solutionTitle: "KarmaFacie काय बदलते",
+    solutionTitle: "KrutBharat काय बदलते",
     solution1:
       "सोपे आणि व्यवस्थित नागरिक शिक्षण.",
     solution2:
@@ -1095,7 +1095,7 @@ const content: Record<
     trustTitle:
       "नागरिकांसाठी तयार केलेले, स्पष्टतेला केंद्रस्थानी ठेवून.",
     trustDescription:
-      "KarmaFacie नागरिकांना शिकण्यास आणि नागरी प्रक्रियेत मार्गदर्शन मिळवण्यास मदत करते आणि स्वतःच्या साधनांमध्ये व अधिकृत सरकारी प्रणालींमध्ये स्पष्ट फरक ठेवते.",
+      "KrutBharat नागरिकांना शिकण्यास आणि नागरी प्रक्रियेत मार्गदर्शन मिळवण्यास मदत करते आणि स्वतःच्या साधनांमध्ये व अधिकृत सरकारी प्रणालींमध्ये स्पष्ट फरक ठेवते.",
 
     trust1Title: "अधिकृत माहिती",
     trust1Description:
@@ -1103,14 +1103,14 @@ const content: Record<
 
     trust2Title: "नागरिकांच्या नियंत्रणातील नोंदी",
     trust2Description:
-      "KarmaFacie द्वारे दिलेल्या नागरी नोंदी आणि माहितीवर नागरिकांचे नियंत्रण राहते.",
+      "KrutBharat द्वारे दिलेल्या नागरी नोंदी आणि माहितीवर नागरिकांचे नियंत्रण राहते.",
 
     trust3Title: "स्पष्ट मर्यादा",
     trust3Description:
-      "KarmaFacie स्वतःला सरकारी प्राधिकरण म्हणून सादर करत नाही आणि कोणतीही नोंद आपोआप अधिकृत सरकारी सबमिशन मानत नाही.",
+      "KrutBharat स्वतःला सरकारी प्राधिकरण म्हणून सादर करत नाही आणि कोणतीही नोंद आपोआप अधिकृत सरकारी सबमिशन मानत नाही.",
 
     ctaTitle1: "तुमची",
-    ctaTitle2: " KarmaFacie वाटचाल सुरू करण्यास तयार आहात?",
+    ctaTitle2: " KrutBharat वाटचाल सुरू करण्यास तयार आहात?",
     ctaDescription:
       "सुरुवातीला नागरिक ज्ञान एक्सप्लोर करा. तुमची प्रगती जतन करण्यासाठी आणि वैयक्तिक सुविधा वापरण्यासाठी तयार झाल्यावर अकाउंट तयार करा.",
 
@@ -1130,7 +1130,7 @@ const content: Record<
     leagueAction: "सिविक लीग्स एक्सप्लोर करा →",
 
     footerTagline:
-      "शिका. समजून घ्या. सहभागी व्हा.",
+      "Know India. Think Civic. Shape Its Future.",
   },
 };
 
@@ -1423,7 +1423,6 @@ const civicToolsByLanguage: Record<
   ],
 };
 
-
 const journeyCards: {
   key: JourneyKey;
   icon: string;
@@ -1460,9 +1459,182 @@ const journeyCards: {
   },
 ];
 
+const civicSenseExploreContent: Record<
+  Language,
+  {
+    label: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    insideLabel: string;
+    insideTitle: string;
+    item1Title: string;
+    item1Description: string;
+    item2Title: string;
+    item2Description: string;
+    item3Title: string;
+    item3Description: string;
+    action: string;
+    stripLeft: string;
+    stripRight: string;
+  }
+> = {
+  en: {
+    label: "CIVIC SENSE · EVERYDAY CITIZENSHIP",
+    title: "Civic Sense",
+    subtitle: "The small habits that make shared spaces better.",
+    description:
+      "Understand how everyday choices affect other people, public spaces and the community around you — and learn simple ways to practise better civic behaviour.",
+    insideLabel: "WHAT'S INSIDE",
+    insideTitle: "Learn it. Notice it. Practise it.",
+    item1Title: "Understand the basics",
+    item1Description:
+      "What civic sense means, why it matters and how ordinary behaviour shapes shared public life.",
+    item2Title: "Everyday civic habits",
+    item2Description:
+      "Clean public spaces, do not spit, protect public property, keep noise considerate, respect queues and keep pathways clear.",
+    item3Title: "Practise through real situations",
+    item3Description:
+      "Use simple scenarios to think through the civic choice before you make it in everyday life.",
+    action: "Explore Civic Sense →",
+    stripLeft: "NOTICE → CHOOSE → PRACTISE",
+    stripRight: "Small actions, shared impact.",
+  },
+
+  hi: {
+    label: "नागरिक बोध · रोज़मर्रा की नागरिकता",
+    title: "नागरिक बोध",
+    subtitle: "छोटी आदतें जो साझा स्थानों को बेहतर बनाती हैं।",
+    description:
+      "समझें कि रोज़मर्रा के हमारे फैसले दूसरे लोगों, सार्वजनिक स्थानों और समुदाय को कैसे प्रभावित करते हैं — और बेहतर नागरिक व्यवहार अपनाने के सरल तरीके सीखें।",
+    insideLabel: "इसमें क्या है",
+    insideTitle: "सीखें। पहचानें। अपनाएँ।",
+    item1Title: "बुनियादी बातें समझें",
+    item1Description:
+      "नागरिक बोध क्या है, यह क्यों जरूरी है और साधारण व्यवहार साझा सार्वजनिक जीवन को कैसे प्रभावित करता है।",
+    item2Title: "रोज़मर्रा की नागरिक आदतें",
+    item2Description:
+      "सार्वजनिक स्थान साफ रखें, न थूकें, सार्वजनिक संपत्ति की रक्षा करें, शोर का ध्यान रखें, कतार का सम्मान करें और रास्ते खुले रखें।",
+    item3Title: "वास्तविक परिस्थितियों में अभ्यास करें",
+    item3Description:
+      "सरल परिस्थितियों के माध्यम से सोचें कि रोज़मर्रा में सही नागरिक विकल्प क्या हो सकता है।",
+    action: "नागरिक बोध देखें →",
+    stripLeft: "देखें → चुनें → अपनाएँ",
+    stripRight: "छोटी आदतें, साझा प्रभाव।",
+  },
+
+  mr: {
+    label: "नागरी जाणीव · दैनंदिन नागरिकपणा",
+    title: "नागरी जाणीव",
+    subtitle: "सामायिक जागा अधिक चांगल्या बनवणाऱ्या छोट्या सवयी.",
+    description:
+      "आपल्या दैनंदिन निवडींचा इतर लोकांवर, सार्वजनिक जागांवर आणि समुदायावर कसा परिणाम होतो हे समजून घ्या — आणि चांगले नागरी वर्तन अंगीकारण्याचे सोपे मार्ग शिका.",
+    insideLabel: "यामध्ये काय आहे",
+    insideTitle: "शिका. ओळखा. आचरणात आणा.",
+    item1Title: "मूलभूत गोष्टी समजून घ्या",
+    item1Description:
+      "नागरी जाणीव म्हणजे काय, ती का महत्त्वाची आहे आणि साधे वर्तन सामायिक सार्वजनिक जीवनावर कसे परिणाम करते.",
+    item2Title: "दैनंदिन नागरी सवयी",
+    item2Description:
+      "सार्वजनिक जागा स्वच्छ ठेवा, थुंकू नका, सार्वजनिक मालमत्तेचे रक्षण करा, आवाजाची जाणीव ठेवा, रांगेचा आदर करा आणि मार्ग मोकळे ठेवा.",
+    item3Title: "प्रत्यक्ष परिस्थितीत सराव करा",
+    item3Description:
+      "सोप्या प्रसंगांमधून दैनंदिन जीवनात योग्य नागरी पर्याय कोणता असू शकतो याचा विचार करा.",
+    action: "नागरी जाणीव पाहा →",
+    stripLeft: "लक्ष द्या → निवडा → आचरणात आणा",
+    stripRight: "छोट्या सवयी, सामायिक परिणाम.",
+  },
+};
+
+const responsibleAuthoritiesExploreContent: Record<
+  Language,
+  {
+    label: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    insideLabel: string;
+    insideTitle: string;
+    item1Title: string;
+    item1Description: string;
+    item2Title: string;
+    item2Description: string;
+    item3Title: string;
+    item3Description: string;
+    action: string;
+    stripLeft: string;
+    stripRight: string;
+  }
+> = {
+  en: {
+    label: "RESPONSIBLE AUTHORITIES · KNOW YOUR AREA",
+    title: "Who represents and governs this place?",
+    subtitle: "Know the people and public bodies connected to the area around you.",
+    description:
+      "Use your saved profile location or your current device location to identify the area, then explore elected representatives and public authorities mapped to it.",
+    insideLabel: "WHAT'S INSIDE",
+    insideTitle: "People. Constituencies. Public authorities.",
+    item1Title: "Municipal & Ward representatives",
+    item1Description:
+      "See applicable local elected representatives and their political parties, with ward information where verified.",
+    item2Title: "MLA & MP",
+    item2Description:
+      "See the Assembly and Lok Sabha constituencies, representatives, parties and election years available for the selected area.",
+    item3Title: "Public & administrative authorities",
+    item3Description:
+      "Explore municipal, district, police, development and other public authorities listed for the area.",
+    action: "Explore Responsible Authorities →",
+    stripLeft: "PROFILE → CURRENT LOCATION → REPRESENTATIVES",
+    stripRight: "Purely informational. Politically neutral.",
+  },
+  hi: {
+    label: "जिम्मेदार प्राधिकरण · अपने क्षेत्र को जानें",
+    title: "इस क्षेत्र का प्रतिनिधित्व और प्रशासन कौन करता है?",
+    subtitle: "अपने आसपास के क्षेत्र से जुड़े लोगों और सार्वजनिक संस्थाओं को जानें।",
+    description:
+      "अपनी सेव प्रोफ़ाइल लोकेशन या वर्तमान डिवाइस लोकेशन का उपयोग करके क्षेत्र पहचानें और उससे जुड़े निर्वाचित प्रतिनिधियों तथा सार्वजनिक प्राधिकरणों को देखें।",
+    insideLabel: "इसमें क्या है",
+    insideTitle: "लोग। निर्वाचन क्षेत्र। सार्वजनिक प्राधिकरण।",
+    item1Title: "नगरपालिका और वार्ड प्रतिनिधि",
+    item1Description:
+      "जहाँ सत्यापित जानकारी उपलब्ध हो, वहाँ लागू स्थानीय निर्वाचित प्रतिनिधि और उनके राजनीतिक दल तथा वार्ड की जानकारी देखें।",
+    item2Title: "MLA और MP",
+    item2Description:
+      "चुने गए क्षेत्र के विधानसभा और लोकसभा निर्वाचन क्षेत्र, प्रतिनिधि, दल और उपलब्ध चुनाव-वर्ष की जानकारी देखें।",
+    item3Title: "सार्वजनिक और प्रशासनिक प्राधिकरण",
+    item3Description:
+      "क्षेत्र के लिए सूचीबद्ध नगरपालिका, जिला, पुलिस, विकास और अन्य सार्वजनिक प्राधिकरणों को देखें।",
+    action: "जिम्मेदार प्राधिकरण देखें →",
+    stripLeft: "प्रोफ़ाइल → वर्तमान लोकेशन → प्रतिनिधि",
+    stripRight: "केवल जानकारी। राजनीतिक रूप से तटस्थ।",
+  },
+  mr: {
+    label: "जबाबदार प्राधिकरण · तुमचा परिसर जाणून घ्या",
+    title: "या ठिकाणाचे प्रतिनिधित्व आणि प्रशासन कोण करते?",
+    subtitle: "तुमच्या आसपासच्या परिसराशी संबंधित लोक आणि सार्वजनिक संस्था जाणून घ्या.",
+    description:
+      "तुमचे सेव्ह केलेले प्रोफाइल लोकेशन किंवा सध्याचे डिव्हाइस लोकेशन वापरून परिसर ओळखा आणि त्याच्याशी संबंधित निवडून आलेले प्रतिनिधी व सार्वजनिक प्राधिकरण पाहा.",
+    insideLabel: "यामध्ये काय आहे",
+    insideTitle: "लोक. मतदारसंघ. सार्वजनिक प्राधिकरण.",
+    item1Title: "महानगरपालिका आणि प्रभाग प्रतिनिधी",
+    item1Description:
+      "सत्यापित माहिती उपलब्ध असल्यास लागू स्थानिक प्रतिनिधी, त्यांचे राजकीय पक्ष आणि प्रभागाची माहिती पाहा.",
+    item2Title: "MLA आणि MP",
+    item2Description:
+      "निवडलेल्या परिसराचे विधानसभा आणि लोकसभा मतदारसंघ, प्रतिनिधी, पक्ष आणि उपलब्ध निवडणूक वर्ष पाहा.",
+    item3Title: "सार्वजनिक आणि प्रशासकीय प्राधिकरण",
+    item3Description:
+      "परिसरासाठी सूचीबद्ध महानगरपालिका, जिल्हा, पोलीस, विकास आणि इतर सार्वजनिक प्राधिकरण पाहा.",
+    action: "जबाबदार प्राधिकरण पाहा →",
+    stripLeft: "प्रोफाइल → सध्याचे लोकेशन → प्रतिनिधी",
+    stripRight: "केवळ माहिती. राजकीयदृष्ट्या तटस्थ.",
+  },
+};
+
 const supabase = createClient();
 
-export default function ExplorePage() {
+export default function ExplorePage()
+ {
   const router = useRouter();
   const { language, setLanguage } = useLanguage();
   const text = content[language];
@@ -1491,7 +1663,7 @@ export default function ExplorePage() {
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) {
-      console.error("KarmaFacie sign-out failed:", error);
+      console.error("KrutBharat sign-out failed:", error);
       return;
     }
     setIsAuthenticated(false);
@@ -1509,7 +1681,6 @@ export default function ExplorePage() {
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
         <img src="/images/kf-background.png" alt="" className="h-full w-full object-cover" />
       </div>
-
 
       {/* EXPLORE NAVIGATION RAIL */}
       <header className="kf-explore-header sticky top-3 z-50 mx-auto max-w-[1280px] px-3 sm:px-5">
@@ -1532,13 +1703,13 @@ export default function ExplorePage() {
               className="kf-explore-logo shrink-0 rounded-xl px-2 py-1 text-left text-[21px] font-black tracking-[-0.045em] text-[#102033] transition hover:bg-white/45 sm:px-2.5 sm:text-[23px]"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Karma<span className="text-[#ff7a00]">Facie</span>
+              Krut<span className="text-[#ff7a00]">Bharat</span>
             </button>
 
             <div className="mx-1 hidden h-9 w-px bg-white/70 lg:block" aria-hidden="true" />
 
             <div
-              className="kf-explore-section-nav flex min-w-0 flex-1 items-end justify-center gap-1.5 overflow-x-auto px-0.5 pb-0.5"
+              className="kf-explore-section-nav flex min-w-0 flex-1 items-end justify-between gap-1 overflow-visible px-1 pb-0.5"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
               aria-label="Explore sections"
             >
@@ -1559,6 +1730,8 @@ export default function ExplorePage() {
                   label: language === "en" ? "UNDERSTAND" : language === "hi" ? "समझें" : "समजून घ्या",
                   items: [
                     ["issue-journey", language === "en" ? "Civic Issue Journey" : language === "hi" ? "नागरिक समस्या यात्रा" : "नागरी समस्या प्रवास"],
+                    ["civic-sense", language === "en" ? "Civic Sense" : language === "hi" ? "नागरिक बोध" : "नागरी जाणीव"],
+                    ["responsible-authorities", language === "en" ? "Responsible Authorities" : language === "hi" ? "जिम्मेदार प्राधिकरण" : "जबाबदार प्राधिकरण"],
                   ],
                   groupClass: "bg-[#f2ecfa]/58 border-[#e5dcef]/65",
                   dot: "bg-[#8e36b8]",
@@ -1589,7 +1762,7 @@ export default function ExplorePage() {
                         key={id}
                         type="button"
                         onClick={() => scrollToSection(id)}
-                        className="kf-explore-nav-item group relative rounded-full px-2.5 py-1.5 text-[9.5px] font-bold tracking-[-0.01em] text-[#526170] transition-all duration-200 hover:bg-white/70 hover:text-[#102033] sm:px-3 sm:text-[10px]"
+                        className="kf-explore-nav-item group relative rounded-full px-2 py-1.5 text-[9px] font-bold tracking-[-0.01em] text-[#526170] transition-all duration-200 hover:bg-white/70 hover:text-[#102033] sm:px-2.5 sm:text-[10px]"
                       >
                         <span className="relative whitespace-nowrap">
                           {label}
@@ -1613,23 +1786,16 @@ export default function ExplorePage() {
                 {isAuthenticated ? "Dashboard" : "Dashboard"} →
               </button>
 
-              <button
-                type="button"
-                onClick={isAuthenticated ? handleSignOut : () => router.push("/auth")}
-                className="kf-explore-auth hidden rounded-full border border-white/75 bg-white/50 px-3.5 py-2 text-[11px] font-semibold text-[#526170] shadow-sm transition hover:-translate-y-0.5 hover:bg-white/80 hover:text-[#102033] sm:inline-flex"
-              >
-                {isAuthenticated ? text.signOut : text.signInUp}
-              </button>
-
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value as Language)}
                 aria-label="Language"
-                className="kf-explore-control rounded-full border border-white/75 bg-white/55 px-3 py-2 text-[11px] font-semibold text-[#344153] shadow-sm outline-none backdrop-blur-md transition hover:bg-white/80 sm:px-3.5"
+                title={language === "en" ? "English" : language === "hi" ? "हिन्दी" : "मराठी"}
+                className="kf-explore-control h-10 w-10 appearance-none rounded-full border border-white/75 bg-white/60 p-0 text-center text-[11px] font-extrabold text-[#344153] shadow-sm outline-none backdrop-blur-md transition hover:bg-white/85"
               >
-                <option value="en">English</option>
-                <option value="hi">हिन्दी</option>
-                <option value="mr">मराठी</option>
+                <option value="en">En</option>
+                <option value="hi">हि</option>
+                <option value="mr">म</option>
               </select>
             </div>
           </div>
@@ -1643,7 +1809,7 @@ export default function ExplorePage() {
             <div className="inline-flex items-center gap-2 rounded-full border border-[#e9e0d3] bg-white/80 px-3.5 py-1.5 shadow-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-[#ff7a00]" />
               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#7f858b]">
-                {language === "en" ? "EXPLORE KARMAFACIE" : language === "hi" ? "KARMAFACIE एक्सप्लोर करें" : "KARMAFACIE एक्सप्लोर करा"}
+                {language === "en" ? "EXPLORE KRUTBHARAT" : language === "hi" ? "KRUTBHARAT एक्सप्लोर करें" : "KRUTBHARAT एक्सप्लोर करा"}
               </span>
             </div>
             <h1 className="kf-explore-hero-title mt-5 max-w-4xl text-[42px] font-black leading-[0.98] tracking-[-0.045em] text-[#102033] md:text-[62px]">
@@ -1659,10 +1825,10 @@ export default function ExplorePage() {
             </h1>
             <p className="mt-5 max-w-3xl text-[16px] leading-7 text-[#687581] md:text-[18px]">
               {language === "en"
-                ? "Everything KarmaFacie offers is organized here as a direct path from civic learning to understanding, action, teams and your growing civic record."
+                ? "Everything KrutBharat offers is organized here as a direct path from civic learning to understanding, action, teams and your growing civic record."
                 : language === "hi"
-                ? "KarmaFacie की सभी प्रमुख सुविधाएँ यहाँ नागरिक सीखने से लेकर समझ, भागीदारी, टीम अनुभव और आपके बढ़ते नागरिक रिकॉर्ड तक एक स्पष्ट मार्ग में व्यवस्थित हैं।"
-                : "KarmaFacie ची प्रमुख वैशिष्ट्ये येथे नागरिक शिक्षणापासून समज, सहभाग, टीम अनुभव आणि तुमच्या वाढत्या नागरिक नोंदीपर्यंत स्पष्ट मार्गाने मांडली आहेत."}
+                ? "KrutBharat की सभी प्रमुख सुविधाएँ यहाँ नागरिक सीखने से लेकर समझ, भागीदारी, टीम अनुभव और आपके बढ़ते नागरिक रिकॉर्ड तक एक स्पष्ट मार्ग में व्यवस्थित हैं।"
+                : "KrutBharat ची प्रमुख वैशिष्ट्ये येथे नागरिक शिक्षणापासून समज, सहभाग, टीम अनुभव आणि तुमच्या वाढत्या नागरिक नोंदीपर्यंत स्पष्ट मार्गाने मांडली आहेत."}
             </p>
           </div>
         </div>
@@ -1749,14 +1915,20 @@ export default function ExplorePage() {
         .kf-explore-logo,
         .kf-explore-nav-item,
         .kf-explore-control,
-        .kf-explore-dashboard,
-        .kf-explore-auth {
+        .kf-explore-dashboard {
           transform: translateZ(8px);
           transform-style: preserve-3d;
         }
 
+        .kf-explore-section-nav {
+          overflow: visible;
+        }
+
+        .kf-explore-nav-group > div:last-child {
+          overflow: visible;
+        }
+
         .kf-explore-nav-item:hover,
-        .kf-explore-auth:hover,
         .kf-explore-control:hover {
           transform: translate3d(0, -2px, 14px);
           box-shadow: 0 7px 14px rgba(16, 32, 51, 0.10);
@@ -1767,9 +1939,27 @@ export default function ExplorePage() {
         }
 
         @media (max-width: 1180px) {
+          .kf-explore-section-nav {
+            gap: 0.25rem;
+            overflow: visible;
+          }
+
           .kf-explore-nav-item {
-            padding-left: 0.55rem;
-            padding-right: 0.55rem;
+            padding-left: 0.45rem;
+            padding-right: 0.45rem;
+            font-size: 9px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .kf-explore-section-nav {
+            overflow: visible !important;
+            justify-content: space-between !important;
+          }
+
+          .kf-explore-nav-group {
+            flex-shrink: 1;
+            min-width: 0;
           }
         }
 
@@ -1792,8 +1982,8 @@ export default function ExplorePage() {
 
       <style>{`
 /* =========================================================
-   KARMAFACIE EXPLORE — DARK MODE v10
-   Visual language: latest KarmaFacie homepage v9
+   KRUTBHARAT EXPLORE — DARK MODE v10
+   Visual language: latest KrutBharat homepage v9
    Purpose: richer dark color families + stronger contrast.
    Light mode remains unchanged because every rule is scoped
    to html[data-theme="dark"].
@@ -2295,10 +2485,9 @@ html[data-theme="dark"] .kf-explore-page footer .text-\[\#102033\] {
 }
 `}</style>
 
-
       <style>{`
 /* =========================================================
-   KARMAFACIE EXPLORE — DARK MODE v11
+   KRUTBHARAT EXPLORE — DARK MODE v11
    FINAL VISUAL CORRECTION PASS
    - one continuous dark page canvas
    - no accidental light/white section surfaces
@@ -2779,7 +2968,7 @@ html[data-theme="dark"] .kf-explore-page footer .text-\[\#a0a4aa\] { color: #819
 
       <style>{`
 /* =========================================================
-   KARMAFACIE EXPLORE — DARK MODE v12
+   KRUTBHARAT EXPLORE — DARK MODE v12
    TARGETED VISUAL CORRECTIONS
    - orange "Participate." in the page intro
    - simplified Civic Passport composition
@@ -2962,7 +3151,7 @@ html[data-theme="dark"] .kf-explore-page #issue-journey > div > div > div:first-
 }
 
 /* =========================================================
-   KARMAFACIE GUIDANCE LAYER
+   KRUTBHARAT GUIDANCE LAYER
    Slightly darker warm cream; strong navy typography.
    ========================================================= */
 html[data-theme="dark"] .kf-explore-page #issue-journey .rounded-\[22px\] {
@@ -2994,7 +3183,7 @@ html[data-theme="dark"] .kf-explore-page #issue-journey .rounded-\[22px\] span:l
 
       <style>{`
 /* =========================================================
-   KARMAFACIE EXPLORE — DARK MODE v13
+   KRUTBHARAT EXPLORE — DARK MODE v13
    FINAL VISUAL CORRECTIONS
    - Civic Passport matches the homepage dark-card aesthetic
    - Passport right panel is dark navy/blue instead of white
@@ -3411,6 +3600,7 @@ html[data-theme="dark"] .kf-explore-page #civic-passport > div > div > div:last-
           </div>
         </div>
       </section>
+
       {/* KNOW INDIA */}
       <section
         id="know-india"
@@ -3667,10 +3857,367 @@ html[data-theme="dark"] .kf-explore-page #civic-passport > div > div > div:last-
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
       </section>
+
+      {/* CIVIC ISSUE JOURNEY */}
+      <section id="issue-journey" className="relative z-10 scroll-mt-36 border-t border-[#ece7df] bg-white/25">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+          <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#efd9c3] bg-[#fff4e7] px-3.5 py-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#ff7a00]" />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8d7158]">
+                  {text.issueJourneyLabel}
+                </span>
+              </div>
+
+              <h2 className="mt-4 max-w-[560px] text-[36px] font-black leading-[1.03] tracking-[-0.04em] text-[#102033] md:text-[48px]">
+                {text.issueJourneyTitle}
+              </h2>
+
+              <p className="mt-5 max-w-[560px] text-[15px] leading-7 text-[#697581] md:text-[16px]">
+                {text.issueJourneyDescription}
+              </p>
+
+              <button
+                type="button"
+                onClick={() => router.push("/report-issue")}
+                className="mt-7 inline-flex items-center rounded-full bg-[#ff7a00] px-6 py-3.5 text-[12px] font-black text-white shadow-[0_12px_26px_rgba(255,122,0,0.18)] transition hover:-translate-y-0.5 hover:bg-[#ef6c00] hover:shadow-[0_18px_32px_rgba(255,122,0,0.22)]"
+              >
+                {text.reportIssueNow}
+              </button>
+
+              <div className="mt-8 flex flex-wrap gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#8f969d]">
+                <span className="rounded-full border border-[#e5dfd6] bg-white px-3 py-1.5">Document</span>
+                <span className="text-[#ff7a00]">→</span>
+                <span className="rounded-full border border-[#e5dfd6] bg-white px-3 py-1.5">Route</span>
+                <span className="text-[#ff7a00]">→</span>
+                <span className="rounded-full border border-[#e5dfd6] bg-white px-3 py-1.5">Handoff</span>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute left-[12%] right-[12%] top-[34px] hidden h-px bg-[#e3ddd4] lg:block" />
+
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {[
+                  [text.issueStep1, "👀"],
+                  [text.issueStep2, "📋"],
+                  [text.issueStep3, "🏛️"],
+                  [text.issueStep4, "📝"],
+                  [text.issueStep5, "↗️"],
+                  [text.issueStep6, "✅"],
+                  [text.issueStep7, "🔎"],
+                ].map(([label, icon], index) => (
+                  <div
+                    key={label}
+                    className={`kf-journey-card group relative rounded-[24px] border border-[#e5dfd6] bg-white p-4 shadow-[0_10px_28px_rgba(16,27,43,0.045)] transition duration-300 hover:-translate-y-1 ${
+                      index === 4 ? "border-[#ffd0a5] bg-[#fff7ee]" : ""
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div
+                        className={`grid h-11 w-11 place-items-center rounded-[16px] text-[21px] ${
+                          index === 4 ? "bg-[#ffe1c5]" : "bg-[#f5efe6]"
+                        }`}
+                      >
+                        {icon}
+                      </div>
+                      <span className="text-[10px] font-black tracking-[0.18em] text-[#a4a7aa]">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+
+                    <p className="mt-5 text-[13px] font-black leading-5 text-[#263447]">
+                      {label}
+                    </p>
+
+                    {index < 6 && (
+                      <span className="mt-4 hidden text-[13px] font-bold text-[#d0c8bd] lg:block">
+                        →
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-4 rounded-[22px] border border-[#e4ded4] bg-[#fbf8f2] px-5 py-4">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                  <span className="text-[10px] font-black uppercase tracking-[0.16em] text-[#969ba0]">
+                    KrutBharat guidance layer
+                  </span>
+                  <span className="text-[12px] font-bold text-[#657080]">
+                    Prepare → Hand off → Continue with the official system
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CIVIC SENSE */}
+      <section
+        id="civic-sense"
+        className="relative z-10 scroll-mt-36 border-t border-[#ece7df] bg-[#fbf8f2]/75"
+      >
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+          <div className="kf-civic-sense-explore-shell grid gap-0 overflow-hidden rounded-[32px] border border-[#e2ddd5] bg-white shadow-[0_18px_52px_rgba(35,47,58,0.055)] lg:grid-cols-[0.78fr_1.22fr]">
+            <div className="kf-civic-sense-explore-left relative overflow-hidden p-7 md:p-10">
+              <div className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-[#dceff1]/75" />
+              <div className="pointer-events-none absolute -bottom-20 -left-16 h-44 w-44 rounded-full bg-[#ffe4cb]/70" />
+
+              <div className="relative">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#d8e6df] bg-white/62 px-3.5 py-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#ff7a00]" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#678173]">
+                    {civicSenseExploreContent[language].label}
+                  </span>
+                </div>
+
+                <div className="mt-6 grid h-14 w-14 place-items-center rounded-2xl border border-[#e3ddd4] bg-[#fff0df] text-2xl shadow-sm">
+                  🤝
+                </div>
+
+                <h2 className="mt-5 max-w-xl text-[38px] font-black leading-[1.02] tracking-[-0.04em] text-[#102033] md:text-[52px]">
+                  {civicSenseExploreContent[language].title}
+                </h2>
+
+                <p className="mt-3 max-w-xl text-[17px] font-black leading-6 text-[#ff7a00] md:text-[18px]">
+                  {civicSenseExploreContent[language].subtitle}
+                </p>
+
+                <p className="mt-4 max-w-xl text-[15px] leading-7 text-[#65717d] md:text-[16px]">
+                  {civicSenseExploreContent[language].description}
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() => router.push("/civic-sense")}
+                  className="mt-7 inline-flex items-center rounded-full bg-[#ff7a00] px-6 py-3.5 text-[12px] font-black text-white shadow-[0_12px_26px_rgba(255,122,0,0.18)] transition hover:-translate-y-0.5 hover:bg-[#ef6c00]"
+                >
+                  {civicSenseExploreContent[language].action}
+                </button>
+              </div>
+            </div>
+
+            <div className="kf-civic-sense-explore-right p-6 md:p-8 lg:p-9">
+              <div className="flex items-end justify-between gap-4">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8a929c]">
+                    {civicSenseExploreContent[language].insideLabel}
+                  </p>
+                  <h3 className="mt-2 text-[28px] font-black leading-[1.04] tracking-[-0.03em] text-[#102033] md:text-[34px]">
+                    {civicSenseExploreContent[language].insideTitle}
+                  </h3>
+                </div>
+
+                <div className="hidden h-11 w-11 place-items-center rounded-full border border-[#ddd7ce] bg-[#fffdf9] text-[17px] text-[#ff7a00] shadow-sm sm:grid">
+                  →
+                </div>
+              </div>
+
+              <div className="mt-7 grid gap-3">
+                {[
+                  {
+                    number: "01",
+                    icon: "🧭",
+                    title: civicSenseExploreContent[language].item1Title,
+                    description:
+                      civicSenseExploreContent[language].item1Description,
+                    className: "kf-civic-sense-explore-item-blue",
+                  },
+                  {
+                    number: "02",
+                    icon: "🧹",
+                    title: civicSenseExploreContent[language].item2Title,
+                    description:
+                      civicSenseExploreContent[language].item2Description,
+                    className: "kf-civic-sense-explore-item-green",
+                  },
+                  {
+                    number: "03",
+                    icon: "💭",
+                    title: civicSenseExploreContent[language].item3Title,
+                    description:
+                      civicSenseExploreContent[language].item3Description,
+                    className: "kf-civic-sense-explore-item-purple",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.number}
+                    className={`kf-civic-sense-explore-item ${item.className} rounded-[22px] border p-4 md:p-5`}
+                  >
+                    <div className="flex items-start gap-3.5">
+                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-white/55 bg-[#fffdf9] text-[20px] shadow-sm">
+                        {item.icon}
+                      </div>
+
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[9px] font-black tracking-[0.16em] text-[#89949e]">
+                            {item.number}
+                          </span>
+                          <h4 className="text-[17px] font-black leading-tight text-[#263a4e] md:text-[18px]">
+                            {item.title}
+                          </h4>
+                        </div>
+                        <p className="mt-1.5 text-[12px] leading-6 text-[#647482]">
+                          {item.description}
+                        </p>
+                      </div>
+
+                      <span className="hidden text-[18px] text-[#8a949c] sm:block">
+                        →
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="kf-civic-sense-explore-strip mt-4 flex flex-wrap items-center justify-between gap-3 rounded-full border px-4 py-3">
+                <span className="text-[9px] font-black uppercase tracking-[0.16em] text-[#7d8994]">
+                  {civicSenseExploreContent[language].stripLeft}
+                </span>
+                <span className="text-[10px] font-black text-[#6f8d5b]">
+                  {civicSenseExploreContent[language].stripRight}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* RESPONSIBLE AUTHORITIES */}
+      <section
+        id="responsible-authorities"
+        className="relative z-10 scroll-mt-36 border-t border-[#ece7df] bg-[#fbf8f2]/75"
+      >
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+              {/* RESPONSIBLE AUTHORITIES */}
+              <div className="kf-ra-explore-shell mt-10 overflow-hidden rounded-[32px] border border-[#dfe6df] shadow-[0_18px_50px_rgba(35,47,58,0.055)]">
+                <div className="grid lg:grid-cols-[0.78fr_1.22fr]">
+                  <div className="kf-ra-explore-left relative overflow-hidden p-7 md:p-10">
+                    <div className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-[#dfeaf3]/75" />
+                    <div className="pointer-events-none absolute -bottom-16 -left-16 h-44 w-44 rounded-full bg-[#f3e6f6]/75" />
+                    <div className="relative">
+                      <div className="inline-flex items-center gap-2 rounded-full border border-[#d9e1e6] bg-white/70 px-3.5 py-1.5">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#ff7a00]" />
+                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#697987]">
+                          {responsibleAuthoritiesExploreContent[language].label}
+                        </span>
+                      </div>
+
+                      <div className="mt-6 grid h-14 w-14 place-items-center rounded-2xl border border-[#ddd6e5] bg-[#f4edf8] text-2xl shadow-sm">
+                        🏛️
+                      </div>
+
+                      <h3 className="mt-5 max-w-xl text-[34px] font-black leading-[1.04] tracking-[-0.04em] text-[#102033] md:text-[47px]">
+                        {responsibleAuthoritiesExploreContent[language].title}
+                      </h3>
+
+                      <p className="mt-3 max-w-xl text-[16px] font-black leading-6 text-[#7a5a8a] md:text-[18px]">
+                        {responsibleAuthoritiesExploreContent[language].subtitle}
+                      </p>
+
+                      <p className="mt-4 max-w-xl text-[14px] leading-7 text-[#697581] md:text-[15px]">
+                        {responsibleAuthoritiesExploreContent[language].description}
+                      </p>
+
+                      <button
+                        type="button"
+                        onClick={() => router.push("/responsible-authorities")}
+                        className="mt-7 inline-flex items-center rounded-full bg-[#ff7a00] px-6 py-3.5 text-[12px] font-black text-white shadow-[0_12px_26px_rgba(255,122,0,0.18)] transition hover:-translate-y-0.5 hover:bg-[#ef6c00]"
+                      >
+                        {responsibleAuthoritiesExploreContent[language].action}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="kf-ra-explore-right p-6 md:p-8 lg:p-9">
+                    <div className="flex items-end justify-between gap-4">
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8b939d]">
+                          {responsibleAuthoritiesExploreContent[language].insideLabel}
+                        </p>
+                        <h4 className="mt-2 text-[27px] font-black leading-[1.04] tracking-[-0.03em] text-[#102033] md:text-[34px]">
+                          {responsibleAuthoritiesExploreContent[language].insideTitle}
+                        </h4>
+                      </div>
+                      <div className="hidden h-11 w-11 place-items-center rounded-full border border-[#ddd7ce] bg-[#fffdf9] text-[17px] text-[#ff7a00] shadow-sm sm:grid">
+                        →
+                      </div>
+                    </div>
+
+                    <div className="mt-7 grid gap-3">
+                      {[
+                        {
+                          number: "01",
+                          icon: "🏛️",
+                          title: responsibleAuthoritiesExploreContent[language].item1Title,
+                          description: responsibleAuthoritiesExploreContent[language].item1Description,
+                          className: "kf-ra-explore-item-blue",
+                        },
+                        {
+                          number: "02",
+                          icon: "🗳️",
+                          title: responsibleAuthoritiesExploreContent[language].item2Title,
+                          description: responsibleAuthoritiesExploreContent[language].item2Description,
+                          className: "kf-ra-explore-item-purple",
+                        },
+                        {
+                          number: "03",
+                          icon: "🏢",
+                          title: responsibleAuthoritiesExploreContent[language].item3Title,
+                          description: responsibleAuthoritiesExploreContent[language].item3Description,
+                          className: "kf-ra-explore-item-green",
+                        },
+                      ].map((item) => (
+                        <div
+                          key={item.number}
+                          className={`group grid gap-4 rounded-[24px] border p-5 transition hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(16,27,43,0.055)] sm:grid-cols-[46px_1fr_auto] sm:items-center ${item.className}`}
+                        >
+                          <div className="grid h-11 w-11 place-items-center rounded-[17px] bg-white text-[20px] shadow-sm">
+                            {item.icon}
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2.5">
+                              <span className="text-[10px] font-black tracking-[0.18em] text-[#8e9aa4]">
+                                {item.number}
+                              </span>
+                              <h5 className="text-[16px] font-black leading-tight text-[#102033]">
+                                {item.title}
+                              </h5>
+                            </div>
+                            <p className="mt-1.5 text-[12.5px] leading-5 text-[#657482]">
+                              {item.description}
+                            </p>
+                          </div>
+                          <span className="hidden text-[18px] text-[#8297a7] transition-transform group-hover:translate-x-1 sm:block">
+                            →
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="kf-ra-explore-strip mt-5 flex flex-col gap-2 rounded-[22px] border px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+                      <p className="text-[10px] font-black uppercase tracking-[0.13em] text-[#7c8c97]">
+                        {responsibleAuthoritiesExploreContent[language].stripLeft}
+                      </p>
+                      <span className="text-[11.5px] font-bold text-[#7b6e8c]">
+                        {responsibleAuthoritiesExploreContent[language].stripRight}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </section>
+
       {/* CIVIC PARTICIPATION TOOLS */}
       <section id="civic-tools" className="relative z-10 scroll-mt-36 border-t border-[#ece7df] bg-[#fbf8f2]/75">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
@@ -3761,102 +4308,7 @@ html[data-theme="dark"] .kf-explore-page #civic-passport > div > div > div:last-
           </div>
         </div>
       </section>
-      {/* CIVIC ISSUE JOURNEY */}
-      <section id="issue-journey" className="relative z-10 scroll-mt-36 border-t border-[#ece7df] bg-white/25">
-        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-          <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#efd9c3] bg-[#fff4e7] px-3.5 py-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#ff7a00]" />
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8d7158]">
-                  {text.issueJourneyLabel}
-                </span>
-              </div>
 
-              <h2 className="mt-4 max-w-[560px] text-[36px] font-black leading-[1.03] tracking-[-0.04em] text-[#102033] md:text-[48px]">
-                {text.issueJourneyTitle}
-              </h2>
-
-              <p className="mt-5 max-w-[560px] text-[15px] leading-7 text-[#697581] md:text-[16px]">
-                {text.issueJourneyDescription}
-              </p>
-
-              <button
-                type="button"
-                onClick={() => router.push("/report-issue")}
-                className="mt-7 inline-flex items-center rounded-full bg-[#ff7a00] px-6 py-3.5 text-[12px] font-black text-white shadow-[0_12px_26px_rgba(255,122,0,0.18)] transition hover:-translate-y-0.5 hover:bg-[#ef6c00] hover:shadow-[0_18px_32px_rgba(255,122,0,0.22)]"
-              >
-                {text.reportIssueNow}
-              </button>
-
-              <div className="mt-8 flex flex-wrap gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#8f969d]">
-                <span className="rounded-full border border-[#e5dfd6] bg-white px-3 py-1.5">Document</span>
-                <span className="text-[#ff7a00]">→</span>
-                <span className="rounded-full border border-[#e5dfd6] bg-white px-3 py-1.5">Route</span>
-                <span className="text-[#ff7a00]">→</span>
-                <span className="rounded-full border border-[#e5dfd6] bg-white px-3 py-1.5">Handoff</span>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="absolute left-[12%] right-[12%] top-[34px] hidden h-px bg-[#e3ddd4] lg:block" />
-
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                {[
-                  [text.issueStep1, "👀"],
-                  [text.issueStep2, "📋"],
-                  [text.issueStep3, "🏛️"],
-                  [text.issueStep4, "📝"],
-                  [text.issueStep5, "↗️"],
-                  [text.issueStep6, "✅"],
-                  [text.issueStep7, "🔎"],
-                ].map(([label, icon], index) => (
-                  <div
-                    key={label}
-                    className={`kf-journey-card group relative rounded-[24px] border border-[#e5dfd6] bg-white p-4 shadow-[0_10px_28px_rgba(16,27,43,0.045)] transition duration-300 hover:-translate-y-1 ${
-                      index === 4 ? "border-[#ffd0a5] bg-[#fff7ee]" : ""
-                    }`}
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div
-                        className={`grid h-11 w-11 place-items-center rounded-[16px] text-[21px] ${
-                          index === 4 ? "bg-[#ffe1c5]" : "bg-[#f5efe6]"
-                        }`}
-                      >
-                        {icon}
-                      </div>
-                      <span className="text-[10px] font-black tracking-[0.18em] text-[#a4a7aa]">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-
-                    <p className="mt-5 text-[13px] font-black leading-5 text-[#263447]">
-                      {label}
-                    </p>
-
-                    {index < 6 && (
-                      <span className="mt-4 hidden text-[13px] font-bold text-[#d0c8bd] lg:block">
-                        →
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-4 rounded-[22px] border border-[#e4ded4] bg-[#fbf8f2] px-5 py-4">
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                  <span className="text-[10px] font-black uppercase tracking-[0.16em] text-[#969ba0]">
-                    KarmaFacie guidance layer
-                  </span>
-                  <span className="text-[12px] font-bold text-[#657080]">
-                    Prepare → Hand off → Continue with the official system
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       {/* CIVIC LEAGUES */}
       <section id="leagues" className="relative z-10 scroll-mt-36 border-t border-[#ece7df] bg-[#fbf8f2]/90">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
@@ -3977,6 +4429,7 @@ html[data-theme="dark"] .kf-explore-page #civic-passport > div > div > div:last-
           </div>
         </div>
       </section>
+
       {/* CIVIC PASSPORT */}
       <section id="civic-passport" className="relative z-10 scroll-mt-36 border-t border-[#ece7df] bg-[#fffaf2]">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
@@ -4065,7 +4518,7 @@ html[data-theme="dark"] .kf-explore-page #civic-passport > div > div > div:last-
                       : "Civic Passport पाहा →"}
                   </button>
                   <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#9a9fa5]">
-                    KarmaFacie · Verified participation
+                    KrutBharat · Verified participation
                   </span>
                 </div>
               </div>
@@ -4078,7 +4531,7 @@ html[data-theme="dark"] .kf-explore-page #civic-passport > div > div > div:last-
       <footer className="relative z-10 border-t border-[#ece7df] bg-[#fffaf2]">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-9 text-center text-sm text-[#7c8288] md:flex-row md:items-center md:justify-between md:text-left">
           <div className="kf-footer-brand font-black text-[16px] text-[#102033]" style={{ fontFamily: "var(--font-display)" }}>
-            Karma<span className="text-[#ff7a00]">Facie</span>
+            © 2026 Krut<span className="text-[#ff7a00]">Bharat</span> · by KarmaFacie Corporation
           </div>
           <div className="text-[12px] text-[#8b9096]">{text.footerTagline}</div>
           <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#a0a4aa]">India · Civic participation</div>
@@ -4256,7 +4709,6 @@ html[data-theme="dark"] .kf-explore-page #civic-passport .kf-passport-feature {
 }
 `}</style>
 
-    
 <style>{`
 /* =========================================================
    CIVIC PASSPORT — FINAL FIX
@@ -4312,7 +4764,7 @@ html[data-theme="dark"] .kf-explore-page #civic-passport .kf-passport-shell > di
 
       <style>{`
 /* =========================================================
-   KARMAFACIE NAVBAR — CRISP NEON GLASS (DARK MODE ONLY)
+   KRUTBHARAT NAVBAR — CRISP NEON GLASS (DARK MODE ONLY)
    Navbar-only visual override. Existing markup, links, spacing,
    content and functionality remain unchanged.
    ========================================================= */
@@ -4524,7 +4976,6 @@ html[data-theme="dark"] .kf-explore-page .kf-explore-control option {
 }
 `}</style>
 
-
       <style>{`
         /* =========================================================
            EXPLORE NAVBAR — MATCH HOMEPAGE CRISP NEON GLASS
@@ -4718,7 +5169,6 @@ html[data-theme="dark"] .kf-explore-page .kf-explore-control option {
           background: #07111f !important;
           color: #f8fafc !important;
         }
-
 
         /* ---------- Dark civic waves painted into the page background ---------- */
         /*
@@ -4967,7 +5417,6 @@ html[data-theme="dark"] .kf-explore-page .kf-explore-nav-group-participate .kf-e
 }
 `}</style>
 
-
       <style>{`
 /* =========================================================
    FINAL DARK-MODE COLOR FIXES — requested only
@@ -5048,7 +5497,408 @@ html[data-theme="dark"] main.kf-explore-page .kf-explore-civic-passport-final:ho
   background-color: #ef6c00 !important;
   color: #ffffff !important;
 }
-`}</style>
+
+/* =========================================================
+   CIVIC SENSE — EXPLORE UNDERSTAND SECTION
+   ========================================================= */
+.kf-civic-sense-explore-shell {
+  min-height: 420px;
+}
+
+.kf-civic-sense-explore-left {
+  background:
+    radial-gradient(circle at 90% 8%, rgba(197,224,230,.72) 0%, rgba(197,224,230,0) 34%),
+    radial-gradient(circle at 8% 94%, rgba(255,222,194,.72) 0%, rgba(255,222,194,0) 34%),
+    linear-gradient(145deg, #f5fafb 0%, #eef6ef 100%);
+}
+
+.kf-civic-sense-explore-right {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(204,231,239,.62) 0%, rgba(204,231,239,0) 30%),
+    radial-gradient(circle at 10% 90%, rgba(255,229,205,.52) 0%, rgba(255,229,205,0) 28%),
+    linear-gradient(145deg, #f7fbfc 0%, #f1f6f8 56%, #edf4f0 100%);
+}
+
+.kf-civic-sense-explore-item-blue {
+  background:
+    radial-gradient(circle at 90% 0%, rgba(184,222,238,.56) 0%, rgba(184,222,238,0) 38%),
+    linear-gradient(135deg, #eaf6fb 0%, #dceff7 100%);
+  border-color: #c8dfe9;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.72), 0 10px 24px rgba(43,83,104,.06);
+}
+
+.kf-civic-sense-explore-item-green {
+  background:
+    radial-gradient(circle at 8% 100%, rgba(196,224,180,.50) 0%, rgba(196,224,180,0) 38%),
+    linear-gradient(135deg, #edf8f1 0%, #dff1e7 100%);
+  border-color: #c9e0d0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.72), 0 10px 24px rgba(54,93,67,.055);
+}
+
+.kf-civic-sense-explore-item-purple {
+  background:
+    radial-gradient(circle at 94% 8%, rgba(218,204,236,.54) 0%, rgba(218,204,236,0) 38%),
+    linear-gradient(135deg, #f5eefb 0%, #e9e1f5 100%);
+  border-color: #d9cce8;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.72), 0 10px 24px rgba(73,55,93,.05);
+}
+
+.kf-civic-sense-explore-item-blue h4,
+.kf-civic-sense-explore-item-green h4,
+.kf-civic-sense-explore-item-purple h4 {
+  color: #263a4e !important;
+}
+
+.kf-civic-sense-explore-item-blue p,
+.kf-civic-sense-explore-item-green p,
+.kf-civic-sense-explore-item-purple p {
+  color: #657482 !important;
+}
+
+.kf-civic-sense-explore-strip {
+  border-color: #d7dfca;
+  background: linear-gradient(90deg, #f7f8ec 0%, #f1f6e6 52%, #edf5ef 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.78);
+}
+
+@media (max-width: 1023px) {
+  .kf-civic-sense-explore-right {
+    border-top: 1px solid rgba(125,162,193,.14);
+  }
+}
+
+html[data-theme="dark"] .kf-explore-page #civic-sense {
+  background: rgba(5,14,24,.78) !important;
+  border-top-color: rgba(125,162,193,.12) !important;
+}
+
+html[data-theme="dark"] .kf-explore-page #civic-sense .kf-civic-sense-explore-shell {
+  border-color: rgba(125,162,193,.18) !important;
+  background: #0b1b2d !important;
+  box-shadow: 0 22px 52px rgba(0,0,0,.24) !important;
+}
+
+html[data-theme="dark"] .kf-explore-page #civic-sense .kf-civic-sense-explore-left {
+  background:
+    radial-gradient(circle at 90% 8%, rgba(34,95,119,.25) 0%, rgba(34,95,119,0) 34%),
+    radial-gradient(circle at 8% 94%, rgba(161,87,44,.18) 0%, rgba(161,87,44,0) 34%),
+    linear-gradient(145deg, #173244 0%, #10283a 100%) !important;
+}
+
+html[data-theme="dark"] .kf-explore-page #civic-sense .kf-civic-sense-explore-left h2,
+html[data-theme="dark"] .kf-explore-page #civic-sense .kf-civic-sense-explore-right h3 {
+  color: #f7f9fc !important;
+}
+
+html[data-theme="dark"] .kf-explore-page #civic-sense .kf-civic-sense-explore-left .text-\[\#65717d\] {
+  color: #b4c6d6 !important;
+}
+
+html[data-theme="dark"] .kf-explore-page #civic-sense .kf-civic-sense-explore-right {
+  background: #0d2136 !important;
+}
+
+html[data-theme="dark"] .kf-explore-page #civic-sense .kf-civic-sense-explore-item-blue {
+  background: #133654 !important;
+  border-color: #28506c !important;
+}
+
+html[data-theme="dark"] .kf-explore-page #civic-sense .kf-civic-sense-explore-item-green {
+  background: #16372f !important;
+  border-color: #2a5a4b !important;
+}
+
+html[data-theme="dark"] .kf-explore-page #civic-sense .kf-civic-sense-explore-item-purple {
+  background: #2d2743 !important;
+  border-color: #4b4166 !important;
+}
+
+html[data-theme="dark"] .kf-explore-page #civic-sense .kf-civic-sense-explore-item-blue,
+html[data-theme="dark"] .kf-explore-page #civic-sense .kf-civic-sense-explore-item-green,
+html[data-theme="dark"] .kf-explore-page #civic-sense .kf-civic-sense-explore-item-purple {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 14px 30px rgba(0,0,0,.16) !important;
+}
+
+html[data-theme="dark"] .kf-explore-page #civic-sense .kf-civic-sense-explore-strip {
+  border-color: #6f7d55 !important;
+  background: #25331f !important;
+}
+
+html[data-theme="dark"] .kf-explore-page #civic-sense .kf-civic-sense-explore-strip span:last-child {
+  color: #bcd98d !important;
+}
+
+/* =========================================================
+   RESPONSIBLE AUTHORITIES — UNDERSTAND SECTION
+   ========================================================= */
+.kf-ra-explore-shell { background:#fff; }
+.kf-ra-explore-left {
+  background:
+    radial-gradient(circle at 90% 8%, rgba(204,224,239,.72) 0%, rgba(204,224,239,0) 34%),
+    radial-gradient(circle at 8% 94%, rgba(222,204,238,.54) 0%, rgba(222,204,238,0) 34%),
+    linear-gradient(145deg,#f4f8fb 0%,#f7f3f8 100%);
+}
+.kf-ra-explore-right {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(214,233,241,.56) 0%, rgba(214,233,241,0) 30%),
+    radial-gradient(circle at 10% 90%, rgba(255,230,210,.42) 0%, rgba(255,230,210,0) 28%),
+    linear-gradient(145deg,#fbfcfd 0%,#f2f6f8 56%,#f3f0f7 100%);
+}
+.kf-ra-explore-item-blue {
+  background:radial-gradient(circle at 90% 0%,rgba(184,222,238,.46) 0%,rgba(184,222,238,0) 38%),linear-gradient(135deg,#edf7fb 0%,#dff0f7 100%);
+  border-color:#c8dfe9;
+}
+.kf-ra-explore-item-purple {
+  background:radial-gradient(circle at 94% 8%,rgba(221,206,238,.48) 0%,rgba(221,206,238,0) 38%),linear-gradient(135deg,#f6effb 0%,#ebe2f5 100%);
+  border-color:#d9cde8;
+}
+.kf-ra-explore-item-green {
+  background:radial-gradient(circle at 8% 100%,rgba(197,224,180,.46) 0%,rgba(197,224,180,0) 38%),linear-gradient(135deg,#eef8f2 0%,#e0f0e7 100%);
+  border-color:#cae0d1;
+}
+.kf-ra-explore-strip { border-color:#dfe4d8; background:linear-gradient(90deg,#f6f8ee 0%,#f0f5e8 52%,#edf5ef 100%); }
+
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-shell {
+  border-color:rgba(125,162,193,.18)!important;
+  background:#0b1b2d!important;
+  box-shadow:0 22px 52px rgba(0,0,0,.24)!important;
+}
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-left {
+  background:radial-gradient(circle at 90% 8%,rgba(34,95,119,.22) 0%,rgba(34,95,119,0) 34%),radial-gradient(circle at 8% 94%,rgba(91,67,111,.20) 0%,rgba(91,67,111,0) 34%),linear-gradient(145deg,#183244 0%,#12293b 100%)!important;
+}
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-right { background:#0d2136!important; }
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-left h3,
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-right h4,
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-right h5 { color:#f7f9fc!important; }
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-left .text-\[\#697581\] { color:#b4c6d6!important; }
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-left .text-\[\#7a5a8a\] { color:#d0b9dc!important; }
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-item-blue { background:#133653!important; border-color:#28506c!important; }
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-item-purple { background:#2c2740!important; border-color:#4a3e62!important; }
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-item-green { background:#15372f!important; border-color:#285949!important; }
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-item-blue p,
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-item-purple p,
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-item-green p { color:#aebfd0!important; }
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-strip { border-color:#536848!important; background:#26341f!important; }
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-strip p { color:#aeb8a1!important; }
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-strip span { color:#c0d596!important; }
+
+
+/* FINAL NAV GROUP VISIBILITY FIX — keep the complete Learn and Participate pill outlines visible. */
+html[data-theme="dark"] .kf-explore-page .kf-explore-section-nav {
+  overflow: visible !important;
+  justify-content: space-between !important;
+  min-width: 0 !important;
+}
+
+html[data-theme="dark"] .kf-explore-page .kf-explore-nav-group {
+  flex-shrink: 1 !important;
+  min-width: 0 !important;
+}
+
+html[data-theme="dark"] .kf-explore-page .kf-explore-nav-group > div:last-child {
+  overflow: visible !important;
+}
+
+@media (max-width: 1180px) and (min-width: 1024px) {
+  html[data-theme="dark"] .kf-explore-page .kf-explore-nav-item {
+    padding-left: 0.45rem !important;
+    padding-right: 0.45rem !important;
+    font-size: 9px !important;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIBLE AUTHORITIES — FINAL VISUAL REFINEMENT
+   ========================================================= */
+.kf-ra-explore-shell {
+  position: relative;
+  isolation: isolate;
+  border-color: rgba(179, 196, 214, 0.72) !important;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(190, 222, 242, 0.40) 0%, rgba(190, 222, 242, 0) 32%),
+    radial-gradient(circle at 0% 100%, rgba(220, 204, 237, 0.34) 0%, rgba(220, 204, 237, 0) 34%),
+    linear-gradient(135deg, #f8fbfd 0%, #f3f7fb 48%, #f7f2f9 100%) !important;
+  box-shadow:
+    0 24px 64px rgba(52, 74, 94, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82) !important;
+}
+
+.kf-ra-explore-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 82% 8%, rgba(179, 217, 238, 0.28) 0%, rgba(179, 217, 238, 0) 24%),
+    radial-gradient(circle at 12% 88%, rgba(226, 203, 240, 0.24) 0%, rgba(226, 203, 240, 0) 24%);
+}
+
+.kf-ra-explore-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+.kf-ra-explore-left {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(183, 218, 239, 0.72) 0%, rgba(183, 218, 239, 0) 34%),
+    radial-gradient(circle at 8% 94%, rgba(221, 202, 237, 0.64) 0%, rgba(221, 202, 237, 0) 34%),
+    linear-gradient(145deg, #edf5fa 0%, #f1eef7 52%, #f7f3f8 100%) !important;
+  border-right: 1px solid rgba(181, 203, 219, 0.50);
+}
+
+.kf-ra-explore-right {
+  background:
+    radial-gradient(circle at 96% 0%, rgba(194, 226, 239, 0.46) 0%, rgba(194, 226, 239, 0) 29%),
+    radial-gradient(circle at 0% 100%, rgba(230, 214, 239, 0.30) 0%, rgba(230, 214, 239, 0) 28%),
+    linear-gradient(145deg, #fbfdff 0%, #f1f7fb 58%, #f5f1f8 100%) !important;
+}
+
+.kf-ra-explore-left .text-\[\#697987\] { color: #5c6e7e !important; }
+.kf-ra-explore-left .text-\[\#7a5a8a\] { color: #765b88 !important; }
+.kf-ra-explore-right > div:first-child h4 { color: #16283c !important; }
+
+.kf-ra-explore-item-blue {
+  background:
+    radial-gradient(circle at 96% 0%, rgba(164, 211, 235, 0.55) 0%, rgba(164, 211, 235, 0) 34%),
+    linear-gradient(135deg, #e8f5fb 0%, #d9edf7 100%) !important;
+  border-color: #bcdbe9 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    0 8px 22px rgba(57, 107, 132, 0.07) !important;
+}
+
+.kf-ra-explore-item-purple {
+  background:
+    radial-gradient(circle at 96% 0%, rgba(220, 201, 237, 0.60) 0%, rgba(220, 201, 237, 0) 34%),
+    linear-gradient(135deg, #f5edfb 0%, #eae0f4 100%) !important;
+  border-color: #d5c4e5 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    0 8px 22px rgba(98, 72, 126, 0.07) !important;
+}
+
+.kf-ra-explore-item-green {
+  background:
+    radial-gradient(circle at 8% 100%, rgba(195, 225, 211, 0.54) 0%, rgba(195, 225, 211, 0) 36%),
+    linear-gradient(135deg, #edf8f2 0%, #e0f0e8 100%) !important;
+  border-color: #c6dfd0 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    0 8px 22px rgba(60, 104, 82, 0.07) !important;
+}
+
+.kf-ra-explore-strip {
+  border-color: #d3ddd2 !important;
+  background:
+    linear-gradient(90deg, #f4f7ee 0%, #eef5f1 52%, #edf3f7 100%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    0 8px 20px rgba(61, 82, 66, 0.05) !important;
+}
+
+/* ---------- Dark mode: richer civic-blue / violet glass ---------- */
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-shell {
+  border-color: rgba(76, 170, 226, 0.34) !important;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(57, 135, 177, 0.20) 0%, rgba(57, 135, 177, 0) 28%),
+    radial-gradient(circle at 4% 100%, rgba(129, 81, 164, 0.16) 0%, rgba(129, 81, 164, 0) 30%),
+    linear-gradient(135deg, #0a182a 0%, #0c2035 52%, #111b30 100%) !important;
+  box-shadow:
+    0 28px 72px rgba(0, 0, 0, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.045) !important;
+}
+
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-shell::before {
+  background:
+    radial-gradient(circle at 82% 8%, rgba(40, 139, 188, 0.18) 0%, rgba(40, 139, 188, 0) 25%),
+    radial-gradient(circle at 11% 92%, rgba(146, 83, 178, 0.17) 0%, rgba(146, 83, 178, 0) 25%);
+}
+
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-left {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(44, 127, 167, 0.25) 0%, rgba(44, 127, 167, 0) 34%),
+    radial-gradient(circle at 8% 94%, rgba(113, 70, 137, 0.22) 0%, rgba(113, 70, 137, 0) 34%),
+    linear-gradient(145deg, #123044 0%, #10283c 54%, #17243a 100%) !important;
+  border-right-color: rgba(94, 151, 185, 0.18) !important;
+}
+
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-right {
+  background:
+    radial-gradient(circle at 96% 0%, rgba(38, 119, 160, 0.18) 0%, rgba(38, 119, 160, 0) 30%),
+    radial-gradient(circle at 0% 100%, rgba(118, 76, 151, 0.13) 0%, rgba(118, 76, 151, 0) 27%),
+    linear-gradient(145deg, #0d2238 0%, #0d1f34 58%, #141d31 100%) !important;
+}
+
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-left .text-\[\#697987\] {
+  color: #a9bdcc !important;
+}
+
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-left .text-\[\#7a5a8a\] {
+  color: #d3b5df !important;
+}
+
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-item-blue {
+  background:
+    radial-gradient(circle at 94% 0%, rgba(46, 139, 188, 0.24) 0%, rgba(46, 139, 188, 0) 34%),
+    linear-gradient(135deg, #123a59 0%, #12324d 100%) !important;
+  border-color: rgba(62, 151, 204, 0.34) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 12px 28px rgba(0, 0, 0, 0.12) !important;
+}
+
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-item-purple {
+  background:
+    radial-gradient(circle at 94% 0%, rgba(145, 83, 185, 0.22) 0%, rgba(145, 83, 185, 0) 34%),
+    linear-gradient(135deg, #302746 0%, #2a253d 100%) !important;
+  border-color: rgba(168, 112, 207, 0.34) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 12px 28px rgba(0, 0, 0, 0.12) !important;
+}
+
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-item-green {
+  background:
+    radial-gradient(circle at 8% 100%, rgba(38, 135, 103, 0.20) 0%, rgba(38, 135, 103, 0) 36%),
+    linear-gradient(135deg, #153a35 0%, #13332f 100%) !important;
+  border-color: rgba(68, 166, 134, 0.30) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 12px 28px rgba(0, 0, 0, 0.12) !important;
+}
+
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-strip {
+  border-color: rgba(129, 155, 103, 0.34) !important;
+  background:
+    linear-gradient(90deg, rgba(54, 70, 39, 0.82) 0%, rgba(42, 58, 36, 0.88) 52%, rgba(34, 51, 42, 0.92) 100%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 10px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+.kf-ra-explore-left > .pointer-events-none.absolute.-right-16.-top-16 {
+  background: rgba(188, 216, 235, 0.58) !important;
+}
+
+.kf-ra-explore-left > .pointer-events-none.absolute.-bottom-16.-left-16 {
+  background: rgba(219, 201, 235, 0.52) !important;
+}
+
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-left > .pointer-events-none.absolute.-right-16.-top-16 {
+  background: rgba(49, 130, 170, 0.26) !important;
+}
+
+html[data-theme="dark"] .kf-explore-page .kf-ra-explore-left > .pointer-events-none.absolute.-bottom-16.-left-16 {
+  background: rgba(128, 77, 151, 0.22) !important;
+}
+
+
+`}
+
+
+</style>
 
 </main>
   );

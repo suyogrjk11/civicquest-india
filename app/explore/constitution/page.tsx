@@ -405,12 +405,12 @@ const content: Record<
 
     participationTitle: "Civic participation",
     participationText:
-      "Understanding institutions and constitutional rights can help citizens participate more effectively in public life. KarmaFacie is designed to help build that basic understanding.",
+      "Understanding institutions and constitutional rights can help citizens participate more effectively in public life. KrutBharat is designed to help build that basic understanding.",
 
     quizLabel: "07 · QUICK QUIZ",
     quizTitle: "Test what you learned",
     quizDescription:
-      "Answer three questions to complete this KarmaFacie.",
+      "Answer three questions to complete this Quiz.",
 
     question: "Question",
     of: "of",
@@ -422,7 +422,7 @@ const content: Record<
     scoreText: "You scored",
     tryAgain: "Try Again",
 
-    footer: "KarmaFacie · Learn. Understand. Participate.",
+    footer: "Learn. Understand. Participate.",
   },
 
   /* ------------------------------------------------ */
@@ -503,12 +503,12 @@ const content: Record<
 
     participationTitle: "नागरिक भागीदारी",
     participationText:
-      "संस्थाओं और संवैधानिक अधिकारों को समझने से नागरिकों को सार्वजनिक जीवन में अधिक प्रभावी ढंग से भाग लेने में मदद मिल सकती है। KarmaFacie इसी बुनियादी समझ को विकसित करने के लिए बनाया गया है।",
+      "संस्थाओं और संवैधानिक अधिकारों को समझने से नागरिकों को सार्वजनिक जीवन में अधिक प्रभावी ढंग से भाग लेने में मदद मिल सकती है। KrutBharat इसी बुनियादी समझ को विकसित करने के लिए बनाया गया है।",
 
     quizLabel: "07 · त्वरित क्विज़",
     quizTitle: "आपने क्या सीखा, जाँचें",
     quizDescription:
-      "इस KarmaFacie को पूरा करने के लिए तीन प्रश्नों के उत्तर दें।",
+      "इस Quiz को पूरा करने के लिए तीन प्रश्नों के उत्तर दें।",
 
     question: "प्रश्न",
     of: "में से",
@@ -520,7 +520,7 @@ const content: Record<
     scoreText: "आपका स्कोर",
     tryAgain: "फिर से प्रयास करें",
 
-    footer: "KarmaFacie · सीखें। समझें। भाग लें।",
+    footer: "KrutBharat · सीखें। समझें। भाग लें।",
   },
 
   /* ------------------------------------------------ */
@@ -601,12 +601,12 @@ const content: Record<
 
     participationTitle: "नागरिक सहभाग",
     participationText:
-      "संस्था आणि घटनात्मक अधिकार समजून घेतल्यास नागरिकांना सार्वजनिक जीवनात अधिक प्रभावीपणे सहभागी होता येते. KarmaFacie ही मूलभूत समज विकसित करण्यासाठी तयार करण्यात आली आहे.",
+      "संस्था आणि घटनात्मक अधिकार समजून घेतल्यास नागरिकांना सार्वजनिक जीवनात अधिक प्रभावीपणे सहभागी होता येते. KrutBharat ही मूलभूत समज विकसित करण्यासाठी तयार करण्यात आली आहे.",
 
     quizLabel: "07 · झटपट क्विझ",
     quizTitle: "तुम्ही काय शिकलात ते तपासा",
     quizDescription:
-      "ही KarmaFacie पूर्ण करण्यासाठी तीन प्रश्नांची उत्तरे द्या.",
+      "ही Quiz पूर्ण करण्यासाठी तीन प्रश्नांची उत्तरे द्या.",
 
     question: "प्रश्न",
     of: "पैकी",
@@ -618,7 +618,7 @@ const content: Record<
     scoreText: "तुमचा गुण",
     tryAgain: "पुन्हा प्रयत्न करा",
 
-    footer: "KarmaFacie · शिका. समजा. सहभागी व्हा.",
+    footer: "KrutBharat · शिका. समजा. सहभागी व्हा.",
   },
 };
 
@@ -741,7 +741,7 @@ export default function ConstitutionPage() {
             <div className="kf-explore-brand-box">K</div>
             <div>
               <div className="kf-explore-brand-name">
-                Karma<span>Facie</span>
+                Krut<span>Bharat</span>
               </div>
               <div className="kf-explore-brand-caption">
                 EXPLORE &amp; LEARN
@@ -1184,7 +1184,7 @@ export default function ConstitutionPage() {
         </section>
 
         <footer className="kf-explore-footer">
-          Karma<span>Facie</span> · {t.footer}
+          Krut<span>Bharat</span> · {t.footer}
         </footer>
       </div>
 
@@ -2543,7 +2543,7 @@ export default function ConstitutionPage() {
           color: #c4d0dc !important;
         }
 
-        /* Final Government-page rule: correct answer becomes KarmaFacie orange. */
+        /* Final Government-page rule: correct answer becomes KrutBharat orange. */
         html[data-theme="dark"] .kf-constitution-page .kf-quiz-option-correct {
           background: linear-gradient(135deg, #ff983f 0%, #ff7a00 100%) !important;
           color: #08111b !important;

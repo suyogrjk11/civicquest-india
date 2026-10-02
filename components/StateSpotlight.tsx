@@ -1037,7 +1037,7 @@ export default function StateSpotlight({ state, language }: Props) {
 
   return (
     <section id="state-spotlight" className={`kf-state-spotlight scroll-mt-6 px-1 pb-10 pt-10 sm:pt-14`}>
-      {/* HERO — same editorial rhythm as Explore pages, but in KarmaFacie's light theme */}
+      {/* HERO — same editorial rhythm as Explore pages, but in KrutBharat's light theme */}
       <section className="kf-state-spotlight-hero relative mb-16 overflow-hidden rounded-[32px] border border-[#dfe6e8] bg-gradient-to-br from-[#eef7fc] via-[#fff9f1] to-[#f4eefb] px-7 py-9 shadow-[0_14px_38px_rgba(16,32,51,0.06)] sm:px-10 sm:py-11">
         <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#dcecf8]/80" />
         <div className="pointer-events-none absolute -bottom-24 left-1/4 h-48 w-48 rounded-full bg-[#ffe4c8]/70" />

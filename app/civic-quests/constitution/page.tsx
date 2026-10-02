@@ -120,7 +120,7 @@ export default function ConstitutionQuestPage() {
   const [finished, setFinished] = useState(false);
   const [restored, setRestored] = useState(false);
 
-  const STORAGE_KEY = "karmafacie:civic-quest:constitution:v1";
+  const STORAGE_KEY = "KrutBharat:civic-quest:constitution:v1";
 
   useEffect(() => {
     setMounted(true);
@@ -187,7 +187,7 @@ export default function ConstitutionQuestPage() {
       }
     } catch (restoreError) {
       console.warn(
-        "KarmaFacie: could not restore Constitution Quest progress.",
+        "KrutBharat: could not restore Constitution Quest progress.",
         restoreError
       );
     } finally {
@@ -217,7 +217,7 @@ export default function ConstitutionQuestPage() {
       );
     } catch (saveError) {
       console.warn(
-        "KarmaFacie: could not save Constitution Quest progress.",
+        "KrutBharat: could not save Constitution Quest progress.",
         saveError
       );
     }
@@ -235,7 +235,7 @@ export default function ConstitutionQuestPage() {
       <main className="kf-q-page kf-q-loading">
         <div className="kf-q-loading-card">
           <div className="kf-q-brand">
-            Karma<span>Facie</span>
+            Krut<span>Bharat</span>
           </div>
           <div className="kf-q-loading-bar" />
           <p>Loading civic quest…</p>
@@ -296,7 +296,7 @@ export default function ConstitutionQuestPage() {
       window.localStorage.removeItem(STORAGE_KEY);
     } catch (saveError) {
       console.warn(
-        "KarmaFacie: could not clear Constitution Quest progress.",
+        "KrutBharat: could not clear Constitution Quest progress.",
         saveError
       );
     }
@@ -388,7 +388,7 @@ export default function ConstitutionQuestPage() {
           </section>
 
           <footer className="kf-q-footer">
-            Karma<span>Facie</span> · {text.questLibrary}
+            Krut<span>Bharat</span> · {text.questLibrary}
           </footer>
         </div>
 
@@ -586,7 +586,7 @@ export default function ConstitutionQuestPage() {
         </section>
 
         <footer className="kf-q-footer">
-          Karma<span>Facie</span> · {text.questLibrary}
+          Krut<span>Bharat</span> · {text.questLibrary}
         </footer>
       </div>
 
@@ -601,7 +601,7 @@ function Brand() {
       <div className="kf-q-brand-box">K</div>
       <div>
         <div className="kf-q-brand-name">
-          Karma<span>Facie</span>
+          Krut<span>Bharat</span>
         </div>
         <div className="kf-q-brand-caption">CIVIC LEARNING</div>
       </div>
@@ -1383,7 +1383,7 @@ function QuestStyles() {
 
 
 /* =========================================================
-   KARMAFACIE — CIVIC QUEST / DARK MODE
+   KRUTBHARAT — CIVIC QUEST / DARK MODE
    Shared visual system for Constitution, Governance,
    Elections and Know India quest screens.
    ========================================================= */

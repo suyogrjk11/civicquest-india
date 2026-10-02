@@ -191,7 +191,7 @@ export default function MissionReviewPage() {
 
       const note =
         decision === "verified"
-          ? "Evidence reviewed and verified by KarmaFacie admin."
+          ? "Evidence reviewed and verified by KrutBharat admin."
           : "Evidence did not meet the verification requirements.";
 
       const { error: rpcError } =
@@ -258,7 +258,7 @@ export default function MissionReviewPage() {
         {/* Header */}
         <section>
           <p className="text-sm font-semibold uppercase tracking-wider opacity-60">
-            KarmaFacie Admin
+            KrutBharat Admin
           </p>
 
           <h1 className="mt-2 text-4xl font-bold tracking-tight">

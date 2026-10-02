@@ -872,14 +872,14 @@ export default function CivicPassportPage() {
             <div style={brandLockupStyle}>
               <div style={brandBoxStyle}>K</div>
               <div>
-                <div style={brandNameStyle}>Karma<span style={brandAccentStyle}>Facie</span></div>
+                <div style={brandNameStyle}>Krut<span style={brandAccentStyle}>Bharat</span></div>
                 <div style={brandCaptionStyle}>CIVIC PASSPORT</div>
               </div>
             </div>
             <div />
           </header>
           <div className="kf-civic-passport-error-card" style={{ ...panelStyle, marginTop: 28, padding: 28 }}>
-            <div style={eyebrowStyle}>KarmaFacie</div>
+            <div style={eyebrowStyle}>KrutBharat</div>
             <h1 style={{ ...sectionTitleStyle, marginTop: 8 }}>{text.title}</h1>
             <p style={{ ...mutedStyle, color: "#b45353", marginTop: 12 }}>{error}</p>
           </div>
@@ -909,7 +909,7 @@ export default function CivicPassportPage() {
             <div style={brandBoxStyle}>K</div>
             <div>
               <div style={brandNameStyle}>
-                Karma<span style={brandAccentStyle}>Facie</span>
+                Krut<span style={brandAccentStyle}>Bharat</span>
               </div>
               <div style={brandCaptionStyle}>CIVIC PASSPORT</div>
             </div>

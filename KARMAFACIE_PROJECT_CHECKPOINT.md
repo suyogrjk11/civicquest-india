@@ -145,7 +145,7 @@ were removed from application-facing league tables.
 
 League:
 
-KarmaFacie Pilot Civic League
+KrutBharat Pilot Civic League
 
 League type:
 city
@@ -494,7 +494,7 @@ Missions verified: 1
 Missions rejected: 0
 
 League:
-KarmaFacie Pilot Civic League
+KrutBharat Pilot Civic League
 
 Team:
 Ward Pilot Team
@@ -821,7 +821,7 @@ League
 Next logical feature:
 Community verification + anti-fraud architecture.
 # ============================================================
-# CHECKPOINT 2 — 24 September 2026
+# CHECKPOINT 2 ï¿½ 24 September 2026
 # ============================================================
 
 ## Development completed since Checkpoint 1

@@ -174,7 +174,7 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Loading civic issue...": "Loading civic issue...",
     "← Back to My Issues": "← Back to My Issues",
     "Unable to load issue": "Unable to load issue",
-    "KARMAFACIE": "KARMAFACIE",
+    "KRUTBHARAT": "KRUTBHARAT",
     "📷 Photo Evidence": "📷 Photo Evidence",
     "Issue Information": "Issue Information",
     "🏙️ Reported from:": "🏙️ Reported from:",
@@ -182,13 +182,13 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "GPS:": "GPS:",
     "Reported:": "Reported:",
     "Complaint Journey": "Complaint Journey",
-    "A combined KarmaFacie timeline for the major steps recorded for this complaint. Government actions are not marked as confirmed unless an official authority response or reference is recorded.": "A combined KarmaFacie timeline for the major steps recorded for this complaint. Government actions are not marked as confirmed unless an official authority response or reference is recorded.",
-    "Current KarmaFacie status:": "Current KarmaFacie status:",
+    "A combined KrutBharat timeline for the major steps recorded for this complaint. Government actions are not marked as confirmed unless an official authority response or reference is recorded.": "A combined KrutBharat timeline for the major steps recorded for this complaint. Government actions are not marked as confirmed unless an official authority response or reference is recorded.",
+    "Current KrutBharat status:": "Current KrutBharat status:",
     "Status History": "Status History",
-    "This timeline shows status changes actually recorded in KarmaFacie.": "This timeline shows status changes actually recorded in KarmaFacie.",
+    "This timeline shows status changes actually recorded in KrutBharat.": "This timeline shows status changes actually recorded in KrutBharat.",
     "No status-history records are currently available for this issue.": "No status-history records are currently available for this issue.",
     "Recorded by": "Recorded by",
-    "Status history is generated from recorded KarmaFacie status events. It does not imply that a government authority has changed the status unless the event is explicitly recorded as coming from an authority.": "Status history is generated from recorded KarmaFacie status events. It does not imply that a government authority has changed the status unless the event is explicitly recorded as coming from an authority.",
+    "Status history is generated from recorded KrutBharat status events. It does not imply that a government authority has changed the status unless the event is explicitly recorded as coming from an authority.": "Status history is generated from recorded KrutBharat status events. It does not imply that a government authority has changed the status unless the event is explicitly recorded as coming from an authority.",
     "DIRECTORY ROUTING": "DIRECTORY ROUTING",
     "Department:": "Department:",
     "Sub-Department:": "Sub-Department:",
@@ -196,13 +196,13 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Issue type:": "Issue type:",
     "Channel:": "Channel:",
     "Open Official Complaint Channel →": "Open Official Complaint Channel →",
-    "This opens the official complaint channel for the matched authority. KarmaFacie does not submit the complaint automatically through this route.": "This opens the official complaint channel for the matched authority. KarmaFacie does not submit the complaint automatically through this route.",
+    "This opens the official complaint channel for the matched authority. KrutBharat does not submit the complaint automatically through this route.": "This opens the official complaint channel for the matched authority. KrutBharat does not submit the complaint automatically through this route.",
     "Directory information verified:": "Directory information verified:",
     "ℹ️ No verified directory route is currently attached to this report.": "ℹ️ No verified directory route is currently attached to this report.",
     "OFFICIAL SUBMISSION": "OFFICIAL SUBMISSION",
     "📤 Review Your Complaint": "📤 Review Your Complaint",
-    "KarmaFacie has already collected the information needed for this report. Review the prepared package before confirming it for the selected authority.": "KarmaFacie has already collected the information needed for this report. Review the prepared package before confirming it for the selected authority.",
-    "Your complaint package has not been prepared yet. KarmaFacie will assemble it from the information already stored for this issue.": "Your complaint package has not been prepared yet. KarmaFacie will assemble it from the information already stored for this issue.",
+    "KrutBharat has already collected the information needed for this report. Review the prepared package before confirming it for the selected authority.": "KrutBharat has already collected the information needed for this report. Review the prepared package before confirming it for the selected authority.",
+    "Your complaint package has not been prepared yet. KrutBharat will assemble it from the information already stored for this issue.": "Your complaint package has not been prepared yet. KrutBharat will assemble it from the information already stored for this issue.",
     "A verified authority route is required before the submission package can be prepared.": "A verified authority route is required before the submission package can be prepared.",
     "Submission record #": "Submission record #",
     "✓ Photo evidence attached": "✓ Photo evidence attached",
@@ -212,15 +212,15 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "✓ Ready for official submission": "✓ Ready for official submission",
     "Confirmed on": "Confirmed on",
     "Next step: Submission Gateway": "Next step: Submission Gateway",
-    "Your complaint package has been prepared and confirmed. KarmaFacie will now check the configured authority submission route. For the current CSMC route, the gateway will direct you to the official complaint system rather than claiming an automatic government submission.": "Your complaint package has been prepared and confirmed. KarmaFacie will now check the configured authority submission route. For the current CSMC route, the gateway will direct you to the official complaint system rather than claiming an automatic government submission.",
+    "Your complaint package has been prepared and confirmed. KrutBharat will now check the configured authority submission route. For the current CSMC route, the gateway will direct you to the official complaint system rather than claiming an automatic government submission.": "Your complaint package has been prepared and confirmed. KrutBharat will now check the configured authority submission route. For the current CSMC route, the gateway will direct you to the official complaint system rather than claiming an automatic government submission.",
     "✓ Official form opened": "✓ Official form opened",
-    "KarmaFacie recorded this official-form handoff in your complaint record. This does not mean the government complaint has been submitted.": "KarmaFacie recorded this official-form handoff in your complaint record. This does not mean the government complaint has been submitted.",
+    "KrutBharat recorded this official-form handoff in your complaint record. This does not mean the government complaint has been submitted.": "KrutBharat recorded this official-form handoff in your complaint record. This does not mean the government complaint has been submitted.",
     "Opening the official channel does not itself mean that a government complaint has been submitted. Any official submission or reference number must come from the government system.": "Opening the official channel does not itself mean that a government complaint has been submitted. Any official submission or reference number must come from the government system.",
-    "KarmaFacie has recorded the reference number you provided. This is a citizen-reported record and has not been independently verified by the government system.": "KarmaFacie has recorded the reference number you provided. This is a citizen-reported record and has not been independently verified by the government system.",
+    "KrutBharat has recorded the reference number you provided. This is a citizen-reported record and has not been independently verified by the government system.": "KrutBharat has recorded the reference number you provided. This is a citizen-reported record and has not been independently verified by the government system.",
     "Reference number:": "Reference number:",
     "Notes:": "Notes:",
     "Recorded on": "Recorded on",
-    "Once the government form confirms your submission, enter the reference/complaint number here. KarmaFacie will store it as a citizen-provided reference; it will not be treated as an official KarmaFacie submission confirmation.": "Once the government form confirms your submission, enter the reference/complaint number here. KarmaFacie will store it as a citizen-provided reference; it will not be treated as an official KarmaFacie submission confirmation.",
+    "Once the government form confirms your submission, enter the reference/complaint number here. KrutBharat will store it as a citizen-provided reference; it will not be treated as an official KrutBharat submission confirmation.": "Once the government form confirms your submission, enter the reference/complaint number here. KrutBharat will store it as a citizen-provided reference; it will not be treated as an official KrutBharat submission confirmation.",
     "Government Complaint / Reference Number": "Government Complaint / Reference Number",
     "Enter the number shown after successful submission": "Enter the number shown after successful submission",
     "Notes (optional)": "Notes (optional)",
@@ -231,7 +231,7 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Submitted:": "Submitted:",
     "View Official Reference →": "View Official Reference →",
     "Follow-up & Government Updates": "Follow-up & Government Updates",
-    "Record what happened after your complaint was submitted. These updates are citizen-reported unless KarmaFacie later receives verifiable information from the authority.": "Record what happened after your complaint was submitted. These updates are citizen-reported unless KarmaFacie later receives verifiable information from the authority.",
+    "Record what happened after your complaint was submitted. These updates are citizen-reported unless KrutBharat later receives verifiable information from the authority.": "Record what happened after your complaint was submitted. These updates are citizen-reported unless KrutBharat later receives verifiable information from the authority.",
     "What happened after submission?": "What happened after submission?",
     "No Response / Awaiting Update": "No Response / Awaiting Update",
     "Acknowledged": "Acknowledged",
@@ -247,13 +247,13 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Recorded follow-ups": "Recorded follow-ups",
     "No citizen-reported follow-up updates have been recorded yet.": "No citizen-reported follow-up updates have been recorded yet.",
     "Citizen-reported update": "Citizen-reported update",
-    "This is a KarmaFacie administrative verification, not an official government confirmation.": "This is a KarmaFacie administrative verification, not an official government confirmation.",
+    "This is a KrutBharat administrative verification, not an official government confirmation.": "This is a KrutBharat administrative verification, not an official government confirmation.",
     "Verification note:": "Verification note:",
     "🔗 Verification source →": "🔗 Verification source →",
     "📎 View attached evidence →": "📎 View attached evidence →",
     "RESOLUTION VERIFICATION": "RESOLUTION VERIFICATION",
     "Did the problem actually get fixed?": "Did the problem actually get fixed?",
-    "KarmaFacie currently records this issue as Resolved. Check the location yourself and record what you observe. This is a citizen observation and does not automatically change the administrative status.": "KarmaFacie currently records this issue as Resolved. Check the location yourself and record what you observe. This is a citizen observation and does not automatically change the administrative status.",
+    "KrutBharat currently records this issue as Resolved. Check the location yourself and record what you observe. This is a citizen observation and does not automatically change the administrative status.": "KrutBharat currently records this issue as Resolved. Check the location yourself and record what you observe. This is a citizen observation and does not automatically change the administrative status.",
     "What did you observe?": "What did you observe?",
     "✅ Fixed": "✅ Fixed",
     "🟡 Partially Fixed": "🟡 Partially Fixed",
@@ -267,22 +267,22 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "No citizen resolution checks have been recorded yet.": "No citizen resolution checks have been recorded yet.",
     "Citizen-reported resolution check": "Citizen-reported resolution check",
     "📎 View resolution evidence →": "📎 View resolution evidence →",
-    "KarmaFacie stores these observations as a separate history. They do not automatically change the administrative issue status.": "KarmaFacie stores these observations as a separate history. They do not automatically change the administrative issue status.",
+    "KrutBharat stores these observations as a separate history. They do not automatically change the administrative issue status.": "KrutBharat stores these observations as a separate history. They do not automatically change the administrative issue status.",
     "SUBMISSION ASSISTANT": "SUBMISSION ASSISTANT",
     "🧾 Your Complaint Copy Pack": "🧾 Your Complaint Copy Pack",
-    "KarmaFacie has loaded the citizen details saved in your profile and combined them with the complaint information. Keep this copy pack ready while completing the official government form. KarmaFacie does not bypass cross-domain controls or CAPTCHA.": "KarmaFacie has loaded the citizen details saved in your profile and combined them with the complaint information. Keep this copy pack ready while completing the official government form. KarmaFacie does not bypass cross-domain controls or CAPTCHA.",
+    "KrutBharat has loaded the citizen details saved in your profile and combined them with the complaint information. Keep this copy pack ready while completing the official government form. KrutBharat does not bypass cross-domain controls or CAPTCHA.": "KrutBharat has loaded the citizen details saved in your profile and combined them with the complaint information. Keep this copy pack ready while completing the official government form. KrutBharat does not bypass cross-domain controls or CAPTCHA.",
     "Prepared details:": "Prepared details:",
-    "Citizen profile fields are loaded from KarmaFacie, while the matched authority directory supplies the configured department, sub-department and official complaint type.": "Citizen profile fields are loaded from KarmaFacie, while the matched authority directory supplies the configured department, sub-department and official complaint type.",
+    "Citizen profile fields are loaded from KrutBharat, while the matched authority directory supplies the configured department, sub-department and official complaint type.": "Citizen profile fields are loaded from KrutBharat, while the matched authority directory supplies the configured department, sub-department and official complaint type.",
     "✓ Photo evidence ready": "✓ Photo evidence ready",
     "Use the evidence image shown above when the official form asks for a photo.": "Use the evidence image shown above when the official form asks for a photo.",
     "Still required on the official form:": "Still required on the official form:",
-    "verify the copied citizen details and the authority-specific mapping, complete any zone/ward or other selections that KarmaFacie does not have, enter CAPTCHA, and perform the final Submit action yourself.": "verify the copied citizen details and the authority-specific mapping, complete any zone/ward or other selections that KarmaFacie does not have, enter CAPTCHA, and perform the final Submit action yourself.",
+    "verify the copied citizen details and the authority-specific mapping, complete any zone/ward or other selections that KrutBharat does not have, enter CAPTCHA, and perform the final Submit action yourself.": "verify the copied citizen details and the authority-specific mapping, complete any zone/ward or other selections that KrutBharat does not have, enter CAPTCHA, and perform the final Submit action yourself.",
     "Report Reference": "Report Reference",
     "Civic Issue ID:": "Civic Issue ID:",
     "Authority Directory ID:": "Authority Directory ID:",
     "Authority Reference ID:": "Authority Reference ID:",
     "Submission Record ID:": "Submission Record ID:",
-    "KarmaFacie currently records the evidence, location, report status, status history, submission package and directory-based routing information. This page does not represent an official government status unless an official authority reference or verified government response has been recorded.": "KarmaFacie currently records the evidence, location, report status, status history, submission package and directory-based routing information. This page does not represent an official government status unless an official authority reference or verified government response has been recorded.",
+    "KrutBharat currently records the evidence, location, report status, status history, submission package and directory-based routing information. This page does not represent an official government status unless an official authority reference or verified government response has been recorded.": "KrutBharat currently records the evidence, location, report status, status history, submission package and directory-based routing information. This page does not represent an official government status unless an official authority reference or verified government response has been recorded.",
     "Civic Issue": "Civic Issue",
     "No description provided.": "No description provided.",
     "Location not provided.": "Location not provided.",
@@ -304,7 +304,7 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Description": "Description",
     "Submission Route": "Submission Route",
     "Not specified": "Not specified",
-    "Not provided in KarmaFacie profile.": "Not provided in KarmaFacie profile.",
+    "Not provided in KrutBharat profile.": "Not provided in KrutBharat profile.",
     "No email available from the authenticated account.": "No email available from the authenticated account.",
     "City / State not available.": "City / State not available.",
     "Not configured in authority directory.": "Not configured in authority directory.",
@@ -315,8 +315,8 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Draft": "Draft",
     "Government Authority": "Government Authority",
     "Citizen": "Citizen",
-    "KarmaFacie Admin": "KarmaFacie Admin",
-    "KarmaFacie System": "KarmaFacie System",
+    "KrutBharat Admin": "KrutBharat Admin",
+    "KrutBharat System": "KrutBharat System",
     "Unknown": "Unknown",
     "Official Website": "Official Website",
     "Assisted Submission": "Assisted Submission",
@@ -336,20 +336,20 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "The submission gateway completed the request.": "The submission gateway completed the request.",
     "This authority currently requires submission through its official complaint system.": "This authority currently requires submission through its official complaint system.",
     "The submission gateway could not continue this request.": "The submission gateway could not continue this request.",
-    "Unable to connect to the KarmaFacie submission gateway.": "Unable to connect to the KarmaFacie submission gateway.",
+    "Unable to connect to the KrutBharat submission gateway.": "Unable to connect to the KrutBharat submission gateway.",
     "No confirmed submission record is available yet.": "No confirmed submission record is available yet.",
-    "KarmaFacie could not save the official-form handoff. Please try again.": "KarmaFacie could not save the official-form handoff. Please try again.",
+    "KrutBharat could not save the official-form handoff. Please try again.": "KrutBharat could not save the official-form handoff. Please try again.",
     "Please enter the complaint/reference number from the official government system.": "Please enter the complaint/reference number from the official government system.",
     "Unable to save the official complaint reference.": "Unable to save the official complaint reference.",
     "This civic issue is not available.": "This civic issue is not available.",
     "Unable to save this follow-up update.": "Unable to save this follow-up update.",
     "Unable to save this resolution check.": "Unable to save this resolution check.",
-    "Resolution verification becomes available after the KarmaFacie issue is marked Resolved.": "Resolution verification becomes available after the KarmaFacie issue is marked Resolved.",
+    "Resolution verification becomes available after the KrutBharat issue is marked Resolved.": "Resolution verification becomes available after the KrutBharat issue is marked Resolved.",
     "Please choose an image or PDF file.": "Please choose an image or PDF file.",
     "Evidence file must be 5 MB or smaller.": "Evidence file must be 5 MB or smaller.",
     "Copied ✓": "Copied ✓",
     "Copy": "Copy",
-    "✓ KarmaFacie verified": "✓ KarmaFacie verified",
+    "✓ KrutBharat verified": "✓ KrutBharat verified",
     "⚠ Not verified": "⚠ Not verified",
     "⏳ Verification pending": "⏳ Verification pending",
   },
@@ -358,7 +358,7 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Loading civic issue...": "नागरिक समस्या लोड हो रही है...",
     "← Back to My Issues": "← मेरी नागरिक समस्याओं पर वापस जाएँ",
     "Unable to load issue": "समस्या लोड नहीं हो सकी",
-    "KARMAFACIE": "KARMAFACIE",
+    "KRUTBHARAT": "KRUTBHARAT",
     "📷 Photo Evidence": "📷 फोटो प्रमाण",
     "Issue Information": "समस्या की जानकारी",
     "🏙️ Reported from:": "🏙️ रिपोर्ट का स्थान:",
@@ -366,13 +366,13 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "GPS:": "GPS:",
     "Reported:": "रिपोर्ट की गई:",
     "Complaint Journey": "शिकायत की यात्रा",
-    "A combined KarmaFacie timeline for the major steps recorded for this complaint. Government actions are not marked as confirmed unless an official authority response or reference is recorded.": "इस शिकायत के लिए KarmaFacie में दर्ज प्रमुख चरणों की संयुक्त समयरेखा। जब तक किसी सरकारी प्राधिकरण की आधिकारिक प्रतिक्रिया या संदर्भ दर्ज न हो, सरकारी कार्रवाई को पुष्टि की गई नहीं माना जाता।",
-    "Current KarmaFacie status:": "वर्तमान KarmaFacie स्थिति:",
+    "A combined KrutBharat timeline for the major steps recorded for this complaint. Government actions are not marked as confirmed unless an official authority response or reference is recorded.": "इस शिकायत के लिए KrutBharat में दर्ज प्रमुख चरणों की संयुक्त समयरेखा। जब तक किसी सरकारी प्राधिकरण की आधिकारिक प्रतिक्रिया या संदर्भ दर्ज न हो, सरकारी कार्रवाई को पुष्टि की गई नहीं माना जाता।",
+    "Current KrutBharat status:": "वर्तमान KrutBharat स्थिति:",
     "Status History": "स्थिति का इतिहास",
-    "This timeline shows status changes actually recorded in KarmaFacie.": "यह समयरेखा KarmaFacie में वास्तव में दर्ज स्थिति परिवर्तनों को दिखाती है।",
+    "This timeline shows status changes actually recorded in KrutBharat.": "यह समयरेखा KrutBharat में वास्तव में दर्ज स्थिति परिवर्तनों को दिखाती है।",
     "No status-history records are currently available for this issue.": "इस समस्या के लिए अभी कोई स्थिति-इतिहास रिकॉर्ड उपलब्ध नहीं है।",
     "Recorded by": "दर्ज करने वाला:",
-    "Status history is generated from recorded KarmaFacie status events. It does not imply that a government authority has changed the status unless the event is explicitly recorded as coming from an authority.": "स्थिति का इतिहास KarmaFacie में दर्ज स्थिति घटनाओं से बनाया जाता है। जब तक किसी घटना को स्पष्ट रूप से किसी प्राधिकरण से आया हुआ दर्ज नहीं किया गया है, इससे यह नहीं माना जाता कि किसी सरकारी प्राधिकरण ने स्थिति बदली है।",
+    "Status history is generated from recorded KrutBharat status events. It does not imply that a government authority has changed the status unless the event is explicitly recorded as coming from an authority.": "स्थिति का इतिहास KrutBharat में दर्ज स्थिति घटनाओं से बनाया जाता है। जब तक किसी घटना को स्पष्ट रूप से किसी प्राधिकरण से आया हुआ दर्ज नहीं किया गया है, इससे यह नहीं माना जाता कि किसी सरकारी प्राधिकरण ने स्थिति बदली है।",
     "DIRECTORY ROUTING": "डायरेक्टरी रूटिंग",
     "Department:": "विभाग:",
     "Sub-Department:": "उप-विभाग:",
@@ -380,13 +380,13 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Issue type:": "समस्या का प्रकार:",
     "Channel:": "माध्यम:",
     "Open Official Complaint Channel →": "आधिकारिक शिकायत माध्यम खोलें →",
-    "This opens the official complaint channel for the matched authority. KarmaFacie does not submit the complaint automatically through this route.": "यह संबंधित प्राधिकरण का आधिकारिक शिकायत माध्यम खोलता है। KarmaFacie इस माध्यम से शिकायत स्वतः सबमिट नहीं करता।",
+    "This opens the official complaint channel for the matched authority. KrutBharat does not submit the complaint automatically through this route.": "यह संबंधित प्राधिकरण का आधिकारिक शिकायत माध्यम खोलता है। KrutBharat इस माध्यम से शिकायत स्वतः सबमिट नहीं करता।",
     "Directory information verified:": "डायरेक्टरी जानकारी सत्यापित:",
     "ℹ️ No verified directory route is currently attached to this report.": "ℹ️ इस रिपोर्ट से अभी कोई सत्यापित डायरेक्टरी मार्ग जुड़ा नहीं है।",
     "OFFICIAL SUBMISSION": "आधिकारिक सबमिशन",
     "📤 Review Your Complaint": "📤 अपनी शिकायत की समीक्षा करें",
-    "KarmaFacie has already collected the information needed for this report. Review the prepared package before confirming it for the selected authority.": "KarmaFacie ने इस रिपोर्ट के लिए आवश्यक जानकारी पहले ही एकत्र कर ली है। चयनित प्राधिकरण के लिए पुष्टि करने से पहले तैयार पैकेज की समीक्षा करें।",
-    "Your complaint package has not been prepared yet. KarmaFacie will assemble it from the information already stored for this issue.": "आपका शिकायत पैकेज अभी तैयार नहीं हुआ है। KarmaFacie इस समस्या में पहले से संग्रहीत जानकारी से इसे तैयार करेगा।",
+    "KrutBharat has already collected the information needed for this report. Review the prepared package before confirming it for the selected authority.": "KrutBharat ने इस रिपोर्ट के लिए आवश्यक जानकारी पहले ही एकत्र कर ली है। चयनित प्राधिकरण के लिए पुष्टि करने से पहले तैयार पैकेज की समीक्षा करें।",
+    "Your complaint package has not been prepared yet. KrutBharat will assemble it from the information already stored for this issue.": "आपका शिकायत पैकेज अभी तैयार नहीं हुआ है। KrutBharat इस समस्या में पहले से संग्रहीत जानकारी से इसे तैयार करेगा।",
     "A verified authority route is required before the submission package can be prepared.": "सबमिशन पैकेज तैयार करने से पहले सत्यापित प्राधिकरण मार्ग आवश्यक है।",
     "Submission record #": "सबमिशन रिकॉर्ड #",
     "✓ Photo evidence attached": "✓ फोटो प्रमाण संलग्न है",
@@ -396,15 +396,15 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "✓ Ready for official submission": "✓ आधिकारिक सबमिशन के लिए तैयार",
     "Confirmed on": "पुष्टि की गई:",
     "Next step: Submission Gateway": "अगला चरण: सबमिशन गेटवे",
-    "Your complaint package has been prepared and confirmed. KarmaFacie will now check the configured authority submission route. For the current CSMC route, the gateway will direct you to the official complaint system rather than claiming an automatic government submission.": "आपका शिकायत पैकेज तैयार और पुष्टि किया जा चुका है। KarmaFacie अब निर्धारित प्राधिकरण सबमिशन मार्ग की जाँच करेगा। वर्तमान CSMC मार्ग के लिए गेटवे आपको आधिकारिक शिकायत प्रणाली तक ले जाएगा; यह स्वतः सरकारी सबमिशन का दावा नहीं करेगा।",
+    "Your complaint package has been prepared and confirmed. KrutBharat will now check the configured authority submission route. For the current CSMC route, the gateway will direct you to the official complaint system rather than claiming an automatic government submission.": "आपका शिकायत पैकेज तैयार और पुष्टि किया जा चुका है। KrutBharat अब निर्धारित प्राधिकरण सबमिशन मार्ग की जाँच करेगा। वर्तमान CSMC मार्ग के लिए गेटवे आपको आधिकारिक शिकायत प्रणाली तक ले जाएगा; यह स्वतः सरकारी सबमिशन का दावा नहीं करेगा।",
     "✓ Official form opened": "✓ आधिकारिक फॉर्म खोला गया",
-    "KarmaFacie recorded this official-form handoff in your complaint record. This does not mean the government complaint has been submitted.": "KarmaFacie ने इस आधिकारिक फॉर्म हैंडऑफ को आपकी शिकायत में दर्ज कर लिया है। इसका अर्थ यह नहीं है कि सरकारी शिकायत सबमिट हो गई है।",
+    "KrutBharat recorded this official-form handoff in your complaint record. This does not mean the government complaint has been submitted.": "KrutBharat ने इस आधिकारिक फॉर्म हैंडऑफ को आपकी शिकायत में दर्ज कर लिया है। इसका अर्थ यह नहीं है कि सरकारी शिकायत सबमिट हो गई है।",
     "Opening the official channel does not itself mean that a government complaint has been submitted. Any official submission or reference number must come from the government system.": "आधिकारिक माध्यम खोलने का अर्थ अपने आप यह नहीं है कि सरकारी शिकायत सबमिट हो गई है। कोई भी आधिकारिक सबमिशन या संदर्भ संख्या सरकारी प्रणाली से ही आनी चाहिए।",
-    "KarmaFacie has recorded the reference number you provided. This is a citizen-reported record and has not been independently verified by the government system.": "KarmaFacie ने आपके द्वारा दी गई संदर्भ संख्या दर्ज कर ली है। यह नागरिक द्वारा दी गई जानकारी है और सरकारी प्रणाली द्वारा स्वतंत्र रूप से सत्यापित नहीं की गई है।",
+    "KrutBharat has recorded the reference number you provided. This is a citizen-reported record and has not been independently verified by the government system.": "KrutBharat ने आपके द्वारा दी गई संदर्भ संख्या दर्ज कर ली है। यह नागरिक द्वारा दी गई जानकारी है और सरकारी प्रणाली द्वारा स्वतंत्र रूप से सत्यापित नहीं की गई है।",
     "Reference number:": "संदर्भ संख्या:",
     "Notes:": "टिप्पणियाँ:",
     "Recorded on": "दर्ज किया गया:",
-    "Once the government form confirms your submission, enter the reference/complaint number here. KarmaFacie will store it as a citizen-provided reference; it will not be treated as an official KarmaFacie submission confirmation.": "जब सरकारी फॉर्म आपके सबमिशन की पुष्टि कर दे, तब यहाँ संदर्भ/शिकायत संख्या दर्ज करें। KarmaFacie इसे नागरिक द्वारा दी गई संदर्भ संख्या के रूप में संग्रहीत करेगा; इसे आधिकारिक KarmaFacie सबमिशन पुष्टि नहीं माना जाएगा।",
+    "Once the government form confirms your submission, enter the reference/complaint number here. KrutBharat will store it as a citizen-provided reference; it will not be treated as an official KrutBharat submission confirmation.": "जब सरकारी फॉर्म आपके सबमिशन की पुष्टि कर दे, तब यहाँ संदर्भ/शिकायत संख्या दर्ज करें। KrutBharat इसे नागरिक द्वारा दी गई संदर्भ संख्या के रूप में संग्रहीत करेगा; इसे आधिकारिक KrutBharat सबमिशन पुष्टि नहीं माना जाएगा।",
     "Government Complaint / Reference Number": "सरकारी शिकायत / संदर्भ संख्या",
     "Enter the number shown after successful submission": "सफल सबमिशन के बाद दिखाई गई संख्या दर्ज करें",
     "Notes (optional)": "टिप्पणियाँ (वैकल्पिक)",
@@ -415,7 +415,7 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Submitted:": "सबमिट किया गया:",
     "View Official Reference →": "आधिकारिक संदर्भ देखें →",
     "Follow-up & Government Updates": "फॉलो-अप और सरकारी अपडेट",
-    "Record what happened after your complaint was submitted. These updates are citizen-reported unless KarmaFacie later receives verifiable information from the authority.": "शिकायत सबमिट होने के बाद क्या हुआ, उसे दर्ज करें। जब तक KarmaFacie को बाद में प्राधिकरण से सत्यापित जानकारी प्राप्त नहीं होती, ये अपडेट नागरिक द्वारा रिपोर्ट किए गए माने जाते हैं।",
+    "Record what happened after your complaint was submitted. These updates are citizen-reported unless KrutBharat later receives verifiable information from the authority.": "शिकायत सबमिट होने के बाद क्या हुआ, उसे दर्ज करें। जब तक KrutBharat को बाद में प्राधिकरण से सत्यापित जानकारी प्राप्त नहीं होती, ये अपडेट नागरिक द्वारा रिपोर्ट किए गए माने जाते हैं।",
     "What happened after submission?": "सबमिशन के बाद क्या हुआ?",
     "No Response / Awaiting Update": "कोई प्रतिक्रिया नहीं / अपडेट की प्रतीक्षा",
     "Acknowledged": "प्राप्ति की पुष्टि",
@@ -431,13 +431,13 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Recorded follow-ups": "दर्ज किए गए फॉलो-अप",
     "No citizen-reported follow-up updates have been recorded yet.": "अभी तक नागरिक द्वारा रिपोर्ट किया गया कोई फॉलो-अप अपडेट दर्ज नहीं हुआ है।",
     "Citizen-reported update": "नागरिक द्वारा रिपोर्ट किया गया अपडेट",
-    "This is a KarmaFacie administrative verification, not an official government confirmation.": "यह KarmaFacie का प्रशासनिक सत्यापन है, आधिकारिक सरकारी पुष्टि नहीं।",
+    "This is a KrutBharat administrative verification, not an official government confirmation.": "यह KrutBharat का प्रशासनिक सत्यापन है, आधिकारिक सरकारी पुष्टि नहीं।",
     "Verification note:": "सत्यापन नोट:",
     "🔗 Verification source →": "🔗 सत्यापन स्रोत →",
     "📎 View attached evidence →": "📎 संलग्न प्रमाण देखें →",
     "RESOLUTION VERIFICATION": "समाधान सत्यापन",
     "Did the problem actually get fixed?": "क्या समस्या वास्तव में ठीक हुई?",
-    "KarmaFacie currently records this issue as Resolved. Check the location yourself and record what you observe. This is a citizen observation and does not automatically change the administrative status.": "KarmaFacie में यह समस्या वर्तमान में समाधान के रूप में दर्ज है। स्वयं स्थान की जाँच करें और जो देखें उसे दर्ज करें। यह नागरिक का अवलोकन है और इससे प्रशासनिक स्थिति स्वतः नहीं बदलती।",
+    "KrutBharat currently records this issue as Resolved. Check the location yourself and record what you observe. This is a citizen observation and does not automatically change the administrative status.": "KrutBharat में यह समस्या वर्तमान में समाधान के रूप में दर्ज है। स्वयं स्थान की जाँच करें और जो देखें उसे दर्ज करें। यह नागरिक का अवलोकन है और इससे प्रशासनिक स्थिति स्वतः नहीं बदलती।",
     "What did you observe?": "आपने क्या देखा?",
     "✅ Fixed": "✅ ठीक हुआ",
     "🟡 Partially Fixed": "🟡 आंशिक रूप से ठीक हुआ",
@@ -451,22 +451,22 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "No citizen resolution checks have been recorded yet.": "अभी तक नागरिक द्वारा कोई समाधान सत्यापन दर्ज नहीं किया गया है।",
     "Citizen-reported resolution check": "नागरिक द्वारा रिपोर्ट किया गया समाधान सत्यापन",
     "📎 View resolution evidence →": "📎 समाधान प्रमाण देखें →",
-    "KarmaFacie stores these observations as a separate history. They do not automatically change the administrative issue status.": "KarmaFacie इन अवलोकनों को अलग इतिहास के रूप में संग्रहीत करता है। वे प्रशासनिक समस्या की स्थिति को स्वतः नहीं बदलते।",
+    "KrutBharat stores these observations as a separate history. They do not automatically change the administrative issue status.": "KrutBharat इन अवलोकनों को अलग इतिहास के रूप में संग्रहीत करता है। वे प्रशासनिक समस्या की स्थिति को स्वतः नहीं बदलते।",
     "SUBMISSION ASSISTANT": "सबमिशन सहायक",
     "🧾 Your Complaint Copy Pack": "🧾 आपकी शिकायत कॉपी पैक",
-    "KarmaFacie has loaded the citizen details saved in your profile and combined them with the complaint information. Keep this copy pack ready while completing the official government form. KarmaFacie does not bypass cross-domain controls or CAPTCHA.": "KarmaFacie ने आपकी प्रोफ़ाइल में सहेजे गए नागरिक विवरण को लोड करके शिकायत की जानकारी के साथ जोड़ा है। आधिकारिक सरकारी फॉर्म भरते समय यह कॉपी पैक तैयार रखें। KarmaFacie cross-domain नियंत्रण या CAPTCHA को बायपास नहीं करता।",
+    "KrutBharat has loaded the citizen details saved in your profile and combined them with the complaint information. Keep this copy pack ready while completing the official government form. KrutBharat does not bypass cross-domain controls or CAPTCHA.": "KrutBharat ने आपकी प्रोफ़ाइल में सहेजे गए नागरिक विवरण को लोड करके शिकायत की जानकारी के साथ जोड़ा है। आधिकारिक सरकारी फॉर्म भरते समय यह कॉपी पैक तैयार रखें। KrutBharat cross-domain नियंत्रण या CAPTCHA को बायपास नहीं करता।",
     "Prepared details:": "तैयार विवरण:",
-    "Citizen profile fields are loaded from KarmaFacie, while the matched authority directory supplies the configured department, sub-department and official complaint type.": "नागरिक प्रोफ़ाइल के फ़ील्ड KarmaFacie से लिए गए हैं, जबकि संबंधित प्राधिकरण डायरेक्टरी विभाग, उप-विभाग और आधिकारिक शिकायत प्रकार की कॉन्फ़िगर जानकारी देती है।",
+    "Citizen profile fields are loaded from KrutBharat, while the matched authority directory supplies the configured department, sub-department and official complaint type.": "नागरिक प्रोफ़ाइल के फ़ील्ड KrutBharat से लिए गए हैं, जबकि संबंधित प्राधिकरण डायरेक्टरी विभाग, उप-विभाग और आधिकारिक शिकायत प्रकार की कॉन्फ़िगर जानकारी देती है।",
     "✓ Photo evidence ready": "✓ फोटो प्रमाण तैयार है",
     "Use the evidence image shown above when the official form asks for a photo.": "जब आधिकारिक फॉर्म फोटो माँगे, ऊपर दिखाई गई प्रमाण फोटो का उपयोग करें।",
     "Still required on the official form:": "आधिकारिक फॉर्म पर अभी आवश्यक:",
-    "verify the copied citizen details and the authority-specific mapping, complete any zone/ward or other selections that KarmaFacie does not have, enter CAPTCHA, and perform the final Submit action yourself.": "कॉपी किए गए नागरिक विवरण और प्राधिकरण-विशिष्ट मैपिंग की जाँच करें, KarmaFacie में उपलब्ध न होने वाले ज़ोन/वार्ड या अन्य विकल्प पूरे करें, CAPTCHA दर्ज करें और अंतिम Submit कार्रवाई स्वयं करें।",
+    "verify the copied citizen details and the authority-specific mapping, complete any zone/ward or other selections that KrutBharat does not have, enter CAPTCHA, and perform the final Submit action yourself.": "कॉपी किए गए नागरिक विवरण और प्राधिकरण-विशिष्ट मैपिंग की जाँच करें, KrutBharat में उपलब्ध न होने वाले ज़ोन/वार्ड या अन्य विकल्प पूरे करें, CAPTCHA दर्ज करें और अंतिम Submit कार्रवाई स्वयं करें।",
     "Report Reference": "रिपोर्ट संदर्भ",
     "Civic Issue ID:": "नागरिक समस्या ID:",
     "Authority Directory ID:": "प्राधिकरण डायरेक्टरी ID:",
     "Authority Reference ID:": "प्राधिकरण संदर्भ ID:",
     "Submission Record ID:": "सबमिशन रिकॉर्ड ID:",
-    "KarmaFacie currently records the evidence, location, report status, status history, submission package and directory-based routing information. This page does not represent an official government status unless an official authority reference or verified government response has been recorded.": "KarmaFacie वर्तमान में प्रमाण, स्थान, रिपोर्ट स्थिति, स्थिति इतिहास, सबमिशन पैकेज और डायरेक्टरी-आधारित रूटिंग जानकारी दर्ज करता है। जब तक कोई आधिकारिक प्राधिकरण संदर्भ या सत्यापित सरकारी प्रतिक्रिया दर्ज न हो, यह पृष्ठ आधिकारिक सरकारी स्थिति का प्रतिनिधित्व नहीं करता।",
+    "KrutBharat currently records the evidence, location, report status, status history, submission package and directory-based routing information. This page does not represent an official government status unless an official authority reference or verified government response has been recorded.": "KrutBharat वर्तमान में प्रमाण, स्थान, रिपोर्ट स्थिति, स्थिति इतिहास, सबमिशन पैकेज और डायरेक्टरी-आधारित रूटिंग जानकारी दर्ज करता है। जब तक कोई आधिकारिक प्राधिकरण संदर्भ या सत्यापित सरकारी प्रतिक्रिया दर्ज न हो, यह पृष्ठ आधिकारिक सरकारी स्थिति का प्रतिनिधित्व नहीं करता।",
     "Civic Issue": "नागरिक समस्या",
     "No description provided.": "कोई विवरण उपलब्ध नहीं है।",
     "Location not provided.": "स्थान उपलब्ध नहीं है।",
@@ -488,7 +488,7 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Description": "विवरण",
     "Submission Route": "सबमिशन मार्ग",
     "Not specified": "निर्दिष्ट नहीं",
-    "Not provided in KarmaFacie profile.": "KarmaFacie प्रोफ़ाइल में उपलब्ध नहीं है।",
+    "Not provided in KrutBharat profile.": "KrutBharat प्रोफ़ाइल में उपलब्ध नहीं है।",
     "No email available from the authenticated account.": "प्रमाणित अकाउंट से कोई ईमेल उपलब्ध नहीं है।",
     "City / State not available.": "शहर / राज्य उपलब्ध नहीं है।",
     "Not configured in authority directory.": "प्राधिकरण डायरेक्टरी में कॉन्फ़िगर नहीं है।",
@@ -499,8 +499,8 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Draft": "ड्राफ्ट",
     "Government Authority": "सरकारी प्राधिकरण",
     "Citizen": "नागरिक",
-    "KarmaFacie Admin": "KarmaFacie एडमिन",
-    "KarmaFacie System": "KarmaFacie सिस्टम",
+    "KrutBharat Admin": "KrutBharat एडमिन",
+    "KrutBharat System": "KrutBharat सिस्टम",
     "Unknown": "अज्ञात",
     "Official Website": "आधिकारिक वेबसाइट",
     "Assisted Submission": "सहायित सबमिशन",
@@ -520,20 +520,20 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "The submission gateway completed the request.": "सबमिशन गेटवे ने अनुरोध पूरा कर दिया।",
     "This authority currently requires submission through its official complaint system.": "यह प्राधिकरण वर्तमान में अपनी आधिकारिक शिकायत प्रणाली के माध्यम से सबमिशन चाहता है।",
     "The submission gateway could not continue this request.": "सबमिशन गेटवे इस अनुरोध को आगे नहीं बढ़ा सका।",
-    "Unable to connect to the KarmaFacie submission gateway.": "KarmaFacie सबमिशन गेटवे से कनेक्ट नहीं हो सका।",
+    "Unable to connect to the KrutBharat submission gateway.": "KrutBharat सबमिशन गेटवे से कनेक्ट नहीं हो सका।",
     "No confirmed submission record is available yet.": "अभी कोई पुष्टि किया हुआ सबमिशन रिकॉर्ड उपलब्ध नहीं है।",
-    "KarmaFacie could not save the official-form handoff. Please try again.": "KarmaFacie आधिकारिक फॉर्म हैंडऑफ को सहेज नहीं सका। कृपया फिर से प्रयास करें।",
+    "KrutBharat could not save the official-form handoff. Please try again.": "KrutBharat आधिकारिक फॉर्म हैंडऑफ को सहेज नहीं सका। कृपया फिर से प्रयास करें।",
     "Please enter the complaint/reference number from the official government system.": "कृपया आधिकारिक सरकारी प्रणाली से शिकायत/संदर्भ संख्या दर्ज करें।",
     "Unable to save the official complaint reference.": "आधिकारिक शिकायत संदर्भ सहेजा नहीं जा सका।",
     "This civic issue is not available.": "यह नागरिक समस्या उपलब्ध नहीं है।",
     "Unable to save this follow-up update.": "यह फॉलो-अप अपडेट सहेजा नहीं जा सका।",
     "Unable to save this resolution check.": "यह समाधान सत्यापन सहेजा नहीं जा सका।",
-    "Resolution verification becomes available after the KarmaFacie issue is marked Resolved.": "समाधान सत्यापन तब उपलब्ध होगा जब KarmaFacie में समस्या को समाधान के रूप में चिह्नित किया जाएगा।",
+    "Resolution verification becomes available after the KrutBharat issue is marked Resolved.": "समाधान सत्यापन तब उपलब्ध होगा जब KrutBharat में समस्या को समाधान के रूप में चिह्नित किया जाएगा।",
     "Please choose an image or PDF file.": "कृपया इमेज या PDF फ़ाइल चुनें।",
     "Evidence file must be 5 MB or smaller.": "प्रमाण फ़ाइल 5 MB या उससे छोटी होनी चाहिए।",
     "Copied ✓": "कॉपी किया गया ✓",
     "Copy": "कॉपी करें",
-    "✓ KarmaFacie verified": "✓ KarmaFacie द्वारा सत्यापित",
+    "✓ KrutBharat verified": "✓ KrutBharat द्वारा सत्यापित",
     "⚠ Not verified": "⚠ सत्यापित नहीं",
     "⏳ Verification pending": "⏳ सत्यापन लंबित",
   },
@@ -542,7 +542,7 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Loading civic issue...": "नागरी समस्या लोड होत आहे...",
     "← Back to My Issues": "← माझ्या नागरी समस्यांकडे परत जा",
     "Unable to load issue": "समस्या लोड करता आली नाही",
-    "KARMAFACIE": "KARMAFACIE",
+    "KRUTBHARAT": "KRUTBHARAT",
     "📷 Photo Evidence": "📷 फोटो पुरावा",
     "Issue Information": "समस्येची माहिती",
     "🏙️ Reported from:": "🏙️ नोंदवलेले स्थान:",
@@ -550,13 +550,13 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "GPS:": "GPS:",
     "Reported:": "नोंदवले:",
     "Complaint Journey": "तक्रारीचा प्रवास",
-    "A combined KarmaFacie timeline for the major steps recorded for this complaint. Government actions are not marked as confirmed unless an official authority response or reference is recorded.": "या तक्रारीसाठी KarmaFacie मध्ये नोंदवलेल्या प्रमुख टप्प्यांची संयुक्त वेळरेषा. अधिकृत प्राधिकरणाचा प्रतिसाद किंवा संदर्भ नोंदवला नसल्यास सरकारी कारवाईला पुष्टी झालेली मानली जात नाही.",
-    "Current KarmaFacie status:": "सध्याची KarmaFacie स्थिती:",
+    "A combined KrutBharat timeline for the major steps recorded for this complaint. Government actions are not marked as confirmed unless an official authority response or reference is recorded.": "या तक्रारीसाठी KrutBharat मध्ये नोंदवलेल्या प्रमुख टप्प्यांची संयुक्त वेळरेषा. अधिकृत प्राधिकरणाचा प्रतिसाद किंवा संदर्भ नोंदवला नसल्यास सरकारी कारवाईला पुष्टी झालेली मानली जात नाही.",
+    "Current KrutBharat status:": "सध्याची KrutBharat स्थिती:",
     "Status History": "स्थितीचा इतिहास",
-    "This timeline shows status changes actually recorded in KarmaFacie.": "ही वेळरेषा KarmaFacie मध्ये प्रत्यक्ष नोंदवलेले स्थिती बदल दर्शवते.",
+    "This timeline shows status changes actually recorded in KrutBharat.": "ही वेळरेषा KrutBharat मध्ये प्रत्यक्ष नोंदवलेले स्थिती बदल दर्शवते.",
     "No status-history records are currently available for this issue.": "या समस्येसाठी सध्या स्थिती इतिहासाची कोणतीही नोंद उपलब्ध नाही.",
     "Recorded by": "नोंद करणारे:",
-    "Status history is generated from recorded KarmaFacie status events. It does not imply that a government authority has changed the status unless the event is explicitly recorded as coming from an authority.": "स्थितीचा इतिहास KarmaFacie मध्ये नोंदवलेल्या स्थिती घटनांमधून तयार केला जातो. एखादी घटना प्राधिकरणाकडून आल्याचे स्पष्टपणे नोंदवलेले नसल्यास, सरकारी प्राधिकरणाने स्थिती बदलली असे यावरून मानले जात नाही.",
+    "Status history is generated from recorded KrutBharat status events. It does not imply that a government authority has changed the status unless the event is explicitly recorded as coming from an authority.": "स्थितीचा इतिहास KrutBharat मध्ये नोंदवलेल्या स्थिती घटनांमधून तयार केला जातो. एखादी घटना प्राधिकरणाकडून आल्याचे स्पष्टपणे नोंदवलेले नसल्यास, सरकारी प्राधिकरणाने स्थिती बदलली असे यावरून मानले जात नाही.",
     "DIRECTORY ROUTING": "डायरेक्टरी रूटिंग",
     "Department:": "विभाग:",
     "Sub-Department:": "उप-विभाग:",
@@ -564,13 +564,13 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Issue type:": "समस्येचा प्रकार:",
     "Channel:": "माध्यम:",
     "Open Official Complaint Channel →": "अधिकृत तक्रार माध्यम उघडा →",
-    "This opens the official complaint channel for the matched authority. KarmaFacie does not submit the complaint automatically through this route.": "यामुळे जुळलेल्या प्राधिकरणाचे अधिकृत तक्रार माध्यम उघडेल. KarmaFacie या मार्गाने तक्रार आपोआप सबमिट करत नाही.",
+    "This opens the official complaint channel for the matched authority. KrutBharat does not submit the complaint automatically through this route.": "यामुळे जुळलेल्या प्राधिकरणाचे अधिकृत तक्रार माध्यम उघडेल. KrutBharat या मार्गाने तक्रार आपोआप सबमिट करत नाही.",
     "Directory information verified:": "डायरेक्टरी माहिती पडताळली:",
     "ℹ️ No verified directory route is currently attached to this report.": "ℹ️ या नोंदीला सध्या कोणताही सत्यापित डायरेक्टरी मार्ग जोडलेला नाही.",
     "OFFICIAL SUBMISSION": "अधिकृत सबमिशन",
     "📤 Review Your Complaint": "📤 तुमच्या तक्रारीचे पुनरावलोकन करा",
-    "KarmaFacie has already collected the information needed for this report. Review the prepared package before confirming it for the selected authority.": "या नोंदीसाठी आवश्यक माहिती KarmaFacie ने आधीच जमा केली आहे. निवडलेल्या प्राधिकरणासाठी पुष्टी करण्यापूर्वी तयार पॅकेज तपासा.",
-    "Your complaint package has not been prepared yet. KarmaFacie will assemble it from the information already stored for this issue.": "तुमचे तक्रार पॅकेज अद्याप तयार झालेले नाही. या समस्येसाठी आधीच साठवलेल्या माहितीतून KarmaFacie ते तयार करेल.",
+    "KrutBharat has already collected the information needed for this report. Review the prepared package before confirming it for the selected authority.": "या नोंदीसाठी आवश्यक माहिती KrutBharat ने आधीच जमा केली आहे. निवडलेल्या प्राधिकरणासाठी पुष्टी करण्यापूर्वी तयार पॅकेज तपासा.",
+    "Your complaint package has not been prepared yet. KrutBharat will assemble it from the information already stored for this issue.": "तुमचे तक्रार पॅकेज अद्याप तयार झालेले नाही. या समस्येसाठी आधीच साठवलेल्या माहितीतून KrutBharat ते तयार करेल.",
     "A verified authority route is required before the submission package can be prepared.": "सबमिशन पॅकेज तयार करण्यापूर्वी सत्यापित प्राधिकरणाचा मार्ग आवश्यक आहे.",
     "Submission record #": "सबमिशन नोंद #",
     "✓ Photo evidence attached": "✓ फोटो पुरावा जोडलेला आहे",
@@ -580,15 +580,15 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "✓ Ready for official submission": "✓ अधिकृत सबमिशनसाठी तयार",
     "Confirmed on": "पुष्टी दिनांक:",
     "Next step: Submission Gateway": "पुढील टप्पा: सबमिशन गेटवे",
-    "Your complaint package has been prepared and confirmed. KarmaFacie will now check the configured authority submission route. For the current CSMC route, the gateway will direct you to the official complaint system rather than claiming an automatic government submission.": "तुमचे तक्रार पॅकेज तयार आणि पुष्टी झाले आहे. KarmaFacie आता कॉन्फिगर केलेला प्राधिकरण सबमिशन मार्ग तपासेल. सध्याच्या CSMC मार्गासाठी गेटवे तुम्हाला अधिकृत तक्रार प्रणालीकडे नेईल; आपोआप सरकारी सबमिशन झाल्याचा दावा केला जाणार नाही.",
+    "Your complaint package has been prepared and confirmed. KrutBharat will now check the configured authority submission route. For the current CSMC route, the gateway will direct you to the official complaint system rather than claiming an automatic government submission.": "तुमचे तक्रार पॅकेज तयार आणि पुष्टी झाले आहे. KrutBharat आता कॉन्फिगर केलेला प्राधिकरण सबमिशन मार्ग तपासेल. सध्याच्या CSMC मार्गासाठी गेटवे तुम्हाला अधिकृत तक्रार प्रणालीकडे नेईल; आपोआप सरकारी सबमिशन झाल्याचा दावा केला जाणार नाही.",
     "✓ Official form opened": "✓ अधिकृत फॉर्म उघडला",
-    "KarmaFacie recorded this official-form handoff in your complaint record. This does not mean the government complaint has been submitted.": "KarmaFacie ने हा अधिकृत फॉर्म हँडऑफ तुमच्या तक्रार नोंदीत नोंदवला आहे. याचा अर्थ सरकारी तक्रार सबमिट झाली आहे असा होत नाही.",
+    "KrutBharat recorded this official-form handoff in your complaint record. This does not mean the government complaint has been submitted.": "KrutBharat ने हा अधिकृत फॉर्म हँडऑफ तुमच्या तक्रार नोंदीत नोंदवला आहे. याचा अर्थ सरकारी तक्रार सबमिट झाली आहे असा होत नाही.",
     "Opening the official channel does not itself mean that a government complaint has been submitted. Any official submission or reference number must come from the government system.": "अधिकृत माध्यम उघडल्याने सरकारी तक्रार सबमिट झाल्याचा अर्थ होत नाही. कोणताही अधिकृत सबमिशन किंवा संदर्भ क्रमांक सरकारी प्रणालीतूनच मिळायला हवा.",
-    "KarmaFacie has recorded the reference number you provided. This is a citizen-reported record and has not been independently verified by the government system.": "तुम्ही दिलेला संदर्भ क्रमांक KarmaFacie ने नोंदवला आहे. ही नागरिकाने दिलेली नोंद आहे आणि सरकारी प्रणालीने स्वतंत्रपणे पडताळलेली नाही.",
+    "KrutBharat has recorded the reference number you provided. This is a citizen-reported record and has not been independently verified by the government system.": "तुम्ही दिलेला संदर्भ क्रमांक KrutBharat ने नोंदवला आहे. ही नागरिकाने दिलेली नोंद आहे आणि सरकारी प्रणालीने स्वतंत्रपणे पडताळलेली नाही.",
     "Reference number:": "संदर्भ क्रमांक:",
     "Notes:": "नोंदी:",
     "Recorded on": "नोंद दिनांक:",
-    "Once the government form confirms your submission, enter the reference/complaint number here. KarmaFacie will store it as a citizen-provided reference; it will not be treated as an official KarmaFacie submission confirmation.": "सरकारी फॉर्मने तुमचे सबमिशन निश्चित केल्यानंतर येथे संदर्भ/तक्रार क्रमांक टाका. KarmaFacie तो नागरिकाने दिलेला संदर्भ म्हणून साठवेल; तो अधिकृत KarmaFacie सबमिशन पुष्टी म्हणून मानला जाणार नाही.",
+    "Once the government form confirms your submission, enter the reference/complaint number here. KrutBharat will store it as a citizen-provided reference; it will not be treated as an official KrutBharat submission confirmation.": "सरकारी फॉर्मने तुमचे सबमिशन निश्चित केल्यानंतर येथे संदर्भ/तक्रार क्रमांक टाका. KrutBharat तो नागरिकाने दिलेला संदर्भ म्हणून साठवेल; तो अधिकृत KrutBharat सबमिशन पुष्टी म्हणून मानला जाणार नाही.",
     "Government Complaint / Reference Number": "सरकारी तक्रार / संदर्भ क्रमांक",
     "Enter the number shown after successful submission": "यशस्वी सबमिशननंतर दिसणारा क्रमांक टाका",
     "Notes (optional)": "नोंदी (ऐच्छिक)",
@@ -599,7 +599,7 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Submitted:": "सबमिट केले:",
     "View Official Reference →": "अधिकृत संदर्भ पाहा →",
     "Follow-up & Government Updates": "फॉलो-अप आणि सरकारी अपडेट्स",
-    "Record what happened after your complaint was submitted. These updates are citizen-reported unless KarmaFacie later receives verifiable information from the authority.": "तक्रार सबमिट केल्यानंतर काय झाले ते नोंदवा. KarmaFacie ला नंतर प्राधिकरणाकडून पडताळता येणारी माहिती मिळेपर्यंत हे अपडेट्स नागरिकाने दिलेले मानले जातात.",
+    "Record what happened after your complaint was submitted. These updates are citizen-reported unless KrutBharat later receives verifiable information from the authority.": "तक्रार सबमिट केल्यानंतर काय झाले ते नोंदवा. KrutBharat ला नंतर प्राधिकरणाकडून पडताळता येणारी माहिती मिळेपर्यंत हे अपडेट्स नागरिकाने दिलेले मानले जातात.",
     "What happened after submission?": "सबमिशननंतर काय झाले?",
     "No Response / Awaiting Update": "प्रतिसाद नाही / अपडेटची प्रतीक्षा",
     "Acknowledged": "स्वीकारले",
@@ -615,13 +615,13 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Recorded follow-ups": "नोंदवलेले फॉलो-अप",
     "No citizen-reported follow-up updates have been recorded yet.": "अद्याप नागरिकाने नोंदवलेला कोणताही फॉलो-अप अपडेट नाही.",
     "Citizen-reported update": "नागरिकाने नोंदवलेले अपडेट",
-    "This is a KarmaFacie administrative verification, not an official government confirmation.": "ही KarmaFacie ची प्रशासकीय पडताळणी आहे, अधिकृत सरकारी पुष्टी नाही.",
+    "This is a KrutBharat administrative verification, not an official government confirmation.": "ही KrutBharat ची प्रशासकीय पडताळणी आहे, अधिकृत सरकारी पुष्टी नाही.",
     "Verification note:": "पडताळणी नोंद:",
     "🔗 Verification source →": "🔗 पडताळणी स्रोत →",
     "📎 View attached evidence →": "📎 जोडलेला पुरावा पाहा →",
     "RESOLUTION VERIFICATION": "निराकरण पडताळणी",
     "Did the problem actually get fixed?": "समस्या खरोखर ठीक झाली का?",
-    "KarmaFacie currently records this issue as Resolved. Check the location yourself and record what you observe. This is a citizen observation and does not automatically change the administrative status.": "KarmaFacie मध्ये ही समस्या सध्या निराकरण झालेली म्हणून नोंदवली आहे. स्वतः ठिकाण तपासा आणि तुम्ही जे पाहता ते नोंदवा. हे नागरिकाचे निरीक्षण आहे आणि प्रशासकीय स्थिती आपोआप बदलत नाही.",
+    "KrutBharat currently records this issue as Resolved. Check the location yourself and record what you observe. This is a citizen observation and does not automatically change the administrative status.": "KrutBharat मध्ये ही समस्या सध्या निराकरण झालेली म्हणून नोंदवली आहे. स्वतः ठिकाण तपासा आणि तुम्ही जे पाहता ते नोंदवा. हे नागरिकाचे निरीक्षण आहे आणि प्रशासकीय स्थिती आपोआप बदलत नाही.",
     "What did you observe?": "तुम्ही काय पाहिले?",
     "✅ Fixed": "✅ ठीक झाले",
     "🟡 Partially Fixed": "🟡 अंशतः ठीक झाले",
@@ -635,22 +635,22 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "No citizen resolution checks have been recorded yet.": "अद्याप नागरिकाने कोणतीही निराकरण पडताळणी नोंदवलेली नाही.",
     "Citizen-reported resolution check": "नागरिकाने नोंदवलेली निराकरण पडताळणी",
     "📎 View resolution evidence →": "📎 निराकरणाचा पुरावा पाहा →",
-    "KarmaFacie stores these observations as a separate history. They do not automatically change the administrative issue status.": "KarmaFacie ही निरीक्षणे स्वतंत्र इतिहास म्हणून साठवते. त्यातून प्रशासकीय समस्येची स्थिती आपोआप बदलत नाही.",
+    "KrutBharat stores these observations as a separate history. They do not automatically change the administrative issue status.": "KrutBharat ही निरीक्षणे स्वतंत्र इतिहास म्हणून साठवते. त्यातून प्रशासकीय समस्येची स्थिती आपोआप बदलत नाही.",
     "SUBMISSION ASSISTANT": "सबमिशन सहाय्यक",
     "🧾 Your Complaint Copy Pack": "🧾 तुमचे तक्रार कॉपी पॅक",
-    "KarmaFacie has loaded the citizen details saved in your profile and combined them with the complaint information. Keep this copy pack ready while completing the official government form. KarmaFacie does not bypass cross-domain controls or CAPTCHA.": "KarmaFacie ने तुमच्या प्रोफाइलमधील नागरिक तपशील लोड करून तक्रारीच्या माहितीसोबत एकत्र केले आहेत. अधिकृत सरकारी फॉर्म भरताना हा कॉपी पॅक तयार ठेवा. KarmaFacie cross-domain नियंत्रण किंवा CAPTCHA बायपास करत नाही.",
+    "KrutBharat has loaded the citizen details saved in your profile and combined them with the complaint information. Keep this copy pack ready while completing the official government form. KrutBharat does not bypass cross-domain controls or CAPTCHA.": "KrutBharat ने तुमच्या प्रोफाइलमधील नागरिक तपशील लोड करून तक्रारीच्या माहितीसोबत एकत्र केले आहेत. अधिकृत सरकारी फॉर्म भरताना हा कॉपी पॅक तयार ठेवा. KrutBharat cross-domain नियंत्रण किंवा CAPTCHA बायपास करत नाही.",
     "Prepared details:": "तयार तपशील:",
-    "Citizen profile fields are loaded from KarmaFacie, while the matched authority directory supplies the configured department, sub-department and official complaint type.": "नागरिक प्रोफाइलमधील फील्ड KarmaFacie मधून घेतली जातात, तर जुळलेली प्राधिकरण डायरेक्टरी विभाग, उप-विभाग आणि अधिकृत तक्रारीचा प्रकार देते.",
+    "Citizen profile fields are loaded from KrutBharat, while the matched authority directory supplies the configured department, sub-department and official complaint type.": "नागरिक प्रोफाइलमधील फील्ड KrutBharat मधून घेतली जातात, तर जुळलेली प्राधिकरण डायरेक्टरी विभाग, उप-विभाग आणि अधिकृत तक्रारीचा प्रकार देते.",
     "✓ Photo evidence ready": "✓ फोटो पुरावा तयार आहे",
     "Use the evidence image shown above when the official form asks for a photo.": "अधिकृत फॉर्म फोटो मागितल्यास वर दाखवलेली पुरावा प्रतिमा वापरा.",
     "Still required on the official form:": "अधिकृत फॉर्मवर अजून आवश्यक:",
-    "verify the copied citizen details and the authority-specific mapping, complete any zone/ward or other selections that KarmaFacie does not have, enter CAPTCHA, and perform the final Submit action yourself.": "कॉपी केलेले नागरिक तपशील आणि प्राधिकरणानुसार केलेले मॅपिंग तपासा, KarmaFacie कडे नसलेले झोन/प्रभाग किंवा इतर पर्याय पूर्ण करा, CAPTCHA भरा आणि अंतिम Submit कृती स्वतः करा.",
+    "verify the copied citizen details and the authority-specific mapping, complete any zone/ward or other selections that KrutBharat does not have, enter CAPTCHA, and perform the final Submit action yourself.": "कॉपी केलेले नागरिक तपशील आणि प्राधिकरणानुसार केलेले मॅपिंग तपासा, KrutBharat कडे नसलेले झोन/प्रभाग किंवा इतर पर्याय पूर्ण करा, CAPTCHA भरा आणि अंतिम Submit कृती स्वतः करा.",
     "Report Reference": "रिपोर्ट संदर्भ",
     "Civic Issue ID:": "नागरी समस्या ID:",
     "Authority Directory ID:": "प्राधिकरण डायरेक्टरी ID:",
     "Authority Reference ID:": "प्राधिकरण संदर्भ ID:",
     "Submission Record ID:": "सबमिशन नोंद ID:",
-    "KarmaFacie currently records the evidence, location, report status, status history, submission package and directory-based routing information. This page does not represent an official government status unless an official authority reference or verified government response has been recorded.": "KarmaFacie सध्या पुरावा, स्थान, नोंद स्थिती, स्थिती इतिहास, सबमिशन पॅकेज आणि डायरेक्टरी-आधारित रूटिंग माहिती नोंदवते. अधिकृत प्राधिकरण संदर्भ किंवा पडताळलेला सरकारी प्रतिसाद नोंदवलेला नसेल तर हे पृष्ठ अधिकृत सरकारी स्थिती दर्शवत नाही.",
+    "KrutBharat currently records the evidence, location, report status, status history, submission package and directory-based routing information. This page does not represent an official government status unless an official authority reference or verified government response has been recorded.": "KrutBharat सध्या पुरावा, स्थान, नोंद स्थिती, स्थिती इतिहास, सबमिशन पॅकेज आणि डायरेक्टरी-आधारित रूटिंग माहिती नोंदवते. अधिकृत प्राधिकरण संदर्भ किंवा पडताळलेला सरकारी प्रतिसाद नोंदवलेला नसेल तर हे पृष्ठ अधिकृत सरकारी स्थिती दर्शवत नाही.",
     "Civic Issue": "नागरी समस्या",
     "No description provided.": "कोणतेही वर्णन उपलब्ध नाही.",
     "Location not provided.": "स्थान दिलेले नाही.",
@@ -672,7 +672,7 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Description": "वर्णन",
     "Submission Route": "सबमिशन मार्ग",
     "Not specified": "निर्दिष्ट नाही",
-    "Not provided in KarmaFacie profile.": "KarmaFacie प्रोफाइलमध्ये उपलब्ध नाही.",
+    "Not provided in KrutBharat profile.": "KrutBharat प्रोफाइलमध्ये उपलब्ध नाही.",
     "No email available from the authenticated account.": "प्रमाणित अकाउंटमधून ईमेल उपलब्ध नाही.",
     "City / State not available.": "शहर / राज्य उपलब्ध नाही.",
     "Not configured in authority directory.": "प्राधिकरण डायरेक्टरीमध्ये कॉन्फिगर केलेले नाही.",
@@ -683,8 +683,8 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "Draft": "मसुदा",
     "Government Authority": "सरकारी प्राधिकरण",
     "Citizen": "नागरिक",
-    "KarmaFacie Admin": "KarmaFacie प्रशासक",
-    "KarmaFacie System": "KarmaFacie प्रणाली",
+    "KrutBharat Admin": "KrutBharat प्रशासक",
+    "KrutBharat System": "KrutBharat प्रणाली",
     "Unknown": "अज्ञात",
     "Official Website": "अधिकृत वेबसाइट",
     "Assisted Submission": "सहाय्यित सबमिशन",
@@ -704,20 +704,20 @@ const uiTranslations: Record<Language, Record<string, string>> = {
     "The submission gateway completed the request.": "सबमिशन गेटवेने विनंती पूर्ण केली.",
     "This authority currently requires submission through its official complaint system.": "या प्राधिकरणाला सध्या अधिकृत तक्रार प्रणालीद्वारे सबमिशन आवश्यक आहे.",
     "The submission gateway could not continue this request.": "सबमिशन गेटवे ही विनंती पुढे नेऊ शकले नाही.",
-    "Unable to connect to the KarmaFacie submission gateway.": "KarmaFacie सबमिशन गेटवेशी जोडता आले नाही.",
+    "Unable to connect to the KrutBharat submission gateway.": "KrutBharat सबमिशन गेटवेशी जोडता आले नाही.",
     "No confirmed submission record is available yet.": "अद्याप पुष्टी केलेली सबमिशन नोंद उपलब्ध नाही.",
-    "KarmaFacie could not save the official-form handoff. Please try again.": "KarmaFacie अधिकृत फॉर्म हँडऑफ जतन करू शकले नाही. कृपया पुन्हा प्रयत्न करा.",
+    "KrutBharat could not save the official-form handoff. Please try again.": "KrutBharat अधिकृत फॉर्म हँडऑफ जतन करू शकले नाही. कृपया पुन्हा प्रयत्न करा.",
     "Please enter the complaint/reference number from the official government system.": "कृपया अधिकृत सरकारी प्रणालीतील तक्रार/संदर्भ क्रमांक टाका.",
     "Unable to save the official complaint reference.": "अधिकृत तक्रार संदर्भ जतन करता आला नाही.",
     "This civic issue is not available.": "ही नागरी समस्या उपलब्ध नाही.",
     "Unable to save this follow-up update.": "हा फॉलो-अप अपडेट जतन करता आला नाही.",
     "Unable to save this resolution check.": "ही निराकरण पडताळणी जतन करता आली नाही.",
-    "Resolution verification becomes available after the KarmaFacie issue is marked Resolved.": "KarmaFacie मध्ये समस्या निराकरण झालेली म्हणून चिन्हांकित केल्यानंतर निराकरण पडताळणी उपलब्ध होते.",
+    "Resolution verification becomes available after the KrutBharat issue is marked Resolved.": "KrutBharat मध्ये समस्या निराकरण झालेली म्हणून चिन्हांकित केल्यानंतर निराकरण पडताळणी उपलब्ध होते.",
     "Please choose an image or PDF file.": "कृपया इमेज किंवा PDF फाइल निवडा.",
     "Evidence file must be 5 MB or smaller.": "पुरावा फाइल 5 MB किंवा त्यापेक्षा कमी असावी.",
     "Copied ✓": "कॉपी केले ✓",
     "Copy": "कॉपी करा",
-    "✓ KarmaFacie verified": "✓ KarmaFacie ने पडताळले",
+    "✓ KrutBharat verified": "✓ KrutBharat ने पडताळले",
     "⚠ Not verified": "⚠ पडताळलेले नाही",
     "⏳ Verification pending": "⏳ पडताळणी प्रलंबित",
   },
@@ -1005,10 +1005,10 @@ function getActorLabel(
       return "Citizen";
 
     case "admin":
-      return "KarmaFacie Admin";
+      return "KrutBharat Admin";
 
     case "system":
-      return "KarmaFacie System";
+      return "KrutBharat System";
 
     default:
       return "Unknown";
@@ -1298,7 +1298,7 @@ export default function IssueDetailsPage() {
     {
       key: "reported",
       label: "Issue Reported",
-      description: "Your civic issue was recorded in KarmaFacie.",
+      description: "Your civic issue was recorded in KrutBharat.",
       completed: Boolean(issue?.reported_at || issue?.created_at),
       timestamp: issue?.reported_at ?? issue?.created_at ?? null,
     },
@@ -1326,8 +1326,8 @@ export default function IssueDetailsPage() {
       key: "official_form",
       label: "Official Form Opened",
       description: officialHandoffOpenedAt
-        ? "KarmaFacie recorded the official-form handoff."
-        : "The official complaint form has not yet been opened from KarmaFacie.",
+        ? "KrutBharat recorded the official-form handoff."
+        : "The official complaint form has not yet been opened from KrutBharat.",
       completed: Boolean(officialHandoffOpenedAt),
       timestamp: officialHandoffOpenedAt,
     },
@@ -1992,7 +1992,7 @@ export default function IssueDetailsPage() {
       );
 
       setSubmissionError(
-        "Unable to connect to the KarmaFacie submission gateway."
+        "Unable to connect to the KrutBharat submission gateway."
       );
     } finally {
       setSubmittingSubmission(false);
@@ -2026,7 +2026,7 @@ export default function IssueDetailsPage() {
       );
 
       setSubmissionError(
-        "KarmaFacie could not save the official-form handoff. Please try again."
+        "KrutBharat could not save the official-form handoff. Please try again."
       );
       return;
     }
@@ -2278,7 +2278,7 @@ export default function IssueDetailsPage() {
 
     if (issue.status !== "resolved") {
       setResolutionCheckError(
-        "Resolution verification becomes available after the KarmaFacie issue is marked Resolved."
+        "Resolution verification becomes available after the KrutBharat issue is marked Resolved."
       );
       return;
     }
@@ -2537,14 +2537,14 @@ export default function IssueDetailsPage() {
       label: "Person Name",
       value:
         citizenProfile?.name ||
-        "Not provided in KarmaFacie profile.",
+        "Not provided in KrutBharat profile.",
     },
     {
       key: "mobile",
       label: "Mobile Number",
       value:
         citizenProfile?.mobile ||
-        "Not provided in KarmaFacie profile.",
+        "Not provided in KrutBharat profile.",
     },
     {
       key: "email",
@@ -2559,14 +2559,14 @@ export default function IssueDetailsPage() {
         "House / Flat / Building Number",
       value:
         citizenProfile?.house_no ||
-        "Not provided in KarmaFacie profile.",
+        "Not provided in KrutBharat profile.",
     },
     {
       key: "address",
       label: "Residential Address",
       value:
         citizenProfile?.address ||
-        "Not provided in KarmaFacie profile.",
+        "Not provided in KrutBharat profile.",
     },
     {
       key: "city_state",
@@ -2589,14 +2589,14 @@ export default function IssueDetailsPage() {
       label: "Zone",
       value:
         citizenProfile?.zone ||
-        "Not provided in KarmaFacie profile.",
+        "Not provided in KrutBharat profile.",
     },
     {
       key: "ward",
       label: "Ward",
       value:
         citizenProfile?.ward ||
-        "Not provided in KarmaFacie profile.",
+        "Not provided in KrutBharat profile.",
     },
     {
       key: "department",
@@ -2750,7 +2750,7 @@ export default function IssueDetailsPage() {
               letterSpacing: "-.05em",
             }}
           >
-            <span className="kf-detail-brand-karma">Karma</span><span className="kf-detail-brand-facie">Facie</span>
+            <span className="kf-detail-brand-krut">Krut</span><span className="kf-detail-brand-bharat">Bharat</span>
           </div>
 
           <div
@@ -2811,7 +2811,7 @@ export default function IssueDetailsPage() {
               textTransform: "uppercase",
             }}
           >
-            KARMAFACIE
+            KRUTBHARAT
           </div>
 
           <h1
@@ -2967,8 +2967,8 @@ export default function IssueDetailsPage() {
                     fontWeight: 800,
                   }}
                 >
-                  <span className="kf-detail-brand-karma">Karma</span>
-                  <span className="kf-detail-brand-facie" style={{ color: "#ff7a00" }}>Facie</span>
+                  <span className="kf-detail-brand-krut">Krut</span>
+                  <span className="kf-detail-brand-bharat" style={{ color: "#ff7a00" }}>Bharat</span>
                 </div>
 
                 <div
@@ -3098,7 +3098,7 @@ export default function IssueDetailsPage() {
                   background: "#ff7a00",
                 }}
               />
-              KARMAFACIE CIVIC ISSUE
+              KRUTBHARAT CIVIC ISSUE
             </div>
 
             <div
@@ -3509,7 +3509,7 @@ export default function IssueDetailsPage() {
 
             <p className="kf-section-desc">
               {t(
-                "A combined KarmaFacie timeline for the major steps recorded for this complaint. Government actions are not marked as confirmed unless an official authority response or reference is recorded."
+                "A combined KrutBharat timeline for the major steps recorded for this complaint. Government actions are not marked as confirmed unless an official authority response or reference is recorded."
               )}
             </p>
           </div>
@@ -3610,7 +3610,7 @@ export default function IssueDetailsPage() {
               fontWeight: 800,
             }}
           >
-            {t("Current KarmaFacie status:")}{" "}
+            {t("Current KrutBharat status:")}{" "}
             <strong>{getStatusLabel(issue.status)}</strong>
           </div>
         </section>
@@ -3635,7 +3635,7 @@ export default function IssueDetailsPage() {
 
             <p className="kf-section-desc">
               {t(
-                "This timeline shows status changes actually recorded in KarmaFacie."
+                "This timeline shows status changes actually recorded in KrutBharat."
               )}
             </p>
           </div>
@@ -3772,7 +3772,7 @@ export default function IssueDetailsPage() {
             }}
           >
             {t(
-              "Status history is generated from recorded KarmaFacie status events. It does not imply that a government authority has changed the status unless the event is explicitly recorded as coming from an authority."
+              "Status history is generated from recorded KrutBharat status events. It does not imply that a government authority has changed the status unless the event is explicitly recorded as coming from an authority."
             )}
           </div>
         </section>
@@ -3938,7 +3938,7 @@ export default function IssueDetailsPage() {
                     }}
                   >
                     {t(
-                      "This opens the official complaint channel for the matched authority. KarmaFacie does not submit the complaint automatically through this route."
+                      "This opens the official complaint channel for the matched authority. KrutBharat does not submit the complaint automatically through this route."
                     )}
                   </span>
                 </div>
@@ -3978,10 +3978,10 @@ export default function IssueDetailsPage() {
             <p className="kf-section-desc">
               {submission
                 ? t(
-                    "KarmaFacie has already collected the information needed for this report. Review the prepared package before confirming it for the selected authority."
+                    "KrutBharat has already collected the information needed for this report. Review the prepared package before confirming it for the selected authority."
                   )
                 : t(
-                    "Your complaint package has not been prepared yet. KarmaFacie will assemble it from the information already stored for this issue."
+                    "Your complaint package has not been prepared yet. KrutBharat will assemble it from the information already stored for this issue."
                   )}
             </p>
           </div>
@@ -4026,7 +4026,7 @@ export default function IssueDetailsPage() {
                         fontSize: "11px",
                       }}
                     >
-                      KarmaFacie will assemble the data already stored for this issue.
+                      KrutBharat will assemble the data already stored for this issue.
                     </div>
                   </div>
 
@@ -4303,7 +4303,7 @@ export default function IssueDetailsPage() {
 
                         <p className="kf-section-desc">
                           {t(
-                            "Your complaint package has been prepared and confirmed. KarmaFacie will now check the configured authority submission route. For the current CSMC route, the gateway will direct you to the official complaint system rather than claiming an automatic government submission."
+                            "Your complaint package has been prepared and confirmed. KrutBharat will now check the configured authority submission route. For the current CSMC route, the gateway will direct you to the official complaint system rather than claiming an automatic government submission."
                           )}
                         </p>
 
@@ -4431,7 +4431,7 @@ export default function IssueDetailsPage() {
                               }}
                             >
                               {t(
-                                "KarmaFacie has recorded the reference number you provided. This is a citizen-reported record and has not been independently verified by the government system."
+                                "KrutBharat has recorded the reference number you provided. This is a citizen-reported record and has not been independently verified by the government system."
                               )}
                             </div>
                           </div>
@@ -4482,7 +4482,7 @@ export default function IssueDetailsPage() {
 
                             <p className="kf-small-note">
                               {t(
-                                "Once the government form confirms your submission, enter the reference/complaint number here. KarmaFacie will store it as a citizen-provided reference; it will not be treated as an official KarmaFacie submission confirmation."
+                                "Once the government form confirms your submission, enter the reference/complaint number here. KrutBharat will store it as a citizen-provided reference; it will not be treated as an official KrutBharat submission confirmation."
                               )}
                             </p>
 
@@ -4656,7 +4656,7 @@ export default function IssueDetailsPage() {
 
             <p className="kf-section-desc">
               {t(
-                "Record what happened after your complaint was submitted. These updates are citizen-reported unless KarmaFacie later receives verifiable information from the authority."
+                "Record what happened after your complaint was submitted. These updates are citizen-reported unless KrutBharat later receives verifiable information from the authority."
               )}
             </p>
           </div>
@@ -4818,7 +4818,7 @@ export default function IssueDetailsPage() {
 
                     {followUp.verification_status === "VERIFIED" && (
                       <div className="kf-verified">
-                        {t("✓ KarmaFacie verified")}
+                        {t("✓ KrutBharat verified")}
                       </div>
                     )}
 
@@ -4900,7 +4900,7 @@ export default function IssueDetailsPage() {
 
               <p className="kf-section-desc">
                 {t(
-                  "KarmaFacie currently records this issue as Resolved. Check the location yourself and record what you observe. This is a citizen observation and does not automatically change the administrative status."
+                  "KrutBharat currently records this issue as Resolved. Check the location yourself and record what you observe. This is a citizen observation and does not automatically change the administrative status."
                 )}
               </p>
             </div>
@@ -5081,7 +5081,7 @@ export default function IssueDetailsPage() {
 
             <div className="kf-small-note" style={{ marginTop: "13px" }}>
               {t(
-                "KarmaFacie stores these observations as a separate history. They do not automatically change the administrative issue status."
+                "KrutBharat stores these observations as a separate history. They do not automatically change the administrative issue status."
               )}
             </div>
           </section>
@@ -5113,17 +5113,17 @@ export default function IssueDetailsPage() {
 
                 <p className="kf-section-desc">
                   {t(
-                    "KarmaFacie has loaded the citizen details saved in your profile and combined them with the complaint information. Keep this copy pack ready while completing the official government form. KarmaFacie does not bypass cross-domain controls or CAPTCHA."
+                    "KrutBharat has loaded the citizen details saved in your profile and combined them with the complaint information. Keep this copy pack ready while completing the official government form. KrutBharat does not bypass cross-domain controls or CAPTCHA."
                   )}
                 </p>
               </div>
 
               <div className="kf-copy-grid">
                 {[
-                  [t("Person Name"), citizenProfile?.name || t("Not provided in KarmaFacie profile."), "name"],
-                  [t("Mobile Number"), citizenProfile?.mobile || t("Not provided in KarmaFacie profile."), "mobile"],
+                  [t("Person Name"), citizenProfile?.name || t("Not provided in KrutBharat profile."), "name"],
+                  [t("Mobile Number"), citizenProfile?.mobile || t("Not provided in KrutBharat profile."), "mobile"],
                   [t("Email"), citizenEmail || t("No email available from the authenticated account."), "email"],
-                  [t("Residential Address"), [citizenProfile?.house_no, citizenProfile?.address].filter(Boolean).join(", ") || t("Not provided in KarmaFacie profile."), "address"],
+                  [t("Residential Address"), [citizenProfile?.house_no, citizenProfile?.address].filter(Boolean).join(", ") || t("Not provided in KrutBharat profile."), "address"],
                   [t("City / State"), [citizenProfile?.city, citizenProfile?.state].filter(Boolean).join(", ") || t("City / State not available."), "cityState"],
                   [t("Zone"), citizenProfile?.zone || t("Not configured in authority directory."), "zone"],
                   [t("Ward"), citizenProfile?.ward || t("Not configured in authority directory."), "ward"],
@@ -5185,7 +5185,7 @@ export default function IssueDetailsPage() {
               <div className="kf-notice kf-notice-warm" style={{ marginTop: "14px" }}>
                 <strong>{t("Still required on the official form:")}</strong>{" "}
                 {t(
-                  "verify the copied citizen details and the authority-specific mapping, complete any zone/ward or other selections that KarmaFacie does not have, enter CAPTCHA, and perform the final Submit action yourself."
+                  "verify the copied citizen details and the authority-specific mapping, complete any zone/ward or other selections that KrutBharat does not have, enter CAPTCHA, and perform the final Submit action yourself."
                 )}
               </div>
 
@@ -5203,7 +5203,7 @@ export default function IssueDetailsPage() {
                 }}
               >
                 {t(
-                  "Citizen profile fields are loaded from KarmaFacie, while the matched authority directory supplies the configured department, sub-department and official complaint type."
+                  "Citizen profile fields are loaded from KrutBharat, while the matched authority directory supplies the configured department, sub-department and official complaint type."
                 )}
               </div>
             </section>
@@ -5297,7 +5297,7 @@ export default function IssueDetailsPage() {
           }}
         >
           {t(
-            "KarmaFacie currently records the evidence, location, report status, status history, submission package and directory-based routing information. This page does not represent an official government status unless an official authority reference or verified government response has been recorded."
+            "KrutBharat currently records the evidence, location, report status, status history, submission package and directory-based routing information. This page does not represent an official government status unless an official authority reference or verified government response has been recorded."
           )}
         </div>
       </div>
@@ -5653,6 +5653,19 @@ export default function IssueDetailsPage() {
 
         .kf-break {
           word-break: break-all;
+        }
+
+        /* Dark-mode navbar brand:
+           the global stylesheet has a broader ".brand-name span" rule that
+           can recolor every span. Use a more specific selector here so
+           Krut stays white while Bharat remains orange. */
+        html[data-theme="dark"] .kf-detail-page .kf-detail-brand-name .kf-detail-brand-krut,
+        html[data-theme="dark"] .kf-detail-page .kf-detail-brand-name span.kf-detail-brand-krut {
+          color: #ffffff !important;
+        }
+
+        html[data-theme="dark"] .kf-detail-page .kf-detail-brand-name .kf-detail-brand-bharat {
+          color: #ff7a00 !important;
         }
 
         @media (max-width: 900px) {

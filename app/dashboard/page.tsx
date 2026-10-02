@@ -198,7 +198,7 @@ const content = {
     welcomeLabel: "WELCOME BACK",
     hello: "Hello",
     welcomeDescription:
-      "Welcome to KarmaFacie. Explore civic knowledge, understand your community and build your civic participation journey.",
+      "Welcome to KrutBharat. Explore civic knowledge, understand your community and build your civic participation journey.",
 
     location: "Location",
     ageGroup: "Age Group",
@@ -208,9 +208,9 @@ const content = {
     interestedTopics: "Topics you're interested in",
 
     learningLabel: "YOUR LEARNING",
-    progressTitle: "Your KarmaFacie Progress",
+    progressTitle: "Your KrutBharat Progress",
     progressDescription:
-      "Complete KarmaFacie topics and test what you learn through interactive quizzes.",
+      "Complete KrutBharat topics and test what you learn through interactive quizzes.",
 
     overallCompletion: "OVERALL COMPLETION",
     topicsLabel: "Topics",
@@ -225,7 +225,7 @@ const content = {
     reviewTopic: "Review Topic →",
     startLearning: "Start Learning →",
 
-    civicQuestLabel: "KARMAFACIE",
+    civicQuestLabel: "KRUTBHARAT",
     whatWouldYouLike: "What would you like to do?",
 
     explore: "Civic Learning",
@@ -242,6 +242,15 @@ const content = {
     myCivicIssuesDescription:
       "View the civic problems you have reported, see your evidence and track their current status.",
     myCivicIssuesAction: "View your reports →",
+
+    civicSense: "Civic Sense",
+    civicSenseDescription:
+      "Understand the everyday habits that make shared spaces cleaner, safer and more respectful.",
+    civicSenseAction: "Explore Civic Sense →",
+    responsibleAuthorities: "Responsible Authorities",
+    responsibleAuthoritiesDescription:
+      "Know who represents and governs the area you are in, from local bodies to MLA, MP and public authorities.",
+    responsibleAuthoritiesAction: "View Responsible Authorities →",
 
     civicQuests: "Civic Quests",
     civicQuestsDescription:
@@ -288,7 +297,7 @@ const content = {
     welcomeLabel: "वापसी पर स्वागत है",
     hello: "नमस्ते",
     welcomeDescription:
-      "KarmaFacie में आपका स्वागत है। नागरिक ज्ञान को जानें, अपने समुदाय को समझें और अपनी नागरिक भागीदारी की यात्रा शुरू करें।",
+      "KrutBharat में आपका स्वागत है। नागरिक ज्ञान को जानें, अपने समुदाय को समझें और अपनी नागरिक भागीदारी की यात्रा शुरू करें।",
 
     location: "स्थान",
     ageGroup: "आयु वर्ग",
@@ -298,9 +307,9 @@ const content = {
     interestedTopics: "आपकी रुचि के विषय",
 
     learningLabel: "आपकी सीखने की यात्रा",
-    progressTitle: "आपकी KarmaFacie प्रगति",
+    progressTitle: "आपकी KrutBharat प्रगति",
     progressDescription:
-      "KarmaFacie के विषय पूरे करें और इंटरैक्टिव क्विज़ के माध्यम से अपनी सीख का परीक्षण करें।",
+      "KrutBharat के विषय पूरे करें और इंटरैक्टिव क्विज़ के माध्यम से अपनी सीख का परीक्षण करें।",
 
     overallCompletion: "कुल प्रगति",
     topicsLabel: "विषय",
@@ -315,7 +324,7 @@ const content = {
     reviewTopic: "विषय दोबारा देखें →",
     startLearning: "सीखना शुरू करें →",
 
-    civicQuestLabel: "KARMAFACIE",
+    civicQuestLabel: "KRUTBHARAT",
     whatWouldYouLike: "आप क्या करना चाहते हैं?",
 
     explore: "नागरिक शिक्षा",
@@ -332,6 +341,15 @@ const content = {
     myCivicIssuesDescription:
       "आपके द्वारा रिपोर्ट की गई नागरिक समस्याएँ देखें, अपने प्रमाण देखें और उनकी वर्तमान स्थिति को ट्रैक करें।",
     myCivicIssuesAction: "अपनी रिपोर्ट देखें →",
+
+    civicSense: "नागरिक बोध",
+    civicSenseDescription:
+      "उन रोज़मर्रा की आदतों को समझें जो साझा स्थानों को साफ़, सुरक्षित और सम्मानजनक बनाती हैं।",
+    civicSenseAction: "नागरिक बोध देखें →",
+    responsibleAuthorities: "जिम्मेदार प्राधिकरण",
+    responsibleAuthoritiesDescription:
+      "जानें कि आप जिस क्षेत्र में हैं उसका प्रतिनिधित्व और प्रशासन कौन करता है — स्थानीय निकाय, MLA, MP और सार्वजनिक प्राधिकरण सहित।",
+    responsibleAuthoritiesAction: "जिम्मेदार प्राधिकरण देखें →",
 
     civicQuests: "Civic Quests",
     civicQuestsDescription:
@@ -378,7 +396,7 @@ const content = {
     welcomeLabel: "पुन्हा स्वागत आहे",
     hello: "नमस्कार",
     welcomeDescription:
-      "KarmaFacie मध्ये तुमचे स्वागत आहे. नागरिक ज्ञान जाणून घ्या, तुमचा समुदाय समजून घ्या आणि तुमच्या नागरिक सहभागाची वाटचाल सुरू करा.",
+      "KrutBharat मध्ये तुमचे स्वागत आहे. नागरिक ज्ञान जाणून घ्या, तुमचा समुदाय समजून घ्या आणि तुमच्या नागरिक सहभागाची वाटचाल सुरू करा.",
 
     location: "स्थान",
     ageGroup: "वयोगट",
@@ -388,9 +406,9 @@ const content = {
     interestedTopics: "तुम्हाला आवडणारे विषय",
 
     learningLabel: "तुमची शिकण्याची वाटचाल",
-    progressTitle: "तुमची KarmaFacie प्रगती",
+    progressTitle: "तुमची KrutBharat प्रगती",
     progressDescription:
-      "KarmaFacie चे विषय पूर्ण करा आणि इंटरॅक्टिव्ह क्विझद्वारे तुम्ही काय शिकलात ते तपासा.",
+      "KrutBharat चे विषय पूर्ण करा आणि इंटरॅक्टिव्ह क्विझद्वारे तुम्ही काय शिकलात ते तपासा.",
 
     overallCompletion: "एकूण प्रगती",
     topicsLabel: "विषय",
@@ -405,7 +423,7 @@ const content = {
     reviewTopic: "विषय पुन्हा पाहा →",
     startLearning: "शिकायला सुरुवात करा →",
 
-    civicQuestLabel: "KARMAFACIE",
+    civicQuestLabel: "KRUTBHARAT",
     whatWouldYouLike: "तुम्हाला काय करायचे आहे?",
 
     explore: "नागरिक शिक्षण",
@@ -422,6 +440,15 @@ const content = {
     myCivicIssuesDescription:
       "तुम्ही नोंदवलेल्या नागरी समस्या पाहा, तुमचे पुरावे तपासा आणि त्यांची सध्याची स्थिती ट्रॅक करा.",
     myCivicIssuesAction: "तुमच्या नोंदी पाहा →",
+
+    civicSense: "नागरी जाणीव",
+    civicSenseDescription:
+      "सामायिक जागा स्वच्छ, सुरक्षित आणि अधिक आदरयुक्त ठेवणाऱ्या दैनंदिन सवयी समजून घ्या.",
+    civicSenseAction: "नागरी जाणीव पाहा →",
+    responsibleAuthorities: "जबाबदार प्राधिकरण",
+    responsibleAuthoritiesDescription:
+      "तुम्ही ज्या परिसरात आहात त्याचे प्रतिनिधित्व आणि प्रशासन कोण करते ते जाणून घ्या — स्थानिक संस्था, MLA, MP आणि सार्वजनिक प्राधिकरणांसह.",
+    responsibleAuthoritiesAction: "जबाबदार प्राधिकरण पाहा →",
 
     civicQuests: "Civic Quests",
     civicQuestsDescription:
@@ -591,7 +618,7 @@ export default function DashboardPage() {
               fontFamily: "var(--font-display)",
             }}
           >
-            Karma<span style={{ color: "#ff7a00" }}>Facie</span>
+            Krut<span style={{ color: "#ff7a00" }}>Bharat</span>
           </div>
 
           <div
@@ -643,6 +670,24 @@ export default function DashboardPage() {
       path: "/civic-learning",
       bg: "#edf5fb",
       accent: "#b5d3e7",
+    },
+    {
+      icon: "🤝",
+      title: text.civicSense,
+      description: text.civicSenseDescription,
+      actionText: text.civicSenseAction,
+      path: "/civic-sense",
+      bg: "#eaf4f2",
+      accent: "#9fcfc5",
+    },
+    {
+      icon: "🏛️",
+      title: text.responsibleAuthorities,
+      description: text.responsibleAuthoritiesDescription,
+      actionText: text.responsibleAuthoritiesAction,
+      path: "/responsible-authorities",
+      bg: "#f4edf8",
+      accent: "#c8a7dc",
     },
     {
       icon: "📢",
@@ -778,9 +823,9 @@ export default function DashboardPage() {
                               fontFamily: "var(--font-display)",
                             }}
                           >
-                            Karma<span style={{ color: "#ff7a00" }}>Facie</span>
+                            Krut<span style={{ color: "#ff7a00" }}>Bharat</span>
                           </button>
-                
+
                           <div
                             style={{
                               display: "flex",
@@ -811,7 +856,7 @@ export default function DashboardPage() {
                               <option value="hi">हिन्दी</option>
                               <option value="mr">मराठी</option>
                             </select>
-                
+
                             <button
                               type="button"
                               onClick={() => router.push("/")}
@@ -828,7 +873,7 @@ export default function DashboardPage() {
                             >
                               ← {text.home}
                             </button>
-                
+
                             <button
                               type="button"
                               onClick={() => router.replace("/get-started")}
@@ -1077,7 +1122,7 @@ export default function DashboardPage() {
                       fontFamily: "var(--font-display)",
                     }}
                   >
-                    Karma<span style={{ color: "#ff7a00" }}>Facie</span>
+                    Krut<span style={{ color: "#ff7a00" }}>Bharat</span>
                   </div>
                 </div>
 
@@ -1535,6 +1580,7 @@ export default function DashboardPage() {
                 tint={card.bg}
                 accent={card.accent}
                 index={index}
+                cardKey={card.path.replace("/", "").replaceAll("/", "-")}
               />
             ))}
           </div>
@@ -1543,16 +1589,16 @@ export default function DashboardPage() {
         {/* FOOTER */}
         <footer className="kf-dashboard-footer">
           <div className="kf-dashboard-footer-inner">
-            <div className="kf-dashboard-footer-brand" aria-label="KarmaFacie">
-              <span className="kf-dashboard-footer-karma">Karma</span><span className="kf-dashboard-footer-facie">Facie</span>
+            <div className="kf-dashboard-footer-brand" aria-label="KrutBharat">
+              <span className="kf-dashboard-footer-karma">Krut</span><span className="kf-dashboard-footer-facie">Bharat</span>
             </div>
 
             <div className="kf-dashboard-footer-tagline">
-              Learn. Understand. Participate.
+              Know India. Think Civic. Shape Its Future.
             </div>
 
             <div className="kf-dashboard-footer-context">
-              INDIA <span aria-hidden="true">·</span> CIVIC PARTICIPATION
+              © 2026 KrutBharat <span aria-hidden="true">·</span> by KarmaFacie Corporation
             </div>
           </div>
         </footer>
@@ -1560,7 +1606,7 @@ export default function DashboardPage() {
 
       <style>{`
         /* --------------------------------------------------
-           KARMAFACIE DASHBOARD FOOTER
+           KRUTBHARAT DASHBOARD FOOTER
            Light + dark mode, matching the Explore footer language
            -------------------------------------------------- */
 
@@ -1705,7 +1751,7 @@ export default function DashboardPage() {
         }
 
         /* --------------------------------------------------
-           KARMAFACIE LOCKED DARK THEME — DASHBOARD
+           KRUTBHARAT LOCKED DARK THEME — DASHBOARD
            Visual reference: locked Homepage + Explore
            -------------------------------------------------- */
 
@@ -2064,7 +2110,6 @@ export default function DashboardPage() {
           color: #71859a !important;
         }
 
-
         /* Structural overrides for inline-styled child components */
         html[data-theme="dark"] .kf-dashboard-page.kf-dashboard-loading {
           background:
@@ -2141,7 +2186,6 @@ export default function DashboardPage() {
             background: rgba(4,10,20,.68) !important;
           }
         }
-
 
         /* -------------------------------------------------- */
         /* DASHBOARD DARK-MODE POLISH — FINAL VISUAL PASS     */
@@ -2643,8 +2687,6 @@ export default function DashboardPage() {
           }
         }
 
-
-
         /* ============================================================
            FINAL DASHBOARD PASS
            Floating Explore-style navbar + high-contrast dark theme.
@@ -2891,8 +2933,6 @@ export default function DashboardPage() {
             border-radius: 25px !important;
           }
         }
-
-
 
         /* --------------------------------------------------
            LEARNING CARDS — PREMIUM DARK GLASS / NEON
@@ -3192,7 +3232,6 @@ export default function DashboardPage() {
           }
         }
 
-
         /* --------------------------------------------------
            WELCOME HERO — SECOND REFERENCE IMAGE
            Dark-mode-only visual pass. The rest of the dashboard
@@ -3282,7 +3321,6 @@ export default function DashboardPage() {
           line-height: 1.10 !important;
           letter-spacing: -0.012em !important;
         }
-
 
         html[data-theme="dark"] main.kf-dashboard-page > div > section.kf-welcome-section .kf-welcome-description {
           color: #a9bfd3 !important;
@@ -3441,7 +3479,6 @@ export default function DashboardPage() {
           }
         }
 
-
         /* ---------- OVERALL COMPLETION PERCENTAGE ---------- */
         html[data-theme="dark"] .kf-dashboard-page .kf-overall-percentage-ring {
           background: #fffdf9 !important;
@@ -3457,7 +3494,50 @@ export default function DashboardPage() {
           visibility: visible !important;
           mix-blend-mode: normal !important;
         }
-      `}</style>
+
+/* =========================================================
+   CIVIC SENSE — DASHBOARD CARD
+   ========================================================= */
+html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card-civic-sense {
+  background:
+    radial-gradient(circle at 92% 6%, rgba(255,209,102,.14), transparent 28%),
+    radial-gradient(circle at 8% 100%, rgba(24,191,255,.10), transparent 30%),
+    linear-gradient(145deg, #173947 0%, #10283a 58%, #0c1d2d 100%) !important;
+  border-color: rgba(255,209,102,.48) !important;
+  color: #f7f9fc !important;
+  box-shadow:
+    0 18px 42px rgba(0,0,0,.26),
+    0 0 24px rgba(255,209,102,.08) !important;
+}
+
+html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card-civic-sense > div:first-child {
+  background: rgba(255,209,102,.13) !important;
+}
+
+html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card-civic-sense > div:nth-child(2) > div:first-child {
+  background: rgba(255,255,255,.07) !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+
+html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card-civic-sense h3 {
+  color: #f7f9fc !important;
+}
+
+html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card-civic-sense p {
+  color: #b7c8d7 !important;
+}
+
+html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card-civic-sense > div:nth-child(5) > span:first-child {
+  color: #ffae45 !important;
+}
+
+html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card-civic-sense > div:nth-child(5) > span:last-child {
+  background: rgba(255,255,255,.06) !important;
+  border-color: rgba(255,255,255,.12) !important;
+  color: #a9bdcf !important;
+}
+
+`}</style>
     </main>
   );
 }
@@ -3793,6 +3873,7 @@ function FeatureCard({
   tint = "#edf5fb",
   accent = "#b5d3e7",
   index = 0,
+  cardKey = "",
 }: {
   icon: string;
   title: string;
@@ -3802,11 +3883,13 @@ function FeatureCard({
   tint?: string;
   accent?: string;
   index?: number;
+  cardKey?: string;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
+      className={`kf-dashboard-feature-card ${cardKey ? `kf-dashboard-feature-card-${cardKey}` : ""}`}
       style={{
         position: "relative",
         overflow: "hidden",

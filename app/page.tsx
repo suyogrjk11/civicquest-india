@@ -22,8 +22,9 @@ const content: Record<
     dashboard: string;
 
     heroBadge: string;
-    heroTitle1: string;
-    heroTitle2: string;
+    heroBrandBefore: string;
+    heroBrandAccent: string;
+    heroBrandAfter: string;
     heroDescription: string;
     exploreNow: string;
     signInUp: string;
@@ -36,6 +37,18 @@ const content: Record<
     whatWeDoLabel: string;
     whatWeDoTitle: string;
     whatWeDoDescription: string;
+
+    civicSenseLabel: string;
+    civicSenseTitle: string;
+    civicSenseDescription: string;
+    civicSenseActions: string[];
+    civicSenseAction: string;
+
+    responsibleAuthoritiesLabel: string;
+    responsibleAuthoritiesTitle: string;
+    responsibleAuthoritiesDescription: string;
+    responsibleAuthoritiesSteps: string[];
+    responsibleAuthoritiesAction: string;
 
     learnTitle: string;
     learnDescription: string;
@@ -174,7 +187,7 @@ const content: Record<
     navAbout: "About",
     navWhatWeDo: "What We Do",
     navExplore: "Explore",
-    navWhy: "Why KarmaFacie?",
+    navWhy: "Why KrutBharat?",
     navLeagues: "Civic Leagues",
     signIn: "Sign in / Sign up",
     signUp: "Sign up",
@@ -182,24 +195,39 @@ const content: Record<
     dashboard: "Dashboard",
 
     heroBadge: "🇮🇳 Built for citizens of India",
-    heroTitle1: "Know. Understand.",
-    heroTitle2: "Participate.",
+    heroBrandBefore: "",
+    heroBrandAccent: "India",
+    heroBrandAfter: " through our karma.",
     heroDescription:
-      "KarmaFacie helps citizens learn how India works, understand the issues around them and take meaningful civic action.",
-    exploreNow: "Explore KarmaFacie →",
+      "KrutBharat helps citizens learn how India works, understand the issues around them and take meaningful civic action.",
+    exploreNow: "Explore KrutBharat →",
     signInUp: "Sign in / Sign up",
 
-    aboutLabel: "What is KarmaFacie?",
-    aboutTagline: "A Face for Every Good Civic Action.",
+    aboutLabel: "What is KrutBharat?",
+    aboutTagline: "Know India. Think Civic. Shape Its Future.",
     aboutTitle:
       "Democracy works better when citizens understand it.",
     aboutDescription:
-      "KarmaFacie brings civic learning and civic participation together in one simple experience. Learn about government, understand how systems affect everyday life, and discover practical ways to participate in your community.",
+      "KrutBharat brings civic learning and civic participation together in one simple experience. Learn about government, understand how systems affect everyday life, and discover practical ways to participate in your community.",
 
-    whatWeDoLabel: "What can you do with KarmaFacie?",
+    whatWeDoLabel: "What can you do with KrutBharat?",
     whatWeDoTitle: "From learning to action.",
     whatWeDoDescription:
-      "KarmaFacie is designed around the complete journey of an informed citizen.",
+      "KrutBharat is designed around the complete journey of an informed citizen.",
+
+    civicSenseLabel: "EVERYDAY CITIZENSHIP",
+    civicSenseTitle: "Let’s improve our civic sense",
+    civicSenseDescription:
+      "Small everyday choices shape the places we share. Explore practical civic habits that keep public spaces cleaner, safer and more considerate.",
+    civicSenseActions: ["Use a bin", "Respect queues", "Protect public property"],
+    civicSenseAction: "Explore Civic Sense →",
+
+    responsibleAuthoritiesLabel: "KNOW YOUR AREA",
+    responsibleAuthoritiesTitle: "Know about the authorities in your area",
+    responsibleAuthoritiesDescription:
+      "Understand the local government layer around you and discover the people and public institutions connected to your area.",
+    responsibleAuthoritiesSteps: ["AREA", "WARD", "ASSEMBLY", "LOK SABHA"],
+    responsibleAuthoritiesAction: "Explore Responsible Authorities →",
 
     learnTitle: "Learn",
     learnDescription:
@@ -211,7 +239,7 @@ const content: Record<
     understandDescription:
       "Connect civic knowledge with the systems and decisions that affect everyday life.",
     understandReveal:
-      "Understand responsibilities, institutions, local governance, public systems and how civic issues are handled.",
+      "Understand responsibilities, institutions, local governance, public systems and how civic issues are handled — and learn everyday civic sense, from keeping public spaces clean to respecting people, queues and public property.",
 
     participateTitle: "Participate",
     participateDescription:
@@ -219,10 +247,10 @@ const content: Record<
     participateReveal:
       "Report civic issues, follow progress, complete civic challenges and discover ways to contribute.",
 
-    howLabel: "How KarmaFacie Works",
+    howLabel: "How KrutBharat Works",
     howTitle: "From learning to lasting civic impact.",
     howDescription:
-      "KarmaFacie connects civic knowledge with real participation, verified contribution and a growing civic record.",
+      "KrutBharat connects civic knowledge with real participation, verified contribution and a growing civic record.",
 
     step1Title: "Learn",
     step1Description:
@@ -235,15 +263,15 @@ const content: Record<
       "Understand which authority or civic process is relevant.",
     step4Title: "Take action",
     step4Description:
-      "Use KarmaFacie tools to participate, report issues and complete civic missions.",
+      "Use KrutBharat tools to participate, report issues and complete civic missions.",
     step5Title: "Track & verify",
     step5Description:
       "Follow updates, submit evidence and verify outcomes where possible.",
 
-    journeyFlowLabel: "THE KARMAFACIE JOURNEY",
+    journeyFlowLabel: "THE KrutBharat JOURNEY",
     journeyFlowTitle: "Discover → Learn → Understand → Act → Show Proof → Verify → Earn → Build & Belong → Repeat",
     journeyFlowDescription:
-      "A citizen can move through KarmaFacie at their own pace — from learning about India to taking real civic action and building a record of verified participation.",
+      "A citizen can move through KrutBharat at their own pace — from learning about India to taking real civic action and building a record of verified participation.",
     journeyFlow: [
       {
         title: "Discover",
@@ -287,10 +315,10 @@ const content: Record<
       },
     ],
 
-    featureUniverseLabel: "THE KARMAFACIE PLATFORM",
+    featureUniverseLabel: "THE KRUTBHARAT PLATFORM",
     featureUniverseTitle: "Everything connects to the same civic journey.",
     featureUniverseDescription:
-      "KarmaFacie brings learning, civic services, real-world action, verification, impact and community participation into one connected experience.",
+      "KrutBharat brings learning, civic services, real-world action, verification, impact and community participation into one connected experience.",
     featureGroups: [
       {
         title: "Learn & Discover",
@@ -360,10 +388,10 @@ const content: Record<
       },
     ],
 
-    futureLabel: "GROWING WITH KARMAFACIE",
+    futureLabel: "GROWING WITH KRUTBHARAT",
     futureTitle: "The civic journey keeps expanding.",
     futureDescription:
-      "Planned layers can deepen progression and personalization as KarmaFacie grows.",
+      "Planned layers can deepen progression and personalization as KrutBharat grows.",
     futureFeatures: [
       "XP and levels",
       "Badges, streaks and richer progression",
@@ -376,7 +404,7 @@ const content: Record<
     exploreLabel: "Explore Civic Life",
     exploreTitle: "Start anywhere. Learn at your pace.",
     exploreDescription:
-      "Explore all eight KarmaFacie learning areas without creating an account.",
+      "Explore all eight KrutBharat learning areas without creating an account.",
     exploreAll: "Explore all topics →",
 
     government: "Government & Governance",
@@ -415,7 +443,7 @@ const content: Record<
     issueJourneyTitle:
       "See a civic problem? Know what to do next.",
     issueJourneyDescription:
-      "KarmaFacie helps you document the issue, identify the relevant authority, prepare your report and hand it off to the appropriate official channel.",
+      "KrutBharat helps you document the issue, identify the relevant authority, prepare your report and hand it off to the appropriate official channel.",
 
     issueStep1: "See a problem",
     issueStep2: "Document it",
@@ -427,34 +455,34 @@ const content: Record<
 
     reportIssueNow: "Report a Civic Issue →",
 
-    whyLabel: "Why KarmaFacie?",
+    whyLabel: "Why KrutBharat?",
     whyTitle:
       "Making civic life easier to understand and navigate.",
 
     problemTitle: "The challenge",
     problem1:
-      "Civic information can be difficult to understand.",
+      "Everyday civic sense can be overlooked in the small choices we make in shared spaces.",
     problem2:
-      "Relevant information is often spread across different places.",
+      "Citizens may not know the simple habits that help keep public places clean, safe and respectful.",
     problem3:
-      "Government terminology can make simple processes feel complicated.",
+      "Information about the authorities connected to a local area can be spread across different places.",
     problem4:
-      "Citizens may not know where a local problem should be reported.",
+      "Citizens may not know which local body or representative is connected to their area.",
 
-    solutionTitle: "What KarmaFacie changes",
+    solutionTitle: "What KrutBharat changes",
     solution1:
-      "Simple, structured civic learning.",
+      "Practical Civic Sense guidance for everyday behaviour.",
     solution2:
-      "Interactive lessons and quizzes.",
+      "Simple examples that make respectful civic habits easier to practise.",
     solution3:
-      "Local issue reporting and authority routing information.",
+      "A Responsible Authorities view that identifies the local government and public institutions connected to an area.",
     solution4:
-      "A clear journey from learning to participation.",
+      "A clearer way to understand municipal / ward, Assembly and Lok Sabha representation where verified.",
 
     trustLabel: "Trust & Transparency",
     trustTitle: "Built for citizens. Clear and transparent.",
     trustDescription:
-      "KarmaFacie helps citizens understand and navigate civic processes. It clearly separates KarmaFacie tools from official government systems.",
+      "KrutBharat helps citizens understand and navigate civic processes. It clearly separates KrutBharat tools from official government systems.",
 
     trust1Title: "Official information",
     trust1Description:
@@ -462,20 +490,20 @@ const content: Record<
 
     trust2Title: "Citizen-controlled reports",
     trust2Description:
-      "Citizens control the reports and information they share through KarmaFacie.",
+      "Citizens control the reports and information they share through KrutBharat.",
 
     trust3Title: "Clear boundaries",
     trust3Description:
-      "KarmaFacie is not a government authority. A report on KarmaFacie is not automatically an official government submission.",
+      "KrutBharat is not a government authority. A report on KrutBharat is not automatically an official government submission.",
     trustChip1: "Citizen-first",
     trustChip2: "Evidence-aware",
     trustChip3: "Clear boundaries",
-    trustSystemLabel: "KARMAFACIE ≠ GOVERNMENT SYSTEM",
+    trustSystemLabel: "KRUTBHARAT ≠ GOVERNMENT SYSTEM",
     trustSystemDescription:
-      "KarmaFacie helps prepare and guide civic reports. Official submissions, reference numbers and government status remain with the relevant government system.",
+      "KrutBharat helps prepare and guide civic reports. Official submissions, reference numbers and government status remain with the relevant government system.",
 
     ctaTitle1: "Ready to start your",
-    ctaTitle2: " KarmaFacie journey?",
+    ctaTitle2: " KrutBharat journey?",
     ctaDescription:
       "Explore civic knowledge first. Create an account when you're ready to save your progress and use personalized features.",
 
@@ -495,14 +523,14 @@ const content: Record<
     leagueAction: "Explore Civic Leagues →",
 
     footerTagline:
-      "Learn. Understand. Participate.",
+      "Know India. Think Civic. Shape Its Future.",
   },
 
   hi: {
     navAbout: "परिचय",
     navWhatWeDo: "हम क्या करते हैं",
     navExplore: "एक्सप्लोर करें",
-    navWhy: "KarmaFacie क्यों?",
+    navWhy: "KrutBharat क्यों?",
     navLeagues: "सिविक लीग्स",
     signIn: "साइन इन / साइन अप",
     signUp: "साइन अप",
@@ -510,24 +538,39 @@ const content: Record<
     dashboard: "डैशबोर्ड",
 
     heroBadge: "🇮🇳 भारत के नागरिकों के लिए बनाया गया",
-    heroTitle1: "जानें। समझें।",
-    heroTitle2: "भाग लें।",
+    heroBrandBefore: "",
+    heroBrandAccent: "भारत",
+    heroBrandAfter: " हमारे कर्मों से।",
     heroDescription:
-      "KarmaFacie नागरिकों को यह समझने में मदद करता है कि भारत कैसे काम करता है, उनके आसपास के मुद्दों को समझने में मदद करता है और सार्थक नागरिक भागीदारी के तरीके दिखाता है।",
-    exploreNow: "KarmaFacie एक्सप्लोर करें →",
+      "KrutBharat नागरिकों को यह समझने में मदद करता है कि भारत कैसे काम करता है, उनके आसपास के मुद्दों को समझने में मदद करता है और सार्थक नागरिक भागीदारी के तरीके दिखाता है।",
+    exploreNow: "KrutBharat एक्सप्लोर करें →",
     signInUp: "साइन इन / साइन अप",
 
-    aboutLabel: "KarmaFacie क्या है?",
-    aboutTagline: "सत्कर्मों का चेहरा।",
+    aboutLabel: "KrutBharat क्या है?",
+    aboutTagline: "Know India. Think Civic. Shape Its Future.",
     aboutTitle:
       "जब नागरिक लोकतंत्र को समझते हैं, तो लोकतंत्र बेहतर काम करता है।",
     aboutDescription:
-      "KarmaFacie नागरिक शिक्षा और नागरिक भागीदारी को एक सरल अनुभव में जोड़ता है। सरकार के बारे में जानें, समझें कि व्यवस्थाएँ हमारे दैनिक जीवन को कैसे प्रभावित करती हैं और अपने समुदाय में भाग लेने के व्यावहारिक तरीके खोजें।",
+      "KrutBharat नागरिक शिक्षा और नागरिक भागीदारी को एक सरल अनुभव में जोड़ता है। सरकार के बारे में जानें, समझें कि व्यवस्थाएँ हमारे दैनिक जीवन को कैसे प्रभावित करती हैं और अपने समुदाय में भाग लेने के व्यावहारिक तरीके खोजें।",
 
-    whatWeDoLabel: "KarmaFacie में आप क्या कर सकते हैं?",
+    whatWeDoLabel: "KrutBharat में आप क्या कर सकते हैं?",
     whatWeDoTitle: "सीखने से कार्रवाई तक।",
     whatWeDoDescription:
-      "KarmaFacie एक जागरूक नागरिक की पूरी यात्रा को ध्यान में रखकर बनाया गया है।",
+      "KrutBharat एक जागरूक नागरिक की पूरी यात्रा को ध्यान में रखकर बनाया गया है।",
+
+    civicSenseLabel: "रोज़मर्रा की नागरिकता",
+    civicSenseTitle: "आइए अपने नागरिक बोध को बेहतर बनाएं",
+    civicSenseDescription:
+      "रोज़मर्रा की छोटी-छोटी आदतें उन जगहों को बदलती हैं जिन्हें हम साझा करते हैं। स्वच्छ, सुरक्षित और सम्मानजनक सार्वजनिक स्थानों के लिए व्यावहारिक नागरिक आदतें जानें।",
+    civicSenseActions: ["कूड़ेदान का उपयोग", "कतार का सम्मान", "सार्वजनिक संपत्ति की रक्षा"],
+    civicSenseAction: "नागरिक बोध देखें →",
+
+    responsibleAuthoritiesLabel: "अपना क्षेत्र जानें",
+    responsibleAuthoritiesTitle: "अपने क्षेत्र के प्राधिकरणों के बारे में जानें",
+    responsibleAuthoritiesDescription:
+      "अपने आसपास के स्थानीय सरकार के स्तर को समझें और अपने क्षेत्र से जुड़े लोगों तथा सार्वजनिक संस्थाओं को जानें।",
+    responsibleAuthoritiesSteps: ["क्षेत्र", "वार्ड", "विधानसभा", "लोकसभा"],
+    responsibleAuthoritiesAction: "जिम्मेदार प्राधिकरण देखें →",
 
     learnTitle: "सीखें",
     learnDescription:
@@ -539,7 +582,7 @@ const content: Record<
     understandDescription:
       "नागरिक ज्ञान को उन व्यवस्थाओं और निर्णयों से जोड़ें जो दैनिक जीवन को प्रभावित करते हैं।",
     understandReveal:
-      "जिम्मेदारियों, संस्थाओं, स्थानीय शासन, सार्वजनिक व्यवस्थाओं और नागरिक समस्याओं के समाधान की प्रक्रिया को समझें।",
+      "जिम्मेदारियों, संस्थाओं, स्थानीय शासन, सार्वजनिक व्यवस्थाओं और नागरिक समस्याओं के समाधान की प्रक्रिया को समझें — और रोज़मर्रा के नागरिक बोध को भी जानें, जैसे सार्वजनिक स्थान साफ रखना, लोगों व कतारों का सम्मान करना और सार्वजनिक संपत्ति की रक्षा करना।",
 
     participateTitle: "भाग लें",
     participateDescription:
@@ -547,10 +590,10 @@ const content: Record<
     participateReveal:
       "नागरिक समस्याएँ रिपोर्ट करें, उनकी प्रगति देखें, Civic Quests में भाग लें और योगदान के नए तरीके खोजें।",
 
-    howLabel: "KarmaFacie कैसे काम करता है",
+    howLabel: "KrutBharat कैसे काम करता है",
     howTitle: "सीखने से स्थायी नागरिक प्रभाव तक।",
     howDescription:
-      "KarmaFacie नागरिक ज्ञान को वास्तविक भागीदारी, सत्यापित योगदान और एक बढ़ते नागरिक रिकॉर्ड से जोड़ता है।",
+      "KrutBharat नागरिक ज्ञान को वास्तविक भागीदारी, सत्यापित योगदान और एक बढ़ते नागरिक रिकॉर्ड से जोड़ता है।",
 
     step1Title: "सीखें",
     step1Description:
@@ -563,15 +606,15 @@ const content: Record<
       "समझें कि कौन सा प्राधिकरण या नागरिक प्रक्रिया प्रासंगिक है।",
     step4Title: "कार्रवाई करें",
     step4Description:
-      "भाग लेने, समस्याएँ रिपोर्ट करने और नागरिक मिशन पूरे करने के लिए KarmaFacie के उपकरणों का उपयोग करें।",
+      "भाग लेने, समस्याएँ रिपोर्ट करने और नागरिक मिशन पूरे करने के लिए KrutBharat के उपकरणों का उपयोग करें।",
     step5Title: "ट्रैक और सत्यापित करें",
     step5Description:
       "अपडेट देखें, प्रमाण जमा करें और जहाँ संभव हो परिणामों की पुष्टि करें।",
 
-    journeyFlowLabel: "KARMAFACIE की यात्रा",
+    journeyFlowLabel: "KRUTBHARAT की यात्रा",
     journeyFlowTitle: "खोजें → सीखें → समझें → कार्रवाई करें → प्रमाण दिखाएँ → सत्यापित करें → अर्जित करें → अपना रिकॉर्ड बनाएँ → दोहराएँ",
     journeyFlowDescription:
-      "KarmaFacie में नागरिक अपनी गति से आगे बढ़ सकता है — भारत को जानने से लेकर वास्तविक नागरिक कार्रवाई करने और सत्यापित भागीदारी का रिकॉर्ड बनाने तक।",
+      "KrutBharat में नागरिक अपनी गति से आगे बढ़ सकता है — भारत को जानने से लेकर वास्तविक नागरिक कार्रवाई करने और सत्यापित भागीदारी का रिकॉर्ड बनाने तक।",
     journeyFlow: [
       {
         title: "खोजें",
@@ -615,10 +658,10 @@ const content: Record<
       },
     ],
 
-    featureUniverseLabel: "KARMAFACIE प्लेटफ़ॉर्म",
+    featureUniverseLabel: "KRUTBHARAT प्लेटफ़ॉर्म",
     featureUniverseTitle: "हर सुविधा एक ही नागरिक यात्रा से जुड़ी है।",
     featureUniverseDescription:
-      "KarmaFacie सीखने, नागरिक सेवाओं, वास्तविक कार्रवाई, सत्यापन, प्रभाव और समुदाय की भागीदारी को एक जुड़े हुए अनुभव में लाता है।",
+      "KrutBharat सीखने, नागरिक सेवाओं, वास्तविक कार्रवाई, सत्यापन, प्रभाव और समुदाय की भागीदारी को एक जुड़े हुए अनुभव में लाता है।",
     featureGroups: [
       {
         title: "सीखें और खोजें",
@@ -688,10 +731,10 @@ const content: Record<
       },
     ],
 
-    futureLabel: "KARMAFACIE के साथ आगे",
+    futureLabel: "KRUTBHARAT के साथ आगे",
     futureTitle: "नागरिक यात्रा लगातार बढ़ती रहेगी।",
     futureDescription:
-      "जैसे-जैसे KarmaFacie विकसित होगा, progression और personalization की नई परतें जुड़ सकती हैं।",
+      "जैसे-जैसे KrutBharat विकसित होगा, progression और personalization की नई परतें जुड़ सकती हैं।",
     futureFeatures: [
       "XP और levels",
       "Badges, streaks और richer progression",
@@ -704,7 +747,7 @@ const content: Record<
     exploreLabel: "नागरिक जीवन को एक्सप्लोर करें",
     exploreTitle: "कहीं से भी शुरुआत करें। अपनी गति से सीखें।",
     exploreDescription:
-      "बिना अकाउंट बनाए KarmaFacie के सभी आठ सीखने वाले क्षेत्रों को एक्सप्लोर करें।",
+      "बिना अकाउंट बनाए KrutBharat के सभी आठ सीखने वाले क्षेत्रों को एक्सप्लोर करें।",
     exploreAll: "सभी विषय देखें →",
 
     government: "सरकार और शासन व्यवस्था",
@@ -743,7 +786,7 @@ const content: Record<
     issueJourneyTitle:
       "नागरिक समस्या दिखी? आगे क्या करना है, जानें।",
     issueJourneyDescription:
-      "KarmaFacie समस्या को दर्ज करने, सही प्राधिकरण पहचानने, रिपोर्ट तैयार करने और उसे उचित आधिकारिक माध्यम तक पहुँचाने में मदद करता है।",
+      "KrutBharat समस्या को दर्ज करने, सही प्राधिकरण पहचानने, रिपोर्ट तैयार करने और उसे उचित आधिकारिक माध्यम तक पहुँचाने में मदद करता है।",
 
     issueStep1: "समस्या देखें",
     issueStep2: "समस्या दर्ज करें",
@@ -755,35 +798,35 @@ const content: Record<
 
     reportIssueNow: "नागरिक समस्या रिपोर्ट करें →",
 
-    whyLabel: "KarmaFacie क्यों?",
+    whyLabel: "KrutBharat क्यों?",
     whyTitle:
       "नागरिक जीवन को समझना और उसमें आगे बढ़ना आसान बनाना।",
 
     problemTitle: "समस्या",
     problem1:
-      "नागरिक जानकारी समझना कठिन हो सकता है।",
+      "रोज़मर्रा की साझा जगहों में हमारी छोटी-छोटी पसंदों में नागरिक बोध अनदेखा रह सकता है।",
     problem2:
-      "संबंधित जानकारी अक्सर अलग-अलग जगहों पर बिखरी होती है।",
+      "नागरिकों को उन सरल आदतों की जानकारी हमेशा नहीं होती जो सार्वजनिक स्थानों को स्वच्छ, सुरक्षित और सम्मानजनक बनाए रखती हैं।",
     problem3:
-      "सरकारी शब्दावली सरल प्रक्रियाओं को भी जटिल बना सकती है।",
+      "किसी क्षेत्र से जुड़े प्राधिकरणों की जानकारी अलग-अलग जगहों पर बिखरी हो सकती है।",
     problem4:
-      "नागरिकों को यह पता नहीं हो सकता कि स्थानीय समस्या कहाँ रिपोर्ट करनी है।",
+      "नागरिकों को यह स्पष्ट नहीं हो सकता कि उनके क्षेत्र से कौन सा स्थानीय निकाय या प्रतिनिधि जुड़ा है।",
 
-    solutionTitle: "KarmaFacie क्या बदलता है",
+    solutionTitle: "KrutBharat क्या बदलता है",
     solution1:
-      "सरल और व्यवस्थित नागरिक शिक्षा।",
+      "रोज़मर्रा के व्यवहार के लिए व्यावहारिक Civic Sense मार्गदर्शन।",
     solution2:
-      "इंटरैक्टिव पाठ और क्विज़।",
+      "ऐसे सरल उदाहरण जो सम्मानजनक नागरिक आदतों को अपनाना आसान बनाते हैं।",
     solution3:
-      "स्थानीय समस्या रिपोर्टिंग और प्राधिकरण मार्गदर्शन।",
+      "Responsible Authorities के माध्यम से क्षेत्र से जुड़े स्थानीय सरकार और सार्वजनिक संस्थानों की पहचान।",
     solution4:
-      "सीखने से भागीदारी तक स्पष्ट यात्रा।",
+      "जहाँ सत्यापित जानकारी उपलब्ध हो, वहाँ नगरपालिका / वार्ड, विधानसभा और लोकसभा प्रतिनिधित्व को समझने का स्पष्ट तरीका।",
 
     trustLabel: "विश्वास और पारदर्शिता",
     trustTitle:
       "नागरिकों के लिए बनाया गया। सरल और पारदर्शी।",
     trustDescription:
-      "KarmaFacie नागरिकों को नागरिक प्रक्रियाओं को समझने और उनमें आगे बढ़ने में मदद करता है। यह अपने उपकरणों और आधिकारिक सरकारी प्रणालियों के बीच स्पष्ट अंतर रखता है।",
+      "KrutBharat नागरिकों को नागरिक प्रक्रियाओं को समझने और उनमें आगे बढ़ने में मदद करता है। यह अपने उपकरणों और आधिकारिक सरकारी प्रणालियों के बीच स्पष्ट अंतर रखता है।",
 
     trust1Title: "आधिकारिक जानकारी",
     trust1Description:
@@ -791,20 +834,20 @@ const content: Record<
 
     trust2Title: "नागरिकों के नियंत्रण में रिपोर्ट",
     trust2Description:
-      "KarmaFacie पर साझा की गई रिपोर्ट और जानकारी पर नागरिकों का नियंत्रण रहता है।",
+      "KrutBharat पर साझा की गई रिपोर्ट और जानकारी पर नागरिकों का नियंत्रण रहता है।",
 
     trust3Title: "स्पष्ट सीमाएँ",
     trust3Description:
-      "KarmaFacie कोई सरकारी प्राधिकरण नहीं है। KarmaFacie पर की गई रिपोर्ट अपने आप आधिकारिक सरकारी शिकायत नहीं बनती।",
+      "KrutBharat कोई सरकारी प्राधिकरण नहीं है। KrutBharat पर की गई रिपोर्ट अपने आप आधिकारिक सरकारी शिकायत नहीं बनती।",
     trustChip1: "नागरिक-केंद्रित",
     trustChip2: "प्रमाण पर आधारित",
     trustChip3: "स्पष्ट सीमाएँ",
-    trustSystemLabel: "KARMAFACIE ≠ सरकारी प्रणाली",
+    trustSystemLabel: "KRUTBHARAT ≠ सरकारी प्रणाली",
     trustSystemDescription:
-      "KarmaFacie नागरिक रिपोर्ट तैयार करने और सही मार्ग बताने में मदद करता है। आधिकारिक सबमिशन, संदर्भ नंबर और सरकारी स्थिति संबंधित सरकारी प्रणाली के अधीन रहते हैं।",
+      "KrutBharat नागरिक रिपोर्ट तैयार करने और सही मार्ग बताने में मदद करता है। आधिकारिक सबमिशन, संदर्भ नंबर और सरकारी स्थिति संबंधित सरकारी प्रणाली के अधीन रहते हैं।",
 
     ctaTitle1: "क्या आप अपनी",
-    ctaTitle2: " KarmaFacie यात्रा शुरू करने के लिए तैयार हैं?",
+    ctaTitle2: " KrutBharat यात्रा शुरू करने के लिए तैयार हैं?",
     ctaDescription:
       "पहले नागरिक ज्ञान को एक्सप्लोर करें। प्रगति सेव करने और व्यक्तिगत सुविधाओं का उपयोग करने के लिए तैयार होने पर अकाउंट बनाएँ।",
 
@@ -824,14 +867,14 @@ const content: Record<
     leagueAction: "सिविक लीग्स देखें →",
 
     footerTagline:
-      "सीखें। समझें। भाग लें।",
+      "Know India. Think Civic. Shape Its Future.",
   },
 
   mr: {
     navAbout: "परिचय",
     navWhatWeDo: "आम्ही काय करतो",
     navExplore: "एक्सप्लोर करा",
-    navWhy: "KarmaFacie का?",
+    navWhy: "KrutBharat का?",
     navLeagues: "सिविक लीग्स",
     signIn: "साइन इन / साइन अप",
     signUp: "साइन अप",
@@ -839,24 +882,39 @@ const content: Record<
     dashboard: "डॅशबोर्ड",
 
     heroBadge: "🇮🇳 भारतातील नागरिकांसाठी तयार केलेले",
-    heroTitle1: "जाणा. समजून घ्या.",
-    heroTitle2: "सहभागी व्हा.",
+    heroBrandBefore: "आपल्या कर्मातून ",
+    heroBrandAccent: "भारत",
+    heroBrandAfter: "।",
     heroDescription:
-      "KarmaFacie नागरिकांना भारत कसा कार्य करतो हे जाणून घेण्यास, आजूबाजूच्या समस्या समजून घेण्यास आणि अर्थपूर्ण नागरिक सहभागाचे मार्ग शोधण्यास मदत करते.",
-    exploreNow: "KarmaFacie एक्सप्लोर करा →",
+      "KrutBharat नागरिकांना भारत कसा कार्य करतो हे जाणून घेण्यास, आजूबाजूच्या समस्या समजून घेण्यास आणि अर्थपूर्ण नागरिक सहभागाचे मार्ग शोधण्यास मदत करते.",
+    exploreNow: "KrutBharat एक्सप्लोर करा →",
     signInUp: "साइन इन / साइन अप",
 
-    aboutLabel: "KarmaFacie म्हणजे काय?",
-    aboutTagline: "सत्कर्मांचा चेहरा।",
+    aboutLabel: "KrutBharat म्हणजे काय?",
+    aboutTagline: "Know India. Think Civic. Shape Its Future.",
     aboutTitle:
       "नागरिकांना लोकशाही समजली तर लोकशाही अधिक प्रभावीपणे कार्य करते.",
     aboutDescription:
-      "KarmaFacie नागरिक शिक्षण आणि नागरिक सहभाग एका सोप्या अनुभवामध्ये एकत्र आणते. सरकारबद्दल शिका, विविध व्यवस्था आपल्या दैनंदिन जीवनावर कसा परिणाम करतात हे समजून घ्या आणि आपल्या समुदायात सहभागी होण्याचे व्यावहारिक मार्ग शोधा.",
+      "KrutBharat नागरिक शिक्षण आणि नागरिक सहभाग एका सोप्या अनुभवामध्ये एकत्र आणते. सरकारबद्दल शिका, विविध व्यवस्था आपल्या दैनंदिन जीवनावर कसा परिणाम करतात हे समजून घ्या आणि आपल्या समुदायात सहभागी होण्याचे व्यावहारिक मार्ग शोधा.",
 
-    whatWeDoLabel: "KarmaFacie मध्ये तुम्ही काय करू शकता?",
+    whatWeDoLabel: "KrutBharat मध्ये तुम्ही काय करू शकता?",
     whatWeDoTitle: "शिकण्यापासून कृतीपर्यंत.",
     whatWeDoDescription:
-      "KarmaFacie एका जागरूक नागरिकाच्या संपूर्ण वाटचालीचा विचार करून तयार केले आहे.",
+      "KrutBharat एका जागरूक नागरिकाच्या संपूर्ण वाटचालीचा विचार करून तयार केले आहे.",
+
+    civicSenseLabel: "दैनंदिन नागरीपणा",
+    civicSenseTitle: "चला, आपली नागरी जाणीव सुधारूया",
+    civicSenseDescription:
+      "दररोजच्या छोट्या सवयी आपण सामायिक करत असलेल्या जागांचे स्वरूप घडवतात. स्वच्छ, सुरक्षित आणि परस्पर सन्मान राखणाऱ्या सार्वजनिक जागांसाठी व्यावहारिक नागरी सवयी जाणून घ्या.",
+    civicSenseActions: ["कचरापेटी वापरा", "रांगेचा आदर करा", "सार्वजनिक मालमत्तेचे संरक्षण करा"],
+    civicSenseAction: "नागरी जाणीव पहा →",
+
+    responsibleAuthoritiesLabel: "तुमचा परिसर जाणून घ्या",
+    responsibleAuthoritiesTitle: "तुमच्या परिसरातील प्राधिकरणांबद्दल जाणून घ्या",
+    responsibleAuthoritiesDescription:
+      "तुमच्या परिसरातील स्थानिक शासनाची पातळी समजून घ्या आणि त्या परिसराशी संबंधित लोक व सार्वजनिक संस्था ओळखा.",
+    responsibleAuthoritiesSteps: ["परिसर", "प्रभाग", "विधानसभा", "लोकसभा"],
+    responsibleAuthoritiesAction: "जबाबदार प्राधिकरण पहा →",
 
     learnTitle: "शिका",
     learnDescription:
@@ -868,7 +926,7 @@ const content: Record<
     understandDescription:
       "नागरिक ज्ञानाचा आपल्या दैनंदिन जीवनावर परिणाम करणाऱ्या व्यवस्था आणि निर्णयांशी संबंध समजून घ्या.",
     understandReveal:
-      "जबाबदाऱ्या, संस्था, स्थानिक शासन, सार्वजनिक व्यवस्था आणि नागरिक समस्यांवर कशा प्रकारे उपाय केले जातात हे समजून घ्या.",
+      "जबाबदाऱ्या, संस्था, स्थानिक शासन, सार्वजनिक व्यवस्था आणि नागरिक समस्यांवर कशा प्रकारे उपाय केले जातात हे समजून घ्या — तसेच दैनंदिन नागरी जाणीव जाणून घ्या, जसे सार्वजनिक जागा स्वच्छ ठेवणे, लोक व रांगेचा आदर करणे आणि सार्वजनिक मालमत्तेचे संरक्षण करणे.",
 
     participateTitle: "सहभागी व्हा",
     participateDescription:
@@ -876,10 +934,10 @@ const content: Record<
     participateReveal:
       "नागरी समस्या नोंदवा, त्यांची प्रगती पाहा, Civic Quests मध्ये सहभागी व्हा आणि योगदान देण्याचे नवे मार्ग शोधा.",
 
-    howLabel: "KarmaFacie कसे कार्य करते",
+    howLabel: "KrutBharat कसे कार्य करते",
     howTitle: "शिकण्यापासून दीर्घकालीन नागरिक प्रभावापर्यंत.",
     howDescription:
-      "KarmaFacie नागरिक ज्ञानाला प्रत्यक्ष सहभाग, सत्यापित योगदान आणि वाढत्या नागरिक नोंदीशी जोडते.",
+      "KrutBharat नागरिक ज्ञानाला प्रत्यक्ष सहभाग, सत्यापित योगदान आणि वाढत्या नागरिक नोंदीशी जोडते.",
 
     step1Title: "शिका",
     step1Description:
@@ -892,15 +950,15 @@ const content: Record<
       "कोणते प्राधिकरण किंवा नागरी प्रक्रिया संबंधित आहे हे समजून घ्या.",
     step4Title: "कृती करा",
     step4Description:
-      "सहभाग घ्या, समस्या नोंदवा आणि Civic Missions पूर्ण करण्यासाठी KarmaFacie ची साधने वापरा.",
+      "सहभाग घ्या, समस्या नोंदवा आणि Civic Missions पूर्ण करण्यासाठी KrutBharat ची साधने वापरा.",
     step5Title: "ट्रॅक आणि पडताळा",
     step5Description:
       "अपडेट्स पाहा, पुरावे सादर करा आणि शक्य असेल तिथे परिणामांची पडताळणी करा.",
 
-    journeyFlowLabel: "KARMAFACIE ची वाटचाल",
+    journeyFlowLabel: "KRUTBHARAT ची वाटचाल",
     journeyFlowTitle: "शोधा → शिका → समजून घ्या → कृती करा → पुरावा द्या → पडताळा → मिळवा → तुमची नोंद घडवा → पुन्हा सहभागी व्हा",
     journeyFlowDescription:
-      "भारत जाणून घेण्यापासून प्रत्यक्ष नागरिक कृतीपर्यंत आणि सत्यापित सहभागाची नोंद तयार करण्यापर्यंत नागरिक KarmaFacie मध्ये आपल्या गतीने पुढे जाऊ शकतात.",
+      "भारत जाणून घेण्यापासून प्रत्यक्ष नागरिक कृतीपर्यंत आणि सत्यापित सहभागाची नोंद तयार करण्यापर्यंत नागरिक KrutBharat मध्ये आपल्या गतीने पुढे जाऊ शकतात.",
     journeyFlow: [
       {
         title: "शोधा",
@@ -944,10 +1002,10 @@ const content: Record<
       },
     ],
 
-    featureUniverseLabel: "KARMAFACIE प्लॅटफॉर्म",
+    featureUniverseLabel: "KRUTBHARAT प्लॅटफॉर्म",
     featureUniverseTitle: "प्रत्येक सुविधा एकाच नागरिक वाटचालीशी जोडलेली आहे.",
     featureUniverseDescription:
-      "KarmaFacie शिक्षण, नागरी सेवा, प्रत्यक्ष कृती, पडताळणी, प्रभाव आणि समुदाय सहभाग यांना एका जोडलेल्या अनुभवात आणते.",
+      "KrutBharat शिक्षण, नागरी सेवा, प्रत्यक्ष कृती, पडताळणी, प्रभाव आणि समुदाय सहभाग यांना एका जोडलेल्या अनुभवात आणते.",
     featureGroups: [
       {
         title: "शिका आणि शोधा",
@@ -1017,10 +1075,10 @@ const content: Record<
       },
     ],
 
-    futureLabel: "KARMAFACIE सोबत पुढे",
+    futureLabel: "KRUTBHARAT सोबत पुढे",
     futureTitle: "नागरिक वाटचाल सतत विस्तारत राहील.",
     futureDescription:
-      "KarmaFacie विकसित होत असताना progression आणि personalization च्या नवीन स्तरांचा विस्तार करता येईल.",
+      "KrutBharat विकसित होत असताना progression आणि personalization च्या नवीन स्तरांचा विस्तार करता येईल.",
     futureFeatures: [
       "XP आणि levels",
       "Badges, streaks आणि richer progression",
@@ -1033,7 +1091,7 @@ const content: Record<
     exploreLabel: "नागरी जीवन एक्सप्लोर करा",
     exploreTitle: "कुठूनही सुरुवात करा. तुमच्या गतीने शिका.",
     exploreDescription:
-      "अकाउंट न बनवता KarmaFacie चे सर्व आठ शिकण्याचे विषय एक्सप्लोर करा.",
+      "अकाउंट न बनवता KrutBharat चे सर्व आठ शिकण्याचे विषय एक्सप्लोर करा.",
     exploreAll: "सर्व विषय एक्सप्लोर करा →",
 
     government: "सरकार आणि शासनव्यवस्था",
@@ -1072,7 +1130,7 @@ const content: Record<
     issueJourneyTitle:
       "नागरी समस्या दिसली? पुढे काय करायचे ते जाणून घ्या.",
     issueJourneyDescription:
-      "KarmaFacie समस्या नोंदवणे, योग्य प्राधिकरण ओळखणे, अहवाल तयार करणे आणि तो योग्य अधिकृत माध्यमापर्यंत पोहोचवण्यात मदत करते.",
+      "KrutBharat समस्या नोंदवणे, योग्य प्राधिकरण ओळखणे, अहवाल तयार करणे आणि तो योग्य अधिकृत माध्यमापर्यंत पोहोचवण्यात मदत करते.",
 
     issueStep1: "समस्या दिसली",
     issueStep2: "समस्या नोंदवा",
@@ -1084,35 +1142,35 @@ const content: Record<
 
     reportIssueNow: "नागरी समस्या नोंदवा →",
 
-    whyLabel: "KarmaFacie का?",
+    whyLabel: "KrutBharat का?",
     whyTitle:
       "नागरी जीवन समजून घेणे आणि त्यात मार्गक्रमण करणे सोपे करणे.",
 
     problemTitle: "आव्हान",
     problem1:
-      "नागरी माहिती समजणे कठीण असू शकते.",
+      "आपण सामायिक जागांमध्ये घेतलेल्या छोट्या निर्णयांमध्ये दैनंदिन नागरी जाणीव दुर्लक्षित होऊ शकते.",
     problem2:
-      "संबंधित माहिती अनेक वेगवेगळ्या ठिकाणी विखुरलेली असू शकते.",
+      "सार्वजनिक जागा स्वच्छ, सुरक्षित आणि सन्मानपूर्वक ठेवण्यासाठी कोणत्या साध्या सवयी उपयोगी आहेत हे नागरिकांना नेहमी स्पष्ट नसते.",
     problem3:
-      "सरकारी शब्दावलीमुळे साध्या प्रक्रियाही गुंतागुंतीच्या वाटू शकतात.",
+      "एखाद्या परिसराशी संबंधित प्राधिकरणांची माहिती वेगवेगळ्या ठिकाणी विखुरलेली असू शकते.",
     problem4:
-      "स्थानिक समस्या कुठे नोंदवायची हे नागरिकांना माहीत नसू शकते.",
+      "आपल्या परिसराशी कोणती स्थानिक संस्था किंवा प्रतिनिधी संबंधित आहे हे नागरिकांना स्पष्ट नसू शकते.",
 
-    solutionTitle: "KarmaFacie काय बदलते",
+    solutionTitle: "KrutBharat काय बदलते",
     solution1:
-      "सोपे आणि व्यवस्थित नागरिक शिक्षण.",
+      "दैनंदिन वर्तनासाठी व्यावहारिक नागरी जाणीव मार्गदर्शन.",
     solution2:
-      "इंटरॅक्टिव्ह धडे आणि क्विझ.",
+      "आदरपूर्वक नागरी सवयी अंगीकारणे सोपे करणारी साधी उदाहरणे.",
     solution3:
-      "स्थानिक समस्या नोंदणी आणि प्राधिकरण मार्गदर्शन.",
+      "Responsible Authorities मधून परिसराशी संबंधित स्थानिक सरकार आणि सार्वजनिक संस्थांची ओळख.",
     solution4:
-      "शिकण्यापासून सहभागापर्यंत स्पष्ट वाटचाल.",
+      "सत्यापित माहिती उपलब्ध असल्यास महानगरपालिका / प्रभाग, विधानसभा आणि लोकसभा प्रतिनिधित्व समजून घेण्याचा स्पष्ट मार्ग.",
 
     trustLabel: "विश्वास आणि पारदर्शकता",
     trustTitle:
       "नागरिकांसाठी तयार केलेले. सोपे आणि पारदर्शक.",
     trustDescription:
-      "KarmaFacie नागरिकांना नागरी प्रक्रिया समजून घेण्यास आणि त्यामध्ये पुढे जाण्यास मदत करते. हे स्वतःची साधने आणि अधिकृत सरकारी व्यवस्था यांच्यात स्पष्ट फरक ठेवते.",
+      "KrutBharat नागरिकांना नागरी प्रक्रिया समजून घेण्यास आणि त्यामध्ये पुढे जाण्यास मदत करते. हे स्वतःची साधने आणि अधिकृत सरकारी व्यवस्था यांच्यात स्पष्ट फरक ठेवते.",
 
     trust1Title: "अधिकृत माहिती",
     trust1Description:
@@ -1120,20 +1178,20 @@ const content: Record<
 
     trust2Title: "नागरिकांच्या नियंत्रणातील नोंदी",
     trust2Description:
-      "KarmaFacie वर शेअर केलेल्या नोंदी आणि माहितीवर नागरिकांचे नियंत्रण राहते.",
+      "KrutBharat वर शेअर केलेल्या नोंदी आणि माहितीवर नागरिकांचे नियंत्रण राहते.",
 
     trust3Title: "स्पष्ट मर्यादा",
     trust3Description:
-      "KarmaFacie हे सरकारी प्राधिकरण नाही. KarmaFacie वर केलेली नोंद आपोआप अधिकृत सरकारी तक्रार मानली जात नाही.",
+      "KrutBharat हे सरकारी प्राधिकरण नाही. KrutBharat वर केलेली नोंद आपोआप अधिकृत सरकारी तक्रार मानली जात नाही.",
     trustChip1: "नागरिक-केंद्रित",
     trustChip2: "पुराव्याची जाणीव",
     trustChip3: "स्पष्ट मर्यादा",
-    trustSystemLabel: "KARMAFACIE ≠ सरकारी व्यवस्था",
+    trustSystemLabel: "KRUTBHARAT ≠ सरकारी व्यवस्था",
     trustSystemDescription:
-      "KarmaFacie नागरिकांच्या तक्रारी तयार करण्यास आणि योग्य मार्ग दाखवण्यास मदत करते. अधिकृत सबमिशन, संदर्भ क्रमांक आणि सरकारी स्थिती संबंधित सरकारी व्यवस्थेकडेच राहतात.",
+      "KrutBharat नागरिकांच्या तक्रारी तयार करण्यास आणि योग्य मार्ग दाखवण्यास मदत करते. अधिकृत सबमिशन, संदर्भ क्रमांक आणि सरकारी स्थिती संबंधित सरकारी व्यवस्थेकडेच राहतात.",
 
     ctaTitle1: "तुमची",
-    ctaTitle2: " KarmaFacie वाटचाल सुरू करण्यास तयार आहात?",
+    ctaTitle2: " KrutBharat वाटचाल सुरू करण्यास तयार आहात?",
     ctaDescription:
       "सुरुवातीला नागरिक ज्ञान एक्सप्लोर करा. तुमची प्रगती जतन करण्यासाठी आणि वैयक्तिक सुविधा वापरण्यासाठी तयार झाल्यावर अकाउंट तयार करा.",
 
@@ -1483,6 +1541,7 @@ const journeyCards: {
   },
 ];
 
+
 const supabase = createClient();
 
 export default function Home() {
@@ -1528,7 +1587,7 @@ export default function Home() {
     const { error } = await supabase.auth.signOut();
 
     if (error) {
-      console.error("KarmaFacie sign-out failed:", error);
+      console.error("KrutBharat sign-out failed:", error);
       return;
     }
 
@@ -1606,7 +1665,7 @@ export default function Home() {
               className="kf-glass-logo shrink-0 rounded-xl px-2 py-1 text-left text-[21px] font-black tracking-[-0.045em] text-[#102033] transition hover:bg-white/45 sm:px-2.5 sm:text-[23px]"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Karma<span className="text-[#ff7a00]">Facie</span>
+              Krut<span className="text-[#ff7a00]">Bharat</span>
             </button>
 
             <div className="mx-1 hidden h-9 w-px bg-white/70 lg:block" aria-hidden="true" />
@@ -1689,7 +1748,7 @@ export default function Home() {
 
       <style>{`
 /* =========================================================
-   KARMAFACIE HOMEPAGE — DARK MODE v5
+   KRUTBHARAT HOMEPAGE — DARK MODE v5
    Visual reference: ABOUT + WHAT WE DO
 
    Contrast system:
@@ -1990,7 +2049,7 @@ html[data-theme="dark"] #what-we-do button.kf-home-journey-card.is-active {
 }
 
 /* =========================================================
-   HOW KARMAFACIE WORKS
+   HOW KRUTBHARAT WORKS
    Same text hierarchy as What We Do.
    ========================================================= */
 html[data-theme="dark"] #how-it-works {
@@ -2050,7 +2109,7 @@ html[data-theme="dark"] #how-it-works .bg-\[\#f9f5ed\] .text-\[\#c5bfb6\] {
 }
 
 /* =========================================================
-   WHY KARMAFACIE
+   WHY KRUTBHARAT
    Remove the pale light-mode feeling completely.
    ========================================================= */
 html[data-theme="dark"] #why {
@@ -2536,7 +2595,7 @@ html:not([data-theme="dark"]) .kf-glass-header {
 
 
 /* =========================================================
-   KARMAFACIE NAVBAR — CRISP NEON GLASS EDGE
+   KRUTBHARAT NAVBAR — CRISP NEON GLASS EDGE
    Navbar-only override. Matches the Explore navbar treatment.
    ========================================================= */
 
@@ -2664,7 +2723,7 @@ html:not([data-theme="dark"]) .kf-glass-header {
   color: #ffffff !important;
 }
 
-/* Dashboard keeps the existing KarmaFacie orange treatment. */
+/* Dashboard keeps the existing KrutBharat orange treatment. */
 .kf-glass-dashboard {
   background: linear-gradient(90deg, #ff8a1f, #ff6a00) !important;
   border-color: rgba(255, 166, 100, 0.78) !important;
@@ -2802,11 +2861,10 @@ html:not([data-theme="dark"]) .kf-glass-header {
               🇮🇳 {text.heroBadge.replace("🇮🇳 ", "")}
             </div>
 
-            <h1 className="max-w-2xl text-[42px] font-black leading-[0.96] tracking-[-0.04em] text-[#102033] md:text-[54px]">
-              {text.heroTitle1}
-              <span className="mt-1 block text-[#ff6f20]">
-                {text.heroTitle2}
-              </span>
+            <h1 className="kf-hero-brand-line max-w-2xl text-[42px] font-black leading-[0.96] tracking-[-0.04em] md:text-[54px]">
+              {text.heroBrandBefore}
+              <span className="kf-hero-brand-accent">{text.heroBrandAccent}</span>
+              {text.heroBrandAfter}
             </h1>
 
             <p className="mt-4 max-w-xl text-[15px] leading-6 text-[#566270] md:text-[16px]">
@@ -2866,7 +2924,7 @@ html:not([data-theme="dark"]) .kf-glass-header {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-[32px] border border-[#e5e0d8] bg-white/90 p-8 shadow-[0_18px_50px_rgba(16,27,43,0.06)] md:p-10">
+            <div className="kf-home-about-card relative overflow-hidden rounded-[32px] border border-[#e5e0d8] bg-white/90 p-8 shadow-[0_18px_50px_rgba(16,27,43,0.06)] md:p-10">
               <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#dfeaf3]/80 blur-[2px]" />
               <div className="absolute -bottom-20 -left-16 h-40 w-40 rounded-full bg-[#ffd7b3]/55 blur-[2px]" />
 
@@ -2874,7 +2932,7 @@ html:not([data-theme="dark"]) .kf-glass-header {
                 <div className="mb-6 flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-[#ff7a1a]" />
                   <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#7a8490]">
-                    KarmaFacie
+                    KrutBharat
                   </span>
                 </div>
 
@@ -3000,8 +3058,92 @@ html:not([data-theme="dark"]) .kf-glass-header {
       </section>
 
 
+
+      {/* CIVIC SENSE */}
+      <section id="civic-sense" className="relative z-10 scroll-mt-36">
+        <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+          <div className="mb-7 max-w-3xl">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#ff7a00]">
+              {text.civicSenseLabel}
+            </p>
+            <h2 className="mt-2 max-w-3xl text-[30px] font-black leading-[1.03] tracking-[-0.035em] text-[#102033] md:text-[42px]">
+              {text.civicSenseTitle}
+            </h2>
+            <p className="mt-3 max-w-2xl text-[14px] leading-6 text-[#687581] md:text-[15px]">
+              {text.civicSenseDescription}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => router.push("/civic-sense")}
+            className="kf-home-feature-card kf-home-feature-card--sense group relative w-full overflow-hidden rounded-[28px] border text-left shadow-[0_16px_40px_rgba(35,47,58,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(35,47,58,0.11)]"
+          >
+            <div className="relative min-h-[255px] p-6 md:p-8">
+              <div className="kf-home-feature-deco kf-home-feature-deco--top absolute -right-12 -top-16 h-44 w-44 rounded-full" />
+              <div className="kf-home-feature-deco kf-home-feature-deco--bottom absolute -bottom-20 -left-14 h-44 w-44 rounded-full" />
+
+              <div className="relative flex flex-col gap-7 md:flex-row md:items-center md:justify-between">
+                <div className="max-w-2xl">
+                  <div className="flex items-center gap-3">
+                    <span className="kf-home-feature-icon grid h-12 w-12 place-items-center rounded-2xl border text-[22px] shadow-sm">
+                      🌱
+                    </span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.18em] text-[#b06a95]">
+                      Everyday civic habits
+                    </span>
+                  </div>
+
+                  <h3 className="mt-5 text-[30px] font-black leading-[1.02] tracking-[-0.035em] text-[#102033] md:text-[38px]">
+                    {text.civicSenseTitle}
+                  </h3>
+
+                  <div className="mt-6 grid gap-2 sm:grid-cols-3">
+                    {text.civicSenseActions.map((item, index) => (
+                      <div
+                        key={item}
+                        className="kf-home-feature-chip rounded-[18px] border px-3.5 py-3"
+                      >
+                        <div className="text-[9px] font-black tracking-[0.16em] opacity-65">
+                          0{index + 1}
+                        </div>
+                        <div className="mt-1.5 text-[12px] font-extrabold leading-5">
+                          {item}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="relative mx-auto w-full max-w-[250px] shrink-0 md:mx-0">
+                  <div className="kf-home-feature-mini relative overflow-hidden rounded-[24px] border p-5">
+                    <div className="text-[9px] font-black uppercase tracking-[0.18em] opacity-65">
+                      Small actions
+                    </div>
+                    <div className="mt-4 space-y-2.5">
+                      {["🗑️", "⏳", "🏛️"].map((icon) => (
+                        <div key={icon} className="flex items-center gap-3">
+                          <span className="grid h-9 w-9 place-items-center rounded-xl border bg-white/70 text-[17px]">
+                            {icon}
+                          </span>
+                          <div className="h-2 flex-1 rounded-full bg-current opacity-10" />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-5 text-right text-[12px] font-black text-[#ff7a00]">
+                      {text.civicSenseAction}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </button>
+        </div>
+      </section>
+
       {/* EXPLORE */}
-      {/* HOW KARMAFACIE WORKS */}
+      {/* HOW KRUTBHARAT WORKS */}
       <section id="how-it-works" className="relative z-10 scroll-mt-36 border-t border-[#ece7df] bg-white/25">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -3064,7 +3206,93 @@ html:not([data-theme="dark"]) .kf-glass-header {
         </div>
       </section>
 
-      {/* WHY KARMAFACIE */}
+      {/* RESPONSIBLE AUTHORITIES */}
+      <section id="responsible-authorities" className="relative z-10 scroll-mt-36">
+        <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+          <div className="mb-7 max-w-3xl">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#ff7a00]">
+              {text.responsibleAuthoritiesLabel}
+            </p>
+            <h2 className="mt-2 max-w-3xl text-[30px] font-black leading-[1.03] tracking-[-0.035em] text-[#102033] md:text-[42px]">
+              {text.responsibleAuthoritiesTitle}
+            </h2>
+            <p className="mt-3 max-w-2xl text-[14px] leading-6 text-[#687581] md:text-[15px]">
+              {text.responsibleAuthoritiesDescription}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => router.push("/responsible-authorities")}
+            className="kf-home-feature-card kf-home-feature-card--authority group relative w-full overflow-hidden rounded-[28px] border text-left shadow-[0_16px_40px_rgba(35,47,58,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(35,47,58,0.11)]"
+          >
+            <div className="relative min-h-[255px] p-6 md:p-8">
+              <div className="kf-home-feature-deco kf-home-feature-deco--top absolute -right-12 -top-16 h-44 w-44 rounded-full" />
+              <div className="kf-home-feature-deco kf-home-feature-deco--bottom absolute -bottom-20 -left-14 h-44 w-44 rounded-full" />
+
+              <div className="relative flex flex-col gap-7 md:flex-row md:items-center md:justify-between">
+                <div className="max-w-2xl">
+                  <div className="flex items-center gap-3">
+                    <span className="kf-home-feature-icon grid h-12 w-12 place-items-center rounded-2xl border text-[22px] shadow-sm">
+                      🏛️
+                    </span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.18em] text-[#5f83a0]">
+                      Area accountability map
+                    </span>
+                  </div>
+
+                  <h3 className="mt-5 text-[30px] font-black leading-[1.02] tracking-[-0.035em] text-[#102033] md:text-[38px]">
+                    {text.responsibleAuthoritiesTitle}
+                  </h3>
+
+                  <div className="mt-6 grid gap-2 sm:grid-cols-4">
+                    {text.responsibleAuthoritiesSteps.map((step, index) => (
+                      <div key={step} className="flex items-center gap-2">
+                        <div className="kf-home-feature-chip min-w-0 flex-1 rounded-[18px] border px-3.5 py-3 text-center">
+                          <div className="text-[9px] font-black tracking-[0.16em] opacity-65">
+                            0{index + 1}
+                          </div>
+                          <div className="mt-1 text-[11px] font-black">
+                            {step}
+                          </div>
+                        </div>
+                        {index < text.responsibleAuthoritiesSteps.length - 1 ? (
+                          <span className="shrink-0 text-[14px] font-black text-[#18aeda]">
+                            →
+                          </span>
+                        ) : null}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="relative mx-auto w-full max-w-[250px] shrink-0 md:mx-0">
+                  <div className="kf-home-feature-mini relative overflow-hidden rounded-[24px] border p-5">
+                    <div className="text-[9px] font-black uppercase tracking-[0.18em] opacity-65">
+                      People connected to place
+                    </div>
+                    <div className="mt-4 grid grid-cols-2 gap-2.5">
+                      {["🏙️", "👥", "🏛️", "🇮🇳"].map((icon) => (
+                        <span
+                          key={icon}
+                          className="grid h-14 place-items-center rounded-2xl border bg-white/70 text-[22px]"
+                        >
+                          {icon}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-5 text-right text-[12px] font-black text-[#ff7a00]">
+                      {text.responsibleAuthoritiesAction}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </button>
+        </div>
+      </section>
+
       <section id="why" className="relative z-10 scroll-mt-36 overflow-hidden">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-end">
@@ -3154,7 +3382,7 @@ html:not([data-theme="dark"]) .kf-glass-header {
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[#8b939c]">
-            <span>KarmaFacie</span>
+            <span>KrutBharat</span>
             <span className="text-[#ff7a00]">•</span>
             <span>Learn</span>
             <span className="text-[#ff7a00]">→</span>
@@ -3267,7 +3495,7 @@ html:not([data-theme="dark"]) .kf-glass-header {
               <div>
                 <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#8a8f95]">
                   <span className="h-2 w-2 rounded-full bg-[#ff7a00]" />
-                  KarmaFacie
+                  KrutBharat
                 </div>
 
                 <h2 className="mt-4 max-w-3xl text-[38px] font-black leading-[1.03] tracking-[-0.04em] text-[#102033] md:text-[52px]">
@@ -3342,7 +3570,7 @@ html:not([data-theme="dark"]) .kf-glass-header {
             className="kf-footer-brand font-black text-[16px] text-[#102033]"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Karma<span className="text-[#ff7a00]">Facie</span>
+            © 2026 Krut<span className="text-[#ff7a00]">Bharat</span> · by KarmaFacie Corporation
           </div>
 
           <div className="text-[12px] text-[#8b9096]">
@@ -3357,7 +3585,29 @@ html:not([data-theme="dark"]) .kf-glass-header {
 
 <style>{`
 /* =========================================================
-   KARMAFACIE HOMEPAGE — DARK MODE
+   KRUTBHARAT HOMEPAGE — HERO BRAND TAGLINE
+   Light mode: orange accent + black text
+   Dark mode: orange accent + white text
+   ========================================================= */
+
+.kf-hero-brand-line {
+  color: #102033 !important;
+}
+
+.kf-hero-brand-accent {
+  color: #ff6f20 !important;
+}
+
+html[data-theme="dark"] .kf-hero-brand-line {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .kf-hero-brand-accent {
+  color: #ff7a00 !important;
+}
+
+/* =========================================================
+   KRUTBHARAT HOMEPAGE — DARK MODE
    Step 2 / visual refinement
    Dark mode follows the visual language of About + What We Do:
    deep navy canvas, layered navy cards, soft category tints,
@@ -3567,7 +3817,7 @@ html[data-theme="dark"] #how-it-works .bg-\[\#f9f5ed\] .text-\[\#c5bfb6\] {
   color: #60748b !important;
 }
 
-/* ---------- WHY KARMAFACIE ---------- */
+/* ---------- WHY KRUTBHARAT ---------- */
 html[data-theme="dark"] #why {
   background: transparent !important;
 }
@@ -3904,7 +4154,7 @@ html[data-theme="dark"] #how-it-works > div > div:last-child > div:last-child > 
   color: #60758c !important;
 }
 
-/* ---------- WHY KARMAFACIE ---------- */
+/* ---------- WHY KRUTBHARAT ---------- */
 /* Both sides share the same navy language. Green is reserved for the success mark. */
 html[data-theme="dark"] #why > div > div:nth-child(2) > div:first-child,
 html[data-theme="dark"] #why > div > div:nth-child(2) > div:last-child {
@@ -4186,7 +4436,7 @@ html[data-theme="dark"] footer .kf-footer-brand > span {
 }
 
 /* =========================================================
-   WHY KARMAFACIE — FINAL DARK CARD THEMES
+   WHY KRUTBHARAT — FINAL DARK CARD THEMES
    Dark mode only. Dedicated selectors keep each panel distinctly tinted.
    ========================================================= */
 html[data-theme="dark"] #why .kf-why-challenge-card {
@@ -4220,7 +4470,273 @@ html[data-theme="dark"] #why .kf-why-solution-icon { background:#eef5ea !importa
 html[data-theme="dark"] #why .kf-why-challenge-deco { background:rgba(255,104,146,.14) !important; box-shadow:0 0 34px rgba(255,79,130,.08) !important; }
 html[data-theme="dark"] #why .kf-why-solution-deco { background:rgba(121,207,133,.14) !important; box-shadow:0 0 34px rgba(93,207,118,.08) !important; }
 
+
+/* =========================================================
+   CIVIC SENSE + RESPONSIBLE AUTHORITIES
+   Match the Understand (pink) and Participate (blue) visual
+   language in both light and dark modes.
+   ========================================================= */
+.kf-home-feature-card {
+  isolation: isolate;
+  position: relative;
+  border-width: 1px;
+}
+.kf-home-feature-card--sense {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255,79,198,.16), transparent 31%),
+    radial-gradient(circle at 7% 96%, rgba(255,145,213,.20), transparent 27%),
+    linear-gradient(145deg,#fff7fc 0%,#f9e3f1 58%,#f5d7e9 100%);
+  border-color: rgba(255,79,198,.52);
+}
+.kf-home-feature-card--authority {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(24,191,255,.17), transparent 31%),
+    radial-gradient(circle at 7% 96%, rgba(114,228,255,.20), transparent 27%),
+    linear-gradient(145deg,#f5fcff 0%,#e2f5fc 58%,#d5edf8 100%);
+  border-color: rgba(24,191,255,.52);
+}
+.kf-home-feature-card--sense .kf-home-feature-icon {
+  background: #fff4fb;
+  border-color: rgba(255,79,198,.28);
+  color: #cf3b9e;
+}
+.kf-home-feature-card--authority .kf-home-feature-icon {
+  background: #f2fbff;
+  border-color: rgba(24,191,255,.28);
+  color: #168fc0;
+}
+.kf-home-feature-card--sense .kf-home-feature-chip {
+  background: rgba(255,255,255,.68);
+  border-color: rgba(177,72,132,.17);
+  color: #4f3143;
+}
+.kf-home-feature-card--authority .kf-home-feature-chip {
+  background: rgba(255,255,255,.68);
+  border-color: rgba(56,135,170,.17);
+  color: #284454;
+}
+.kf-home-feature-card--sense .kf-home-feature-mini {
+  background: rgba(255,255,255,.46);
+  border-color: rgba(177,72,132,.18);
+  color: #583748;
+}
+.kf-home-feature-card--authority .kf-home-feature-mini {
+  background: rgba(255,255,255,.46);
+  border-color: rgba(56,135,170,.18);
+  color: #294858;
+}
+.kf-home-feature-card--sense .kf-home-feature-deco--top {
+  background: rgba(255,79,198,.15);
+}
+.kf-home-feature-card--sense .kf-home-feature-deco--bottom {
+  background: rgba(255,145,213,.18);
+}
+.kf-home-feature-card--authority .kf-home-feature-deco--top {
+  background: rgba(24,191,255,.15);
+}
+.kf-home-feature-card--authority .kf-home-feature-deco--bottom {
+  background: rgba(114,228,255,.18);
+}
+
+html[data-theme="dark"] .kf-home-feature-card--sense {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255,79,198,.23), transparent 32%),
+    radial-gradient(circle at 8% 100%, rgba(255,145,213,.14), transparent 30%),
+    linear-gradient(145deg,#56123f 0%,#280b2a 58%,#1d0820 100%) !important;
+  border-color: rgba(255,79,198,.62) !important;
+  box-shadow:
+    0 24px 54px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.075) !important;
+}
+html[data-theme="dark"] .kf-home-feature-card--authority {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(24,191,255,.24), transparent 32%),
+    radial-gradient(circle at 8% 100%, rgba(114,228,255,.14), transparent 30%),
+    linear-gradient(145deg,#123f70 0%,#091f3a 58%,#07182c 100%) !important;
+  border-color: rgba(24,191,255,.64) !important;
+  box-shadow:
+    0 24px 54px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.075) !important;
+}
+html[data-theme="dark"] .kf-home-feature-card--sense h3,
+html[data-theme="dark"] .kf-home-feature-card--authority h3 {
+  color: #f7f8fb !important;
+}
+html[data-theme="dark"] .kf-home-feature-card--sense .kf-home-feature-chip,
+html[data-theme="dark"] .kf-home-feature-card--authority .kf-home-feature-chip,
+html[data-theme="dark"] .kf-home-feature-card--sense .kf-home-feature-mini,
+html[data-theme="dark"] .kf-home-feature-card--authority .kf-home-feature-mini {
+  color: #c8d4df !important;
+  background: rgba(255,255,255,.05) !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+html[data-theme="dark"] .kf-home-feature-card--sense .kf-home-feature-icon {
+  background: rgba(255,79,198,.16) !important;
+  border-color: rgba(255,145,213,.28) !important;
+  color: #ff91d5 !important;
+}
+html[data-theme="dark"] .kf-home-feature-card--authority .kf-home-feature-icon {
+  background: rgba(24,191,255,.15) !important;
+  border-color: rgba(114,228,255,.28) !important;
+  color: #72e4ff !important;
+}
+html[data-theme="dark"] .kf-home-feature-card--sense p,
+html[data-theme="dark"] .kf-home-feature-card--authority p {
+  color: #b7c6d5 !important;
+}
+html[data-theme="dark"] .kf-home-feature-card .bg-white\/70 {
+  background: rgba(255,255,255,.10) !important;
+}
+html[data-theme="dark"] .kf-home-feature-card--sense .kf-home-feature-deco--top {
+  background: rgba(255,79,198,.13) !important;
+}
+html[data-theme="dark"] .kf-home-feature-card--sense .kf-home-feature-deco--bottom {
+  background: rgba(255,145,213,.10) !important;
+}
+html[data-theme="dark"] .kf-home-feature-card--authority .kf-home-feature-deco--top {
+  background: rgba(24,191,255,.14) !important;
+}
+html[data-theme="dark"] .kf-home-feature-card--authority .kf-home-feature-deco--bottom {
+  background: rgba(114,228,255,.10) !important;
+}
+
+html[data-theme="dark"] #civic-sense > div > div:first-child > p,
+html[data-theme="dark"] #responsible-authorities > div > div:first-child > p {
+  color: #ff8b32 !important;
+}
+html[data-theme="dark"] #civic-sense > div > div:first-child h2,
+html[data-theme="dark"] #responsible-authorities > div > div:first-child h2 {
+  color: #f7f8fb !important;
+}
+html[data-theme="dark"] #civic-sense > div > div:first-child > p:last-child,
+html[data-theme="dark"] #responsible-authorities > div > div:first-child > p:last-child {
+  color: #b7c6d5 !important;
+}
+
+/* =========================================================
+   KRUTBHARAT ABOUT CARD — RICH YELLOW / GOLD THEME
+   Reference-inspired warm yellow treatment.
+   Geometry, content and card size remain unchanged.
+   ========================================================= */
+#about .kf-home-about-card {
+  position: relative;
+  isolation: isolate;
+  border-color: #e1b52a !important;
+  background:
+    radial-gradient(circle at 94% 4%, rgba(255, 210, 70, 0.64) 0%, rgba(255, 210, 70, 0) 29%),
+    radial-gradient(circle at 4% 96%, rgba(255, 224, 113, 0.52) 0%, rgba(255, 224, 113, 0) 30%),
+    linear-gradient(145deg, #fffdf5 0%, #fff7dc 50%, #ffefbd 100%) !important;
+  box-shadow:
+    0 20px 54px rgba(132, 92, 10, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94) !important;
+}
+
+#about .kf-home-about-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 76% 18%, rgba(255, 202, 33, 0.13) 0%, rgba(255, 202, 33, 0) 25%),
+    radial-gradient(circle at 12% 84%, rgba(255, 193, 45, 0.10) 0%, rgba(255, 193, 45, 0) 24%);
+}
+
+#about .kf-home-about-card > .relative {
+  position: relative;
+  z-index: 1;
+}
+
+#about .kf-home-about-card > .absolute {
+  z-index: 0;
+}
+
+/* Bright golden decorative circles. */
+#about .kf-home-about-card > .-right-16.-top-16 {
+  background: rgba(255, 212, 71, 0.74) !important;
+}
+
+#about .kf-home-about-card > .-bottom-20.-left-16 {
+  background: rgba(255, 222, 115, 0.64) !important;
+}
+
+/* Strong navy contrast on the warm light surface. */
+#about .kf-home-about-card > .relative > div.mb-6 > span:first-child {
+  background: #f2b900 !important;
+}
+
+#about .kf-home-about-card > .relative > div.mb-6 > span:last-child {
+  color: #5d4a16 !important;
+}
+
+#about .kf-home-about-card > .relative > p {
+  color: #26364d !important;
+}
+
+#about .kf-home-about-card > .relative > div.mt-9 {
+  border-color: rgba(218, 168, 25, 0.34) !important;
+}
+
+#about .kf-home-about-card > .relative > div.mt-9 p {
+  color: #5d511f !important;
+}
+
+/* =========================================================
+   DARK MODE — VISIBLE YELLOW / GOLD, NOT NAVY
+   Explicitly scoped to #about so it overrides the earlier dark
+   About-card background rule.
+   ========================================================= */
+html[data-theme="dark"] #about .kf-home-about-card {
+  border-color: rgba(249, 197, 52, 0.62) !important;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255, 211, 67, 0.38) 0%, rgba(255, 211, 67, 0) 30%),
+    radial-gradient(circle at 8% 95%, rgba(242, 191, 44, 0.26) 0%, rgba(242, 191, 44, 0) 29%),
+    linear-gradient(145deg, #5a4608 0%, #4a3906 48%, #332805 100%) !important;
+  box-shadow:
+    0 26px 62px rgba(0, 0, 0, 0.38),
+    0 0 42px rgba(255, 201, 57, 0.10),
+    inset 0 1px 0 rgba(255, 245, 190, 0.09) !important;
+}
+
+html[data-theme="dark"] #about .kf-home-about-card::after {
+  background:
+    radial-gradient(circle at 74% 18%, rgba(255, 223, 92, 0.19) 0%, rgba(255, 223, 92, 0) 25%),
+    radial-gradient(circle at 12% 84%, rgba(247, 199, 66, 0.15) 0%, rgba(247, 199, 66, 0) 24%);
+}
+
+html[data-theme="dark"] #about .kf-home-about-card > .-right-16.-top-16 {
+  background: rgba(255, 211, 67, 0.44) !important;
+}
+
+html[data-theme="dark"] #about .kf-home-about-card > .-bottom-20.-left-16 {
+  background: rgba(248, 201, 70, 0.30) !important;
+}
+
+html[data-theme="dark"] #about .kf-home-about-card > .relative > div.mb-6 > span:first-child {
+  background: #f7c842 !important;
+}
+
+html[data-theme="dark"] #about .kf-home-about-card > .relative > div.mb-6 > span:last-child {
+  color: #f4db89 !important;
+}
+
+html[data-theme="dark"] #about .kf-home-about-card > .relative > p {
+  color: #fff4cf !important;
+}
+
+html[data-theme="dark"] #about .kf-home-about-card > .relative > div.mt-9 {
+  border-color: rgba(247, 202, 76, 0.30) !important;
+}
+
+html[data-theme="dark"] #about .kf-home-about-card > .relative > div.mt-9 p {
+  color: #f0da94 !important;
+}
+
+
+
 `}
+
+
 </style>
 
     </main>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const STORAGE_KEY = "karmafacie-theme";
+const STORAGE_KEY = "krutbharat-theme";
 
 type Theme = "light" | "dark";
 

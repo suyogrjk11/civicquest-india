@@ -231,7 +231,7 @@ export default function CivicQuestsPage() {
               fontWeight: 800,
             }}
           >
-            Karma<span style={{ color: "#ff7a00" }}>Facie</span>
+            Krut<span style={{ color: "#ff7a00" }}>Bharat</span>
           </div>
 
           <div
@@ -276,12 +276,12 @@ export default function CivicQuestsPage() {
             </button>
           </div>
 
-          <div className="kf-brand-lockup kf-centered-brand" aria-label="KarmaFacie Civic Quests">
+          <div className="kf-brand-lockup kf-centered-brand" aria-label="KrutBharat Civic Quests">
             <div className="kf-brand-box">K</div>
 
             <div>
               <div className="kf-brand-name">
-                Karma<span>Facie</span>
+                Krut<span>Bharat</span>
               </div>
 
               <div className="kf-brand-caption">
@@ -363,10 +363,10 @@ export default function CivicQuestsPage() {
 
               <p>
                 {language === "en"
-                  ? "Explore the civic topics currently available on KarmaFacie."
+                  ? "Explore the civic topics currently available on KrutBharat."
                   : language === "hi"
-                    ? "KarmaFacie पर अभी उपलब्ध नागरिक विषयों को देखें।"
-                    : "KarmaFacie वर सध्या उपलब्ध नागरी विषयांचा शोध घ्या."}
+                    ? "KrutBharat पर अभी उपलब्ध नागरिक विषयों को देखें।"
+                    : "KrutBharat वर सध्या उपलब्ध नागरी विषयांचा शोध घ्या."}
               </p>
             </div>
 
@@ -473,7 +473,7 @@ export default function CivicQuestsPage() {
 
         {/* FOOTER */}
         <footer className="kf-quests-footer">
-          Karma<span>Facie</span> · {text.footer}
+          Krut<span>Bharat</span> · {text.footer}
         </footer>
       </div>
 
@@ -1105,7 +1105,7 @@ export default function CivicQuestsPage() {
 
 
 /* =========================================================
-   KARMAFACIE — CIVIC QUESTS / DARK MODE
+   KRUTBHARAT — CIVIC QUESTS / DARK MODE
    Scoped only to the Civic Quests library page.
    ========================================================= */
 

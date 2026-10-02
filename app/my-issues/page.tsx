@@ -55,7 +55,7 @@ const content = {
     back: "← Back to Dashboard",
     languageLabel: "Language",
 
-    label: "KARMAFACIE",
+    label: "KRUTBHARAT",
     title: "My Civic Issues",
     description:
       "View the civic problems you have reported and track their progress.",
@@ -64,7 +64,7 @@ const content = {
 
     noIssuesTitle: "No Issues Reported Yet",
     noIssuesDescription:
-      "Have you spotted a civic problem? Report it through KarmaFacie.",
+      "Have you spotted a civic problem? Report it through KrutBharat.",
     reportIssue: "Report an Issue",
 
     reported: "Reported",
@@ -103,7 +103,7 @@ const content = {
     viewFullDetails: "View Full Details →",
 
     disclaimer:
-      "KarmaFacie currently provides directory-based authority routing information along with your report, evidence, location and status. Authority details are maintained as directory information and do not by themselves represent an official determination by the government authority. Official grievance submission and direct government-system integration will be developed separately.",
+      "KrutBharat currently provides directory-based authority routing information along with your report, evidence, location and status. Authority details are maintained as directory information and do not by themselves represent an official determination by the government authority. Official grievance submission and direct government-system integration will be developed separately.",
 
     civicIssueEvidence: "Civic issue evidence",
   },
@@ -112,7 +112,7 @@ const content = {
     back: "← डैशबोर्ड पर वापस जाएँ",
     languageLabel: "भाषा",
 
-    label: "KARMAFACIE",
+    label: "KRUTBHARAT",
     title: "मेरी नागरिक समस्याएँ",
     description:
       "आपके द्वारा रिपोर्ट की गई नागरिक समस्याएँ देखें और उनकी प्रगति को ट्रैक करें।",
@@ -121,7 +121,7 @@ const content = {
 
     noIssuesTitle: "अभी तक कोई समस्या रिपोर्ट नहीं की गई",
     noIssuesDescription:
-      "क्या आपने कोई नागरिक समस्या देखी है? उसे KarmaFacie के माध्यम से रिपोर्ट करें।",
+      "क्या आपने कोई नागरिक समस्या देखी है? उसे KrutBharat के माध्यम से रिपोर्ट करें।",
     reportIssue: "समस्या की रिपोर्ट करें",
 
     reported: "रिपोर्ट की गई",
@@ -160,7 +160,7 @@ const content = {
     viewFullDetails: "पूरी जानकारी देखें →",
 
     disclaimer:
-      "KarmaFacie वर्तमान में आपकी रिपोर्ट, प्रमाण, स्थान और स्थिति के साथ डायरेक्टरी-आधारित प्राधिकरण मार्गदर्शन की जानकारी प्रदान करता है। प्राधिकरण की जानकारी डायरेक्टरी के रूप में रखी जाती है और अपने आप में संबंधित सरकारी प्राधिकरण के आधिकारिक निर्णय का प्रतिनिधित्व नहीं करती। आधिकारिक शिकायत सबमिशन और सरकारी सिस्टम के साथ सीधा एकीकरण अलग से विकसित किया जाएगा।",
+      "KrutBharat वर्तमान में आपकी रिपोर्ट, प्रमाण, स्थान और स्थिति के साथ डायरेक्टरी-आधारित प्राधिकरण मार्गदर्शन की जानकारी प्रदान करता है। प्राधिकरण की जानकारी डायरेक्टरी के रूप में रखी जाती है और अपने आप में संबंधित सरकारी प्राधिकरण के आधिकारिक निर्णय का प्रतिनिधित्व नहीं करती। आधिकारिक शिकायत सबमिशन और सरकारी सिस्टम के साथ सीधा एकीकरण अलग से विकसित किया जाएगा।",
 
     civicIssueEvidence: "नागरिक समस्या का प्रमाण",
   },
@@ -169,7 +169,7 @@ const content = {
     back: "← डॅशबोर्डवर परत जा",
     languageLabel: "भाषा",
 
-    label: "KARMAFACIE",
+    label: "KRUTBHARAT",
     title: "माझ्या नागरी समस्या",
     description:
       "तुम्ही नोंदवलेल्या नागरी समस्या पाहा आणि त्यांची प्रगती ट्रॅक करा.",
@@ -180,7 +180,7 @@ const content = {
     noIssuesTitle:
       "अद्याप कोणतीही समस्या नोंदवलेली नाही",
     noIssuesDescription:
-      "तुम्हाला नागरी समस्या दिसली आहे का? ती KarmaFacie द्वारे नोंदवा.",
+      "तुम्हाला नागरी समस्या दिसली आहे का? ती KrutBharat द्वारे नोंदवा.",
     reportIssue: "समस्या नोंदवा",
 
     reported: "नोंदवलेली",
@@ -219,7 +219,7 @@ const content = {
     viewFullDetails: "संपूर्ण माहिती पाहा →",
 
     disclaimer:
-      "KarmaFacie सध्या तुमच्या नोंदी, पुरावे, स्थान आणि स्थितीसोबत डायरेक्टरी-आधारित प्राधिकरण मार्गदर्शनाची माहिती देते. प्राधिकरणाची माहिती डायरेक्टरी स्वरूपात ठेवली जाते आणि ती स्वतःहून संबंधित सरकारी प्राधिकरणाचा अधिकृत निर्णय दर्शवत नाही. अधिकृत तक्रार सबमिशन आणि सरकारी प्रणालीशी थेट एकत्रीकरण स्वतंत्रपणे विकसित केले जाईल.",
+      "KrutBharat सध्या तुमच्या नोंदी, पुरावे, स्थान आणि स्थितीसोबत डायरेक्टरी-आधारित प्राधिकरण मार्गदर्शनाची माहिती देते. प्राधिकरणाची माहिती डायरेक्टरी स्वरूपात ठेवली जाते आणि ती स्वतःहून संबंधित सरकारी प्राधिकरणाचा अधिकृत निर्णय दर्शवत नाही. अधिकृत तक्रार सबमिशन आणि सरकारी प्रणालीशी थेट एकत्रीकरण स्वतंत्रपणे विकसित केले जाईल.",
 
     civicIssueEvidence: "नागरी समस्येचा पुरावा",
   },
@@ -758,7 +758,7 @@ export default function MyIssuesPage() {
             </button>
           </div>
 
-          {/* CENTER — KARMAFACIE / MY CIVIC ISSUES */}
+          {/* CENTER — KRUTBHARAT / MY CIVIC ISSUES */}
           <div
             style={{
               display: "flex",
@@ -798,7 +798,7 @@ export default function MyIssuesPage() {
                   fontWeight: 800,
                 }}
               >
-                Karma<span style={{ color: "#ff7a00" }}>Facie</span>
+                Krut<span style={{ color: "#ff7a00" }}>Bharat</span>
               </div>
 
               <div

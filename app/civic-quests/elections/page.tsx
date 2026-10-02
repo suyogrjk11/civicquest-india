@@ -311,7 +311,7 @@ export default function ElectionsQuestPage() {
       <main className="kf-q-page kf-q-loading">
         <div className="kf-q-loading-card">
           <div className="kf-q-brand">
-            Karma<span>Facie</span>
+            Krut<span>Bharat</span>
           </div>
           <div className="kf-q-loading-bar" />
           <p>{text.loading}</p>
@@ -368,7 +368,7 @@ export default function ElectionsQuestPage() {
               </div>
             </div>
           </section>
-          <footer className="kf-q-footer">Karma<span>Facie</span> · {text.questLibrary}</footer>
+          <footer className="kf-q-footer">Krut<span>Bharat</span> · {text.questLibrary}</footer>
         </div>
         <QuestStyles />
       </main>
@@ -459,7 +459,7 @@ export default function ElectionsQuestPage() {
           {selected === null && <div className="kf-q-hint">{text.selectAnswer}</div>}
         </section>
 
-        <footer className="kf-q-footer">Karma<span>Facie</span> · {text.questLibrary}</footer>
+        <footer className="kf-q-footer">Krut<span>Bharat</span> · {text.questLibrary}</footer>
       </div>
       <QuestStyles />
     </main>
@@ -476,7 +476,7 @@ function Brand() {
       <div className="kf-q-brand-box">K</div>
       <div>
         <div className="kf-q-brand-name">
-          Karma<span>Facie</span>
+          Krut<span>Bharat</span>
         </div>
         <div className="kf-q-brand-caption">CIVIC LEARNING</div>
       </div>
@@ -1258,7 +1258,7 @@ function QuestStyles() {
 
 
 /* =========================================================
-   KARMAFACIE — CIVIC QUEST / DARK MODE
+   KRUTBHARAT — CIVIC QUEST / DARK MODE
    Shared visual system for Constitution, Governance,
    Elections and Know India quest screens.
    ========================================================= */

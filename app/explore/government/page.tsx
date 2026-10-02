@@ -311,7 +311,7 @@ const content: Record<
 
     questionsTitle: "Test what you learned",
     questionsDescription:
-      "Answer three questions to complete this KarmaFacie.",
+      "Answer three questions to complete this Quiz.",
 
     question: "Question",
     saving: "Saving...",
@@ -322,7 +322,7 @@ const content: Record<
     scoreText: "You scored",
     tryAgain: "Try Again",
 
-    footer: "KarmaFacie · Learn. Understand. Participate.",
+    footer: "KrutBharat · Learn. Understand. Participate.",
   },
 
   hi: {
@@ -393,7 +393,7 @@ const content: Record<
 
     questionsTitle: "आपने क्या सीखा, जाँचें",
     questionsDescription:
-      "इस KarmaFacie को पूरा करने के लिए तीन प्रश्नों के उत्तर दें।",
+      "इस Quiz को पूरा करने के लिए तीन प्रश्नों के उत्तर दें।",
 
     question: "प्रश्न",
     saving: "सहेजा जा रहा है...",
@@ -404,7 +404,7 @@ const content: Record<
     scoreText: "आपका स्कोर",
     tryAgain: "फिर से प्रयास करें",
 
-    footer: "KarmaFacie · सीखें। समझें। भाग लें।",
+    footer: "KrutBharat · सीखें। समझें। भाग लें।",
   },
 
   mr: {
@@ -475,7 +475,7 @@ const content: Record<
 
     questionsTitle: "तुम्ही काय शिकलात ते तपासा",
     questionsDescription:
-      "ही KarmaFacie पूर्ण करण्यासाठी तीन प्रश्नांची उत्तरे द्या.",
+      "ही Quiz पूर्ण करण्यासाठी तीन प्रश्नांची उत्तरे द्या.",
 
     question: "प्रश्न",
     saving: "जतन केले जात आहे...",
@@ -486,7 +486,7 @@ const content: Record<
     scoreText: "तुमचा गुण",
     tryAgain: "पुन्हा प्रयत्न करा",
 
-    footer: "KarmaFacie · शिका. समजा. सहभागी व्हा.",
+    footer: "KrutBharat · शिका. समजा. सहभागी व्हा.",
   },
 };
 
@@ -630,7 +630,7 @@ export default function GovernmentPage() {
             <div className="kf-explore-brand-box">K</div>
             <div>
               <div className="kf-explore-brand-name">
-                Karma<span>Facie</span>
+                Krut<span>Bharat</span>
               </div>
               <div className="kf-explore-brand-caption">
                 EXPLORE &amp; LEARN
@@ -1620,7 +1620,7 @@ export default function GovernmentPage() {
             color: var(--kf-navy) !important;
           }
 
-          /* Keep the KarmaFacie logo K white inside the orange logo box */
+          /* Keep the KrutBharat logo K white inside the orange logo box */
           .kf-explore-page header .kf-explore-brand-box {
             color: #ffffff !important;
           }

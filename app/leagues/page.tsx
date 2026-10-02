@@ -216,7 +216,9 @@ function localizedText(
   fallback: string,
   language: Language
 ) {
-  return value?.[language] || value?.en || fallback;
+  const resolved = value?.[language] || value?.en || fallback;
+
+  return resolved.replace(/KarmaFacie/gi, "KrutBharat");
 }
 
 function localizeLeagueName(
@@ -231,15 +233,18 @@ function localizeLeagueName(
 
   if (fromDb) return fromDb;
 
-  if (league.name === "KarmaFacie Pilot Civic League") {
+  if (
+    league.name === "KrutBharat Pilot Civic League" ||
+    league.name === "KarmaFacie Pilot Civic League"
+  ) {
     return language === "hi"
-      ? "KarmaFacie पायलट सिविक लीग"
+      ? "KrutBharat पायलट सिविक लीग"
       : language === "mr"
-      ? "KarmaFacie पायलट सिविक लीग"
-      : league.name;
+      ? "KrutBharat पायलट सिविक लीग"
+      : "KrutBharat Pilot Civic League";
   }
 
-  return league.name;
+  return league.name.replace(/KarmaFacie/gi, "KrutBharat");
 }
 
 function localizeTeamName(
@@ -263,10 +268,10 @@ function localizeTeamName(
       hi: "कॉलेज पायलट टीम",
       mr: "महाविद्यालय पायलट टीम",
     },
-    "KarmaFacie Pilot Team": {
-      en: "KarmaFacie Pilot Team",
-      hi: "KarmaFacie पायलट टीम",
-      mr: "KarmaFacie पायलट टीम",
+    "KrutBharat Pilot Team": {
+      en: "KrutBharat Pilot Team",
+      hi: "KrutBharat पायलट टीम",
+      mr: "KrutBharat पायलट टीम",
     },
     "Ward Pilot Team": {
       en: "Ward Pilot Team",
@@ -504,13 +509,12 @@ export default function LeaguesPage() {
     loadLeague();
   }, []);
 
-
   if (loading) {
     return (
       <main className="kf-leagues-page kf-loading-page">
         <div className="kf-loading-card">
           <div className="kf-wordmark">
-            Karma<span>Facie</span>
+            Krut<span>Bharat</span>
           </div>
           <div className="kf-loading-bar" />
           <p>{text.loading}</p>
@@ -524,7 +528,7 @@ export default function LeaguesPage() {
       <main className="kf-leagues-page kf-loading-page">
         <div className="kf-error-card">
           <div className="kf-eyebrow">
-            KARMAFACIE
+            KRUTBHARAT
           </div>
           <h1>{text.civicLeagues}</h1>
           <p>{error}</p>
@@ -546,10 +550,10 @@ export default function LeaguesPage() {
         language
       ) ||
       (language === "en"
-        ? "A pilot civic participation league on KarmaFacie."
+        ? "A pilot civic participation league on KrutBharat."
         : language === "hi"
-          ? "KarmaFacie पर नागरिक भागीदारी की सुविधाओं के परीक्षण के लिए एक पायलट लीग।"
-          : "KarmaFacie वरील नागरी सहभागाच्या सुविधांची चाचणी घेण्यासाठी पायलट लीग.")
+          ? "KrutBharat पर नागरिक भागीदारी की सुविधाओं के परीक्षण के लिए एक पायलट लीग।"
+          : "KrutBharat वरील नागरी सहभागाच्या सुविधांची चाचणी घेण्यासाठी पायलट लीग.")
     : "";
 
   return (
@@ -569,7 +573,7 @@ export default function LeaguesPage() {
             <div className="kf-brand-box">K</div>
             <div>
               <div className="kf-brand-name">
-                Karma<span>Facie</span>
+                Krut<span>Bharat</span>
               </div>
               <div className="kf-brand-caption">
                 CIVIC LEAGUES
@@ -1029,7 +1033,7 @@ export default function LeaguesPage() {
         </section>
 
         <footer className="kf-leagues-footer">
-          Karma<span>Facie</span> ·{" "}
+          Krut<span>Bharat</span> ·{" "}
           {text.civicLeagues}
         </footer>
       </div>
@@ -1930,11 +1934,9 @@ export default function LeaguesPage() {
             font-size: 21px;
           }
         }
-      
-
 
 /* =========================================================
-   KARMAFACIE — CIVIC LEAGUES DARK MODE
+   KRUTBHARAT — CIVIC LEAGUES DARK MODE
    Scoped only to .kf-leagues-page
    ========================================================= */
 

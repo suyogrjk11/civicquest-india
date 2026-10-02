@@ -520,7 +520,7 @@ const content: Record<
     quizLabel: "08 · QUICK QUIZ",
     quizTitle: "Test what you learned",
     quizText:
-      "Answer five questions to complete this KarmaFacie.",
+      "Answer five questions to complete this Quiz.",
     question: "Question",
     saving: "Saving...",
     finishQuiz: "Finish Quiz",
@@ -529,7 +529,7 @@ const content: Record<
     scored: "You scored",
     tryAgain: "Try Again",
 
-    footer: "KarmaFacie · Learn. Understand. Participate.",
+    footer: "KrutBharat · Learn. Understand. Participate.",
   },
 
   hi: {
@@ -614,7 +614,7 @@ const content: Record<
     quizLabel: "08 · त्वरित क्विज़",
     quizTitle: "आपने क्या सीखा, जाँचें",
     quizText:
-      "इस KarmaFacie को पूरा करने के लिए पाँच प्रश्नों के उत्तर दें।",
+      "इस KrutBharat को पूरा करने के लिए पाँच प्रश्नों के उत्तर दें।",
     question: "प्रश्न",
     saving: "सहेजा जा रहा है...",
     finishQuiz: "क्विज़ समाप्त करें",
@@ -623,7 +623,7 @@ const content: Record<
     scored: "आपका स्कोर",
     tryAgain: "फिर से प्रयास करें",
 
-    footer: "KarmaFacie · सीखें। समझें। भाग लें।",
+    footer: "KrutBharat · सीखें। समझें। भाग लें।",
   },
 
   mr: {
@@ -708,7 +708,7 @@ const content: Record<
     quizLabel: "08 · झटपट क्विझ",
     quizTitle: "तुम्ही काय शिकलात ते तपासा",
     quizText:
-      "हे KarmaFacie पूर्ण करण्यासाठी पाच प्रश्नांची उत्तरे द्या.",
+      "हे Quiz पूर्ण करण्यासाठी पाच प्रश्नांची उत्तरे द्या.",
     question: "प्रश्न",
     saving: "सेव्ह होत आहे...",
     finishQuiz: "क्विझ पूर्ण करा",
@@ -717,7 +717,7 @@ const content: Record<
     scored: "तुमचा गुण",
     tryAgain: "पुन्हा प्रयत्न करा",
 
-    footer: "KarmaFacie · शिका. समजा. सहभागी व्हा.",
+    footer: "KrutBharat · शिका. समजा. सहभागी व्हा.",
   },
 };
 
@@ -914,7 +914,7 @@ export default function EnvironmentPage() {
                   fontWeight: "800",
                 }}
               >
-                Karma<span style={{ color: "#ff7a00" }}>Facie</span>
+                Krut<span style={{ color: "#ff7a00" }}>Bharat</span>
               </div>
 
               <div

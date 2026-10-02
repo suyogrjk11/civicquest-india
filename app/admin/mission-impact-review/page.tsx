@@ -358,7 +358,7 @@ export default function MissionImpactReviewPage() {
 
       const reviewNote =
         decision === "verified"
-          ? "Before and after impact evidence reviewed and verified by KarmaFacie admin."
+          ? "Before and after impact evidence reviewed and verified by KrutBharat admin."
           : "Before and after impact evidence did not meet verification requirements.";
 
       const {
@@ -426,7 +426,7 @@ export default function MissionImpactReviewPage() {
         {/* Header */}
         <section>
           <p className="text-sm font-semibold uppercase tracking-wider opacity-60">
-            KarmaFacie Admin
+            KrutBharat Admin
           </p>
 
           <h1 className="mt-2 text-4xl font-bold tracking-tight">

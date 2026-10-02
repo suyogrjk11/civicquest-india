@@ -746,7 +746,7 @@ export default function MissionPage() {
               "photo",
 
             submitted_from:
-              "karmafacie_web",
+              "krutbharat_web",
           },
           p_latitude: latitude,
           p_longitude: longitude,
@@ -985,7 +985,7 @@ export default function MissionPage() {
       <main className="kf-mission-page kf-loading-page">
         <div className="kf-loading-card">
           <div className="kf-wordmark">
-            Karma<span>Facie</span>
+            Krut<span>Bharat</span>
           </div>
 
           <div className="kf-loading-bar" />
@@ -1075,7 +1075,7 @@ export default function MissionPage() {
 
             <div>
               <div className="kf-brand-name">
-                Karma<span>Facie</span>
+                Krut<span>Bharat</span>
               </div>
 
               <div className="kf-brand-caption">
@@ -2511,7 +2511,7 @@ export default function MissionPage() {
 
 
 /* =========================================================
-   KARMAFACIE — CIVIC MISSION DARK MODE
+   KRUTBHARAT — CIVIC MISSION DARK MODE
    ========================================================= */
 
 html[data-theme="dark"] .kf-mission-page {

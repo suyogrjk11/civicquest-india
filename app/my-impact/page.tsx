@@ -143,7 +143,7 @@ const content: Record<
     eyebrow: "YOUR CIVIC JOURNEY",
     title: "My Impact",
     subtitle:
-      "See the civic actions, learning progress and community contribution connected to your KarmaFacie account.",
+      "See the civic actions, learning progress and community contribution connected to your KrutBharat account.",
     loading: "Loading your impact...",
     back: "← Dashboard",
     issuesReported: "Issues Reported",
@@ -177,7 +177,7 @@ const content: Record<
     recentActivity: "Recent activity",
     reporting: "Civic Participation",
     reportingDescription:
-      "You have helped bring local civic problems into KarmaFacie and made them visible for tracking.",
+      "You have helped bring local civic problems into KrutBharat and made them visible for tracking.",
     learning: "Civic Learning",
     learningDescription:
       "Keep building your civic knowledge through lessons and Civic Quests.",
@@ -187,9 +187,9 @@ const content: Record<
     exploreCommunity: "Explore Community →",
     continueLearning: "Explore Civic Learning →",
     reportIssue: "Report an Issue →",
-    noActivity: "No activity yet. Start your KarmaFacie journey.",
+    noActivity: "No activity yet. Start your KrutBharat journey.",
     footer:
-      "KarmaFacie helps you learn, participate and make your civic actions visible.",
+      "KrutBharat helps you learn, participate and make your civic actions visible.",
     status: "Current status",
     activityPreparing: "Your civic activity is being prepared.",
     score: "Score",
@@ -209,7 +209,7 @@ const content: Record<
     eyebrow: "आपकी नागरिक यात्रा",
     title: "मेरा प्रभाव",
     subtitle:
-      "अपने KarmaFacie खाते से जुड़ी नागरिक गतिविधियों, सीखने की प्रगति और सामुदायिक योगदान को देखें।",
+      "अपने KrutBharat खाते से जुड़ी नागरिक गतिविधियों, सीखने की प्रगति और सामुदायिक योगदान को देखें।",
     loading: "आपका प्रभाव लोड हो रहा है...",
     back: "← डैशबोर्ड",
     issuesReported: "रिपोर्ट की गई समस्याएँ",
@@ -243,7 +243,7 @@ const content: Record<
     recentActivity: "हाल की गतिविधि",
     reporting: "नागरिक भागीदारी",
     reportingDescription:
-      "आपने स्थानीय नागरिक समस्याओं को KarmaFacie पर लाने और उन्हें ट्रैक करने में योगदान दिया है।",
+      "आपने स्थानीय नागरिक समस्याओं को KrutBharat पर लाने और उन्हें ट्रैक करने में योगदान दिया है।",
     learning: "नागरिक सीख",
     learningDescription:
       "पाठ और Civic Quests के माध्यम से अपना नागरिक ज्ञान बढ़ाते रहें।",
@@ -253,9 +253,9 @@ const content: Record<
     exploreCommunity: "समुदाय देखें →",
     continueLearning: "नागरिक शिक्षा देखें →",
     reportIssue: "समस्या रिपोर्ट करें →",
-    noActivity: "अभी कोई गतिविधि नहीं है। अपनी KarmaFacie यात्रा शुरू करें।",
+    noActivity: "अभी कोई गतिविधि नहीं है। अपनी KrutBharat यात्रा शुरू करें।",
     footer:
-      "KarmaFacie आपको सीखने, भाग लेने और अपनी नागरिक गतिविधियों को दिखाई देने योग्य बनाने में मदद करता है।",
+      "KrutBharat आपको सीखने, भाग लेने और अपनी नागरिक गतिविधियों को दिखाई देने योग्य बनाने में मदद करता है।",
     status: "वर्तमान स्थिति",
     activityPreparing: "आपकी नागरिक गतिविधि तैयार की जा रही है।",
     score: "स्कोर",
@@ -275,7 +275,7 @@ const content: Record<
     eyebrow: "तुमचा नागरिक प्रवास",
     title: "माझा प्रभाव",
     subtitle:
-      "तुमच्या KarmaFacie खात्याशी जोडलेला नागरिक सहभाग, शिकण्याची प्रगती आणि समुदायातील योगदान पहा.",
+      "तुमच्या KrutBharat खात्याशी जोडलेला नागरिक सहभाग, शिकण्याची प्रगती आणि समुदायातील योगदान पहा.",
     loading: "तुमचा प्रभाव लोड होत आहे...",
     back: "← डॅशबोर्ड",
     issuesReported: "नोंदवलेल्या समस्या",
@@ -309,7 +309,7 @@ const content: Record<
     recentActivity: "अलीकडील गतिविधी",
     reporting: "नागरिक सहभाग",
     reportingDescription:
-      "स्थानिक नागरी समस्या KarmaFacie वर आणण्यासाठी आणि त्यांचा मागोवा घेण्यासाठी तुम्ही योगदान दिले आहे.",
+      "स्थानिक नागरी समस्या KrutBharat वर आणण्यासाठी आणि त्यांचा मागोवा घेण्यासाठी तुम्ही योगदान दिले आहे.",
     learning: "नागरिक शिक्षण",
     learningDescription:
       "धडे आणि Civic Quests द्वारे तुमचे नागरिक ज्ञान वाढवत राहा.",
@@ -319,9 +319,9 @@ const content: Record<
     exploreCommunity: "समुदाय पहा →",
     continueLearning: "नागरिक शिक्षण पहा →",
     reportIssue: "समस्या नोंदवा →",
-    noActivity: "अजून कोणतीही गतिविधी नाही. तुमचा KarmaFacie प्रवास सुरू करा.",
+    noActivity: "अजून कोणतीही गतिविधी नाही. तुमचा KrutBharat प्रवास सुरू करा.",
     footer:
-      "KarmaFacie तुम्हाला शिकण्यास, सहभागी होण्यास आणि तुमच्या नागरिक कृती दृश्यमान करण्यास मदत करते.",
+      "KrutBharat तुम्हाला शिकण्यास, सहभागी होण्यास आणि तुमच्या नागरिक कृती दृश्यमान करण्यास मदत करते.",
     status: "सध्याची स्थिती",
     activityPreparing: "तुमची नागरिक गतिविधी तयार केली जात आहे.",
     score: "स्कोअर",
@@ -803,13 +803,13 @@ export default function MyImpactPage() {
             </button>
           </div>
 
-          <div className="kf-my-impact-brand" style={brandStyle} aria-label="KarmaFacie My Impact">
+          <div className="kf-my-impact-brand" style={brandStyle} aria-label="KrutBharat My Impact">
             <div className="kf-my-impact-brand-mark" style={brandMarkStyle}>K</div>
 
             <div className="kf-my-impact-brand-copy" style={brandTextWrapStyle}>
               <div className="kf-my-impact-brand-name" style={brandNameStyle}>
-                <span className="kf-my-impact-brand-karma">Karma</span>
-                <span className="kf-my-impact-brand-facie" style={brandAccentStyle}>Facie</span>
+                <span className="kf-my-impact-brand-krut">Krut</span>
+                <span className="kf-my-impact-brand-bharat" style={brandAccentStyle}>Bharat</span>
               </div>
 
               <div className="kf-my-impact-brand-subtitle" style={brandSubtitleStyle}>MY IMPACT</div>
@@ -932,7 +932,7 @@ export default function MyImpactPage() {
 
         <section className="kf-my-impact-journey" style={panelStyle}>
           <div style={eyebrowStyle}>
-            KARMAFACIE
+            KRUTBHARAT
           </div>
 
           <h2 style={sectionTitleStyle}>

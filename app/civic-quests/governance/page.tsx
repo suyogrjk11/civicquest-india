@@ -1413,7 +1413,7 @@ function QuestStyles() {
 
 
 /* =========================================================
-   KARMAFACIE — CIVIC QUEST / DARK MODE
+   KRUTBHARAT — CIVIC QUEST / DARK MODE
    Shared visual system for Constitution, Governance,
    Elections and Know India quest screens.
    ========================================================= */

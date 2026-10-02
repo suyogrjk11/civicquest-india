@@ -284,11 +284,11 @@ export default function KnowIndiaQuestPage() {
         );
 
       if (error) {
-        console.error("Error saving KarmaFacie progress:", error);
+        console.error("Error saving KrutBharat progress:", error);
       }
     } catch (error) {
       console.error(
-        "Unexpected error while saving KarmaFacie progress:",
+        "Unexpected error while saving KrutBharat progress:",
         error
       );
     } finally {
@@ -466,7 +466,7 @@ export default function KnowIndiaQuestPage() {
           </section>
 
           <footer className="kf-q-footer">
-            Karma<span>Facie</span> · {text.questLibrary}
+            Krut<span>Bharat</span> · {text.questLibrary}
           </footer>
         </div>
 
@@ -652,7 +652,7 @@ export default function KnowIndiaQuestPage() {
         </section>
 
         <footer className="kf-q-footer">
-          Karma<span>Facie</span> · {text.questLibrary}
+          Krut<span>Bharat</span> · {text.questLibrary}
         </footer>
       </div>
 
@@ -667,7 +667,7 @@ function Brand() {
       <div className="kf-q-brand-box">K</div>
       <div>
         <div className="kf-q-brand-name">
-          Karma<span>Facie</span>
+          Krut<span>Bharat</span>
         </div>
         <div className="kf-q-brand-caption">CIVIC LEARNING</div>
       </div>
@@ -824,7 +824,7 @@ function QuestStyles() {
 
 
 /* =========================================================
-   KARMAFACIE — CIVIC QUEST / DARK MODE
+   KRUTBHARAT — CIVIC QUEST / DARK MODE
    Shared visual system for Constitution, Governance,
    Elections and Know India quest screens.
    ========================================================= */

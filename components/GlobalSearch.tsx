@@ -65,7 +65,7 @@ const items: Record<Language, SearchItem[]> = {
     ],
     [
       "Dashboard",
-      "Open your KarmaFacie dashboard.",
+      "Open your KrutBharat dashboard.",
       "/dashboard",
     ],
   ].map(([label, description, path]) => ({
@@ -127,7 +127,7 @@ const items: Record<Language, SearchItem[]> = {
     ],
     [
       "डैशबोर्ड",
-      "अपना KarmaFacie डैशबोर्ड खोलें।",
+      "अपना KrutBharat डैशबोर्ड खोलें।",
       "/dashboard",
     ],
   ].map(([label, description, path]) => ({
@@ -189,7 +189,7 @@ const items: Record<Language, SearchItem[]> = {
     ],
     [
       "डॅशबोर्ड",
-      "तुमचा KarmaFacie डॅशबोर्ड उघडा.",
+      "तुमचा KrutBharat डॅशबोर्ड उघडा.",
       "/dashboard",
     ],
   ].map(([label, description, path]) => ({
@@ -245,7 +245,7 @@ export default function GlobalSearch() {
       const target = event.target as HTMLElement | null;
 
       const button = target?.closest(
-        'button[aria-label="Search"], button[data-karmafacie-search="true"]'
+        'button[aria-label="Search"], button[data-krutbharat-search="true"]'
       );
 
       if (!button) {
@@ -258,12 +258,12 @@ export default function GlobalSearch() {
       openSearch();
     };
 
-    window.addEventListener("karmafacie:open-search", openSearch);
+    window.addEventListener("krutbharat:open-search", openSearch);
     window.addEventListener("keydown", onKeyDown);
     document.addEventListener("click", onDocumentClick, true);
 
     return () => {
-      window.removeEventListener("karmafacie:open-search", openSearch);
+      window.removeEventListener("krutbharat:open-search", openSearch);
       window.removeEventListener("keydown", onKeyDown);
       document.removeEventListener("click", onDocumentClick, true);
     };
@@ -286,13 +286,13 @@ export default function GlobalSearch() {
       <button
         type="button"
         aria-label="Search"
-        data-karmafacie-search="true"
+        data-krutbharat-search="true"
         title={
           language === "hi"
-            ? "KarmaFacie खोजें"
+            ? "KrutBharat खोजें"
             : language === "mr"
-              ? "KarmaFacie शोधा"
-              : "Search KarmaFacie"
+              ? "KrutBharat शोधा"
+              : "Search KrutBharat"
         }
         onClick={() => {
           setOpen(true);
@@ -328,7 +328,7 @@ export default function GlobalSearch() {
               className="kf-global-search-panel w-full max-w-2xl overflow-hidden rounded-[28px]"
               role="dialog"
               aria-modal="true"
-              aria-label="KarmaFacie Search"
+              aria-label="KrutBharat Search"
             >
               {/* Search Input */}
               <div className="flex items-center gap-3 border-b px-5 py-4">
@@ -350,10 +350,10 @@ export default function GlobalSearch() {
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder={
                     language === "hi"
-                      ? "KarmaFacie खोजें..."
+                      ? "KrutBharat खोजें..."
                       : language === "mr"
-                        ? "KarmaFacie शोधा..."
-                        : "Search KarmaFacie..."
+                        ? "KrutBharat शोधा..."
+                        : "Search KrutBharat..."
                   }
                   className="min-w-0 flex-1 bg-transparent text-[15px] outline-none"
                 />
