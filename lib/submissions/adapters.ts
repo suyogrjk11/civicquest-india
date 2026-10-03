@@ -56,7 +56,7 @@ export function decideSubmissionRoute(
       success: false,
       status: "MANUAL_REQUIRED",
       message:
-        "KarmaFacie has prepared and confirmed the complaint, but the current CSMC route requires submission through the official complaint system.",
+        "KrutBharat has prepared and confirmed the complaint, but the current CSMC route requires submission through the official complaint system.",
       officialUrl,
       externalSubmission: false,
     };

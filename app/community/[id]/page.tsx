@@ -71,19 +71,19 @@ const copy: Record<Language, Record<string, string>> = {
     reportedNext: "The issue is visible to the community. The next step is review and routing through the appropriate authority.",
     reviewNext: "The issue is currently under review. Community members can continue sharing evidence and following the issue.",
     progressNext: "Work is recorded as in progress. The community can continue tracking the issue until resolution.",
-    resolvedNext: "KarmaFacie records this issue as resolved. Citizens can verify the outcome through their own observations.",
+    resolvedNext: "KrutBharat records this issue as resolved. Citizens can verify the outcome through their own observations.",
     communitySignal: "Community Signal",
-    communitySignalText: "This page shows the public KarmaFacie view of the issue. Citizen identity and private account details are not displayed.",
+    communitySignalText: "This page shows the public KrutBharat view of the issue. Citizen identity and private account details are not displayed.",
     details: "Issue Details",
     location: "Location",
     category: "Category",
     cityState: "City / State",
-    reference: "KarmaFacie Reference",
+    reference: "KrutBharat Reference",
     myIssue: "Open My Issue →",
     evidence: "Evidence",
     noPhoto: "No photo evidence was attached to this report.",
     privacy: "Community view",
-    privacyText: "This is a KarmaFacie community record, not an official government response. Official status is shown only when supported by recorded authority information.",
+    privacyText: "This is a KrutBharat community record, not an official government response. Official status is shown only when supported by recorded authority information.",
     social: "Tag the Authority",
     socialText: "Verified authority social profiles will appear here when they are added to the authority directory.",
     noSocial: "No verified social profile is currently stored for this authority.",
@@ -95,7 +95,7 @@ const copy: Record<Language, Record<string, string>> = {
     shareReportPlural: "community reports",
     shareAuthority: "Authority",
     shareInstagram: "Tag the authority on Instagram",
-    shareRecord: "KarmaFacie community record",
+    shareRecord: "KrutBharat community record",
     shareOfficial: "Verify official responses through the authority's official channel.",
     defaultTitle: "Civic issue reported by the community",
     locationNotSpecified: "Location not specified",
@@ -124,19 +124,19 @@ const copy: Record<Language, Record<string, string>> = {
     reportedNext: "यह समस्या कम्युनिटी को दिखाई दे रही है। अगला कदम उचित प्राधिकरण द्वारा समीक्षा और रूटिंग है।",
     reviewNext: "समस्या की अभी समीक्षा हो रही है। कम्युनिटी सदस्य जानकारी और सबूत साझा कर सकते हैं।",
     progressNext: "काम प्रगति पर दर्ज है। समाधान तक कम्युनिटी इस समस्या को ट्रैक कर सकती है।",
-    resolvedNext: "KarmaFacie में समस्या का समाधान दर्ज है। नागरिक अपने निरीक्षण से परिणाम की पुष्टि कर सकते हैं।",
+    resolvedNext: "KrutBharat में समस्या का समाधान दर्ज है। नागरिक अपने निरीक्षण से परिणाम की पुष्टि कर सकते हैं।",
     communitySignal: "कम्युनिटी संकेत",
-    communitySignalText: "यह पेज KarmaFacie में समस्या का सार्वजनिक दृश्य दिखाता है। नागरिक की पहचान और निजी अकाउंट जानकारी प्रदर्शित नहीं की जाती।",
+    communitySignalText: "यह पेज KrutBharat में समस्या का सार्वजनिक दृश्य दिखाता है। नागरिक की पहचान और निजी अकाउंट जानकारी प्रदर्शित नहीं की जाती।",
     details: "समस्या विवरण",
     location: "स्थान",
     category: "श्रेणी",
     cityState: "शहर / राज्य",
-    reference: "KarmaFacie संदर्भ",
+    reference: "KrutBharat संदर्भ",
     myIssue: "मेरी समस्या खोलें →",
     evidence: "सबूत",
     noPhoto: "इस रिपोर्ट में फोटो सबूत संलग्न नहीं है।",
     privacy: "कम्युनिटी दृश्य",
-    privacyText: "यह KarmaFacie का कम्युनिटी रिकॉर्ड है, आधिकारिक सरकारी प्रतिक्रिया नहीं। आधिकारिक स्थिति केवल दर्ज प्राधिकरण जानकारी के आधार पर दिखाई जाती है।",
+    privacyText: "यह KrutBharat का कम्युनिटी रिकॉर्ड है, आधिकारिक सरकारी प्रतिक्रिया नहीं। आधिकारिक स्थिति केवल दर्ज प्राधिकरण जानकारी के आधार पर दिखाई जाती है।",
     social: "प्राधिकरण को टैग करें",
     socialText: "सत्यापित प्राधिकरण सोशल प्रोफाइल यहाँ दिखाई देंगे जब उन्हें प्राधिकरण डायरेक्टरी में जोड़ा जाएगा।",
     noSocial: "इस प्राधिकरण के लिए अभी कोई सत्यापित सोशल प्रोफाइल दर्ज नहीं है।",
@@ -147,7 +147,7 @@ const copy: Record<Language, Record<string, string>> = {
     shareReportPlural: "कम्युनिटी रिपोर्ट",
     shareAuthority: "प्राधिकरण",
     shareInstagram: "प्राधिकरण को Instagram पर टैग करें",
-    shareRecord: "KarmaFacie कम्युनिटी रिकॉर्ड",
+    shareRecord: "KrutBharat कम्युनिटी रिकॉर्ड",
     shareOfficial: "आधिकारिक प्रतिक्रिया की पुष्टि प्राधिकरण के आधिकारिक चैनल से करें।",
     defaultTitle: "कम्युनिटी द्वारा रिपोर्ट की गई नागरिक समस्या",
     locationNotSpecified: "स्थान उपलब्ध नहीं है",
@@ -176,19 +176,19 @@ const copy: Record<Language, Record<string, string>> = {
     reportedNext: "ही समस्या कम्युनिटीला दिसत आहे. पुढील टप्पा योग्य प्राधिकरणाकडून तपासणी आणि मार्गी लावणे आहे.",
     reviewNext: "समस्येची सध्या तपासणी सुरू आहे. कम्युनिटी सदस्य माहिती आणि पुरावे शेअर करू शकतात.",
     progressNext: "काम प्रगतीपथावर नोंदवले आहे. निराकरण होईपर्यंत कम्युनिटी ही समस्या ट्रॅक करू शकते.",
-    resolvedNext: "KarmaFacie मध्ये समस्या निकाली काढल्याची नोंद आहे. नागरिक स्वतःच्या निरीक्षणातून परिणाम तपासू शकतात.",
+    resolvedNext: "KrutBharat मध्ये समस्या निकाली काढल्याची नोंद आहे. नागरिक स्वतःच्या निरीक्षणातून परिणाम तपासू शकतात.",
     communitySignal: "कम्युनिटी संकेत",
-    communitySignalText: "हे पेज KarmaFacie मधील समस्येचे सार्वजनिक दृश्य दाखवते. नागरिकाची ओळख आणि खासगी अकाउंट माहिती दाखवली जात नाही.",
+    communitySignalText: "हे पेज KrutBharat मधील समस्येचे सार्वजनिक दृश्य दाखवते. नागरिकाची ओळख आणि खासगी अकाउंट माहिती दाखवली जात नाही.",
     details: "समस्या तपशील",
     location: "स्थान",
     category: "श्रेणी",
     cityState: "शहर / राज्य",
-    reference: "KarmaFacie संदर्भ",
+    reference: "KrutBharat संदर्भ",
     myIssue: "माझी समस्या उघडा →",
     evidence: "पुरावा",
     noPhoto: "या अहवालासोबत फोटो पुरावा जोडलेला नाही.",
     privacy: "कम्युनिटी दृश्य",
-    privacyText: "हा KarmaFacie कम्युनिटी रेकॉर्ड आहे, अधिकृत सरकारी प्रतिसाद नाही. अधिकृत स्थिती केवळ नोंदवलेल्या प्राधिकरण माहितीनुसार दाखवली जाते.",
+    privacyText: "हा KrutBharat कम्युनिटी रेकॉर्ड आहे, अधिकृत सरकारी प्रतिसाद नाही. अधिकृत स्थिती केवळ नोंदवलेल्या प्राधिकरण माहितीनुसार दाखवली जाते.",
     social: "प्राधिकरणाला टॅग करा",
     socialText: "सत्यापित प्राधिकरण सोशल प्रोफाइल प्राधिकरण डायरेक्टरीमध्ये जोडल्यावर येथे दिसतील.",
     noSocial: "या प्राधिकरणासाठी सध्या कोणतेही सत्यापित सोशल प्रोफाइल नोंदवलेले नाही.",
@@ -199,7 +199,7 @@ const copy: Record<Language, Record<string, string>> = {
     shareReportPlural: "कम्युनिटी अहवाल",
     shareAuthority: "प्राधिकरण",
     shareInstagram: "प्राधिकरणाला Instagram वर टॅग करा",
-    shareRecord: "KarmaFacie कम्युनिटी रेकॉर्ड",
+    shareRecord: "KrutBharat कम्युनिटी रेकॉर्ड",
     shareOfficial: "अधिकृत प्रतिसादाची पुष्टी प्राधिकरणाच्या अधिकृत माध्यमातून करा.",
     defaultTitle: "कम्युनिटीने नोंदवलेली नागरी समस्या",
     locationNotSpecified: "स्थान उपलब्ध नाही",
@@ -386,7 +386,7 @@ function categoryLabel(category: string, language: Language) {
 
 function CommunityDetailBrand() {
   return (
-    <div className="kf-community-detail-brand" aria-label="KarmaFacie Community Issues">
+    <div className="kf-community-detail-brand" aria-label="KrutBharat Community Issues">
       <div className="kf-community-detail-brand-mark">K</div>
       <div className="kf-community-detail-brand-copy">
         <div className="kf-community-detail-brand-name">
@@ -602,7 +602,7 @@ export default function CommunityIssuePage() {
 
     ctx.fillStyle = "#102033";
     ctx.font = "700 34px Arial";
-    ctx.fillText("KARMAFACIE", 70, 82);
+    ctx.fillText("KRUTBHARAT", 70, 82);
 
     ctx.fillStyle = "#e56800";
     ctx.font = "700 22px Arial";

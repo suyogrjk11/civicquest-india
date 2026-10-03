@@ -45,3 +45,5 @@ next-env.d.ts
 
 # Local migration/helper PowerShell scripts
 *.ps1
+.vercel
+.env*

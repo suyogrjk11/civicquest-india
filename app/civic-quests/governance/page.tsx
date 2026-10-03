@@ -329,7 +329,7 @@ export default function GovernanceQuestPage() {
       <main className="kf-q-page kf-q-loading">
         <div className="kf-q-loading-card">
           <div className="kf-q-brand">
-            Karma<span>Facie</span>
+            Krut<span>Bharat</span>
           </div>
           <div className="kf-q-loading-bar" />
           <p>{text.loading}</p>
@@ -418,7 +418,7 @@ export default function GovernanceQuestPage() {
           </section>
 
           <footer className="kf-q-footer">
-            Karma<span>Facie</span> · {text.questLibrary}
+            Krut<span>Bharat</span> · {text.questLibrary}
           </footer>
         </div>
 
@@ -616,7 +616,7 @@ export default function GovernanceQuestPage() {
         </section>
 
         <footer className="kf-q-footer">
-          Karma<span>Facie</span> · {text.questLibrary}
+          Krut<span>Bharat</span> · {text.questLibrary}
         </footer>
       </div>
 
@@ -631,7 +631,7 @@ function Brand() {
       <div className="kf-q-brand-box">K</div>
       <div>
         <div className="kf-q-brand-name">
-          Karma<span>Facie</span>
+          Krut<span>Bharat</span>
         </div>
         <div className="kf-q-brand-caption">CIVIC LEARNING</div>
       </div>
