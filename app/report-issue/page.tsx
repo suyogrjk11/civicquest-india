@@ -1,5 +1,7 @@
 "use client";
 
+import KrutBharatMobileShell from "@/components/KrutBharatMobileShell";
+
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
@@ -1028,6 +1030,7 @@ export default function ReportIssuePage() {
           padding: "24px",
         }}
       >
+      <KrutBharatMobileShell />
         <div className="kf-report-loading-card"
           style={{
             width: "min(420px, 100%)",
@@ -1086,6 +1089,7 @@ export default function ReportIssuePage() {
         padding: "20px 16px 72px",
       }}
     >
+      <KrutBharatMobileShell />
       <div
         style={{
           maxWidth: "1280px",

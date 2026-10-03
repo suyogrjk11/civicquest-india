@@ -1,5 +1,7 @@
 "use client";
 
+import KrutBharatMobileShell from "@/components/KrutBharatMobileShell";
+
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
@@ -2567,6 +2569,7 @@ export default function ResponsibleAuthoritiesPage() {
         className="kf-responsible-authorities-page"
         style={css.page}
       >
+      <KrutBharatMobileShell />
         <div
           style={{
             minHeight: "70vh",
@@ -2587,6 +2590,7 @@ export default function ResponsibleAuthoritiesPage() {
         className="kf-responsible-authorities-page"
         style={css.page}
       >
+      <KrutBharatMobileShell />
         <div style={css.shell}>
           <button
             type="button"
@@ -2607,6 +2611,7 @@ export default function ResponsibleAuthoritiesPage() {
 
   return (
     <main className="kf-responsible-authorities-page" style={css.page}>
+      <KrutBharatMobileShell />
       <div style={css.shell}>
         <header className="kf-ra-premium-header">
           <button

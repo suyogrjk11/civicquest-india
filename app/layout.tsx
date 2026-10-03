@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Rubik, Manrope, Fraunces, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageProvider";
@@ -36,10 +35,21 @@ export const metadata: Metadata = {
     "Learn, understand and participate in civic life with KrutBharat.",
 };
 
+// This runs before React so every route starts with the same persisted theme.
+// It intentionally avoids next/script inside <head>, which caused the
+// "Encountered a script tag while rendering React component" error.
 const themeScript = `
 (function () {
   try {
-    var saved = localStorage.getItem("KrutBharat-theme");
+    var canonical = localStorage.getItem("KrutBharat-theme");
+    var legacy = localStorage.getItem("karmafacie-theme");
+    var saved =
+      canonical === "dark" || canonical === "light"
+        ? canonical
+        : legacy === "dark" || legacy === "light"
+          ? legacy
+          : null;
+
     var theme =
       saved === "dark" || saved === "light"
         ? saved
@@ -48,6 +58,8 @@ const themeScript = `
           : "light";
 
     document.documentElement.dataset.theme = theme;
+    localStorage.setItem("KrutBharat-theme", theme);
+    localStorage.setItem("karmafacie-theme", theme);
   } catch (e) {
     document.documentElement.dataset.theme = "light";
   }
@@ -64,16 +76,15 @@ export default function RootLayout({
       className={`${displayFont.variable} ${bodyFont.variable} ${serifFont.variable} ${monoFont.variable} h-full antialiased`}
     >
       <head>
-        <Script id="theme-script" strategy="beforeInteractive">
-          {themeScript}
-        </Script>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
 
       <body className="min-h-full">
         <LanguageProvider>
           {children}
 
-          {/* These are global: available on every KrutBharat route. */}
+          {/* Desktop/global controls. On mobile/tablet they are hidden by CSS
+              because the shared app shell owns the visible controls. */}
           <ThemeToggle />
           <GlobalSearch />
         </LanguageProvider>

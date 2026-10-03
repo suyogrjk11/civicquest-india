@@ -1,5 +1,7 @@
 "use client";
 
+import KrutBharatMobileShell from "@/components/KrutBharatMobileShell";
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
@@ -512,6 +514,7 @@ export default function LeaguesPage() {
   if (loading) {
     return (
       <main className="kf-leagues-page kf-loading-page">
+      <KrutBharatMobileShell />
         <div className="kf-loading-card">
           <div className="kf-wordmark">
             Krut<span>Bharat</span>
@@ -526,6 +529,7 @@ export default function LeaguesPage() {
   if (error && !league) {
     return (
       <main className="kf-leagues-page kf-loading-page">
+      <KrutBharatMobileShell />
         <div className="kf-error-card">
           <div className="kf-eyebrow">
             KRUTBHARAT
@@ -558,6 +562,7 @@ export default function LeaguesPage() {
 
   return (
     <main className="kf-leagues-page">
+      <KrutBharatMobileShell />
       <div className="kf-leagues-shell">
 
         {/* HEADER */}

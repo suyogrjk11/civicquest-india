@@ -1,5 +1,7 @@
 ﻿"use client";
 
+import KrutBharatMobileShell from "@/components/KrutBharatMobileShell";
+
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
@@ -13,6 +15,18 @@ type Profile = {
   ageGroup: string;
   interests: string[];
 };
+
+function displayCityName(value: string, language: Language) {
+  const normalized = String(value ?? "").trim().toLocaleLowerCase();
+
+  if (normalized === "aurangabad") {
+    return language === "en"
+      ? "Chhatrapati Sambhajinagar"
+      : "छत्रपती संभाजीनगर";
+  }
+
+  return String(value ?? "").trim();
+}
 
 type LearningProgress = {
   topic: string;
@@ -226,6 +240,8 @@ const content = {
     startLearning: "Start Learning →",
 
     civicQuestLabel: "KRUTBHARAT",
+    quickAccessLabel: "QUICK ACCESS",
+    quickAccessTitle: "Start with what you need.",
     whatWouldYouLike: "What would you like to do?",
 
     explore: "Civic Learning",
@@ -325,6 +341,8 @@ const content = {
     startLearning: "सीखना शुरू करें →",
 
     civicQuestLabel: "KRUTBHARAT",
+    quickAccessLabel: "त्वरित पहुँच",
+    quickAccessTitle: "जिसकी ज़रूरत है, वहीं से शुरू करें।",
     whatWouldYouLike: "आप क्या करना चाहते हैं?",
 
     explore: "नागरिक शिक्षा",
@@ -424,6 +442,8 @@ const content = {
     startLearning: "शिकायला सुरुवात करा →",
 
     civicQuestLabel: "KRUTBHARAT",
+    quickAccessLabel: "द्रुत प्रवेश",
+    quickAccessTitle: "तुम्हाला हवे तेथून सुरुवात करा.",
     whatWouldYouLike: "तुम्हाला काय करायचे आहे?",
 
     explore: "नागरिक शिक्षण",
@@ -597,6 +617,7 @@ export default function DashboardPage() {
           padding: "24px",
         }}
       >
+      <KrutBharatMobileShell />
         <div
           style={{
             width: "min(420px, 100%)",
@@ -642,7 +663,34 @@ export default function DashboardPage() {
             {text.loading}
           </p>
         </div>
-      </main>
+      
+      <style>{`
+        @media (max-width: 1023px) {
+          .kf-dashboard-page {
+            padding: 0 10px 112px !important;
+            overflow-x: clip !important;
+          }
+
+          .kf-dashboard-page .kf-dashboard-header {
+            display: none !important;
+          }
+
+          .kf-dashboard-page > div {
+            width: 100% !important;
+            max-width: 760px !important;
+            margin: 0 auto !important;
+          }
+        }
+
+        @media (max-width: 420px) {
+          .kf-dashboard-page {
+            padding-left: 8px !important;
+            padding-right: 8px !important;
+          }
+        }
+      `}</style>
+
+    </main>
     );
   }
 
@@ -774,6 +822,7 @@ export default function DashboardPage() {
         padding: "18px 16px 0",
       }}
     >
+      <KrutBharatMobileShell />
       <div
         style={{
           maxWidth: "1200px",
@@ -1154,7 +1203,7 @@ export default function DashboardPage() {
                 {[
                   {
                     label: text.location,
-                    value: `${profile.city}, ${profile.state}`,
+                    value: `${displayCityName(profile.city, language)}, ${profile.state}`,
                     bg: "#f2f6f9",
                     icon: "location",
                   },
@@ -1252,6 +1301,129 @@ export default function DashboardPage() {
           </div>
         </section>
 
+        {/* QUICK ACCESS */}
+        <section
+          className="kf-dashboard-quick-access"
+          style={{ marginBottom: "38px" }}
+        >
+          <div style={{ marginBottom: "16px" }}>
+            <div
+              style={{
+                color: "#ff7a00",
+                fontSize: "10px",
+                fontWeight: 900,
+                letterSpacing: ".19em",
+                textTransform: "uppercase",
+                marginBottom: "6px",
+              }}
+            >
+              {text.quickAccessLabel}
+            </div>
+
+            <h2
+              style={{
+                color: "#102033",
+                fontSize: "26px",
+                lineHeight: "1.08",
+                fontWeight: 800,
+                letterSpacing: "-0.035em",
+                margin: 0,
+                fontFamily: "var(--font-display)",
+              }}
+            >
+              {text.quickAccessTitle}
+            </h2>
+          </div>
+
+          <div
+            className="kf-dashboard-quick-access-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+              gap: "12px",
+            }}
+          >
+            {actionCards.slice(0, 4).map((card) => (
+              <button
+                key={`quick-${card.path}`}
+                type="button"
+                onClick={() => router.push(card.path)}
+                className="kf-dashboard-quick-access-card"
+                style={{
+                  position: "relative",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  width: "100%",
+                  minHeight: "74px",
+                  padding: "12px 14px",
+                  borderRadius: "20px",
+                  border: "1px solid rgba(16,27,43,.09)",
+                  background: card.bg,
+                  color: "#102033",
+                  textAlign: "left",
+                  cursor: "pointer",
+                  boxShadow: "0 8px 22px rgba(16,27,43,.04)",
+                  transition:
+                    "transform .2s ease, box-shadow .2s ease, border-color .2s ease",
+                  boxSizing: "border-box",
+                }}
+              >
+                <span
+                  aria-hidden="true"
+                  style={{
+                    width: "42px",
+                    height: "42px",
+                    display: "grid",
+                    placeItems: "center",
+                    flexShrink: 0,
+                    borderRadius: "14px",
+                    background: "rgba(255,255,255,.72)",
+                    border: "1px solid rgba(16,27,43,.07)",
+                    fontSize: "20px",
+                  }}
+                >
+                  {card.icon}
+                </span>
+
+                <span
+                  style={{
+                    minWidth: 0,
+                    display: "block",
+                  }}
+                >
+                  <strong
+                    style={{
+                      display: "block",
+                      fontSize: "13px",
+                      lineHeight: "1.15",
+                      fontWeight: 900,
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    {card.title}
+                  </strong>
+
+                  <span
+                    style={{
+                      display: "block",
+                      marginTop: "3px",
+                      color: "#6c7782",
+                      fontSize: "10px",
+                      lineHeight: "1.35",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {card.actionText}
+                  </span>
+                </span>
+              </button>
+            ))}
+          </div>
+        </section>
+
         {/* PROFILE SUMMARY */}
         <section style={{ marginBottom: "50px" }}>
           <div
@@ -1288,6 +1460,7 @@ export default function DashboardPage() {
           </div>
 
           <div
+            className="kf-dashboard-profile-summary-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
@@ -1297,7 +1470,7 @@ export default function DashboardPage() {
             <InfoCard
               icon="📍"
               title={text.location}
-              value={profile.city}
+              value={displayCityName(profile.city, language)}
               subtitle={profile.state}
               tint="#edf5fb"
             />
@@ -1701,7 +1874,17 @@ export default function DashboardPage() {
           }
         }
 
+        .kf-dashboard-quick-access-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 28px rgba(16,27,43,.07);
+          border-color: rgba(16,27,43,.14);
+        }
+
         @media (max-width: 980px) {
+          .kf-dashboard-quick-access-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          }
+
           main > div > header + section > div {
             grid-template-columns: 1fr !important;
           }
@@ -3537,6 +3720,385 @@ html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card-civic-sens
   color: #a9bdcf !important;
 }
 
+
+
+/* =====================================================
+   MOBILE / TABLET PROFILE INFORMATION
+   Desktop remains unchanged. Narrow layouts use compact,
+   structured cards so city/age/interests do not become
+   tall narrow columns.
+   ===================================================== */
+@media (max-width: 1023px) {
+  .kf-dashboard-profile-summary-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .kf-dashboard-profile-summary-grid > .kf-dashboard-info-card:first-child {
+    grid-column: 1 / -1 !important;
+  }
+
+  .kf-dashboard-info-card {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 14px !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 22px rgba(16,27,43,.045) !important;
+  }
+
+  .kf-dashboard-info-card > div:nth-child(2) {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 13px !important;
+    font-size: 18px !important;
+  }
+
+  .kf-dashboard-info-card > div:nth-child(3) {
+    margin-top: 9px !important;
+    margin-bottom: 3px !important;
+    font-size: 8px !important;
+    line-height: 1.2 !important;
+    letter-spacing: .11em !important;
+  }
+
+  .kf-dashboard-info-card > div:nth-child(4) {
+    margin-bottom: 2px !important;
+    font-size: 15px !important;
+    line-height: 1.18 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .kf-dashboard-info-card > div:nth-child(5) {
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+  }
+
+  .kf-welcome-profile {
+    min-height: 0 !important;
+    padding: 16px !important;
+  }
+
+  .kf-welcome-row {
+    gap: 8px !important;
+    padding: 9px 10px !important;
+    border-radius: 13px !important;
+  }
+
+  .kf-welcome-row-label {
+    font-size: 8px !important;
+    letter-spacing: .10em !important;
+  }
+
+  .kf-welcome-row-value {
+    max-width: 62% !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    text-align: right !important;
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .kf-dashboard-quick-access-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .kf-dashboard-quick-access-card {
+    min-height: 68px !important;
+  }
+
+  .kf-dashboard-profile-summary-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .kf-dashboard-info-card {
+    padding: 12px !important;
+  }
+
+  .kf-dashboard-info-card > div:nth-child(4) {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .kf-dashboard-profile-summary-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .kf-dashboard-profile-summary-grid > .kf-dashboard-info-card:first-child {
+    grid-column: auto !important;
+  }
+}
+
+
+        /* =====================================================
+           DARK MODE — DASHBOARD RECTANGLES
+           Light mode stays exactly as it is.
+           ===================================================== */
+
+        /* Quick Access cards */
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-quick-access-card {
+          color: #f4f7fb !important;
+          border-color: rgba(145,174,204,.18) !important;
+          box-shadow: 0 12px 30px rgba(0,0,0,.20) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-quick-access-card:nth-child(1) {
+          background: linear-gradient(145deg, #102f4b, #0e263d) !important;
+          border-color: rgba(83,166,222,.28) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-quick-access-card:nth-child(2) {
+          background: linear-gradient(145deg, #163a30, #122f27) !important;
+          border-color: rgba(99,190,146,.26) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-quick-access-card:nth-child(3) {
+          background: linear-gradient(145deg, #342d4d, #2a243e) !important;
+          border-color: rgba(190,165,226,.28) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-quick-access-card:nth-child(4) {
+          background: linear-gradient(145deg, #3b2c1f, #302419) !important;
+          border-color: rgba(225,157,85,.28) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-quick-access-card > span:first-child {
+          background: rgba(255,255,255,.075) !important;
+          border-color: rgba(255,255,255,.10) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-quick-access-card strong {
+          color: #f7f9fc !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-quick-access-card > span:nth-child(2) > span {
+          color: #9fb2c3 !important;
+        }
+
+        /* Civic Profile cards */
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-info-card {
+          color: #f7f8fb !important;
+          border-color: rgba(145,174,204,.16) !important;
+          box-shadow: 0 12px 30px rgba(0,0,0,.20) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-profile-summary-grid > .kf-dashboard-info-card:nth-child(1) {
+          background: linear-gradient(145deg, #102f4b, #0e263d) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-profile-summary-grid > .kf-dashboard-info-card:nth-child(2) {
+          background: linear-gradient(145deg, #3b2c1f, #302419) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-profile-summary-grid > .kf-dashboard-info-card:nth-child(3) {
+          background: linear-gradient(145deg, #18352b, #122b23) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-info-card > div:first-child {
+          background: rgba(255,255,255,.055) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-info-card > div:nth-child(2) {
+          background: rgba(255,255,255,.075) !important;
+          border: 1px solid rgba(255,255,255,.08) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-info-card > div:nth-child(3) {
+          color: #90a2b4 !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-info-card > div:nth-child(4) {
+          color: #f5f8fb !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-info-card > div:nth-child(5) {
+          color: #a5b6c6 !important;
+        }
+
+        /* Learning progress summary rectangle */
+        html[data-theme="dark"] .kf-dashboard-page .kf-overall-percentage-ring {
+          background: #0d1d31 !important;
+          border: 0 !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-overall-percentage {
+          color: #f7f8fb !important;
+          -webkit-text-fill-color: #f7f8fb !important;
+        }
+
+        /* Feature rectangles */
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card {
+          color: #f7f8fb !important;
+          box-shadow:
+            0 15px 34px rgba(0,0,0,.25),
+            inset 0 1px 0 rgba(255,255,255,.035) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card:nth-child(1) {
+          background: linear-gradient(145deg, #102f4b, #0e263d) !important;
+          border-color: rgba(83,166,222,.25) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card:nth-child(2) {
+          background: linear-gradient(145deg, #163a30, #122f27) !important;
+          border-color: rgba(99,190,146,.24) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card:nth-child(3) {
+          background: linear-gradient(145deg, #342d4d, #2a243e) !important;
+          border-color: rgba(190,165,226,.25) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card:nth-child(4) {
+          background: linear-gradient(145deg, #3b2c1f, #302419) !important;
+          border-color: rgba(225,157,85,.25) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card:nth-child(5) {
+          background: linear-gradient(145deg, #18352b, #122b23) !important;
+          border-color: rgba(126,169,91,.24) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card:nth-child(6) {
+          background: linear-gradient(145deg, #342947, #292039) !important;
+          border-color: rgba(190,165,226,.24) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card:nth-child(7) {
+          background: linear-gradient(145deg, #213a2d, #182d23) !important;
+          border-color: rgba(126,169,91,.24) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card:nth-child(8) {
+          background: linear-gradient(145deg, #12333b, #102a30) !important;
+          border-color: rgba(78,178,194,.24) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card:nth-child(9) {
+          background: linear-gradient(145deg, #392b1e, #2f2419) !important;
+          border-color: rgba(225,157,85,.24) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card:nth-child(10) {
+          background: linear-gradient(145deg, #3a2c20, #302319) !important;
+          border-color: rgba(230,166,97,.24) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card:nth-child(11) {
+          background: linear-gradient(145deg, #102f4b, #0e263d) !important;
+          border-color: rgba(83,166,222,.25) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card > div:first-child {
+          background: rgba(255,255,255,.055) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card > div:nth-child(3) > div:first-child {
+          background: rgba(255,255,255,.075) !important;
+          border-color: rgba(255,255,255,.08) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card h3 {
+          color: #f7f9fc !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card p {
+          color: #aebed0 !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card > div:last-child > span:first-child {
+          color: #ff9a4d !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card > div:last-child > span:last-child {
+          background: rgba(4,10,20,.48) !important;
+          border-color: rgba(145,174,204,.16) !important;
+          color: #9fb0c0 !important;
+        }
+
+
+
+
+        /* ==================================================
+           FINAL DARK-MODE RECTANGLE FIX
+           ================================================== */
+
+        /* 1) Learning Progress overall-completion rectangle */
+        html[data-theme="dark"] .kf-dashboard-page > div > section:nth-of-type(4) > div:nth-child(2) {
+          background:
+            radial-gradient(circle at 88% 12%, rgba(32,76,112,.30) 0%, rgba(32,76,112,0) 32%),
+            linear-gradient(145deg, #101f33 0%, #0b1728 100%) !important;
+          border: 1px solid rgba(139,174,204,.18) !important;
+          box-shadow:
+            0 18px 40px rgba(0,0,0,.28),
+            inset 0 1px 0 rgba(255,255,255,.035) !important;
+          color: #f5f8fb !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page > div > section:nth-of-type(4) > div:nth-child(2) > div:first-child {
+          color: #f5f8fb !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page > div > section:nth-of-type(4) > div:nth-child(2) div[style*="color: #989fa6"] {
+          color: #91a5b7 !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page > div > section:nth-of-type(4) > div:nth-child(2) div[style*="color: #102033"] {
+          color: #f5f8fb !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page > div > section:nth-of-type(4) > div:nth-child(2) span[style*="color: #7c8791"] {
+          color: #9db0c1 !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page > div > section:nth-of-type(4) > div:nth-child(2) div[style*="background: #fffdf9"] {
+          background: #0b1728 !important;
+          border: 0 !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page > div > section:nth-of-type(4) > div:nth-child(2) div[style*="background: #eee8df"] {
+          background: rgba(255,255,255,.085) !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page > div > section:nth-of-type(4) > div:nth-child(2) p {
+          color: #9fb1c2 !important;
+        }
+
+        /* 2) Remove the unwanted green block around FEATURES */
+        html[data-theme="dark"] .kf-dashboard-page > div > section:nth-of-type(5) {
+          background: transparent !important;
+          border: 0 !important;
+          box-shadow: none !important;
+        }
+
+        /* Remove the rectangular backdrop behind the Civic Profile cards.
+           The older dashboard dark-mode block also targets section 3 > div 2,
+           so this selector intentionally matches that specificity and wins. */
+        html[data-theme="dark"] .kf-dashboard-page > div > section:nth-of-type(3) > div:nth-child(2) {
+          background: transparent !important;
+          border: 0 !important;
+          box-shadow: none !important;
+          background-image: none !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page > div > section:nth-of-type(3) {
+          background: transparent !important;
+          border: 0 !important;
+          box-shadow: none !important;
+          background-image: none !important;
+        }
+
+        html[data-theme="dark"] .kf-dashboard-page > div > section:nth-of-type(3) > div:nth-child(2)::before,
+        html[data-theme="dark"] .kf-dashboard-page > div > section:nth-of-type(3) > div:nth-child(2)::after,
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-profile-summary-grid::before,
+        html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-profile-summary-grid::after {
+          content: none !important;
+          display: none !important;
+          background: none !important;
+        }
+
 `}</style>
     </main>
   );
@@ -3561,6 +4123,7 @@ function InfoCard({
 }) {
   return (
     <div
+      className="kf-dashboard-info-card"
       style={{
         position: "relative",
         overflow: "hidden",

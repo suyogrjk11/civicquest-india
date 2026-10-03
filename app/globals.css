@@ -10164,3 +10164,874 @@ html:not([data-theme="dark"]) #how-it-works .kf-home-journey-step:hover {
     transition: none !important;
   }
 }
+
+/* =====================================================================
+   KRUTBHARAT — FINAL MOBILE + TABLET APP LAYER
+   ---------------------------------------------------------------------
+   IMPORTANT:
+   - Applies ONLY below 1024px.
+   - Desktop / PC styles at 1024px and above are intentionally untouched.
+   - Scoped to the shared mobile app shell where possible so the homepage's
+     own presentation remains independent.
+   ===================================================================== */
+
+@media (max-width: 1023px) {
+  /* ---------------------------------------------------------------
+     SHARED APP CANVAS
+     --------------------------------------------------------------- */
+  body.kf-mobile-shell-active {
+    overflow-x: hidden !important;
+    background: var(--kf-ivory) !important;
+  }
+
+  body.kf-mobile-shell-active main {
+    max-width: 100% !important;
+    overflow-x: clip !important;
+  }
+
+  /* ---------------------------------------------------------------
+     REMOVE LEGACY GLOBAL FLOATING SEARCH / THEME BUTTONS
+     These controls are still intentionally available on the homepage,
+     which does not set .kf-mobile-shell-active.
+     --------------------------------------------------------------- */
+  body.kf-mobile-shell-active .kf-global-theme-toggle,
+  body.kf-mobile-shell-active .kf-theme-toggle,
+  body.kf-mobile-shell-active .kf-global-search-trigger {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* ---------------------------------------------------------------
+     THE SHARED MOBILE HEADER OWNS THE TOP OF THE APP
+     --------------------------------------------------------------- */
+  body.kf-mobile-shell-active .kf-mobile-shell-header {
+    top: 8px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-header-inner {
+    width: min(calc(100% - 16px), 980px) !important;
+    min-height: 58px !important;
+    padding: 7px 8px 7px 14px !important;
+    border-radius: 19px !important;
+    border-color: rgba(16,32,51,.10) !important;
+    box-shadow:
+      0 12px 34px rgba(16,32,51,.12),
+      inset 0 1px 0 rgba(255,255,255,.92) !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-brand {
+    font-size: 21px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-icon-button,
+  body.kf-mobile-shell-active .kf-mobile-shell-menu,
+  body.kf-mobile-shell-active .kf-mobile-shell-language {
+    height: 37px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-icon-button,
+  body.kf-mobile-shell-active .kf-mobile-shell-menu {
+    width: 37px !important;
+    border-radius: 12px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-language {
+    min-width: 78px !important;
+    max-width: 100px !important;
+    padding-inline: 9px !important;
+    border-radius: 12px !important;
+    font-size: 9px !important;
+  }
+
+  /* ---------------------------------------------------------------
+     REMOVE ANY LEGACY PAGE HEADER THAT COMPETES WITH THE APP SHELL
+     --------------------------------------------------------------- */
+  body.kf-mobile-shell-active .kf-know-india-topbar,
+  body.kf-mobile-shell-active .kf-dashboard-header,
+  body.kf-mobile-shell-active .kf-civic-sense-topbar,
+  body.kf-mobile-shell-active .kf-ra-premium-header,
+  body.kf-mobile-shell-active .kf-report-topbar,
+  body.kf-mobile-shell-active .kf-my-impact-topbar,
+  body.kf-mobile-shell-active .kf-community-topbar,
+  body.kf-mobile-shell-active .kf-leagues-topbar {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* Dashboard: belt-and-suspenders removal of the old Home /
+     Language / Edit Profile floating header. */
+  body.kf-mobile-shell-active main.kf-dashboard-page header.kf-dashboard-header,
+  body.kf-mobile-shell-active main.kf-dashboard-page > div > header.kf-dashboard-header {
+    display: none !important;
+    visibility: hidden !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* ---------------------------------------------------------------
+     BEAUTIFIED BOTTOM APP NAV
+     --------------------------------------------------------------- */
+  body.kf-mobile-shell-active .kf-mobile-shell-bottom-nav {
+    left: 50% !important;
+    right: auto !important;
+    bottom: calc(9px + env(safe-area-inset-bottom)) !important;
+    width: min(calc(100% - 16px), 760px) !important;
+    min-height: 74px !important;
+    padding: 7px 7px 7px !important;
+    gap: 3px !important;
+    border: 1px solid rgba(16,32,51,.10) !important;
+    border-radius: 24px !important;
+    background: rgba(255,253,249,.96) !important;
+    box-shadow:
+      0 18px 48px rgba(16,32,51,.17),
+      inset 0 1px 0 rgba(255,255,255,.95) !important;
+    backdrop-filter: blur(24px) saturate(145%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(145%) !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-bottom-nav::before {
+    left: 15px !important;
+    right: 15px !important;
+    height: 1px !important;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,122,0,.42),
+      transparent
+    ) !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-bottom-item {
+    min-height: 59px !important;
+    border-radius: 16px !important;
+    padding: 4px 2px 5px !important;
+    gap: 3px !important;
+    color: #718096 !important;
+    font-size: 8px !important;
+    font-weight: 850 !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-bottom-item > span:last-child {
+    max-width: 64px !important;
+    min-height: 18px !important;
+    line-height: 1.05 !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-bottom-icon {
+    width: 33px !important;
+    height: 33px !important;
+    border-radius: 11px !important;
+    background: #f0f4f7 !important;
+    color: #6c7f92 !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-bottom-item.is-active:not(.is-report) {
+    background: #fff3e5 !important;
+    color: #f4770a !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-bottom-item.is-active:not(.is-report) .kf-mobile-shell-bottom-icon {
+    background: #ffe3c3 !important;
+    color: #ff7a00 !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-bottom-item.is-active:not(.is-report)::after {
+    bottom: 3px !important;
+    width: 20px !important;
+    height: 2px !important;
+    background: #ff7a00 !important;
+  }
+
+  /* Center Report action — circular, elevated, unmistakably primary. */
+  body.kf-mobile-shell-active .kf-mobile-shell-bottom-item.is-report {
+    margin-top: -15px !important;
+    padding-top: 0 !important;
+    background: transparent !important;
+    color: #657486 !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-bottom-item.is-report .kf-mobile-shell-bottom-icon {
+    width: 52px !important;
+    height: 52px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(145deg, #ff963f 0%, #ff7a00 72%) !important;
+    color: #ffffff !important;
+    box-shadow:
+      0 11px 26px rgba(255,122,0,.29),
+      0 0 0 5px rgba(255,253,249,.98) !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-bottom-item.is-report.is-active {
+    color: #ff7a00 !important;
+  }
+
+  body.kf-mobile-shell-active .kf-mobile-shell-bottom-item.is-report.is-active .kf-mobile-shell-bottom-icon {
+    box-shadow:
+      0 12px 28px rgba(255,122,0,.34),
+      0 0 0 5px rgba(255,253,249,.98) !important;
+  }
+
+  /* ---------------------------------------------------------------
+     KNOW INDIA — MOBILE / TABLET COMPOSITION
+     Keep the actual map interactive; only control the containing layout.
+     --------------------------------------------------------------- */
+  body.kf-mobile-shell-active main.kf-know-india-page {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100vh !important;
+    padding: 80px 10px 118px !important;
+    margin: 0 !important;
+    overflow-x: clip !important;
+    box-sizing: border-box !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-know-india-page > div {
+    width: 100% !important;
+    max-width: 820px !important;
+    margin: 0 auto !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-hero {
+    width: 100% !important;
+    margin: 0 0 14px !important;
+    padding: 24px 18px !important;
+    border-radius: 24px !important;
+    box-sizing: border-box !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-hero h1 {
+    margin: 8px 0 9px !important;
+    font-size: clamp(36px, 10.5vw, 52px) !important;
+    line-height: 1.0 !important;
+    letter-spacing: -.045em !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-hero p {
+    max-width: 100% !important;
+    margin: 0 !important;
+    font-size: 13px !important;
+    line-height: 1.58 !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-flag {
+    width: 56px !important;
+    height: 56px !important;
+    margin: 12px 0 9px !important;
+    border-radius: 17px !important;
+    font-size: 27px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-map-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 14px !important;
+    border-radius: 23px !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-map-section > div:first-child {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-map-title-main {
+    font-size: clamp(26px, 7.4vw, 36px) !important;
+    line-height: 1.04 !important;
+    margin: 4px 0 8px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-map-section > div:first-child > div:last-child {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    margin: 0 !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-states-pill,
+  body.kf-mobile-shell-active .kf-know-india-uts-pill {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 40px !important;
+    padding: 8px 9px !important;
+    border-radius: 14px !important;
+    box-sizing: border-box !important;
+    font-size: 10px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-map-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    margin-top: 10px !important;
+    padding: 4px !important;
+    border-radius: 19px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-map-card > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-map-card .kf-know-india-map-canvas {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    border-radius: 17px !important;
+    overflow: hidden !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-map-card .kf-know-india-map-svg-wrap {
+    width: 100% !important;
+    padding: 57px 2px 7px !important;
+    box-sizing: border-box !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-map-card svg,
+  body.kf-mobile-shell-active .kf-know-india-map-card svg[width="900"][height="720"] {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-map-card .kf-know-india-map-title {
+    top: 13px !important;
+    left: 14px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-map-card .kf-map-title-eyebrow {
+    font-size: 9px !important;
+    letter-spacing: 1.15px !important;
+    margin-bottom: 4px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-map-card .kf-map-title-hint {
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-map-card [style*="width: \"330px\""] {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  body.kf-mobile-shell-active .kf-know-india-future-card {
+    width: 100% !important;
+    margin: 14px 0 0 !important;
+    border-radius: 21px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ---------------------------------------------------------------
+     CIVIC SENSE — MOBILE / TABLET COMPOSITION
+     --------------------------------------------------------------- */
+  body.kf-mobile-shell-active main.kf-civic-sense-page {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100vh !important;
+    padding: 80px 10px 118px !important;
+    margin: 0 !important;
+    overflow-x: clip !important;
+    box-sizing: border-box !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-civic-sense-page > div {
+    width: 100% !important;
+    max-width: 820px !important;
+    margin: 0 auto !important;
+  }
+
+  body.kf-mobile-shell-active .kf-civic-sense-hero {
+    width: 100% !important;
+    min-height: 0 !important;
+    margin: 0 0 14px !important;
+    padding: 24px 18px !important;
+    border-radius: 24px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  body.kf-mobile-shell-active .kf-civic-sense-hero-copy {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body.kf-mobile-shell-active .kf-civic-sense-hero h1,
+  body.kf-mobile-shell-active .kf-civic-sense-hero-title {
+    max-width: 100% !important;
+    font-size: clamp(36px, 10.5vw, 54px) !important;
+    line-height: 1.0 !important;
+  }
+
+  body.kf-mobile-shell-active .kf-civic-sense-hero-description {
+    max-width: 100% !important;
+    font-size: 13px !important;
+    line-height: 1.58 !important;
+  }
+
+  body.kf-mobile-shell-active .kf-civic-sense-section {
+    width: 100% !important;
+    padding: 22px 0 !important;
+  }
+
+  body.kf-mobile-shell-active .kf-civic-sense-intro {
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-civic-sense-habit-grid {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-top: 14px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-civic-sense-habit-card {
+    width: 100% !important;
+    min-height: 0 !important;
+    padding: 17px !important;
+    border-radius: 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  body.kf-mobile-shell-active .kf-civic-sense-challenge,
+  body.kf-mobile-shell-active .kf-civic-sense-small-karma,
+  body.kf-mobile-shell-active .kf-civic-sense-final {
+    width: 100% !important;
+    min-height: 0 !important;
+    box-sizing: border-box !important;
+    border-radius: 22px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-civic-sense-challenge {
+    margin-top: 14px !important;
+    padding: 19px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-civic-sense-small-karma {
+    margin-top: 14px !important;
+    padding: 19px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-civic-sense-final {
+    margin-top: 14px !important;
+    padding: 22px 18px !important;
+  }
+
+  /* ---------------------------------------------------------------
+     DARK MODE — APP SHELL + PAGE SURFACES
+     --------------------------------------------------------------- */
+  html[data-theme="dark"] body.kf-mobile-shell-active {
+    background: #07111f !important;
+  }
+
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-mobile-shell-bottom-nav {
+    background: rgba(8,20,34,.97) !important;
+    border-color: rgba(145,174,204,.20) !important;
+    box-shadow:
+      0 20px 54px rgba(0,0,0,.38),
+      inset 0 1px 0 rgba(255,255,255,.045) !important;
+  }
+
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-mobile-shell-bottom-item {
+    color: #8ea3b8 !important;
+  }
+
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-mobile-shell-bottom-icon {
+    background: #0f2439 !important;
+    color: #8ba3ba !important;
+  }
+
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-mobile-shell-bottom-item.is-active:not(.is-report) {
+    background: #152d46 !important;
+    color: #ff9a55 !important;
+  }
+
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-mobile-shell-bottom-item.is-active:not(.is-report) .kf-mobile-shell-bottom-icon {
+    background: #263b4e !important;
+    color: #ff9a55 !important;
+  }
+
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-mobile-shell-bottom-item.is-report .kf-mobile-shell-bottom-icon {
+    background: linear-gradient(145deg, #ff983f 0%, #ff7a00 72%) !important;
+    color: #ffffff !important;
+    box-shadow:
+      0 12px 28px rgba(255,122,0,.34),
+      0 0 0 5px rgba(8,20,34,.97) !important;
+  }
+
+  html[data-theme="dark"] body.kf-mobile-shell-active main.kf-know-india-page {
+    background:
+      radial-gradient(circle at 8% 5%, rgba(0,212,255,.07), transparent 22%),
+      radial-gradient(circle at 92% 4%, rgba(255,122,26,.08), transparent 24%),
+      linear-gradient(180deg, #07111f 0%, #081525 55%, #050d18 100%) !important;
+  }
+
+  html[data-theme="dark"] body.kf-mobile-shell-active main.kf-civic-sense-page {
+    background:
+      radial-gradient(circle at 88% 5%, rgba(255,122,26,.08), transparent 24%),
+      radial-gradient(circle at 6% 78%, rgba(79,181,255,.06), transparent 25%),
+      linear-gradient(180deg, #07111f 0%, #081525 55%, #050d18 100%) !important;
+  }
+
+  /* Keep Know India state detail panels contained on phones. */
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-map-state-panel,
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-know-india-info-box {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ---------------------------------------------------------------
+     PHONE-SPECIFIC TUNING
+     --------------------------------------------------------------- */
+  @media (max-width: 640px) {
+    body.kf-mobile-shell-active {
+      padding-bottom: calc(98px + env(safe-area-inset-bottom)) !important;
+    }
+
+    body.kf-mobile-shell-active .kf-mobile-shell-bottom-nav {
+      width: calc(100% - 14px) !important;
+      min-height: 72px !important;
+      bottom: calc(7px + env(safe-area-inset-bottom)) !important;
+      border-radius: 22px !important;
+      padding: 6px 5px 6px !important;
+    }
+
+    body.kf-mobile-shell-active .kf-mobile-shell-bottom-item {
+      min-height: 57px !important;
+      font-size: 7.7px !important;
+    }
+
+    body.kf-mobile-shell-active .kf-mobile-shell-bottom-icon {
+      width: 31px !important;
+      height: 31px !important;
+      border-radius: 10px !important;
+    }
+
+    body.kf-mobile-shell-active .kf-mobile-shell-bottom-item.is-report {
+      margin-top: -14px !important;
+    }
+
+    body.kf-mobile-shell-active .kf-mobile-shell-bottom-item.is-report .kf-mobile-shell-bottom-icon {
+      width: 50px !important;
+      height: 50px !important;
+      box-shadow:
+        0 10px 24px rgba(255,122,0,.30),
+        0 0 0 4px rgba(255,253,249,.98) !important;
+    }
+
+    html[data-theme="dark"] body.kf-mobile-shell-active .kf-mobile-shell-bottom-item.is-report .kf-mobile-shell-bottom-icon {
+      box-shadow:
+        0 10px 24px rgba(255,122,0,.34),
+        0 0 0 4px rgba(8,20,34,.98) !important;
+    }
+
+    body.kf-mobile-shell-active main.kf-know-india-page,
+    body.kf-mobile-shell-active main.kf-civic-sense-page {
+      padding-left: 8px !important;
+      padding-right: 8px !important;
+    }
+
+    body.kf-mobile-shell-active .kf-know-india-hero,
+    body.kf-mobile-shell-active .kf-civic-sense-hero {
+      border-radius: 22px !important;
+    }
+
+    body.kf-mobile-shell-active .kf-know-india-map-section {
+      padding: 12px !important;
+      border-radius: 21px !important;
+    }
+  }
+
+  /* ---------------------------------------------------------------
+     TABLET-SPECIFIC TUNING
+     --------------------------------------------------------------- */
+  @media (min-width: 641px) and (max-width: 1023px) {
+    body.kf-mobile-shell-active .kf-mobile-shell-header-inner {
+      width: min(calc(100% - 28px), 920px) !important;
+      min-height: 62px !important;
+    }
+
+    body.kf-mobile-shell-active .kf-mobile-shell-bottom-nav {
+      width: min(calc(100% - 28px), 920px) !important;
+      min-height: 82px !important;
+      border-radius: 27px !important;
+    }
+
+    body.kf-mobile-shell-active .kf-mobile-shell-bottom-item {
+      min-height: 66px !important;
+      font-size: 9px !important;
+    }
+
+    body.kf-mobile-shell-active .kf-mobile-shell-bottom-icon {
+      width: 37px !important;
+      height: 37px !important;
+      border-radius: 12px !important;
+    }
+
+    body.kf-mobile-shell-active .kf-mobile-shell-bottom-item.is-report .kf-mobile-shell-bottom-icon {
+      width: 56px !important;
+      height: 56px !important;
+    }
+
+    body.kf-mobile-shell-active main.kf-know-india-page,
+    body.kf-mobile-shell-active main.kf-civic-sense-page {
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+  }
+}
+
+
+
+/* =====================================================================
+   KRUTBHARAT — FINAL MOBILE + TABLET POLISH PATCH
+   ---------------------------------------------------------------------
+   This patch is intentionally scoped to max-width: 1023px only.
+   Desktop / PC styles (1024px+) are not changed.
+   ===================================================================== */
+
+@media (max-width: 1023px) {
+  /* ---------------------------------------------------------------
+     UNIVERSAL MOBILE APP CANVAS
+     --------------------------------------------------------------- */
+  body.kf-mobile-shell-active {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden !important;
+  }
+
+  body.kf-mobile-shell-active main {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: clip !important;
+  }
+
+  /* ---------------------------------------------------------------
+     JOURNEY PAGES — REMOVE LIGHT/WHITISH DECORATIVE SURFACES IN DARK MODE
+     Applies to /learn, /understand, /participate only.
+     --------------------------------------------------------------- */
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub {
+    background:
+      radial-gradient(circle at 92% 4%, rgba(255, 122, 26, .08), transparent 22%),
+      radial-gradient(circle at 8% 78%, rgba(79, 181, 255, .055), transparent 24%),
+      linear-gradient(180deg, #07111f 0%, #081525 54%, #050d18 100%) !important;
+    color: #f5f7fb !important;
+  }
+
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  .kf-journey-surface {
+    background:
+      linear-gradient(145deg, #10243a 0%, #0b1a2c 100%) !important;
+    border-color: rgba(120, 165, 205, .20) !important;
+    color: #f5f7fb !important;
+    box-shadow:
+      0 18px 42px rgba(0, 0, 0, .25),
+      inset 0 1px 0 rgba(255, 255, 255, .035) !important;
+  }
+
+  /* SectionCard decorative circles/tints become subtle atmospheric glows,
+     not white/cream spots. */
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  .pointer-events-none {
+    opacity: .16 !important;
+    filter: saturate(.55) brightness(.55) !important;
+  }
+
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  .bg-white,
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  .bg-white\/75,
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  .bg-white\/80,
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  .bg-white\/70 {
+    background: #0d2136 !important;
+    color: #f5f7fb !important;
+  }
+
+  /* Light inline card surfaces used by the JourneyHub content. */
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="bg-[#fff"],
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="bg-[#fb"],
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="bg-[#fc"],
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="bg-[#f8f"] {
+    background: #0d2136 !important;
+    border-color: rgba(120, 165, 205, .16) !important;
+    color: #dce7f1 !important;
+  }
+
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="bg-[#eef"],
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="bg-[#e8"],
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="bg-[#f4"],
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="bg-[#f5"] {
+    background: #132b43 !important;
+    border-color: rgba(120, 165, 205, .16) !important;
+    color: #dce7f1 !important;
+  }
+
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="text-[#102033"],
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="text-[#263447"],
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="text-[#334155"],
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="text-[#4a"] {
+    color: #e6eef6 !important;
+  }
+
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="text-[#657482"],
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="text-[#71808e"],
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="text-[#7d"],
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  [class*="text-[#9"] {
+    color: #9eb2c7 !important;
+  }
+
+  /* Journey tabs: inactive tabs also need dark surfaces. */
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  a[class*="bg-white"] {
+    background: #0d2136 !important;
+    border-color: rgba(120, 165, 205, .18) !important;
+    color: #c5d4e2 !important;
+  }
+
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-journey-hub
+  a[class*="bg-white"]:hover {
+    background: #142d46 !important;
+  }
+
+  /* ---------------------------------------------------------------
+     JOURNEY MOBILE / TABLET SPACING
+     --------------------------------------------------------------- */
+  body.kf-mobile-shell-active .kf-journey-hub {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: clip !important;
+  }
+
+  body.kf-mobile-shell-active .kf-journey-hub > header {
+    width: 100% !important;
+  }
+
+  body.kf-mobile-shell-active .kf-journey-hub
+  > .pt-4 {
+    padding-top: 10px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-journey-hub
+  > section {
+    padding-top: 12px !important;
+    padding-bottom: 14px !important;
+  }
+
+  body.kf-mobile-shell-active .kf-journey-hub
+  > div.mx-auto.max-w-6xl {
+    padding-bottom: 104px !important;
+  }
+
+  @media (max-width: 640px) {
+    body.kf-mobile-shell-active .kf-journey-hub
+    > section {
+      padding-left: 8px !important;
+      padding-right: 8px !important;
+    }
+
+    body.kf-mobile-shell-active .kf-journey-hub h1 {
+      font-size: clamp(34px, 10.5vw, 48px) !important;
+    }
+
+    body.kf-mobile-shell-active .kf-journey-hub h2 {
+      font-size: 24px !important;
+    }
+
+    body.kf-mobile-shell-active .kf-journey-hub
+    .kf-journey-surface {
+      border-radius: 22px !important;
+      padding: 17px !important;
+    }
+  }
+}
+
+/* =====================================================================
+   UNIVERSAL THEME TRANSITION — MOBILE + TABLET ONLY
+   Smoothly keeps the shared app chrome visually synchronized.
+   ===================================================================== */
+
+@media (max-width: 1023px) {
+  html,
+  body,
+  body.kf-mobile-shell-active,
+  body.kf-mobile-shell-active main,
+  body.kf-mobile-shell-active header,
+  body.kf-mobile-shell-active section,
+  body.kf-mobile-shell-active button,
+  body.kf-mobile-shell-active a {
+    transition:
+      background-color .20s ease,
+      background .20s ease,
+      border-color .20s ease,
+      color .20s ease,
+      box-shadow .20s ease !important;
+  }
+}
+
+
+/* =====================================================================
+   KRUTBHARAT — JOURNEY PAGE THEME POLISH
+   MOBILE + TABLET ONLY (<1024px)
+   Desktop / PC styles remain untouched.
+   These selectors use the route classes added by JourneyHubPage:
+   .kf-journey-learn
+   .kf-journey-understand
+   .kf-journey-participate
+   ===================================================================== */
+
+@media (max-width: 1023px) {
+  html:not([data-theme="dark"]) .kf-journey-learn {
+    background: #f1f5e8 !important;
+    color: #1f3028 !important;
+  }
+  html:not([data-theme="dark"]) .kf-journey-understand {
+    background: #f7edf2 !important;
+    color: #352631 !important;
+  }
+  html:not([data-theme="dark"]) .kf-journey-participate {
+    background: #edf5f8 !important;
+    color: #21343d !important;
+  }
+
+  /* Prevent legacy global light-theme selectors from turning these three
+     mobile/tablet journey pages back into generic white cards. */
+  html[data-theme="dark"] .kf-journey-learn *,
+  html[data-theme="dark"] .kf-journey-understand *,
+  html[data-theme="dark"] .kf-journey-participate * {
+    scrollbar-color: rgba(150,185,220,.26) transparent;
+  }
+}
