@@ -974,7 +974,9 @@ export default function KrutBharatMobileShell() {
 
           .kf-mobile-shell-top-spacer {
 
-            height: 80px;
+            /* Keep content close to the fixed app header; older 80px spacer
+               created a visible dead band on smaller screens. */
+            height: 64px;
 
           }
 
@@ -2125,7 +2127,8 @@ export default function KrutBharatMobileShell() {
 
           .kf-mobile-shell-top-spacer {
 
-            height: 74px;
+            /* Reduce the dead band beneath the fixed app header. */
+            height: 64px;
 
           }
 

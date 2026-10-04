@@ -1,5 +1,7 @@
 "use client";
 
+import KrutBharatMobileShell from "@/components/KrutBharatMobileShell";
+
 import {
   ChangeEvent,
   FormEvent,
@@ -983,6 +985,7 @@ export default function MissionPage() {
   if (loading) {
     return (
       <main className="kf-mission-page kf-loading-page">
+        <KrutBharatMobileShell />
         <div className="kf-loading-card">
           <div className="kf-wordmark">
             Krut<span>Bharat</span>
@@ -999,6 +1002,7 @@ export default function MissionPage() {
   if (error && !mission) {
     return (
       <main className="kf-mission-page kf-loading-page">
+        <KrutBharatMobileShell />
         <div className="kf-error-card">
           <span className="kf-eyebrow">{t.civicMission}</span>
 
@@ -1057,6 +1061,7 @@ export default function MissionPage() {
 
   return (
     <main className="kf-mission-page">
+      <KrutBharatMobileShell />
       <div className="kf-mission-shell">
 
         {/* TOP BAR */}
@@ -2776,7 +2781,167 @@ html[data-theme="dark"] .kf-mission-page .kf-wordmark { color:#f5f7fb; }
 html[data-theme="dark"] .kf-mission-page .kf-wordmark span { color:#ff7a00; }
 html[data-theme="dark"] .kf-mission-page .kf-loading-bar { background:#ff7a00; }
 
-      `}</style>
+      
+
+/* =========================================================
+   KRUTBHARAT — MISSION DETAIL MOBILE/TABLET APP LAYOUT
+   Scoped to this page. Desktop >= 1024px is untouched.
+   ========================================================= */
+@media (max-width: 1023px) {
+  body.kf-mobile-shell-active main.kf-mission-page {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 100dvh !important;
+    box-sizing: border-box !important;
+    overflow-x: clip !important;
+    padding: 10px 10px 118px !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-mission-shell {
+    width: 100% !important;
+    max-width: 1040px !important;
+    min-width: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  /* Shared app shell owns navigation below 1024px. */
+  body.kf-mobile-shell-active main.kf-mission-page .kf-mission-topbar {
+    display: none !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-mission-hero {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 24px !important;
+    border-radius: 28px !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-hero-row,
+  body.kf-mobile-shell-active main.kf-mission-page .kf-hero-copy,
+  body.kf-mobile-shell-active main.kf-mission-page .kf-mission-meta,
+  body.kf-mobile-shell-active main.kf-mission-page .kf-section,
+  body.kf-mobile-shell-active main.kf-mission-page .kf-form,
+  body.kf-mobile-shell-active main.kf-mission-page .kf-before-after-grid {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-hero-copy h1 {
+    font-size: clamp(32px, 7.2vw, 50px) !important;
+    line-height: 1.02 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-hero-copy p {
+    max-width: 100% !important;
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-meta-tile,
+  body.kf-mobile-shell-active main.kf-mission-page .kf-form-block,
+  body.kf-mobile-shell-active main.kf-mission-page .kf-compare-card,
+  body.kf-mobile-shell-active main.kf-mission-page .kf-record-pane {
+    min-width: 0 !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page img,
+  body.kf-mobile-shell-active main.kf-mission-page .kf-upload-box,
+  body.kf-mobile-shell-active main.kf-mission-page .kf-textarea {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-submit-button {
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  body.kf-mobile-shell-active main.kf-mission-page {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-mission-hero {
+    padding: 28px !important;
+  }
+
+  /* Override the legacy <=900px stack: tablets can use the balanced hero. */
+  body.kf-mobile-shell-active main.kf-mission-page .kf-hero-row {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-points-card {
+    width: 126px !important;
+    min-width: 126px !important;
+    align-self: flex-start !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-mission-meta {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-before-after-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-section {
+    padding: 24px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body.kf-mobile-shell-active main.kf-mission-page {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-mission-hero {
+    padding: 20px 16px !important;
+    border-radius: 24px !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-hero-row {
+    flex-direction: column !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-points-card {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-mission-meta {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-section {
+    padding: 18px 15px !important;
+    border-radius: 22px !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-before-after-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-form-block,
+  body.kf-mobile-shell-active main.kf-mission-page .kf-compare-card,
+  body.kf-mobile-shell-active main.kf-mission-page .kf-record-pane {
+    padding: 15px !important;
+    border-radius: 20px !important;
+  }
+
+  body.kf-mobile-shell-active main.kf-mission-page .kf-submit-button {
+    width: 100% !important;
+  }
+}
+
+`}</style>
     </main>
   );
 }

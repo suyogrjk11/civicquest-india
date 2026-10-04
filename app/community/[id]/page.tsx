@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { Language } from "@/lib/i18n";
+import KrutBharatMobileShell from "@/components/KrutBharatMobileShell";
 
 type CivicIssue = {
   id: string;
@@ -71,19 +72,19 @@ const copy: Record<Language, Record<string, string>> = {
     reportedNext: "The issue is visible to the community. The next step is review and routing through the appropriate authority.",
     reviewNext: "The issue is currently under review. Community members can continue sharing evidence and following the issue.",
     progressNext: "Work is recorded as in progress. The community can continue tracking the issue until resolution.",
-    resolvedNext: "KrutBharat records this issue as resolved. Citizens can verify the outcome through their own observations.",
+    resolvedNext: "KarmaFacie records this issue as resolved. Citizens can verify the outcome through their own observations.",
     communitySignal: "Community Signal",
-    communitySignalText: "This page shows the public KrutBharat view of the issue. Citizen identity and private account details are not displayed.",
+    communitySignalText: "This page shows the public KarmaFacie view of the issue. Citizen identity and private account details are not displayed.",
     details: "Issue Details",
     location: "Location",
     category: "Category",
     cityState: "City / State",
-    reference: "KrutBharat Reference",
+    reference: "KarmaFacie Reference",
     myIssue: "Open My Issue →",
     evidence: "Evidence",
     noPhoto: "No photo evidence was attached to this report.",
     privacy: "Community view",
-    privacyText: "This is a KrutBharat community record, not an official government response. Official status is shown only when supported by recorded authority information.",
+    privacyText: "This is a KarmaFacie community record, not an official government response. Official status is shown only when supported by recorded authority information.",
     social: "Tag the Authority",
     socialText: "Verified authority social profiles will appear here when they are added to the authority directory.",
     noSocial: "No verified social profile is currently stored for this authority.",
@@ -95,7 +96,7 @@ const copy: Record<Language, Record<string, string>> = {
     shareReportPlural: "community reports",
     shareAuthority: "Authority",
     shareInstagram: "Tag the authority on Instagram",
-    shareRecord: "KrutBharat community record",
+    shareRecord: "KarmaFacie community record",
     shareOfficial: "Verify official responses through the authority's official channel.",
     defaultTitle: "Civic issue reported by the community",
     locationNotSpecified: "Location not specified",
@@ -124,19 +125,19 @@ const copy: Record<Language, Record<string, string>> = {
     reportedNext: "यह समस्या कम्युनिटी को दिखाई दे रही है। अगला कदम उचित प्राधिकरण द्वारा समीक्षा और रूटिंग है।",
     reviewNext: "समस्या की अभी समीक्षा हो रही है। कम्युनिटी सदस्य जानकारी और सबूत साझा कर सकते हैं।",
     progressNext: "काम प्रगति पर दर्ज है। समाधान तक कम्युनिटी इस समस्या को ट्रैक कर सकती है।",
-    resolvedNext: "KrutBharat में समस्या का समाधान दर्ज है। नागरिक अपने निरीक्षण से परिणाम की पुष्टि कर सकते हैं।",
+    resolvedNext: "KarmaFacie में समस्या का समाधान दर्ज है। नागरिक अपने निरीक्षण से परिणाम की पुष्टि कर सकते हैं।",
     communitySignal: "कम्युनिटी संकेत",
-    communitySignalText: "यह पेज KrutBharat में समस्या का सार्वजनिक दृश्य दिखाता है। नागरिक की पहचान और निजी अकाउंट जानकारी प्रदर्शित नहीं की जाती।",
+    communitySignalText: "यह पेज KarmaFacie में समस्या का सार्वजनिक दृश्य दिखाता है। नागरिक की पहचान और निजी अकाउंट जानकारी प्रदर्शित नहीं की जाती।",
     details: "समस्या विवरण",
     location: "स्थान",
     category: "श्रेणी",
     cityState: "शहर / राज्य",
-    reference: "KrutBharat संदर्भ",
+    reference: "KarmaFacie संदर्भ",
     myIssue: "मेरी समस्या खोलें →",
     evidence: "सबूत",
     noPhoto: "इस रिपोर्ट में फोटो सबूत संलग्न नहीं है।",
     privacy: "कम्युनिटी दृश्य",
-    privacyText: "यह KrutBharat का कम्युनिटी रिकॉर्ड है, आधिकारिक सरकारी प्रतिक्रिया नहीं। आधिकारिक स्थिति केवल दर्ज प्राधिकरण जानकारी के आधार पर दिखाई जाती है।",
+    privacyText: "यह KarmaFacie का कम्युनिटी रिकॉर्ड है, आधिकारिक सरकारी प्रतिक्रिया नहीं। आधिकारिक स्थिति केवल दर्ज प्राधिकरण जानकारी के आधार पर दिखाई जाती है।",
     social: "प्राधिकरण को टैग करें",
     socialText: "सत्यापित प्राधिकरण सोशल प्रोफाइल यहाँ दिखाई देंगे जब उन्हें प्राधिकरण डायरेक्टरी में जोड़ा जाएगा।",
     noSocial: "इस प्राधिकरण के लिए अभी कोई सत्यापित सोशल प्रोफाइल दर्ज नहीं है।",
@@ -147,7 +148,7 @@ const copy: Record<Language, Record<string, string>> = {
     shareReportPlural: "कम्युनिटी रिपोर्ट",
     shareAuthority: "प्राधिकरण",
     shareInstagram: "प्राधिकरण को Instagram पर टैग करें",
-    shareRecord: "KrutBharat कम्युनिटी रिकॉर्ड",
+    shareRecord: "KarmaFacie कम्युनिटी रिकॉर्ड",
     shareOfficial: "आधिकारिक प्रतिक्रिया की पुष्टि प्राधिकरण के आधिकारिक चैनल से करें।",
     defaultTitle: "कम्युनिटी द्वारा रिपोर्ट की गई नागरिक समस्या",
     locationNotSpecified: "स्थान उपलब्ध नहीं है",
@@ -176,19 +177,19 @@ const copy: Record<Language, Record<string, string>> = {
     reportedNext: "ही समस्या कम्युनिटीला दिसत आहे. पुढील टप्पा योग्य प्राधिकरणाकडून तपासणी आणि मार्गी लावणे आहे.",
     reviewNext: "समस्येची सध्या तपासणी सुरू आहे. कम्युनिटी सदस्य माहिती आणि पुरावे शेअर करू शकतात.",
     progressNext: "काम प्रगतीपथावर नोंदवले आहे. निराकरण होईपर्यंत कम्युनिटी ही समस्या ट्रॅक करू शकते.",
-    resolvedNext: "KrutBharat मध्ये समस्या निकाली काढल्याची नोंद आहे. नागरिक स्वतःच्या निरीक्षणातून परिणाम तपासू शकतात.",
+    resolvedNext: "KarmaFacie मध्ये समस्या निकाली काढल्याची नोंद आहे. नागरिक स्वतःच्या निरीक्षणातून परिणाम तपासू शकतात.",
     communitySignal: "कम्युनिटी संकेत",
-    communitySignalText: "हे पेज KrutBharat मधील समस्येचे सार्वजनिक दृश्य दाखवते. नागरिकाची ओळख आणि खासगी अकाउंट माहिती दाखवली जात नाही.",
+    communitySignalText: "हे पेज KarmaFacie मधील समस्येचे सार्वजनिक दृश्य दाखवते. नागरिकाची ओळख आणि खासगी अकाउंट माहिती दाखवली जात नाही.",
     details: "समस्या तपशील",
     location: "स्थान",
     category: "श्रेणी",
     cityState: "शहर / राज्य",
-    reference: "KrutBharat संदर्भ",
+    reference: "KarmaFacie संदर्भ",
     myIssue: "माझी समस्या उघडा →",
     evidence: "पुरावा",
     noPhoto: "या अहवालासोबत फोटो पुरावा जोडलेला नाही.",
     privacy: "कम्युनिटी दृश्य",
-    privacyText: "हा KrutBharat कम्युनिटी रेकॉर्ड आहे, अधिकृत सरकारी प्रतिसाद नाही. अधिकृत स्थिती केवळ नोंदवलेल्या प्राधिकरण माहितीनुसार दाखवली जाते.",
+    privacyText: "हा KarmaFacie कम्युनिटी रेकॉर्ड आहे, अधिकृत सरकारी प्रतिसाद नाही. अधिकृत स्थिती केवळ नोंदवलेल्या प्राधिकरण माहितीनुसार दाखवली जाते.",
     social: "प्राधिकरणाला टॅग करा",
     socialText: "सत्यापित प्राधिकरण सोशल प्रोफाइल प्राधिकरण डायरेक्टरीमध्ये जोडल्यावर येथे दिसतील.",
     noSocial: "या प्राधिकरणासाठी सध्या कोणतेही सत्यापित सोशल प्रोफाइल नोंदवलेले नाही.",
@@ -199,7 +200,7 @@ const copy: Record<Language, Record<string, string>> = {
     shareReportPlural: "कम्युनिटी अहवाल",
     shareAuthority: "प्राधिकरण",
     shareInstagram: "प्राधिकरणाला Instagram वर टॅग करा",
-    shareRecord: "KrutBharat कम्युनिटी रेकॉर्ड",
+    shareRecord: "KarmaFacie कम्युनिटी रेकॉर्ड",
     shareOfficial: "अधिकृत प्रतिसादाची पुष्टी प्राधिकरणाच्या अधिकृत माध्यमातून करा.",
     defaultTitle: "कम्युनिटीने नोंदवलेली नागरी समस्या",
     locationNotSpecified: "स्थान उपलब्ध नाही",
@@ -386,7 +387,7 @@ function categoryLabel(category: string, language: Language) {
 
 function CommunityDetailBrand() {
   return (
-    <div className="kf-community-detail-brand" aria-label="KrutBharat Community Issues">
+    <div className="kf-community-detail-brand" aria-label="KarmaFacie Community Issues">
       <div className="kf-community-detail-brand-mark">K</div>
       <div className="kf-community-detail-brand-copy">
         <div className="kf-community-detail-brand-name">
@@ -602,7 +603,7 @@ export default function CommunityIssuePage() {
 
     ctx.fillStyle = "#102033";
     ctx.font = "700 34px Arial";
-    ctx.fillText("KRUTBHARAT", 70, 82);
+    ctx.fillText("KARMAFACIE", 70, 82);
 
     ctx.fillStyle = "#e56800";
     ctx.font = "700 22px Arial";
@@ -703,12 +704,112 @@ export default function CommunityIssuePage() {
   }
 
   if (loading) {
-    return <main className="kf-community-detail-page" style={styles.page}><div className="kf-community-detail-container" style={styles.container}><p style={styles.muted}>{t.loading}</p></div></main>;
+    return <main className="kf-community-detail-page" style={styles.page}><KrutBharatMobileShell /><div className="kf-community-detail-container" style={styles.container}><p style={styles.muted}>{t.loading}</p></div></main>;
   }
 
   if (error || !issue) {
     return (
       <main className="kf-community-detail-page" style={styles.page}>
+        <KrutBharatMobileShell />
+        <style jsx global>{`
+  /* Responsive rules are scoped to the Community issue detail page.
+     Desktop (1024px and wider) intentionally keeps the existing layout. */
+  @media (max-width: 1023px) {
+    .kf-community-detail-page .kf-community-detail-topbar { display: none !important; }
+    .kf-community-detail-page { padding-bottom: 104px !important; }
+    .kf-community-detail-page { box-sizing: border-box; width: 100%; min-width: 0; overflow-x: clip; padding: 18px 18px 32px !important; }
+    .kf-community-detail-container { width: 100% !important; max-width: 900px !important; min-width: 0; margin-inline: auto !important; }
+    .kf-community-detail-topbar { grid-template-columns: minmax(0, 1fr) auto !important; gap: 12px !important; padding: 12px !important; min-height: 0 !important; }
+    .kf-community-detail-topbar > :first-child { grid-column: 1; grid-row: 2; justify-self: start !important; }
+    .kf-community-detail-topbar > :nth-child(2) { grid-column: 1 / -1; grid-row: 1; justify-self: center !important; }
+    .kf-community-detail-topbar > :last-child { grid-column: 2; grid-row: 2; justify-self: end !important; }
+    .kf-community-detail-back { max-width: 100%; white-space: normal; text-align: left; }
+    .kf-community-detail-language-row { flex-wrap: wrap; justify-content: flex-end; gap: 5px !important; }
+    .kf-community-detail-hero { padding: clamp(18px, 3.5vw, 28px) !important; }
+    .kf-community-detail-hero-top { flex-wrap: wrap; gap: 12px !important; }
+    .kf-community-detail-title { font-size: clamp(27px, 4.3vw, 40px) !important; line-height: 1.14 !important; overflow-wrap: anywhere; }
+    .kf-community-detail-description { overflow-wrap: anywhere; }
+    .kf-community-detail-image { display: block; width: 100% !important; max-width: 100%; height: auto !important; max-height: 480px; object-fit: cover; }
+    .kf-community-detail-meta { flex-wrap: wrap; gap: 10px 16px !important; overflow-wrap: anywhere; }
+    .kf-community-detail-signal { grid-template-columns: minmax(0, 1fr) !important; gap: 16px !important; padding: 20px !important; }
+    .kf-community-detail-actions { display: flex; flex-wrap: wrap; gap: 10px !important; }
+    .kf-community-detail-actions > button { flex: 1 1 170px; min-width: 0; }
+    .kf-community-detail-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 16px !important; }
+    .kf-community-detail-card, .kf-community-detail-journey-card, .kf-community-detail-next-card { min-width: 0; padding: clamp(18px, 3vw, 24px) !important; }
+    .kf-community-detail-details-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px !important; }
+    .kf-community-detail-detail-box { min-width: 0; overflow-wrap: anywhere; }
+    .kf-community-detail-link-row, .kf-community-detail-social-links { display: flex; flex-wrap: wrap; gap: 8px !important; }
+    .kf-community-detail-link, .kf-community-detail-social-button { max-width: 100%; overflow-wrap: anywhere; }
+    .kf-community-detail-privacy { align-items: flex-start; gap: 8px !important; flex-wrap: wrap; padding: 16px !important; }
+  }
+  @media (max-width: 600px) {
+    .kf-community-detail-page { padding: 10px 10px 24px !important; }
+    .kf-community-detail-container { gap: 14px !important; }
+    .kf-community-detail-topbar { border-radius: 20px !important; gap: 9px !important; padding: 10px !important; }
+    .kf-community-detail-brand { gap: 8px !important; min-width: 0 !important; max-width: 100%; }
+    .kf-community-detail-brand-mark { width: 42px !important; height: 42px !important; flex-basis: 42px !important; font-size: 25px !important; border-radius: 13px !important; }
+    .kf-community-detail-brand-copy { min-width: 0 !important; }
+    .kf-community-detail-brand-name { font-size: clamp(19px, 5vw, 24px) !important; }
+    .kf-community-detail-brand-subtitle { font-size: 8px !important; letter-spacing: .08em !important; }
+    .kf-community-detail-back { font-size: 12px !important; padding: 9px 10px !important; min-height: 40px !important; }
+    .kf-community-detail-language-button { font-size: 11px !important; padding: 7px 8px !important; }
+    .kf-community-detail-hero { border-radius: 22px !important; padding: 17px !important; }
+    .kf-community-detail-title { font-size: clamp(25px, 7vw, 32px) !important; }
+    .kf-community-detail-description { font-size: 14px !important; line-height: 1.65 !important; }
+    .kf-community-detail-image { max-height: 340px; border-radius: 16px !important; }
+    .kf-community-detail-no-photo { min-height: 120px !important; }
+    .kf-community-detail-status { max-width: 100%; white-space: normal; }
+    .kf-community-detail-signal { border-radius: 20px !important; padding: 17px !important; }
+    .kf-community-detail-signal-number { font-size: 34px !important; }
+    .kf-community-detail-actions { flex-direction: column; }
+    .kf-community-detail-actions > button { width: 100%; flex-basis: auto; }
+    .kf-community-detail-details-grid { grid-template-columns: minmax(0, 1fr) !important; }
+    .kf-community-detail-card-title { overflow-wrap: anywhere; font-size: 19px !important; }
+    .kf-community-detail-timeline-item { gap: 10px !important; }
+    .kf-community-detail-timeline-content { min-width: 0; overflow-wrap: anywhere; }
+    .kf-community-detail-privacy { border-radius: 18px !important; font-size: 12px !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .kf-community-detail-page * { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  }
+
+  /* High-specificity responsive overrides for this page only. */
+  @media (max-width: 1023px) {
+    html body .kf-community-detail-page { width: 100% !important; min-width: 0 !important; box-sizing: border-box !important; overflow-x: clip !important; }
+    html body .kf-community-detail-page .kf-community-detail-container { width: 100% !important; max-width: 900px !important; min-width: 0 !important; }
+    html body .kf-community-detail-page .kf-community-detail-topbar { display: none !important; }
+    html body .kf-community-detail-page .kf-community-detail-topbar > :nth-child(2) { grid-column: 1 / -1 !important; grid-row: 1 !important; justify-self: center !important; }
+    html body .kf-community-detail-page .kf-community-detail-topbar > :first-child { grid-column: 1 !important; grid-row: 2 !important; justify-self: start !important; }
+    html body .kf-community-detail-page .kf-community-detail-topbar > :last-child { grid-column: 2 !important; grid-row: 2 !important; justify-self: end !important; }
+    html body .kf-community-detail-page .kf-community-detail-hero,
+    html body .kf-community-detail-page .kf-community-detail-signal,
+    html body .kf-community-detail-page .kf-community-detail-card,
+    html body .kf-community-detail-page .kf-community-detail-journey-card,
+    html body .kf-community-detail-page .kf-community-detail-next-card { min-width: 0 !important; }
+    html body .kf-community-detail-page .kf-community-detail-grid { grid-template-columns: minmax(0,1fr) !important; }
+  }
+  @media (max-width: 600px) {
+    html body .kf-community-detail-page { padding: 12px 12px 28px !important; }
+    html body .kf-community-detail-page .kf-community-detail-container { gap: 12px !important; }
+    html body .kf-community-detail-page .kf-community-detail-topbar { border-radius: 22px !important; padding: 12px !important; gap: 10px 8px !important; }
+    html body .kf-community-detail-page .kf-community-detail-brand { gap: 8px !important; min-width: 0 !important; max-width: 100% !important; }
+    html body .kf-community-detail-page .kf-community-detail-brand-mark { width: 40px !important; height: 40px !important; flex-basis: 40px !important; font-size: 24px !important; }
+    html body .kf-community-detail-page .kf-community-detail-brand-copy { min-width: 0 !important; }
+    html body .kf-community-detail-page .kf-community-detail-brand-name { font-size: 20px !important; }
+    html body .kf-community-detail-page .kf-community-detail-brand-subtitle { font-size: 7px !important; letter-spacing: .09em !important; }
+    html body .kf-community-detail-page .kf-community-detail-back { max-width: 100% !important; min-height: 38px !important; padding: 8px 10px !important; font-size: 11px !important; line-height: 1.25 !important; }
+    html body .kf-community-detail-page .kf-community-detail-language-button { padding: 7px 9px !important; font-size: 11px !important; }
+    html body .kf-community-detail-page .kf-community-detail-hero { padding: 18px !important; border-radius: 24px !important; }
+    html body .kf-community-detail-page .kf-community-detail-hero-top { align-items: flex-start !important; }
+    html body .kf-community-detail-page .kf-community-detail-title { font-size: clamp(25px,7vw,31px) !important; line-height: 1.12 !important; letter-spacing: -.025em !important; }
+    html body .kf-community-detail-page .kf-community-detail-signal { padding: 18px !important; border-radius: 22px !important; }
+    html body .kf-community-detail-page .kf-community-detail-actions { display: grid !important; grid-template-columns: minmax(0,1fr) !important; }
+    html body .kf-community-detail-page .kf-community-detail-actions > button { width: 100% !important; min-width: 0 !important; }
+    html body .kf-community-detail-page .kf-community-detail-details-grid { grid-template-columns: minmax(0,1fr) !important; }
+    html body .kf-community-detail-page .kf-community-detail-meta { font-size: 11px !important; gap: 8px 12px !important; }
+    html body .kf-community-detail-page .kf-community-detail-privacy { align-items: flex-start !important; }
+  }
+`}</style>
         <div className="kf-community-detail-container" style={styles.container}>
           <div className="kf-community-detail-topbar" style={styles.topBar}>
             <button className="kf-community-detail-back" onClick={() => router.push("/community")} style={styles.back}>{t.back}</button>
@@ -730,6 +831,106 @@ export default function CommunityIssuePage() {
 
   return (
     <main className="kf-community-detail-page" style={styles.page}>
+      <KrutBharatMobileShell />
+      <style jsx global>{`
+  /* Responsive rules are scoped to the Community issue detail page.
+     Desktop (1024px and wider) intentionally keeps the existing layout. */
+  @media (max-width: 1023px) {
+    .kf-community-detail-page .kf-community-detail-topbar { display: none !important; }
+    .kf-community-detail-page { padding-bottom: 104px !important; }
+    .kf-community-detail-page { box-sizing: border-box; width: 100%; min-width: 0; overflow-x: clip; padding: 18px 18px 32px !important; }
+    .kf-community-detail-container { width: 100% !important; max-width: 900px !important; min-width: 0; margin-inline: auto !important; }
+    .kf-community-detail-topbar { grid-template-columns: minmax(0, 1fr) auto !important; gap: 12px !important; padding: 12px !important; min-height: 0 !important; }
+    .kf-community-detail-topbar > :first-child { grid-column: 1; grid-row: 2; justify-self: start !important; }
+    .kf-community-detail-topbar > :nth-child(2) { grid-column: 1 / -1; grid-row: 1; justify-self: center !important; }
+    .kf-community-detail-topbar > :last-child { grid-column: 2; grid-row: 2; justify-self: end !important; }
+    .kf-community-detail-back { max-width: 100%; white-space: normal; text-align: left; }
+    .kf-community-detail-language-row { flex-wrap: wrap; justify-content: flex-end; gap: 5px !important; }
+    .kf-community-detail-hero { padding: clamp(18px, 3.5vw, 28px) !important; }
+    .kf-community-detail-hero-top { flex-wrap: wrap; gap: 12px !important; }
+    .kf-community-detail-title { font-size: clamp(27px, 4.3vw, 40px) !important; line-height: 1.14 !important; overflow-wrap: anywhere; }
+    .kf-community-detail-description { overflow-wrap: anywhere; }
+    .kf-community-detail-image { display: block; width: 100% !important; max-width: 100%; height: auto !important; max-height: 480px; object-fit: cover; }
+    .kf-community-detail-meta { flex-wrap: wrap; gap: 10px 16px !important; overflow-wrap: anywhere; }
+    .kf-community-detail-signal { grid-template-columns: minmax(0, 1fr) !important; gap: 16px !important; padding: 20px !important; }
+    .kf-community-detail-actions { display: flex; flex-wrap: wrap; gap: 10px !important; }
+    .kf-community-detail-actions > button { flex: 1 1 170px; min-width: 0; }
+    .kf-community-detail-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 16px !important; }
+    .kf-community-detail-card, .kf-community-detail-journey-card, .kf-community-detail-next-card { min-width: 0; padding: clamp(18px, 3vw, 24px) !important; }
+    .kf-community-detail-details-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px !important; }
+    .kf-community-detail-detail-box { min-width: 0; overflow-wrap: anywhere; }
+    .kf-community-detail-link-row, .kf-community-detail-social-links { display: flex; flex-wrap: wrap; gap: 8px !important; }
+    .kf-community-detail-link, .kf-community-detail-social-button { max-width: 100%; overflow-wrap: anywhere; }
+    .kf-community-detail-privacy { align-items: flex-start; gap: 8px !important; flex-wrap: wrap; padding: 16px !important; }
+  }
+  @media (max-width: 600px) {
+    .kf-community-detail-page { padding: 10px 10px 24px !important; }
+    .kf-community-detail-container { gap: 14px !important; }
+    .kf-community-detail-topbar { border-radius: 20px !important; gap: 9px !important; padding: 10px !important; }
+    .kf-community-detail-brand { gap: 8px !important; min-width: 0 !important; max-width: 100%; }
+    .kf-community-detail-brand-mark { width: 42px !important; height: 42px !important; flex-basis: 42px !important; font-size: 25px !important; border-radius: 13px !important; }
+    .kf-community-detail-brand-copy { min-width: 0 !important; }
+    .kf-community-detail-brand-name { font-size: clamp(19px, 5vw, 24px) !important; }
+    .kf-community-detail-brand-subtitle { font-size: 8px !important; letter-spacing: .08em !important; }
+    .kf-community-detail-back { font-size: 12px !important; padding: 9px 10px !important; min-height: 40px !important; }
+    .kf-community-detail-language-button { font-size: 11px !important; padding: 7px 8px !important; }
+    .kf-community-detail-hero { border-radius: 22px !important; padding: 17px !important; }
+    .kf-community-detail-title { font-size: clamp(25px, 7vw, 32px) !important; }
+    .kf-community-detail-description { font-size: 14px !important; line-height: 1.65 !important; }
+    .kf-community-detail-image { max-height: 340px; border-radius: 16px !important; }
+    .kf-community-detail-no-photo { min-height: 120px !important; }
+    .kf-community-detail-status { max-width: 100%; white-space: normal; }
+    .kf-community-detail-signal { border-radius: 20px !important; padding: 17px !important; }
+    .kf-community-detail-signal-number { font-size: 34px !important; }
+    .kf-community-detail-actions { flex-direction: column; }
+    .kf-community-detail-actions > button { width: 100%; flex-basis: auto; }
+    .kf-community-detail-details-grid { grid-template-columns: minmax(0, 1fr) !important; }
+    .kf-community-detail-card-title { overflow-wrap: anywhere; font-size: 19px !important; }
+    .kf-community-detail-timeline-item { gap: 10px !important; }
+    .kf-community-detail-timeline-content { min-width: 0; overflow-wrap: anywhere; }
+    .kf-community-detail-privacy { border-radius: 18px !important; font-size: 12px !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .kf-community-detail-page * { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  }
+
+  /* High-specificity responsive overrides for this page only. */
+  @media (max-width: 1023px) {
+    html body .kf-community-detail-page { width: 100% !important; min-width: 0 !important; box-sizing: border-box !important; overflow-x: clip !important; }
+    html body .kf-community-detail-page .kf-community-detail-container { width: 100% !important; max-width: 900px !important; min-width: 0 !important; }
+    html body .kf-community-detail-page .kf-community-detail-topbar { display: none !important; }
+    html body .kf-community-detail-page .kf-community-detail-topbar > :nth-child(2) { grid-column: 1 / -1 !important; grid-row: 1 !important; justify-self: center !important; }
+    html body .kf-community-detail-page .kf-community-detail-topbar > :first-child { grid-column: 1 !important; grid-row: 2 !important; justify-self: start !important; }
+    html body .kf-community-detail-page .kf-community-detail-topbar > :last-child { grid-column: 2 !important; grid-row: 2 !important; justify-self: end !important; }
+    html body .kf-community-detail-page .kf-community-detail-hero,
+    html body .kf-community-detail-page .kf-community-detail-signal,
+    html body .kf-community-detail-page .kf-community-detail-card,
+    html body .kf-community-detail-page .kf-community-detail-journey-card,
+    html body .kf-community-detail-page .kf-community-detail-next-card { min-width: 0 !important; }
+    html body .kf-community-detail-page .kf-community-detail-grid { grid-template-columns: minmax(0,1fr) !important; }
+  }
+  @media (max-width: 600px) {
+    html body .kf-community-detail-page { padding: 12px 12px 28px !important; }
+    html body .kf-community-detail-page .kf-community-detail-container { gap: 12px !important; }
+    html body .kf-community-detail-page .kf-community-detail-topbar { border-radius: 22px !important; padding: 12px !important; gap: 10px 8px !important; }
+    html body .kf-community-detail-page .kf-community-detail-brand { gap: 8px !important; min-width: 0 !important; max-width: 100% !important; }
+    html body .kf-community-detail-page .kf-community-detail-brand-mark { width: 40px !important; height: 40px !important; flex-basis: 40px !important; font-size: 24px !important; }
+    html body .kf-community-detail-page .kf-community-detail-brand-copy { min-width: 0 !important; }
+    html body .kf-community-detail-page .kf-community-detail-brand-name { font-size: 20px !important; }
+    html body .kf-community-detail-page .kf-community-detail-brand-subtitle { font-size: 7px !important; letter-spacing: .09em !important; }
+    html body .kf-community-detail-page .kf-community-detail-back { max-width: 100% !important; min-height: 38px !important; padding: 8px 10px !important; font-size: 11px !important; line-height: 1.25 !important; }
+    html body .kf-community-detail-page .kf-community-detail-language-button { padding: 7px 9px !important; font-size: 11px !important; }
+    html body .kf-community-detail-page .kf-community-detail-hero { padding: 18px !important; border-radius: 24px !important; }
+    html body .kf-community-detail-page .kf-community-detail-hero-top { align-items: flex-start !important; }
+    html body .kf-community-detail-page .kf-community-detail-title { font-size: clamp(25px,7vw,31px) !important; line-height: 1.12 !important; letter-spacing: -.025em !important; }
+    html body .kf-community-detail-page .kf-community-detail-signal { padding: 18px !important; border-radius: 22px !important; }
+    html body .kf-community-detail-page .kf-community-detail-actions { display: grid !important; grid-template-columns: minmax(0,1fr) !important; }
+    html body .kf-community-detail-page .kf-community-detail-actions > button { width: 100% !important; min-width: 0 !important; }
+    html body .kf-community-detail-page .kf-community-detail-details-grid { grid-template-columns: minmax(0,1fr) !important; }
+    html body .kf-community-detail-page .kf-community-detail-meta { font-size: 11px !important; gap: 8px 12px !important; }
+    html body .kf-community-detail-page .kf-community-detail-privacy { align-items: flex-start !important; }
+  }
+`}</style>
       <div className="kf-community-detail-container" style={styles.container}>
         <div className="kf-community-detail-topbar" style={styles.topBar}>
             <button className="kf-community-detail-back" onClick={() => router.push("/community")} style={styles.back}>{t.back}</button>

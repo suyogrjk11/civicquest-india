@@ -10254,7 +10254,9 @@ html:not([data-theme="dark"]) #how-it-works .kf-home-journey-step:hover {
   body.kf-mobile-shell-active .kf-report-topbar,
   body.kf-mobile-shell-active .kf-my-impact-topbar,
   body.kf-mobile-shell-active .kf-community-topbar,
-  body.kf-mobile-shell-active .kf-leagues-topbar {
+  body.kf-mobile-shell-active .kf-leagues-topbar,
+  body.kf-mobile-shell-active main.kf-mission-page .kf-mission-topbar,
+  body.kf-mobile-shell-active main.kf-peer-page .kf-peer-topbar {
     display: none !important;
     visibility: hidden !important;
     pointer-events: none !important;
@@ -11004,34 +11006,37 @@ html:not([data-theme="dark"]) #how-it-works .kf-home-journey-step:hover {
 
 
 /* =====================================================================
-   KRUTBHARAT — JOURNEY PAGE THEME POLISH
-   MOBILE + TABLET ONLY (<1024px)
-   Desktop / PC styles remain untouched.
-   These selectors use the route classes added by JourneyHubPage:
-   .kf-journey-learn
-   .kf-journey-understand
-   .kf-journey-participate
+   KNOW INDIA — MOBILE/TABLET TOP GAP FIX
+   Scoped only to the Know India landing page. Desktop remains unchanged.
    ===================================================================== */
-
 @media (max-width: 1023px) {
-  html:not([data-theme="dark"]) .kf-journey-learn {
-    background: #f1f5e8 !important;
-    color: #1f3028 !important;
+  body.kf-mobile-shell-active main.kf-know-india-page {
+    padding-top: 35px !important;
   }
-  html:not([data-theme="dark"]) .kf-journey-understand {
-    background: #f7edf2 !important;
-    color: #352631 !important;
-  }
-  html:not([data-theme="dark"]) .kf-journey-participate {
-    background: #edf5f8 !important;
-    color: #21343d !important;
-  }
+}
 
-  /* Prevent legacy global light-theme selectors from turning these three
-     mobile/tablet journey pages back into generic white cards. */
-  html[data-theme="dark"] .kf-journey-learn *,
-  html[data-theme="dark"] .kf-journey-understand *,
-  html[data-theme="dark"] .kf-journey-participate * {
-    scrollbar-color: rgba(150,185,220,.26) transparent;
+
+/* MY ISSUES ONLY: reduce Civic Memory hero height in dark mode on mobile/tablet. */
+@media (max-width: 1023px) {
+  html[data-theme="dark"] body.kf-mobile-shell-active .kf-my-issues-page .kf-my-issues-memory-hero {
+    height: auto !important;
+    min-height: 0 !important;
+    padding-bottom: 20px !important;
+  }
+}
+
+/* KRUTBHARAT COMMUNITY DETAIL — HIDE LEGACY HEADER UNDER SHARED MOBILE SHELL */
+/* Only affects the old detail-page header on mobile/tablet; desktop is untouched. */
+@media (max-width: 1023px) {
+  body.kf-mobile-shell-active .kf-community-detail-page .kf-community-detail-topbar,
+  body.kf-mobile-shell-active .kf-community-detail-topbar {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
   }
 }

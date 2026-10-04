@@ -10,6 +10,7 @@ import {
   useRouter,
 } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import KrutBharatMobileShell from "@/components/KrutBharatMobileShell";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { Language } from "@/lib/i18n";
 
@@ -2863,7 +2864,9 @@ export default function IssueDetailsPage() {
   }
 
   return (
-    <main
+    <>
+      <KrutBharatMobileShell />
+      <main
       className="kf-detail-page"
       style={{
         minHeight: "100vh",
@@ -5668,6 +5671,38 @@ export default function IssueDetailsPage() {
           color: #ff7a00 !important;
         }
 
+        /* Use the shared KrutBharat shell navigation on tablet/mobile.
+           Keep the existing detailed header on desktop only. */
+        @media (max-width: 1023px) {
+          .kf-detail-page {
+            padding: 10px 10px calc(104px + env(safe-area-inset-bottom)) !important;
+            min-height: 100dvh;
+          }
+
+          .kf-detail-shell {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+
+          /* Hide the legacy detail-page header on phones/tablets.
+             KrutBharatMobileShell is the single source of mobile navigation. */
+          .kf-detail-page .kf-detail-topbar,
+          body.kf-mobile-shell-active .kf-detail-page header.kf-topbar,
+          body.kf-mobile-shell-active .kf-detail-page .kf-detail-topbar {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            min-height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+          }
+
+          .kf-detail-page .kf-detail-hero {
+            margin-top: 0 !important;
+          }
+        }
+
         @media (max-width: 900px) {
           .kf-journey-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -5676,12 +5711,7 @@ export default function IssueDetailsPage() {
 
         @media (max-width: 680px) {
           .kf-detail-page {
-            padding: 14px 11px 56px !important;
-          }
-
-          .kf-topbar {
-            position: relative;
-            top: 0;
+            padding: 8px 10px calc(104px + env(safe-area-inset-bottom)) !important;
           }
 
           .kf-topbar label > span {
@@ -5719,6 +5749,7 @@ export default function IssueDetailsPage() {
           }
         }
       `}</style>
-    </main>
+      </main>
+    </>
   );
 }

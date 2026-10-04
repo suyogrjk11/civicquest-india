@@ -982,7 +982,7 @@ function HubHeader({
 
 
 
-      <section className="mx-auto max-w-6xl px-4 pb-8 pt-7 sm:px-6 sm:pt-10">
+      <section className="mx-auto max-w-6xl px-4 pb-[21px] pt-7 sm:px-6 sm:pb-8 sm:pt-10">
 
         <div className="kf-journey-hero-card relative overflow-hidden rounded-[30px] border border-[#e7ded1] bg-white/75 p-6 shadow-[0_18px_48px_rgba(35,47,58,.06)] sm:p-9">
 
@@ -1260,7 +1260,11 @@ function PageShell({
 
           }
 
-
+          /* Slightly roomier hero-to-content spacing on mobile/tablet. The parent
+             provides a 24px space-y-6 gap; add 10px so the first gap is slightly larger while keeping all later section gaps unchanged. */
+          .kf-journey-hub > section.mx-auto.max-w-6xl {
+            padding-bottom: 10px !important;
+          }
 
           .kf-journey-hub .kf-journey-surface {
 

@@ -1666,6 +1666,7 @@ export default function DashboardPage() {
 
           {/* TOPIC PROGRESS */}
           <div
+            className="kf-dashboard-learning-grid"
             style={{
               display: "grid",
               gridTemplateColumns:
@@ -1735,6 +1736,7 @@ export default function DashboardPage() {
           </div>
 
           <div
+            className="kf-dashboard-action-grid"
             style={{
               display: "grid",
               gridTemplateColumns:
@@ -4097,6 +4099,130 @@ html[data-theme="dark"] .kf-dashboard-page .kf-dashboard-feature-card-civic-sens
           content: none !important;
           display: none !important;
           background: none !important;
+        }
+
+
+        /* =========================================================
+           DASHBOARD — MOBILE / TABLET CARD SHAPE FIX
+           Desktop uses inline 4-column grids. These hooks let
+           mobile/tablet override the grid and keep cards readable.
+           ========================================================= */
+
+        @media (max-width: 1023px) {
+          .kf-dashboard-learning-grid,
+          .kf-dashboard-action-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            gap: 12px !important;
+            align-items: stretch !important;
+          }
+
+          .kf-dashboard-page .kf-learning-card,
+          .kf-dashboard-page .kf-dashboard-feature-card {
+            width: 100% !important;
+            min-width: 0 !important;
+            box-sizing: border-box !important;
+          }
+
+          .kf-dashboard-page .kf-dashboard-feature-card {
+            min-height: 290px !important;
+            height: auto !important;
+            padding: 16px !important;
+            border-radius: 24px !important;
+          }
+
+          .kf-dashboard-page .kf-dashboard-feature-card h3 {
+            font-size: 18px !important;
+            line-height: 1.12 !important;
+            margin-top: 15px !important;
+            overflow-wrap: normal !important;
+            word-break: normal !important;
+          }
+
+          .kf-dashboard-page .kf-dashboard-feature-card > p {
+            font-size: 11.5px !important;
+            line-height: 1.5 !important;
+            margin-top: 8px !important;
+          }
+
+          .kf-dashboard-page .kf-dashboard-feature-card > div:last-child {
+            position: static !important;
+            left: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            width: 100% !important;
+            margin-top: 16px !important;
+          }
+
+          .kf-dashboard-page .kf-dashboard-feature-card > div:last-child > span:first-child {
+            max-width: calc(100% - 36px) !important;
+            font-size: 10px !important;
+            line-height: 1.25 !important;
+          }
+
+          .kf-dashboard-page .kf-dashboard-feature-card > div:last-child > span:last-child {
+            flex: 0 0 30px !important;
+            width: 30px !important;
+            height: 30px !important;
+          }
+
+          .kf-dashboard-page .kf-learning-card {
+            min-height: 250px !important;
+            height: auto !important;
+            border-radius: 24px !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .kf-dashboard-learning-grid,
+          .kf-dashboard-action-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 10px !important;
+          }
+
+          .kf-dashboard-page .kf-dashboard-feature-card {
+            min-height: 275px !important;
+            padding: 14px !important;
+            border-radius: 22px !important;
+          }
+
+          .kf-dashboard-page .kf-dashboard-feature-card h3 {
+            font-size: 17px !important;
+            line-height: 1.1 !important;
+            margin-top: 13px !important;
+          }
+
+          .kf-dashboard-page .kf-dashboard-feature-card > p {
+            font-size: 10.5px !important;
+            line-height: 1.46 !important;
+          }
+
+          .kf-dashboard-page .kf-dashboard-feature-card > div:nth-child(3) > div:first-child {
+            width: 44px !important;
+            height: 44px !important;
+            border-radius: 15px !important;
+            font-size: 20px !important;
+          }
+
+          .kf-dashboard-page .kf-learning-card {
+            min-height: 235px !important;
+            border-radius: 22px !important;
+          }
+        }
+
+        @media (max-width: 380px) {
+          .kf-dashboard-learning-grid,
+          .kf-dashboard-action-grid {
+            gap: 8px !important;
+          }
+
+          .kf-dashboard-page .kf-dashboard-feature-card {
+            min-height: 260px !important;
+            padding: 12px !important;
+          }
+
+          .kf-dashboard-page .kf-dashboard-feature-card h3 {
+            font-size: 16px !important;
+          }
         }
 
 `}</style>

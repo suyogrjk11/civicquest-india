@@ -20,13 +20,13 @@ type Language = "en" | "hi" | "mr";
 
 type Issue = {
 
-  id: string;
+  id: string;
 
-  status: string | null;
+  status: string | null;
 
-  reported_at: string | null;
+  reported_at: string | null;
 
-  category: string | null;
+  category: string | null;
 
 };
 
@@ -34,15 +34,15 @@ type Issue = {
 
 type QuestProgress = {
 
-  quest_id: string;
+  quest_id: string;
 
-  score: number | null;
+  score: number | null;
 
-  xp_earned: number | null;
+  xp_earned: number | null;
 
-  completed: boolean | null;
+  completed: boolean | null;
 
-  updated_at: string | null;
+  updated_at: string | null;
 
 };
 
@@ -50,13 +50,13 @@ type QuestProgress = {
 
 type LearningProgress = {
 
-  topic: string;
+  topic: string;
 
-  completed: boolean | null;
+  completed: boolean | null;
 
-  score: number | null;
+  score: number | null;
 
-  completed_at: string | null;
+  completed_at: string | null;
 
 };
 
@@ -64,15 +64,15 @@ type LearningProgress = {
 
 type MissionCompletion = {
 
-  id: string;
+  id: string;
 
-  mission_id: string;
+  mission_id: string;
 
-  status: string;
+  status: string;
 
-  submitted_at: string | null;
+  submitted_at: string | null;
 
-  reviewed_at: string | null;
+  reviewed_at: string | null;
 
 };
 
@@ -80,13 +80,13 @@ type MissionCompletion = {
 
 type Mission = {
 
-  id: string;
+  id: string;
 
-  title: string;
+  title: string;
 
-  title_i18n: Record<string, string> | null;
+  title_i18n: Record<string, string> | null;
 
-  points: number;
+  points: number;
 
 };
 
@@ -94,9 +94,9 @@ type Mission = {
 
 type PassportSummary = {
 
-  total_karma_credits: number;
+  total_karma_credits: number;
 
-  missions_verified: number;
+  missions_verified: number;
 
 };
 
@@ -104,21 +104,21 @@ type PassportSummary = {
 
 type MissionImpact = {
 
-  id: string;
+  id: string;
 
-  completion_id: string;
+  completion_id: string;
 
-  impact_type: string | null;
+  impact_type: string | null;
 
-  before_note: string | null;
+  before_note: string | null;
 
-  after_note: string | null;
+  after_note: string | null;
 
-  impact_summary: string | null;
+  impact_summary: string | null;
 
-  status: string | null;
+  status: string | null;
 
-  created_at: string | null;
+  created_at: string | null;
 
 };
 
@@ -126,15 +126,15 @@ type MissionImpact = {
 
 type IssueFollowup = {
 
-  id: number;
+  id: number;
 
-  issue_id: string;
+  issue_id: string;
 
-  status: string | null;
+  status: string | null;
 
-  note: string | null;
+  note: string | null;
 
-  created_at: string | null;
+  created_at: string | null;
 
 };
 
@@ -142,15 +142,15 @@ type IssueFollowup = {
 
 type ResolutionCheck = {
 
-  id: number;
+  id: number;
 
-  issue_id: string;
+  issue_id: string;
 
-  resolution_result: string | null;
+  resolution_result: string | null;
 
-  note: string | null;
+  note: string | null;
 
-  created_at: string | null;
+  created_at: string | null;
 
 };
 
@@ -158,525 +158,525 @@ type ResolutionCheck = {
 
 const content: Record<
 
-  Language,
+  Language,
 
-  {
+  {
 
-    eyebrow: string;
+    eyebrow: string;
 
-    title: string;
+    title: string;
 
-    subtitle: string;
+    subtitle: string;
 
-    loading: string;
+    loading: string;
 
-    back: string;
+    back: string;
 
-    issuesReported: string;
+    issuesReported: string;
 
-    issuesReportedSub: string;
+    issuesReportedSub: string;
 
-    resolved: string;
+    resolved: string;
 
-    resolvedSub: string;
+    resolvedSub: string;
 
-    active: string;
+    active: string;
 
-    activeSub: string;
+    activeSub: string;
 
-    questsCompleted: string;
+    questsCompleted: string;
 
-    questsCompletedSub: string;
+    questsCompletedSub: string;
 
-    xpEarned: string;
+    xpEarned: string;
 
-    xpEarnedSub: string;
+    xpEarnedSub: string;
 
-    learningCompleted: string;
+    learningCompleted: string;
 
-    learningCompletedSub: string;
+    learningCompletedSub: string;
 
-    verifiedMissions: string;
+    verifiedMissions: string;
 
-    verifiedMissionsSub: string;
+    verifiedMissionsSub: string;
 
-    karmaCredits: string;
+    karmaCredits: string;
 
-    karmaCreditsSub: string;
+    karmaCreditsSub: string;
 
-    passport: string;
+    passport: string;
 
-    passportDescription: string;
+    passportDescription: string;
 
-    viewPassport: string;
+    viewPassport: string;
 
-    journey: string;
+    journey: string;
 
-    journeyDescription: string;
+    journeyDescription: string;
 
-    learnStage: string;
+    learnStage: string;
 
-    noticeStage: string;
+    noticeStage: string;
 
-    actStage: string;
+    actStage: string;
 
-    verifyStage: string;
+    verifyStage: string;
 
-    impactStage: string;
+    impactStage: string;
 
-    journeyPathDescription: string;
+    journeyPathDescription: string;
 
-    recentActivity: string;
+    recentActivity: string;
 
-    reporting: string;
+    reporting: string;
 
-    reportingDescription: string;
+    reportingDescription: string;
 
-    learning: string;
+    learning: string;
 
-    learningDescription: string;
+    learningDescription: string;
 
-    community: string;
+    community: string;
 
-    communityDescription: string;
+    communityDescription: string;
 
-    exploreCommunity: string;
+    exploreCommunity: string;
 
-    continueLearning: string;
+    continueLearning: string;
 
-    reportIssue: string;
+    reportIssue: string;
 
-    noActivity: string;
+    noActivity: string;
 
-    footer: string;
+    footer: string;
 
-    status: string;
+    status: string;
 
-    activityPreparing: string;
+    activityPreparing: string;
 
-    score: string;
+    score: string;
 
-    completed: string;
+    completed: string;
 
-    verified: string;
+    verified: string;
 
-    impactSection: string;
+    impactSection: string;
 
-    impactDescription: string;
+    impactDescription: string;
 
-    verifiedImpact: string;
+    verifiedImpact: string;
 
-    verifiedImpactSub: string;
+    verifiedImpactSub: string;
 
-    issueOutcomes: string;
+    issueOutcomes: string;
 
-    issueOutcomesSub: string;
+    issueOutcomesSub: string;
 
-    evidenceRecorded: string;
+    evidenceRecorded: string;
 
-    evidenceRecordedSub: string;
+    evidenceRecordedSub: string;
 
-    noImpactYet: string;
+    noImpactYet: string;
 
-  }
+  }
 
 > = {
 
-  en: {
+  en: {
 
-    eyebrow: "YOUR CIVIC JOURNEY",
+    eyebrow: "YOUR CIVIC JOURNEY",
 
-    title: "My Impact",
+    title: "My Impact",
 
-    subtitle:
+    subtitle:
 
-      "See the civic actions, learning progress and community contribution connected to your KrutBharat account.",
+      "See the civic actions, learning progress and community contribution connected to your KrutBharat account.",
 
-    loading: "Loading your impact...",
+    loading: "Loading your impact...",
 
-    back: "← Dashboard",
+    back: "← Dashboard",
 
-    issuesReported: "Issues Reported",
+    issuesReported: "Issues Reported",
 
-    issuesReportedSub: "Civic problems you have reported",
+    issuesReportedSub: "Civic problems you have reported",
 
-    resolved: "Resolved",
+    resolved: "Resolved",
 
-    resolvedSub: "Your reports marked resolved",
+    resolvedSub: "Your reports marked resolved",
 
-    active: "Active Issues",
+    active: "Active Issues",
 
-    activeSub: "Reports still being worked on",
+    activeSub: "Reports still being worked on",
 
-    questsCompleted: "Civic Quests",
+    questsCompleted: "Civic Quests",
 
-    questsCompletedSub: "Quests you have completed",
+    questsCompletedSub: "Quests you have completed",
 
-    xpEarned: "XP Earned",
+    xpEarned: "XP Earned",
 
-    xpEarnedSub: "XP earned across your Civic Quest progress",
+    xpEarnedSub: "XP earned across your Civic Quest progress",
 
-    learningCompleted: "Learning Completed",
+    learningCompleted: "Learning Completed",
 
-    learningCompletedSub: "Civic learning topics completed",
+    learningCompletedSub: "Civic learning topics completed",
 
-    verifiedMissions: "Verified Missions",
+    verifiedMissions: "Verified Missions",
 
-    verifiedMissionsSub: "Real-world civic actions verified",
+    verifiedMissionsSub: "Real-world civic actions verified",
 
-    karmaCredits: "Karma Credits",
+    karmaCredits: "Karma Credits",
 
-    karmaCreditsSub: "Verified civic contribution record",
+    karmaCreditsSub: "Verified civic contribution record",
 
-    passport: "Civic Passport",
+    passport: "Civic Passport",
 
-    passportDescription: "Your verified civic record, Karma Credits and participation history.",
+    passportDescription: "Your verified civic record, Karma Credits and participation history.",
 
-    viewPassport: "View Civic Passport →",
+    viewPassport: "View Civic Passport →",
 
-    journey: "Your Civic Journey",
+    journey: "Your Civic Journey",
 
-    journeyDescription:
+    journeyDescription:
 
-      "Every report, learning activity and Civic Quest progress contributes to your personal civic journey.",
+      "Every report, learning activity and Civic Quest progress contributes to your personal civic journey.",
 
-    learnStage: "Learn",
+    learnStage: "Learn",
 
-    noticeStage: "Notice",
+    noticeStage: "Notice",
 
-    actStage: "Act",
+    actStage: "Act",
 
-    verifyStage: "Verify",
+    verifyStage: "Verify",
 
-    impactStage: "Impact",
+    impactStage: "Impact",
 
-    journeyPathDescription: "Your journey from civic knowledge to visible, verified participation.",
+    journeyPathDescription: "Your journey from civic knowledge to visible, verified participation.",
 
-    recentActivity: "Recent activity",
+    recentActivity: "Recent activity",
 
-    reporting: "Civic Participation",
+    reporting: "Civic Participation",
 
-    reportingDescription:
+    reportingDescription:
 
-      "You have helped bring local civic problems into KrutBharat and made them visible for tracking.",
+      "You have helped bring local civic problems into KrutBharat and made them visible for tracking.",
 
-    learning: "Civic Learning",
+    learning: "Civic Learning",
 
-    learningDescription:
+    learningDescription:
 
-      "Keep building your civic knowledge through lessons and Civic Quests.",
+      "Keep building your civic knowledge through lessons and Civic Quests.",
 
-    community: "Community",
+    community: "Community",
 
-    communityDescription:
+    communityDescription:
 
-      "Explore community issues and see where citizens are raising similar problems.",
+      "Explore community issues and see where citizens are raising similar problems.",
 
-    exploreCommunity: "Explore Community →",
+    exploreCommunity: "Explore Community →",
 
-    continueLearning: "Explore Civic Learning →",
+    continueLearning: "Explore Civic Learning →",
 
-    reportIssue: "Report an Issue →",
+    reportIssue: "Report an Issue →",
 
-    noActivity: "No activity yet. Start your KrutBharat journey.",
+    noActivity: "No activity yet. Start your KrutBharat journey.",
 
-    footer:
+    footer:
 
-      "KrutBharat helps you learn, participate and make your civic actions visible.",
+      "KrutBharat helps you learn, participate and make your civic actions visible.",
 
-    status: "Current status",
+    status: "Current status",
 
-    activityPreparing: "Your civic activity is being prepared.",
+    activityPreparing: "Your civic activity is being prepared.",
 
-    score: "Score",
+    score: "Score",
 
-    completed: "Completed",
+    completed: "Completed",
 
-    verified: "Verified",
+    verified: "Verified",
 
-    impactSection: "What Changed",
+    impactSection: "What Changed",
 
-    impactDescription: "See the evidence and outcomes connected to the civic actions you have taken.",
+    impactDescription: "See the evidence and outcomes connected to the civic actions you have taken.",
 
-    verifiedImpact: "Verified impact records",
+    verifiedImpact: "Verified impact records",
 
-    verifiedImpactSub: "Before-and-after evidence recorded for your actions",
+    verifiedImpactSub: "Before-and-after evidence recorded for your actions",
 
-    issueOutcomes: "Issue outcomes",
+    issueOutcomes: "Issue outcomes",
 
-    issueOutcomesSub: "Resolution checks and follow-up observations",
+    issueOutcomesSub: "Resolution checks and follow-up observations",
 
-    evidenceRecorded: "Evidence recorded",
+    evidenceRecorded: "Evidence recorded",
 
-    evidenceRecordedSub: "Impact records linked to your verified missions",
+    evidenceRecordedSub: "Impact records linked to your verified missions",
 
-    noImpactYet: "No impact evidence has been recorded yet. Complete a civic action and document what changed.",
+    noImpactYet: "No impact evidence has been recorded yet. Complete a civic action and document what changed.",
 
-  },
+  },
 
-  hi: {
+  hi: {
 
-    eyebrow: "आपकी नागरिक यात्रा",
+    eyebrow: "आपकी नागरिक यात्रा",
 
-    title: "मेरा प्रभाव",
+    title: "मेरा प्रभाव",
 
-    subtitle:
+    subtitle:
 
-      "अपने KrutBharat खाते से जुड़ी नागरिक गतिविधियों, सीखने की प्रगति और सामुदायिक योगदान को देखें।",
+      "अपने KrutBharat खाते से जुड़ी नागरिक गतिविधियों, सीखने की प्रगति और सामुदायिक योगदान को देखें।",
 
-    loading: "आपका प्रभाव लोड हो रहा है...",
+    loading: "आपका प्रभाव लोड हो रहा है...",
 
-    back: "← डैशबोर्ड",
+    back: "← डैशबोर्ड",
 
-    issuesReported: "रिपोर्ट की गई समस्याएँ",
+    issuesReported: "रिपोर्ट की गई समस्याएँ",
 
-    issuesReportedSub: "आपके द्वारा रिपोर्ट की गई नागरिक समस्याएँ",
+    issuesReportedSub: "आपके द्वारा रिपोर्ट की गई नागरिक समस्याएँ",
 
-    resolved: "समाधान हुई",
+    resolved: "समाधान हुई",
 
-    resolvedSub: "आपकी रिपोर्ट जिनका समाधान हुआ",
+    resolvedSub: "आपकी रिपोर्ट जिनका समाधान हुआ",
 
-    active: "सक्रिय समस्याएँ",
+    active: "सक्रिय समस्याएँ",
 
-    activeSub: "जिन रिपोर्ट पर अभी काम चल रहा है",
+    activeSub: "जिन रिपोर्ट पर अभी काम चल रहा है",
 
-    questsCompleted: "Civic Quests",
+    questsCompleted: "Civic Quests",
 
-    questsCompletedSub: "आपके द्वारा पूरी की गई क्वेस्ट",
+    questsCompletedSub: "आपके द्वारा पूरी की गई क्वेस्ट",
 
-    xpEarned: "प्राप्त XP",
+    xpEarned: "प्राप्त XP",
 
-    xpEarnedSub: "आपकी Civic Quest प्रगति से अर्जित XP",
+    xpEarnedSub: "आपकी Civic Quest प्रगति से अर्जित XP",
 
-    learningCompleted: "सीखना पूरा",
+    learningCompleted: "सीखना पूरा",
 
-    learningCompletedSub: "पूरे किए गए नागरिक सीखने के विषय",
+    learningCompletedSub: "पूरे किए गए नागरिक सीखने के विषय",
 
-    verifiedMissions: "सत्यापित मिशन",
+    verifiedMissions: "सत्यापित मिशन",
 
-    verifiedMissionsSub: "सत्यापित वास्तविक नागरिक कार्य",
+    verifiedMissionsSub: "सत्यापित वास्तविक नागरिक कार्य",
 
-    karmaCredits: "कर्मा क्रेडिट्स",
+    karmaCredits: "कर्मा क्रेडिट्स",
 
-    karmaCreditsSub: "सत्यापित नागरिक योगदान का रिकॉर्ड",
+    karmaCreditsSub: "सत्यापित नागरिक योगदान का रिकॉर्ड",
 
-    passport: "सिविक पासपोर्ट",
+    passport: "सिविक पासपोर्ट",
 
-    passportDescription: "आपका सत्यापित नागरिक रिकॉर्ड, कर्मा क्रेडिट्स और भागीदारी इतिहास।",
+    passportDescription: "आपका सत्यापित नागरिक रिकॉर्ड, कर्मा क्रेडिट्स और भागीदारी इतिहास।",
 
-    viewPassport: "सिविक पासपोर्ट देखें →",
+    viewPassport: "सिविक पासपोर्ट देखें →",
 
-    journey: "आपकी नागरिक यात्रा",
+    journey: "आपकी नागरिक यात्रा",
 
-    journeyDescription:
+    journeyDescription:
 
-      "हर रिपोर्ट, सीखने की गतिविधि और Civic Quest की प्रगति आपकी नागरिक यात्रा का हिस्सा है।",
+      "हर रिपोर्ट, सीखने की गतिविधि और Civic Quest की प्रगति आपकी नागरिक यात्रा का हिस्सा है।",
 
-    learnStage: "सीखें",
+    learnStage: "सीखें",
 
-    noticeStage: "ध्यान दें",
+    noticeStage: "ध्यान दें",
 
-    actStage: "कृती करें",
+    actStage: "कृती करें",
 
-    verifyStage: "सत्यापित करें",
+    verifyStage: "सत्यापित करें",
 
-    impactStage: "प्रभाव",
+    impactStage: "प्रभाव",
 
-    journeyPathDescription: "नागरिक ज्ञान से दिखाई देने वाली और सत्यापित भागीदारी तक आपकी यात्रा।",
+    journeyPathDescription: "नागरिक ज्ञान से दिखाई देने वाली और सत्यापित भागीदारी तक आपकी यात्रा।",
 
-    recentActivity: "हाल की गतिविधि",
+    recentActivity: "हाल की गतिविधि",
 
-    reporting: "नागरिक भागीदारी",
+    reporting: "नागरिक भागीदारी",
 
-    reportingDescription:
+    reportingDescription:
 
-      "आपने स्थानीय नागरिक समस्याओं को KrutBharat पर लाने और उन्हें ट्रैक करने में योगदान दिया है।",
+      "आपने स्थानीय नागरिक समस्याओं को KrutBharat पर लाने और उन्हें ट्रैक करने में योगदान दिया है।",
 
-    learning: "नागरिक सीख",
+    learning: "नागरिक सीख",
 
-    learningDescription:
+    learningDescription:
 
-      "पाठ और Civic Quests के माध्यम से अपना नागरिक ज्ञान बढ़ाते रहें।",
+      "पाठ और Civic Quests के माध्यम से अपना नागरिक ज्ञान बढ़ाते रहें।",
 
-    community: "समुदाय",
+    community: "समुदाय",
 
-    communityDescription:
+    communityDescription:
 
-      "सामुदायिक समस्याएँ देखें और जानें कि नागरिक किन समान समस्याओं की रिपोर्ट कर रहे हैं।",
+      "सामुदायिक समस्याएँ देखें और जानें कि नागरिक किन समान समस्याओं की रिपोर्ट कर रहे हैं।",
 
-    exploreCommunity: "समुदाय देखें →",
+    exploreCommunity: "समुदाय देखें →",
 
-    continueLearning: "नागरिक शिक्षा देखें →",
+    continueLearning: "नागरिक शिक्षा देखें →",
 
-    reportIssue: "समस्या रिपोर्ट करें →",
+    reportIssue: "समस्या रिपोर्ट करें →",
 
-    noActivity: "अभी कोई गतिविधि नहीं है। अपनी KrutBharat यात्रा शुरू करें।",
+    noActivity: "अभी कोई गतिविधि नहीं है। अपनी KrutBharat यात्रा शुरू करें।",
 
-    footer:
+    footer:
 
-      "KrutBharat आपको सीखने, भाग लेने और अपनी नागरिक गतिविधियों को दिखाई देने योग्य बनाने में मदद करता है।",
+      "KrutBharat आपको सीखने, भाग लेने और अपनी नागरिक गतिविधियों को दिखाई देने योग्य बनाने में मदद करता है।",
 
-    status: "वर्तमान स्थिति",
+    status: "वर्तमान स्थिति",
 
-    activityPreparing: "आपकी नागरिक गतिविधि तैयार की जा रही है।",
+    activityPreparing: "आपकी नागरिक गतिविधि तैयार की जा रही है।",
 
-    score: "स्कोर",
+    score: "स्कोर",
 
-    completed: "पूरा हुआ",
+    completed: "पूरा हुआ",
 
-    verified: "सत्यापित",
+    verified: "सत्यापित",
 
-    impactSection: "क्या बदला",
+    impactSection: "क्या बदला",
 
-    impactDescription: "आपकी नागरिक कार्रवाइयों से जुड़े साक्ष्य और परिणाम यहाँ दिखाई देंगे।",
+    impactDescription: "आपकी नागरिक कार्रवाइयों से जुड़े साक्ष्य और परिणाम यहाँ दिखाई देंगे।",
 
-    verifiedImpact: "सत्यापित प्रभाव रिकॉर्ड",
+    verifiedImpact: "सत्यापित प्रभाव रिकॉर्ड",
 
-    verifiedImpactSub: "आपकी कार्रवाइयों के लिए दर्ज पहले और बाद के साक्ष्य",
+    verifiedImpactSub: "आपकी कार्रवाइयों के लिए दर्ज पहले और बाद के साक्ष्य",
 
-    issueOutcomes: "समस्या के परिणाम",
+    issueOutcomes: "समस्या के परिणाम",
 
-    issueOutcomesSub: "समाधान जाँच और फॉलो-अप अवलोकन",
+    issueOutcomesSub: "समाधान जाँच और फॉलो-अप अवलोकन",
 
-    evidenceRecorded: "दर्ज साक्ष्य",
+    evidenceRecorded: "दर्ज साक्ष्य",
 
-    evidenceRecordedSub: "सत्यापित मिशनों से जुड़े प्रभाव रिकॉर्ड",
+    evidenceRecordedSub: "सत्यापित मिशनों से जुड़े प्रभाव रिकॉर्ड",
 
-    noImpactYet: "अभी कोई प्रभाव साक्ष्य दर्ज नहीं है। नागरिक कार्रवाई पूरी करें और हुए बदलाव को दर्ज करें।",
+    noImpactYet: "अभी कोई प्रभाव साक्ष्य दर्ज नहीं है। नागरिक कार्रवाई पूरी करें और हुए बदलाव को दर्ज करें।",
 
-  },
+  },
 
-  mr: {
+  mr: {
 
-    eyebrow: "तुमचा नागरिक प्रवास",
+    eyebrow: "तुमचा नागरिक प्रवास",
 
-    title: "माझा प्रभाव",
+    title: "माझा प्रभाव",
 
-    subtitle:
+    subtitle:
 
-      "तुमच्या KrutBharat खात्याशी जोडलेला नागरिक सहभाग, शिकण्याची प्रगती आणि समुदायातील योगदान पहा.",
+      "तुमच्या KrutBharat खात्याशी जोडलेला नागरिक सहभाग, शिकण्याची प्रगती आणि समुदायातील योगदान पहा.",
 
-    loading: "तुमचा प्रभाव लोड होत आहे...",
+    loading: "तुमचा प्रभाव लोड होत आहे...",
 
-    back: "← डॅशबोर्ड",
+    back: "← डॅशबोर्ड",
 
-    issuesReported: "नोंदवलेल्या समस्या",
+    issuesReported: "नोंदवलेल्या समस्या",
 
-    issuesReportedSub: "तुम्ही नोंदवलेल्या नागरी समस्या",
+    issuesReportedSub: "तुम्ही नोंदवलेल्या नागरी समस्या",
 
-    resolved: "सुटलेल्या",
+    resolved: "सुटलेल्या",
 
-    resolvedSub: "तुमच्या ज्या नोंदींचे निराकरण झाले",
+    resolvedSub: "तुमच्या ज्या नोंदींचे निराकरण झाले",
 
-    active: "सक्रिय समस्या",
+    active: "सक्रिय समस्या",
 
-    activeSub: "ज्या नोंदींवर अजून काम सुरू आहे",
+    activeSub: "ज्या नोंदींवर अजून काम सुरू आहे",
 
-    questsCompleted: "Civic Quests",
+    questsCompleted: "Civic Quests",
 
-    questsCompletedSub: "तुम्ही पूर्ण केलेल्या क्वेस्ट",
+    questsCompletedSub: "तुम्ही पूर्ण केलेल्या क्वेस्ट",
 
-    xpEarned: "मिळवलेले XP",
+    xpEarned: "मिळवलेले XP",
 
-    xpEarnedSub: "तुमच्या Civic Quest प्रगतीतून मिळवलेले XP",
+    xpEarnedSub: "तुमच्या Civic Quest प्रगतीतून मिळवलेले XP",
 
-    learningCompleted: "शिकणे पूर्ण",
+    learningCompleted: "शिकणे पूर्ण",
 
-    learningCompletedSub: "पूर्ण केलेले नागरिक शिक्षण विषय",
+    learningCompletedSub: "पूर्ण केलेले नागरिक शिक्षण विषय",
 
-    verifiedMissions: "सत्यापित मिशन",
+    verifiedMissions: "सत्यापित मिशन",
 
-    verifiedMissionsSub: "सत्यापित प्रत्यक्ष नागरी कृती",
+    verifiedMissionsSub: "सत्यापित प्रत्यक्ष नागरी कृती",
 
-    karmaCredits: "कर्मा क्रेडिट्स",
+    karmaCredits: "कर्मा क्रेडिट्स",
 
-    karmaCreditsSub: "सत्यापित नागरी योगदानाची नोंद",
+    karmaCreditsSub: "सत्यापित नागरी योगदानाची नोंद",
 
-    passport: "सिविक पासपोर्ट",
+    passport: "सिविक पासपोर्ट",
 
-    passportDescription: "तुमचा सत्यापित नागरी रेकॉर्ड, कर्मा क्रेडिट्स आणि सहभागाचा इतिहास.",
+    passportDescription: "तुमचा सत्यापित नागरी रेकॉर्ड, कर्मा क्रेडिट्स आणि सहभागाचा इतिहास.",
 
-    viewPassport: "सिविक पासपोर्ट पहा →",
+    viewPassport: "सिविक पासपोर्ट पहा →",
 
-    journey: "तुमचा नागरिक प्रवास",
+    journey: "तुमचा नागरिक प्रवास",
 
-    journeyDescription:
+    journeyDescription:
 
-      "प्रत्येक समस्या नोंद, शिकण्याची कृती आणि पूर्ण केलेली Civic Quest तुमच्या नागरिक प्रवासाचा भाग आहे.",
+      "प्रत्येक समस्या नोंद, शिकण्याची कृती आणि पूर्ण केलेली Civic Quest तुमच्या नागरिक प्रवासाचा भाग आहे.",
 
-    learnStage: "शिका",
+    learnStage: "शिका",
 
-    noticeStage: "नोंद घ्या",
+    noticeStage: "नोंद घ्या",
 
-    actStage: "कृती करा",
+    actStage: "कृती करा",
 
-    verifyStage: "सत्यापित करा",
+    verifyStage: "सत्यापित करा",
 
-    impactStage: "प्रभाव",
+    impactStage: "प्रभाव",
 
-    journeyPathDescription: "नागरी ज्ञानापासून दिसणाऱ्या आणि सत्यापित सहभागापर्यंतचा तुमचा प्रवास.",
+    journeyPathDescription: "नागरी ज्ञानापासून दिसणाऱ्या आणि सत्यापित सहभागापर्यंतचा तुमचा प्रवास.",
 
-    recentActivity: "अलीकडील गतिविधी",
+    recentActivity: "अलीकडील गतिविधी",
 
-    reporting: "नागरिक सहभाग",
+    reporting: "नागरिक सहभाग",
 
-    reportingDescription:
+    reportingDescription:
 
-      "स्थानिक नागरी समस्या KrutBharat वर आणण्यासाठी आणि त्यांचा मागोवा घेण्यासाठी तुम्ही योगदान दिले आहे.",
+      "स्थानिक नागरी समस्या KrutBharat वर आणण्यासाठी आणि त्यांचा मागोवा घेण्यासाठी तुम्ही योगदान दिले आहे.",
 
-    learning: "नागरिक शिक्षण",
+    learning: "नागरिक शिक्षण",
 
-    learningDescription:
+    learningDescription:
 
-      "धडे आणि Civic Quests द्वारे तुमचे नागरिक ज्ञान वाढवत राहा.",
+      "धडे आणि Civic Quests द्वारे तुमचे नागरिक ज्ञान वाढवत राहा.",
 
-    community: "समुदाय",
+    community: "समुदाय",
 
-    communityDescription:
+    communityDescription:
 
-      "समुदायातील समस्या पहा आणि नागरिक कोणत्या समान समस्यांची नोंद करत आहेत ते जाणून घ्या.",
+      "समुदायातील समस्या पहा आणि नागरिक कोणत्या समान समस्यांची नोंद करत आहेत ते जाणून घ्या.",
 
-    exploreCommunity: "समुदाय पहा →",
+    exploreCommunity: "समुदाय पहा →",
 
-    continueLearning: "नागरिक शिक्षण पहा →",
+    continueLearning: "नागरिक शिक्षण पहा →",
 
-    reportIssue: "समस्या नोंदवा →",
+    reportIssue: "समस्या नोंदवा →",
 
-    noActivity: "अजून कोणतीही गतिविधी नाही. तुमचा KrutBharat प्रवास सुरू करा.",
+    noActivity: "अजून कोणतीही गतिविधी नाही. तुमचा KrutBharat प्रवास सुरू करा.",
 
-    footer:
+    footer:
 
-      "KrutBharat तुम्हाला शिकण्यास, सहभागी होण्यास आणि तुमच्या नागरिक कृती दृश्यमान करण्यास मदत करते.",
+      "KrutBharat तुम्हाला शिकण्यास, सहभागी होण्यास आणि तुमच्या नागरिक कृती दृश्यमान करण्यास मदत करते.",
 
-    status: "सध्याची स्थिती",
+    status: "सध्याची स्थिती",
 
-    activityPreparing: "तुमची नागरिक गतिविधी तयार केली जात आहे.",
+    activityPreparing: "तुमची नागरिक गतिविधी तयार केली जात आहे.",
 
-    score: "स्कोअर",
+    score: "स्कोअर",
 
-    completed: "पूर्ण झाले",
+    completed: "पूर्ण झाले",
 
-    verified: "सत्यापित",
+    verified: "सत्यापित",
 
-    impactSection: "काय बदलले",
+    impactSection: "काय बदलले",
 
-    impactDescription: "तुम्ही केलेल्या नागरिक कृतींशी जोडलेले पुरावे आणि परिणाम येथे दिसतील.",
+    impactDescription: "तुम्ही केलेल्या नागरिक कृतींशी जोडलेले पुरावे आणि परिणाम येथे दिसतील.",
 
-    verifiedImpact: "सत्यापित प्रभाव नोंदी",
+    verifiedImpact: "सत्यापित प्रभाव नोंदी",
 
-    verifiedImpactSub: "तुमच्या कृतींसाठी नोंदवलेले आधी आणि नंतरचे पुरावे",
+    verifiedImpactSub: "तुमच्या कृतींसाठी नोंदवलेले आधी आणि नंतरचे पुरावे",
 
-    issueOutcomes: "समस्यांचे परिणाम",
+    issueOutcomes: "समस्यांचे परिणाम",
 
-    issueOutcomesSub: "निराकरण तपासण्या आणि फॉलो-अप निरीक्षणे",
+    issueOutcomesSub: "निराकरण तपासण्या आणि फॉलो-अप निरीक्षणे",
 
-    evidenceRecorded: "नोंदवलेले पुरावे",
+    evidenceRecorded: "नोंदवलेले पुरावे",
 
-    evidenceRecordedSub: "सत्यापित मिशनशी जोडलेल्या प्रभाव नोंदी",
+    evidenceRecordedSub: "सत्यापित मिशनशी जोडलेल्या प्रभाव नोंदी",
 
-    noImpactYet: "अजून प्रभावाचा पुरावा नोंदवलेला नाही. नागरिक कृती पूर्ण करा आणि झालेला बदल नोंदवा.",
+    noImpactYet: "अजून प्रभावाचा पुरावा नोंदवलेला नाही. नागरिक कृती पूर्ण करा आणि झालेला बदल नोंदवा.",
 
-  },
+  },
 
 };
 
@@ -684,45 +684,45 @@ const content: Record<
 
 const questNames: Record<string, Record<Language, string>> = {
 
-  constitution: {
+  constitution: {
 
-    en: "Constitution & Democracy",
+    en: "Constitution & Democracy",
 
-    hi: "संविधान और लोकतंत्र",
+    hi: "संविधान और लोकतंत्र",
 
-    mr: "संविधान आणि लोकशाही",
+    mr: "संविधान आणि लोकशाही",
 
-  },
+  },
 
-  governance: {
+  governance: {
 
-    en: "Governance",
+    en: "Governance",
 
-    hi: "शासन व्यवस्था",
+    hi: "शासन व्यवस्था",
 
-    mr: "शासन व्यवस्था",
+    mr: "शासन व्यवस्था",
 
-  },
+  },
 
-  elections: {
+  elections: {
 
-    en: "Elections & Voting",
+    en: "Elections & Voting",
 
-    hi: "चुनाव और मतदान",
+    hi: "चुनाव और मतदान",
 
-    mr: "निवडणुका आणि मतदान",
+    mr: "निवडणुका आणि मतदान",
 
-  },
+  },
 
-  "know-india": {
+  "know-india": {
 
-    en: "Know India",
+    en: "Know India",
 
-    hi: "भारत को जानें",
+    hi: "भारत को जानें",
 
-    mr: "भारत जाणून घ्या",
+    mr: "भारत जाणून घ्या",
 
-  },
+  },
 
 };
 
@@ -730,33 +730,33 @@ const questNames: Record<string, Record<Language, string>> = {
 
 function statusLabel(status: string | null, language: Language) {
 
-  switch (status) {
+  switch (status) {
 
-    case "reported":
+    case "reported":
 
-      return language === "hi" ? "रिपोर्ट की गई" : language === "mr" ? "नोंदवलेली" : "Reported";
+      return language === "hi" ? "रिपोर्ट की गई" : language === "mr" ? "नोंदवलेली" : "Reported";
 
-    case "under_review":
+    case "under_review":
 
-      return language === "hi" ? "समीक्षा में" : language === "mr" ? "तपासणीत" : "Under Review";
+      return language === "hi" ? "समीक्षा में" : language === "mr" ? "तपासणीत" : "Under Review";
 
-    case "in_progress":
+    case "in_progress":
 
-      return language === "hi" ? "प्रगति में" : language === "mr" ? "प्रगतीपथावर" : "In Progress";
+      return language === "hi" ? "प्रगति में" : language === "mr" ? "प्रगतीपथावर" : "In Progress";
 
-    case "resolved":
+    case "resolved":
 
-      return language === "hi" ? "समाधान हुआ" : language === "mr" ? "निराकरण झाले" : "Resolved";
+      return language === "hi" ? "समाधान हुआ" : language === "mr" ? "निराकरण झाले" : "Resolved";
 
-    case "rejected":
+    case "rejected":
 
-      return language === "hi" ? "अस्वीकृत" : language === "mr" ? "नाकारले" : "Rejected";
+      return language === "hi" ? "अस्वीकृत" : language === "mr" ? "नाकारले" : "Rejected";
 
-    default:
+    default:
 
-      return status || (language === "hi" ? "अज्ञात" : language === "mr" ? "अज्ञात" : "Unknown");
+      return status || (language === "hi" ? "अज्ञात" : language === "mr" ? "अज्ञात" : "Unknown");
 
-  }
+  }
 
 }
 
@@ -764,45 +764,45 @@ function statusLabel(status: string | null, language: Language) {
 
 function categoryLabel(category: string | null, language: Language) {
 
-  if (!category) {
+  if (!category) {
 
-    return language === "hi" ? "नागरिक समस्या" : language === "mr" ? "नागरी समस्या" : "Civic issue";
+    return language === "hi" ? "नागरिक समस्या" : language === "mr" ? "नागरी समस्या" : "Civic issue";
 
-  }
-
-
-
-  const labels: Record<string, Record<Language, string>> = {
-
-    roads: { en: "Roads & Streets", hi: "सड़कें और गलियाँ", mr: "रस्ते आणि मार्ग" },
-
-    water: { en: "Water Supply", hi: "जल आपूर्ति", mr: "पाणीपुरवठा" },
-
-    sanitation: { en: "Sanitation", hi: "स्वच्छता", mr: "स्वच्छता" },
-
-    waste: { en: "Waste Management", hi: "कचरा प्रबंधन", mr: "कचरा व्यवस्थापन" },
-
-    streetlights: { en: "Street Lights", hi: "स्ट्रीट लाइट", mr: "पथदिवे" },
-
-    drainage: { en: "Drainage", hi: "जल निकासी", mr: "निचरा व्यवस्था" },
-
-    traffic: { en: "Traffic", hi: "यातायात", mr: "वाहतूक" },
-
-    public_safety: { en: "Public Safety", hi: "सार्वजनिक सुरक्षा", mr: "सार्वजनिक सुरक्षितता" },
-
-    cleanliness: { en: "Cleanliness", hi: "स्वच्छता", mr: "स्वच्छता" },
-
-    environment: { en: "Environment", hi: "पर्यावरण", mr: "पर्यावरण" },
-
-    education: { en: "Education", hi: "शिक्षण", mr: "शिक्षण" },
-
-    healthcare: { en: "Healthcare", hi: "स्वास्थ्य सेवा", mr: "आरोग्यसेवा" },
-
-  };
+  }
 
 
 
-  return labels[category]?.[language] || category.replace(/_/g, " ");
+  const labels: Record<string, Record<Language, string>> = {
+
+    roads: { en: "Roads & Streets", hi: "सड़कें और गलियाँ", mr: "रस्ते आणि मार्ग" },
+
+    water: { en: "Water Supply", hi: "जल आपूर्ति", mr: "पाणीपुरवठा" },
+
+    sanitation: { en: "Sanitation", hi: "स्वच्छता", mr: "स्वच्छता" },
+
+    waste: { en: "Waste Management", hi: "कचरा प्रबंधन", mr: "कचरा व्यवस्थापन" },
+
+    streetlights: { en: "Street Lights", hi: "स्ट्रीट लाइट", mr: "पथदिवे" },
+
+    drainage: { en: "Drainage", hi: "जल निकासी", mr: "निचरा व्यवस्था" },
+
+    traffic: { en: "Traffic", hi: "यातायात", mr: "वाहतूक" },
+
+    public_safety: { en: "Public Safety", hi: "सार्वजनिक सुरक्षा", mr: "सार्वजनिक सुरक्षितता" },
+
+    cleanliness: { en: "Cleanliness", hi: "स्वच्छता", mr: "स्वच्छता" },
+
+    environment: { en: "Environment", hi: "पर्यावरण", mr: "पर्यावरण" },
+
+    education: { en: "Education", hi: "शिक्षण", mr: "शिक्षण" },
+
+    healthcare: { en: "Healthcare", hi: "स्वास्थ्य सेवा", mr: "आरोग्यसेवा" },
+
+  };
+
+
+
+  return labels[category]?.[language] || category.replace(/_/g, " ");
 
 }
 
@@ -810,33 +810,33 @@ function categoryLabel(category: string | null, language: Language) {
 
 function formatDate(date: string | null, language: Language) {
 
-  if (!date) return "—";
+  if (!date) return "—";
 
 
 
-  const locale =
+  const locale =
 
-    language === "hi"
+    language === "hi"
 
-      ? "hi-IN"
+      ? "hi-IN"
 
-      : language === "mr"
+      : language === "mr"
 
-        ? "mr-IN"
+        ? "mr-IN"
 
-        : "en-IN";
+        : "en-IN";
 
 
 
-  return new Date(date).toLocaleDateString(locale, {
+  return new Date(date).toLocaleDateString(locale, {
 
-    day: "2-digit",
+    day: "2-digit",
 
-    month: "short",
+    month: "short",
 
-    year: "numeric",
+    year: "numeric",
 
-  });
+  });
 
 }
 
@@ -844,1489 +844,1625 @@ function formatDate(date: string | null, language: Language) {
 
 export default function MyImpactPage() {
 
-  const router = useRouter();
+  const router = useRouter();
 
-  const supabase = createClient();
+  const supabase = createClient();
 
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
-  const text = content[language];
+  const text = content[language];
 
 
 
-  const [issues, setIssues] = useState<Issue[]>([]);
+  const [issues, setIssues] = useState<Issue[]>([]);
 
-  const [quests, setQuests] = useState<QuestProgress[]>([]);
+  const [quests, setQuests] = useState<QuestProgress[]>([]);
 
-  const [learning, setLearning] = useState<LearningProgress[]>([]);
+  const [learning, setLearning] = useState<LearningProgress[]>([]);
 
-  const [missions, setMissions] = useState<Array<MissionCompletion & { mission: Mission | null }>>([]);
+  const [missions, setMissions] = useState<Array<MissionCompletion & { mission: Mission | null }>>([]);
 
-  const [impacts, setImpacts] = useState<MissionImpact[]>([]);
+  const [impacts, setImpacts] = useState<MissionImpact[]>([]);
 
-  const [followups, setFollowups] = useState<IssueFollowup[]>([]);
+  const [followups, setFollowups] = useState<IssueFollowup[]>([]);
 
-  const [resolutionChecks, setResolutionChecks] = useState<ResolutionCheck[]>([]);
+  const [resolutionChecks, setResolutionChecks] = useState<ResolutionCheck[]>([]);
 
-  const [passport, setPassport] = useState<PassportSummary | null>(null);
+  const [passport, setPassport] = useState<PassportSummary | null>(null);
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
 
 
-  useEffect(() => {
+  useEffect(() => {
 
-    async function loadImpact() {
+    async function loadImpact() {
 
-      const {
+      const {
 
-        data: { user },
+        data: { user },
 
-      } = await supabase.auth.getUser();
+      } = await supabase.auth.getUser();
 
 
 
-      if (!user) {
+      if (!user) {
 
-        router.push("/auth");
+        router.push("/auth");
 
-        return;
+        return;
 
-      }
+      }
 
 
 
-      const [
+      const [
 
-        issuesResult,
+        issuesResult,
 
-        questsResult,
+        questsResult,
 
-        learningResult,
+        learningResult,
 
-        missionResult,
+        missionResult,
 
-        passportResult,
+        passportResult,
 
-        impactResult,
+        impactResult,
 
-        followupResult,
+        followupResult,
 
-        resolutionResult,
+        resolutionResult,
 
-      ] = await Promise.all([
+      ] = await Promise.all([
 
-          supabase
+          supabase
 
-            .from("civic_issues")
+            .from("civic_issues")
 
-            .select("id, status, reported_at, category")
+            .select("id, status, reported_at, category")
 
-            .eq("user_id", user.id)
+            .eq("user_id", user.id)
 
-            .order("reported_at", { ascending: false }),
+            .order("reported_at", { ascending: false }),
 
 
 
-          supabase
+          supabase
 
-            .from("civic_quest_progress")
+            .from("civic_quest_progress")
 
-            .select("quest_id, score, xp_earned, completed, updated_at")
+            .select("quest_id, score, xp_earned, completed, updated_at")
 
-            .eq("user_id", user.id),
+            .eq("user_id", user.id),
 
 
 
-          supabase
+          supabase
 
-            .from("learning_progress")
+            .from("learning_progress")
 
-            .select("topic, completed, score, completed_at")
+            .select("topic, completed, score, completed_at")
 
-            .eq("user_id", user.id),
+            .eq("user_id", user.id),
 
 
 
-          supabase
+          supabase
 
-            .from("civic_mission_completions")
+            .from("civic_mission_completions")
 
-            .select("id, mission_id, status, submitted_at, reviewed_at")
+            .select("id, mission_id, status, submitted_at, reviewed_at")
 
-            .eq("user_id", user.id)
+            .eq("user_id", user.id)
 
-            .eq("status", "verified")
+            .eq("status", "verified")
 
-            .order("reviewed_at", { ascending: false }),
+            .order("reviewed_at", { ascending: false }),
 
 
 
-          supabase.rpc("get_my_civic_passport"),
+          supabase.rpc("get_my_civic_passport"),
 
 
 
-          supabase
+          supabase
 
-            .from("civic_mission_impacts")
+            .from("civic_mission_impacts")
 
-            .select(
+            .select(
 
-              "id, completion_id, impact_type, before_note, after_note, impact_summary, status, created_at"
+              "id, completion_id, impact_type, before_note, after_note, impact_summary, status, created_at"
 
-            )
+            )
 
-            .eq("user_id", user.id)
+            .eq("user_id", user.id)
 
-            .order("created_at", { ascending: false }),
+            .order("created_at", { ascending: false }),
 
 
 
-          supabase
+          supabase
 
-            .from("civic_issue_followups")
+            .from("civic_issue_followups")
 
-            .select("id, issue_id, status, note, created_at")
+            .select("id, issue_id, status, note, created_at")
 
-            .eq("user_id", user.id)
+            .eq("user_id", user.id)
 
-            .order("created_at", { ascending: false }),
+            .order("created_at", { ascending: false }),
 
 
 
-          supabase
+          supabase
 
-            .from("civic_issue_resolution_checks")
+            .from("civic_issue_resolution_checks")
 
-            .select("id, issue_id, resolution_result, note, created_at")
+            .select("id, issue_id, resolution_result, note, created_at")
 
-            .eq("user_id", user.id)
+            .eq("user_id", user.id)
 
-            .order("created_at", { ascending: false }),
+            .order("created_at", { ascending: false }),
 
-        ]);
+        ]);
 
 
 
-      if (issuesResult.error) {
+      if (issuesResult.error) {
 
-        console.error(
+        console.error(
 
-          "Impact issues loading error:",
+          "Impact issues loading error:",
 
-          issuesResult.error
+          issuesResult.error
 
-        );
+        );
 
-      }
+      }
 
 
 
-      if (questsResult.error) {
+      if (questsResult.error) {
 
-        console.error(
+        console.error(
 
-          "Impact quest loading error:",
+          "Impact quest loading error:",
 
-          questsResult.error
+          questsResult.error
 
-        );
+        );
 
-      }
+      }
 
 
 
-      if (learningResult.error) {
+      if (learningResult.error) {
 
-        console.error(
+        console.error(
 
-          "Impact learning loading error:",
+          "Impact learning loading error:",
 
-          learningResult.error
+          learningResult.error
 
-        );
+        );
 
-      }
+      }
 
 
 
-      if (missionResult.error) {
+      if (missionResult.error) {
 
-        console.error(
+        console.error(
 
-          "Impact mission loading error:",
+          "Impact mission loading error:",
 
-          missionResult.error
+          missionResult.error
 
-        );
+        );
 
-      }
+      }
 
 
 
-      if (passportResult.error) {
+      if (passportResult.error) {
 
-        console.error(
+        console.error(
 
-          "Impact passport loading error:",
+          "Impact passport loading error:",
 
-          passportResult.error
+          passportResult.error
 
-        );
+        );
 
-      }
+      }
 
 
 
-      const passportRow = Array.isArray(passportResult.data)
+      const passportRow = Array.isArray(passportResult.data)
 
-        ? passportResult.data[0]
+        ? passportResult.data[0]
 
-        : passportResult.data;
+        : passportResult.data;
 
 
 
-      setPassport((passportRow as PassportSummary) || null);
+      setPassport((passportRow as PassportSummary) || null);
 
-      setIssues((issuesResult.data as Issue[]) || []);
+      setIssues((issuesResult.data as Issue[]) || []);
 
-      setQuests((questsResult.data as QuestProgress[]) || []);
+      setQuests((questsResult.data as QuestProgress[]) || []);
 
-      setLearning(
+      setLearning(
 
-        (learningResult.data as LearningProgress[]) || []
+        (learningResult.data as LearningProgress[]) || []
 
-      );
+      );
 
-      setImpacts((impactResult.data as MissionImpact[]) || []);
+      setImpacts((impactResult.data as MissionImpact[]) || []);
 
-      setFollowups((followupResult.data as IssueFollowup[]) || []);
+      setFollowups((followupResult.data as IssueFollowup[]) || []);
 
-      setResolutionChecks((resolutionResult.data as ResolutionCheck[]) || []);
+      setResolutionChecks((resolutionResult.data as ResolutionCheck[]) || []);
 
 
 
-      if (impactResult.error) console.error("Impact evidence loading error:", impactResult.error);
+      if (impactResult.error) console.error("Impact evidence loading error:", impactResult.error);
 
-      if (followupResult.error) console.error("Impact follow-up loading error:", followupResult.error);
+      if (followupResult.error) console.error("Impact follow-up loading error:", followupResult.error);
 
-      if (resolutionResult.error) console.error("Impact resolution loading error:", resolutionResult.error);
+      if (resolutionResult.error) console.error("Impact resolution loading error:", resolutionResult.error);
 
 
 
-      const completions = (missionResult.data as MissionCompletion[]) || [];
+      const completions = (missionResult.data as MissionCompletion[]) || [];
 
-      if (completions.length > 0) {
+      if (completions.length > 0) {
 
-        const missionIds = Array.from(new Set(completions.map((completion) => completion.mission_id)));
+        const missionIds = Array.from(new Set(completions.map((completion) => completion.mission_id)));
 
-        const { data: missionData, error: missionDataError } = await supabase
+        const { data: missionData, error: missionDataError } = await supabase
 
-          .from("civic_missions")
+          .from("civic_missions")
 
-          .select("id,title,title_i18n,points")
+          .select("id,title,title_i18n,points")
 
-          .in("id", missionIds);
+          .in("id", missionIds);
 
 
 
-        if (missionDataError) {
+        if (missionDataError) {
 
-          console.error("Impact mission details loading error:", missionDataError);
+          console.error("Impact mission details loading error:", missionDataError);
 
-        }
+        }
 
 
 
-        const missionMap = new Map(
+        const missionMap = new Map(
 
-          ((missionData || []) as Mission[]).map((mission) => [mission.id, mission])
+          ((missionData || []) as Mission[]).map((mission) => [mission.id, mission])
 
-        );
+        );
 
 
 
-        setMissions(
+        setMissions(
 
-          completions.map((completion) => ({
+          completions.map((completion) => ({
 
-            ...completion,
+            ...completion,
 
-            mission: missionMap.get(completion.mission_id) || null,
+            mission: missionMap.get(completion.mission_id) || null,
 
-          }))
+          }))
 
-        );
+        );
 
-      } else {
+      } else {
 
-        setMissions([]);
+        setMissions([]);
 
-      }
+      }
 
 
 
-      setLoading(false);
+      setLoading(false);
 
-    }
+    }
 
 
 
-    loadImpact();
+    loadImpact();
 
-  }, [router]);
+  }, [router]);
 
 
 
-  const resolvedCount = useMemo(
+  const resolvedCount = useMemo(
 
-    () =>
+    () =>
 
-      issues.filter(
+      issues.filter(
 
-        (issue) => issue.status === "resolved"
+        (issue) => issue.status === "resolved"
 
-      ).length,
+      ).length,
 
-    [issues]
+    [issues]
 
-  );
+  );
 
 
 
-  const activeCount = useMemo(
+  const activeCount = useMemo(
 
-    () =>
+    () =>
 
-      issues.filter(
+      issues.filter(
 
-        (issue) =>
+        (issue) =>
 
-          issue.status !== "resolved" &&
+          issue.status !== "resolved" &&
 
-          issue.status !== "rejected"
+          issue.status !== "rejected"
 
-      ).length,
+      ).length,
 
-    [issues]
+    [issues]
 
-  );
+  );
 
 
 
-  const completedQuests = useMemo(
+  const completedQuests = useMemo(
 
-    () =>
+    () =>
 
-      quests.filter(
+      quests.filter(
 
-        (quest) => quest.completed === true
+        (quest) => quest.completed === true
 
-      ),
+      ),
 
-    [quests]
+    [quests]
 
-  );
+  );
 
 
 
-  const totalXp = useMemo(
+  const totalXp = useMemo(
 
-    () =>
+    () =>
 
-      quests.reduce(
+      quests.reduce(
 
-        (total, quest) =>
+        (total, quest) =>
 
-          total +
+          total +
 
-          (typeof quest.xp_earned === "number"
+          (typeof quest.xp_earned === "number"
 
-            ? quest.xp_earned
+            ? quest.xp_earned
 
-            : 0),
+            : 0),
 
-        0
+        0
 
-      ),
+      ),
 
-    [quests]
+    [quests]
 
-  );
+  );
 
 
 
-  const completedLearning = useMemo(
+  const completedLearning = useMemo(
 
-    () =>
+    () =>
 
-      learning.filter(
+      learning.filter(
 
-        (item) => item.completed === true
+        (item) => item.completed === true
 
-      ).length,
+      ).length,
 
-    [learning]
+    [learning]
 
-  );
+  );
 
 
 
-  const completedMissions = missions.length;
+  const completedMissions = missions.length;
 
 
 
 
 
-  const journeyStages = [
+  const journeyStages = [
 
-    {
+    {
 
-      key: "learn",
+      key: "learn",
 
-      icon: "📚",
+      icon: "📚",
 
-      title: text.learnStage,
+      title: text.learnStage,
 
-      value: completedLearning,
+      value: completedLearning,
 
-      detail: text.learningCompleted,
+      detail: text.learningCompleted,
 
-      background: "linear-gradient(145deg, #f1f7ec 0%, #e8f1e1 100%)",
+      background: "linear-gradient(145deg, #f1f7ec 0%, #e8f1e1 100%)",
 
-    },
+    },
 
-    {
+    {
 
-      key: "notice",
+      key: "notice",
 
-      icon: "📢",
+      icon: "📢",
 
-      title: text.noticeStage,
+      title: text.noticeStage,
 
-      value: issues.length,
+      value: issues.length,
 
-      detail: text.issuesReported,
+      detail: text.issuesReported,
 
-      background: "linear-gradient(145deg, #f0f7fb 0%, #e6f0f7 100%)",
+      background: "linear-gradient(145deg, #f0f7fb 0%, #e6f0f7 100%)",
 
-    },
+    },
 
-    {
+    {
 
-      key: "act",
+      key: "act",
 
-      icon: "✦",
+      icon: "✦",
 
-      title: text.actStage,
+      title: text.actStage,
 
-      value: completedMissions,
+      value: completedMissions,
 
-      detail: text.verifiedMissions,
+      detail: text.verifiedMissions,
 
-      background: "linear-gradient(145deg, #fff5eb 0%, #ffeadb 100%)",
+      background: "linear-gradient(145deg, #fff5eb 0%, #ffeadb 100%)",
 
-    },
+    },
 
-    {
+    {
 
-      key: "verify",
+      key: "verify",
 
-      icon: "✓",
+      icon: "✓",
 
-      title: text.verifyStage,
+      title: text.verifyStage,
 
-      value: completedMissions,
+      value: completedMissions,
 
-      detail: text.verified,
+      detail: text.verified,
 
-      background: "linear-gradient(145deg, #f7f3fb 0%, #eee9f6 100%)",
+      background: "linear-gradient(145deg, #f7f3fb 0%, #eee9f6 100%)",
 
-    },
+    },
 
-    {
+    {
 
-      key: "impact",
+      key: "impact",
 
-      icon: "🌱",
+      icon: "🌱",
 
-      title: text.impactStage,
+      title: text.impactStage,
 
-      value: resolvedCount,
+      value: resolvedCount,
 
-      detail: text.resolved,
+      detail: text.resolved,
 
-      background: "linear-gradient(145deg, #fff6e9 0%, #ffedd5 100%)",
+      background: "linear-gradient(145deg, #fff6e9 0%, #ffedd5 100%)",
 
-    },
+    },
 
-  ];
+  ];
 
 
 
-  const journeyEvents = useMemo(() => {
+  const journeyEvents = useMemo(() => {
 
-    const events: Array<{
+    const events: Array<{
 
-      id: string;
+      id: string;
 
-      type: "issue" | "mission" | "quest" | "learning" | "impact" | "followup" | "resolution";
+      type: "issue" | "mission" | "quest" | "learning" | "impact" | "followup" | "resolution";
 
-      date: string | null;
+      date: string | null;
 
-      title: string;
+      title: string;
 
-      detail: string;
+      detail: string;
 
-      value?: string;
+      value?: string;
 
-      status?: string | null;
+      status?: string | null;
 
-    }> = [];
+    }> = [];
 
 
 
-    issues.forEach((issue) => {
+    issues.forEach((issue) => {
 
-      events.push({
+      events.push({
 
-        id: `issue-${issue.id}`,
+        id: `issue-${issue.id}`,
 
-        type: "issue",
+        type: "issue",
 
-        date: issue.reported_at,
+        date: issue.reported_at,
 
-        title: text.reporting,
+        title: text.reporting,
 
-        detail: `${categoryLabel(issue.category, language)} · ${formatDate(issue.reported_at, language)}`,
+        detail: `${categoryLabel(issue.category, language)} · ${formatDate(issue.reported_at, language)}`,
 
-        status: issue.status,
+        status: issue.status,
 
-      });
+      });
 
-    });
+    });
 
 
 
-    missions.forEach((completion) => {
+    missions.forEach((completion) => {
 
-      events.push({
+      events.push({
 
-        id: `mission-${completion.id}`,
+        id: `mission-${completion.id}`,
 
-        type: "mission",
+        type: "mission",
 
-        date: completion.reviewed_at || completion.submitted_at,
+        date: completion.reviewed_at || completion.submitted_at,
 
-        title: completion.mission?.title_i18n?.[language] || completion.mission?.title || "Civic Mission",
+        title: completion.mission?.title_i18n?.[language] || completion.mission?.title || "Civic Mission",
 
-        detail: `${text.verified} · ${formatDate(completion.reviewed_at || completion.submitted_at, language)}`,
+        detail: `${text.verified} · ${formatDate(completion.reviewed_at || completion.submitted_at, language)}`,
 
-        value: `+${completion.mission?.points ?? 0} Karma`,
+        value: `+${completion.mission?.points ?? 0} Karma`,
 
-      });
+      });
 
-    });
+    });
 
 
 
-    completedQuests.forEach((quest) => {
+    completedQuests.forEach((quest) => {
 
-      events.push({
+      events.push({
 
-        id: `quest-${quest.quest_id}`,
+        id: `quest-${quest.quest_id}`,
 
-        type: "quest",
+        type: "quest",
 
-        date: quest.updated_at,
+        date: quest.updated_at,
 
-        title: questNames[quest.quest_id]?.[language] || quest.quest_id,
+        title: questNames[quest.quest_id]?.[language] || quest.quest_id,
 
-        detail: `${text.score}: ${quest.score ?? 0} · ${formatDate(quest.updated_at, language)}`,
+        detail: `${text.score}: ${quest.score ?? 0} · ${formatDate(quest.updated_at, language)}`,
 
-        value: `+${quest.xp_earned || 0} XP`,
+        value: `+${quest.xp_earned || 0} XP`,
 
-      });
+      });
 
-    });
+    });
 
 
 
-    learning.filter((item) => item.completed === true).forEach((item, index) => {
+    learning.filter((item) => item.completed === true).forEach((item, index) => {
 
-      events.push({
+      events.push({
 
-        id: `learning-${item.topic}-${index}`,
+        id: `learning-${item.topic}-${index}`,
 
-        type: "learning",
+        type: "learning",
 
-        date: item.completed_at,
+        date: item.completed_at,
 
-        title: item.topic,
+        title: item.topic,
 
-        detail: `${text.completed} · ${formatDate(item.completed_at, language)}`,
+        detail: `${text.completed} · ${formatDate(item.completed_at, language)}`,
 
-        value: typeof item.score === "number" ? `${text.score}: ${item.score}` : undefined,
+        value: typeof item.score === "number" ? `${text.score}: ${item.score}` : undefined,
 
-      });
+      });
 
-    });
+    });
 
 
 
-    impacts.forEach((impact) => {
+    impacts.forEach((impact) => {
 
-      events.push({
+      events.push({
 
-        id: `impact-${impact.id}`,
+        id: `impact-${impact.id}`,
 
-        type: "impact",
+        type: "impact",
 
-        date: impact.created_at,
+        date: impact.created_at,
 
-        title: text.impactSection,
+        title: text.impactSection,
 
-        detail: `${impact.impact_summary || impact.after_note || text.verified} · ${formatDate(impact.created_at, language)}`,
+        detail: `${impact.impact_summary || impact.after_note || text.verified} · ${formatDate(impact.created_at, language)}`,
 
-        value: impact.status || undefined,
+        value: impact.status || undefined,
 
-      });
+      });
 
-    });
+    });
 
 
 
-    followups.forEach((followup) => {
+    followups.forEach((followup) => {
 
-      events.push({
+      events.push({
 
-        id: `followup-${followup.id}`,
+        id: `followup-${followup.id}`,
 
-        type: "followup",
+        type: "followup",
 
-        date: followup.created_at,
+        date: followup.created_at,
 
-        title: text.issueOutcomes,
+        title: text.issueOutcomes,
 
-        detail: `${followup.status || "Update"} · ${formatDate(followup.created_at, language)}`,
+        detail: `${followup.status || "Update"} · ${formatDate(followup.created_at, language)}`,
 
-      });
+      });
 
-    });
+    });
 
 
 
-    resolutionChecks.forEach((check) => {
+    resolutionChecks.forEach((check) => {
 
-      events.push({
+      events.push({
 
-        id: `resolution-${check.id}`,
+        id: `resolution-${check.id}`,
 
-        type: "resolution",
+        type: "resolution",
 
-        date: check.created_at,
+        date: check.created_at,
 
-        title: text.issueOutcomes,
+        title: text.issueOutcomes,
 
-        detail: `${check.resolution_result || "Observation"} · ${formatDate(check.created_at, language)}`,
+        detail: `${check.resolution_result || "Observation"} · ${formatDate(check.created_at, language)}`,
 
-      });
+      });
 
-    });
+    });
 
 
 
-    return events
+    return events
 
-      .sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime())
+      .sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime())
 
-      .slice(0, 10);
+      .slice(0, 10);
 
-  }, [issues, missions, completedQuests, learning, impacts, followups, resolutionChecks, language, text]);
+  }, [issues, missions, completedQuests, learning, impacts, followups, resolutionChecks, language, text]);
 
 
 
-  if (loading) {
+  if (loading) {
 
-    return (
+    return (
 
-      <main className="kf-my-impact-page kf-my-impact-loading" style={pageStyle}>
+      <main className="kf-my-impact-page kf-my-impact-loading" style={pageStyle}>
       <KrutBharatMobileShell />
 
-        <div className="kf-my-impact-loading-card" style={loadingCardStyle}>
+        <div className="kf-my-impact-loading-card" style={loadingCardStyle}>
 
-          <div style={loadingIconStyle}>📊</div>
+          <div style={loadingIconStyle}>📊</div>
 
-          <div style={loadingTitleStyle}>
+          <div style={loadingTitleStyle}>
 
-            {text.loading}
+            {text.loading}
 
-          </div>
+          </div>
 
-          <div style={loadingTextStyle}>
+          <div style={loadingTextStyle}>
 
-            {text.activityPreparing}
+            {text.activityPreparing}
 
-          </div>
+          </div>
 
-        </div>
+        </div>
 
-      </main>
+      
+<style>{`
+  /* My Impact: responsive layout repair, scoped to this page only. */
+  @media (max-width: 1023px) {
+    .kf-my-impact-page,
+    .kf-my-impact-page * {
+      box-sizing: border-box;
+      min-width: 0;
+    }
 
-    );
+    .kf-my-impact-page {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: clip !important;
+      padding: 12px 12px 96px !important;
+    }
 
-  }
+    .kf-my-impact-page .kf-my-impact-shell {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-topbar {
+      grid-template-columns: minmax(0, 1fr) auto !important;
+      gap: 10px !important;
+      min-height: 0 !important;
+      margin-bottom: 16px !important;
+      padding: 12px !important;
+      border-radius: 20px !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-brand {
+      min-width: 0 !important;
+      gap: 8px !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-language-switcher {
+      max-width: 100% !important;
+      flex-wrap: wrap !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-hero {
+      margin: 12px 0 18px !important;
+      padding: 20px !important;
+      border-radius: 24px !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-title {
+      font-size: clamp(32px, 8vw, 44px) !important;
+      line-height: 1.05 !important;
+      overflow-wrap: anywhere !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-subtitle {
+      max-width: 100% !important;
+      overflow-wrap: anywhere !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-stats,
+    .kf-my-impact-page .kf-my-impact-impact-grid,
+    .kf-my-impact-page .kf-my-impact-action-grid,
+    .kf-my-impact-page .kf-my-impact-record-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 10px !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-journey,
+    .kf-my-impact-page .kf-my-impact-impact-section {
+      padding: 16px !important;
+      margin-bottom: 16px !important;
+      border-radius: 22px !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-journey-path {
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 10px !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-stage-wrap {
+      width: 100% !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-journey-connector {
+      display: none !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-stat-card,
+    .kf-my-impact-page .kf-my-impact-metric,
+    .kf-my-impact-page .kf-my-impact-action-card,
+    .kf-my-impact-page .kf-my-impact-record {
+      width: 100% !important;
+      min-width: 0 !important;
+      padding: 14px !important;
+      overflow-wrap: anywhere !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-event {
+      grid-template-columns: auto minmax(0, 1fr) !important;
+      gap: 10px !important;
+      width: 100% !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-footer {
+      padding-bottom: 12px !important;
+      overflow-wrap: anywhere !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .kf-my-impact-page {
+      padding: 10px 10px 94px !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-topbar {
+      grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-stats,
+    .kf-my-impact-page .kf-my-impact-impact-grid,
+    .kf-my-impact-page .kf-my-impact-action-grid,
+    .kf-my-impact-page .kf-my-impact-record-grid {
+      grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-hero {
+      padding: 18px !important;
+    }
+
+    .kf-my-impact-page .kf-my-impact-stat-card,
+    .kf-my-impact-page .kf-my-impact-metric {
+      min-height: 0 !important;
+    }
+  }
+`}</style>
+
+</main>
+
+    );
+
+  }
 
 
 
-  return (
+  return (
 
-    <main className="kf-my-impact-page" style={pageStyle}>
+    <main className="kf-my-impact-page" style={pageStyle}>
       <KrutBharatMobileShell />
 
-      <div className="kf-my-impact-shell" style={containerStyle}>
+      <div className="kf-my-impact-shell" style={containerStyle}>
 
-        <header className="kf-my-impact-topbar" style={topNavStyle}>
+        <header className="kf-my-impact-topbar" style={topNavStyle}>
 
-          <div style={headerSideStyle}>
+          <div style={headerSideStyle}>
 
-            <button
+            <button
 
-              className="kf-my-impact-back-button"
+              className="kf-my-impact-back-button"
 
-              type="button"
+              type="button"
 
-              onClick={() => router.push("/dashboard")}
+              onClick={() => router.push("/dashboard")}
 
-              style={backButtonStyle}
+              style={backButtonStyle}
 
-            >
+            >
 
-              <span style={backArrowStyle}>←</span>
+              <span style={backArrowStyle}>←</span>
 
-              <span>{text.back.replace("← ", "")}</span>
+              <span>{text.back.replace("← ", "")}</span>
 
-            </button>
+            </button>
 
-          </div>
+          </div>
 
 
 
-          <div className="kf-my-impact-brand" style={brandStyle} aria-label="KrutBharat My Impact">
+          <div className="kf-my-impact-brand" style={brandStyle} aria-label="KrutBharat My Impact">
 
-            <div className="kf-my-impact-brand-mark" style={brandMarkStyle}>K</div>
+            <div className="kf-my-impact-brand-mark" style={brandMarkStyle}>K</div>
 
 
 
-            <div className="kf-my-impact-brand-copy" style={brandTextWrapStyle}>
+            <div className="kf-my-impact-brand-copy" style={brandTextWrapStyle}>
 
-              <div className="kf-my-impact-brand-name" style={brandNameStyle}>
+              <div className="kf-my-impact-brand-name" style={brandNameStyle}>
 
-                <span className="kf-my-impact-brand-krut">Krut</span>
+                <span className="kf-my-impact-brand-krut">Krut</span>
 
-                <span className="kf-my-impact-brand-bharat" style={brandAccentStyle}>Bharat</span>
+                <span className="kf-my-impact-brand-bharat" style={brandAccentStyle}>Bharat</span>
 
-              </div>
+              </div>
 
 
 
-              <div className="kf-my-impact-brand-subtitle" style={brandSubtitleStyle}>MY IMPACT</div>
+              <div className="kf-my-impact-brand-subtitle" style={brandSubtitleStyle}>MY IMPACT</div>
 
-            </div>
+            </div>
 
-          </div>
+          </div>
 
 
 
-          <div
+          <div
 
-            style={{
+            style={{
 
-              ...headerSideStyle,
+              ...headerSideStyle,
 
-              justifyContent: "flex-end",
+              justifyContent: "flex-end",
 
-            }}
+            }}
 
-          >
+          >
 
-            <div style={languageControlStyle}>
+            <div style={languageControlStyle}>
 
-              <span className="kf-my-impact-language-label" style={languageLabelStyle}>Language</span>
+              <span className="kf-my-impact-language-label" style={languageLabelStyle}>Language</span>
 
 
 
-              <div className="kf-my-impact-language-switcher" style={languageSwitcherStyle} aria-label="Language selection">
+              <div className="kf-my-impact-language-switcher" style={languageSwitcherStyle} aria-label="Language selection">
 
-                {(
+                {(
 
-                  [
+                  [
 
-                    ["en", "English"],
+                    ["en", "English"],
 
-                    ["hi", "हिंदी"],
+                    ["hi", "हिंदी"],
 
-                    ["mr", "मराठी"],
+                    ["mr", "मराठी"],
 
-                  ] as const
+                  ] as const
 
-                ).map(([code, label]) => (
+                ).map(([code, label]) => (
 
-                  <button
+                  <button
 
-                    className={`kf-my-impact-language-button ${language === code ? "is-active" : ""}`}
+                    className={`kf-my-impact-language-button ${language === code ? "is-active" : ""}`}
 
-                    key={code}
+                    key={code}
 
-                    type="button"
+                    type="button"
 
-                    onClick={() => setLanguage(code)}
+                    onClick={() => setLanguage(code)}
 
-                    aria-pressed={language === code}
+                    aria-pressed={language === code}
 
-                    style={{
+                    style={{
 
-                      ...languageButtonStyle,
+                      ...languageButtonStyle,
 
-                      ...(language === code
+                      ...(language === code
 
-                        ? activeLanguageButtonStyle
+                        ? activeLanguageButtonStyle
 
-                        : {}),
+                        : {}),
 
-                    }}
+                    }}
 
-                  >
+                  >
 
-                    {label}
+                    {label}
 
-                  </button>
+                  </button>
 
-                ))}
+                ))}
 
-              </div>
+              </div>
 
-            </div>
+            </div>
 
-          </div>
+          </div>
 
-        </header>
+        </header>
 
 
 
-        <header className="kf-my-impact-hero" style={headerStyle}>
+        <header className="kf-my-impact-hero" style={headerStyle}>
 
-          <div className="kf-my-impact-eyebrow" style={eyebrowStyle}>{text.eyebrow}</div>
+          <div className="kf-my-impact-eyebrow" style={eyebrowStyle}>{text.eyebrow}</div>
 
 
 
-          <h1 className="kf-my-impact-title" style={titleStyle}>{text.title}</h1>
+          <h1 className="kf-my-impact-title" style={titleStyle}>{text.title}</h1>
 
 
 
-          <p className="kf-my-impact-subtitle" style={subtitleStyle}>
+          <p className="kf-my-impact-subtitle" style={subtitleStyle}>
 
-            {text.subtitle}
+            {text.subtitle}
 
-          </p>
+          </p>
 
-        </header>
+        </header>
 
 
 
-        <section className="kf-my-impact-stats" style={statsGridStyle}>
+        <section className="kf-my-impact-stats" style={statsGridStyle}>
 
-          <Stat
+          <Stat
 
-            icon="📢"
+            icon="📢"
 
-            label={text.issuesReported}
+            label={text.issuesReported}
 
-            value={issues.length}
+            value={issues.length}
 
-            sub={text.issuesReportedSub}
+            sub={text.issuesReportedSub}
 
-            tone="blue"
+            tone="blue"
 
-          />
+          />
 
 
 
-          <Stat
+          <Stat
 
-            icon="✅"
+            icon="✅"
 
-            label={text.resolved}
+            label={text.resolved}
 
-            value={resolvedCount}
+            value={resolvedCount}
 
-            sub={text.resolvedSub}
+            sub={text.resolvedSub}
 
-            tone="green"
+            tone="green"
 
-          />
+          />
 
 
 
-          <Stat
+          <Stat
 
-            icon="🔧"
+            icon="🔧"
 
-            label={text.active}
+            label={text.active}
 
-            value={activeCount}
+            value={activeCount}
 
-            sub={text.activeSub}
+            sub={text.activeSub}
 
-            tone="orange"
+            tone="orange"
 
-          />
+          />
 
 
 
-          <Stat
+          <Stat
 
-            icon="🎯"
+            icon="🎯"
 
-            label={text.questsCompleted}
+            label={text.questsCompleted}
 
-            value={completedQuests.length}
+            value={completedQuests.length}
 
-            sub={text.questsCompletedSub}
+            sub={text.questsCompletedSub}
 
-            tone="lavender"
+            tone="lavender"
 
-          />
+          />
 
 
 
-          <Stat
+          <Stat
 
-            icon="⚡"
+            icon="⚡"
 
-            label={text.xpEarned}
+            label={text.xpEarned}
 
-            value={`+${totalXp}`}
+            value={`+${totalXp}`}
 
-            sub={text.xpEarnedSub}
+            sub={text.xpEarnedSub}
 
-            tone="peach"
+            tone="peach"
 
-          />
+          />
 
 
 
-          <Stat
+          <Stat
 
-            icon="📚"
+            icon="📚"
 
-            label={text.learningCompleted}
+            label={text.learningCompleted}
 
-            value={completedLearning}
+            value={completedLearning}
 
-            sub={text.learningCompletedSub}
+            sub={text.learningCompletedSub}
 
-            tone="blue"
+            tone="blue"
 
-          />
+          />
 
 
 
-          <Stat
+          <Stat
 
-            icon="✓"
+            icon="✓"
 
-            label={text.verifiedMissions}
+            label={text.verifiedMissions}
 
-            value={completedMissions}
+            value={completedMissions}
 
-            sub={text.verifiedMissionsSub}
+            sub={text.verifiedMissionsSub}
 
-            tone="green"
+            tone="green"
 
-          />
+          />
 
 
 
-          <Stat
+          <Stat
 
-            icon="✦"
+            icon="✦"
 
-            label={text.karmaCredits}
+            label={text.karmaCredits}
 
-            value={passport?.total_karma_credits ?? 0}
+            value={passport?.total_karma_credits ?? 0}
 
-            sub={text.karmaCreditsSub}
+            sub={text.karmaCreditsSub}
 
-            tone="peach"
+            tone="peach"
 
-          />
+          />
 
-        </section>
+        </section>
 
 
 
-        <section className="kf-my-impact-journey" style={panelStyle}>
+        <section className="kf-my-impact-journey" style={panelStyle}>
 
-          <div style={eyebrowStyle}>
+          <div style={eyebrowStyle}>
 
-            KRUTBHARAT
+            KRUTBHARAT
 
-          </div>
+          </div>
 
 
 
-          <h2 style={sectionTitleStyle}>
+          <h2 style={sectionTitleStyle}>
 
-            {text.journey}
+            {text.journey}
 
-          </h2>
+          </h2>
 
 
 
-          <p style={mutedStyle}>
+          <p style={mutedStyle}>
 
-            {text.journeyDescription}
+            {text.journeyDescription}
 
-          </p>
+          </p>
 
 
 
-          <div style={journeyPathHeaderStyle}>
+          <div style={journeyPathHeaderStyle}>
 
-            <span style={journeyPathEyebrowStyle}>{text.journeyPathDescription}</span>
+            <span style={journeyPathEyebrowStyle}>{text.journeyPathDescription}</span>
 
-          </div>
+          </div>
 
 
 
-          <div className="kf-my-impact-journey-path" style={journeyPathStyle}>
+          <div className="kf-my-impact-journey-path" style={journeyPathStyle}>
 
-            {journeyStages.map((stage, index) => (
+            {journeyStages.map((stage, index) => (
 
-              <div key={stage.key} className={`kf-my-impact-stage-wrap kf-stage-${stage.key}`} style={journeyStageWrapStyle}>
+              <div key={stage.key} className={`kf-my-impact-stage-wrap kf-stage-${stage.key}`} style={journeyStageWrapStyle}>
 
-                <div
+                <div
 
-                  style={{
+                  style={{
 
-                    ...journeyStageStyle,
+                    ...journeyStageStyle,
 
-                    background: stage.background,
+                    background: stage.background,
 
-                  }}
+                  }}
 
-                >
+                >
 
-                  <div className="kf-my-impact-stage-icon" style={journeyStageIconStyle}>{stage.icon}</div>
+                  <div className="kf-my-impact-stage-icon" style={journeyStageIconStyle}>{stage.icon}</div>
 
-                  <div className="kf-my-impact-stage-title" style={journeyStageTitleStyle}>{stage.title}</div>
+                  <div className="kf-my-impact-stage-title" style={journeyStageTitleStyle}>{stage.title}</div>
 
-                  <div className="kf-my-impact-stage-value" style={journeyStageValueStyle}>{stage.value}</div>
+                  <div className="kf-my-impact-stage-value" style={journeyStageValueStyle}>{stage.value}</div>
 
-                  <div className="kf-my-impact-stage-detail" style={journeyStageDetailStyle}>{stage.detail}</div>
+                  <div className="kf-my-impact-stage-detail" style={journeyStageDetailStyle}>{stage.detail}</div>
 
-                </div>
+                </div>
 
-                {index < journeyStages.length - 1 ? (
+                {index < journeyStages.length - 1 ? (
 
-                  <div className="kf-my-impact-journey-connector" style={journeyConnectorStyle}>→</div>
+                  <div className="kf-my-impact-journey-connector" style={journeyConnectorStyle}>→</div>
 
-                ) : null}
+                ) : null}
 
-              </div>
+              </div>
 
-            ))}
+            ))}
 
-          </div>
+          </div>
 
 
 
-          <div className="kf-my-impact-activity-header" style={journeyActivityHeaderStyle}>
+          <div className="kf-my-impact-activity-header" style={journeyActivityHeaderStyle}>
 
-            <div className="kf-my-impact-activity-title" style={journeyActivityTitleStyle}>{text.recentActivity}</div>
+            <div className="kf-my-impact-activity-title" style={journeyActivityTitleStyle}>{text.recentActivity}</div>
 
-            <div className="kf-my-impact-activity-sub" style={journeyActivitySubStyle}>
+            <div className="kf-my-impact-activity-sub" style={journeyActivitySubStyle}>
 
-              {journeyEvents.length} {text.recentActivity.toLowerCase()}
+              {journeyEvents.length} {text.recentActivity.toLowerCase()}
 
-            </div>
+            </div>
 
-          </div>
+          </div>
 
 
 
-          {journeyEvents.length === 0 ? (
+          {journeyEvents.length === 0 ? (
 
-            <div className="kf-my-impact-empty" style={emptyStyle}>
+            <div className="kf-my-impact-empty" style={emptyStyle}>
 
-              <div style={emptyIconStyle}>🌱</div>
+              <div style={emptyIconStyle}>🌱</div>
 
-              <div className="kf-my-impact-empty-title" style={emptyTitleStyle}>
+              <div className="kf-my-impact-empty-title" style={emptyTitleStyle}>
 
-                {text.noActivity}
+                {text.noActivity}
 
-              </div>
+              </div>
 
-            </div>
+            </div>
 
-          ) : (
+          ) : (
 
-            <div
+            <div
 
-              style={{
+              style={{
 
-                display: "grid",
+                display: "grid",
 
-                gap: 12,
+                gap: 12,
 
-                marginTop: 22,
+                marginTop: 22,
 
-              }}
+              }}
 
-            >
+            >
 
-              {journeyEvents.map((event) => {
+              {journeyEvents.map((event) => {
 
-                const icon =
+                const icon =
 
-                  event.type === "issue"
+                  event.type === "issue"
 
-                    ? "📢"
+                    ? "📢"
 
-                    : event.type === "mission"
+                    : event.type === "mission"
 
-                      ? "✦"
+                      ? "✦"
 
-                      : event.type === "quest"
+                      : event.type === "quest"
 
-                        ? "🎯"
+                        ? "🎯"
 
-                        : event.type === "learning"
+                        : event.type === "learning"
 
-                          ? "📚"
+                          ? "📚"
 
-                          : event.type === "impact"
+                          : event.type === "impact"
 
-                            ? "🌱"
+                            ? "🌱"
 
-                            : event.type === "resolution"
+                            : event.type === "resolution"
 
-                              ? "✓"
+                              ? "✓"
 
-                              : "↻";
+                              : "↻";
 
 
 
-                const background =
+                const background =
 
-                  event.type === "issue"
+                  event.type === "issue"
 
-                    ? "#edf5fb"
+                    ? "#edf5fb"
 
-                    : event.type === "mission"
+                    : event.type === "mission"
 
-                      ? "#fff0e5"
+                      ? "#fff0e5"
 
-                      : event.type === "quest"
+                      : event.type === "quest"
 
-                        ? "#f2eef9"
+                        ? "#f2eef9"
 
-                        : event.type === "learning"
+                        : event.type === "learning"
 
-                          ? "#eff7e9"
+                          ? "#eff7e9"
 
-                          : event.type === "impact"
+                          : event.type === "impact"
 
-                            ? "#fff4df"
+                            ? "#fff4df"
 
-                            : event.type === "resolution"
+                            : event.type === "resolution"
 
-                              ? "#edf7e9"
+                              ? "#edf7e9"
 
-                              : "#f4eff9";
+                              : "#f4eff9";
 
 
 
-                return (
+                return (
 
-                  <div key={event.id} className={`kf-my-impact-event kf-impact-event-${event.type}`} style={timelineRowStyle}>
+                  <div key={event.id} className={`kf-my-impact-event kf-impact-event-${event.type}`} style={timelineRowStyle}>
 
-                    <div
+                    <div
 
-                      className="kf-my-impact-event-icon"
+                      className="kf-my-impact-event-icon"
 
-                      style={{
+                      style={{
 
-                        ...timelineIconStyle,
+                        ...timelineIconStyle,
 
-                        background,
+                        background,
 
-                      }}
+                      }}
 
-                    >
+                    >
 
-                      {icon}
+                      {icon}
 
-                    </div>
+                    </div>
 
 
 
-                    <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
 
-                      <strong className="kf-my-impact-event-title" style={timelineTitleStyle}>
+                      <strong className="kf-my-impact-event-title" style={timelineTitleStyle}>
 
-                        {event.title}
+                        {event.title}
 
-                      </strong>
+                      </strong>
 
 
 
-                      <div style={mutedSmallStyle}>
+                      <div style={mutedSmallStyle}>
 
-                        {event.detail}
+                        {event.detail}
 
-                      </div>
+                      </div>
 
-                    </div>
+                    </div>
 
 
 
-                    {event.status ? (
+                    {event.status ? (
 
-                      <span style={statusPillStyle(event.status)}>
+                      <span style={statusPillStyle(event.status)}>
 
-                        {statusLabel(event.status, language)}
+                        {statusLabel(event.status, language)}
 
-                      </span>
+                      </span>
 
-                    ) : event.value ? (
+                    ) : event.value ? (
 
-                      <span style={xpPillStyle}>
+                      <span style={xpPillStyle}>
 
-                        {event.value}
+                        {event.value}
 
-                      </span>
+                      </span>
 
-                    ) : null}
+                    ) : null}
 
-                  </div>
+                  </div>
 
-                );
+                );
 
-              })}
+              })}
 
-            </div>
+            </div>
 
-          )}
+          )}
 
-        </section>
+        </section>
 
 
 
-        <section className="kf-my-impact-impact-section" style={impactPanelStyle}>
+        <section className="kf-my-impact-impact-section" style={impactPanelStyle}>
 
-          <div style={eyebrowStyle}>{text.impactStage}</div>
+          <div style={eyebrowStyle}>{text.impactStage}</div>
 
-          <h2 style={sectionTitleStyle}>{text.impactSection}</h2>
+          <h2 style={sectionTitleStyle}>{text.impactSection}</h2>
 
-          <p style={mutedStyle}>{text.impactDescription}</p>
+          <p style={mutedStyle}>{text.impactDescription}</p>
 
 
 
-          <div className="kf-my-impact-impact-grid" style={impactGridStyle}>
+          <div className="kf-my-impact-impact-grid" style={impactGridStyle}>
 
-            <div className="kf-my-impact-metric kf-metric-impact" style={{ ...impactCardStyle, background: "linear-gradient(145deg, #fff7e9 0%, #ffedd7 100%)" }}>
+            <div className="kf-my-impact-metric kf-metric-impact" style={{ ...impactCardStyle, background: "linear-gradient(145deg, #fff7e9 0%, #ffedd7 100%)" }}>
 
-              <div className="kf-my-impact-metric-icon" style={impactMetricIconStyle}>🌱</div>
+              <div className="kf-my-impact-metric-icon" style={impactMetricIconStyle}>🌱</div>
 
-              <div className="kf-my-impact-metric-value" style={impactMetricValueStyle}>{impacts.length}</div>
+              <div className="kf-my-impact-metric-value" style={impactMetricValueStyle}>{impacts.length}</div>
 
-              <div className="kf-my-impact-metric-title" style={impactMetricTitleStyle}>{text.verifiedImpact}</div>
+              <div className="kf-my-impact-metric-title" style={impactMetricTitleStyle}>{text.verifiedImpact}</div>
 
-              <div className="kf-my-impact-metric-sub" style={impactMetricSubStyle}>{text.verifiedImpactSub}</div>
+              <div className="kf-my-impact-metric-sub" style={impactMetricSubStyle}>{text.verifiedImpactSub}</div>
 
-            </div>
+            </div>
 
 
 
-            <div className="kf-my-impact-metric kf-metric-outcomes" style={{ ...impactCardStyle, background: "linear-gradient(145deg, #edf7e9 0%, #e5f1df 100%)" }}>
+            <div className="kf-my-impact-metric kf-metric-outcomes" style={{ ...impactCardStyle, background: "linear-gradient(145deg, #edf7e9 0%, #e5f1df 100%)" }}>
 
-              <div className="kf-my-impact-metric-icon" style={impactMetricIconStyle}>✓</div>
+              <div className="kf-my-impact-metric-icon" style={impactMetricIconStyle}>✓</div>
 
-              <div className="kf-my-impact-metric-value" style={impactMetricValueStyle}>{resolvedCount}</div>
+              <div className="kf-my-impact-metric-value" style={impactMetricValueStyle}>{resolvedCount}</div>
 
-              <div className="kf-my-impact-metric-title" style={impactMetricTitleStyle}>{text.issueOutcomes}</div>
+              <div className="kf-my-impact-metric-title" style={impactMetricTitleStyle}>{text.issueOutcomes}</div>
 
-              <div className="kf-my-impact-metric-sub" style={impactMetricSubStyle}>{text.issueOutcomesSub}</div>
+              <div className="kf-my-impact-metric-sub" style={impactMetricSubStyle}>{text.issueOutcomesSub}</div>
 
-            </div>
+            </div>
 
 
 
-            <div className="kf-my-impact-metric kf-metric-evidence" style={{ ...impactCardStyle, background: "linear-gradient(145deg, #edf5fb 0%, #e5f0f7 100%)" }}>
+            <div className="kf-my-impact-metric kf-metric-evidence" style={{ ...impactCardStyle, background: "linear-gradient(145deg, #edf5fb 0%, #e5f0f7 100%)" }}>
 
-              <div className="kf-my-impact-metric-icon" style={impactMetricIconStyle}>📎</div>
+              <div className="kf-my-impact-metric-icon" style={impactMetricIconStyle}>📎</div>
 
-              <div className="kf-my-impact-metric-value" style={impactMetricValueStyle}>{impacts.filter((impact) => Boolean(impact.before_note || impact.after_note || impact.impact_summary)).length}</div>
+              <div className="kf-my-impact-metric-value" style={impactMetricValueStyle}>{impacts.filter((impact) => Boolean(impact.before_note || impact.after_note || impact.impact_summary)).length}</div>
 
-              <div className="kf-my-impact-metric-title" style={impactMetricTitleStyle}>{text.evidenceRecorded}</div>
+              <div className="kf-my-impact-metric-title" style={impactMetricTitleStyle}>{text.evidenceRecorded}</div>
 
-              <div className="kf-my-impact-metric-sub" style={impactMetricSubStyle}>{text.evidenceRecordedSub}</div>
+              <div className="kf-my-impact-metric-sub" style={impactMetricSubStyle}>{text.evidenceRecordedSub}</div>
 
-            </div>
+            </div>
 
-          </div>
+          </div>
 
 
 
-          {impacts.length === 0 && resolutionChecks.length === 0 ? (
+          {impacts.length === 0 && resolutionChecks.length === 0 ? (
 
-            <div className="kf-my-impact-impact-empty" style={impactEmptyStyle}>
+            <div className="kf-my-impact-impact-empty" style={impactEmptyStyle}>
 
-              <div style={emptyIconStyle}>🌱</div>
+              <div style={emptyIconStyle}>🌱</div>
 
-              <div className="kf-my-impact-empty-title" style={emptyTitleStyle}>{text.noImpactYet}</div>
+              <div className="kf-my-impact-empty-title" style={emptyTitleStyle}>{text.noImpactYet}</div>
 
-            </div>
+            </div>
 
-          ) : (
+          ) : (
 
-            <div className="kf-my-impact-record-grid" style={impactRecordGridStyle}>
+            <div className="kf-my-impact-record-grid" style={impactRecordGridStyle}>
 
-              {impacts.slice(0, 4).map((impact) => (
+              {impacts.slice(0, 4).map((impact) => (
 
-                <div key={impact.id} className="kf-my-impact-record" style={impactRecordStyle}>
+                <div key={impact.id} className="kf-my-impact-record" style={impactRecordStyle}>
 
-                  <div style={impactRecordTopStyle}>
+                  <div style={impactRecordTopStyle}>
 
-                    <span className="kf-my-impact-record-badge" style={impactRecordBadgeStyle}>🌱 {text.verified}</span>
+                    <span className="kf-my-impact-record-badge" style={impactRecordBadgeStyle}>🌱 {text.verified}</span>
 
-                    <span className="kf-my-impact-record-date" style={impactRecordDateStyle}>{formatDate(impact.created_at, language)}</span>
+                    <span className="kf-my-impact-record-date" style={impactRecordDateStyle}>{formatDate(impact.created_at, language)}</span>
 
-                  </div>
+                  </div>
 
-                  <strong style={timelineTitleStyle}>{impact.impact_summary || text.verifiedImpact}</strong>
+                  <strong style={timelineTitleStyle}>{impact.impact_summary || text.verifiedImpact}</strong>
 
-                  {impact.before_note ? <div className="kf-my-impact-record-note" style={impactNoteStyle}><b>Before:</b> {impact.before_note}</div> : null}
+                  {impact.before_note ? <div className="kf-my-impact-record-note" style={impactNoteStyle}><b>Before:</b> {impact.before_note}</div> : null}
 
-                  {impact.after_note ? <div className="kf-my-impact-record-note" style={impactNoteStyle}><b>After:</b> {impact.after_note}</div> : null}
+                  {impact.after_note ? <div className="kf-my-impact-record-note" style={impactNoteStyle}><b>After:</b> {impact.after_note}</div> : null}
 
-                </div>
+                </div>
 
-              ))}
+              ))}
 
-            </div>
+            </div>
 
-          )}
+          )}
 
-        </section>
+        </section>
 
 
 
-        <section className="kf-my-impact-action-grid" style={threeColumnStyle}>
+        <section className="kf-my-impact-action-grid" style={threeColumnStyle}>
 
-          <ActionCard
+          <ActionCard
 
-            icon="📢"
+            icon="📢"
 
-            title={text.reporting}
+            title={text.reporting}
 
-            description={text.reportingDescription}
+            description={text.reportingDescription}
 
-            button={text.reportIssue}
+            button={text.reportIssue}
 
-            onClick={() =>
+            onClick={() =>
 
-              router.push("/report-issue")
+              router.push("/report-issue")
 
-            }
+            }
 
-            tone="peach"
+            tone="peach"
 
-          />
+          />
 
 
 
-          <ActionCard
+          <ActionCard
 
-            icon="📚"
+            icon="📚"
 
-            title={text.learning}
+            title={text.learning}
 
-            description={text.learningDescription}
+            description={text.learningDescription}
 
-            button={text.continueLearning}
+            button={text.continueLearning}
 
-            onClick={() =>
+            onClick={() =>
 
-              router.push("/civic-learning")
+              router.push("/civic-learning")
 
-            }
+            }
 
-            tone="blue"
+            tone="blue"
 
-          />
+          />
 
 
 
-          <ActionCard
+          <ActionCard
 
-            icon="🪪"
+            icon="🪪"
 
-            title={text.passport}
+            title={text.passport}
 
-            description={text.passportDescription}
+            description={text.passportDescription}
 
-            button={text.viewPassport}
+            button={text.viewPassport}
 
-            onClick={() =>
+            onClick={() =>
 
-              router.push("/civic-passport")
+              router.push("/civic-passport")
 
-            }
+            }
 
-            tone="blue"
+            tone="blue"
 
-          />
+          />
 
 
 
-          <ActionCard
+          <ActionCard
 
-            icon="👥"
+            icon="👥"
 
-            title={text.community}
+            title={text.community}
 
-            description={text.communityDescription}
+            description={text.communityDescription}
 
-            button={text.exploreCommunity}
+            button={text.exploreCommunity}
 
-            onClick={() =>
+            onClick={() =>
 
-              router.push("/community")
+              router.push("/community")
 
-            }
+            }
 
-            tone="green"
+            tone="green"
 
-          />
+          />
 
-        </section>
+        </section>
 
 
 
-        <p className="kf-my-impact-footer" style={footerStyle}>
+        <p className="kf-my-impact-footer" style={footerStyle}>
 
-          {text.footer}
+          {text.footer}
 
-        </p>
+        </p>
 
-      </div>
+      </div>
 
-    </main>
+    </main>
 
-  );
+  );
 
 }
 
@@ -2334,73 +2470,73 @@ export default function MyImpactPage() {
 
 function Stat({
 
-  icon,
+  icon,
 
-  label,
+  label,
 
-  value,
+  value,
 
-  sub,
+  sub,
 
-  tone,
+  tone,
 
 }: {
 
-  icon: string;
+  icon: string;
 
-  label: string;
+  label: string;
 
-  value: string | number;
+  value: string | number;
 
-  sub: string;
+  sub: string;
 
-  tone:
+  tone:
 
-    | "blue"
+    | "blue"
 
-    | "green"
+    | "green"
 
-    | "orange"
+    | "orange"
 
-    | "lavender"
+    | "lavender"
 
-    | "peach";
+    | "peach";
 
 }) {
 
-  return (
+  return (
 
-    <div
+    <div
 
-      className={`kf-my-impact-stat-card kf-stat-${tone}`}
+      className={`kf-my-impact-stat-card kf-stat-${tone}`}
 
-      style={{
+      style={{
 
-        ...statCardStyle,
+        ...statCardStyle,
 
-        ...statCardTones[tone],
+        ...statCardTones[tone],
 
-      }}
+      }}
 
-    >
+    >
 
-      <div className="kf-my-impact-stat-icon" style={statIconStyle}>{icon}</div>
-
-
-
-      <div className="kf-my-impact-stat-label" style={statLabelStyle}>{label}</div>
+      <div className="kf-my-impact-stat-icon" style={statIconStyle}>{icon}</div>
 
 
 
-      <div className="kf-my-impact-stat-value" style={statValueStyle}>{value}</div>
+      <div className="kf-my-impact-stat-label" style={statLabelStyle}>{label}</div>
 
 
 
-      <div className="kf-my-impact-stat-sub" style={statSubStyle}>{sub}</div>
+      <div className="kf-my-impact-stat-value" style={statValueStyle}>{value}</div>
 
-    </div>
 
-  );
+
+      <div className="kf-my-impact-stat-sub" style={statSubStyle}>{sub}</div>
+
+    </div>
+
+  );
 
 }
 
@@ -2408,87 +2544,87 @@ function Stat({
 
 function ActionCard({
 
-  icon,
+  icon,
 
-  title,
+  title,
 
-  description,
+  description,
 
-  button,
+  button,
 
-  onClick,
+  onClick,
 
-  tone,
+  tone,
 
 }: {
 
-  icon: string;
+  icon: string;
 
-  title: string;
+  title: string;
 
-  description: string;
+  description: string;
 
-  button: string;
+  button: string;
 
-  onClick: () => void;
+  onClick: () => void;
 
-  tone: "blue" | "green" | "peach";
+  tone: "blue" | "green" | "peach";
 
 }) {
 
-  return (
+  return (
 
-    <div
+    <div
 
-      className={`kf-my-impact-action-card kf-action-${tone}`}
+      className={`kf-my-impact-action-card kf-action-${tone}`}
 
-      style={{
+      style={{
 
-        ...actionCardStyle,
+        ...actionCardStyle,
 
-        ...actionCardTones[tone],
+        ...actionCardTones[tone],
 
-      }}
+      }}
 
-    >
+    >
 
-      <div className="kf-my-impact-action-icon" style={actionIconStyle}>{icon}</div>
-
-
-
-      <h3 className="kf-my-impact-action-title" style={actionTitleStyle}>
-
-        {title}
-
-      </h3>
+      <div className="kf-my-impact-action-icon" style={actionIconStyle}>{icon}</div>
 
 
 
-      <p className="kf-my-impact-action-description" style={actionDescriptionStyle}>
+      <h3 className="kf-my-impact-action-title" style={actionTitleStyle}>
 
-        {description}
+        {title}
 
-      </p>
+      </h3>
 
 
 
-      <button
+      <p className="kf-my-impact-action-description" style={actionDescriptionStyle}>
 
-        type="button"
+        {description}
 
-        onClick={onClick}
+      </p>
 
-        style={primaryButtonStyle}
 
-      >
 
-        {button}
+      <button
 
-      </button>
+        type="button"
 
-    </div>
+        onClick={onClick}
 
-  );
+        style={primaryButtonStyle}
+
+      >
+
+        {button}
+
+      </button>
+
+    </div>
+
+  );
 
 }
 
@@ -2496,17 +2632,17 @@ function ActionCard({
 
 const pageStyle = {
 
-  minHeight: "100vh",
+  minHeight: "100vh",
 
-  background:
+  background:
 
-    "radial-gradient(circle at 92% 2%, rgba(215,232,242,.96) 0%, rgba(215,232,242,0) 25%), radial-gradient(circle at 5% 30%, rgba(231,242,248,.80) 0%, rgba(231,242,248,0) 24%), radial-gradient(circle at 90% 94%, rgba(255,229,205,.78) 0%, rgba(255,229,205,0) 25%), #f8f3ea",
+    "radial-gradient(circle at 92% 2%, rgba(215,232,242,.96) 0%, rgba(215,232,242,0) 25%), radial-gradient(circle at 5% 30%, rgba(231,242,248,.80) 0%, rgba(231,242,248,0) 24%), radial-gradient(circle at 90% 94%, rgba(255,229,205,.78) 0%, rgba(255,229,205,0) 25%), #f8f3ea",
 
-  color: "#102033",
+  color: "#102033",
 
-  padding: "20px 16px 74px",
+  padding: "20px 16px 74px",
 
-  fontFamily: "var(--font-body, 'Quicksand', sans-serif)",
+  fontFamily: "var(--font-body, 'Quicksand', sans-serif)",
 
 };
 
@@ -2514,29 +2650,29 @@ const pageStyle = {
 
 const topNavStyle = {
 
-  display: "grid",
+  display: "grid",
 
-  gridTemplateColumns: "1fr auto 1fr",
+  gridTemplateColumns: "1fr auto 1fr",
 
-  alignItems: "center",
+  alignItems: "center",
 
-  gap: 18,
+  gap: 18,
 
-  minHeight: 84,
+  minHeight: 84,
 
-  padding: "10px 14px",
+  padding: "10px 14px",
 
-  marginBottom: 42,
+  marginBottom: 42,
 
-  background: "rgba(255,255,255,.94)",
+  background: "rgba(255,255,255,.94)",
 
-  border: "1px solid rgba(16,32,51,0.09)",
+  border: "1px solid rgba(16,32,51,0.09)",
 
-  borderRadius: 32,
+  borderRadius: 32,
 
-  boxShadow: "0 14px 36px rgba(16,27,43,.07)",
+  boxShadow: "0 14px 36px rgba(16,27,43,.07)",
 
-  backdropFilter: "blur(18px)",
+  backdropFilter: "blur(18px)",
 
 };
 
@@ -2544,11 +2680,11 @@ const topNavStyle = {
 
 const headerSideStyle = {
 
-  display: "flex",
+  display: "flex",
 
-  alignItems: "center",
+  alignItems: "center",
 
-  minWidth: 0,
+  minWidth: 0,
 
 };
 
@@ -2556,13 +2692,13 @@ const headerSideStyle = {
 
 const backArrowStyle = {
 
-  color: "#ff7a00",
+  color: "#ff7a00",
 
-  fontSize: 20,
+  fontSize: 20,
 
-  lineHeight: 1,
+  lineHeight: 1,
 
-  fontWeight: 500,
+  fontWeight: 500,
 
 };
 
@@ -2570,15 +2706,15 @@ const backArrowStyle = {
 
 const brandStyle = {
 
-  display: "flex",
+  display: "flex",
 
-  alignItems: "center",
+  alignItems: "center",
 
-  justifyContent: "center",
+  justifyContent: "center",
 
-  gap: 12,
+  gap: 12,
 
-  whiteSpace: "nowrap" as const,
+  whiteSpace: "nowrap" as const,
 
 };
 
@@ -2586,31 +2722,31 @@ const brandStyle = {
 
 const brandMarkStyle = {
 
-  width: 56,
+  width: 56,
 
-  height: 56,
+  height: 56,
 
-  borderRadius: 17,
+  borderRadius: 17,
 
-  display: "flex",
+  display: "flex",
 
-  alignItems: "center",
+  alignItems: "center",
 
-  justifyContent: "center",
+  justifyContent: "center",
 
-  background: "#ff7a00",
+  background: "#ff7a00",
 
-  color: "#102033",
+  color: "#102033",
 
-  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
+  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
 
-  fontSize: 31,
+  fontSize: 31,
 
-  lineHeight: 1,
+  lineHeight: 1,
 
-  fontWeight: 800,
+  fontWeight: 800,
 
-  boxShadow: "0 8px 18px rgba(255,122,0,.18)",
+  boxShadow: "0 8px 18px rgba(255,122,0,.18)",
 
 };
 
@@ -2618,13 +2754,13 @@ const brandMarkStyle = {
 
 const brandTextWrapStyle = {
 
-  display: "flex",
+  display: "flex",
 
-  flexDirection: "column" as const,
+  flexDirection: "column" as const,
 
-  alignItems: "flex-start",
+  alignItems: "flex-start",
 
-  justifyContent: "center",
+  justifyContent: "center",
 
 };
 
@@ -2632,17 +2768,17 @@ const brandTextWrapStyle = {
 
 const brandNameStyle = {
 
-  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
+  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
 
-  fontSize: 29,
+  fontSize: 29,
 
-  lineHeight: 0.95,
+  lineHeight: 0.95,
 
-  fontWeight: 800,
+  fontWeight: 800,
 
-  letterSpacing: "-0.8px",
+  letterSpacing: "-0.8px",
 
-  color: "#102033",
+  color: "#102033",
 
 };
 
@@ -2650,7 +2786,7 @@ const brandNameStyle = {
 
 const brandAccentStyle = {
 
-  color: "#ff7a00",
+  color: "#ff7a00",
 
 };
 
@@ -2658,17 +2794,17 @@ const brandAccentStyle = {
 
 const brandSubtitleStyle = {
 
-  marginTop: 5,
+  marginTop: 5,
 
-  color: "#102033",
+  color: "#102033",
 
-  fontSize: 9,
+  fontSize: 9,
 
-  lineHeight: 1,
+  lineHeight: 1,
 
-  fontWeight: 800,
+  fontWeight: 800,
 
-  letterSpacing: "2.4px",
+  letterSpacing: "2.4px",
 
 };
 
@@ -2676,13 +2812,13 @@ const brandSubtitleStyle = {
 
 const languageControlStyle = {
 
-  display: "flex",
+  display: "flex",
 
-  alignItems: "center",
+  alignItems: "center",
 
-  justifyContent: "flex-end",
+  justifyContent: "flex-end",
 
-  gap: 12,
+  gap: 12,
 
 };
 
@@ -2690,13 +2826,13 @@ const languageControlStyle = {
 
 const languageLabelStyle = {
 
-  color: "#536579",
+  color: "#536579",
 
-  fontSize: 14,
+  fontSize: 14,
 
-  fontWeight: 700,
+  fontWeight: 700,
 
-  whiteSpace: "nowrap" as const,
+  whiteSpace: "nowrap" as const,
 
 };
 
@@ -2704,9 +2840,9 @@ const languageLabelStyle = {
 
 const containerStyle = {
 
-  maxWidth: 1100,
+  maxWidth: 1100,
 
-  margin: "0 auto",
+  margin: "0 auto",
 
 };
 
@@ -2714,19 +2850,19 @@ const containerStyle = {
 
 const loadingCardStyle = {
 
-  minHeight: "calc(100vh - 80px)",
+  minHeight: "calc(100vh - 80px)",
 
-  display: "flex",
+  display: "flex",
 
-  flexDirection: "column" as const,
+  flexDirection: "column" as const,
 
-  alignItems: "center",
+  alignItems: "center",
 
-  justifyContent: "center",
+  justifyContent: "center",
 
-  color: "#718096",
+  color: "#718096",
 
-  textAlign: "center" as const,
+  textAlign: "center" as const,
 
 };
 
@@ -2734,23 +2870,23 @@ const loadingCardStyle = {
 
 const loadingIconStyle = {
 
-  width: 62,
+  width: 62,
 
-  height: 62,
+  height: 62,
 
-  borderRadius: 20,
+  borderRadius: 20,
 
-  display: "flex",
+  display: "flex",
 
-  alignItems: "center",
+  alignItems: "center",
 
-  justifyContent: "center",
+  justifyContent: "center",
 
-  background: "#edf5fb",
+  background: "#edf5fb",
 
-  fontSize: 28,
+  fontSize: 28,
 
-  marginBottom: 14,
+  marginBottom: 14,
 
 };
 
@@ -2758,13 +2894,13 @@ const loadingIconStyle = {
 
 const loadingTitleStyle = {
 
-  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
+  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
 
-  color: "#102033",
+  color: "#102033",
 
-  fontSize: 25,
+  fontSize: 25,
 
-  fontWeight: 600,
+  fontWeight: 600,
 
 };
 
@@ -2772,11 +2908,11 @@ const loadingTitleStyle = {
 
 const loadingTextStyle = {
 
-  color: "#8793a1",
+  color: "#8793a1",
 
-  fontSize: 13,
+  fontSize: 13,
 
-  marginTop: 4,
+  marginTop: 4,
 
 };
 
@@ -2784,25 +2920,25 @@ const loadingTextStyle = {
 
 const backButtonStyle = {
 
-  background: "#ffffff",
+  background: "#ffffff",
 
-  color: "#43566c",
+  color: "#43566c",
 
-  border: "1px solid rgba(16,32,51,0.10)",
+  border: "1px solid rgba(16,32,51,0.10)",
 
-  borderRadius: 999,
+  borderRadius: 999,
 
-  padding: "9px 15px",
+  padding: "9px 15px",
 
-  cursor: "pointer",
+  cursor: "pointer",
 
-  fontWeight: 700,
+  fontWeight: 700,
 
-  fontFamily: "var(--font-body, 'Quicksand', sans-serif)",
+  fontFamily: "var(--font-body, 'Quicksand', sans-serif)",
 
-  fontSize: 14,
+  fontSize: 14,
 
-  boxShadow: "0 6px 18px rgba(16,32,51,0.045)",
+  boxShadow: "0 6px 18px rgba(16,32,51,0.045)",
 
 };
 
@@ -2810,15 +2946,15 @@ const backButtonStyle = {
 
 const headerTopRowStyle = {
 
-  display: "flex",
+  display: "flex",
 
-  alignItems: "center",
+  alignItems: "center",
 
-  justifyContent: "space-between",
+  justifyContent: "space-between",
 
-  gap: 14,
+  gap: 14,
 
-  flexWrap: "wrap" as const,
+  flexWrap: "wrap" as const,
 
 };
 
@@ -2826,21 +2962,21 @@ const headerTopRowStyle = {
 
 const languageSwitcherStyle = {
 
-  display: "flex",
+  display: "flex",
 
-  alignItems: "center",
+  alignItems: "center",
 
-  gap: 5,
+  gap: 5,
 
-  padding: 4,
+  padding: 4,
 
-  borderRadius: 999,
+  borderRadius: 999,
 
-  background: "rgba(255,255,255,0.78)",
+  background: "rgba(255,255,255,0.78)",
 
-  border: "1px solid rgba(16,32,51,0.10)",
+  border: "1px solid rgba(16,32,51,0.10)",
 
-  boxShadow: "0 5px 18px rgba(16,32,51,0.04)",
+  boxShadow: "0 5px 18px rgba(16,32,51,0.04)",
 
 };
 
@@ -2848,23 +2984,23 @@ const languageSwitcherStyle = {
 
 const languageButtonStyle = {
 
-  border: 0,
+  border: 0,
 
-  background: "transparent",
+  background: "transparent",
 
-  color: "#65748a",
+  color: "#65748a",
 
-  borderRadius: 999,
+  borderRadius: 999,
 
-  padding: "8px 12px",
+  padding: "8px 12px",
 
-  cursor: "pointer",
+  cursor: "pointer",
 
-  fontFamily: "var(--font-body, 'Quicksand', sans-serif)",
+  fontFamily: "var(--font-body, 'Quicksand', sans-serif)",
 
-  fontSize: 12,
+  fontSize: 12,
 
-  fontWeight: 700,
+  fontWeight: 700,
 
 };
 
@@ -2872,11 +3008,11 @@ const languageButtonStyle = {
 
 const activeLanguageButtonStyle = {
 
-  background: "#ff7a00",
+  background: "#ff7a00",
 
-  color: "#ffffff",
+  color: "#ffffff",
 
-  boxShadow: "0 5px 14px rgba(255,122,0,0.18)",
+  boxShadow: "0 5px 14px rgba(255,122,0,0.18)",
 
 };
 
@@ -2884,7 +3020,7 @@ const activeLanguageButtonStyle = {
 
 const headerStyle = {
 
-  margin: "27px 0 34px",
+  margin: "27px 0 34px",
 
 };
 
@@ -2892,15 +3028,15 @@ const headerStyle = {
 
 const eyebrowStyle = {
 
-  color: "#8e755f",
+  color: "#8e755f",
 
-  fontSize: 9,
+  fontSize: 9,
 
-  fontWeight: 800,
+  fontWeight: 800,
 
-  letterSpacing: "0.18em",
+  letterSpacing: "0.18em",
 
-  textTransform: "uppercase" as const,
+  textTransform: "uppercase" as const,
 
 };
 
@@ -2908,17 +3044,17 @@ const eyebrowStyle = {
 
 const titleStyle = {
 
-  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
+  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
 
-  fontSize: "clamp(40px, 6vw, 58px)",
+  fontSize: "clamp(40px, 6vw, 58px)",
 
-  margin: "6px 0 9px",
+  margin: "6px 0 9px",
 
-  lineHeight: 0.96,
+  lineHeight: 0.96,
 
-  fontWeight: 800,
+  fontWeight: 800,
 
-  color: "#102033",
+  color: "#102033",
 
 };
 
@@ -2926,17 +3062,17 @@ const titleStyle = {
 
 const subtitleStyle = {
 
-  color: "#586b79",
+  color: "#586b79",
 
-  maxWidth: 770,
+  maxWidth: 770,
 
-  lineHeight: 1.75,
+  lineHeight: 1.75,
 
-  margin: 0,
+  margin: 0,
 
-  fontSize: 15,
+  fontSize: 15,
 
-  fontWeight: 500,
+  fontWeight: 500,
 
 };
 
@@ -2944,15 +3080,15 @@ const subtitleStyle = {
 
 const statsGridStyle = {
 
-  display: "grid",
+  display: "grid",
 
-  gridTemplateColumns:
+  gridTemplateColumns:
 
-    "repeat(auto-fit, minmax(165px, 1fr))",
+    "repeat(auto-fit, minmax(165px, 1fr))",
 
-  gap: 14,
+  gap: 14,
 
-  marginBottom: 26,
+  marginBottom: 26,
 
 };
 
@@ -2960,17 +3096,17 @@ const statsGridStyle = {
 
 const statCardStyle = {
 
-  border: "1px solid rgba(16,32,51,0.075)",
+  border: "1px solid rgba(16,32,51,0.075)",
 
-  borderRadius: 25,
+  borderRadius: 25,
 
-  padding: 19,
+  padding: 19,
 
-  boxShadow: "0 12px 28px rgba(16,32,51,0.045)",
+  boxShadow: "0 12px 28px rgba(16,32,51,0.045)",
 
-  minHeight: 155,
+  minHeight: 155,
 
-  boxSizing: "border-box" as const,
+  boxSizing: "border-box" as const,
 
 };
 
@@ -2978,35 +3114,35 @@ const statCardStyle = {
 
 const statCardTones = {
 
-  blue: {
+  blue: {
 
-    background: "linear-gradient(145deg, #f1f7fb 0%, #e8f2f9 100%)",
+    background: "linear-gradient(145deg, #f1f7fb 0%, #e8f2f9 100%)",
 
-  },
+  },
 
-  green: {
+  green: {
 
-    background: "linear-gradient(145deg, #f2f7ed 0%, #eaf3e2 100%)",
+    background: "linear-gradient(145deg, #f2f7ed 0%, #eaf3e2 100%)",
 
-  },
+  },
 
-  orange: {
+  orange: {
 
-    background: "linear-gradient(145deg, #fff7e9 0%, #ffefd9 100%)",
+    background: "linear-gradient(145deg, #fff7e9 0%, #ffefd9 100%)",
 
-  },
+  },
 
-  lavender: {
+  lavender: {
 
-    background: "linear-gradient(145deg, #f7f3fb 0%, #eee9f6 100%)",
+    background: "linear-gradient(145deg, #f7f3fb 0%, #eee9f6 100%)",
 
-  },
+  },
 
-  peach: {
+  peach: {
 
-    background: "linear-gradient(145deg, #fff5ed 0%, #ffeadc 100%)",
+    background: "linear-gradient(145deg, #fff5ed 0%, #ffeadc 100%)",
 
-  },
+  },
 
 };
 
@@ -3014,27 +3150,27 @@ const statCardTones = {
 
 const statIconStyle = {
 
-  width: 42,
+  width: 42,
 
-  height: 42,
+  height: 42,
 
-  borderRadius: 14,
+  borderRadius: 14,
 
-  display: "flex",
+  display: "flex",
 
-  alignItems: "center",
+  alignItems: "center",
 
-  justifyContent: "center",
+  justifyContent: "center",
 
-  background: "rgba(255,255,255,0.90)",
+  background: "rgba(255,255,255,0.90)",
 
-  border: "1px solid rgba(255,255,255,0.92)",
+  border: "1px solid rgba(255,255,255,0.92)",
 
-  fontSize: 22,
+  fontSize: 22,
 
-  marginBottom: 12,
+  marginBottom: 12,
 
-  boxShadow: "0 5px 12px rgba(16,32,51,0.035)",
+  boxShadow: "0 5px 12px rgba(16,32,51,0.035)",
 
 };
 
@@ -3042,13 +3178,13 @@ const statIconStyle = {
 
 const statLabelStyle = {
 
-  color: "#65748a",
+  color: "#65748a",
 
-  fontSize: 12,
+  fontSize: 12,
 
-  fontWeight: 700,
+  fontWeight: 700,
 
-  lineHeight: 1.35,
+  lineHeight: 1.35,
 
 };
 
@@ -3056,17 +3192,17 @@ const statLabelStyle = {
 
 const statValueStyle = {
 
-  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
+  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
 
-  color: "#102033",
+  color: "#102033",
 
-  fontSize: 31,
+  fontSize: 31,
 
-  lineHeight: 1,
+  lineHeight: 1,
 
-  fontWeight: 700,
+  fontWeight: 700,
 
-  margin: "7px 0 6px",
+  margin: "7px 0 6px",
 
 };
 
@@ -3074,11 +3210,11 @@ const statValueStyle = {
 
 const statSubStyle = {
 
-  color: "#7a899b",
+  color: "#7a899b",
 
-  fontSize: 11.5,
+  fontSize: 11.5,
 
-  lineHeight: 1.45,
+  lineHeight: 1.45,
 
 };
 
@@ -3086,17 +3222,17 @@ const statSubStyle = {
 
 const panelStyle = {
 
-  background: "rgba(255,253,249,.94)",
+  background: "rgba(255,253,249,.94)",
 
-  border: "1px solid rgba(16,32,51,0.075)",
+  border: "1px solid rgba(16,32,51,0.075)",
 
-  borderRadius: 30,
+  borderRadius: 30,
 
-  padding: 27,
+  padding: 27,
 
-  marginBottom: 24,
+  marginBottom: 24,
 
-  boxShadow: "0 16px 38px rgba(16,32,51,0.055)",
+  boxShadow: "0 16px 38px rgba(16,32,51,0.055)",
 
 };
 
@@ -3104,17 +3240,17 @@ const panelStyle = {
 
 const sectionTitleStyle = {
 
-  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
+  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
 
-  color: "#102033",
+  color: "#102033",
 
-  fontSize: 28,
+  fontSize: 28,
 
-  lineHeight: 1.1,
+  lineHeight: 1.1,
 
-  fontWeight: 600,
+  fontWeight: 600,
 
-  margin: "7px 0 7px",
+  margin: "7px 0 7px",
 
 };
 
@@ -3122,13 +3258,13 @@ const sectionTitleStyle = {
 
 const mutedStyle = {
 
-  color: "#718096",
+  color: "#718096",
 
-  lineHeight: 1.7,
+  lineHeight: 1.7,
 
-  fontSize: 14,
+  fontSize: 14,
 
-  margin: 0,
+  margin: 0,
 
 };
 
@@ -3136,13 +3272,13 @@ const mutedStyle = {
 
 const mutedSmallStyle = {
 
-  color: "#8793a1",
+  color: "#8793a1",
 
-  fontSize: 11.5,
+  fontSize: 11.5,
 
-  lineHeight: 1.45,
+  lineHeight: 1.45,
 
-  marginTop: 3,
+  marginTop: 3,
 
 };
 
@@ -3150,19 +3286,19 @@ const mutedSmallStyle = {
 
 const emptyStyle = {
 
-  marginTop: 20,
+  marginTop: 20,
 
-  padding: 28,
+  padding: 28,
 
-  borderRadius: 18,
+  borderRadius: 18,
 
-  background: "#f7f4ee",
+  background: "#f7f4ee",
 
-  border: "1px solid rgba(16,32,51,0.07)",
+  border: "1px solid rgba(16,32,51,0.07)",
 
-  color: "#718096",
+  color: "#718096",
 
-  textAlign: "center" as const,
+  textAlign: "center" as const,
 
 };
 
@@ -3170,9 +3306,9 @@ const emptyStyle = {
 
 const emptyIconStyle = {
 
-  fontSize: 32,
+  fontSize: 32,
 
-  marginBottom: 7,
+  marginBottom: 7,
 
 };
 
@@ -3180,13 +3316,13 @@ const emptyIconStyle = {
 
 const emptyTitleStyle = {
 
-  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
+  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
 
-  color: "#536579",
+  color: "#536579",
 
-  fontSize: 20,
+  fontSize: 20,
 
-  fontWeight: 600,
+  fontWeight: 600,
 
 };
 
@@ -3194,21 +3330,21 @@ const emptyTitleStyle = {
 
 const timelineRowStyle = {
 
-  display: "flex",
+  display: "flex",
 
-  alignItems: "center",
+  alignItems: "center",
 
-  gap: 13,
+  gap: 13,
 
-  padding: 14,
+  padding: 14,
 
-  borderRadius: 17,
+  borderRadius: 17,
 
-  background: "#fbfaf7",
+  background: "#fbfaf7",
 
-  border: "1px solid rgba(16,32,51,0.065)",
+  border: "1px solid rgba(16,32,51,0.065)",
 
-  boxShadow: "0 5px 15px rgba(16,32,51,0.025)",
+  boxShadow: "0 5px 15px rgba(16,32,51,0.025)",
 
 };
 
@@ -3216,19 +3352,19 @@ const timelineRowStyle = {
 
 const timelineIconStyle = {
 
-  width: 40,
+  width: 40,
 
-  height: 40,
+  height: 40,
 
-  borderRadius: 13,
+  borderRadius: 13,
 
-  display: "grid",
+  display: "grid",
 
-  placeItems: "center",
+  placeItems: "center",
 
-  flexShrink: 0,
+  flexShrink: 0,
 
-  fontSize: 19,
+  fontSize: 19,
 
 };
 
@@ -3236,15 +3372,15 @@ const timelineIconStyle = {
 
 const timelineTitleStyle = {
 
-  color: "#102033",
+  color: "#102033",
 
-  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
+  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
 
-  fontSize: 17,
+  fontSize: 17,
 
-  fontWeight: 600,
+  fontWeight: 600,
 
-  lineHeight: 1.2,
+  lineHeight: 1.2,
 
 };
 
@@ -3252,103 +3388,103 @@ const timelineTitleStyle = {
 
 function statusPillStyle(status: string | null) {
 
-  if (status === "resolved") {
+  if (status === "resolved") {
 
-    return {
+    return {
 
-      padding: "6px 10px",
+      padding: "6px 10px",
 
-      borderRadius: 999,
+      borderRadius: 999,
 
-      background: "#edf7e9",
+      background: "#edf7e9",
 
-      color: "#527b45",
+      color: "#527b45",
 
-      border: "1px solid rgba(82,123,69,0.10)",
+      border: "1px solid rgba(82,123,69,0.10)",
 
-      fontSize: 11,
+      fontSize: 11,
 
-      fontWeight: 800,
+      fontWeight: 800,
 
-      whiteSpace: "nowrap" as const,
+      whiteSpace: "nowrap" as const,
 
-    };
+    };
 
-  }
-
-
-
-  if (status === "in_progress") {
-
-    return {
-
-      padding: "6px 10px",
-
-      borderRadius: 999,
-
-      background: "#edf5fb",
-
-      color: "#4f718e",
-
-      border: "1px solid rgba(79,113,142,0.10)",
-
-      fontSize: 11,
-
-      fontWeight: 800,
-
-      whiteSpace: "nowrap" as const,
-
-    };
-
-  }
+  }
 
 
 
-  if (status === "under_review") {
+  if (status === "in_progress") {
 
-    return {
+    return {
 
-      padding: "6px 10px",
+      padding: "6px 10px",
 
-      borderRadius: 999,
+      borderRadius: 999,
 
-      background: "#f2eef9",
+      background: "#edf5fb",
 
-      color: "#67558a",
+      color: "#4f718e",
 
-      border: "1px solid rgba(103,85,138,0.10)",
+      border: "1px solid rgba(79,113,142,0.10)",
 
-      fontSize: 11,
+      fontSize: 11,
 
-      fontWeight: 800,
+      fontWeight: 800,
 
-      whiteSpace: "nowrap" as const,
+      whiteSpace: "nowrap" as const,
 
-    };
+    };
 
-  }
+  }
 
 
 
-  return {
+  if (status === "under_review") {
 
-    padding: "6px 10px",
+    return {
 
-    borderRadius: 999,
+      padding: "6px 10px",
 
-    background: "#fff2df",
+      borderRadius: 999,
 
-    color: "#a86724",
+      background: "#f2eef9",
 
-    border: "1px solid rgba(168,103,36,0.10)",
+      color: "#67558a",
 
-    fontSize: 11,
+      border: "1px solid rgba(103,85,138,0.10)",
 
-    fontWeight: 800,
+      fontSize: 11,
 
-    whiteSpace: "nowrap" as const,
+      fontWeight: 800,
 
-  };
+      whiteSpace: "nowrap" as const,
+
+    };
+
+  }
+
+
+
+  return {
+
+    padding: "6px 10px",
+
+    borderRadius: 999,
+
+    background: "#fff2df",
+
+    color: "#a86724",
+
+    border: "1px solid rgba(168,103,36,0.10)",
+
+    fontSize: 11,
+
+    fontWeight: 800,
+
+    whiteSpace: "nowrap" as const,
+
+  };
 
 }
 
@@ -3356,21 +3492,21 @@ function statusPillStyle(status: string | null) {
 
 const xpPillStyle = {
 
-  padding: "6px 10px",
+  padding: "6px 10px",
 
-  borderRadius: 999,
+  borderRadius: 999,
 
-  background: "#fff0e5",
+  background: "#fff0e5",
 
-  color: "#e56800",
+  color: "#e56800",
 
-  border: "1px solid rgba(255,122,0,0.10)",
+  border: "1px solid rgba(255,122,0,0.10)",
 
-  fontSize: 11,
+  fontSize: 11,
 
-  fontWeight: 800,
+  fontWeight: 800,
 
-  whiteSpace: "nowrap" as const,
+  whiteSpace: "nowrap" as const,
 
 };
 
@@ -3378,11 +3514,11 @@ const xpPillStyle = {
 
 const journeyPathHeaderStyle = {
 
-  marginTop: 26,
+  marginTop: 26,
 
-  marginBottom: 10,
+  marginBottom: 10,
 
-  paddingLeft: 2,
+  paddingLeft: 2,
 
 };
 
@@ -3390,13 +3526,13 @@ const journeyPathHeaderStyle = {
 
 const journeyPathEyebrowStyle = {
 
-  color: "#6f7f91",
+  color: "#6f7f91",
 
-  fontSize: 12,
+  fontSize: 12,
 
-  lineHeight: 1.5,
+  lineHeight: 1.5,
 
-  fontWeight: 700,
+  fontWeight: 700,
 
 };
 
@@ -3404,15 +3540,15 @@ const journeyPathEyebrowStyle = {
 
 const journeyPathStyle = {
 
-  display: "grid",
+  display: "grid",
 
-  gridTemplateColumns: "repeat(auto-fit, minmax(145px, 1fr))",
+  gridTemplateColumns: "repeat(auto-fit, minmax(145px, 1fr))",
 
-  gap: 9,
+  gap: 9,
 
-  alignItems: "stretch",
+  alignItems: "stretch",
 
-  marginTop: 12,
+  marginTop: 12,
 
 };
 
@@ -3420,9 +3556,9 @@ const journeyPathStyle = {
 
 const journeyStageWrapStyle = {
 
-  position: "relative" as const,
+  position: "relative" as const,
 
-  minWidth: 0,
+  minWidth: 0,
 
 };
 
@@ -3430,21 +3566,21 @@ const journeyStageWrapStyle = {
 
 const journeyStageStyle = {
 
-  minHeight: 158,
+  minHeight: 158,
 
-  borderRadius: 20,
+  borderRadius: 20,
 
-  border: "1px solid rgba(16,32,51,0.065)",
+  border: "1px solid rgba(16,32,51,0.065)",
 
-  padding: 15,
+  padding: 15,
 
-  display: "flex",
+  display: "flex",
 
-  flexDirection: "column" as const,
+  flexDirection: "column" as const,
 
-  boxSizing: "border-box" as const,
+  boxSizing: "border-box" as const,
 
-  boxShadow: "0 8px 20px rgba(16,32,51,0.035)",
+  boxShadow: "0 8px 20px rgba(16,32,51,0.035)",
 
 };
 
@@ -3452,25 +3588,25 @@ const journeyStageStyle = {
 
 const journeyStageIconStyle = {
 
-  width: 38,
+  width: 38,
 
-  height: 38,
+  height: 38,
 
-  borderRadius: 12,
+  borderRadius: 12,
 
-  display: "grid",
+  display: "grid",
 
-  placeItems: "center",
+  placeItems: "center",
 
-  background: "rgba(255,255,255,0.92)",
+  background: "rgba(255,255,255,0.92)",
 
-  border: "1px solid rgba(255,255,255,0.95)",
+  border: "1px solid rgba(255,255,255,0.95)",
 
-  fontSize: 18,
+  fontSize: 18,
 
-  marginBottom: 10,
+  marginBottom: 10,
 
-  boxShadow: "0 5px 12px rgba(16,32,51,0.035)",
+  boxShadow: "0 5px 12px rgba(16,32,51,0.035)",
 
 };
 
@@ -3478,13 +3614,13 @@ const journeyStageIconStyle = {
 
 const journeyStageTitleStyle = {
 
-  color: "#65748a",
+  color: "#65748a",
 
-  fontSize: 12,
+  fontSize: 12,
 
-  fontWeight: 800,
+  fontWeight: 800,
 
-  lineHeight: 1.2,
+  lineHeight: 1.2,
 
 };
 
@@ -3492,17 +3628,17 @@ const journeyStageTitleStyle = {
 
 const journeyStageValueStyle = {
 
-  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
+  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
 
-  color: "#102033",
+  color: "#102033",
 
-  fontSize: 30,
+  fontSize: 30,
 
-  lineHeight: 1,
+  lineHeight: 1,
 
-  fontWeight: 700,
+  fontWeight: 700,
 
-  margin: "9px 0 6px",
+  margin: "9px 0 6px",
 
 };
 
@@ -3510,11 +3646,11 @@ const journeyStageValueStyle = {
 
 const journeyStageDetailStyle = {
 
-  color: "#7a899b",
+  color: "#7a899b",
 
-  fontSize: 11,
+  fontSize: 11,
 
-  lineHeight: 1.4,
+  lineHeight: 1.4,
 
 };
 
@@ -3522,31 +3658,31 @@ const journeyStageDetailStyle = {
 
 const journeyConnectorStyle = {
 
-  position: "absolute" as const,
+  position: "absolute" as const,
 
-  top: "50%",
+  top: "50%",
 
-  right: -14,
+  right: -14,
 
-  transform: "translateY(-50%)",
+  transform: "translateY(-50%)",
 
-  width: 22,
+  width: 22,
 
-  height: 22,
+  height: 22,
 
-  display: "grid",
+  display: "grid",
 
-  placeItems: "center",
+  placeItems: "center",
 
-  color: "#ff7a00",
+  color: "#ff7a00",
 
-  fontSize: 16,
+  fontSize: 16,
 
-  fontWeight: 800,
+  fontWeight: 800,
 
-  zIndex: 2,
+  zIndex: 2,
 
-  textShadow: "0 2px 8px rgba(255,122,0,0.14)",
+  textShadow: "0 2px 8px rgba(255,122,0,0.14)",
 
 };
 
@@ -3554,21 +3690,21 @@ const journeyConnectorStyle = {
 
 const journeyActivityHeaderStyle = {
 
-  display: "flex",
+  display: "flex",
 
-  alignItems: "baseline",
+  alignItems: "baseline",
 
-  justifyContent: "space-between",
+  justifyContent: "space-between",
 
-  gap: 12,
+  gap: 12,
 
-  marginTop: 28,
+  marginTop: 28,
 
-  marginBottom: 10,
+  marginBottom: 10,
 
-  paddingTop: 20,
+  paddingTop: 20,
 
-  borderTop: "1px solid rgba(16,32,51,0.075)",
+  borderTop: "1px solid rgba(16,32,51,0.075)",
 
 };
 
@@ -3576,13 +3712,13 @@ const journeyActivityHeaderStyle = {
 
 const journeyActivityTitleStyle = {
 
-  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
+  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
 
-  color: "#102033",
+  color: "#102033",
 
-  fontSize: 20,
+  fontSize: 20,
 
-  fontWeight: 600,
+  fontWeight: 600,
 
 };
 
@@ -3590,11 +3726,11 @@ const journeyActivityTitleStyle = {
 
 const journeyActivitySubStyle = {
 
-  color: "#9aa4af",
+  color: "#9aa4af",
 
-  fontSize: 11,
+  fontSize: 11,
 
-  fontWeight: 700,
+  fontWeight: 700,
 
 };
 
@@ -3602,9 +3738,9 @@ const journeyActivitySubStyle = {
 
 const impactPanelStyle = {
 
-  ...panelStyle,
+  ...panelStyle,
 
-  background: "rgba(255,253,249,.96)",
+  background: "rgba(255,253,249,.96)",
 
 };
 
@@ -3612,13 +3748,13 @@ const impactPanelStyle = {
 
 const impactGridStyle = {
 
-  display: "grid",
+  display: "grid",
 
-  gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))",
+  gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))",
 
-  gap: 13,
+  gap: 13,
 
-  marginTop: 22,
+  marginTop: 22,
 
 };
 
@@ -3626,17 +3762,17 @@ const impactGridStyle = {
 
 const impactCardStyle = {
 
-  border: "1px solid rgba(16,32,51,0.065)",
+  border: "1px solid rgba(16,32,51,0.065)",
 
-  borderRadius: 21,
+  borderRadius: 21,
 
-  padding: 17,
+  padding: 17,
 
-  minHeight: 145,
+  minHeight: 145,
 
-  boxSizing: "border-box" as const,
+  boxSizing: "border-box" as const,
 
-  boxShadow: "0 8px 20px rgba(16,32,51,0.035)",
+  boxShadow: "0 8px 20px rgba(16,32,51,0.035)",
 
 };
 
@@ -3644,21 +3780,21 @@ const impactCardStyle = {
 
 const impactMetricIconStyle = {
 
-  width: 38,
+  width: 38,
 
-  height: 38,
+  height: 38,
 
-  borderRadius: 12,
+  borderRadius: 12,
 
-  display: "grid",
+  display: "grid",
 
-  placeItems: "center",
+  placeItems: "center",
 
-  background: "rgba(255,255,255,.9)",
+  background: "rgba(255,255,255,.9)",
 
-  fontSize: 18,
+  fontSize: 18,
 
-  marginBottom: 10,
+  marginBottom: 10,
 
 };
 
@@ -3666,15 +3802,15 @@ const impactMetricIconStyle = {
 
 const impactMetricValueStyle = {
 
-  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
+  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
 
-  fontSize: 28,
+  fontSize: 28,
 
-  lineHeight: 1,
+  lineHeight: 1,
 
-  fontWeight: 700,
+  fontWeight: 700,
 
-  color: "#102033",
+  color: "#102033",
 
 };
 
@@ -3682,13 +3818,13 @@ const impactMetricValueStyle = {
 
 const impactMetricTitleStyle = {
 
-  color: "#526477",
+  color: "#526477",
 
-  fontSize: 12,
+  fontSize: 12,
 
-  fontWeight: 800,
+  fontWeight: 800,
 
-  marginTop: 7,
+  marginTop: 7,
 
 };
 
@@ -3696,13 +3832,13 @@ const impactMetricTitleStyle = {
 
 const impactMetricSubStyle = {
 
-  color: "#7c8a99",
+  color: "#7c8a99",
 
-  fontSize: 11,
+  fontSize: 11,
 
-  lineHeight: 1.45,
+  lineHeight: 1.45,
 
-  marginTop: 4,
+  marginTop: 4,
 
 };
 
@@ -3710,13 +3846,13 @@ const impactMetricSubStyle = {
 
 const impactRecordGridStyle = {
 
-  display: "grid",
+  display: "grid",
 
-  gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))",
+  gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))",
 
-  gap: 12,
+  gap: 12,
 
-  marginTop: 15,
+  marginTop: 15,
 
 };
 
@@ -3724,13 +3860,13 @@ const impactRecordGridStyle = {
 
 const impactRecordStyle = {
 
-  padding: 16,
+  padding: 16,
 
-  borderRadius: 18,
+  borderRadius: 18,
 
-  background: "#fbfaf7",
+  background: "#fbfaf7",
 
-  border: "1px solid rgba(16,32,51,0.065)",
+  border: "1px solid rgba(16,32,51,0.065)",
 
 };
 
@@ -3738,15 +3874,15 @@ const impactRecordStyle = {
 
 const impactRecordTopStyle = {
 
-  display: "flex",
+  display: "flex",
 
-  alignItems: "center",
+  alignItems: "center",
 
-  justifyContent: "space-between",
+  justifyContent: "space-between",
 
-  gap: 10,
+  gap: 10,
 
-  marginBottom: 10,
+  marginBottom: 10,
 
 };
 
@@ -3754,17 +3890,17 @@ const impactRecordTopStyle = {
 
 const impactRecordBadgeStyle = {
 
-  color: "#527b45",
+  color: "#527b45",
 
-  background: "#edf7e9",
+  background: "#edf7e9",
 
-  borderRadius: 999,
+  borderRadius: 999,
 
-  padding: "5px 9px",
+  padding: "5px 9px",
 
-  fontSize: 10.5,
+  fontSize: 10.5,
 
-  fontWeight: 800,
+  fontWeight: 800,
 
 };
 
@@ -3772,11 +3908,11 @@ const impactRecordBadgeStyle = {
 
 const impactRecordDateStyle = {
 
-  color: "#9aa4af",
+  color: "#9aa4af",
 
-  fontSize: 10.5,
+  fontSize: 10.5,
 
-  fontWeight: 700,
+  fontWeight: 700,
 
 };
 
@@ -3784,13 +3920,13 @@ const impactRecordDateStyle = {
 
 const impactNoteStyle = {
 
-  color: "#718096",
+  color: "#718096",
 
-  fontSize: 12,
+  fontSize: 12,
 
-  lineHeight: 1.55,
+  lineHeight: 1.55,
 
-  marginTop: 7,
+  marginTop: 7,
 
 };
 
@@ -3798,17 +3934,17 @@ const impactNoteStyle = {
 
 const impactEmptyStyle = {
 
-  marginTop: 18,
+  marginTop: 18,
 
-  padding: 22,
+  padding: 22,
 
-  borderRadius: 18,
+  borderRadius: 18,
 
-  background: "#f7f4ee",
+  background: "#f7f4ee",
 
-  border: "1px solid rgba(16,32,51,0.065)",
+  border: "1px solid rgba(16,32,51,0.065)",
 
-  textAlign: "center" as const,
+  textAlign: "center" as const,
 
 };
 
@@ -3816,13 +3952,13 @@ const impactEmptyStyle = {
 
 const threeColumnStyle = {
 
-  display: "grid",
+  display: "grid",
 
-  gridTemplateColumns:
+  gridTemplateColumns:
 
-    "repeat(auto-fit, minmax(250px, 1fr))",
+    "repeat(auto-fit, minmax(250px, 1fr))",
 
-  gap: 16,
+  gap: 16,
 
 };
 
@@ -3830,13 +3966,13 @@ const threeColumnStyle = {
 
 const actionCardStyle = {
 
-  border: "1px solid rgba(16,32,51,0.075)",
+  border: "1px solid rgba(16,32,51,0.075)",
 
-  borderRadius: 25,
+  borderRadius: 25,
 
-  padding: 22,
+  padding: 22,
 
-  boxShadow: "0 12px 28px rgba(16,32,51,0.045)",
+  boxShadow: "0 12px 28px rgba(16,32,51,0.045)",
 
 };
 
@@ -3844,23 +3980,23 @@ const actionCardStyle = {
 
 const actionCardTones = {
 
-  peach: {
+  peach: {
 
-    background: "linear-gradient(145deg, #fff6ed 0%, #ffeadb 100%)",
+    background: "linear-gradient(145deg, #fff6ed 0%, #ffeadb 100%)",
 
-  },
+  },
 
-  blue: {
+  blue: {
 
-    background: "linear-gradient(145deg, #f2f8fc 0%, #e8f2f9 100%)",
+    background: "linear-gradient(145deg, #f2f8fc 0%, #e8f2f9 100%)",
 
-  },
+  },
 
-  green: {
+  green: {
 
-    background: "linear-gradient(145deg, #f3f8ee 0%, #eaf2e3 100%)",
+    background: "linear-gradient(145deg, #f3f8ee 0%, #eaf2e3 100%)",
 
-  },
+  },
 
 };
 
@@ -3868,25 +4004,25 @@ const actionCardTones = {
 
 const actionIconStyle = {
 
-  width: 48,
+  width: 48,
 
-  height: 48,
+  height: 48,
 
-  borderRadius: 15,
+  borderRadius: 15,
 
-  display: "flex",
+  display: "flex",
 
-  alignItems: "center",
+  alignItems: "center",
 
-  justifyContent: "center",
+  justifyContent: "center",
 
-  background: "rgba(255,255,255,0.92)",
+  background: "rgba(255,255,255,0.92)",
 
-  border: "1px solid rgba(255,255,255,0.95)",
+  border: "1px solid rgba(255,255,255,0.95)",
 
-  fontSize: 24,
+  fontSize: 24,
 
-  boxShadow: "0 6px 14px rgba(16,32,51,0.035)",
+  boxShadow: "0 6px 14px rgba(16,32,51,0.035)",
 
 };
 
@@ -3894,17 +4030,17 @@ const actionIconStyle = {
 
 const actionTitleStyle = {
 
-  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
+  fontFamily: "var(--font-display, 'Baloo 2', sans-serif)",
 
-  color: "#102033",
+  color: "#102033",
 
-  margin: "13px 0 7px",
+  margin: "13px 0 7px",
 
-  fontSize: 22,
+  fontSize: 22,
 
-  lineHeight: 1.1,
+  lineHeight: 1.1,
 
-  fontWeight: 600,
+  fontWeight: 600,
 
 };
 
@@ -3912,15 +4048,15 @@ const actionTitleStyle = {
 
 const actionDescriptionStyle = {
 
-  color: "#718096",
+  color: "#718096",
 
-  lineHeight: 1.65,
+  lineHeight: 1.65,
 
-  minHeight: 70,
+  minHeight: 70,
 
-  fontSize: 13.5,
+  fontSize: 13.5,
 
-  margin: "0 0 16px",
+  margin: "0 0 16px",
 
 };
 
@@ -3928,25 +4064,25 @@ const actionDescriptionStyle = {
 
 const primaryButtonStyle = {
 
-  background: "linear-gradient(135deg, #ff8612 0%, #ff7000 100%)",
+  background: "linear-gradient(135deg, #ff8612 0%, #ff7000 100%)",
 
-  color: "#ffffff",
+  color: "#ffffff",
 
-  border: "none",
+  border: "none",
 
-  borderRadius: 999,
+  borderRadius: 999,
 
-  padding: "10px 16px",
+  padding: "10px 16px",
 
-  fontWeight: 800,
+  fontWeight: 800,
 
-  cursor: "pointer",
+  cursor: "pointer",
 
-  fontFamily: "var(--font-body, 'Quicksand', sans-serif)",
+  fontFamily: "var(--font-body, 'Quicksand', sans-serif)",
 
-  fontSize: 12.5,
+  fontSize: 12.5,
 
-  boxShadow: "0 7px 17px rgba(255,122,0,0.19)",
+  boxShadow: "0 7px 17px rgba(255,122,0,0.19)",
 
 };
 
@@ -3954,14 +4090,14 @@ const primaryButtonStyle = {
 
 const footerStyle = {
 
-  textAlign: "center" as const,
+  textAlign: "center" as const,
 
-  color: "#8a96a5",
+  color: "#8a96a5",
 
-  fontSize: 12,
+  fontSize: 12,
 
-  lineHeight: 1.5,
+  lineHeight: 1.5,
 
-  marginTop: 34,
+  marginTop: 34,
 
 };

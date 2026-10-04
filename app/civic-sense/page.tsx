@@ -5943,7 +5943,7 @@ html[data-theme="dark"] .small-karma-item:nth-child(6) {
             .kf-civic-sense-page {
               width: 100% !important;
               min-height: 100vh !important;
-              padding: 82px 10px 112px !important;
+              padding: 82px 10px 24px !important;
               overflow-x: clip !important;
               box-sizing: border-box !important;
             }
@@ -6106,6 +6106,27 @@ html[data-theme="dark"] .small-karma-item:nth-child(6) {
             border-color: rgba(145,174,204,.14) !important;
           }
         `}</style>
+
+    
+      <style>{`
+        /* Civic Sense: correct the top and bottom empty space on mobile/tablet only. */
+        @media (max-width: 1023px) {
+          body.kf-mobile-shell-active main.kf-civic-sense-page {
+            padding-top: 42px !important;
+            padding-bottom: 24px !important;
+            min-height: auto !important;
+            height: auto !important;
+            box-sizing: border-box !important;
+          }
+
+          html[data-theme="dark"] body.kf-mobile-shell-active main.kf-civic-sense-page {
+            padding-top: 42px !important;
+            padding-bottom: 24px !important;
+            min-height: auto !important;
+            height: auto !important;
+          }
+        }
+      `}</style>
 
     </main>
 
