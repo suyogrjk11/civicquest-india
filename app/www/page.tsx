@@ -7,6 +7,7 @@ import { useLanguage } from "@/components/LanguageProvider";
 import type { Language } from "@/lib/i18n";
 import ThemeToggle from "@/components/ThemeToggle";
 import GlobalSearch from "@/components/GlobalSearch";
+import KrutBharatMobileShell from "@/components/KrutBharatMobileShell";
 
 type JourneyKey = "learn" | "understand" | "participate";
 
@@ -1675,6 +1676,11 @@ export default function Home() {
           className="h-full w-full object-cover kf-dark-wave-background"
         />
       </div>
+      {/* SHARED MOBILE / TABLET APP SHELL — desktop website remains untouched */}
+      <KrutBharatMobileShell />
+
+      {/* Legacy homepage mobile chrome is retained in source for compatibility,
+          but is hidden below 1024px so the shared app shell is the only mobile/tablet chrome. */}
       {/* MOBILE / TABLET APP SHELL — desktop header remains untouched below */}
       <header className="kf-mobile-app-header" aria-label="KrutBharat mobile navigation">
         <div className="kf-mobile-app-header-inner">
@@ -3717,6 +3723,32 @@ html:not([data-theme="dark"]) .kf-glass-header {
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
+
+  /* Additional tablet override: keep the app composition roomy without exposing
+     any desktop navbar geometry. */
+  main > section:first-of-type > div {
+    grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr) !important;
+    align-items: center;
+    gap: 28px !important;
+    padding: 28px 24px 24px !important;
+  }
+
+  main > section:first-of-type > div > div:first-child {
+    padding-top: 0 !important;
+  }
+
+  .kf-hero-main-image {
+    width: min(100%, 480px) !important;
+    max-width: 480px !important;
+    margin-left: auto !important;
+  }
+
+  .kf-mobile-hero-shortcuts {
+    grid-column: 1 / -1;
+    max-width: 680px;
+    margin: 2px auto 0 !important;
+  }
+
   .kf-mobile-bottom-nav { display: none; }
   main { padding-bottom: 0; }
   .kf-mobile-app-header { top: 14px; margin-top: 14px; }
@@ -4686,6 +4718,72 @@ html[data-theme="dark"] #trust .kf-trust-card {
 <style>{`
 /* Mobile/tablet navigation controls — desktop is untouched above 1024px. */
 @media (max-width: 1023px) {
+
+  /*
+   * The shared KrutBharatMobileShell is now the single mobile/tablet chrome
+   * for this homepage. The older homepage-specific mobile chrome stays in
+   * the source but is completely suppressed below 1024px.
+   */
+  .kf-mobile-app-header,
+  .kf-mobile-drawer-backdrop,
+  .kf-mobile-drawer,
+  .kf-mobile-bottom-nav,
+  .kf-glass-header,
+  .kf-desktop-only {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* The shared shell supplies the mobile/tablet top header + spacer. */
+  main {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding-bottom: 96px !important;
+  }
+
+  main > section:first-of-type {
+    padding-top: 0 !important;
+  }
+
+  main > section:first-of-type > div {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 14px 16px 18px !important;
+    box-sizing: border-box;
+  }
+
+  main > section:first-of-type > div > div:first-child {
+    min-width: 0;
+    max-width: none !important;
+    transform: none !important;
+    padding-top: 6px !important;
+  }
+
+  main > section:first-of-type > div > div:nth-child(2) {
+    min-width: 0;
+    min-height: 0 !important;
+    transform: none !important;
+  }
+
+  .kf-hero-main-image {
+    display: block;
+    width: min(100%, 360px) !important;
+    max-width: 360px !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    object-fit: contain;
+    transform: none !important;
+  }
+
+  .kf-mobile-hero-shortcuts {
+    width: 100%;
+    max-width: none;
+    margin: 0 !important;
+  }
   .kf-global-search-trigger,
   .kf-global-theme-toggle,
   .kf-theme-toggle {
